@@ -1,0 +1,29 @@
+/*
+ * test_kem.c
+
+ *
+ *  Created on: 5 de fev de 2021
+ *      Author: vinicius
+ */
+
+#include "test_kem.h"
+
+int kem_test(const char *name, int iterations)
+{
+	u32 readTimer;
+
+	/* enable user-mode access to the performance counter*/
+	asm ("MCR p15, 0, %0, C9, C14, 0\n\t" :: "r"(1));
+
+	/* disable counter overflow interrupts (just in case)*/
+	asm ("MCR p15, 0, %0, C9, C14, 2\n\t" :: "r"(0x8000000f));
+
+	// init counters:
+	init_perfcounters (1, 0);
+
+	print_debug(DEBUG_TEST_KEM, "\n");
+	print_debug(DEBUG_TEST_KEM, "=============================================================================================================================\n");
+	print_debug(DEBUG_TEST_KEM, "Testing correctness of key encapsulation mechanism (KEM), system %s, tests for %d iterations\n", named_parameters, iterations);
+	print_debug(DEBUG_TEST_KEM, "=============================================================================================================================\n");
+
+}
