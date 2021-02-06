@@ -21,13 +21,13 @@
 //Hardware
 #include "xil_printf.h"
 #include "sleep.h"
-//#include "xgpio.h"
+#include "xgpio.h"
 #include "xgpiops.h"
 #include "xadcps.h"
 
 //Software
 #include "test_kem.h"
-
+#include "kem.h"
 
 //#include "frodo640.h"
 //#include "keccak_f1600.h"
@@ -123,10 +123,24 @@
 
 //////////////////////////////////////////////
 //
+//	AXI GPIO
+//
+//////////////////////////////////////////////
+XGpio_Config * XGpioConfigPtrGlobalTimer;
+XGpio XGpioGlobalTimer;
+
+//////////////////////////////////////////////
+//
 //	Prototypes
 //
 //////////////////////////////////////////////
-void printChipTemperature();
+void getChipTemperature();
 void ledInit(XGpioPs * Gpio);
+void configTimer(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel);
+void resetTimer(XGpio * pStruct, uint8_t ui8Channel);
+void startTimer(XGpio * pStruct, uint8_t ui8Channel);
+void stopTimer(XGpio * pStruct, uint8_t ui8Channel);
+u32 getTimer(XGpio * pStruct, uint8_t ui8Channel);
+void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction);
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */

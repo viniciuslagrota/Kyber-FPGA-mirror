@@ -29,7 +29,7 @@ int XAdcFractionToInt(float FloatNum)
 //	Print temperature
 //
 //////////////////////////////////////////////
-void printChipTemperature()
+void getChipTemperature()
 {
 	static XAdcPs XAdcInst;
 	XAdcPs_Config *ConfigPtr;
@@ -42,6 +42,7 @@ void printChipTemperature()
 	XAdcPs_SelfTest(XAdcInstPtr);
 	XAdcPs_SetSequencerMode(XAdcInstPtr, XADCPS_SEQ_MODE_SAFE);
 	TempRawData = XAdcPs_GetAdcData(XAdcInstPtr, XADCPS_CH_TEMP);
+	srand(TempRawData); //Get a random seed here!
 	TempData = XAdcPs_RawToTemperature(TempRawData);
 	print_debug(DEBUG_MAIN, "[MAIN] The Current Temperature is %0d.%03d Centigrades\n", (int)(TempData), XAdcFractionToInt(TempData));
 }
@@ -59,4 +60,69 @@ void ledInit(XGpioPs * Gpio)
 	XGpioPs_CfgInitialize(Gpio, GPIOConfigPtr, GPIOConfigPtr ->BaseAddr);
 	XGpioPs_SetDirectionPin(Gpio, ledpin, 1);
 	XGpioPs_SetOutputEnablePin(Gpio, ledpin, 1);
+}
+
+//////////////////////////////////////////////
+//
+//	Configure timer
+//
+//////////////////////////////////////////////
+void configTimer(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel)
+{
+	pConfigStruct = XGpio_LookupConfig(ui8DeviceId);
+	XGpio_CfgInitialize(pGpioStruct, pConfigStruct, pConfigStruct->BaseAddress);
+	XGpio_DiscreteWrite(pGpioStruct, ui8Channel, 0x0); //Set enable bit and reset bit low.
+}
+
+//////////////////////////////////////////////
+//
+//	Reset hardware timer
+//
+//////////////////////////////////////////////
+void resetTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x0); //Set reset bit low.
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x1); //Set reset bit high.
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x0); //Set reset bit low.
+}
+
+//////////////////////////////////////////////
+//
+//	Start hardware timer
+//
+//////////////////////////////////////////////
+void startTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x2); //Set enable bit high.
+}
+
+//////////////////////////////////////////////
+//
+//	Stop hardware timer
+//
+//////////////////////////////////////////////
+void stopTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x0); //Set enable bit low.
+}
+
+//////////////////////////////////////////////
+//
+//	Get hardware timer
+//
+//////////////////////////////////////////////
+u32 getTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	return XGpio_DiscreteRead(pStruct, ui8Channel);
+}
+
+//////////////////////////////////////////////
+//
+//	Float to integer and fraction
+//
+//////////////////////////////////////////////
+void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction)
+{
+	*u32Integer = dValue;
+	*u32Fraction = (dValue - *u32Integer) * 1000;
 }
