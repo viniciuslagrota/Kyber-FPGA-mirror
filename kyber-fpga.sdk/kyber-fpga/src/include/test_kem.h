@@ -20,6 +20,6 @@
 //	Prototypes
 //
 //////////////////////////////////////////////
-void kem_test(const char *name, int iterations);
+int kem_test(const char *name, int iterations);
 
 #endif /* SRC_INCLUDE_TEST_KEM_H_ */

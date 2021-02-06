@@ -10,6 +10,21 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_process
 # IP: bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/kyberBD_proc_sys_reset_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_proc_sys_reset_0_0 || ORIG_REF_NAME==kyberBD_proc_sys_reset_0_0} -quiet] -quiet
 
+# IP: bd/kyberBD/ip/kyberBD_xbar_0/kyberBD_xbar_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_xbar_0 || ORIG_REF_NAME==kyberBD_xbar_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_interconnect_0_0/kyberBD_axi_interconnect_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_interconnect_0_0 || ORIG_REF_NAME==kyberBD_axi_interconnect_0_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_gpio_0_0/kyberBD_axi_gpio_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_0_0 || ORIG_REF_NAME==kyberBD_axi_gpio_0_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_timer2_0_0/kyberBD_timer2_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_timer2_0_0 || ORIG_REF_NAME==kyberBD_timer2_0_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
+
 # XDC: bd/kyberBD/ip/kyberBD_processing_system7_0_0/kyberBD_processing_system7_0_0.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_processing_system7_0_0 || ORIG_REF_NAME==kyberBD_processing_system7_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
 
@@ -20,5 +35,17 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 #dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_proc_sys_reset_0_0 || ORIG_REF_NAME==kyberBD_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
 # XDC: bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/kyberBD_proc_sys_reset_0_0_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_xbar_0/kyberBD_xbar_0_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_0_0/kyberBD_axi_gpio_0_0_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_0_0 || ORIG_REF_NAME==kyberBD_axi_gpio_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_0_0/kyberBD_axi_gpio_0_0_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_0_0/kyberBD_axi_gpio_0_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_0_0 || ORIG_REF_NAME==kyberBD_axi_gpio_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc
 
 # XDC: bd/kyberBD/kyberBD_ooc.xdc
