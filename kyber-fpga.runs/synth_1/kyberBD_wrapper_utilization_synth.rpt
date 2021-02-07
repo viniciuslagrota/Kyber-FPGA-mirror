@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Sat Feb  6 16:53:03 2021
+| Date         : Sun Feb  7 13:42:40 2021
 | Host         : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 | Command      : report_utilization -file kyberBD_wrapper_utilization_synth.rpt -pb kyberBD_wrapper_utilization_synth.pb
 | Design       : kyberBD_wrapper
@@ -30,13 +30,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                |  801 |     0 |     17600 |  4.55 |
-|   LUT as Logic             |  735 |     0 |     17600 |  4.18 |
+| Slice LUTs*                |  925 |     0 |     17600 |  5.26 |
+|   LUT as Logic             |  859 |     0 |     17600 |  4.88 |
 |   LUT as Memory            |   66 |     0 |      6000 |  1.10 |
 |     LUT as Distributed RAM |    0 |     0 |           |       |
 |     LUT as Shift Register  |   66 |     0 |           |       |
-| Slice Registers            | 1146 |     0 |     35200 |  3.26 |
-|   Register as Flip Flop    | 1146 |     0 |     35200 |  3.26 |
+| Slice Registers            | 1466 |     0 |     35200 |  4.16 |
+|   Register as Flip Flop    | 1466 |     0 |     35200 |  4.16 |
 |   Register as Latch        |    0 |     0 |     35200 |  0.00 |
 | F7 Muxes                   |    0 |     0 |      8800 |  0.00 |
 | F8 Muxes                   |    0 |     0 |      4400 |  0.00 |
@@ -58,8 +58,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 71    |          Yes |         Set |            - |
-| 1075  |          Yes |       Reset |            - |
+| 101   |          Yes |         Set |            - |
+| 1365  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -79,11 +79,12 @@ Table of Contents
 3. DSP
 ------
 
-+-----------+------+-------+-----------+-------+
-| Site Type | Used | Fixed | Available | Util% |
-+-----------+------+-------+-----------+-------+
-| DSPs      |    0 |     0 |        80 |  0.00 |
-+-----------+------+-------+-----------+-------+
++----------------+------+-------+-----------+-------+
+|    Site Type   | Used | Fixed | Available | Util% |
++----------------+------+-------+-----------+-------+
+| DSPs           |    2 |     0 |        80 |  2.50 |
+|   DSP48E1 only |    2 |       |           |       |
++----------------+------+-------+-----------+-------+
 
 
 4. IO and GT Specific
@@ -148,18 +149,19 @@ Table of Contents
 +----------+------+----------------------+
 | Ref Name | Used |  Functional Category |
 +----------+------+----------------------+
-| FDRE     | 1075 |         Flop & Latch |
-| LUT3     |  253 |                  LUT |
-| LUT5     |  167 |                  LUT |
-| LUT6     |  146 |                  LUT |
-| LUT1     |  145 |                  LUT |
-| LUT4     |  138 |                  LUT |
+| FDRE     | 1365 |         Flop & Latch |
+| LUT3     |  277 |                  LUT |
+| LUT5     |  223 |                  LUT |
+| LUT6     |  198 |                  LUT |
+| LUT1     |  148 |                  LUT |
+| LUT4     |  144 |                  LUT |
 | BIBUF    |  130 |                   IO |
-| FDSE     |   71 |         Flop & Latch |
-| LUT2     |   55 |                  LUT |
+| FDSE     |  101 |         Flop & Latch |
+| LUT2     |   61 |                  LUT |
 | SRLC32E  |   47 |   Distributed Memory |
 | CARRY4   |   26 |           CarryLogic |
 | SRL16E   |   19 |   Distributed Memory |
+| DSP48E1  |    2 |     Block Arithmetic |
 | PS7      |    1 | Specialized Resource |
 | BUFG     |    1 |                Clock |
 +----------+------+----------------------+

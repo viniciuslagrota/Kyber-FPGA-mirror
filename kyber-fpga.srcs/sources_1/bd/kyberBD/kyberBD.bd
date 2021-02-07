@@ -20,7 +20,9 @@
         "m01_couplers": {}
       },
       "axi_gpio_0": "",
-      "timer2_0": ""
+      "timer2_0": "",
+      "montgomery_reduction_0": "",
+      "axi_gpio_1": ""
     },
     "interface_ports": {
       "DDR": {
@@ -868,7 +870,7 @@
             "value": "1"
           },
           "PCW_QSPI_PERIPHERAL_FREQMHZ": {
-            "value": "200.000000"
+            "value": "200"
           },
           "PCW_QSPI_QSPI_IO": {
             "value": "MIO 1 .. 6"
@@ -1062,6 +1064,11 @@
       "axi_interconnect_0": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
         "xci_name": "kyberBD_axi_interconnect_0_0",
+        "parameters": {
+          "NUM_MI": {
+            "value": "2"
+          }
+        },
         "interface_ports": {
           "S00_AXI": {
             "mode": "Slave",
@@ -1353,6 +1360,12 @@
           }
         },
         "interface_nets": {
+          "m01_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
+            ]
+          },
           "xbar_to_m01_couplers": {
             "interface_ports": [
               "xbar/M01_AXI",
@@ -1365,28 +1378,22 @@
               "s00_couplers/S_AXI"
             ]
           },
-          "s00_couplers_to_xbar": {
-            "interface_ports": [
-              "s00_couplers/M_AXI",
-              "xbar/S00_AXI"
-            ]
-          },
           "m00_couplers_to_axi_interconnect_0": {
             "interface_ports": [
               "M00_AXI",
               "m00_couplers/M_AXI"
             ]
           },
+          "s00_couplers_to_xbar": {
+            "interface_ports": [
+              "s00_couplers/M_AXI",
+              "xbar/S00_AXI"
+            ]
+          },
           "xbar_to_m00_couplers": {
             "interface_ports": [
               "xbar/M00_AXI",
               "m00_couplers/S_AXI"
-            ]
-          },
-          "m01_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
             ]
           }
         },
@@ -1438,9 +1445,37 @@
       "timer2_0": {
         "vlnv": "xilinx.com:user:timer2:1.0",
         "xci_name": "kyberBD_timer2_0_0"
+      },
+      "montgomery_reduction_0": {
+        "vlnv": "xilinx.com:user:montgomery_reduction:1.0",
+        "xci_name": "kyberBD_montgomery_reduction_0_0"
+      },
+      "axi_gpio_1": {
+        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
+        "xci_name": "kyberBD_axi_gpio_1_0",
+        "parameters": {
+          "C_ALL_INPUTS_2": {
+            "value": "1"
+          },
+          "C_ALL_OUTPUTS": {
+            "value": "1"
+          },
+          "C_GPIO2_WIDTH": {
+            "value": "16"
+          },
+          "C_IS_DUAL": {
+            "value": "1"
+          }
+        }
       }
     },
     "interface_nets": {
+      "processing_system7_0_M_AXI_GP0": {
+        "interface_ports": [
+          "processing_system7_0/M_AXI_GP0",
+          "axi_interconnect_0/S00_AXI"
+        ]
+      },
       "processing_system7_0_DDR": {
         "interface_ports": [
           "DDR",
@@ -1453,10 +1488,10 @@
           "processing_system7_0/FIXED_IO"
         ]
       },
-      "processing_system7_0_M_AXI_GP0": {
+      "axi_interconnect_0_M01_AXI": {
         "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "axi_interconnect_0/S00_AXI"
+          "axi_interconnect_0/M01_AXI",
+          "axi_gpio_1/S_AXI"
         ]
       },
       "axi_interconnect_0_M00_AXI": {
@@ -1477,7 +1512,9 @@
           "axi_interconnect_0/S00_ACLK",
           "axi_interconnect_0/ACLK",
           "axi_gpio_0/s_axi_aclk",
-          "timer2_0/clk"
+          "timer2_0/clk",
+          "axi_gpio_1/s_axi_aclk",
+          "montgomery_reduction_0/clk"
         ]
       },
       "proc_sys_reset_0_peripheral_aresetn": {
@@ -1487,7 +1524,8 @@
           "axi_interconnect_0/S00_ARESETN",
           "axi_interconnect_0/M00_ARESETN",
           "axi_interconnect_0/M01_ARESETN",
-          "axi_gpio_0/s_axi_aresetn"
+          "axi_gpio_0/s_axi_aresetn",
+          "axi_gpio_1/s_axi_aresetn"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -1507,6 +1545,18 @@
           "timer2_0/count",
           "axi_gpio_0/gpio_io_i"
         ]
+      },
+      "axi_gpio_1_gpio_io_o": {
+        "ports": [
+          "axi_gpio_1/gpio_io_o",
+          "montgomery_reduction_0/data_in"
+        ]
+      },
+      "montgomery_reduction_0_data_out": {
+        "ports": [
+          "montgomery_reduction_0/data_out",
+          "axi_gpio_1/gpio2_io_i"
+        ]
       }
     },
     "addressing": {
@@ -1519,6 +1569,11 @@
               "SEG_axi_gpio_0_Reg": {
                 "address_block": "/axi_gpio_0/S_AXI/Reg",
                 "offset": "0x41200000",
+                "range": "64K"
+              },
+              "SEG_axi_gpio_1_Reg": {
+                "address_block": "/axi_gpio_1/S_AXI/Reg",
+                "offset": "0x41210000",
                 "range": "64K"
               }
             }
