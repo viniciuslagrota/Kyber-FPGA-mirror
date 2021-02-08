@@ -31,6 +31,8 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
 set_property ip_repo_paths {
+  c:/Projects/ip_repo/splitter_1.0
+  c:/Projects/ip_repo/fqmul_1.0
   c:/Projects/ip_repo/montgomery_reduction_1.0
   c:/Projects/ip_repo/timer2_1.0
   c:/Projects/ip_repo
@@ -51,6 +53,9 @@ set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/kyberBD_axi_gpio_1_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/kyberBD_axi_gpio_1_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/kyberBD_axi_gpio_1_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/kyberBD_axi_gpio_2_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/kyberBD_axi_gpio_2_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/kyberBD_axi_gpio_2_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD_ooc.xdc]
 

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:montgomery_reduction:1.0
--- IP Revision: 2
+-- IP Revision: 3
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -83,7 +83,7 @@ ARCHITECTURE kyberBD_montgomery_reduction_0_0_arch OF kyberBD_montgomery_reducti
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_montgomery_reduction_0_0_arch : ARCHITECTURE IS "kyberBD_montgomery_reduction_0_0,montgomery_reduction_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_montgomery_reduction_0_0_arch: ARCHITECTURE IS "kyberBD_montgomery_reduction_0_0,montgomery_reduction_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=montgomery_reduction,x_ipVersion=1.0,x_ipCoreRevision=2,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,QINV=-3327,KYBER_Q=3329}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_montgomery_reduction_0_0_arch: ARCHITECTURE IS "kyberBD_montgomery_reduction_0_0,montgomery_reduction_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=montgomery_reduction,x_ipVersion=1.0,x_ipCoreRevision=3,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,QINV=-3327,KYBER_Q=3329}";
 BEGIN
   U0 : montgomery_reduction_v1_0
     GENERIC MAP (
