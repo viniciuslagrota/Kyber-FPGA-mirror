@@ -17,7 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
+set_param chipscope.maxJobs 5
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -31,8 +31,9 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
 set_property ip_repo_paths {
-  c:/Projects/ip_repo/splitter_1.0
+  c:/Projects/ip_repo/bram_mm_1.0
   c:/Projects/ip_repo/fqmul_1.0
+  c:/Projects/ip_repo/splitter_1.0
   c:/Projects/ip_repo/montgomery_reduction_1.0
   c:/Projects/ip_repo/timer2_1.0
   c:/Projects/ip_repo

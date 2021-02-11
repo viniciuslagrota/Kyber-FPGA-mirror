@@ -66,6 +66,8 @@ extern XGpio XGpioFqmulInput;
 extern XGpio_Config * XGpioConfigPtrFqmulOutput;
 extern XGpio XGpioFqmulOutput;
 
+extern u32 *memoryBram;
+
 //////////////////////////////////////////////
 //
 //	Remove
@@ -102,6 +104,10 @@ int main()
 	XGpioConfigPtrFqmulOutput = XGpio_LookupConfig(XPAR_AXI_GPIO_2_DEVICE_ID);
 	XGpio_CfgInitialize(&XGpioFqmulOutput, XGpioConfigPtrFqmulOutput, XGpioConfigPtrFqmulOutput->BaseAddress);
 
+	//---- Configure AXI BRAM ----
+	memoryBram = (u32 *) XPAR_BRAM_MM_0_S00_AXI_BASEADDR;
+	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM initialized.\n");
+
     while(1)
     {
     	//---- Print chip temperature ----
@@ -119,34 +125,51 @@ int main()
 //			print_debug(DEBUG_MAIN, "KEM failed.\n\n");
 
 		//Fqmul test
-		int16_t i16OutputSw, i16OutputHw;
-		uint32_t ui32Timer;
-		for(int16_t i16Input1 = 0; i16Input1 <= 0xFFFF; i16Input1++)
-		{
-			for(int16_t i16Input2 = 0; i16Input2 <= 0xFFFF; i16Input2++)
-			{
-				i16OutputSw = fqmul(i16Input1, i16Input2);
-				stopTimer(&XGpioGlobalTimer, 1);
-//				print_debug(DEBUG_MAIN, "In1 = %d, In2 = %d, Out = %d\n", i16Input1, i16Input2, i16OutputSw);
-
-				XGpio_DiscreteWrite(&XGpioFqmulInput, 1, i16Input1);
-				XGpio_DiscreteWrite(&XGpioFqmulInput, 2, i16Input2);
-				i16OutputHw = XGpio_DiscreteRead(&XGpioFqmulOutput, 1);
+//		int16_t i16OutputSw, i16OutputHw;
+//		uint32_t ui32Timer;
+//		for(int16_t i16Input1 = 0; i16Input1 <= 0xFFFF; i16Input1++)
+//		{
+//			for(int16_t i16Input2 = 0; i16Input2 <= 0xFFFF; i16Input2++)
+//			{
+//				i16OutputSw = fqmul(i16Input1, i16Input2);
+//				stopTimer(&XGpioGlobalTimer, 1);
+////				print_debug(DEBUG_MAIN, "In1 = %d, In2 = %d, Out = %d\n", i16Input1, i16Input2, i16OutputSw);
+//
+//				XGpio_DiscreteWrite(&XGpioFqmulInput, 1, i16Input1);
+//				XGpio_DiscreteWrite(&XGpioFqmulInput, 2, i16Input2);
+//				i16OutputHw = XGpio_DiscreteRead(&XGpioFqmulOutput, 1);
+////				print_debug(DEBUG_MAIN, "In1 = %d, In2 = %d, Out = %d\n", i16Input1, i16Input2, i16OutputHw);
+//
 //				print_debug(DEBUG_MAIN, "In1 = %d, In2 = %d, Out = %d\n", i16Input1, i16Input2, i16OutputHw);
+//				if(i16OutputSw != i16OutputHw)
+//					exit(0);
+//
+//				if(i16Input2 == -1)
+//					break;
+//			}
+//
+//			if(i16Input1 == -1)
+//				break;
+//		}
 
-				print_debug(DEBUG_MAIN, "In1 = %d, In2 = %d, Out = %d\n", i16Input1, i16Input2, i16OutputHw);
-				if(i16OutputSw != i16OutputHw)
-					exit(0);
-
-				if(i16Input2 == -1)
-					break;
-			}
-
-			if(i16Input1 == -1)
-				break;
+		//BRAM test
+		uint16_t vec_test[4] = { 1 , 2 , 3 , 4 };
+		uint32_t * m;
+		m = (u32 *)vec_test;
+		for(int i = 0; i < 2; i++)
+		{
+			memoryBram[i] = m[i];
+			print_debug(DEBUG_MAIN, "[MAIN] memoryBram[%d]: 0x%08lx\n", i, m[i]);
 		}
 
-		exit(0);
+		u32 received;
+		for(int i = 0; i < 2; i++)
+		{
+			received = memoryBram[i];
+			print_debug(DEBUG_MAIN, "[MAIN] received[%d]: 0x%08lx\n", i, received);
+		}
+
+//		exit(0);
 
 		sleep(1);
     }

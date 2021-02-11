@@ -31,6 +31,17 @@
  
  
 /******************************************************************/
+/* Definitions for driver BRAM_MM */
+#define XPAR_BRAM_MM_NUM_INSTANCES 1
+
+/* Definitions for peripheral BRAM_MM_0 */
+#define XPAR_BRAM_MM_0_DEVICE_ID 0
+#define XPAR_BRAM_MM_0_S00_AXI_BASEADDR 0x43C00000
+#define XPAR_BRAM_MM_0_S00_AXI_HIGHADDR 0x43C0FFFF
+
+
+/******************************************************************/
+
 
 /* Definitions for peripheral PS7_DDR_0 */
 #define XPAR_PS7_DDR_0_S_AXI_BASEADDR 0x00100000
