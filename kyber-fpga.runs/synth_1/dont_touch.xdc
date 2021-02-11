@@ -37,6 +37,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpi
 # IP: bd/kyberBD/ip/kyberBD_bram_mm_0_0/kyberBD_bram_mm_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_bram_mm_0_0 || ORIG_REF_NAME==kyberBD_bram_mm_0_0} -quiet] -quiet
 
+# IP: bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/kyberBD_bram_port_selector_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_bram_port_selector_0_0 || ORIG_REF_NAME==kyberBD_bram_port_selector_0_0} -quiet] -quiet
+
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
 

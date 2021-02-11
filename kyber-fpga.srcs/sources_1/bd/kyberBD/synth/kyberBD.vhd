@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Thu Feb 11 10:54:12 2021
+--Date        : Thu Feb 11 13:29:09 2021
 --Host        : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -1583,7 +1583,7 @@ entity kyberBD is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=17,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=18,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of kyberBD : entity is "kyberBD.hwdef";
 end kyberBD;
@@ -1809,6 +1809,40 @@ architecture STRUCTURE of kyberBD is
     s00_axi_aresetn : in STD_LOGIC
   );
   end component kyberBD_bram_mm_0_0;
+  component kyberBD_bram_port_selector_0_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_en : in STD_LOGIC;
+    slave3_we : in STD_LOGIC;
+    slave3_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_en : in STD_LOGIC;
+    slave4_we : in STD_LOGIC;
+    slave4_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_0_0;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio2_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1882,6 +1916,11 @@ architecture STRUCTURE of kyberBD is
   signal axi_interconnect_0_M03_AXI_WREADY : STD_LOGIC;
   signal axi_interconnect_0_M03_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_interconnect_0_M03_AXI_WVALID : STD_LOGIC;
+  signal bram_port_selector_0_BRAM_PORT_MASTER_ADDR : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal bram_port_selector_0_BRAM_PORT_MASTER_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_port_selector_0_BRAM_PORT_MASTER_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_port_selector_0_BRAM_PORT_MASTER_EN : STD_LOGIC;
+  signal bram_port_selector_0_BRAM_PORT_MASTER_WE : STD_LOGIC;
   signal fqmul_0_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal fqmul_0_data_out_mont : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal montgomery_reduction_0_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1949,8 +1988,12 @@ architecture STRUCTURE of kyberBD is
   signal processing_system7_0_M_AXI_GP0_WVALID : STD_LOGIC;
   signal timer2_0_count : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_axi_gpio_0_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_mm_0_s00_doa_bram_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_mm_0_s00_dob_bram_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_0_slave0_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_0_slave1_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_0_slave2_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_0_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_0_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2183,7 +2226,7 @@ axi_interconnect_0: entity work.kyberBD_axi_interconnect_0_0
     );
 bram_mm_0: component kyberBD_bram_mm_0_0
      port map (
-      s00_addra_bram(9 downto 0) => B"0000000000",
+      s00_addra_bram(9 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_ADDR(9 downto 0),
       s00_addrb_bram(9 downto 0) => B"0000000000",
       s00_axi_aclk => processing_system7_0_FCLK_CLK0,
       s00_axi_araddr(11 downto 0) => axi_interconnect_0_M01_AXI_ARADDR(11 downto 0),
@@ -2206,14 +2249,47 @@ bram_mm_0: component kyberBD_bram_mm_0_0
       s00_axi_wready => axi_interconnect_0_M01_AXI_WREADY,
       s00_axi_wstrb(3 downto 0) => axi_interconnect_0_M01_AXI_WSTRB(3 downto 0),
       s00_axi_wvalid => axi_interconnect_0_M01_AXI_WVALID,
-      s00_dia_bram(31 downto 0) => B"00000000000000000000000000001000",
+      s00_dia_bram(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DIN(31 downto 0),
       s00_dib_bram(31 downto 0) => B"00000000000000000000000000001000",
-      s00_doa_bram(31 downto 0) => NLW_bram_mm_0_s00_doa_bram_UNCONNECTED(31 downto 0),
+      s00_doa_bram(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DOUT(31 downto 0),
       s00_dob_bram(31 downto 0) => NLW_bram_mm_0_s00_dob_bram_UNCONNECTED(31 downto 0),
-      s00_ena_bram => '0',
+      s00_ena_bram => bram_port_selector_0_BRAM_PORT_MASTER_EN,
       s00_enb_bram => '0',
-      s00_wea_bram => '0',
+      s00_wea_bram => bram_port_selector_0_BRAM_PORT_MASTER_WE,
       s00_web_bram => '0'
+    );
+bram_port_selector_0: component kyberBD_bram_port_selector_0_0
+     port map (
+      master_addr(9 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_ADDR(9 downto 0),
+      master_di(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DIN(31 downto 0),
+      master_do(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DOUT(31 downto 0),
+      master_en => bram_port_selector_0_BRAM_PORT_MASTER_EN,
+      master_we => bram_port_selector_0_BRAM_PORT_MASTER_WE,
+      slave0_addr(9 downto 0) => B"0000000000",
+      slave0_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave0_do(31 downto 0) => NLW_bram_port_selector_0_slave0_do_UNCONNECTED(31 downto 0),
+      slave0_en => '0',
+      slave0_we => '0',
+      slave1_addr(9 downto 0) => B"0000000000",
+      slave1_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave1_do(31 downto 0) => NLW_bram_port_selector_0_slave1_do_UNCONNECTED(31 downto 0),
+      slave1_en => '0',
+      slave1_we => '0',
+      slave2_addr(9 downto 0) => B"0000000000",
+      slave2_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave2_do(31 downto 0) => NLW_bram_port_selector_0_slave2_do_UNCONNECTED(31 downto 0),
+      slave2_en => '0',
+      slave2_we => '0',
+      slave3_addr(9 downto 0) => B"0000000000",
+      slave3_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave3_do(31 downto 0) => NLW_bram_port_selector_0_slave3_do_UNCONNECTED(31 downto 0),
+      slave3_en => '0',
+      slave3_we => '0',
+      slave4_addr(9 downto 0) => B"0000000000",
+      slave4_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave4_do(31 downto 0) => NLW_bram_port_selector_0_slave4_do_UNCONNECTED(31 downto 0),
+      slave4_en => '0',
+      slave4_we => '0'
     );
 fqmul_0: component kyberBD_fqmul_0_0
      port map (

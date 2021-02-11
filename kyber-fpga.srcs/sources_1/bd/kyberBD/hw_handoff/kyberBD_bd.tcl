@@ -206,6 +206,9 @@ proc create_root_design { parentCell } {
    CONFIG.C_S00_AXI_ADDR_WIDTH {12} \
  ] $bram_mm_0
 
+  # Create instance: bram_port_selector_0, and set properties
+  set bram_port_selector_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_0 ]
+
   # Create instance: fqmul_0, and set properties
   set fqmul_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:fqmul:1.0 fqmul_0 ]
 
@@ -678,6 +681,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net axi_interconnect_0_M01_AXI [get_bd_intf_pins axi_interconnect_0/M01_AXI] [get_bd_intf_pins bram_mm_0/S_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_0_M02_AXI [get_bd_intf_pins axi_gpio_1/S_AXI] [get_bd_intf_pins axi_interconnect_0/M02_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_0_M03_AXI [get_bd_intf_pins axi_gpio_2/S_AXI] [get_bd_intf_pins axi_interconnect_0/M03_AXI]
+  connect_bd_intf_net -intf_net bram_port_selector_0_BRAM_PORT_MASTER [get_bd_intf_pins bram_mm_0/BRAM_PORT_A] [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_MASTER]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins processing_system7_0/M_AXI_GP0]

@@ -123,6 +123,8 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ipshared/96f5/src/true_dual_bram.vhd" \
 "../../../bd/kyberBD/ipshared/96f5/hdl/bram_mm_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_bram_mm_0_0/sim/kyberBD_bram_mm_0_0.vhd" \
+"../../../bd/kyberBD/ipshared/6b92/hdl/bram_port_selector_v1_0.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/sim/kyberBD_bram_port_selector_0_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
 "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
