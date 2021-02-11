@@ -209,6 +209,9 @@ proc create_root_design { parentCell } {
   # Create instance: bram_port_selector_0, and set properties
   set bram_port_selector_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_0 ]
 
+  # Create instance: double_signal_multip_0, and set properties
+  set double_signal_multip_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_0 ]
+
   # Create instance: fqmul_0, and set properties
   set fqmul_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:fqmul:1.0 fqmul_0 ]
 

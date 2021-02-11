@@ -30,6 +30,9 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
 set_property ip_repo_paths {
+  c:/Projects/ip_repo/triple_signal_multiplexer_1.0
+  c:/Projects/ip_repo/double_signal_multiplexer_1.0
+  c:/Projects/ip_repo/signal_multiplexer_1.0
   c:/Projects/ip_repo/bram_port_selector_1.0
   c:/Projects/ip_repo/bram_mm_1.0
   c:/Projects/ip_repo/fqmul_1.0
