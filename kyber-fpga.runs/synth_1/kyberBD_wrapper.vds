@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Thu Feb 11 13:30:13 2021
-# Process ID: 672
+# Start of session at: Thu Feb 11 16:58:30 2021
+# Process ID: 16592
 # Current directory: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1
 # Command line: vivado.exe -log kyberBD_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kyberBD_wrapper.tcl
 # Log file: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/kyberBD_wrapper.vds
@@ -11,6 +11,9 @@
 #-----------------------------------------------------------
 source kyberBD_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/triple_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/double_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/signal_multiplexer_1.0'. The path is contained within another repository.
 WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_port_selector_1.0'. The path is contained within another repository.
 WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_mm_1.0'. The path is contained within another repository.
 WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
@@ -25,14 +28,14 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 7688 
+INFO: Helper process launched with PID 7556 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 733.801 ; gain = 176.590
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 733.555 ; gain = 176.133
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'kyberBD_wrapper' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:40]
 INFO: [Synth 8-3491] module 'kyberBD' declared at 'C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1561' bound to instance 'kyberBD_i' of component 'kyberBD' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:67]
 INFO: [Synth 8-638] synthesizing module 'kyberBD' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1591]
-INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:59' bound to instance 'axi_gpio_0' of component 'kyberBD_axi_gpio_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2032]
+INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:59' bound to instance 'axi_gpio_0' of component 'kyberBD_axi_gpio_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2042]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:86]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
@@ -472,7 +475,7 @@ WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT0_ND.READ_REG_G
 INFO: [Synth 8-256] done synthesizing module 'GPIO_Core' (6#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:178]
 INFO: [Synth 8-256] done synthesizing module 'axi_gpio' (7#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1351]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_gpio_0_0' (8#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:86]
-INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:59' bound to instance 'axi_gpio_1' of component 'kyberBD_axi_gpio_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2057]
+INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:59' bound to instance 'axi_gpio_1' of component 'kyberBD_axi_gpio_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2067]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:85]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
@@ -665,7 +668,7 @@ WARNING: [Synth 8-6014] Unused sequential element Dual.gpio2_Data_In_reg was rem
 INFO: [Synth 8-256] done synthesizing module 'GPIO_Core__parameterized0' (8#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:178]
 INFO: [Synth 8-256] done synthesizing module 'axi_gpio__parameterized1' (8#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1351]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_gpio_1_0' (9#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:85]
-INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_2_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/synth/kyberBD_axi_gpio_2_0.vhd:59' bound to instance 'axi_gpio_2' of component 'kyberBD_axi_gpio_2_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2081]
+INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_2_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/synth/kyberBD_axi_gpio_2_0.vhd:59' bound to instance 'axi_gpio_2' of component 'kyberBD_axi_gpio_2_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2091]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_2_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/synth/kyberBD_axi_gpio_2_0.vhd:84]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
@@ -1742,7 +1745,7 @@ INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_20_crossbar_sas
 INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_20_axi_crossbar' (41#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ace7/hdl/axi_crossbar_v2_1_vl_rfs.v:4884]
 INFO: [Synth 8-6155] done synthesizing module 'kyberBD_xbar_0' (42#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_0/synth/kyberBD_xbar_0.v:59]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_interconnect_0_0' (43#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:869]
-INFO: [Synth 8-3491] module 'kyberBD_bram_mm_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_mm_0_0/synth/kyberBD_bram_mm_0_0.vhd:59' bound to instance 'bram_mm_0' of component 'kyberBD_bram_mm_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2227]
+INFO: [Synth 8-3491] module 'kyberBD_bram_mm_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_mm_0_0/synth/kyberBD_bram_mm_0_0.vhd:59' bound to instance 'bram_mm_0' of component 'kyberBD_bram_mm_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2237]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_bram_mm_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_mm_0_0/synth/kyberBD_bram_mm_0_0.vhd:95]
 	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_S00_AXI_ADDR_WIDTH bound to: 12 - type: integer 
@@ -1776,7 +1779,7 @@ WARNING: [Synth 8-3848] Net S_DOB_BRAM in module/entity bram_mm_v1_0_S00_AXI doe
 INFO: [Synth 8-256] done synthesizing module 'bram_mm_v1_0_S00_AXI' (45#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/96f5/hdl/bram_mm_v1_0_S00_AXI.vhd:99]
 INFO: [Synth 8-256] done synthesizing module 'bram_mm_v1_0' (46#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/96f5/hdl/bram_mm_v1_0.vhd:57]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_bram_mm_0_0' (47#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_mm_0_0/synth/kyberBD_bram_mm_0_0.vhd:95]
-INFO: [Synth 8-3491] module 'kyberBD_bram_port_selector_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:56' bound to instance 'bram_port_selector_0' of component 'kyberBD_bram_port_selector_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2261]
+INFO: [Synth 8-3491] module 'kyberBD_bram_port_selector_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:56' bound to instance 'bram_port_selector_0' of component 'kyberBD_bram_port_selector_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2271]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_bram_port_selector_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:91]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
 	Parameter ADDR_WIDTH bound to: 10 - type: integer 
@@ -1786,13 +1789,21 @@ INFO: [Synth 8-638] synthesizing module 'bram_port_selector_v1_0' [c:/Projects/k
 	Parameter ADDR_WIDTH bound to: 10 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'bram_port_selector_v1_0' (48#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/6b92/hdl/bram_port_selector_v1_0.vhd:56]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_bram_port_selector_0_0' (49#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:91]
-INFO: [Synth 8-3491] module 'kyberBD_fqmul_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_fqmul_0_0/synth/kyberBD_fqmul_0_0.vhd:59' bound to instance 'fqmul_0' of component 'kyberBD_fqmul_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2294]
+INFO: [Synth 8-3491] module 'kyberBD_double_signal_multip_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:56' bound to instance 'double_signal_multip_0' of component 'kyberBD_double_signal_multip_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2304]
+INFO: [Synth 8-638] synthesizing module 'kyberBD_double_signal_multip_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:66]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 'double_signal_multiplexer_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/5219/hdl/double_signal_multiplexer_v1_0.vhd:5' bound to instance 'U0' of component 'double_signal_multiplexer_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:88]
+INFO: [Synth 8-638] synthesizing module 'double_signal_multiplexer_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/5219/hdl/double_signal_multiplexer_v1_0.vhd:18]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'double_signal_multiplexer_v1_0' (50#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/5219/hdl/double_signal_multiplexer_v1_0.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_double_signal_multip_0_0' (51#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:66]
+INFO: [Synth 8-3491] module 'kyberBD_fqmul_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_fqmul_0_0/synth/kyberBD_fqmul_0_0.vhd:59' bound to instance 'fqmul_0' of component 'kyberBD_fqmul_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2312]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_fqmul_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_fqmul_0_0/synth/kyberBD_fqmul_0_0.vhd:70]
 INFO: [Synth 8-3491] module 'fqmul_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/5447/hdl/fqmul_v1_0.vhd:5' bound to instance 'U0' of component 'fqmul_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_fqmul_0_0/synth/kyberBD_fqmul_0_0.vhd:94]
 INFO: [Synth 8-638] synthesizing module 'fqmul_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/5447/hdl/fqmul_v1_0.vhd:16]
-INFO: [Synth 8-256] done synthesizing module 'fqmul_v1_0' (50#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/5447/hdl/fqmul_v1_0.vhd:16]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_fqmul_0_0' (51#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_fqmul_0_0/synth/kyberBD_fqmul_0_0.vhd:70]
-INFO: [Synth 8-3491] module 'kyberBD_montgomery_reduction_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:59' bound to instance 'montgomery_reduction_0' of component 'kyberBD_montgomery_reduction_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2303]
+INFO: [Synth 8-256] done synthesizing module 'fqmul_v1_0' (52#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/5447/hdl/fqmul_v1_0.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_fqmul_0_0' (53#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_fqmul_0_0/synth/kyberBD_fqmul_0_0.vhd:70]
+INFO: [Synth 8-3491] module 'kyberBD_montgomery_reduction_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:59' bound to instance 'montgomery_reduction_0' of component 'kyberBD_montgomery_reduction_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2321]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_montgomery_reduction_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:67]
 	Parameter QINV bound to: -3327 - type: integer 
 	Parameter KYBER_Q bound to: 3329 - type: integer 
@@ -1800,9 +1811,9 @@ INFO: [Synth 8-3491] module 'montgomery_reduction_v1_0' declared at 'c:/Projects
 INFO: [Synth 8-638] synthesizing module 'montgomery_reduction_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd:17]
 	Parameter QINV bound to: -3327 - type: integer 
 	Parameter KYBER_Q bound to: 3329 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'montgomery_reduction_v1_0' (52#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd:17]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_montgomery_reduction_0_0' (53#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:67]
-INFO: [Synth 8-3491] module 'kyberBD_proc_sys_reset_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:59' bound to instance 'proc_sys_reset_0' of component 'kyberBD_proc_sys_reset_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2309]
+INFO: [Synth 8-256] done synthesizing module 'montgomery_reduction_v1_0' (54#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_montgomery_reduction_0_0' (55#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:67]
+INFO: [Synth 8-3491] module 'kyberBD_proc_sys_reset_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:59' bound to instance 'proc_sys_reset_0' of component 'kyberBD_proc_sys_reset_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2327]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_proc_sys_reset_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:74]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
@@ -1852,7 +1863,7 @@ INFO: [Synth 8-638] synthesizing module 'lpf' [c:/Projects/kyber-fpga/kyber-fpga
 INFO: [Synth 8-3491] module 'SRL16' declared at 'C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684' bound to instance 'POR_SRL_I' of component 'SRL16' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:868]
 INFO: [Synth 8-6157] synthesizing module 'SRL16' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684]
 	Parameter INIT bound to: 16'b0000000000000000 
-INFO: [Synth 8-6155] done synthesizing module 'SRL16' (54#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684]
+INFO: [Synth 8-6155] done synthesizing module 'SRL16' (56#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684]
 INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized1' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
 	Parameter C_CDC_TYPE bound to: 1 - type: integer 
 	Parameter C_RESET_STATE bound to: 0 - type: integer 
@@ -1866,16 +1877,16 @@ INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized1' [c:/Projects/
 	Parameter INIT bound to: 1'b0 
 	Parameter INIT bound to: 1'b0 
 	Parameter INIT bound to: 1'b0 
-INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized1' (54#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
-INFO: [Synth 8-256] done synthesizing module 'lpf' (55#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized1' (56#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'lpf' (57#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
 INFO: [Synth 8-638] synthesizing module 'sequence_psr' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
 INFO: [Synth 8-638] synthesizing module 'upcnt_n' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
 	Parameter C_SIZE bound to: 6 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (56#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
-INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (57#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
-INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (58#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_proc_sys_reset_0_0' (59#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:74]
-INFO: [Synth 8-3491] module 'kyberBD_processing_system7_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:57' bound to instance 'processing_system7_0' of component 'kyberBD_processing_system7_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2322]
+INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (58#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (59#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
+INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (60#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_proc_sys_reset_0_0' (61#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:74]
+INFO: [Synth 8-3491] module 'kyberBD_processing_system7_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:57' bound to instance 'processing_system7_0' of component 'kyberBD_processing_system7_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2340]
 INFO: [Synth 8-6157] synthesizing module 'kyberBD_processing_system7_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_system7' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:156]
 	Parameter C_USE_DEFAULT_ACP_USER_VAL bound to: 0 - type: integer 
@@ -1937,22 +1948,22 @@ INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_sys
 INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1342]
 INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1343]
 INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
-INFO: [Synth 8-6155] done synthesizing module 'BUFG' (60#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (62#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
 INFO: [Synth 8-6157] synthesizing module 'BIBUF' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
-INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (61#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
+INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (63#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
 INFO: [Synth 8-6157] synthesizing module 'PS7' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
-INFO: [Synth 8-6155] done synthesizing module 'PS7' (62#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
-INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (63#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:156]
+INFO: [Synth 8-6155] done synthesizing module 'PS7' (64#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
+INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (65#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:156]
 WARNING: [Synth 8-7023] instance 'inst' of module 'processing_system7_v5_5_processing_system7' has 685 connections declared, but only 672 given [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:325]
-INFO: [Synth 8-6155] done synthesizing module 'kyberBD_processing_system7_0_0' (64#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:57]
-INFO: [Synth 8-3491] module 'kyberBD_timer2_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:56' bound to instance 'timer2_0' of component 'kyberBD_timer2_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2393]
+INFO: [Synth 8-6155] done synthesizing module 'kyberBD_processing_system7_0_0' (66#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:57]
+INFO: [Synth 8-3491] module 'kyberBD_timer2_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:56' bound to instance 'timer2_0' of component 'kyberBD_timer2_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2411]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_timer2_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:64]
 INFO: [Synth 8-3491] module 'timer2_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:5' bound to instance 'U0' of component 'timer2_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:85]
 INFO: [Synth 8-638] synthesizing module 'timer2_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'timer2_v1_0' (65#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_timer2_0_0' (66#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:64]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD' (67#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1591]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_wrapper' (68#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'timer2_v1_0' (67#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_timer2_0_0' (68#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:64]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD' (69#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1591]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_wrapper' (70#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:40]
 WARNING: [Synth 8-3331] design timer2_v1_0 has unconnected port control[31]
 WARNING: [Synth 8-3331] design timer2_v1_0 has unconnected port control[30]
 WARNING: [Synth 8-3331] design timer2_v1_0 has unconnected port control[29]
@@ -2055,7 +2066,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_DATA[4]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 930.473 ; gain = 373.262
+Finished RTL Elaboration : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 930.715 ; gain = 373.293
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -2068,13 +2079,13 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 930.473 ; gain = 373.262
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 930.715 ; gain = 373.293
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 930.473 ; gain = 373.262
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 930.715 ; gain = 373.293
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 493 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -2105,31 +2116,31 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/kyberBD_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 982.773 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 983.203 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 493 instances were transformed.
   FDR => FDRE: 492 instances
   SRL16 => SRL16E: 1 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.079 . Memory (MB): peak = 982.773 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 983.203 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 982.773 ; gain = 425.563
+Finished Constraint Validation : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 983.203 ; gain = 425.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 982.773 ; gain = 425.563
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 983.203 ; gain = 425.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for kyberBD_i/processing_system7_0/inst. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 47).
-Applied set_property DONT_TOUCH = true for kyberBD_i/proc_sys_reset_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 50).
-Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 60).
-Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_1/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 68).
-Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_2/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 76).
+Applied set_property DONT_TOUCH = true for kyberBD_i/processing_system7_0/inst. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 50).
+Applied set_property DONT_TOUCH = true for kyberBD_i/proc_sys_reset_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 53).
+Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 63).
+Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_1/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 71).
+Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_2/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 79).
 Applied set_property DONT_TOUCH = true for kyberBD_i. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/processing_system7_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/proc_sys_reset_0. (constraint file  auto generated constraint, line ).
@@ -2143,9 +2154,10 @@ Applied set_property DONT_TOUCH = true for kyberBD_i/fqmul_0. (constraint file  
 Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_2. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/bram_mm_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/bram_port_selector_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for kyberBD_i/double_signal_multip_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:47 . Memory (MB): peak = 982.773 ; gain = 425.563
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 983.203 ; gain = 425.781
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'slave_attachment'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm'
@@ -2173,7 +2185,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm'
 INFO: [Synth 8-3971] The signal "true_dual_bram:/RAM_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 982.773 ; gain = 425.563
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:47 ; elapsed = 00:00:52 . Memory (MB): peak = 983.203 ; gain = 425.781
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -2218,7 +2230,7 @@ Detailed RTL Component Info :
 	   2 Input     64 Bit        Muxes := 1     
 	   2 Input     47 Bit        Muxes := 2     
 	   2 Input     36 Bit        Muxes := 2     
-	   2 Input     32 Bit        Muxes := 14    
+	   2 Input     32 Bit        Muxes := 16    
 	   5 Input     32 Bit        Muxes := 3     
 	   2 Input     16 Bit        Muxes := 2     
 	   2 Input     14 Bit        Muxes := 2     
@@ -2535,6 +2547,10 @@ Detailed RTL Component Info :
 	   2 Input     32 Bit        Muxes := 3     
 	   2 Input     10 Bit        Muxes := 3     
 	   2 Input      1 Bit        Muxes := 5     
+Module double_signal_multiplexer_v1_0 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
 Module montgomery_reduction_v1_0 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -2774,7 +2790,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i
 INFO: [Synth 8-3886] merging instance 'kyberBD_i/proc_sys_reset_0/U0/SEQ/pr_dec_reg[1]' (FD) to 'kyberBD_i/proc_sys_reset_0/U0/SEQ/bsr_dec_reg[1]'
 INFO: [Synth 8-3886] merging instance 'kyberBD_i/proc_sys_reset_0/U0/SEQ/bsr_dec_reg[1]' (FD) to 'kyberBD_i/proc_sys_reset_0/U0/SEQ/core_dec_reg[1]'
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:51 ; elapsed = 00:00:55 . Memory (MB): peak = 982.773 ; gain = 425.563
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:53 ; elapsed = 00:00:58 . Memory (MB): peak = 983.203 ; gain = 425.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -2813,13 +2829,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:02 ; elapsed = 00:01:07 . Memory (MB): peak = 1125.563 ; gain = 568.352
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:04 ; elapsed = 00:01:10 . Memory (MB): peak = 1126.051 ; gain = 568.629
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:03 ; elapsed = 00:01:07 . Memory (MB): peak = 1145.977 ; gain = 588.766
+Finished Timing Optimization : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 1146.375 ; gain = 588.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -2846,7 +2862,7 @@ Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6837] The timing for the instance kyberBD_i/bram_mm_0/U0/bram_mm_v1_0_S00_AXI_inst/true_dual_bram_inst/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:05 ; elapsed = 00:01:09 . Memory (MB): peak = 1168.828 ; gain = 611.617
+Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:13 . Memory (MB): peak = 1169.512 ; gain = 612.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -2871,7 +2887,7 @@ INFO: [Synth 8-5365] Flop inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar.ar
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Finished IO Insertion : Time (s): cpu = 00:01:09 ; elapsed = 00:01:15 . Memory (MB): peak = 1174.273 ; gain = 616.852
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -2884,7 +2900,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:09 ; elapsed = 00:01:15 . Memory (MB): peak = 1174.273 ; gain = 616.852
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -2896,25 +2912,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:10 ; elapsed = 00:01:16 . Memory (MB): peak = 1174.273 ; gain = 616.852
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:10 ; elapsed = 00:01:16 . Memory (MB): peak = 1174.273 ; gain = 616.852
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:10 ; elapsed = 00:01:16 . Memory (MB): peak = 1174.273 ; gain = 616.852
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:10 ; elapsed = 00:01:16 . Memory (MB): peak = 1174.273 ; gain = 616.852
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -2955,7 +2971,7 @@ Report Cell Usage:
 |6     |LUT1      |   150|
 |7     |LUT2      |    72|
 |8     |LUT3      |   269|
-|9     |LUT4      |   193|
+|9     |LUT4      |   225|
 |10    |LUT5      |   327|
 |11    |LUT6      |   284|
 |12    |PS7       |     1|
@@ -2972,8 +2988,8 @@ Report Instance Areas:
 +------+------------------------------------------------------------------------------+---------------------------------------------------------------+------+
 |      |Instance                                                                      |Module                                                         |Cells |
 +------+------------------------------------------------------------------------------+---------------------------------------------------------------+------+
-|1     |top                                                                           |                                                               |  3086|
-|2     |  kyberBD_i                                                                   |kyberBD                                                        |  3086|
+|1     |top                                                                           |                                                               |  3118|
+|2     |  kyberBD_i                                                                   |kyberBD                                                        |  3118|
 |3     |    axi_gpio_0                                                                |kyberBD_axi_gpio_0_0                                           |   522|
 |4     |      U0                                                                      |axi_gpio                                                       |   522|
 |5     |        AXI_LITE_IPIF_I                                                       |axi_lite_ipif_10                                               |   131|
@@ -3037,46 +3053,48 @@ Report Instance Areas:
 |63    |        bram_mm_v1_0_S00_AXI_inst                                             |bram_mm_v1_0_S00_AXI                                           |   128|
 |64    |          true_dual_bram_inst                                                 |true_dual_bram                                                 |     3|
 |65    |    bram_port_selector_0                                                      |kyberBD_bram_port_selector_0_0                                 |    87|
-|66    |    fqmul_0                                                                   |kyberBD_fqmul_0_0                                              |     1|
-|67    |      U0                                                                      |fqmul_v1_0                                                     |     1|
-|68    |    montgomery_reduction_0                                                    |kyberBD_montgomery_reduction_0_0                               |     2|
-|69    |      U0                                                                      |montgomery_reduction_v1_0                                      |     2|
-|70    |    proc_sys_reset_0                                                          |kyberBD_proc_sys_reset_0_0                                     |    66|
-|71    |      U0                                                                      |proc_sys_reset                                                 |    66|
-|72    |        EXT_LPF                                                               |lpf                                                            |    23|
-|73    |          \ACTIVE_LOW_AUX.ACT_LO_AUX                                          |cdc_sync__parameterized1                                       |     6|
-|74    |          \ACTIVE_LOW_EXT.ACT_LO_EXT                                          |cdc_sync__parameterized1_0                                     |     6|
-|75    |        SEQ                                                                   |sequence_psr                                                   |    38|
-|76    |          SEQ_COUNTER                                                         |upcnt_n                                                        |    13|
-|77    |    processing_system7_0                                                      |kyberBD_processing_system7_0_0                                 |   244|
-|78    |      inst                                                                    |processing_system7_v5_5_processing_system7                     |   244|
-|79    |    timer2_0                                                                  |kyberBD_timer2_0_0                                             |    41|
-|80    |      U0                                                                      |timer2_v1_0                                                    |    41|
+|66    |    double_signal_multip_0                                                    |kyberBD_double_signal_multip_0_0                               |    32|
+|67    |      U0                                                                      |double_signal_multiplexer_v1_0                                 |    32|
+|68    |    fqmul_0                                                                   |kyberBD_fqmul_0_0                                              |     1|
+|69    |      U0                                                                      |fqmul_v1_0                                                     |     1|
+|70    |    montgomery_reduction_0                                                    |kyberBD_montgomery_reduction_0_0                               |     2|
+|71    |      U0                                                                      |montgomery_reduction_v1_0                                      |     2|
+|72    |    proc_sys_reset_0                                                          |kyberBD_proc_sys_reset_0_0                                     |    66|
+|73    |      U0                                                                      |proc_sys_reset                                                 |    66|
+|74    |        EXT_LPF                                                               |lpf                                                            |    23|
+|75    |          \ACTIVE_LOW_AUX.ACT_LO_AUX                                          |cdc_sync__parameterized1                                       |     6|
+|76    |          \ACTIVE_LOW_EXT.ACT_LO_EXT                                          |cdc_sync__parameterized1_0                                     |     6|
+|77    |        SEQ                                                                   |sequence_psr                                                   |    38|
+|78    |          SEQ_COUNTER                                                         |upcnt_n                                                        |    13|
+|79    |    processing_system7_0                                                      |kyberBD_processing_system7_0_0                                 |   244|
+|80    |      inst                                                                    |processing_system7_v5_5_processing_system7                     |   244|
+|81    |    timer2_0                                                                  |kyberBD_timer2_0_0                                             |    41|
+|82    |      U0                                                                      |timer2_v1_0                                                    |    41|
 +------+------------------------------------------------------------------------------+---------------------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:10 ; elapsed = 00:01:16 . Memory (MB): peak = 1174.273 ; gain = 616.852
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 321 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:01:08 . Memory (MB): peak = 1174.609 ; gain = 565.098
-Synthesis Optimization Complete : Time (s): cpu = 00:01:08 ; elapsed = 00:01:13 . Memory (MB): peak = 1174.609 ; gain = 617.398
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:01:11 . Memory (MB): peak = 1174.273 ; gain = 564.363
+Synthesis Optimization Complete : Time (s): cpu = 00:01:10 ; elapsed = 00:01:16 . Memory (MB): peak = 1174.273 ; gain = 616.852
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 231 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1174.609 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1186.363 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 201 instances were transformed.
   FDR => FDRE: 200 instances
   SRL16 => SRL16E: 1 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-552 Infos, 201 Warnings, 0 Critical Warnings and 0 Errors encountered.
+558 Infos, 204 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:14 ; elapsed = 00:01:20 . Memory (MB): peak = 1174.609 ; gain = 875.137
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1174.609 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:16 ; elapsed = 00:01:23 . Memory (MB): peak = 1186.363 ; gain = 886.320
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1186.363 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/kyberBD_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file kyberBD_wrapper_utilization_synth.rpt -pb kyberBD_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Feb 11 13:31:47 2021...
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 11 17:00:09 2021...

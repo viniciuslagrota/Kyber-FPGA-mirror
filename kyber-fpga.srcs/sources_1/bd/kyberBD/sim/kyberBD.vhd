@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Thu Feb 11 13:29:09 2021
+--Date        : Thu Feb 11 16:57:40 2021
 --Host        : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -1583,7 +1583,7 @@ entity kyberBD is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=18,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=19,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of kyberBD : entity is "kyberBD.hwdef";
 end kyberBD;
@@ -1843,6 +1843,15 @@ architecture STRUCTURE of kyberBD is
     slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component kyberBD_bram_port_selector_0_0;
+  component kyberBD_double_signal_multip_0_0 is
+  port (
+    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_1 : in STD_LOGIC;
+    data_in_2 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_2 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_double_signal_multip_0_0;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio2_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1994,6 +2003,7 @@ architecture STRUCTURE of kyberBD is
   signal NLW_bram_port_selector_0_slave2_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_port_selector_0_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_port_selector_0_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_double_signal_multip_0_data_out_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2290,6 +2300,14 @@ bram_port_selector_0: component kyberBD_bram_port_selector_0_0
       slave4_do(31 downto 0) => NLW_bram_port_selector_0_slave4_do_UNCONNECTED(31 downto 0),
       slave4_en => '0',
       slave4_we => '0'
+    );
+double_signal_multip_0: component kyberBD_double_signal_multip_0_0
+     port map (
+      data_in_1(31 downto 0) => B"00000000000000000000000000000000",
+      data_in_2(31 downto 0) => B"00000000000000000000000000000000",
+      data_out(31 downto 0) => NLW_double_signal_multip_0_data_out_UNCONNECTED(31 downto 0),
+      enable_in_1 => '0',
+      enable_in_2 => '0'
     );
 fqmul_0: component kyberBD_fqmul_0_0
      port map (
