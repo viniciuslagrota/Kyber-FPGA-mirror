@@ -1,0 +1,1684 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Wed Feb 10 11:18:31 2021
+# Process ID: 12840
+# Current directory: C:/Projects/kyber-fpga
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8684 C:\Projects\kyber-fpga\kyber-fpga.xpr
+# Log file: C:/Projects/kyber-fpga/vivado.log
+# Journal file: C:/Projects/kyber-fpga\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Projects/kyber-fpga/kyber-fpga.xpr
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/splitter_1.0'.
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/fqmul_1.0'.
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/montgomery_reduction_1.0'.
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/timer2_1.0'.
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository 'c:/Projects/ip_repo'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'kyberBD.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+kyberBD_timer2_0_0
+kyberBD_montgomery_reduction_0_0
+kyberBD_fqmul_0_0
+
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:08 . Memory (MB): peak = 778.266 ; gain = 114.176
+update_compile_order -fileset sources_1
+open_bd_design {C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd}
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - axi_interconnect_0
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding component instance block -- xilinx.com:user:timer2:1.0 - timer2_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_1
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_2
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_0
+WARNING: [BD 41-1731] Type mismatch between connected pins: /processing_system7_0/FCLK_CLK0(clk) and /montgomery_reduction_0/clk(undef)
+Successfully read diagram <kyberBD> from BD file <C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd>
+open_bd_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:10 . Memory (MB): peak = 920.785 ; gain = 86.520
+delete_bd_objs [get_bd_nets montgomery_reduction_0_data_out]
+connect_bd_net [get_bd_pins montgomery_reduction_0/data_out] [get_bd_pins fqmul_0/data_in_mont]
+make_wrapper -files [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -top
+ERROR: [BD 41-1665] Unable to generate top-level wrapper HDL for the block design 'kyberBD.bd' is locked. Locked reason(s):
+* Block design contains locked IPs. Please run report_ip_status for more details and recommendations on how to fix this issue. 
+List of locked IPs: 
+kyberBD_timer2_0_0
+kyberBD_montgomery_reduction_0_0
+kyberBD_fqmul_0_0
+
+ERROR: [Common 17-39] 'make_wrapper' failed due to earlier errors.
+update_ip_catalog -rebuild
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository 'c:/Projects/ip_repo'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+update_ip_catalog -rebuild
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+update_ip_catalog -rebuild
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+set_property  ip_repo_paths  {c:/Projects/ip_repo/fqmul_1.0 c:/Projects/ip_repo/montgomery_reduction_1.0 c:/Projects/ip_repo/timer2_1.0 c:/Projects/ip_repo} [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+set_property  ip_repo_paths  {c:/Projects/ip_repo/fqmul_1.0 C:/Projects/ip_repo/splitter_1.0 c:/Projects/ip_repo/montgomery_reduction_1.0 c:/Projects/ip_repo/timer2_1.0 c:/Projects/ip_repo} [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+update_ip_catalog -rebuild
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+make_wrapper -files [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -top
+Wrote  : <C:\Projects\kyber-fpga\kyber-fpga.srcs\sources_1\bd\kyberBD\kyberBD.bd> 
+Wrote  : <C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ui/bd_6ac062a3.ui> 
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/sim/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd
+generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
+INFO: [BD 41-1662] The design 'kyberBD.bd' is already validated. Therefore parameter propagation will not be re-run.
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/sim/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block timer2_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_2 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/s00_couplers/auto_pc .
+Exporting to file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD.hwh
+Generated Block Design Tcl file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD_bd.tcl
+Generated Hardware Definition File C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.hwdef
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 20
+[Wed Feb 10 11:23:21 2021] Launched synth_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/runme.log
+[Wed Feb 10 11:23:21 2021] Launched impl_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/runme.log
+file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+
+launch_sdk -workspace C:/Projects/kyber-fpga/kyber-fpga.sdk -hwspec C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -workspace C:/Projects/kyber-fpga/kyber-fpga.sdk -hwspec C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] kyberBD_axi_bram_ctrl_0_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] kyberBD_axi_bram_ctrl_0_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+endgroup
+WARNING: [IP_Flow 19-465] param 'READ_LATENCY' already exists. Ignoring.
+WARNING: [IP_Flow 19-465] param 'RD_CMD_OPTIMIZATION' already exists. Ignoring.
+delete_bd_objs [get_bd_cells axi_bram_ctrl_0]
+create_peripheral xilinx.com user bram_mm 1.0 -dir C:/Projects/kyber-fpga/../ip_repo
+add_peripheral_interface S00_AXI -interface_mode slave -axi_type lite [ipx::find_open_core xilinx.com:user:bram_mm:1.0]
+generate_peripheral -driver -bfm_example_design -debug_hw_example_design [ipx::find_open_core xilinx.com:user:bram_mm:1.0]
+write_peripheral [ipx::find_open_core xilinx.com:user:bram_mm:1.0]
+set_property  ip_repo_paths  {C:/Projects/kyber-fpga/../ip_repo/bram_mm_1.0 c:/Projects/ip_repo/fqmul_1.0 C:/Projects/ip_repo/splitter_1.0 c:/Projects/ip_repo/montgomery_reduction_1.0 c:/Projects/ip_repo/timer2_1.0 c:/Projects/ip_repo} [current_project]
+update_ip_catalog -rebuild
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_mm_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:user:bram_mm:1.0 bram_mm_0
+endgroup
+set_property location {3 935 705} [get_bd_cells bram_mm_0]
+ipx::edit_ip_in_project -upgrade true -name bram_mm_v1_0_project -directory C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project c:/Projects/ip_repo/bram_mm_1.0/component.xml
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 1291.473 ; gain = 8.961
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_mm_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+INFO: [IP_Flow 19-795] Syncing license key meta-data
+ipx::edit_ip_in_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:09 . Memory (MB): peak = 1337.805 ; gain = 55.293
+update_compile_order -fileset sources_1
+add_files -norecurse -copy_to c:/Projects/ip_repo/bram_mm_1.0/src C:/Projects/ip_repo/bram_mm_1.0/hdl/true_dual_bram.vhd
+update_compile_order -fileset sources_1
+set_property library work [get_files  c:/Projects/ip_repo/bram_mm_1.0/src/true_dual_bram.vhd]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:/Projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:/Projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd w ]
+add_files -fileset sim_1 C:/Projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd
+update_compile_order -fileset sim_1
+set_property library work [get_files  c:/Projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd]
+set_property library work [get_files  c:/Projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd]
+update_compile_order -fileset sim_1
+set_property library work [get_files  C:/Projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd]
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/src/true_dual_bram.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'true_dual_bram'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-664] expression has 2 elements ; expected 50 [c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd:95]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit testbench in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 1725.449 ; gain = 0.000
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Wed Feb 10 15:20:45 2021. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2019.1/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Wed Feb 10 15:20:45 2021...
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:12 . Memory (MB): peak = 1725.449 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '12' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+add_wave: Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 1725.449 ; gain = 0.000
+# run 1000ns
+xsim: Time (s): cpu = 00:00:10 ; elapsed = 00:00:08 . Memory (MB): peak = 1725.449 ; gain = 0.000
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:12 ; elapsed = 00:00:23 . Memory (MB): peak = 1725.449 ; gain = 0.000
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+add_files -fileset sim_1 -norecurse C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+set_property xsim.view C:/Projects/kyber-fpga/testbench_behav_bram.wcfg [get_filesets sim_1]
+run 1000 us
+run 1000 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1725.449 ; gain = 0.000
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+open_wave_config: Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1725.449 ; gain = 0.000
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+xsim: Time (s): cpu = 00:00:18 ; elapsed = 00:00:16 . Memory (MB): peak = 1725.449 ; gain = 0.000
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 1725.449 ; gain = 0.000
+run 1000 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 1725.449 ; gain = 0.000
+run 1000 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1899.430 ; gain = 3.211
+run all
+run: Time (s): cpu = 00:02:52 ; elapsed = 00:02:19 . Memory (MB): peak = 1899.430 ; gain = 0.000
+run all
+run: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 1899.430 ; gain = 0.000
+restart
+INFO: [Simtcl 6-17] Simulation restarted
+restart: Time (s): cpu = 00:00:41 ; elapsed = 00:00:40 . Memory (MB): peak = 1899.430 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 1899.430 ; gain = 0.000
+run 10 us
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 1899.430 ; gain = 0.000
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1899.430 ; gain = 0.000
+run 30 us
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 1899.430 ; gain = 0.000
+run 30 us
+update_compile_order -fileset sources_1
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+ERROR: [VRFC 10-4982] syntax error near ':' [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd:394]
+ERROR: [VRFC 10-3782] unit 'arch_imp' ignored due to previous errors [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd:86]
+INFO: [VRFC 10-3070] VHDL file 'c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd' ignored due to errors
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/xvhdl.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/xvhdl.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 2106.215 ; gain = 0.000
+update_compile_order -fileset sources_1
+run 30 us
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-664] expression has 12 elements ; expected 10 [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd:257]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit testbench in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 2179.707 ; gain = 0.000
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-975] left bound value <12> of slice is out of range [11:0] of array <axi_awaddr> [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd:257]
+ERROR: [VRFC 10-664] expression has 11 elements ; expected 10 [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd:257]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit testbench in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 2179.707 ; gain = 0.000
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+WARNING: Simulation object /testbench/uut/bram_mm_v1_0_S00_AXI_inst/s_di_mm was not found in the design.
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:13 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+WARNING: Simulation object /testbench/uut/bram_mm_v1_0_S00_AXI_inst/true_dual_bram_inst/RAM was not traceable in the design for the following reason:
+Vivado Simulator does not yet support tracing of VHDL variables.
+WARNING: Simulation object /testbench/uut/bram_mm_v1_0_S00_AXI_inst/true_dual_bram_inst/RAM was not traceable in the design for the following reason:
+Vivado Simulator does not yet support tracing of VHDL variables.
+WARNING: Simulation object /testbench/uut/bram_mm_v1_0_S00_AXI_inst/true_dual_bram_inst/RAM was not traceable in the design for the following reason:
+Vivado Simulator does not yet support tracing of VHDL variables.
+set_property trace_limit 2097153 [current_sim]
+WARNING: Simulation object /testbench/uut/bram_mm_v1_0_S00_AXI_inst/true_dual_bram_inst/RAM was not traceable in the design for the following reason:
+Vivado Simulator does not yet support tracing of VHDL variables.
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 2179.707 ; gain = 0.000
+WARNING: Simulation object /testbench/uut/bram_mm_v1_0_S00_AXI_inst/true_dual_bram_inst/RAM was not traceable in the design for the following reason:
+Vivado Simulator does not yet support tracing of VHDL variables.
+run 30 us
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_xsim_kernel: Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 2179.707 ; gain = 0.000
+relaunch_sim: Time (s): cpu = 00:00:09 ; elapsed = 00:00:17 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+run 30 us
+run 30 us
+run 30 us
+run 300 us
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_xsim_kernel: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+relaunch_sim: Time (s): cpu = 00:00:10 ; elapsed = 00:00:18 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+run 30 us
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_xsim_kernel: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2179.707 ; gain = 0.000
+relaunch_sim: Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_xsim_kernel: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+relaunch_sim: Time (s): cpu = 00:00:10 ; elapsed = 00:00:18 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+save_wave_config {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-3353] formal port 's00_ena_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:41]
+ERROR: [VRFC 10-3353] formal port 's00_enb_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:42]
+ERROR: [VRFC 10-3353] formal port 's00_wea_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:43]
+ERROR: [VRFC 10-3353] formal port 's00_web_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:44]
+ERROR: [VRFC 10-3353] formal port 's00_addra_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:45]
+ERROR: [VRFC 10-3353] formal port 's00_addrb_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:46]
+ERROR: [VRFC 10-3353] formal port 's00_dia_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:47]
+ERROR: [VRFC 10-3353] formal port 's00_dib_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:48]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit testbench in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 2179.707 ; gain = 0.000
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-3353] formal port 's00_ena_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:41]
+ERROR: [VRFC 10-3353] formal port 's00_enb_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:42]
+ERROR: [VRFC 10-3353] formal port 's00_wea_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:43]
+ERROR: [VRFC 10-3353] formal port 's00_web_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:44]
+ERROR: [VRFC 10-3353] formal port 's00_addra_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:45]
+ERROR: [VRFC 10-3353] formal port 's00_addrb_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:46]
+ERROR: [VRFC 10-3353] formal port 's00_dia_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:47]
+ERROR: [VRFC 10-3353] formal port 's00_dib_bram' has no actual or default value [c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0.vhd:48]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit testbench in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 2179.707 ; gain = 0.000
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/bram_mm_1.0/hdl/bram_mm_v1_0_S00_AXI.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'bram_mm_v1_0_S00_AXI'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto ba4efb9ea6904bbdb77ae2a01ed03666 --incr --debug typical --relax --mt 2 -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity work.true_dual_bram [\true_dual_bram(addr_width=10,wo...]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0_S00_AXI [bram_mm_v1_0_s00_axi_default]
+Compiling architecture arch_imp of entity work.bram_mm_v1_0 [bram_mm_v1_0_default]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/bram_mm_v1_0_project/bram_mm_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {C:/Projects/kyber-fpga/testbench_behav_bram.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config C:/Projects/kyber-fpga/testbench_behav_bram.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 2179.707 ; gain = 0.000
+run 30 us

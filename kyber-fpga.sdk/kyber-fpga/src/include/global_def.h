@@ -136,6 +136,8 @@ XGpio XGpioFqmulInput;
 XGpio_Config * XGpioConfigPtrFqmulOutput;
 XGpio XGpioFqmulOutput;
 
+u32 *memoryBram;
+
 //////////////////////////////////////////////
 //
 //	Prototypes
