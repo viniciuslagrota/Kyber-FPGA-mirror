@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Thu Feb 11 17:00:09 2021
+| Date         : Fri Feb 12 16:19:15 2021
 | Host         : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
 | Command      : report_utilization -file kyberBD_wrapper_utilization_synth.rpt -pb kyberBD_wrapper_utilization_synth.pb
 | Design       : kyberBD_wrapper
@@ -30,13 +30,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 1199 |     0 |     17600 |  6.81 |
-|   LUT as Logic             | 1133 |     0 |     17600 |  6.44 |
+| Slice LUTs*                | 1209 |     0 |     17600 |  6.87 |
+|   LUT as Logic             | 1143 |     0 |     17600 |  6.49 |
 |   LUT as Memory            |   66 |     0 |      6000 |  1.10 |
 |     LUT as Distributed RAM |    0 |     0 |           |       |
 |     LUT as Shift Register  |   66 |     0 |           |       |
-| Slice Registers            | 1563 |     0 |     35200 |  4.44 |
-|   Register as Flip Flop    | 1563 |     0 |     35200 |  4.44 |
+| Slice Registers            | 1313 |     0 |     35200 |  3.73 |
+|   Register as Flip Flop    | 1313 |     0 |     35200 |  3.73 |
 |   Register as Latch        |    0 |     0 |     35200 |  0.00 |
 | F7 Muxes                   |    0 |     0 |      8800 |  0.00 |
 | F8 Muxes                   |    0 |     0 |      4400 |  0.00 |
@@ -58,8 +58,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 103   |          Yes |         Set |            - |
-| 1460  |          Yes |       Reset |            - |
+| 55    |          Yes |         Set |            - |
+| 1258  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -83,8 +83,8 @@ Table of Contents
 +----------------+------+-------+-----------+-------+
 |    Site Type   | Used | Fixed | Available | Util% |
 +----------------+------+-------+-----------+-------+
-| DSPs           |    3 |     0 |        80 |  3.75 |
-|   DSP48E1 only |    3 |       |           |       |
+| DSPs           |    6 |     0 |        80 |  7.50 |
+|   DSP48E1 only |    6 |       |           |       |
 +----------------+------+-------+-----------+-------+
 
 
@@ -150,19 +150,19 @@ Table of Contents
 +----------+------+----------------------+
 | Ref Name | Used |  Functional Category |
 +----------+------+----------------------+
-| FDRE     | 1460 |         Flop & Latch |
-| LUT5     |  327 |                  LUT |
-| LUT6     |  284 |                  LUT |
-| LUT3     |  269 |                  LUT |
-| LUT4     |  225 |                  LUT |
-| LUT1     |  150 |                  LUT |
+| FDRE     | 1258 |         Flop & Latch |
+| LUT5     |  305 |                  LUT |
+| LUT3     |  303 |                  LUT |
+| LUT6     |  272 |                  LUT |
+| LUT4     |  235 |                  LUT |
+| LUT1     |  151 |                  LUT |
 | BIBUF    |  130 |                   IO |
-| FDSE     |  103 |         Flop & Latch |
-| LUT2     |   72 |                  LUT |
+| LUT2     |  102 |                  LUT |
+| FDSE     |   55 |         Flop & Latch |
 | SRLC32E  |   47 |   Distributed Memory |
 | CARRY4   |   26 |           CarryLogic |
 | SRL16E   |   19 |   Distributed Memory |
-| DSP48E1  |    3 |     Block Arithmetic |
+| DSP48E1  |    6 |     Block Arithmetic |
 | RAMB36E1 |    1 |         Block Memory |
 | PS7      |    1 | Specialized Resource |
 | BUFG     |    1 |                Clock |

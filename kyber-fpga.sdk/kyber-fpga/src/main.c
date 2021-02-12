@@ -61,22 +61,10 @@
 extern XGpio_Config * XGpioConfigPtrGlobalTimer;
 extern XGpio XGpioGlobalTimer;
 
-extern XGpio_Config * XGpioConfigPtrFqmulInput;
-extern XGpio XGpioFqmulInput;
-extern XGpio_Config * XGpioConfigPtrFqmulOutput;
-extern XGpio XGpioFqmulOutput;
+extern XGpio_Config * XGpioConfigPolyTomont;
+extern XGpio XGpioPolyTomont;
 
 extern u32 *memoryBram;
-
-//////////////////////////////////////////////
-//
-//	Remove
-//
-//////////////////////////////////////////////
-static int16_t fqmul(int16_t a, int16_t b) {
-  return montgomery_reduce((int32_t)a*b);
-}
-
 
 //////////////////////////////////////////////
 //
@@ -90,6 +78,7 @@ int main()
 
     //---- Local variables ----
 	u32 u32LedState = 0x0;
+	u32 u32ReadGpio = 0x0;
 
     //---- Initialize LED ----
     XGpioPs Gpio;
@@ -98,11 +87,9 @@ int main()
     //---- Configure timers ----
     configTimer(XGpioConfigPtrGlobalTimer, &XGpioGlobalTimer, XPAR_AXI_GPIO_0_DEVICE_ID, 1);
 
-    //Fqmul test
-    XGpioConfigPtrFqmulInput = XGpio_LookupConfig(XPAR_AXI_GPIO_1_DEVICE_ID);
-	XGpio_CfgInitialize(&XGpioFqmulInput, XGpioConfigPtrFqmulInput, XGpioConfigPtrFqmulInput->BaseAddress);
-	XGpioConfigPtrFqmulOutput = XGpio_LookupConfig(XPAR_AXI_GPIO_2_DEVICE_ID);
-	XGpio_CfgInitialize(&XGpioFqmulOutput, XGpioConfigPtrFqmulOutput, XGpioConfigPtrFqmulOutput->BaseAddress);
+    //Poly tomont test
+    XGpioConfigPolyTomont = XGpio_LookupConfig(XPAR_AXI_GPIO_1_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioPolyTomont, XGpioConfigPolyTomont, XGpioConfigPolyTomont->BaseAddress);
 
 	//---- Configure AXI BRAM ----
 	memoryBram = (u32 *) XPAR_BRAM_MM_0_S00_AXI_BASEADDR;
@@ -152,22 +139,47 @@ int main()
 //				break;
 //		}
 
-		//BRAM test
-		uint16_t vec_test[4] = { 1 , 2 , 3 , 4 };
+		//----- BRAM test
+
+		//Initialize BRAM with data
+		int16_t vec_test[256] = { 0 };
+		for(int i = 0; i < 256; i++)
+		{
+			if(i % 2 == 0)
+				vec_test[i] = 0x0001;
+			else
+				vec_test[i] = 0x0002;
+		}
+
 		uint32_t * m;
 		m = (u32 *)vec_test;
-		for(int i = 0; i < 2; i++)
+		for(int i = 0; i < 128; i++)
 		{
 			memoryBram[i] = m[i];
 			print_debug(DEBUG_MAIN, "[MAIN] memoryBram[%d]: 0x%08lx\n", i, m[i]);
 		}
 
+		//Start flag up
+		XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x1);
+
+		//Read busy
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+		while(u32ReadGpio == 1)
+			u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Poly tomont finished.\n");
+
+		//Start flag down
+		XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x0);
+
+		//Read data from BRAM
 		u32 received;
-		for(int i = 0; i < 2; i++)
+		for(int i = 0; i < 128; i++)
 		{
 			received = memoryBram[i];
 			print_debug(DEBUG_MAIN, "[MAIN] received[%d]: 0x%08lx\n", i, received);
 		}
+
+		//Poly tomont test
 
 //		exit(0);
 

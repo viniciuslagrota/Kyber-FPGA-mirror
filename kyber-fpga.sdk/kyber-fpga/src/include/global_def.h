@@ -131,10 +131,8 @@
 XGpio_Config * XGpioConfigPtrGlobalTimer;
 XGpio XGpioGlobalTimer;
 
-XGpio_Config * XGpioConfigPtrFqmulInput;
-XGpio XGpioFqmulInput;
-XGpio_Config * XGpioConfigPtrFqmulOutput;
-XGpio XGpioFqmulOutput;
+XGpio_Config * XGpioConfigPolyTomont;
+XGpio XGpioPolyTomont;
 
 u32 *memoryBram;
 
