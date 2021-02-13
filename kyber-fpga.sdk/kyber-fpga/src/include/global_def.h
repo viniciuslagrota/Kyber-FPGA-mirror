@@ -134,7 +134,8 @@ XGpio XGpioGlobalTimer;
 XGpio_Config * XGpioConfigPolyTomont;
 XGpio XGpioPolyTomont;
 
-u32 *memoryBram;
+u32 *memoryBram0;
+u32 *memoryBram1;
 
 //////////////////////////////////////////////
 //

@@ -31,17 +31,6 @@
  
  
 /******************************************************************/
-/* Definitions for driver BRAM_MM */
-#define XPAR_BRAM_MM_NUM_INSTANCES 1
-
-/* Definitions for peripheral BRAM_MM_0 */
-#define XPAR_BRAM_MM_0_DEVICE_ID 0
-#define XPAR_BRAM_MM_0_S00_AXI_BASEADDR 0x43C00000
-#define XPAR_BRAM_MM_0_S00_AXI_HIGHADDR 0x43C0FFFF
-
-
-/******************************************************************/
-
 
 /* Definitions for peripheral PS7_DDR_0 */
 #define XPAR_PS7_DDR_0_S_AXI_BASEADDR 0x00100000
@@ -95,6 +84,19 @@
 #define XPAR_XDMAPS_1_DEVICE_ID XPAR_PS7_DMA_S_DEVICE_ID
 #define XPAR_XDMAPS_1_BASEADDR 0xF8003000
 #define XPAR_XDMAPS_1_HIGHADDR 0xF8003FFF
+
+
+/******************************************************************/
+
+/* Definitions for driver DUAL_BRAM */
+#define XPAR_DUAL_BRAM_NUM_INSTANCES 1
+
+/* Definitions for peripheral DUAL_BRAM_0 */
+#define XPAR_DUAL_BRAM_0_DEVICE_ID 0
+#define XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR 0x43C00000
+#define XPAR_DUAL_BRAM_0_S00_AXI_HIGHADDR 0x43C0FFFF
+#define XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR 0x43C10000
+#define XPAR_DUAL_BRAM_0_S01_AXI_HIGHADDR 0x43C1FFFF
 
 
 /******************************************************************/

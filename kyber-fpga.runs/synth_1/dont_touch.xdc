@@ -28,9 +28,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_montgom
 # IP: bd/kyberBD/ip/kyberBD_axi_gpio_1_0/kyberBD_axi_gpio_1_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_1_0 || ORIG_REF_NAME==kyberBD_axi_gpio_1_0} -quiet] -quiet
 
-# IP: bd/kyberBD/ip/kyberBD_bram_mm_0_0/kyberBD_bram_mm_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_bram_mm_0_0 || ORIG_REF_NAME==kyberBD_bram_mm_0_0} -quiet] -quiet
-
 # IP: bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/kyberBD_bram_port_selector_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_bram_port_selector_0_0 || ORIG_REF_NAME==kyberBD_bram_port_selector_0_0} -quiet] -quiet
 
@@ -48,6 +45,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_bram_po
 
 # IP: bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/kyberBD_montgomery_reduction_1_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_montgomery_reduction_1_0 || ORIG_REF_NAME==kyberBD_montgomery_reduction_1_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_dual_bram_0_0/kyberBD_dual_bram_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_dual_bram_0_0 || ORIG_REF_NAME==kyberBD_dual_bram_0_0} -quiet] -quiet
 
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
