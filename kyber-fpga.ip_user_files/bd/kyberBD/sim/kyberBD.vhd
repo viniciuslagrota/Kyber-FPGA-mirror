@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Sat Feb 13 17:44:07 2021
+--Date        : Sun Feb 14 18:14:17 2021
 --Host        : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -1884,7 +1884,7 @@ architecture STRUCTURE of kyberBD is
   end component kyberBD_poly_tomont_0_0;
   component kyberBD_dual_bram_0_0 is
   port (
-    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
     s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s00_axi_awvalid : in STD_LOGIC;
     s00_axi_awready : out STD_LOGIC;
@@ -1895,7 +1895,7 @@ architecture STRUCTURE of kyberBD is
     s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s00_axi_bvalid : out STD_LOGIC;
     s00_axi_bready : in STD_LOGIC;
-    s00_axi_araddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s00_axi_araddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
     s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s00_axi_arvalid : in STD_LOGIC;
     s00_axi_arready : out STD_LOGIC;
@@ -1905,7 +1905,7 @@ architecture STRUCTURE of kyberBD is
     s00_axi_rready : in STD_LOGIC;
     s00_axi_aclk : in STD_LOGIC;
     s00_axi_aresetn : in STD_LOGIC;
-    s01_axi_awaddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s01_axi_awaddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
     s01_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s01_axi_awvalid : in STD_LOGIC;
     s01_axi_awready : out STD_LOGIC;
@@ -1916,7 +1916,7 @@ architecture STRUCTURE of kyberBD is
     s01_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s01_axi_bvalid : out STD_LOGIC;
     s01_axi_bready : in STD_LOGIC;
-    s01_axi_araddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s01_axi_araddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
     s01_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s01_axi_arvalid : in STD_LOGIC;
     s01_axi_arready : out STD_LOGIC;
@@ -1926,12 +1926,12 @@ architecture STRUCTURE of kyberBD is
     s01_axi_rready : in STD_LOGIC;
     s00_en_bram : in STD_LOGIC;
     s00_we_bram : in STD_LOGIC;
-    s00_addr_bram : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_addr_bram : in STD_LOGIC_VECTOR ( 9 downto 0 );
     s00_di_bram : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s00_do_bram : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s01_en_bram : in STD_LOGIC;
     s01_we_bram : in STD_LOGIC;
-    s01_addr_bram : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    s01_addr_bram : in STD_LOGIC_VECTOR ( 9 downto 0 );
     s01_di_bram : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s01_do_bram : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s01_axi_aclk : in STD_LOGIC;
@@ -2408,14 +2408,14 @@ double_signal_multip_1: component kyberBD_double_signal_multip_1_0
     );
 dual_bram_0: component kyberBD_dual_bram_0_0
      port map (
-      s00_addr_bram(1 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_ADDR(1 downto 0),
+      s00_addr_bram(9 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_ADDR(9 downto 0),
       s00_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s00_axi_araddr(3 downto 0) => axi_interconnect_0_M01_AXI_ARADDR(3 downto 0),
+      s00_axi_araddr(11 downto 0) => axi_interconnect_0_M01_AXI_ARADDR(11 downto 0),
       s00_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
       s00_axi_arprot(2 downto 0) => axi_interconnect_0_M01_AXI_ARPROT(2 downto 0),
       s00_axi_arready => axi_interconnect_0_M01_AXI_ARREADY,
       s00_axi_arvalid => axi_interconnect_0_M01_AXI_ARVALID,
-      s00_axi_awaddr(3 downto 0) => axi_interconnect_0_M01_AXI_AWADDR(3 downto 0),
+      s00_axi_awaddr(11 downto 0) => axi_interconnect_0_M01_AXI_AWADDR(11 downto 0),
       s00_axi_awprot(2 downto 0) => axi_interconnect_0_M01_AXI_AWPROT(2 downto 0),
       s00_axi_awready => axi_interconnect_0_M01_AXI_AWREADY,
       s00_axi_awvalid => axi_interconnect_0_M01_AXI_AWVALID,
@@ -2434,14 +2434,14 @@ dual_bram_0: component kyberBD_dual_bram_0_0
       s00_do_bram(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DOUT(31 downto 0),
       s00_en_bram => bram_port_selector_0_BRAM_PORT_MASTER_EN,
       s00_we_bram => bram_port_selector_0_BRAM_PORT_MASTER_WE,
-      s01_addr_bram(1 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_ADDR(1 downto 0),
+      s01_addr_bram(9 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_ADDR(9 downto 0),
       s01_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s01_axi_araddr(3 downto 0) => axi_interconnect_0_M02_AXI_ARADDR(3 downto 0),
+      s01_axi_araddr(11 downto 0) => axi_interconnect_0_M02_AXI_ARADDR(11 downto 0),
       s01_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
       s01_axi_arprot(2 downto 0) => axi_interconnect_0_M02_AXI_ARPROT(2 downto 0),
       s01_axi_arready => axi_interconnect_0_M02_AXI_ARREADY,
       s01_axi_arvalid => axi_interconnect_0_M02_AXI_ARVALID,
-      s01_axi_awaddr(3 downto 0) => axi_interconnect_0_M02_AXI_AWADDR(3 downto 0),
+      s01_axi_awaddr(11 downto 0) => axi_interconnect_0_M02_AXI_AWADDR(11 downto 0),
       s01_axi_awprot(2 downto 0) => axi_interconnect_0_M02_AXI_AWPROT(2 downto 0),
       s01_axi_awready => axi_interconnect_0_M02_AXI_AWREADY,
       s01_axi_awvalid => axi_interconnect_0_M02_AXI_AWVALID,

@@ -287,12 +287,38 @@ void poly_basemul_montgomery(poly *r, const poly *a, const poly *b)
 *
 * Arguments:   - poly *r: pointer to input/output polynomial
 **************************************************/
-void poly_tomont(poly *r)
+void poly_tomont_hw(poly * r)
+{
+	memcpy(memoryBram0, (u32 *)r, 512);
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x0);
+
+	memcpy(r, (poly *)memoryBram1, 512);
+}
+
+void poly_tomont_sw(poly *r)
 {
   unsigned int i;
   const int16_t f = (1ULL << 32) % KYBER_Q;
   for(i=0;i<KYBER_N;i++)
     r->coeffs[i] = montgomery_reduce((int32_t)r->coeffs[i]*f);
+}
+
+void poly_tomont(poly *r)
+{
+	if(u32SystemState & POLY_TOMONT_MASK)
+		poly_tomont_hw(r);
+	else
+		poly_tomont_sw(r);
 }
 
 /*************************************************
