@@ -125,9 +125,9 @@ vcom -work xil_defaultlib -64 -93 \
 "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/sim/kyberBD_double_signal_multip_1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/sim/kyberBD_bram_port_selector_1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/sim/kyberBD_montgomery_reduction_1_0.vhd" \
-"../../../bd/kyberBD/ipshared/d940/hdl/bram_v1_0_S_AXI.vhd" \
-"../../../bd/kyberBD/ipshared/d940/src/true_single_bram.vhd" \
-"../../../bd/kyberBD/ipshared/d940/hdl/dual_bram_v1_0.vhd" \
+"../../../bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd" \
+"../../../bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd" \
+"../../../bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_dual_bram_0_0/sim/kyberBD_dual_bram_0_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_19 -64 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \

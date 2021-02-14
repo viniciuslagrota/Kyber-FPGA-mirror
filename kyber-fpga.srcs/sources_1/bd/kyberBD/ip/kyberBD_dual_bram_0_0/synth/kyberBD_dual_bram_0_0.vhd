@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:dual_bram:1.0
--- IP Revision: 20
+-- IP Revision: 22
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -180,7 +180,7 @@ ARCHITECTURE kyberBD_dual_bram_0_0_arch OF kyberBD_dual_bram_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_dual_bram_0_0_arch : ARCHITECTURE IS "kyberBD_dual_bram_0_0,dual_bram_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_dual_bram_0_0_arch: ARCHITECTURE IS "kyberBD_dual_bram_0_0,dual_bram_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=dual_bram,x_ipVersion=1.0,x_ipCoreRevision=20,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=12,C_S01_AXI_DATA_WIDTH=32,C_S01_AXI_ADDR_WIDTH=12}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_dual_bram_0_0_arch: ARCHITECTURE IS "kyberBD_dual_bram_0_0,dual_bram_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=dual_bram,x_ipVersion=1.0,x_ipCoreRevision=22,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=12,C_S01_AXI_DATA_WIDTH=32,C_S01_AXI_ADDR_WIDTH=12}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF s01_axi_aresetn: SIGNAL IS "XIL_INTERFACENAME S01_AXI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0";

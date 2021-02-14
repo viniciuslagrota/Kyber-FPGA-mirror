@@ -86,9 +86,9 @@
   "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/sim/kyberBD_double_signal_multip_1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/sim/kyberBD_bram_port_selector_1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/sim/kyberBD_montgomery_reduction_1_0.vhd" \
-  "../../../bd/kyberBD/ipshared/d940/hdl/bram_v1_0_S_AXI.vhd" \
-  "../../../bd/kyberBD/ipshared/d940/src/true_single_bram.vhd" \
-  "../../../bd/kyberBD/ipshared/d940/hdl/dual_bram_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd" \
+  "../../../bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd" \
+  "../../../bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_dual_bram_0_0/sim/kyberBD_dual_bram_0_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_19 \
