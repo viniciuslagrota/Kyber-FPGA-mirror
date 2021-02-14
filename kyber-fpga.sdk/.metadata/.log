@@ -1,169 +1,730 @@
-!SESSION 2021-02-11 14:39:31.671 -----------------------------------------------
+!SESSION 2021-02-14 11:15:36.895 -----------------------------------------------
 eclipse.buildId=2019.1
 java.version=1.8.0_112
 java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:/Projects/kyber-fpga/kyber-fpga.sdk
 
-This is a continuation of log file C:\Projects\kyber-fpga\kyber-fpga.sdk\.metadata\.bak_0.log
-Created Time: 2021-02-11 14:45:04.371
+This is a continuation of log file C:\Projects\kyber-fpga\kyber-fpga.sdk\.metadata\.bak_1.log
+Created Time: 2021-02-14 21:03:33.491
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.382
-!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.498
+!MESSAGE XSCT Command: [::hsi::utils::get_addr_ranges -json C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.405
-!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1  Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.524
+!MESSAGE XSCT command with result: [::hsi::utils::get_addr_ranges -json C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1], Result: [null, {"axi_gpio_0_S_AXI": {"name": "axi_gpio_0",
+"base": "0x41200000",
+"high": "0x41200FFF",
+"size": "4096",
+"slaveintf": "S_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"axi_gpio_1_S_AXI": {"name": "axi_gpio_1",
+"base": "0x41210000",
+"high": "0x41210FFF",
+"size": "4096",
+"slaveintf": "S_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"dual_bram_0_S00_AXI": {"name": "dual_bram_0",
+"base": "0x43C00000",
+"high": "0x43C1FFFF",
+"size": "131072",
+"slaveintf": "S00_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"dual_bram_0_S01_AXI": {"name": "dual_bram_0",
+"base": "0x43C20000",
+"high": "0x43C3FFFF",
+"size": "131072",
+"slaveintf": "S01_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_0": {"name": "ps7_afi_0",
+"base": "0xF8008000",
+"high": "0xF8008FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_1": {"name": "ps7_afi_1",
+"base": "0xF8009000",
+"high": "0xF8009FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_2": {"name": "ps7_afi_2",
+"base": "0xF800A000",
+"high": "0xF800AFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_3": {"name": "ps7_afi_3",
+"base": "0xF800B000",
+"high": "0xF800BFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_coresight_comp_0": {"name": "ps7_coresight_comp_0",
+"base": "0xF8800000",
+"high": "0xF88FFFFF",
+"size": "1048576",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ddrc_0": {"name": "ps7_ddrc_0",
+"base": "0xF8006000",
+"high": "0xF8006FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_dev_cfg_0": {"name": "ps7_dev_cfg_0",
+"base": "0xF8007000",
+"high": "0xF80070FF",
+"size": "256",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_dma_ns": {"name": "ps7_dma_ns",
+"base": "0xF8004000",
+"high": "0xF8004FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_dma_s": {"name": "ps7_dma_s",
+"base": "0xF8003000",
+"high": "0xF8003FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ethernet_0": {"name": "ps7_ethernet_0",
+"base": "0xE000B000",
+"high": "0xE000BFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_globaltimer_0": {"name": "ps7_globaltimer_0",
+"base": "0xF8F00200",
+"high": "0xF8F002FF",
+"size": "256",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_gpio_0": {"name": "ps7_gpio_0",
+"base": "0xE000A000",
+"high": "0xE000AFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_gpv_0": {"name": "ps7_gpv_0",
+"base": "0xF8900000",
+"high": "0xF89FFFFF",
+"size": "1048576",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_intc_dist_0": {"name": "ps7_intc_dist_0",
+"base": "0xF8F01000",
+"high": "0xF8F01FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_iop_bus_config_0": {"name": "ps7_iop_bus_config_0",
+"base": "0xE0200000",
+"high": "0xE0200FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_l2cachec_0": {"name": "ps7_l2cachec_0",
+"base": "0xF8F02000",
+"high": "0xF8F02FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ocmc_0": {"name": "ps7_ocmc_0",
+"base": "0xF800C000",
+"high": "0xF800CFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_pl310_0": {"name": "ps7_pl310_0",
+"base": "0xF8F02000",
+"high": "0xF8F02FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_pmu_0": {"name": "ps7_pmu_0",
+"base": "0xF8893000",
+"high": "0xF8893FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_qspi_0": {"name": "ps7_qspi_0",
+"base": "0xE000D000",
+"high": "0xE000DFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_qspi_linear_0": {"name": "ps7_qspi_linear_0",
+"base": "0xFC000000",
+"high": "0xFCFFFFFF",
+"size": "16777216",
+"slaveintf": "",
+"type": "FLASH",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scuc_0": {"name": "ps7_scuc_0",
+"base": "0xF8F00000",
+"high": "0xF8F000FC",
+"size": "253",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scugic_0": {"name": "ps7_scugic_0",
+"base": "0xF8F00100",
+"high": "0xF8F001FF",
+"size": "256",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scutimer_0": {"name": "ps7_scutimer_0",
+"base": "0xF8F00600",
+"high": "0xF8F0061F",
+"size": "32",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scuwdt_0": {"name": "ps7_scuwdt_0",
+"base": "0xF8F00620",
+"high": "0xF8F006FF",
+"size": "224",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_sd_0": {"name": "ps7_sd_0",
+"base": "0xE0100000",
+"high": "0xE0100FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_slcr_0": {"name": "ps7_slcr_0",
+"base": "0xF8000000",
+"high": "0xF8000FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ttc_0": {"name": "ps7_ttc_0",
+"base": "0xF8001000",
+"high": "0xF8001FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_uart_1": {"name": "ps7_uart_1",
+"base": "0xE0001000",
+"high": "0xE0001FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_usb_0": {"name": "ps7_usb_0",
+"base": "0xE0002000",
+"high": "0xE0002FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_xadc_0": {"name": "ps7_xadc_0",
+"base": "0xF8007100",
+"high": "0xF8007120",
+"size": "33",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ddr_0": {"name": "ps7_ddr_0",
+"base": "0x00100000",
+"high": "0x3FFFFFFF",
+"size": "1072693248",
+"slaveintf": "",
+"type": "MEMORY",
+"flags": "7",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ram_0": {"name": "ps7_ram_0",
+"base": "0x00000000",
+"high": "0x0002FFFF",
+"size": "196608",
+"slaveintf": "",
+"type": "MEMORY",
+"flags": "7",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ram_1": {"name": "ps7_ram_1",
+"base": "0xFFFF0000",
+"high": "0xFFFFFDFF",
+"size": "65024",
+"slaveintf": "",
+"type": "MEMORY",
+"flags": "7",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+}]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.417
-!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.532
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_ENABLED], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.465
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.539
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_ENABLED], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.546
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_EVENT_COUNTERS], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.553
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_EVENT_COUNTERS], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.559
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_LATENCY_COUNTERS], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.567
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_LATENCY_COUNTERS], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.573
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_COUNTER_WIDTH], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.580
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_DEBUG_COUNTER_WIDTH], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.586
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_FREQ], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.593
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_FREQ], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.599
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_CPU_CLK_FREQ_HZ], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.607
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_1 C_CPU_CLK_FREQ_HZ], Result: [null, 666666687]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.613
+!MESSAGE XSCT Command: [::hsi::utils::get_connected_periphs C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_0], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.621
+!MESSAGE XSCT command with result: [::hsi::utils::get_connected_periphs C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf ps7_cortexa9_0], Result: [null, axi_gpio_0 axi_gpio_1 dual_bram_0 ps7_afi_0 ps7_afi_1 ps7_afi_2 ps7_afi_3 ps7_coresight_comp_0 ps7_ddr_0 ps7_ddrc_0 ps7_dev_cfg_0 ps7_dma_ns ps7_dma_s ps7_ethernet_0 ps7_globaltimer_0 ps7_gpio_0 ps7_gpv_0 ps7_intc_dist_0 ps7_iop_bus_config_0 ps7_l2cachec_0 ps7_ocmc_0 ps7_pl310_0 ps7_pmu_0 ps7_qspi_0 ps7_qspi_linear_0 ps7_ram_0 ps7_ram_1 ps7_scuc_0 ps7_scugic_0 ps7_scutimer_0 ps7_scuwdt_0 ps7_sd_0 ps7_slcr_0 ps7_ttc_0 ps7_uart_1 ps7_usb_0 ps7_xadc_0]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.627
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_files_on_hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf bit], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.634
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_files_on_hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf bit], Result: [null, kyberBD_wrapper.bit]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.641
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.651
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#59]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.658
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.679
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.686
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.698
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.704
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.730
 !MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
-     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-7
+     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.476
-!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.736
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==0} -index 1], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.493
-!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1  Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.772
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==0} -index 1], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.502
-!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.780
+!MESSAGE XSCT Command: [fpga -state], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.528
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.825
+!MESSAGE XSCT command with result: [fpga -state], Result: [null, FPGA is configured]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.831
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.838
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#59]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.845
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.859
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.865
+!MESSAGE XSCT Command: [version -server], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.872
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2019.1]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.878
+!MESSAGE XSCT Command: [version], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.884
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2019.1
+SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.890
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.904
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.910
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.936
 !MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
-     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-7
+     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.537
-!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.943
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.552
-!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1  Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.955
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.560
-!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.962
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.588
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.989
 !MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
-     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-7
+     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.598
-!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:33.996
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.622
-!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1  Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.009
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.635
-!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.017
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.658
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.042
 !MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
-     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-7
+     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.671
-!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent JTAG-HS3 210299A8DCD1" && level == 0}], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.049
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.700
-!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent JTAG-HS3 210299A8DCD1" && level == 0}], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.062
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.713
-!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.069
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.725
-!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.098
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.735
-!MESSAGE XSCT Command: [source C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.105
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.747
-!MESSAGE XSCT command with result: [source C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.119
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.754
-!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.127
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.798
-!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.153
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.810
-!MESSAGE XSCT Command: [loadhw -hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.159
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.888
-!MESSAGE XSCT command with result: [loadhw -hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]], Result: [null, kyberBD_wrapper_0]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.172
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent JTAG-HS3 210299A8DCD1]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.902
-!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.178
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.916
-!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.211
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z010 (idcode 13722093 irlen 6 fpga)]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.922
-!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.218
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent JTAG-HS3 210299A8DCD1" && level == 0}], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.956
-!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.244
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent JTAG-HS3 210299A8DCD1" && level == 0}], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.970
-!MESSAGE XSCT Command: [stop], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.250
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.987
-!MESSAGE XSCT command with result: [stop], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.258
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:04.998
-!MESSAGE XSCT Command: [ps7_init], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.264
+!MESSAGE XSCT Command: [source C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.483
-!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.272
+!MESSAGE XSCT command with result: [source C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.498
-!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.278
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.523
-!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.310
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.537
-!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.316
+!MESSAGE XSCT Command: [loadhw -hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.592
-!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.372
+!MESSAGE XSCT command with result: [loadhw -hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]], Result: [null, kyberBD_wrapper_49]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.605
-!MESSAGE XSCT Command: [rst -processor], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.379
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.654
-!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.386
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.669
-!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.393
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.720
-!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.425
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:05.735
-!MESSAGE XSCT Command: [dow C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-fpga/Debug/kyber-fpga.elf], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.432
+!MESSAGE XSCT Command: [stop], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:06.519
-!MESSAGE XSCT command with result: [dow C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-fpga/Debug/kyber-fpga.elf], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.439
+!MESSAGE XSCT command with result: [stop], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:06.533
-!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.446
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:06.547
-!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.799
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:06.766
-!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.805
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:06.867
-!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.823
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:06.874
-!MESSAGE XSCT Command: [con], Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.830
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:06.886
-!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-7
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.861
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:52.999
-!MESSAGE XSCT Command: [disconnect tcfchan#1], Thread: Thread-137
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.868
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-122
 
-!ENTRY com.xilinx.sdk.utils 0 0 2021-02-11 14:45:53.019
-!MESSAGE XSCT command with result: [disconnect tcfchan#1], Result: [null, ]. Thread: Thread-137
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.935
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.942
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.981
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:34.988
+!MESSAGE XSCT Command: [dow C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-fpga/Debug/kyber-fpga.elf], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:35.696
+!MESSAGE XSCT command with result: [dow C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-fpga/Debug/kyber-fpga.elf], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:35.703
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:35.710
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:35.817
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:35.936
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DCD1"} -index 0], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:35.942
+!MESSAGE XSCT Command: [con], Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:03:35.955
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-122
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:04:16.707
+!MESSAGE XSCT Command: [disconnect tcfchan#59], Thread: Thread-4893
+
+!ENTRY com.xilinx.sdk.utils 0 0 2021-02-14 21:04:16.716
+!MESSAGE XSCT command with result: [disconnect tcfchan#59], Result: [null, ]. Thread: Thread-4893

@@ -52,6 +52,7 @@
 //////////////////////////////////////////////
 #include "platform.h"
 #include "include/global_def.h"
+#include "include/poly.h"
 
 //////////////////////////////////////////////
 //
@@ -61,22 +62,42 @@
 extern XGpio_Config * XGpioConfigPtrGlobalTimer;
 extern XGpio XGpioGlobalTimer;
 
-extern XGpio_Config * XGpioConfigPtrFqmulInput;
-extern XGpio XGpioFqmulInput;
-extern XGpio_Config * XGpioConfigPtrFqmulOutput;
-extern XGpio XGpioFqmulOutput;
+extern XGpio_Config * XGpioConfigPolyTomont;
+extern XGpio XGpioPolyTomont;
 
-extern u32 *memoryBram;
+extern u32 *memoryBram0;
+extern u32 *memoryBram1;
 
-//////////////////////////////////////////////
+extern u32 u32SystemState;
+
+//void poly_tomont_hw(poly * r)
+//{
+////	memoryBram0 = (u32 *)r;
+//	memcpy(memoryBram0, (u32 *)r, 512);
 //
-//	Remove
+////	for(int i = 0; i < 4; i++)
+////	{
+////		print_debug(DEBUG_MAIN, "[MAIN] inside memoryBram0[%d]: 0x%08lx\n", i, memoryBram0[i]);
+////	}
 //
-//////////////////////////////////////////////
-static int16_t fqmul(int16_t a, int16_t b) {
-  return montgomery_reduce((int32_t)a*b);
-}
-
+//	//Start flag up
+//	XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x1);
+//
+//	//Read busy signal
+//	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+//	while(u32ReadGpio == 1)
+//		u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+//
+//	//Start flag down
+//	XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x0);
+//
+////	for(int i = 0; i < 4; i++)
+////	{
+////		print_debug(DEBUG_MAIN, "[MAIN] inside memoryBram1[%d]: 0x%08lx\n", i, memoryBram1[i]);
+////	}
+//
+//	memcpy(r, (poly *)memoryBram1, 512);
+//}
 
 //////////////////////////////////////////////
 //
@@ -90,6 +111,7 @@ int main()
 
     //---- Local variables ----
 	u32 u32LedState = 0x0;
+	u32 u32ReadGpio = 0x0;
 
     //---- Initialize LED ----
     XGpioPs Gpio;
@@ -98,15 +120,21 @@ int main()
     //---- Configure timers ----
     configTimer(XGpioConfigPtrGlobalTimer, &XGpioGlobalTimer, XPAR_AXI_GPIO_0_DEVICE_ID, 1);
 
-    //Fqmul test
-    XGpioConfigPtrFqmulInput = XGpio_LookupConfig(XPAR_AXI_GPIO_1_DEVICE_ID);
-	XGpio_CfgInitialize(&XGpioFqmulInput, XGpioConfigPtrFqmulInput, XGpioConfigPtrFqmulInput->BaseAddress);
-	XGpioConfigPtrFqmulOutput = XGpio_LookupConfig(XPAR_AXI_GPIO_2_DEVICE_ID);
-	XGpio_CfgInitialize(&XGpioFqmulOutput, XGpioConfigPtrFqmulOutput, XGpioConfigPtrFqmulOutput->BaseAddress);
+    //Poly tomont test
+    XGpioConfigPolyTomont = XGpio_LookupConfig(XPAR_AXI_GPIO_1_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioPolyTomont, XGpioConfigPolyTomont, XGpioConfigPolyTomont->BaseAddress);
 
 	//---- Configure AXI BRAM ----
-	memoryBram = (u32 *) XPAR_BRAM_MM_0_S00_AXI_BASEADDR;
-	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM initialized.\n");
+	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
+//	memoryBram0[0] = 0x0;
+
+	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
+//	memoryBram1[0] = 0x0;
+
+	//System state
+	u32SystemState = 0;
 
     while(1)
     {
@@ -117,14 +145,7 @@ int main()
 		XGpioPs_WritePin(&Gpio, ledpin, u32LedState);
 		u32LedState ^= 0x1;
 
-		//KEM test
-//		int result = kem_test(SYSTEM_NAME, KEM_TEST_ITERATIONS);
-//		if(result)
-//			print_debug(DEBUG_MAIN, "KEM succeed.\n\n");
-//		else
-//			print_debug(DEBUG_MAIN, "KEM failed.\n\n");
-
-		//Fqmul test
+//		----- Fqmul test
 //		int16_t i16OutputSw, i16OutputHw;
 //		uint32_t ui32Timer;
 //		for(int16_t i16Input1 = 0; i16Input1 <= 0xFFFF; i16Input1++)
@@ -152,25 +173,96 @@ int main()
 //				break;
 //		}
 
-		//BRAM test
-		uint16_t vec_test[4] = { 1 , 2 , 3 , 4 };
-		uint32_t * m;
-		m = (u32 *)vec_test;
-		for(int i = 0; i < 2; i++)
-		{
-			memoryBram[i] = m[i];
-			print_debug(DEBUG_MAIN, "[MAIN] memoryBram[%d]: 0x%08lx\n", i, m[i]);
-		}
+		//----- BRAM test
+//		poly r1;
+//		poly r2;
+////		//Initialize BRAM with data
+//		poly r_test = {0};
+//		for(int i = 0; i < 256; i = i + 4)
+//		{
+//			r_test.coeffs[i + 0] = 0x03fb;
+//			r_test.coeffs[i + 1] = 0x062e;
+//			r_test.coeffs[i + 2] = 0x0593;
+//			r_test.coeffs[i + 3] = 0x039b;
+//		}
+//
+//		memcpy(&r1, &r_test, 512);
+//		memcpy(&r2, &r_test, 512);
+//
+//		memset(memoryBram0, 0x0, 512);
+//		memset(memoryBram1, 0x0, 512);
 
-		u32 received;
-		for(int i = 0; i < 2; i++)
-		{
-			received = memoryBram[i];
-			print_debug(DEBUG_MAIN, "[MAIN] received[%d]: 0x%08lx\n", i, received);
-		}
+//		resetTimer(&XGpioGlobalTimer, 1);
+//		u32 u32Timer1 = getTimer(&XGpioGlobalTimer, 1);
+//		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer1 * 10);
+//		startTimer(&XGpioGlobalTimer, 1);
+//
+//		poly_tomont_hw(&r1);
+//
+//		stopTimer(&XGpioGlobalTimer, 1);
+//		u32Timer1 = getTimer(&XGpioGlobalTimer, 1);
 
-//		exit(0);
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] outside memoryBram1[%d]: 0x%08lx\n", i, memoryBram1[i]);
+//		}
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] poly1 result[%d]: 0x%04x\n", i, r1.coeffs[i]);
+//		}
 
+//		resetTimer(&XGpioGlobalTimer, 1);
+//		u32 u32Timer2 = getTimer(&XGpioGlobalTimer, 1);
+//		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer2 * 10);
+//		startTimer(&XGpioGlobalTimer, 1);
+//
+//		poly_tomont(&r2);
+//
+//		stopTimer(&XGpioGlobalTimer, 1);
+//		u32Timer2 = getTimer(&XGpioGlobalTimer, 1);
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] poly2 result[%d]: 0x%04x\n", i, r2.coeffs[i]);
+//		}
+
+//		if(memcmp(&r1, &r2, 512) != 0)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
+//			exit(0);
+//		}
+//		else
+//			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
+
+//		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer2 * 10);
+//		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer1 * 10);
+
+//		u32 r[4] = {0x00020001,0x00020001,0x00020001,0x00020001};
+//		memcpy(memoryBram0, r, 16);
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] memoryBram0 result[%d]: 0x%08x\n", i, memoryBram0[i]);
+//		}
+//		XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x1);
+//		XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x0);
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] memoryBram1 result[%d]: 0x%08x\n", i, memoryBram1[i]);
+//		}
+
+		//System state
+		if(u32SystemState & POLY_TOMONT_MASK)
+			print_debug(DEBUG_MAIN, "Poly tomont hardware used.\n");
+		else
+			print_debug(DEBUG_MAIN, "Poly tomont software used.\n");
+
+		//KEM test
+		int result = kem_test(SYSTEM_NAME, KEM_TEST_ITERATIONS);
+		if(result)
+			print_debug(DEBUG_MAIN, "KEM succeed.\n\n");
+		else
+			print_debug(DEBUG_MAIN, "KEM failed.\n\n");
+
+		u32SystemState++;
 		sleep(1);
     }
 

@@ -180,19 +180,12 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_ALL_INPUTS {0} \
    CONFIG.C_ALL_INPUTS_2 {0} \
-   CONFIG.C_ALL_OUTPUTS {1} \
+   CONFIG.C_ALL_OUTPUTS {0} \
    CONFIG.C_ALL_OUTPUTS_2 {1} \
    CONFIG.C_GPIO2_WIDTH {16} \
-   CONFIG.C_GPIO_WIDTH {16} \
-   CONFIG.C_IS_DUAL {1} \
+   CONFIG.C_GPIO_WIDTH {1} \
+   CONFIG.C_IS_DUAL {0} \
  ] $axi_gpio_1
-
-  # Create instance: axi_gpio_2, and set properties
-  set axi_gpio_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_2 ]
-  set_property -dict [ list \
-   CONFIG.C_ALL_INPUTS {1} \
-   CONFIG.C_GPIO_WIDTH {16} \
- ] $axi_gpio_2
 
   # Create instance: axi_interconnect_0, and set properties
   set axi_interconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0 ]
@@ -200,23 +193,29 @@ proc create_root_design { parentCell } {
    CONFIG.NUM_MI {4} \
  ] $axi_interconnect_0
 
-  # Create instance: bram_mm_0, and set properties
-  set bram_mm_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_mm:1.0 bram_mm_0 ]
-  set_property -dict [ list \
-   CONFIG.C_S00_AXI_ADDR_WIDTH {12} \
- ] $bram_mm_0
-
   # Create instance: bram_port_selector_0, and set properties
   set bram_port_selector_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_0 ]
+
+  # Create instance: bram_port_selector_1, and set properties
+  set bram_port_selector_1 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_1 ]
 
   # Create instance: double_signal_multip_0, and set properties
   set double_signal_multip_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_0 ]
 
-  # Create instance: fqmul_0, and set properties
-  set fqmul_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:fqmul:1.0 fqmul_0 ]
+  # Create instance: double_signal_multip_1, and set properties
+  set double_signal_multip_1 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_1 ]
+
+  # Create instance: dual_bram_0, and set properties
+  set dual_bram_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:dual_bram:1.0 dual_bram_0 ]
 
   # Create instance: montgomery_reduction_0, and set properties
   set montgomery_reduction_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:montgomery_reduction:1.0 montgomery_reduction_0 ]
+
+  # Create instance: montgomery_reduction_1, and set properties
+  set montgomery_reduction_1 [ create_bd_cell -type ip -vlnv xilinx.com:user:montgomery_reduction:1.0 montgomery_reduction_1 ]
+
+  # Create instance: poly_tomont_0, and set properties
+  set poly_tomont_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:poly_tomont:1.0 poly_tomont_0 ]
 
   # Create instance: proc_sys_reset_0, and set properties
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
@@ -604,6 +603,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_SINGLE_QSPI_DATA_MODE {x4} \
    CONFIG.PCW_SMC_PERIPHERAL_DIVISOR0 {1} \
    CONFIG.PCW_SPI_PERIPHERAL_DIVISOR0 {1} \
+   CONFIG.PCW_S_AXI_HP0_DATA_WIDTH {32} \
    CONFIG.PCW_TPIU_PERIPHERAL_DIVISOR0 {1} \
    CONFIG.PCW_TTC0_CLK0_PERIPHERAL_CLKSRC {CPU_1X} \
    CONFIG.PCW_TTC0_CLK0_PERIPHERAL_FREQMHZ {111.111115} \
@@ -674,6 +674,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_USB_RESET_SELECT {Share reset pin} \
    CONFIG.PCW_USE_M_AXI_GP0 {1} \
    CONFIG.PCW_USE_M_AXI_GP1 {0} \
+   CONFIG.PCW_USE_S_AXI_HP0 {0} \
  ] $processing_system7_0
 
   # Create instance: timer2_0, and set properties
@@ -681,31 +682,39 @@ proc create_root_design { parentCell } {
 
   # Create interface connections
   connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins axi_gpio_0/S_AXI] [get_bd_intf_pins axi_interconnect_0/M00_AXI]
-  connect_bd_intf_net -intf_net axi_interconnect_0_M01_AXI [get_bd_intf_pins axi_interconnect_0/M01_AXI] [get_bd_intf_pins bram_mm_0/S_AXI]
-  connect_bd_intf_net -intf_net axi_interconnect_0_M02_AXI [get_bd_intf_pins axi_gpio_1/S_AXI] [get_bd_intf_pins axi_interconnect_0/M02_AXI]
-  connect_bd_intf_net -intf_net axi_interconnect_0_M03_AXI [get_bd_intf_pins axi_gpio_2/S_AXI] [get_bd_intf_pins axi_interconnect_0/M03_AXI]
-  connect_bd_intf_net -intf_net bram_port_selector_0_BRAM_PORT_MASTER [get_bd_intf_pins bram_mm_0/BRAM_PORT_A] [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_MASTER]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M01_AXI [get_bd_intf_pins axi_interconnect_0/M01_AXI] [get_bd_intf_pins dual_bram_0/S00_AXI]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M02_AXI [get_bd_intf_pins axi_interconnect_0/M02_AXI] [get_bd_intf_pins dual_bram_0/S01_AXI]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M03_AXI [get_bd_intf_pins axi_gpio_1/S_AXI] [get_bd_intf_pins axi_interconnect_0/M03_AXI]
+  connect_bd_intf_net -intf_net bram_port_selector_0_BRAM_PORT_MASTER [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_MASTER] [get_bd_intf_pins dual_bram_0/BRAM_PORT_A]
+  connect_bd_intf_net -intf_net bram_port_selector_1_BRAM_PORT_MASTER [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_MASTER] [get_bd_intf_pins dual_bram_0/BRAM_PORT_B]
+  connect_bd_intf_net -intf_net poly_tomont_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_0] [get_bd_intf_pins poly_tomont_0/BRAM_PORT_A]
+  connect_bd_intf_net -intf_net poly_tomont_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_0] [get_bd_intf_pins poly_tomont_0/BRAM_PORT_B]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins processing_system7_0/M_AXI_GP0]
 
   # Create port connections
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins timer2_0/control]
-  connect_bd_net -net axi_gpio_1_gpio2_io_o [get_bd_pins axi_gpio_1/gpio2_io_o] [get_bd_pins fqmul_0/data_in_2]
-  connect_bd_net -net axi_gpio_1_gpio_io_o [get_bd_pins axi_gpio_1/gpio_io_o] [get_bd_pins fqmul_0/data_in_1]
-  connect_bd_net -net fqmul_0_data_out [get_bd_pins axi_gpio_2/gpio_io_i] [get_bd_pins fqmul_0/data_out]
-  connect_bd_net -net fqmul_0_data_out_mont [get_bd_pins fqmul_0/data_out_mont] [get_bd_pins montgomery_reduction_0/data_in]
-  connect_bd_net -net montgomery_reduction_0_data_out [get_bd_pins fqmul_0/data_in_mont] [get_bd_pins montgomery_reduction_0/data_out]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_gpio_2/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins bram_mm_0/s00_axi_aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins bram_mm_0/s00_axi_aclk] [get_bd_pins fqmul_0/clk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins timer2_0/clk]
+  connect_bd_net -net axi_gpio_1_gpio_io_o [get_bd_pins axi_gpio_1/gpio_io_o] [get_bd_pins poly_tomont_0/start]
+  connect_bd_net -net double_signal_multip_0_data_out [get_bd_pins double_signal_multip_0/data_out] [get_bd_pins montgomery_reduction_0/data_in]
+  connect_bd_net -net double_signal_multip_1_data_out [get_bd_pins double_signal_multip_1/data_out] [get_bd_pins montgomery_reduction_1/data_in]
+  connect_bd_net -net montgomery_reduction_0_data_out [get_bd_pins montgomery_reduction_0/data_out] [get_bd_pins poly_tomont_0/di_lower_mont]
+  connect_bd_net -net montgomery_reduction_1_data_out [get_bd_pins montgomery_reduction_1/data_out] [get_bd_pins poly_tomont_0/di_upper_mont]
+  connect_bd_net -net poly_tomont_0_busy [get_bd_pins axi_gpio_1/gpio_io_i] [get_bd_pins poly_tomont_0/busy]
+  connect_bd_net -net poly_tomont_0_do_lower_mont [get_bd_pins double_signal_multip_0/data_in_0] [get_bd_pins poly_tomont_0/do_lower_mont]
+  connect_bd_net -net poly_tomont_0_do_upper_mont [get_bd_pins double_signal_multip_1/data_in_0] [get_bd_pins poly_tomont_0/do_upper_mont]
+  connect_bd_net -net poly_tomont_0_en_lower_mont [get_bd_pins double_signal_multip_0/enable_in_0] [get_bd_pins poly_tomont_0/en_lower_mont]
+  connect_bd_net -net poly_tomont_0_en_upper_mont [get_bd_pins double_signal_multip_1/enable_in_0] [get_bd_pins poly_tomont_0/en_upper_mont]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins dual_bram_0/s00_axi_aresetn] [get_bd_pins dual_bram_0/s01_axi_aresetn] [get_bd_pins poly_tomont_0/aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins dual_bram_0/s00_axi_aclk] [get_bd_pins dual_bram_0/s01_axi_aclk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins montgomery_reduction_1/clk] [get_bd_pins poly_tomont_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins timer2_0/clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
   connect_bd_net -net timer2_0_count [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins timer2_0/count]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] SEG_axi_gpio_0_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x41210000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_1/S_AXI/Reg] SEG_axi_gpio_1_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x41220000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_2/S_AXI/Reg] SEG_axi_gpio_2_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs bram_mm_0/S00_AXI/S00_AXI_reg] SEG_bram_mm_0_S00_AXI_reg
+  create_bd_addr_seg -range 0x00001000 -offset 0x41200000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] SEG_axi_gpio_0_Reg
+  create_bd_addr_seg -range 0x00001000 -offset 0x41210000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_1/S_AXI/Reg] SEG_axi_gpio_1_Reg
+  create_bd_addr_seg -range 0x00020000 -offset 0x43C00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs dual_bram_0/S00_AXI/S00_AXI_reg] SEG_dual_bram_0_S00_AXI_reg
+  create_bd_addr_seg -range 0x00020000 -offset 0x43C20000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs dual_bram_0/S01_AXI/S01_AXI_reg] SEG_dual_bram_0_S01_AXI_reg
 
 
   # Restore current instance

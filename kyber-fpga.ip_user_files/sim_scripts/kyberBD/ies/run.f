@@ -77,17 +77,19 @@
   "../../../bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/sim/kyberBD_montgomery_reduction_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_axi_gpio_1_0/sim/kyberBD_axi_gpio_1_0.vhd" \
-  "../../../bd/kyberBD/ipshared/5447/hdl/fqmul_v1_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_fqmul_0_0/sim/kyberBD_fqmul_0_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_axi_gpio_2_0/sim/kyberBD_axi_gpio_2_0.vhd" \
-  "../../../bd/kyberBD/ipshared/96f5/hdl/bram_mm_v1_0_S00_AXI.vhd" \
-  "../../../bd/kyberBD/ipshared/96f5/src/true_dual_bram.vhd" \
-  "../../../bd/kyberBD/ipshared/96f5/hdl/bram_mm_v1_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_bram_mm_0_0/sim/kyberBD_bram_mm_0_0.vhd" \
   "../../../bd/kyberBD/ipshared/6b92/hdl/bram_port_selector_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/sim/kyberBD_bram_port_selector_0_0.vhd" \
-  "../../../bd/kyberBD/ipshared/5219/hdl/double_signal_multiplexer_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/sim/kyberBD_double_signal_multip_0_0.vhd" \
+  "../../../bd/kyberBD/ipshared/43e4/hdl/poly_tomont_v1_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_poly_tomont_0_0/sim/kyberBD_poly_tomont_0_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/sim/kyberBD_double_signal_multip_1_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/sim/kyberBD_bram_port_selector_1_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/sim/kyberBD_montgomery_reduction_1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd" \
+  "../../../bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd" \
+  "../../../bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_dual_bram_0_0/sim/kyberBD_dual_bram_0_0.vhd" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

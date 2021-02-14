@@ -1,8 +1,8 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Thu Feb 11 16:57:40 2021
---Host        : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
+--Date        : Sun Feb 14 19:55:32 2021
+--Host        : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
 --Purpose     : IP block netlist
@@ -228,9 +228,11 @@ entity m02_couplers_imp_EX380Y is
     M_ACLK : in STD_LOGIC;
     M_ARESETN : in STD_LOGIC;
     M_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M_AXI_arready : in STD_LOGIC;
     M_AXI_arvalid : out STD_LOGIC;
     M_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M_AXI_awready : in STD_LOGIC;
     M_AXI_awvalid : out STD_LOGIC;
     M_AXI_bready : out STD_LOGIC;
@@ -247,9 +249,11 @@ entity m02_couplers_imp_EX380Y is
     S_ACLK : in STD_LOGIC;
     S_ARESETN : in STD_LOGIC;
     S_AXI_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     S_AXI_arready : out STD_LOGIC;
     S_AXI_arvalid : in STD_LOGIC;
     S_AXI_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     S_AXI_awready : out STD_LOGIC;
     S_AXI_awvalid : in STD_LOGIC;
     S_AXI_bready : in STD_LOGIC;
@@ -268,9 +272,11 @@ end m02_couplers_imp_EX380Y;
 
 architecture STRUCTURE of m02_couplers_imp_EX380Y is
   signal m02_couplers_to_m02_couplers_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m02_couplers_to_m02_couplers_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m02_couplers_to_m02_couplers_ARREADY : STD_LOGIC;
   signal m02_couplers_to_m02_couplers_ARVALID : STD_LOGIC;
   signal m02_couplers_to_m02_couplers_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m02_couplers_to_m02_couplers_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m02_couplers_to_m02_couplers_AWREADY : STD_LOGIC;
   signal m02_couplers_to_m02_couplers_AWVALID : STD_LOGIC;
   signal m02_couplers_to_m02_couplers_BREADY : STD_LOGIC;
@@ -286,8 +292,10 @@ architecture STRUCTURE of m02_couplers_imp_EX380Y is
   signal m02_couplers_to_m02_couplers_WVALID : STD_LOGIC;
 begin
   M_AXI_araddr(31 downto 0) <= m02_couplers_to_m02_couplers_ARADDR(31 downto 0);
+  M_AXI_arprot(2 downto 0) <= m02_couplers_to_m02_couplers_ARPROT(2 downto 0);
   M_AXI_arvalid <= m02_couplers_to_m02_couplers_ARVALID;
   M_AXI_awaddr(31 downto 0) <= m02_couplers_to_m02_couplers_AWADDR(31 downto 0);
+  M_AXI_awprot(2 downto 0) <= m02_couplers_to_m02_couplers_AWPROT(2 downto 0);
   M_AXI_awvalid <= m02_couplers_to_m02_couplers_AWVALID;
   M_AXI_bready <= m02_couplers_to_m02_couplers_BREADY;
   M_AXI_rready <= m02_couplers_to_m02_couplers_RREADY;
@@ -303,9 +311,11 @@ begin
   S_AXI_rvalid <= m02_couplers_to_m02_couplers_RVALID;
   S_AXI_wready <= m02_couplers_to_m02_couplers_WREADY;
   m02_couplers_to_m02_couplers_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
+  m02_couplers_to_m02_couplers_ARPROT(2 downto 0) <= S_AXI_arprot(2 downto 0);
   m02_couplers_to_m02_couplers_ARREADY <= M_AXI_arready;
   m02_couplers_to_m02_couplers_ARVALID <= S_AXI_arvalid;
   m02_couplers_to_m02_couplers_AWADDR(31 downto 0) <= S_AXI_awaddr(31 downto 0);
+  m02_couplers_to_m02_couplers_AWPROT(2 downto 0) <= S_AXI_awprot(2 downto 0);
   m02_couplers_to_m02_couplers_AWREADY <= M_AXI_awready;
   m02_couplers_to_m02_couplers_AWVALID <= S_AXI_awvalid;
   m02_couplers_to_m02_couplers_BREADY <= S_AXI_bready;
@@ -788,9 +798,11 @@ entity kyberBD_axi_interconnect_0_0 is
     M02_ACLK : in STD_LOGIC;
     M02_ARESETN : in STD_LOGIC;
     M02_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M02_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M02_AXI_arready : in STD_LOGIC;
     M02_AXI_arvalid : out STD_LOGIC;
     M02_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M02_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M02_AXI_awready : in STD_LOGIC;
     M02_AXI_awvalid : out STD_LOGIC;
     M02_AXI_bready : out STD_LOGIC;
@@ -988,9 +1000,11 @@ architecture STRUCTURE of kyberBD_axi_interconnect_0_0 is
   signal m01_couplers_to_axi_interconnect_0_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal m01_couplers_to_axi_interconnect_0_WVALID : STD_LOGIC;
   signal m02_couplers_to_axi_interconnect_0_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m02_couplers_to_axi_interconnect_0_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m02_couplers_to_axi_interconnect_0_ARREADY : STD_LOGIC;
   signal m02_couplers_to_axi_interconnect_0_ARVALID : STD_LOGIC;
   signal m02_couplers_to_axi_interconnect_0_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m02_couplers_to_axi_interconnect_0_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m02_couplers_to_axi_interconnect_0_AWREADY : STD_LOGIC;
   signal m02_couplers_to_axi_interconnect_0_AWVALID : STD_LOGIC;
   signal m02_couplers_to_axi_interconnect_0_BREADY : STD_LOGIC;
@@ -1077,9 +1091,11 @@ architecture STRUCTURE of kyberBD_axi_interconnect_0_0 is
   signal xbar_to_m01_couplers_WSTRB : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal xbar_to_m01_couplers_WVALID : STD_LOGIC_VECTOR ( 1 to 1 );
   signal xbar_to_m02_couplers_ARADDR : STD_LOGIC_VECTOR ( 95 downto 64 );
+  signal xbar_to_m02_couplers_ARPROT : STD_LOGIC_VECTOR ( 8 downto 6 );
   signal xbar_to_m02_couplers_ARREADY : STD_LOGIC;
   signal xbar_to_m02_couplers_ARVALID : STD_LOGIC_VECTOR ( 2 to 2 );
   signal xbar_to_m02_couplers_AWADDR : STD_LOGIC_VECTOR ( 95 downto 64 );
+  signal xbar_to_m02_couplers_AWPROT : STD_LOGIC_VECTOR ( 8 downto 6 );
   signal xbar_to_m02_couplers_AWREADY : STD_LOGIC;
   signal xbar_to_m02_couplers_AWVALID : STD_LOGIC_VECTOR ( 2 to 2 );
   signal xbar_to_m02_couplers_BREADY : STD_LOGIC_VECTOR ( 2 to 2 );
@@ -1134,8 +1150,10 @@ begin
   M01_AXI_wstrb(3 downto 0) <= m01_couplers_to_axi_interconnect_0_WSTRB(3 downto 0);
   M01_AXI_wvalid <= m01_couplers_to_axi_interconnect_0_WVALID;
   M02_AXI_araddr(31 downto 0) <= m02_couplers_to_axi_interconnect_0_ARADDR(31 downto 0);
+  M02_AXI_arprot(2 downto 0) <= m02_couplers_to_axi_interconnect_0_ARPROT(2 downto 0);
   M02_AXI_arvalid <= m02_couplers_to_axi_interconnect_0_ARVALID;
   M02_AXI_awaddr(31 downto 0) <= m02_couplers_to_axi_interconnect_0_AWADDR(31 downto 0);
+  M02_AXI_awprot(2 downto 0) <= m02_couplers_to_axi_interconnect_0_AWPROT(2 downto 0);
   M02_AXI_awvalid <= m02_couplers_to_axi_interconnect_0_AWVALID;
   M02_AXI_bready <= m02_couplers_to_axi_interconnect_0_BREADY;
   M02_AXI_rready <= m02_couplers_to_axi_interconnect_0_RREADY;
@@ -1314,9 +1332,11 @@ m02_couplers: entity work.m02_couplers_imp_EX380Y
       M_ACLK => axi_interconnect_0_ACLK_net,
       M_ARESETN => axi_interconnect_0_ARESETN_net,
       M_AXI_araddr(31 downto 0) => m02_couplers_to_axi_interconnect_0_ARADDR(31 downto 0),
+      M_AXI_arprot(2 downto 0) => m02_couplers_to_axi_interconnect_0_ARPROT(2 downto 0),
       M_AXI_arready => m02_couplers_to_axi_interconnect_0_ARREADY,
       M_AXI_arvalid => m02_couplers_to_axi_interconnect_0_ARVALID,
       M_AXI_awaddr(31 downto 0) => m02_couplers_to_axi_interconnect_0_AWADDR(31 downto 0),
+      M_AXI_awprot(2 downto 0) => m02_couplers_to_axi_interconnect_0_AWPROT(2 downto 0),
       M_AXI_awready => m02_couplers_to_axi_interconnect_0_AWREADY,
       M_AXI_awvalid => m02_couplers_to_axi_interconnect_0_AWVALID,
       M_AXI_bready => m02_couplers_to_axi_interconnect_0_BREADY,
@@ -1333,9 +1353,11 @@ m02_couplers: entity work.m02_couplers_imp_EX380Y
       S_ACLK => axi_interconnect_0_ACLK_net,
       S_ARESETN => axi_interconnect_0_ARESETN_net,
       S_AXI_araddr(31 downto 0) => xbar_to_m02_couplers_ARADDR(95 downto 64),
+      S_AXI_arprot(2 downto 0) => xbar_to_m02_couplers_ARPROT(8 downto 6),
       S_AXI_arready => xbar_to_m02_couplers_ARREADY,
       S_AXI_arvalid => xbar_to_m02_couplers_ARVALID(2),
       S_AXI_awaddr(31 downto 0) => xbar_to_m02_couplers_AWADDR(95 downto 64),
+      S_AXI_awprot(2 downto 0) => xbar_to_m02_couplers_AWPROT(8 downto 6),
       S_AXI_awready => xbar_to_m02_couplers_AWREADY,
       S_AXI_awvalid => xbar_to_m02_couplers_AWVALID(2),
       S_AXI_bready => xbar_to_m02_couplers_BREADY(2),
@@ -1463,7 +1485,8 @@ xbar: component kyberBD_xbar_0
       m_axi_araddr(95 downto 64) => xbar_to_m02_couplers_ARADDR(95 downto 64),
       m_axi_araddr(63 downto 32) => xbar_to_m01_couplers_ARADDR(63 downto 32),
       m_axi_araddr(31 downto 0) => xbar_to_m00_couplers_ARADDR(31 downto 0),
-      m_axi_arprot(11 downto 6) => NLW_xbar_m_axi_arprot_UNCONNECTED(11 downto 6),
+      m_axi_arprot(11 downto 9) => NLW_xbar_m_axi_arprot_UNCONNECTED(11 downto 9),
+      m_axi_arprot(8 downto 6) => xbar_to_m02_couplers_ARPROT(8 downto 6),
       m_axi_arprot(5 downto 3) => xbar_to_m01_couplers_ARPROT(5 downto 3),
       m_axi_arprot(2 downto 0) => NLW_xbar_m_axi_arprot_UNCONNECTED(2 downto 0),
       m_axi_arready(3) => xbar_to_m03_couplers_ARREADY,
@@ -1478,7 +1501,8 @@ xbar: component kyberBD_xbar_0
       m_axi_awaddr(95 downto 64) => xbar_to_m02_couplers_AWADDR(95 downto 64),
       m_axi_awaddr(63 downto 32) => xbar_to_m01_couplers_AWADDR(63 downto 32),
       m_axi_awaddr(31 downto 0) => xbar_to_m00_couplers_AWADDR(31 downto 0),
-      m_axi_awprot(11 downto 6) => NLW_xbar_m_axi_awprot_UNCONNECTED(11 downto 6),
+      m_axi_awprot(11 downto 9) => NLW_xbar_m_axi_awprot_UNCONNECTED(11 downto 9),
+      m_axi_awprot(8 downto 6) => xbar_to_m02_couplers_AWPROT(8 downto 6),
       m_axi_awprot(5 downto 3) => xbar_to_m01_couplers_AWPROT(5 downto 3),
       m_axi_awprot(2 downto 0) => NLW_xbar_m_axi_awprot_UNCONNECTED(2 downto 0),
       m_axi_awready(3) => xbar_to_m03_couplers_AWREADY,
@@ -1583,7 +1607,7 @@ entity kyberBD is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=19,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=21,numReposBlks=15,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of kyberBD : entity is "kyberBD.hwdef";
 end kyberBD;
@@ -1729,8 +1753,9 @@ architecture STRUCTURE of kyberBD is
     s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : out STD_LOGIC;
     s_axi_rready : in STD_LOGIC;
-    gpio_io_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    gpio2_io_o : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    gpio_io_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    gpio_io_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    gpio_io_t : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component kyberBD_axi_gpio_1_0;
   component kyberBD_montgomery_reduction_0_0 is
@@ -1740,75 +1765,6 @@ architecture STRUCTURE of kyberBD is
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component kyberBD_montgomery_reduction_0_0;
-  component kyberBD_axi_gpio_2_0 is
-  port (
-    s_axi_aclk : in STD_LOGIC;
-    s_axi_aresetn : in STD_LOGIC;
-    s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    s_axi_awvalid : in STD_LOGIC;
-    s_axi_awready : out STD_LOGIC;
-    s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_wvalid : in STD_LOGIC;
-    s_axi_wready : out STD_LOGIC;
-    s_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_bvalid : out STD_LOGIC;
-    s_axi_bready : in STD_LOGIC;
-    s_axi_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    s_axi_arvalid : in STD_LOGIC;
-    s_axi_arready : out STD_LOGIC;
-    s_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_rvalid : out STD_LOGIC;
-    s_axi_rready : in STD_LOGIC;
-    gpio_io_i : in STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_axi_gpio_2_0;
-  component kyberBD_fqmul_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    data_in_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_in_2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_in_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_out_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_fqmul_0_0;
-  component kyberBD_bram_mm_0_0 is
-  port (
-    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_awvalid : in STD_LOGIC;
-    s00_axi_awready : out STD_LOGIC;
-    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s00_axi_wvalid : in STD_LOGIC;
-    s00_axi_wready : out STD_LOGIC;
-    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_bvalid : out STD_LOGIC;
-    s00_axi_bready : in STD_LOGIC;
-    s00_axi_araddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_arvalid : in STD_LOGIC;
-    s00_axi_arready : out STD_LOGIC;
-    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_rvalid : out STD_LOGIC;
-    s00_axi_rready : in STD_LOGIC;
-    s00_ena_bram : in STD_LOGIC;
-    s00_enb_bram : in STD_LOGIC;
-    s00_wea_bram : in STD_LOGIC;
-    s00_web_bram : in STD_LOGIC;
-    s00_addra_bram : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_addrb_bram : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_dia_bram : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_dib_bram : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_doa_bram : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_dob_bram : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_aclk : in STD_LOGIC;
-    s00_axi_aresetn : in STD_LOGIC
-  );
-  end component kyberBD_bram_mm_0_0;
   component kyberBD_bram_port_selector_0_0 is
   port (
     master_en : out STD_LOGIC;
@@ -1843,18 +1799,147 @@ architecture STRUCTURE of kyberBD is
     slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component kyberBD_bram_port_selector_0_0;
+  component kyberBD_bram_port_selector_1_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_en : in STD_LOGIC;
+    slave3_we : in STD_LOGIC;
+    slave3_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_en : in STD_LOGIC;
+    slave4_we : in STD_LOGIC;
+    slave4_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_1_0;
   component kyberBD_double_signal_multip_0_0 is
   port (
+    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_0 : in STD_LOGIC;
     data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     enable_in_1 : in STD_LOGIC;
-    data_in_2 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    enable_in_2 : in STD_LOGIC;
     data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component kyberBD_double_signal_multip_0_0;
+  component kyberBD_double_signal_multip_1_0 is
+  port (
+    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_0 : in STD_LOGIC;
+    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_1 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_double_signal_multip_1_0;
+  component kyberBD_montgomery_reduction_1_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_montgomery_reduction_1_0;
+  component kyberBD_poly_tomont_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    bram_ena : out STD_LOGIC;
+    bram_wea : out STD_LOGIC;
+    bram_addra : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    bram_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_enb : out STD_LOGIC;
+    bram_web : out STD_LOGIC;
+    bram_addrb : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    bram_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    do_lower_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    di_lower_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en_lower_mont : out STD_LOGIC;
+    do_upper_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    di_upper_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en_upper_mont : out STD_LOGIC;
+    start : in STD_LOGIC;
+    busy : out STD_LOGIC
+  );
+  end component kyberBD_poly_tomont_0_0;
+  component kyberBD_dual_bram_0_0 is
+  port (
+    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_awvalid : in STD_LOGIC;
+    s00_axi_awready : out STD_LOGIC;
+    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s00_axi_wvalid : in STD_LOGIC;
+    s00_axi_wready : out STD_LOGIC;
+    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_bvalid : out STD_LOGIC;
+    s00_axi_bready : in STD_LOGIC;
+    s00_axi_araddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_arvalid : in STD_LOGIC;
+    s00_axi_arready : out STD_LOGIC;
+    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_rvalid : out STD_LOGIC;
+    s00_axi_rready : in STD_LOGIC;
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC;
+    s01_axi_awaddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    s01_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s01_axi_awvalid : in STD_LOGIC;
+    s01_axi_awready : out STD_LOGIC;
+    s01_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s01_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s01_axi_wvalid : in STD_LOGIC;
+    s01_axi_wready : out STD_LOGIC;
+    s01_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s01_axi_bvalid : out STD_LOGIC;
+    s01_axi_bready : in STD_LOGIC;
+    s01_axi_araddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    s01_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s01_axi_arvalid : in STD_LOGIC;
+    s01_axi_arready : out STD_LOGIC;
+    s01_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s01_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s01_axi_rvalid : out STD_LOGIC;
+    s01_axi_rready : in STD_LOGIC;
+    s00_en_bram : in STD_LOGIC;
+    s00_we_bram : in STD_LOGIC;
+    s00_addr_bram : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s00_di_bram : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_do_bram : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s01_en_bram : in STD_LOGIC;
+    s01_we_bram : in STD_LOGIC;
+    s01_addr_bram : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s01_di_bram : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s01_do_bram : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s01_axi_aclk : in STD_LOGIC;
+    s01_axi_aresetn : in STD_LOGIC
+  );
+  end component kyberBD_dual_bram_0_0;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal axi_gpio_1_gpio2_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal axi_interconnect_0_M00_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_interconnect_0_M00_AXI_ARREADY : STD_LOGIC;
   signal axi_interconnect_0_M00_AXI_ARVALID : STD_LOGIC;
@@ -1892,9 +1977,11 @@ architecture STRUCTURE of kyberBD is
   signal axi_interconnect_0_M01_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_interconnect_0_M01_AXI_WVALID : STD_LOGIC;
   signal axi_interconnect_0_M02_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal axi_interconnect_0_M02_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal axi_interconnect_0_M02_AXI_ARREADY : STD_LOGIC;
   signal axi_interconnect_0_M02_AXI_ARVALID : STD_LOGIC;
   signal axi_interconnect_0_M02_AXI_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal axi_interconnect_0_M02_AXI_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal axi_interconnect_0_M02_AXI_AWREADY : STD_LOGIC;
   signal axi_interconnect_0_M02_AXI_AWVALID : STD_LOGIC;
   signal axi_interconnect_0_M02_AXI_BREADY : STD_LOGIC;
@@ -1930,9 +2017,30 @@ architecture STRUCTURE of kyberBD is
   signal bram_port_selector_0_BRAM_PORT_MASTER_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal bram_port_selector_0_BRAM_PORT_MASTER_EN : STD_LOGIC;
   signal bram_port_selector_0_BRAM_PORT_MASTER_WE : STD_LOGIC;
-  signal fqmul_0_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal fqmul_0_data_out_mont : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_port_selector_1_BRAM_PORT_MASTER_ADDR : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal bram_port_selector_1_BRAM_PORT_MASTER_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_port_selector_1_BRAM_PORT_MASTER_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_port_selector_1_BRAM_PORT_MASTER_EN : STD_LOGIC;
+  signal bram_port_selector_1_BRAM_PORT_MASTER_WE : STD_LOGIC;
+  signal double_signal_multip_0_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal double_signal_multip_1_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal montgomery_reduction_0_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal montgomery_reduction_1_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal poly_tomont_0_BRAM_PORT_A_ADDR : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal poly_tomont_0_BRAM_PORT_A_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal poly_tomont_0_BRAM_PORT_A_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal poly_tomont_0_BRAM_PORT_A_EN : STD_LOGIC;
+  signal poly_tomont_0_BRAM_PORT_A_WE : STD_LOGIC;
+  signal poly_tomont_0_BRAM_PORT_B_ADDR : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal poly_tomont_0_BRAM_PORT_B_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal poly_tomont_0_BRAM_PORT_B_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal poly_tomont_0_BRAM_PORT_B_EN : STD_LOGIC;
+  signal poly_tomont_0_BRAM_PORT_B_WE : STD_LOGIC;
+  signal poly_tomont_0_busy : STD_LOGIC;
+  signal poly_tomont_0_do_lower_mont : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal poly_tomont_0_do_upper_mont : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal poly_tomont_0_en_lower_mont : STD_LOGIC;
+  signal poly_tomont_0_en_upper_mont : STD_LOGIC;
   signal proc_sys_reset_0_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal processing_system7_0_DDR_BA : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -1997,13 +2105,15 @@ architecture STRUCTURE of kyberBD is
   signal processing_system7_0_M_AXI_GP0_WVALID : STD_LOGIC;
   signal timer2_0_count : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_axi_gpio_0_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_mm_0_s00_dob_bram_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_0_slave0_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_axi_gpio_1_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_bram_port_selector_0_slave1_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_port_selector_0_slave2_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_port_selector_0_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_port_selector_0_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_double_signal_multip_0_data_out_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_1_slave1_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_1_slave2_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_1_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_1_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2066,31 +2176,9 @@ axi_gpio_0: component kyberBD_axi_gpio_0_0
     );
 axi_gpio_1: component kyberBD_axi_gpio_1_0
      port map (
-      gpio2_io_o(15 downto 0) => axi_gpio_1_gpio2_io_o(15 downto 0),
-      gpio_io_o(15 downto 0) => axi_gpio_1_gpio_io_o(15 downto 0),
-      s_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s_axi_araddr(8 downto 0) => axi_interconnect_0_M02_AXI_ARADDR(8 downto 0),
-      s_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
-      s_axi_arready => axi_interconnect_0_M02_AXI_ARREADY,
-      s_axi_arvalid => axi_interconnect_0_M02_AXI_ARVALID,
-      s_axi_awaddr(8 downto 0) => axi_interconnect_0_M02_AXI_AWADDR(8 downto 0),
-      s_axi_awready => axi_interconnect_0_M02_AXI_AWREADY,
-      s_axi_awvalid => axi_interconnect_0_M02_AXI_AWVALID,
-      s_axi_bready => axi_interconnect_0_M02_AXI_BREADY,
-      s_axi_bresp(1 downto 0) => axi_interconnect_0_M02_AXI_BRESP(1 downto 0),
-      s_axi_bvalid => axi_interconnect_0_M02_AXI_BVALID,
-      s_axi_rdata(31 downto 0) => axi_interconnect_0_M02_AXI_RDATA(31 downto 0),
-      s_axi_rready => axi_interconnect_0_M02_AXI_RREADY,
-      s_axi_rresp(1 downto 0) => axi_interconnect_0_M02_AXI_RRESP(1 downto 0),
-      s_axi_rvalid => axi_interconnect_0_M02_AXI_RVALID,
-      s_axi_wdata(31 downto 0) => axi_interconnect_0_M02_AXI_WDATA(31 downto 0),
-      s_axi_wready => axi_interconnect_0_M02_AXI_WREADY,
-      s_axi_wstrb(3 downto 0) => axi_interconnect_0_M02_AXI_WSTRB(3 downto 0),
-      s_axi_wvalid => axi_interconnect_0_M02_AXI_WVALID
-    );
-axi_gpio_2: component kyberBD_axi_gpio_2_0
-     port map (
-      gpio_io_i(15 downto 0) => fqmul_0_data_out(15 downto 0),
+      gpio_io_i(0) => poly_tomont_0_busy,
+      gpio_io_o(0) => axi_gpio_1_gpio_io_o(0),
+      gpio_io_t(0) => NLW_axi_gpio_1_gpio_io_t_UNCONNECTED(0),
       s_axi_aclk => processing_system7_0_FCLK_CLK0,
       s_axi_araddr(8 downto 0) => axi_interconnect_0_M03_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
@@ -2158,9 +2246,11 @@ axi_interconnect_0: entity work.kyberBD_axi_interconnect_0_0
       M02_ACLK => processing_system7_0_FCLK_CLK0,
       M02_ARESETN => proc_sys_reset_0_peripheral_aresetn(0),
       M02_AXI_araddr(31 downto 0) => axi_interconnect_0_M02_AXI_ARADDR(31 downto 0),
+      M02_AXI_arprot(2 downto 0) => axi_interconnect_0_M02_AXI_ARPROT(2 downto 0),
       M02_AXI_arready => axi_interconnect_0_M02_AXI_ARREADY,
       M02_AXI_arvalid => axi_interconnect_0_M02_AXI_ARVALID,
       M02_AXI_awaddr(31 downto 0) => axi_interconnect_0_M02_AXI_AWADDR(31 downto 0),
+      M02_AXI_awprot(2 downto 0) => axi_interconnect_0_M02_AXI_AWPROT(2 downto 0),
       M02_AXI_awready => axi_interconnect_0_M02_AXI_AWREADY,
       M02_AXI_awvalid => axi_interconnect_0_M02_AXI_AWVALID,
       M02_AXI_bready => axi_interconnect_0_M02_AXI_BREADY,
@@ -2234,40 +2324,6 @@ axi_interconnect_0: entity work.kyberBD_axi_interconnect_0_0
       S00_AXI_wstrb(3 downto 0) => processing_system7_0_M_AXI_GP0_WSTRB(3 downto 0),
       S00_AXI_wvalid => processing_system7_0_M_AXI_GP0_WVALID
     );
-bram_mm_0: component kyberBD_bram_mm_0_0
-     port map (
-      s00_addra_bram(9 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_ADDR(9 downto 0),
-      s00_addrb_bram(9 downto 0) => B"0000000000",
-      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s00_axi_araddr(11 downto 0) => axi_interconnect_0_M01_AXI_ARADDR(11 downto 0),
-      s00_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
-      s00_axi_arprot(2 downto 0) => axi_interconnect_0_M01_AXI_ARPROT(2 downto 0),
-      s00_axi_arready => axi_interconnect_0_M01_AXI_ARREADY,
-      s00_axi_arvalid => axi_interconnect_0_M01_AXI_ARVALID,
-      s00_axi_awaddr(11 downto 0) => axi_interconnect_0_M01_AXI_AWADDR(11 downto 0),
-      s00_axi_awprot(2 downto 0) => axi_interconnect_0_M01_AXI_AWPROT(2 downto 0),
-      s00_axi_awready => axi_interconnect_0_M01_AXI_AWREADY,
-      s00_axi_awvalid => axi_interconnect_0_M01_AXI_AWVALID,
-      s00_axi_bready => axi_interconnect_0_M01_AXI_BREADY,
-      s00_axi_bresp(1 downto 0) => axi_interconnect_0_M01_AXI_BRESP(1 downto 0),
-      s00_axi_bvalid => axi_interconnect_0_M01_AXI_BVALID,
-      s00_axi_rdata(31 downto 0) => axi_interconnect_0_M01_AXI_RDATA(31 downto 0),
-      s00_axi_rready => axi_interconnect_0_M01_AXI_RREADY,
-      s00_axi_rresp(1 downto 0) => axi_interconnect_0_M01_AXI_RRESP(1 downto 0),
-      s00_axi_rvalid => axi_interconnect_0_M01_AXI_RVALID,
-      s00_axi_wdata(31 downto 0) => axi_interconnect_0_M01_AXI_WDATA(31 downto 0),
-      s00_axi_wready => axi_interconnect_0_M01_AXI_WREADY,
-      s00_axi_wstrb(3 downto 0) => axi_interconnect_0_M01_AXI_WSTRB(3 downto 0),
-      s00_axi_wvalid => axi_interconnect_0_M01_AXI_WVALID,
-      s00_dia_bram(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DIN(31 downto 0),
-      s00_dib_bram(31 downto 0) => B"00000000000000000000000000001000",
-      s00_doa_bram(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DOUT(31 downto 0),
-      s00_dob_bram(31 downto 0) => NLW_bram_mm_0_s00_dob_bram_UNCONNECTED(31 downto 0),
-      s00_ena_bram => bram_port_selector_0_BRAM_PORT_MASTER_EN,
-      s00_enb_bram => '0',
-      s00_wea_bram => bram_port_selector_0_BRAM_PORT_MASTER_WE,
-      s00_web_bram => '0'
-    );
 bram_port_selector_0: component kyberBD_bram_port_selector_0_0
      port map (
       master_addr(9 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_ADDR(9 downto 0),
@@ -2275,11 +2331,11 @@ bram_port_selector_0: component kyberBD_bram_port_selector_0_0
       master_do(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DOUT(31 downto 0),
       master_en => bram_port_selector_0_BRAM_PORT_MASTER_EN,
       master_we => bram_port_selector_0_BRAM_PORT_MASTER_WE,
-      slave0_addr(9 downto 0) => B"0000000000",
-      slave0_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave0_do(31 downto 0) => NLW_bram_port_selector_0_slave0_do_UNCONNECTED(31 downto 0),
-      slave0_en => '0',
-      slave0_we => '0',
+      slave0_addr(9 downto 0) => poly_tomont_0_BRAM_PORT_A_ADDR(9 downto 0),
+      slave0_di(31 downto 0) => poly_tomont_0_BRAM_PORT_A_DIN(31 downto 0),
+      slave0_do(31 downto 0) => poly_tomont_0_BRAM_PORT_A_DOUT(31 downto 0),
+      slave0_en => poly_tomont_0_BRAM_PORT_A_EN,
+      slave0_we => poly_tomont_0_BRAM_PORT_A_WE,
       slave1_addr(9 downto 0) => B"0000000000",
       slave1_di(31 downto 0) => B"00000000000000000000000000001000",
       slave1_do(31 downto 0) => NLW_bram_port_selector_0_slave1_do_UNCONNECTED(31 downto 0),
@@ -2301,28 +2357,144 @@ bram_port_selector_0: component kyberBD_bram_port_selector_0_0
       slave4_en => '0',
       slave4_we => '0'
     );
+bram_port_selector_1: component kyberBD_bram_port_selector_1_0
+     port map (
+      master_addr(9 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_ADDR(9 downto 0),
+      master_di(31 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_DIN(31 downto 0),
+      master_do(31 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_DOUT(31 downto 0),
+      master_en => bram_port_selector_1_BRAM_PORT_MASTER_EN,
+      master_we => bram_port_selector_1_BRAM_PORT_MASTER_WE,
+      slave0_addr(9 downto 0) => poly_tomont_0_BRAM_PORT_B_ADDR(9 downto 0),
+      slave0_di(31 downto 0) => poly_tomont_0_BRAM_PORT_B_DIN(31 downto 0),
+      slave0_do(31 downto 0) => poly_tomont_0_BRAM_PORT_B_DOUT(31 downto 0),
+      slave0_en => poly_tomont_0_BRAM_PORT_B_EN,
+      slave0_we => poly_tomont_0_BRAM_PORT_B_WE,
+      slave1_addr(9 downto 0) => B"0000000000",
+      slave1_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave1_do(31 downto 0) => NLW_bram_port_selector_1_slave1_do_UNCONNECTED(31 downto 0),
+      slave1_en => '0',
+      slave1_we => '0',
+      slave2_addr(9 downto 0) => B"0000000000",
+      slave2_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave2_do(31 downto 0) => NLW_bram_port_selector_1_slave2_do_UNCONNECTED(31 downto 0),
+      slave2_en => '0',
+      slave2_we => '0',
+      slave3_addr(9 downto 0) => B"0000000000",
+      slave3_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave3_do(31 downto 0) => NLW_bram_port_selector_1_slave3_do_UNCONNECTED(31 downto 0),
+      slave3_en => '0',
+      slave3_we => '0',
+      slave4_addr(9 downto 0) => B"0000000000",
+      slave4_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave4_do(31 downto 0) => NLW_bram_port_selector_1_slave4_do_UNCONNECTED(31 downto 0),
+      slave4_en => '0',
+      slave4_we => '0'
+    );
 double_signal_multip_0: component kyberBD_double_signal_multip_0_0
      port map (
+      data_in_0(31 downto 0) => poly_tomont_0_do_lower_mont(31 downto 0),
       data_in_1(31 downto 0) => B"00000000000000000000000000000000",
-      data_in_2(31 downto 0) => B"00000000000000000000000000000000",
-      data_out(31 downto 0) => NLW_double_signal_multip_0_data_out_UNCONNECTED(31 downto 0),
-      enable_in_1 => '0',
-      enable_in_2 => '0'
+      data_out(31 downto 0) => double_signal_multip_0_data_out(31 downto 0),
+      enable_in_0 => poly_tomont_0_en_lower_mont,
+      enable_in_1 => '0'
     );
-fqmul_0: component kyberBD_fqmul_0_0
+double_signal_multip_1: component kyberBD_double_signal_multip_1_0
      port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      data_in_1(15 downto 0) => axi_gpio_1_gpio_io_o(15 downto 0),
-      data_in_2(15 downto 0) => axi_gpio_1_gpio2_io_o(15 downto 0),
-      data_in_mont(15 downto 0) => montgomery_reduction_0_data_out(15 downto 0),
-      data_out(15 downto 0) => fqmul_0_data_out(15 downto 0),
-      data_out_mont(31 downto 0) => fqmul_0_data_out_mont(31 downto 0)
+      data_in_0(31 downto 0) => poly_tomont_0_do_upper_mont(31 downto 0),
+      data_in_1(31 downto 0) => B"00000000000000000000000000000000",
+      data_out(31 downto 0) => double_signal_multip_1_data_out(31 downto 0),
+      enable_in_0 => poly_tomont_0_en_upper_mont,
+      enable_in_1 => '0'
+    );
+dual_bram_0: component kyberBD_dual_bram_0_0
+     port map (
+      s00_addr_bram(9 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_ADDR(9 downto 0),
+      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s00_axi_araddr(11 downto 0) => axi_interconnect_0_M01_AXI_ARADDR(11 downto 0),
+      s00_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
+      s00_axi_arprot(2 downto 0) => axi_interconnect_0_M01_AXI_ARPROT(2 downto 0),
+      s00_axi_arready => axi_interconnect_0_M01_AXI_ARREADY,
+      s00_axi_arvalid => axi_interconnect_0_M01_AXI_ARVALID,
+      s00_axi_awaddr(11 downto 0) => axi_interconnect_0_M01_AXI_AWADDR(11 downto 0),
+      s00_axi_awprot(2 downto 0) => axi_interconnect_0_M01_AXI_AWPROT(2 downto 0),
+      s00_axi_awready => axi_interconnect_0_M01_AXI_AWREADY,
+      s00_axi_awvalid => axi_interconnect_0_M01_AXI_AWVALID,
+      s00_axi_bready => axi_interconnect_0_M01_AXI_BREADY,
+      s00_axi_bresp(1 downto 0) => axi_interconnect_0_M01_AXI_BRESP(1 downto 0),
+      s00_axi_bvalid => axi_interconnect_0_M01_AXI_BVALID,
+      s00_axi_rdata(31 downto 0) => axi_interconnect_0_M01_AXI_RDATA(31 downto 0),
+      s00_axi_rready => axi_interconnect_0_M01_AXI_RREADY,
+      s00_axi_rresp(1 downto 0) => axi_interconnect_0_M01_AXI_RRESP(1 downto 0),
+      s00_axi_rvalid => axi_interconnect_0_M01_AXI_RVALID,
+      s00_axi_wdata(31 downto 0) => axi_interconnect_0_M01_AXI_WDATA(31 downto 0),
+      s00_axi_wready => axi_interconnect_0_M01_AXI_WREADY,
+      s00_axi_wstrb(3 downto 0) => axi_interconnect_0_M01_AXI_WSTRB(3 downto 0),
+      s00_axi_wvalid => axi_interconnect_0_M01_AXI_WVALID,
+      s00_di_bram(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DIN(31 downto 0),
+      s00_do_bram(31 downto 0) => bram_port_selector_0_BRAM_PORT_MASTER_DOUT(31 downto 0),
+      s00_en_bram => bram_port_selector_0_BRAM_PORT_MASTER_EN,
+      s00_we_bram => bram_port_selector_0_BRAM_PORT_MASTER_WE,
+      s01_addr_bram(9 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_ADDR(9 downto 0),
+      s01_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s01_axi_araddr(11 downto 0) => axi_interconnect_0_M02_AXI_ARADDR(11 downto 0),
+      s01_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
+      s01_axi_arprot(2 downto 0) => axi_interconnect_0_M02_AXI_ARPROT(2 downto 0),
+      s01_axi_arready => axi_interconnect_0_M02_AXI_ARREADY,
+      s01_axi_arvalid => axi_interconnect_0_M02_AXI_ARVALID,
+      s01_axi_awaddr(11 downto 0) => axi_interconnect_0_M02_AXI_AWADDR(11 downto 0),
+      s01_axi_awprot(2 downto 0) => axi_interconnect_0_M02_AXI_AWPROT(2 downto 0),
+      s01_axi_awready => axi_interconnect_0_M02_AXI_AWREADY,
+      s01_axi_awvalid => axi_interconnect_0_M02_AXI_AWVALID,
+      s01_axi_bready => axi_interconnect_0_M02_AXI_BREADY,
+      s01_axi_bresp(1 downto 0) => axi_interconnect_0_M02_AXI_BRESP(1 downto 0),
+      s01_axi_bvalid => axi_interconnect_0_M02_AXI_BVALID,
+      s01_axi_rdata(31 downto 0) => axi_interconnect_0_M02_AXI_RDATA(31 downto 0),
+      s01_axi_rready => axi_interconnect_0_M02_AXI_RREADY,
+      s01_axi_rresp(1 downto 0) => axi_interconnect_0_M02_AXI_RRESP(1 downto 0),
+      s01_axi_rvalid => axi_interconnect_0_M02_AXI_RVALID,
+      s01_axi_wdata(31 downto 0) => axi_interconnect_0_M02_AXI_WDATA(31 downto 0),
+      s01_axi_wready => axi_interconnect_0_M02_AXI_WREADY,
+      s01_axi_wstrb(3 downto 0) => axi_interconnect_0_M02_AXI_WSTRB(3 downto 0),
+      s01_axi_wvalid => axi_interconnect_0_M02_AXI_WVALID,
+      s01_di_bram(31 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_DIN(31 downto 0),
+      s01_do_bram(31 downto 0) => bram_port_selector_1_BRAM_PORT_MASTER_DOUT(31 downto 0),
+      s01_en_bram => bram_port_selector_1_BRAM_PORT_MASTER_EN,
+      s01_we_bram => bram_port_selector_1_BRAM_PORT_MASTER_WE
     );
 montgomery_reduction_0: component kyberBD_montgomery_reduction_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      data_in(31 downto 0) => fqmul_0_data_out_mont(31 downto 0),
+      data_in(31 downto 0) => double_signal_multip_0_data_out(31 downto 0),
       data_out(15 downto 0) => montgomery_reduction_0_data_out(15 downto 0)
+    );
+montgomery_reduction_1: component kyberBD_montgomery_reduction_1_0
+     port map (
+      clk => processing_system7_0_FCLK_CLK0,
+      data_in(31 downto 0) => double_signal_multip_1_data_out(31 downto 0),
+      data_out(15 downto 0) => montgomery_reduction_1_data_out(15 downto 0)
+    );
+poly_tomont_0: component kyberBD_poly_tomont_0_0
+     port map (
+      aresetn => proc_sys_reset_0_peripheral_aresetn(0),
+      bram_addra(9 downto 0) => poly_tomont_0_BRAM_PORT_A_ADDR(9 downto 0),
+      bram_addrb(9 downto 0) => poly_tomont_0_BRAM_PORT_B_ADDR(9 downto 0),
+      bram_dia(31 downto 0) => poly_tomont_0_BRAM_PORT_A_DIN(31 downto 0),
+      bram_dib(31 downto 0) => poly_tomont_0_BRAM_PORT_B_DIN(31 downto 0),
+      bram_doa(31 downto 0) => poly_tomont_0_BRAM_PORT_A_DOUT(31 downto 0),
+      bram_dob(31 downto 0) => poly_tomont_0_BRAM_PORT_B_DOUT(31 downto 0),
+      bram_ena => poly_tomont_0_BRAM_PORT_A_EN,
+      bram_enb => poly_tomont_0_BRAM_PORT_B_EN,
+      bram_wea => poly_tomont_0_BRAM_PORT_A_WE,
+      bram_web => poly_tomont_0_BRAM_PORT_B_WE,
+      busy => poly_tomont_0_busy,
+      clk => processing_system7_0_FCLK_CLK0,
+      di_lower_mont(15 downto 0) => montgomery_reduction_0_data_out(15 downto 0),
+      di_upper_mont(15 downto 0) => montgomery_reduction_1_data_out(15 downto 0),
+      do_lower_mont(31 downto 0) => poly_tomont_0_do_lower_mont(31 downto 0),
+      do_upper_mont(31 downto 0) => poly_tomont_0_do_upper_mont(31 downto 0),
+      en_lower_mont => poly_tomont_0_en_lower_mont,
+      en_upper_mont => poly_tomont_0_en_upper_mont,
+      start => axi_gpio_1_gpio_io_o(0)
     );
 proc_sys_reset_0: component kyberBD_proc_sys_reset_0_0
      port map (

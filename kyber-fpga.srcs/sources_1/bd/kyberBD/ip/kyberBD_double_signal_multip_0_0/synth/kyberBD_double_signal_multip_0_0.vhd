@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:double_signal_multiplexer:1.0
--- IP Revision: 2
+-- IP Revision: 3
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,10 +55,10 @@ USE ieee.numeric_std.ALL;
 
 ENTITY kyberBD_double_signal_multip_0_0 IS
   PORT (
+    data_in_0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    enable_in_0 : IN STD_LOGIC;
     data_in_1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     enable_in_1 : IN STD_LOGIC;
-    data_in_2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    enable_in_2 : IN STD_LOGIC;
     data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END kyberBD_double_signal_multip_0_0;
@@ -71,10 +71,10 @@ ARCHITECTURE kyberBD_double_signal_multip_0_0_arch OF kyberBD_double_signal_mult
       DATA_WIDTH : INTEGER
     );
     PORT (
+      data_in_0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      enable_in_0 : IN STD_LOGIC;
       data_in_1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       enable_in_1 : IN STD_LOGIC;
-      data_in_2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      enable_in_2 : IN STD_LOGIC;
       data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT double_signal_multiplexer_v1_0;
@@ -83,17 +83,17 @@ ARCHITECTURE kyberBD_double_signal_multip_0_0_arch OF kyberBD_double_signal_mult
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_double_signal_multip_0_0_arch : ARCHITECTURE IS "kyberBD_double_signal_multip_0_0,double_signal_multiplexer_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_double_signal_multip_0_0_arch: ARCHITECTURE IS "kyberBD_double_signal_multip_0_0,double_signal_multiplexer_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=double_signal_multiplexer,x_ipVersion=1.0,x_ipCoreRevision=2,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_double_signal_multip_0_0_arch: ARCHITECTURE IS "kyberBD_double_signal_multip_0_0,double_signal_multiplexer_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=double_signal_multiplexer,x_ipVersion=1.0,x_ipCoreRevision=3,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32}";
 BEGIN
   U0 : double_signal_multiplexer_v1_0
     GENERIC MAP (
       DATA_WIDTH => 32
     )
     PORT MAP (
+      data_in_0 => data_in_0,
+      enable_in_0 => enable_in_0,
       data_in_1 => data_in_1,
       enable_in_1 => enable_in_1,
-      data_in_2 => data_in_2,
-      enable_in_2 => enable_in_2,
       data_out => data_out
     );
 END kyberBD_double_signal_multip_0_0_arch;
