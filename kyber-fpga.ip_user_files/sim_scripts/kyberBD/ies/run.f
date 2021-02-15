@@ -90,15 +90,16 @@
   "../../../bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd" \
   "../../../bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_dual_bram_0_0/sim/kyberBD_dual_bram_0_0.vhd" \
+  "../../../bd/kyberBD/ipshared/8a95/hdl/barret_reduce_v1_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_barret_reduce_0_0/sim/kyberBD_barret_reduce_0_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_axi_gpio_2_0/sim/kyberBD_axi_gpio_2_0.vhd" \
+  "../../../bd/kyberBD/sim/kyberBD.vhd" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/kyberBD/ip/kyberBD_auto_pc_0/sim/kyberBD_auto_pc_0.v" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/kyberBD/sim/kyberBD.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v
