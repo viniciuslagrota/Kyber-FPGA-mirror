@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Sun Feb 14 19:55:33 2021
+--Date        : Mon Feb 15 14:29:57 2021
 --Host        : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -1858,30 +1858,6 @@ architecture STRUCTURE of kyberBD is
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component kyberBD_montgomery_reduction_1_0;
-  component kyberBD_poly_tomont_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    bram_ena : out STD_LOGIC;
-    bram_wea : out STD_LOGIC;
-    bram_addra : out STD_LOGIC_VECTOR ( 9 downto 0 );
-    bram_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_enb : out STD_LOGIC;
-    bram_web : out STD_LOGIC;
-    bram_addrb : out STD_LOGIC_VECTOR ( 9 downto 0 );
-    bram_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    do_lower_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    di_lower_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_lower_mont : out STD_LOGIC;
-    do_upper_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    di_upper_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_upper_mont : out STD_LOGIC;
-    start : in STD_LOGIC;
-    busy : out STD_LOGIC
-  );
-  end component kyberBD_poly_tomont_0_0;
   component kyberBD_dual_bram_0_0 is
   port (
     s00_axi_awaddr : in STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -1938,6 +1914,30 @@ architecture STRUCTURE of kyberBD is
     s01_axi_aresetn : in STD_LOGIC
   );
   end component kyberBD_dual_bram_0_0;
+  component kyberBD_poly_tomont_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    bram_ena : out STD_LOGIC;
+    bram_wea : out STD_LOGIC;
+    bram_addra : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    bram_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_enb : out STD_LOGIC;
+    bram_web : out STD_LOGIC;
+    bram_addrb : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    bram_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    do_lower_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    di_lower_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en_lower_mont : out STD_LOGIC;
+    do_upper_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    di_upper_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en_upper_mont : out STD_LOGIC;
+    start : in STD_LOGIC;
+    busy : out STD_LOGIC
+  );
+  end component kyberBD_poly_tomont_0_0;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal axi_interconnect_0_M00_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );

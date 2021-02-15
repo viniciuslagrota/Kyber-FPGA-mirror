@@ -81,7 +81,7 @@
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/sim/kyberBD_bram_port_selector_0_0.vhd" \
   "../../../bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/sim/kyberBD_double_signal_multip_0_0.vhd" \
-  "../../../bd/kyberBD/ipshared/43e4/hdl/poly_tomont_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_poly_tomont_0_0/sim/kyberBD_poly_tomont_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/sim/kyberBD_double_signal_multip_1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/sim/kyberBD_bram_port_selector_1_0.vhd" \

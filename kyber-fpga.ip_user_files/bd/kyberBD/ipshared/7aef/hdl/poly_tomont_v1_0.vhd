@@ -134,14 +134,14 @@ begin
                 s_bram_dia   <= (others => '0');
             else
                 if(start = '1') then
-                    if(s_bram_addra < "0011111111") then -- 255
+                    if(s_bram_addra < "0001111111") then -- 127
                         s_bram_ena   <= '1';
                     else
                         s_bram_ena   <= '0';
                     end if;
                     s_bram_wea   <= '0';
                     if(s_bram_ena = '1') then
-                        if(s_bram_addra < "0011111111") then -- 255
+                        if(s_bram_addra < "0001111111") then -- 127
                             s_bram_addra <= std_logic_vector(unsigned(s_bram_addra) + 1);
                         end if;
                     end if;

@@ -207,6 +207,10 @@ proc create_root_design { parentCell } {
 
   # Create instance: dual_bram_0, and set properties
   set dual_bram_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:dual_bram:1.0 dual_bram_0 ]
+  set_property -dict [ list \
+   CONFIG.C_S00_AXI_ADDR_WIDTH {12} \
+   CONFIG.C_S01_AXI_ADDR_WIDTH {12} \
+ ] $dual_bram_0
 
   # Create instance: montgomery_reduction_0, and set properties
   set montgomery_reduction_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:montgomery_reduction:1.0 montgomery_reduction_0 ]
