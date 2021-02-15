@@ -53,6 +53,7 @@
 #include "platform.h"
 #include "include/global_def.h"
 #include "include/poly.h"
+#include "include/polyvec.h"
 
 //////////////////////////////////////////////
 //
@@ -95,6 +96,7 @@ int main()
 
     //---- Configure Kyber K ----
 	configKyberK(XGpioConfigKyberK, &XGpioKyberK, XPAR_AXI_GPIO_1_DEVICE_ID, 1);
+	print_debug(DEBUG_MAIN, "[MAIN] Parameter KYBER_K: %ld.\n", XGpio_DiscreteRead(&XGpioKyberK, 1));
 
     //Poly tomont
     XGpioConfigPolyTomont = XGpio_LookupConfig(XPAR_AXI_GPIO_2_DEVICE_ID);
@@ -225,36 +227,64 @@ int main()
 //			print_debug(DEBUG_MAIN, "[MAIN] memoryBram1 result[%d]: 0x%08x\n", i, memoryBram1[i]);
 //		}
 
-		//Test barret-reduce
-		for(uint16_t i = 0; i < 0xffff; i++)
-		{
-			print_debug(DEBUG_MAIN, "It: 0x%04x.\n", (int16_t)i);
-			XGpio_DiscreteWrite(&XGpioPolyTomont, 2, (int16_t)i);
-			u32 u32Read = XGpio_DiscreteRead(&XGpioPolyTomont, 2);
-			int16_t i16BarretHw = (int16_t)u32Read;
-			print_debug(DEBUG_MAIN, "Barrett reduce hw: 0x%04x.\n", i16BarretHw);
-			int16_t i16BarretSw = barrett_reduce((int16_t)i);
-			print_debug(DEBUG_MAIN, "Barrett reduce sw: 0x%04x.\n", i16BarretSw);
-			if(i16BarretHw != i16BarretSw)
-			{
-				print_debug(DEBUG_MAIN, "Error in 0x%04x.\n", (int16_t)i);
-				exit(0);
-			}
-		}
+//		//Test barret-reduce
+//		for(uint16_t i = 0; i < 0xffff; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "It: 0x%04x.\n", (int16_t)i);
+//			XGpio_DiscreteWrite(&XGpioPolyTomont, 2, (int16_t)i);
+//			u32 u32Read = XGpio_DiscreteRead(&XGpioPolyTomont, 2);
+//			int16_t i16BarretHw = (int16_t)u32Read;
+//			print_debug(DEBUG_MAIN, "Barrett reduce hw: 0x%04x.\n", i16BarretHw);
+//			int16_t i16BarretSw = barrett_reduce((int16_t)i);
+//			print_debug(DEBUG_MAIN, "Barrett reduce sw: 0x%04x.\n", i16BarretSw);
+//			if(i16BarretHw != i16BarretSw)
+//			{
+//				print_debug(DEBUG_MAIN, "Error in 0x%04x.\n", (int16_t)i);
+//				exit(0);
+//			}
+//		}
+
+		//Test poly reduce
+		polyvec r;
+		r.vec[0].coeffs[0] = 0x0141;
+		r.vec[0].coeffs[1] = 0xf141;
+		r.vec[1].coeffs[254] = 0x0141;
+		r.vec[1].coeffs[255] = 0xf141;
+
+		memcpy(memoryBram0, (u32 *)&r, 1024);
+
+		//Start flag up
+		XGpio_DiscreteWrite(&XGpioPolyTomont, 2, 0x1);
+
+		//Read busy signal
+		u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 2);
+		while(u32ReadGpio == 1)
+			u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 2);
+
+		//Start flag down
+		XGpio_DiscreteWrite(&XGpioPolyTomont, 2, 0x0);
+
+		memcpy(&r, (polyvec *)memoryBram1, 1024);
+
+		print_debug(DEBUG_MAIN, "r.vec[0].coeffs[0]: 0x%04x\n", r.vec[0].coeffs[0]);
+		print_debug(DEBUG_MAIN, "r.vec[0].coeffs[1]: 0x%04x\n", r.vec[0].coeffs[1]);
+		print_debug(DEBUG_MAIN, "r.vec[1].coeffs[254]: 0x%04x\n", r.vec[1].coeffs[254]);
+		print_debug(DEBUG_MAIN, "r.vec[1].coeffs[255]: 0x%04x\n", r.vec[1].coeffs[255]);
+		//
 
 
-		//System state
-		if(u32SystemState & POLY_TOMONT_MASK)
-			print_debug(DEBUG_MAIN, "Poly tomont hardware used.\n");
-		else
-			print_debug(DEBUG_MAIN, "Poly tomont software used.\n");
-
-		//KEM test
-		int result = kem_test(SYSTEM_NAME, KEM_TEST_ITERATIONS);
-		if(result)
-			print_debug(DEBUG_MAIN, "KEM succeed.\n\n");
-		else
-			print_debug(DEBUG_MAIN, "KEM failed.\n\n");
+//		//System state
+//		if(u32SystemState & POLY_TOMONT_MASK)
+//			print_debug(DEBUG_MAIN, "Poly tomont hardware used.\n");
+//		else
+//			print_debug(DEBUG_MAIN, "Poly tomont software used.\n");
+//
+//		//KEM test
+//		int result = kem_test(SYSTEM_NAME, KEM_TEST_ITERATIONS);
+//		if(result)
+//			print_debug(DEBUG_MAIN, "KEM succeed.\n\n");
+//		else
+//			print_debug(DEBUG_MAIN, "KEM failed.\n\n");
 
 		u32SystemState++;
 		sleep(1);

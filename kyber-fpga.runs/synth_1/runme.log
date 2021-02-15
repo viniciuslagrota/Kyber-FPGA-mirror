@@ -10,6 +10,8 @@
 
 source kyberBD_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barrett_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_reduce_1.0'. The path is contained within another repository.
 WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barret_reduce_1.0'. The path is contained within another repository.
 WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/dual_bram_1.0'. The path is contained within another repository.
 WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/poly_tomont_1.0'. The path is contained within another repository.
@@ -30,14 +32,14 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 7444 
+INFO: Helper process launched with PID 15196 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 735.004 ; gain = 177.281
+Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 735.137 ; gain = 177.379
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'kyberBD_wrapper' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:40]
 INFO: [Synth 8-3491] module 'kyberBD' declared at 'C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1814' bound to instance 'kyberBD_i' of component 'kyberBD' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:67]
 INFO: [Synth 8-638] synthesizing module 'kyberBD' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1844]
-INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:59' bound to instance 'axi_gpio_0' of component 'kyberBD_axi_gpio_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2436]
+INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:59' bound to instance 'axi_gpio_0' of component 'kyberBD_axi_gpio_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2505]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:86]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
@@ -477,8 +479,8 @@ WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT0_ND.READ_REG_G
 INFO: [Synth 8-256] done synthesizing module 'GPIO_Core' (6#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:178]
 INFO: [Synth 8-256] done synthesizing module 'axi_gpio' (7#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1351]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_gpio_0_0' (8#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_0_0/synth/kyberBD_axi_gpio_0_0.vhd:86]
-INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:59' bound to instance 'axi_gpio_1' of component 'kyberBD_axi_gpio_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2461]
-INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:84]
+INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:59' bound to instance 'axi_gpio_1' of component 'kyberBD_axi_gpio_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2530]
+INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:86]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
@@ -486,7 +488,7 @@ INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_1_0' [c:/Projects/kybe
 	Parameter C_GPIO2_WIDTH bound to: 16 - type: integer 
 	Parameter C_ALL_INPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_INPUTS_2 bound to: 0 - type: integer 
-	Parameter C_ALL_OUTPUTS bound to: 1 - type: integer 
+	Parameter C_ALL_OUTPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_OUTPUTS_2 bound to: 1 - type: integer 
 	Parameter C_INTERRUPT_PRESENT bound to: 0 - type: integer 
 	Parameter C_DOUT_DEFAULT bound to: 32'b00000000000000000000000000000000 
@@ -494,7 +496,7 @@ INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_1_0' [c:/Projects/kybe
 	Parameter C_IS_DUAL bound to: 0 - type: integer 
 	Parameter C_DOUT_DEFAULT_2 bound to: 32'b00000000000000000000000000000000 
 	Parameter C_TRI_DEFAULT_2 bound to: 32'b11111111111111111111111111111111 
-INFO: [Synth 8-3491] module 'axi_gpio' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1265' bound to instance 'U0' of component 'axi_gpio' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:168]
+INFO: [Synth 8-3491] module 'axi_gpio' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1265' bound to instance 'U0' of component 'axi_gpio' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:172]
 INFO: [Synth 8-638] synthesizing module 'axi_gpio__parameterized1' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1351]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
@@ -503,7 +505,7 @@ INFO: [Synth 8-638] synthesizing module 'axi_gpio__parameterized1' [c:/Projects/
 	Parameter C_GPIO2_WIDTH bound to: 16 - type: integer 
 	Parameter C_ALL_INPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_INPUTS_2 bound to: 0 - type: integer 
-	Parameter C_ALL_OUTPUTS bound to: 1 - type: integer 
+	Parameter C_ALL_OUTPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_OUTPUTS_2 bound to: 1 - type: integer 
 	Parameter C_INTERRUPT_PRESENT bound to: 0 - type: integer 
 	Parameter C_DOUT_DEFAULT bound to: 0 - type: integer 
@@ -521,7 +523,7 @@ INFO: [Synth 8-638] synthesizing module 'GPIO_Core__parameterized0' [c:/Projects
 	Parameter C_DOUT_DEFAULT bound to: 0 - type: integer 
 	Parameter C_TRI_DEFAULT bound to: -1 - type: integer 
 	Parameter C_IS_DUAL bound to: 0 - type: integer 
-	Parameter C_ALL_OUTPUTS bound to: 1 - type: integer 
+	Parameter C_ALL_OUTPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_OUTPUTS_2 bound to: 1 - type: integer 
 	Parameter C_ALL_INPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_INPUTS_2 bound to: 0 - type: integer 
@@ -555,20 +557,19 @@ INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized0' [c:/Projects/
 	Parameter INIT bound to: 1'b0 
 	Parameter INIT bound to: 1'b0 
 INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized0' (8#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
-WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT_ND.READ_REG_GEN[0].GPIO_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:319]
-WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT_ND.READ_REG_GEN[1].GPIO_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:319]
-WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT_ND.READ_REG_GEN[2].GPIO_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:319]
-WARNING: [Synth 8-6014] Unused sequential element Not_Dual.gpio_Data_In_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:486]
+WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT0_ND.READ_REG_GEN[0].GPIO_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:384]
+WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT0_ND.READ_REG_GEN[1].GPIO_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:384]
+WARNING: [Synth 8-6014] Unused sequential element Not_Dual.ALLOUT0_ND.READ_REG_GEN[2].GPIO_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:384]
 INFO: [Synth 8-256] done synthesizing module 'GPIO_Core__parameterized0' (8#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:178]
 INFO: [Synth 8-256] done synthesizing module 'axi_gpio__parameterized1' (8#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1351]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_gpio_1_0' (9#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:84]
-INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_2_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/synth/kyberBD_axi_gpio_2_0.vhd:59' bound to instance 'axi_gpio_2' of component 'kyberBD_axi_gpio_2_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2484]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_gpio_1_0' (9#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_1_0/synth/kyberBD_axi_gpio_1_0.vhd:86]
+INFO: [Synth 8-3491] module 'kyberBD_axi_gpio_2_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/synth/kyberBD_axi_gpio_2_0.vhd:59' bound to instance 'axi_gpio_2' of component 'kyberBD_axi_gpio_2_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2555]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_axi_gpio_2_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/synth/kyberBD_axi_gpio_2_0.vhd:89]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_GPIO_WIDTH bound to: 1 - type: integer 
-	Parameter C_GPIO2_WIDTH bound to: 16 - type: integer 
+	Parameter C_GPIO2_WIDTH bound to: 1 - type: integer 
 	Parameter C_ALL_INPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_INPUTS_2 bound to: 0 - type: integer 
 	Parameter C_ALL_OUTPUTS bound to: 0 - type: integer 
@@ -585,7 +586,7 @@ INFO: [Synth 8-638] synthesizing module 'axi_gpio__parameterized3' [c:/Projects/
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_GPIO_WIDTH bound to: 1 - type: integer 
-	Parameter C_GPIO2_WIDTH bound to: 16 - type: integer 
+	Parameter C_GPIO2_WIDTH bound to: 1 - type: integer 
 	Parameter C_ALL_INPUTS bound to: 0 - type: integer 
 	Parameter C_ALL_INPUTS_2 bound to: 0 - type: integer 
 	Parameter C_ALL_OUTPUTS bound to: 0 - type: integer 
@@ -600,8 +601,8 @@ INFO: [Synth 8-638] synthesizing module 'GPIO_Core__parameterized1' [c:/Projects
 	Parameter C_DW bound to: 32 - type: integer 
 	Parameter C_AW bound to: 9 - type: integer 
 	Parameter C_GPIO_WIDTH bound to: 1 - type: integer 
-	Parameter C_GPIO2_WIDTH bound to: 16 - type: integer 
-	Parameter C_MAX_GPIO_WIDTH bound to: 16 - type: integer 
+	Parameter C_GPIO2_WIDTH bound to: 1 - type: integer 
+	Parameter C_MAX_GPIO_WIDTH bound to: 1 - type: integer 
 	Parameter C_INTERRUPT_PRESENT bound to: 0 - type: integer 
 	Parameter C_DOUT_DEFAULT bound to: 0 - type: integer 
 	Parameter C_TRI_DEFAULT bound to: -1 - type: integer 
@@ -628,127 +629,8 @@ INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized1' [c:/Projects/
 	Parameter INIT bound to: 1'b0 
 	Parameter INIT bound to: 1'b0 
 INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized1' (9#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
-INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized2' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
-	Parameter C_CDC_TYPE bound to: 1 - type: integer 
-	Parameter C_RESET_STATE bound to: 0 - type: integer 
-	Parameter C_SINGLE_BIT bound to: 0 - type: integer 
-	Parameter C_FLOP_INPUT bound to: 0 - type: integer 
-	Parameter C_VECTOR_WIDTH bound to: 16 - type: integer 
-	Parameter C_MTBF_STAGES bound to: 4 - type: integer 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized2' (9#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
 WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G0.READ_REG_GEN[0].GPIO_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:619]
 WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[0].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[1].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[2].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[3].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[4].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[5].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[6].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[7].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[8].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[9].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[10].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[11].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[12].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[13].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[14].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
-WARNING: [Synth 8-6014] Unused sequential element Dual.ALLOUT0_ND_G2.READ_REG2_GEN[15].GPIO2_DBus_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:750]
 INFO: [Synth 8-256] done synthesizing module 'GPIO_Core__parameterized1' (9#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:178]
 INFO: [Synth 8-256] done synthesizing module 'axi_gpio__parameterized3' (9#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9c6e/hdl/axi_gpio_v2_0_vh_rfs.vhd:1351]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_gpio_2_0' (10#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/synth/kyberBD_axi_gpio_2_0.vhd:89]
@@ -1538,8 +1420,8 @@ INFO: [Synth 8-6155] done synthesizing module 'axi_protocol_converter_v2_1_19_b2
 INFO: [Synth 8-6155] done synthesizing module 'axi_protocol_converter_v2_1_19_axi_protocol_converter' (31#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v:4808]
 INFO: [Synth 8-6155] done synthesizing module 'kyberBD_auto_pc_0' (32#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/synth/kyberBD_auto_pc_0.v:58]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_SILQ2H' (33#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:605]
-INFO: [Synth 8-3491] module 'kyberBD_xbar_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_0/synth/kyberBD_xbar_0.v:59' bound to instance 'xbar' of component 'kyberBD_xbar_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1692]
-INFO: [Synth 8-6157] synthesizing module 'kyberBD_xbar_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_0/synth/kyberBD_xbar_0.v:59]
+INFO: [Synth 8-3491] module 'kyberBD_xbar_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_0/synth/kyberBD_xbar_0.v:57' bound to instance 'xbar' of component 'kyberBD_xbar_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1692]
+INFO: [Synth 8-6157] synthesizing module 'kyberBD_xbar_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_0/synth/kyberBD_xbar_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_20_axi_crossbar' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ace7/hdl/axi_crossbar_v2_1_vl_rfs.v:4884]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_NUM_SLAVE_SLOTS bound to: 1 - type: integer 
@@ -1766,88 +1648,106 @@ WARNING: [Synth 8-6014] Unused sequential element gen_debug_trans_seq.debug_w_be
 WARNING: [Synth 8-6014] Unused sequential element gen_debug_trans_seq.debug_r_beat_cnt_i_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ace7/hdl/axi_crossbar_v2_1_vl_rfs.v:2091]
 INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_20_crossbar_sasd' (41#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ace7/hdl/axi_crossbar_v2_1_vl_rfs.v:1240]
 INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_20_axi_crossbar' (42#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ace7/hdl/axi_crossbar_v2_1_vl_rfs.v:4884]
-INFO: [Synth 8-6155] done synthesizing module 'kyberBD_xbar_0' (43#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_0/synth/kyberBD_xbar_0.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'kyberBD_xbar_0' (43#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_0/synth/kyberBD_xbar_0.v:57]
 INFO: [Synth 8-256] done synthesizing module 'kyberBD_axi_interconnect_0_0' (44#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1001]
-INFO: [Synth 8-3491] module 'kyberBD_barret_reduce_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barret_reduce_0_0/synth/kyberBD_barret_reduce_0_0.vhd:59' bound to instance 'barret_reduce_0' of component 'kyberBD_barret_reduce_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2656]
-INFO: [Synth 8-638] synthesizing module 'kyberBD_barret_reduce_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barret_reduce_0_0/synth/kyberBD_barret_reduce_0_0.vhd:67]
+INFO: [Synth 8-3491] module 'kyberBD_barrett_reduce_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_0_0/synth/kyberBD_barrett_reduce_0_0.vhd:56' bound to instance 'barrett_reduce_0' of component 'kyberBD_barrett_reduce_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2727]
+INFO: [Synth 8-638] synthesizing module 'kyberBD_barrett_reduce_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_0_0/synth/kyberBD_barrett_reduce_0_0.vhd:64]
 	Parameter KYBER_Q bound to: 3329 - type: integer 
-INFO: [Synth 8-3491] module 'barret_reduce_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8a95/hdl/barret_reduce_v1_0.vhd:5' bound to instance 'U0' of component 'barret_reduce_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barret_reduce_0_0/synth/kyberBD_barret_reduce_0_0.vhd:91]
-INFO: [Synth 8-638] synthesizing module 'barret_reduce_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8a95/hdl/barret_reduce_v1_0.vhd:16]
+INFO: [Synth 8-3491] module 'barrett_reduce_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b387/hdl/barrett_reduce_v1_0.vhd:5' bound to instance 'U0' of component 'barrett_reduce_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_0_0/synth/kyberBD_barrett_reduce_0_0.vhd:88]
+INFO: [Synth 8-638] synthesizing module 'barrett_reduce_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b387/hdl/barrett_reduce_v1_0.vhd:16]
 	Parameter KYBER_Q bound to: 3329 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'barret_reduce_v1_0' (45#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8a95/hdl/barret_reduce_v1_0.vhd:16]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_barret_reduce_0_0' (46#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barret_reduce_0_0/synth/kyberBD_barret_reduce_0_0.vhd:67]
-INFO: [Synth 8-3491] module 'kyberBD_bram_port_selector_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:56' bound to instance 'bram_port_selector_0' of component 'kyberBD_bram_port_selector_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2662]
+INFO: [Synth 8-256] done synthesizing module 'barrett_reduce_v1_0' (45#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b387/hdl/barrett_reduce_v1_0.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_barrett_reduce_0_0' (46#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_0_0/synth/kyberBD_barrett_reduce_0_0.vhd:64]
+INFO: [Synth 8-3491] module 'kyberBD_barrett_reduce_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_1_0/synth/kyberBD_barrett_reduce_1_0.vhd:56' bound to instance 'barrett_reduce_1' of component 'kyberBD_barrett_reduce_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2733]
+INFO: [Synth 8-638] synthesizing module 'kyberBD_barrett_reduce_1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_1_0/synth/kyberBD_barrett_reduce_1_0.vhd:64]
+	Parameter KYBER_Q bound to: 3329 - type: integer 
+INFO: [Synth 8-3491] module 'barrett_reduce_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b387/hdl/barrett_reduce_v1_0.vhd:5' bound to instance 'U0' of component 'barrett_reduce_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_1_0/synth/kyberBD_barrett_reduce_1_0.vhd:88]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_barrett_reduce_1_0' (47#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_barrett_reduce_1_0/synth/kyberBD_barrett_reduce_1_0.vhd:64]
+INFO: [Synth 8-3491] module 'kyberBD_bram_port_selector_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:56' bound to instance 'bram_port_selector_0' of component 'kyberBD_bram_port_selector_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2739]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_bram_port_selector_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:91]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'bram_port_selector_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/6b92/hdl/bram_port_selector_v1_0.vhd:5' bound to instance 'U0' of component 'bram_port_selector_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:177]
-INFO: [Synth 8-638] synthesizing module 'bram_port_selector_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/6b92/hdl/bram_port_selector_v1_0.vhd:56]
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
+INFO: [Synth 8-3491] module 'bram_port_selector_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2d9d/hdl/bram_port_selector_v1_0.vhd:5' bound to instance 'U0' of component 'bram_port_selector_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:177]
+INFO: [Synth 8-638] synthesizing module 'bram_port_selector_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2d9d/hdl/bram_port_selector_v1_0.vhd:56]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'bram_port_selector_v1_0' (47#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/6b92/hdl/bram_port_selector_v1_0.vhd:56]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_bram_port_selector_0_0' (48#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:91]
-INFO: [Synth 8-3491] module 'kyberBD_bram_port_selector_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/synth/kyberBD_bram_port_selector_1_0.vhd:56' bound to instance 'bram_port_selector_1' of component 'kyberBD_bram_port_selector_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2695]
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'bram_port_selector_v1_0' (48#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2d9d/hdl/bram_port_selector_v1_0.vhd:56]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_bram_port_selector_0_0' (49#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/synth/kyberBD_bram_port_selector_0_0.vhd:91]
+INFO: [Synth 8-3491] module 'kyberBD_bram_port_selector_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/synth/kyberBD_bram_port_selector_1_0.vhd:56' bound to instance 'bram_port_selector_1' of component 'kyberBD_bram_port_selector_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2772]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_bram_port_selector_1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/synth/kyberBD_bram_port_selector_1_0.vhd:91]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'bram_port_selector_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/6b92/hdl/bram_port_selector_v1_0.vhd:5' bound to instance 'U0' of component 'bram_port_selector_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/synth/kyberBD_bram_port_selector_1_0.vhd:177]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_bram_port_selector_1_0' (49#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/synth/kyberBD_bram_port_selector_1_0.vhd:91]
-INFO: [Synth 8-3491] module 'kyberBD_double_signal_multip_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:56' bound to instance 'double_signal_multip_0' of component 'kyberBD_double_signal_multip_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2728]
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
+INFO: [Synth 8-3491] module 'bram_port_selector_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2d9d/hdl/bram_port_selector_v1_0.vhd:5' bound to instance 'U0' of component 'bram_port_selector_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/synth/kyberBD_bram_port_selector_1_0.vhd:177]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_bram_port_selector_1_0' (50#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/synth/kyberBD_bram_port_selector_1_0.vhd:91]
+INFO: [Synth 8-3491] module 'kyberBD_double_signal_multip_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:56' bound to instance 'double_signal_multip_0' of component 'kyberBD_double_signal_multip_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2805]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_double_signal_multip_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:66]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
 INFO: [Synth 8-3491] module 'double_signal_multiplexer_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:5' bound to instance 'U0' of component 'double_signal_multiplexer_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:88]
 INFO: [Synth 8-638] synthesizing module 'double_signal_multiplexer_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:18]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'double_signal_multiplexer_v1_0' (50#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:18]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_double_signal_multip_0_0' (51#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:66]
-INFO: [Synth 8-3491] module 'kyberBD_double_signal_multip_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/synth/kyberBD_double_signal_multip_1_0.vhd:56' bound to instance 'double_signal_multip_1' of component 'kyberBD_double_signal_multip_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2736]
+INFO: [Synth 8-256] done synthesizing module 'double_signal_multiplexer_v1_0' (51#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_double_signal_multip_0_0' (52#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/synth/kyberBD_double_signal_multip_0_0.vhd:66]
+INFO: [Synth 8-3491] module 'kyberBD_double_signal_multip_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/synth/kyberBD_double_signal_multip_1_0.vhd:56' bound to instance 'double_signal_multip_1' of component 'kyberBD_double_signal_multip_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2813]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_double_signal_multip_1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/synth/kyberBD_double_signal_multip_1_0.vhd:66]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
 INFO: [Synth 8-3491] module 'double_signal_multiplexer_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:5' bound to instance 'U0' of component 'double_signal_multiplexer_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/synth/kyberBD_double_signal_multip_1_0.vhd:88]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_double_signal_multip_1_0' (52#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/synth/kyberBD_double_signal_multip_1_0.vhd:66]
-INFO: [Synth 8-3491] module 'kyberBD_dual_bram_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_dual_bram_0_0/synth/kyberBD_dual_bram_0_0.vhd:56' bound to instance 'dual_bram_0' of component 'kyberBD_dual_bram_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2744]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_double_signal_multip_1_0' (53#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_1_0/synth/kyberBD_double_signal_multip_1_0.vhd:66]
+INFO: [Synth 8-3491] module 'kyberBD_double_signal_multip_2_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_2_0/synth/kyberBD_double_signal_multip_2_0.vhd:56' bound to instance 'double_signal_multip_2' of component 'kyberBD_double_signal_multip_2_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2821]
+INFO: [Synth 8-638] synthesizing module 'kyberBD_double_signal_multip_2_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_2_0/synth/kyberBD_double_signal_multip_2_0.vhd:66]
+	Parameter DATA_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'double_signal_multiplexer_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:5' bound to instance 'U0' of component 'double_signal_multiplexer_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_2_0/synth/kyberBD_double_signal_multip_2_0.vhd:88]
+INFO: [Synth 8-638] synthesizing module 'double_signal_multiplexer_v1_0__parameterized2' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:18]
+	Parameter DATA_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'double_signal_multiplexer_v1_0__parameterized2' (53#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_double_signal_multip_2_0' (54#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_2_0/synth/kyberBD_double_signal_multip_2_0.vhd:66]
+INFO: [Synth 8-3491] module 'kyberBD_double_signal_multip_3_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_3_0/synth/kyberBD_double_signal_multip_3_0.vhd:56' bound to instance 'double_signal_multip_3' of component 'kyberBD_double_signal_multip_3_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2829]
+INFO: [Synth 8-638] synthesizing module 'kyberBD_double_signal_multip_3_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_3_0/synth/kyberBD_double_signal_multip_3_0.vhd:66]
+	Parameter DATA_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'double_signal_multiplexer_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/9b76/hdl/double_signal_multiplexer_v1_0.vhd:5' bound to instance 'U0' of component 'double_signal_multiplexer_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_3_0/synth/kyberBD_double_signal_multip_3_0.vhd:88]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_double_signal_multip_3_0' (55#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_double_signal_multip_3_0/synth/kyberBD_double_signal_multip_3_0.vhd:66]
+INFO: [Synth 8-3491] module 'kyberBD_dual_bram_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_dual_bram_0_0/synth/kyberBD_dual_bram_0_0.vhd:56' bound to instance 'dual_bram_0' of component 'kyberBD_dual_bram_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2837]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_dual_bram_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_dual_bram_0_0/synth/kyberBD_dual_bram_0_0.vhd:113]
 	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter C_S00_AXI_ADDR_WIDTH bound to: 12 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 13 - type: integer 
 	Parameter C_S01_AXI_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter C_S01_AXI_ADDR_WIDTH bound to: 12 - type: integer 
-INFO: [Synth 8-3491] module 'dual_bram_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd:5' bound to instance 'U0' of component 'dual_bram_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_dual_bram_0_0/synth/kyberBD_dual_bram_0_0.vhd:249]
-INFO: [Synth 8-638] synthesizing module 'dual_bram_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd:89]
+	Parameter C_S01_AXI_ADDR_WIDTH bound to: 13 - type: integer 
+INFO: [Synth 8-3491] module 'dual_bram_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/dual_bram_v1_0.vhd:5' bound to instance 'U0' of component 'dual_bram_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_dual_bram_0_0/synth/kyberBD_dual_bram_0_0.vhd:249]
+INFO: [Synth 8-638] synthesizing module 'dual_bram_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/dual_bram_v1_0.vhd:89]
 	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter C_S00_AXI_ADDR_WIDTH bound to: 12 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 13 - type: integer 
 	Parameter C_S01_AXI_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter C_S01_AXI_ADDR_WIDTH bound to: 12 - type: integer 
+	Parameter C_S01_AXI_ADDR_WIDTH bound to: 13 - type: integer 
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter C_S_AXI_ADDR_WIDTH bound to: 12 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 13 - type: integer 
 	Parameter ADDR_LSB bound to: 2 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter WORD_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-3491] module 'bram_v1_0_S_AXI' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd:5' bound to instance 'bram_v1_0_S00_AXI_inst' of component 'bram_v1_0_S_AXI' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd:137]
-INFO: [Synth 8-638] synthesizing module 'bram_v1_0_S_AXI' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd:94]
+INFO: [Synth 8-3491] module 'bram_v1_0_S_AXI' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/bram_v1_0_S_AXI.vhd:5' bound to instance 'bram_v1_0_S00_AXI_inst' of component 'bram_v1_0_S_AXI' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/dual_bram_v1_0.vhd:137]
+INFO: [Synth 8-638] synthesizing module 'bram_v1_0_S_AXI' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/bram_v1_0_S_AXI.vhd:94]
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter C_S_AXI_ADDR_WIDTH bound to: 12 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 13 - type: integer 
 	Parameter ADDR_LSB bound to: 2 - type: integer 
 	Parameter OPT_MEM_ADDR_BITS bound to: 1 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter WORD_WIDTH bound to: 32 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter WORD_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-3491] module 'true_dual_bram' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd:36' bound to instance 'true_dual_bram_inst0' of component 'true_dual_bram' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd:442]
-INFO: [Synth 8-638] synthesizing module 'true_dual_bram' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd:57]
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'true_dual_bram' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/src/true_dual_bram.vhd:36' bound to instance 'true_dual_bram_inst0' of component 'true_dual_bram' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/bram_v1_0_S_AXI.vhd:442]
+INFO: [Synth 8-638] synthesizing module 'true_dual_bram' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/src/true_dual_bram.vhd:57]
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter WORD_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'true_dual_bram' (53#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd:57]
-WARNING: [Synth 8-6014] Unused sequential element axi_araddr_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd:336]
-INFO: [Synth 8-256] done synthesizing module 'bram_v1_0_S_AXI' (54#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd:94]
+INFO: [Synth 8-256] done synthesizing module 'true_dual_bram' (56#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/src/true_dual_bram.vhd:57]
+WARNING: [Synth 8-6014] Unused sequential element axi_araddr_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/bram_v1_0_S_AXI.vhd:336]
+INFO: [Synth 8-256] done synthesizing module 'bram_v1_0_S_AXI' (57#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/bram_v1_0_S_AXI.vhd:94]
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter C_S_AXI_ADDR_WIDTH bound to: 12 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 13 - type: integer 
 	Parameter ADDR_LSB bound to: 2 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter WORD_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-3491] module 'bram_v1_0_S_AXI' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/bram_v1_0_S_AXI.vhd:5' bound to instance 'bram_v1_0_S01_AXI_inst' of component 'bram_v1_0_S_AXI' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd:177]
-INFO: [Synth 8-256] done synthesizing module 'dual_bram_v1_0' (55#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd:89]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_dual_bram_0_0' (56#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_dual_bram_0_0/synth/kyberBD_dual_bram_0_0.vhd:113]
-INFO: [Synth 8-3491] module 'kyberBD_montgomery_reduction_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:59' bound to instance 'montgomery_reduction_0' of component 'kyberBD_montgomery_reduction_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2799]
+INFO: [Synth 8-3491] module 'bram_v1_0_S_AXI' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/bram_v1_0_S_AXI.vhd:5' bound to instance 'bram_v1_0_S01_AXI_inst' of component 'bram_v1_0_S_AXI' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/dual_bram_v1_0.vhd:177]
+INFO: [Synth 8-256] done synthesizing module 'dual_bram_v1_0' (58#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/b4cd/hdl/dual_bram_v1_0.vhd:89]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_dual_bram_0_0' (59#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_dual_bram_0_0/synth/kyberBD_dual_bram_0_0.vhd:113]
+INFO: [Synth 8-3491] module 'kyberBD_montgomery_reduction_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:59' bound to instance 'montgomery_reduction_0' of component 'kyberBD_montgomery_reduction_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2892]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_montgomery_reduction_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:67]
 	Parameter QINV bound to: -3327 - type: integer 
 	Parameter KYBER_Q bound to: 3329 - type: integer 
@@ -1855,32 +1755,47 @@ INFO: [Synth 8-3491] module 'montgomery_reduction_v1_0' declared at 'c:/Projects
 INFO: [Synth 8-638] synthesizing module 'montgomery_reduction_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd:17]
 	Parameter QINV bound to: -3327 - type: integer 
 	Parameter KYBER_Q bound to: 3329 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'montgomery_reduction_v1_0' (57#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd:17]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_montgomery_reduction_0_0' (58#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:67]
-INFO: [Synth 8-3491] module 'kyberBD_montgomery_reduction_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/synth/kyberBD_montgomery_reduction_1_0.vhd:59' bound to instance 'montgomery_reduction_1' of component 'kyberBD_montgomery_reduction_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2805]
+INFO: [Synth 8-256] done synthesizing module 'montgomery_reduction_v1_0' (60#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_montgomery_reduction_0_0' (61#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/synth/kyberBD_montgomery_reduction_0_0.vhd:67]
+INFO: [Synth 8-3491] module 'kyberBD_montgomery_reduction_1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/synth/kyberBD_montgomery_reduction_1_0.vhd:59' bound to instance 'montgomery_reduction_1' of component 'kyberBD_montgomery_reduction_1_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2898]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_montgomery_reduction_1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/synth/kyberBD_montgomery_reduction_1_0.vhd:67]
 	Parameter QINV bound to: -3327 - type: integer 
 	Parameter KYBER_Q bound to: 3329 - type: integer 
 INFO: [Synth 8-3491] module 'montgomery_reduction_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/4bb8/hdl/montgomery_reduction_v1_0.vhd:5' bound to instance 'U0' of component 'montgomery_reduction_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/synth/kyberBD_montgomery_reduction_1_0.vhd:88]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_montgomery_reduction_1_0' (59#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/synth/kyberBD_montgomery_reduction_1_0.vhd:67]
-INFO: [Synth 8-3491] module 'kyberBD_poly_tomont_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_poly_tomont_0_0/synth/kyberBD_poly_tomont_0_0.vhd:59' bound to instance 'poly_tomont_0' of component 'kyberBD_poly_tomont_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2811]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_montgomery_reduction_1_0' (62#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_montgomery_reduction_1_0/synth/kyberBD_montgomery_reduction_1_0.vhd:67]
+INFO: [Synth 8-3491] module 'kyberBD_poly_tomont_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_poly_tomont_0_0/synth/kyberBD_poly_tomont_0_0.vhd:59' bound to instance 'poly_tomont_0' of component 'kyberBD_poly_tomont_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2904]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_poly_tomont_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_poly_tomont_0_0/synth/kyberBD_poly_tomont_0_0.vhd:84]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter KYBER_Q bound to: 3329 - type: integer 
-INFO: [Synth 8-3491] module 'poly_tomont_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:5' bound to instance 'U0' of component 'poly_tomont_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_poly_tomont_0_0/synth/kyberBD_poly_tomont_0_0.vhd:141]
-INFO: [Synth 8-638] synthesizing module 'poly_tomont_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:43]
+INFO: [Synth 8-3491] module 'poly_tomont_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:5' bound to instance 'U0' of component 'poly_tomont_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_poly_tomont_0_0/synth/kyberBD_poly_tomont_0_0.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'poly_tomont_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:43]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
-	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter KYBER_Q bound to: 3329 - type: integer 
-WARNING: [Synth 8-6014] Unused sequential element s_bram_dob_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:100]
-INFO: [Synth 8-4471] merging register 's_en_upper_mont_reg' into 's_en_lower_mont_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:178]
-INFO: [Synth 8-4471] merging register 's_bram_web_reg' into 's_bram_enb_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:203]
-WARNING: [Synth 8-6014] Unused sequential element s_en_upper_mont_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:178]
-WARNING: [Synth 8-6014] Unused sequential element s_bram_web_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:203]
-INFO: [Synth 8-256] done synthesizing module 'poly_tomont_v1_0' (60#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/7aef/hdl/poly_tomont_v1_0.vhd:43]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_poly_tomont_0_0' (61#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_poly_tomont_0_0/synth/kyberBD_poly_tomont_0_0.vhd:84]
-INFO: [Synth 8-3491] module 'kyberBD_proc_sys_reset_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:59' bound to instance 'proc_sys_reset_0' of component 'kyberBD_proc_sys_reset_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2834]
+WARNING: [Synth 8-6014] Unused sequential element s_bram_dob_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:100]
+INFO: [Synth 8-4471] merging register 's_en_upper_mont_reg' into 's_en_lower_mont_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:178]
+INFO: [Synth 8-4471] merging register 's_bram_web_reg' into 's_bram_enb_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:203]
+WARNING: [Synth 8-6014] Unused sequential element s_en_upper_mont_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:178]
+WARNING: [Synth 8-6014] Unused sequential element s_bram_web_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:203]
+INFO: [Synth 8-256] done synthesizing module 'poly_tomont_v1_0' (63#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/372d/hdl/poly_tomont_v1_0.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_poly_tomont_0_0' (64#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_poly_tomont_0_0/synth/kyberBD_poly_tomont_0_0.vhd:84]
+INFO: [Synth 8-3491] module 'kyberBD_polyvec_reduce_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/synth/kyberBD_polyvec_reduce_0_0.vhd:59' bound to instance 'polyvec_reduce_0' of component 'kyberBD_polyvec_reduce_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2927]
+INFO: [Synth 8-638] synthesizing module 'kyberBD_polyvec_reduce_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/synth/kyberBD_polyvec_reduce_0_0.vhd:85]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
+INFO: [Synth 8-3491] module 'polyvec_reduce_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:5' bound to instance 'U0' of component 'polyvec_reduce_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/synth/kyberBD_polyvec_reduce_0_0.vhd:142]
+INFO: [Synth 8-638] synthesizing module 'polyvec_reduce_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:43]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element s_bram_dob_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:102]
+INFO: [Synth 8-4471] merging register 's_en_upper_barrett_reg' into 's_en_lower_barrett_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:180]
+INFO: [Synth 8-4471] merging register 's_bram_web_reg' into 's_bram_enb_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:205]
+WARNING: [Synth 8-6014] Unused sequential element s_en_upper_barrett_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:180]
+WARNING: [Synth 8-6014] Unused sequential element s_bram_web_reg was removed.  [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:205]
+INFO: [Synth 8-256] done synthesizing module 'polyvec_reduce_v1_0' (65#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/065c/hdl/polyvec_reduce_v1_0.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_polyvec_reduce_0_0' (66#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/synth/kyberBD_polyvec_reduce_0_0.vhd:85]
+INFO: [Synth 8-3491] module 'kyberBD_proc_sys_reset_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:59' bound to instance 'proc_sys_reset_0' of component 'kyberBD_proc_sys_reset_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2951]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_proc_sys_reset_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:74]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
@@ -1930,8 +1845,8 @@ INFO: [Synth 8-638] synthesizing module 'lpf' [c:/Projects/kyber-fpga/kyber-fpga
 INFO: [Synth 8-3491] module 'SRL16' declared at 'C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684' bound to instance 'POR_SRL_I' of component 'SRL16' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:868]
 INFO: [Synth 8-6157] synthesizing module 'SRL16' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684]
 	Parameter INIT bound to: 16'b0000000000000000 
-INFO: [Synth 8-6155] done synthesizing module 'SRL16' (62#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684]
-INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized3' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-6155] done synthesizing module 'SRL16' (67#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:77684]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized2' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
 	Parameter C_CDC_TYPE bound to: 1 - type: integer 
 	Parameter C_RESET_STATE bound to: 0 - type: integer 
 	Parameter C_SINGLE_BIT bound to: 1 - type: integer 
@@ -1944,16 +1859,16 @@ INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized3' [c:/Projects/
 	Parameter INIT bound to: 1'b0 
 	Parameter INIT bound to: 1'b0 
 	Parameter INIT bound to: 1'b0 
-INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized3' (62#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
-INFO: [Synth 8-256] done synthesizing module 'lpf' (63#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized2' (67#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'lpf' (68#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
 INFO: [Synth 8-638] synthesizing module 'sequence_psr' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
 INFO: [Synth 8-638] synthesizing module 'upcnt_n' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
 	Parameter C_SIZE bound to: 6 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (64#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
-INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (65#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
-INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (66#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_proc_sys_reset_0_0' (67#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:74]
-INFO: [Synth 8-3491] module 'kyberBD_processing_system7_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:60' bound to instance 'processing_system7_0' of component 'kyberBD_processing_system7_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2847]
+INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (69#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (70#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
+INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (71#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_proc_sys_reset_0_0' (72#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_proc_sys_reset_0_0/synth/kyberBD_proc_sys_reset_0_0.vhd:74]
+INFO: [Synth 8-3491] module 'kyberBD_processing_system7_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:60' bound to instance 'processing_system7_0' of component 'kyberBD_processing_system7_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2964]
 INFO: [Synth 8-6157] synthesizing module 'kyberBD_processing_system7_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:60]
 INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_system7' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:162]
 	Parameter C_USE_DEFAULT_ACP_USER_VAL bound to: 0 - type: integer 
@@ -2015,22 +1930,22 @@ INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_sys
 INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1348]
 INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1349]
 INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
-INFO: [Synth 8-6155] done synthesizing module 'BUFG' (68#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (73#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:1075]
 INFO: [Synth 8-6157] synthesizing module 'BIBUF' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
-INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (69#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
+INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (74#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:722]
 INFO: [Synth 8-6157] synthesizing module 'PS7' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
-INFO: [Synth 8-6155] done synthesizing module 'PS7' (70#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
-INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (71#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:162]
+INFO: [Synth 8-6155] done synthesizing module 'PS7' (75#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:61707]
+INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (76#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:162]
 WARNING: [Synth 8-7023] instance 'inst' of module 'processing_system7_v5_5_processing_system7' has 685 connections declared, but only 672 given [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:329]
-INFO: [Synth 8-6155] done synthesizing module 'kyberBD_processing_system7_0_0' (72#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:60]
-INFO: [Synth 8-3491] module 'kyberBD_timer2_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:56' bound to instance 'timer2_0' of component 'kyberBD_timer2_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:2918]
+INFO: [Synth 8-6155] done synthesizing module 'kyberBD_processing_system7_0_0' (77#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0/synth/kyberBD_processing_system7_0_0.v:60]
+INFO: [Synth 8-3491] module 'kyberBD_timer2_0_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:56' bound to instance 'timer2_0' of component 'kyberBD_timer2_0_0' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:3035]
 INFO: [Synth 8-638] synthesizing module 'kyberBD_timer2_0_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:64]
 INFO: [Synth 8-3491] module 'timer2_v1_0' declared at 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:5' bound to instance 'U0' of component 'timer2_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:85]
 INFO: [Synth 8-638] synthesizing module 'timer2_v1_0' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'timer2_v1_0' (73#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_timer2_0_0' (74#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:64]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD' (75#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1844]
-INFO: [Synth 8-256] done synthesizing module 'kyberBD_wrapper' (76#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'timer2_v1_0' (78#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_timer2_0_0' (79#1) [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_timer2_0_0/synth/kyberBD_timer2_0_0.vhd:64]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD' (80#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:1844]
+INFO: [Synth 8-256] done synthesizing module 'kyberBD_wrapper' (81#1) [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:40]
 WARNING: [Synth 8-3331] design timer2_v1_0 has unconnected port control[31]
 WARNING: [Synth 8-3331] design timer2_v1_0 has unconnected port control[30]
 WARNING: [Synth 8-3331] design timer2_v1_0 has unconnected port control[29]
@@ -2133,7 +2048,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_DATA[4]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:56 ; elapsed = 00:01:00 . Memory (MB): peak = 935.387 ; gain = 377.664
+Finished RTL Elaboration : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 936.395 ; gain = 378.637
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -2146,12 +2061,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:56 ; elapsed = 00:01:01 . Memory (MB): peak = 935.387 ; gain = 377.664
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:54 ; elapsed = 00:00:58 . Memory (MB): peak = 936.395 ; gain = 378.637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:56 ; elapsed = 00:01:01 . Memory (MB): peak = 935.387 ; gain = 377.664
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:54 ; elapsed = 00:00:58 . Memory (MB): peak = 936.395 ; gain = 378.637
 ---------------------------------------------------------------------------------
-INFO: [Netlist 29-17] Analyzing 325 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 235 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -2183,31 +2098,31 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/kyberBD_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 989.625 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 988.172 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 325 instances were transformed.
-  FDR => FDRE: 324 instances
+  A total of 235 instances were transformed.
+  FDR => FDRE: 234 instances
   SRL16 => SRL16E: 1 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.101 . Memory (MB): peak = 989.625 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.095 . Memory (MB): peak = 988.172 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:08 ; elapsed = 00:01:14 . Memory (MB): peak = 989.625 ; gain = 431.902
+Finished Constraint Validation : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 988.172 ; gain = 430.414
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:08 ; elapsed = 00:01:14 . Memory (MB): peak = 989.625 ; gain = 431.902
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 988.172 ; gain = 430.414
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for kyberBD_i/processing_system7_0/inst. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 62).
-Applied set_property DONT_TOUCH = true for kyberBD_i/proc_sys_reset_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 65).
-Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 75).
-Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_1/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 83).
-Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_2/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 91).
+Applied set_property DONT_TOUCH = true for kyberBD_i/processing_system7_0/inst. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 74).
+Applied set_property DONT_TOUCH = true for kyberBD_i/proc_sys_reset_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 77).
+Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_0/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 87).
+Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_1/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 95).
+Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_2/U0. (constraint file  C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/dont_touch.xdc, line 103).
 Applied set_property DONT_TOUCH = true for kyberBD_i. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/processing_system7_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/proc_sys_reset_0. (constraint file  auto generated constraint, line ).
@@ -2224,11 +2139,15 @@ Applied set_property DONT_TOUCH = true for kyberBD_i/double_signal_multip_1. (co
 Applied set_property DONT_TOUCH = true for kyberBD_i/bram_port_selector_1. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/montgomery_reduction_1. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/dual_bram_0. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for kyberBD_i/barret_reduce_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/axi_gpio_2. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for kyberBD_i/polyvec_reduce_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for kyberBD_i/barrett_reduce_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for kyberBD_i/barrett_reduce_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for kyberBD_i/double_signal_multip_2. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for kyberBD_i/double_signal_multip_3. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:09 ; elapsed = 00:01:14 . Memory (MB): peak = 989.625 ; gain = 431.902
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 988.172 ; gain = 430.414
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'slave_attachment'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm'
@@ -2256,7 +2175,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm'
 INFO: [Synth 8-3971] The signal "true_dual_bram:/RAM_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:13 ; elapsed = 00:01:19 . Memory (MB): peak = 989.625 ; gain = 431.902
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 988.172 ; gain = 430.414
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -2269,13 +2188,12 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-	   3 Input     16 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 2     
+	   3 Input     16 Bit       Adders := 2     
 	   2 Input     12 Bit       Adders := 8     
-	   2 Input     10 Bit       Adders := 1     
+	   2 Input     11 Bit       Adders := 4     
 	   2 Input      9 Bit       Adders := 2     
 	   2 Input      8 Bit       Adders := 1     
-	   2 Input      7 Bit       Adders := 1     
 	   2 Input      6 Bit       Adders := 1     
 	   2 Input      5 Bit       Adders := 4     
 	   2 Input      4 Bit       Adders := 7     
@@ -2285,22 +2203,22 @@ Detailed RTL Component Info :
 	               64 Bit    Registers := 1     
 	               47 Bit    Registers := 2     
 	               36 Bit    Registers := 2     
-	               32 Bit    Registers := 20    
+	               32 Bit    Registers := 25    
 	               16 Bit    Registers := 7     
 	               14 Bit    Registers := 2     
-	               12 Bit    Registers := 11    
-	               10 Bit    Registers := 3     
+	               13 Bit    Registers := 2     
+	               12 Bit    Registers := 9     
+	               11 Bit    Registers := 6     
 	                9 Bit    Registers := 5     
-	                8 Bit    Registers := 3     
-	                7 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
 	                6 Bit    Registers := 2     
 	                5 Bit    Registers := 4     
 	                4 Bit    Registers := 9     
-	                3 Bit    Registers := 7     
+	                3 Bit    Registers := 8     
 	                2 Bit    Registers := 25    
-	                1 Bit    Registers := 193   
+	                1 Bit    Registers := 202   
 +---RAMs : 
-	              32K Bit         RAMs := 2     
+	              64K Bit         RAMs := 2     
 +---Muxes : 
 	   2 Input     66 Bit        Muxes := 4     
 	   2 Input     64 Bit        Muxes := 1     
@@ -2308,20 +2226,21 @@ Detailed RTL Component Info :
 	   2 Input     36 Bit        Muxes := 2     
 	   2 Input     32 Bit        Muxes := 23    
 	   5 Input     32 Bit        Muxes := 2     
-	   2 Input     16 Bit        Muxes := 3     
+	   2 Input     16 Bit        Muxes := 4     
 	   2 Input     14 Bit        Muxes := 2     
 	   2 Input     12 Bit        Muxes := 6     
-	   2 Input     10 Bit        Muxes := 6     
+	   2 Input     11 Bit        Muxes := 6     
+	   4 Input     10 Bit        Muxes := 1     
 	   2 Input      9 Bit        Muxes := 7     
 	   2 Input      6 Bit        Muxes := 2     
 	   2 Input      5 Bit        Muxes := 5     
 	   4 Input      4 Bit        Muxes := 3     
 	   2 Input      4 Bit        Muxes := 33    
-	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 4     
 	   7 Input      2 Bit        Muxes := 3     
 	   2 Input      2 Bit        Muxes := 20    
 	   4 Input      2 Bit        Muxes := 6     
-	   2 Input      1 Bit        Muxes := 191   
+	   2 Input      1 Bit        Muxes := 169   
 	   4 Input      1 Bit        Muxes := 9     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -2385,11 +2304,12 @@ Detailed RTL Component Info :
 Module GPIO_Core__parameterized0 
 Detailed RTL Component Info : 
 +---Registers : 
-	                3 Bit    Registers := 2     
+	                3 Bit    Registers := 3     
 	                1 Bit    Registers := 2     
 +---Muxes : 
 	   5 Input     32 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 9     
 Module axi_gpio__parameterized1 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -2400,20 +2320,16 @@ Detailed RTL Component Info :
 Module GPIO_Core__parameterized1 
 Detailed RTL Component Info : 
 +---Registers : 
-	               32 Bit    Registers := 2     
-	               16 Bit    Registers := 3     
-	                1 Bit    Registers := 5     
+	               32 Bit    Registers := 4     
+	                1 Bit    Registers := 8     
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 3     
 	   4 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 37    
+	   2 Input      1 Bit        Muxes := 6     
 Module axi_gpio__parameterized3 
 Detailed RTL Component Info : 
 +---Registers : 
 	               32 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
-+---Muxes : 
-	   2 Input     32 Bit        Muxes := 1     
 Module axi_protocol_converter_v2_1_19_b2s_incr_cmd 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -2606,7 +2522,7 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input      6 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 2     
-Module barret_reduce_v1_0 
+Module barrett_reduce_v1_0 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
@@ -2617,23 +2533,27 @@ Module double_signal_multiplexer_v1_0
 Detailed RTL Component Info : 
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 2     
+Module double_signal_multiplexer_v1_0__parameterized2 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
 Module true_dual_bram 
 Detailed RTL Component Info : 
 +---Registers : 
 	               32 Bit    Registers := 2     
 +---RAMs : 
-	              32K Bit         RAMs := 1     
+	              64K Bit         RAMs := 1     
 Module bram_v1_0_S_AXI 
 Detailed RTL Component Info : 
 +---Registers : 
 	               32 Bit    Registers := 1     
-	               12 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
+	               13 Bit    Registers := 1     
+	               11 Bit    Registers := 1     
 	                2 Bit    Registers := 3     
 	                1 Bit    Registers := 8     
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 3     
-	   2 Input     10 Bit        Muxes := 3     
+	   2 Input     11 Bit        Muxes := 3     
 	   2 Input      1 Bit        Muxes := 5     
 Module montgomery_reduction_v1_0 
 Detailed RTL Component Info : 
@@ -2642,17 +2562,29 @@ Detailed RTL Component Info :
 Module poly_tomont_v1_0 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     10 Bit       Adders := 1     
-	   2 Input      7 Bit       Adders := 1     
+	   2 Input     11 Bit       Adders := 2     
 +---Registers : 
 	               32 Bit    Registers := 3     
 	               16 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
+	               11 Bit    Registers := 2     
 	                8 Bit    Registers := 1     
-	                7 Bit    Registers := 1     
 	                1 Bit    Registers := 6     
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module polyvec_reduce_v1_0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     11 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               16 Bit    Registers := 2     
+	               11 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   4 Input     10 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 3     
 Module lpf 
 Detailed RTL Component Info : 
@@ -2699,6 +2631,11 @@ DSP Report: operator U0/ARG is absorbed into DSP U0/ARG.
 DSP Report: operator U0/t is absorbed into DSP U0/ARG.
 DSP Report: Generating DSP U0/t3, operation Mode is: A*(B:0xd01).
 DSP Report: operator U0/t3 is absorbed into DSP U0/t3.
+DSP Report: Generating DSP U0/ARG, operation Mode is: (C:0x2000000)+(A:0x4ebf)*B.
+DSP Report: operator U0/ARG is absorbed into DSP U0/ARG.
+DSP Report: operator U0/t is absorbed into DSP U0/ARG.
+DSP Report: Generating DSP U0/t3, operation Mode is: A*(B:0xd01).
+DSP Report: operator U0/t3 is absorbed into DSP U0/t3.
 DSP Report: Generating DSP U0/t, operation Mode is: A*(B:0x3f301).
 DSP Report: operator U0/t is absorbed into DSP U0/t.
 DSP Report: Generating DSP U0/t3, operation Mode is: C-A*(B:0xd01).
@@ -2717,6 +2654,7 @@ DSP Report: Generating DSP U0/s_do_upper_mont_reg, operation Mode is: (A2*(B:0x5
 DSP Report: register U0/s_do_upper_mont_reg is absorbed into DSP U0/s_do_upper_mont_reg.
 DSP Report: register U0/s_do_upper_mont_reg is absorbed into DSP U0/s_do_upper_mont_reg.
 DSP Report: operator U0/s_do_upper_mont0 is absorbed into DSP U0/s_do_upper_mont_reg.
+INFO: [Synth 8-5544] ROM "U0/" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-3971] The signal "kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg" was recognized as a true dual port RAM template.
 INFO: [Synth 8-3971] The signal "kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg" was recognized as a true dual port RAM template.
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/axi_gpio_0/U0/\AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rresp_i_reg[0] )
@@ -2847,24 +2785,27 @@ INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_1/U0/AXI_LITE_IPIF_I/I
 INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_1/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[30]' (FDRE) to 'kyberBD_i/axi_gpio_1/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[31]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/axi_gpio_1/U0/\AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bresp_i_reg[0] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/axi_gpio_1/U0/\AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bresp_i_reg[1] )
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_IN_cdc_to[0].CROSS2_PLEVEL_IN2SCNDRY_IN_cdc_to) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_IN_cdc_to[1].CROSS2_PLEVEL_IN2SCNDRY_IN_cdc_to) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_IN_cdc_to[2].CROSS2_PLEVEL_IN2SCNDRY_IN_cdc_to) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d2[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d2) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d2[1].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d2) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d2[2].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d2) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d3[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d3) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d3[1].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d3) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d3[2].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d3) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d4[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d4) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d4[1].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d4) is unused and will be removed from module axi_gpio__parameterized1.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d4[2].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d4) is unused and will be removed from module axi_gpio__parameterized1.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized1.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[1].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized1.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[2].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized1.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d6[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d6) is unused and will be removed from module axi_gpio__parameterized1.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d6[1].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d6) is unused and will be removed from module axi_gpio__parameterized1.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Not_Dual.INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d6[2].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d6) is unused and will be removed from module axi_gpio__parameterized1.
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[30]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[29]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[29]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[28]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[27]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[27]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[26]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[26]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[25]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[25]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[24]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[24]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[23]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[23]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[22]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[22]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[21]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[21]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[20]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[20]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[19]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[19]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[18]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[18]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[17]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[17]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[16]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[16]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[15]'
 INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[15]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[14]'
 INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[14]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[13]'
 INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[13]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[12]'
@@ -2882,64 +2823,39 @@ INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_
 INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[1]' (FDR) to 'kyberBD_i/axi_gpio_2/U0/ip2bus_data_i_D1_reg[0]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/axi_gpio_2/U0/\ip2bus_data_i_D1_reg[0] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/axi_gpio_2/U0/\AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rresp_i_reg[0] )
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rresp_i_reg[1]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[16]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[16]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[17]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[17]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[18]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[18]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[19]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[19]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[20]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[20]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[21]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[21]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[22]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[22]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[23]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[23]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[24]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[24]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[25]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[25]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[26]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[26]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[27]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[27]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[28]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[28]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[29]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[29]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[30]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[30]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[31]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rresp_i_reg[1]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[1]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[1]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[2]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[2]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[3]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[3]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[4]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[5]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[5]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[6]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[6]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[7]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[7]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[8]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[8]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[9]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[9]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[10]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[11]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[11]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[12]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[12]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[13]'
+INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[13]' (FDRE) to 'kyberBD_i/axi_gpio_2/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[14]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/axi_gpio_2/U0/\AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bresp_i_reg[0] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/axi_gpio_2/U0/\AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bresp_i_reg[1] )
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS4/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS4/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d6[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d6) is unused and will be removed from module axi_gpio__parameterized3.
 INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[1].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[2].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[3].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[4].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[5].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[6].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[7].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[8].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[9].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[10].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[11].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[12].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[13].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[14].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d5[15].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d5) is unused and will be removed from module axi_gpio__parameterized3.
-INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/r.r_pipe/aresetn_d_reg[0]' (FDR) to 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aresetn_d_reg[0]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aresetn_d_reg[0]' (FDR) to 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/aresetn_d_reg[0]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/aresetn_d_reg[1]' (FDR) to 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aresetn_d_reg[1]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/r.r_pipe/aresetn_d_reg[1]' (FDR) to 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aresetn_d_reg[1]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar.ar_pipe/aresetn_d_reg[0]' (FDR) to 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/aresetn_d_reg[0]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aresetn_d_reg[1]' (FDR) to 'kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar.ar_pipe/aresetn_d_reg[1]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/axi_rresp_reg[0]' (FDRE) to 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/axi_rresp_reg[1]'
+INFO: [Synth 8-3332] Sequential element (gpio_core_1/Dual.INPUT_DOUBLE_REGS5/GENERATE_LEVEL_P_S_CDC.MULTI_BIT.FOR_CROSS_PLEVEL_IN2SCNDRY_bus_d6[0].CROSS2_PLEVEL_IN2SCNDRY_s_level_out_bus_d6) is unused and will be removed from module axi_gpio__parameterized3.
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/dual_bram_0/\U0/bram_v1_0_S01_AXI_inst/axi_rresp_reg[1] )
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/axi_bresp_reg[0]' (FDRE) to 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/axi_bresp_reg[1]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/dual_bram_0/\U0/bram_v1_0_S01_AXI_inst/axi_bresp_reg[1] )
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/axi_rresp_reg[0]' (FDRE) to 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/axi_rresp_reg[1]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/dual_bram_0/\U0/bram_v1_0_S00_AXI_inst/axi_rresp_reg[1] )
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/axi_bresp_reg[0]' (FDRE) to 'kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/axi_bresp_reg[1]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/dual_bram_0/\U0/bram_v1_0_S00_AXI_inst/axi_bresp_reg[1] )
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/poly_tomont_0/U0/s_bram_dia_reg[0]' (FD) to 'kyberBD_i/poly_tomont_0/U0/s_bram_dia_reg[31]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/poly_tomont_0/U0/s_bram_dia_reg[1]' (FD) to 'kyberBD_i/poly_tomont_0/U0/s_bram_dia_reg[31]'
-INFO: [Synth 8-3886] merging instance 'kyberBD_i/poly_tomont_0/U0/s_bram_dia_reg[2]' (FD) to 'kyberBD_i/poly_tomont_0/U0/s_bram_dia_reg[31]'
-INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/poly_tomont_0/\U0/s_bram_wea_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (kyberBD_i/polyvec_reduce_0/\U0/s_bram_wea_reg )
+WARNING: [Synth 8-3332] Sequential element (EXT_LPF/ACTIVE_LOW_EXT.ACT_LO_EXT/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module proc_sys_reset.
+WARNING: [Synth 8-3332] Sequential element (EXT_LPF/ACTIVE_LOW_EXT.ACT_LO_EXT/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module proc_sys_reset.
+WARNING: [Synth 8-3332] Sequential element (EXT_LPF/ACTIVE_LOW_AUX.ACT_LO_AUX/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module proc_sys_reset.
+WARNING: [Synth 8-3332] Sequential element (EXT_LPF/ACTIVE_LOW_AUX.ACT_LO_AUX/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module proc_sys_reset.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:24 ; elapsed = 00:01:30 . Memory (MB): peak = 989.625 ; gain = 431.902
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:20 ; elapsed = 00:01:25 . Memory (MB): peak = 988.172 ; gain = 430.414
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -2949,8 +2865,8 @@ Block RAM: Preliminary Mapping  Report (see note below)
 +----------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 |Module Name     | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
 +----------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|true_dual_bram: | RAM_reg    | 1 K x 32(READ_FIRST)   | W | R | 1 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 1      | 
-|true_dual_bram: | RAM_reg    | 1 K x 32(READ_FIRST)   | W | R | 1 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 1      | 
+|true_dual_bram: | RAM_reg    | 2 K x 32(READ_FIRST)   | W | R | 2 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 2      | 
+|true_dual_bram: | RAM_reg    | 2 K x 32(READ_FIRST)   | W | R | 2 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 2      | 
 +----------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
 Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
@@ -2959,8 +2875,10 @@ DSP: Preliminary Mapping  Report (see note below)
 +--------------------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |Module Name               | DSP Mapping                | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +--------------------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|barret_reduce_v1_0        | (C:0x2000000)+(A:0x4ebf)*B | 16     | 16     | 27     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|barret_reduce_v1_0        | A*(B:0xd01)                | 16     | 13     | -      | -      | 29     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|barrett_reduce_v1_0       | (C:0x2000000)+(A:0x4ebf)*B | 16     | 16     | 27     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|barrett_reduce_v1_0       | A*(B:0xd01)                | 16     | 13     | -      | -      | 29     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|barrett_reduce_v1_0       | (C:0x2000000)+(A:0x4ebf)*B | 16     | 16     | 27     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|barrett_reduce_v1_0       | A*(B:0xd01)                | 16     | 13     | -      | -      | 29     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |montgomery_reduction_v1_0 | A*(B:0x3f301)              | 16     | 13     | -      | -      | 29     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |montgomery_reduction_v1_0 | C-A*(B:0xd01)              | 16     | 13     | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
 |montgomery_reduction_v1_0 | A*(B:0x3f301)              | 16     | 13     | -      | -      | 29     | 0    | 0    | -    | -    | -     | 0    | 0    | 
@@ -2973,8 +2891,10 @@ Note: The table above is a preliminary report that shows the DSPs inferred at th
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0i_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0i_1/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0i_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0i_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0i_1/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0i_1/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -2985,13 +2905,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:41 ; elapsed = 00:01:48 . Memory (MB): peak = 1136.645 ; gain = 578.922
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:38 ; elapsed = 00:01:43 . Memory (MB): peak = 1137.395 ; gain = 579.637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:43 ; elapsed = 00:01:50 . Memory (MB): peak = 1157.102 ; gain = 599.379
+Finished Timing Optimization : Time (s): cpu = 00:01:40 ; elapsed = 00:01:45 . Memory (MB): peak = 1158.113 ; gain = 600.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -3001,8 +2921,8 @@ Block RAM: Final Mapping  Report
 +----------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 |Module Name     | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
 +----------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|true_dual_bram: | RAM_reg    | 1 K x 32(READ_FIRST)   | W | R | 1 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 1      | 
-|true_dual_bram: | RAM_reg    | 1 K x 32(READ_FIRST)   | W | R | 1 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 1      | 
+|true_dual_bram: | RAM_reg    | 2 K x 32(READ_FIRST)   | W | R | 2 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 2      | 
+|true_dual_bram: | RAM_reg    | 2 K x 32(READ_FIRST)   | W | R | 2 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 2      | 
 +----------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
 ---------------------------------------------------------------------------------
@@ -3017,10 +2937,12 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:47 ; elapsed = 00:01:54 . Memory (MB): peak = 1181.453 ; gain = 623.730
+Finished Technology Mapping : Time (s): cpu = 00:01:44 ; elapsed = 00:01:49 . Memory (MB): peak = 1183.000 ; gain = 625.242
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3041,13 +2963,13 @@ Finished Flattening Before IO Insertion
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5365] Flop inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar.ar_pipe/aresetn_d_reg[1] is being inverted and renamed to inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar.ar_pipe/aresetn_d_reg[1]_inv.
-INFO: [Synth 8-6064] Net \U0/bram_v1_0_S01_AXI_inst/enb  is driving 31 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \U0/bram_v1_0_S00_AXI_inst/enb  is driving 31 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \U0/bram_v1_0_S01_AXI_inst/enb  is driving 36 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \U0/bram_v1_0_S00_AXI_inst/enb  is driving 36 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:51 ; elapsed = 00:01:58 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Finished IO Insertion : Time (s): cpu = 00:01:48 ; elapsed = 00:01:53 . Memory (MB): peak = 1191.348 ; gain = 633.590
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -3060,7 +2982,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:51 ; elapsed = 00:01:58 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:48 ; elapsed = 00:01:53 . Memory (MB): peak = 1191.348 ; gain = 633.590
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3072,25 +2994,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:52 ; elapsed = 00:01:59 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:49 ; elapsed = 00:01:54 . Memory (MB): peak = 1191.348 ; gain = 633.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:52 ; elapsed = 00:01:59 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:49 ; elapsed = 00:01:54 . Memory (MB): peak = 1191.348 ; gain = 633.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:52 ; elapsed = 00:01:59 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:49 ; elapsed = 00:01:54 . Memory (MB): peak = 1191.348 ; gain = 633.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:52 ; elapsed = 00:01:59 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:49 ; elapsed = 00:01:54 . Memory (MB): peak = 1191.348 ; gain = 633.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -3125,146 +3047,153 @@ Report Cell Usage:
 +------+----------+------+
 |1     |BIBUF     |   130|
 |2     |BUFG      |     1|
-|3     |CARRY4    |    30|
-|4     |DSP48E1   |     1|
-|5     |DSP48E1_1 |     3|
+|3     |CARRY4    |    36|
+|4     |DSP48E1   |     2|
+|5     |DSP48E1_1 |     4|
 |6     |DSP48E1_2 |     2|
 |7     |DSP48E1_4 |     2|
-|8     |LUT1      |   154|
-|9     |LUT2      |   146|
-|10    |LUT3      |   296|
-|11    |LUT4      |   235|
-|12    |LUT5      |   354|
-|13    |LUT6      |   465|
+|8     |LUT1      |   158|
+|9     |LUT2      |   207|
+|10    |LUT3      |   287|
+|11    |LUT4      |   274|
+|12    |LUT5      |   330|
+|13    |LUT6      |   468|
 |14    |PS7       |     1|
-|15    |RAMB36E1  |     2|
+|15    |RAMB36E1  |     4|
 |16    |SRL16     |     1|
 |17    |SRL16E    |    18|
 |18    |SRLC32E   |    47|
-|19    |FDR       |   204|
-|20    |FDRE      |  1334|
-|21    |FDSE      |    76|
+|19    |FDR       |   156|
+|20    |FDRE      |  1402|
+|21    |FDSE      |    61|
 +------+----------+------+
 
 Report Instance Areas: 
-+------+------------------------------------------------------------------------------+---------------------------------------------------------------+------+
-|      |Instance                                                                      |Module                                                         |Cells |
-+------+------------------------------------------------------------------------------+---------------------------------------------------------------+------+
-|1     |top                                                                           |                                                               |  3502|
-|2     |  kyberBD_i                                                                   |kyberBD                                                        |  3502|
-|3     |    axi_gpio_0                                                                |kyberBD_axi_gpio_0_0                                           |   522|
-|4     |      U0                                                                      |axi_gpio                                                       |   522|
-|5     |        AXI_LITE_IPIF_I                                                       |axi_lite_ipif_12                                               |   131|
-|6     |          I_SLAVE_ATTACHMENT                                                  |slave_attachment_13                                            |   131|
-|7     |            I_DECODER                                                         |address_decoder_14                                             |    55|
-|8     |        gpio_core_1                                                           |GPIO_Core                                                      |   357|
-|9     |          \Not_Dual.INPUT_DOUBLE_REGS3                                        |cdc_sync                                                       |   128|
-|10    |    axi_gpio_1                                                                |kyberBD_axi_gpio_1_0                                           |    98|
-|11    |      U0                                                                      |axi_gpio__parameterized1                                       |    98|
-|12    |        AXI_LITE_IPIF_I                                                       |axi_lite_ipif_9                                                |    65|
-|13    |          I_SLAVE_ATTACHMENT                                                  |slave_attachment_10                                            |    65|
-|14    |            I_DECODER                                                         |address_decoder_11                                             |    17|
-|15    |              \MEM_DECODE_GEN[0].PER_CE_GEN[0].MULTIPLE_CES_THIS_CS_GEN.CE_I  |pselect_f                                                      |     1|
-|16    |              \MEM_DECODE_GEN[0].PER_CE_GEN[2].MULTIPLE_CES_THIS_CS_GEN.CE_I  |pselect_f__parameterized1                                      |     1|
-|17    |        gpio_core_1                                                           |GPIO_Core__parameterized0                                      |    27|
-|18    |    axi_gpio_2                                                                |kyberBD_axi_gpio_2_0                                           |   330|
-|19    |      U0                                                                      |axi_gpio__parameterized3                                       |   330|
-|20    |        AXI_LITE_IPIF_I                                                       |axi_lite_ipif                                                  |   118|
-|21    |          I_SLAVE_ATTACHMENT                                                  |slave_attachment                                               |   118|
-|22    |            I_DECODER                                                         |address_decoder                                                |    58|
-|23    |        gpio_core_1                                                           |GPIO_Core__parameterized1                                      |   194|
-|24    |          \Dual.INPUT_DOUBLE_REGS4                                            |cdc_sync__parameterized1                                       |     4|
-|25    |          \Dual.INPUT_DOUBLE_REGS5                                            |cdc_sync__parameterized2                                       |    64|
-|26    |    axi_interconnect_0                                                        |kyberBD_axi_interconnect_0_0                                   |  1533|
-|27    |      xbar                                                                    |kyberBD_xbar_0                                                 |   387|
-|28    |        inst                                                                  |axi_crossbar_v2_1_20_axi_crossbar                              |   387|
-|29    |          \gen_sasd.crossbar_sasd_0                                           |axi_crossbar_v2_1_20_crossbar_sasd                             |   387|
-|30    |            addr_arbiter_inst                                                 |axi_crossbar_v2_1_20_addr_arbiter_sasd                         |   149|
-|31    |            \gen_decerr.decerr_slave_inst                                     |axi_crossbar_v2_1_20_decerr_slave                              |    15|
-|32    |            reg_slice_r                                                       |axi_register_slice_v2_1_19_axic_register_slice__parameterized7 |   189|
-|33    |            splitter_ar                                                       |axi_crossbar_v2_1_20_splitter__parameterized0                  |     6|
-|34    |            splitter_aw                                                       |axi_crossbar_v2_1_20_splitter                                  |    12|
-|35    |      s00_couplers                                                            |s00_couplers_imp_SILQ2H                                        |  1146|
-|36    |        auto_pc                                                               |kyberBD_auto_pc_0                                              |  1146|
-|37    |          inst                                                                |axi_protocol_converter_v2_1_19_axi_protocol_converter          |  1146|
-|38    |            \gen_axilite.gen_b2s_conv.axilite_b2s                             |axi_protocol_converter_v2_1_19_b2s                             |  1146|
-|39    |              \RD.ar_channel_0                                                |axi_protocol_converter_v2_1_19_b2s_ar_channel                  |   186|
-|40    |                ar_cmd_fsm_0                                                  |axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm                  |    30|
-|41    |                cmd_translator_0                                              |axi_protocol_converter_v2_1_19_b2s_cmd_translator_6            |   144|
-|42    |                  incr_cmd_0                                                  |axi_protocol_converter_v2_1_19_b2s_incr_cmd_7                  |    77|
-|43    |                  wrap_cmd_0                                                  |axi_protocol_converter_v2_1_19_b2s_wrap_cmd_8                  |    62|
-|44    |              \RD.r_channel_0                                                 |axi_protocol_converter_v2_1_19_b2s_r_channel                   |    93|
-|45    |                rd_data_fifo_0                                                |axi_protocol_converter_v2_1_19_b2s_simple_fifo__parameterized1 |    49|
-|46    |                transaction_fifo_0                                            |axi_protocol_converter_v2_1_19_b2s_simple_fifo__parameterized2 |    30|
-|47    |              SI_REG                                                          |axi_register_slice_v2_1_19_axi_register_slice                  |   617|
-|48    |                \ar.ar_pipe                                                   |axi_register_slice_v2_1_19_axic_register_slice                 |   210|
-|49    |                \aw.aw_pipe                                                   |axi_register_slice_v2_1_19_axic_register_slice_5               |   214|
-|50    |                \b.b_pipe                                                     |axi_register_slice_v2_1_19_axic_register_slice__parameterized1 |    47|
-|51    |                \r.r_pipe                                                     |axi_register_slice_v2_1_19_axic_register_slice__parameterized2 |   146|
-|52    |              \WR.aw_channel_0                                                |axi_protocol_converter_v2_1_19_b2s_aw_channel                  |   186|
-|53    |                aw_cmd_fsm_0                                                  |axi_protocol_converter_v2_1_19_b2s_wr_cmd_fsm                  |    18|
-|54    |                cmd_translator_0                                              |axi_protocol_converter_v2_1_19_b2s_cmd_translator              |   152|
-|55    |                  incr_cmd_0                                                  |axi_protocol_converter_v2_1_19_b2s_incr_cmd                    |    76|
-|56    |                  wrap_cmd_0                                                  |axi_protocol_converter_v2_1_19_b2s_wrap_cmd                    |    72|
-|57    |              \WR.b_channel_0                                                 |axi_protocol_converter_v2_1_19_b2s_b_channel                   |    62|
-|58    |                bid_fifo_0                                                    |axi_protocol_converter_v2_1_19_b2s_simple_fifo                 |    28|
-|59    |                bresp_fifo_0                                                  |axi_protocol_converter_v2_1_19_b2s_simple_fifo__parameterized0 |     9|
-|60    |    barret_reduce_0                                                           |kyberBD_barret_reduce_0_0                                      |    38|
-|61    |      U0                                                                      |barret_reduce_v1_0                                             |    38|
-|62    |    bram_port_selector_0                                                      |kyberBD_bram_port_selector_0_0                                 |    87|
-|63    |    bram_port_selector_1                                                      |kyberBD_bram_port_selector_1_0                                 |    87|
-|64    |    double_signal_multip_0                                                    |kyberBD_double_signal_multip_0_0                               |    32|
-|65    |      U0                                                                      |double_signal_multiplexer_v1_0_4                               |    32|
-|66    |    double_signal_multip_1                                                    |kyberBD_double_signal_multip_1_0                               |    32|
-|67    |      U0                                                                      |double_signal_multiplexer_v1_0                                 |    32|
-|68    |    dual_bram_0                                                               |kyberBD_dual_bram_0_0                                          |   268|
-|69    |      U0                                                                      |dual_bram_v1_0                                                 |   268|
-|70    |        bram_v1_0_S00_AXI_inst                                                |bram_v1_0_S_AXI                                                |   134|
-|71    |          true_dual_bram_inst0                                                |true_dual_bram_3                                               |     7|
-|72    |        bram_v1_0_S01_AXI_inst                                                |bram_v1_0_S_AXI_2                                              |   134|
-|73    |          true_dual_bram_inst0                                                |true_dual_bram                                                 |     7|
-|74    |    montgomery_reduction_0                                                    |kyberBD_montgomery_reduction_0_0                               |     2|
-|75    |      U0                                                                      |montgomery_reduction_v1_0_1                                    |     2|
-|76    |    montgomery_reduction_1                                                    |kyberBD_montgomery_reduction_1_0                               |     2|
-|77    |      U0                                                                      |montgomery_reduction_v1_0                                      |     2|
-|78    |    poly_tomont_0                                                             |kyberBD_poly_tomont_0_0                                        |   120|
-|79    |      U0                                                                      |poly_tomont_v1_0                                               |   120|
-|80    |    proc_sys_reset_0                                                          |kyberBD_proc_sys_reset_0_0                                     |    66|
-|81    |      U0                                                                      |proc_sys_reset                                                 |    66|
-|82    |        EXT_LPF                                                               |lpf                                                            |    23|
-|83    |          \ACTIVE_LOW_AUX.ACT_LO_AUX                                          |cdc_sync__parameterized3                                       |     6|
-|84    |          \ACTIVE_LOW_EXT.ACT_LO_EXT                                          |cdc_sync__parameterized3_0                                     |     6|
-|85    |        SEQ                                                                   |sequence_psr                                                   |    38|
-|86    |          SEQ_COUNTER                                                         |upcnt_n                                                        |    13|
-|87    |    processing_system7_0                                                      |kyberBD_processing_system7_0_0                                 |   244|
-|88    |      inst                                                                    |processing_system7_v5_5_processing_system7                     |   244|
-|89    |    timer2_0                                                                  |kyberBD_timer2_0_0                                             |    41|
-|90    |      U0                                                                      |timer2_v1_0                                                    |    41|
-+------+------------------------------------------------------------------------------+---------------------------------------------------------------+------+
++------+---------------------------------------------------+---------------------------------------------------------------+------+
+|      |Instance                                           |Module                                                         |Cells |
++------+---------------------------------------------------+---------------------------------------------------------------+------+
+|1     |top                                                |                                                               |  3591|
+|2     |  kyberBD_i                                        |kyberBD                                                        |  3591|
+|3     |    axi_gpio_0                                     |kyberBD_axi_gpio_0_0                                           |   522|
+|4     |      U0                                           |axi_gpio                                                       |   522|
+|5     |        AXI_LITE_IPIF_I                            |axi_lite_ipif_15                                               |   131|
+|6     |          I_SLAVE_ATTACHMENT                       |slave_attachment_16                                            |   131|
+|7     |            I_DECODER                              |address_decoder_17                                             |    55|
+|8     |        gpio_core_1                                |GPIO_Core                                                      |   357|
+|9     |          \Not_Dual.INPUT_DOUBLE_REGS3             |cdc_sync                                                       |   128|
+|10    |    axi_gpio_1                                     |kyberBD_axi_gpio_1_0                                           |   122|
+|11    |      U0                                           |axi_gpio__parameterized1                                       |   122|
+|12    |        AXI_LITE_IPIF_I                            |axi_lite_ipif_12                                               |    71|
+|13    |          I_SLAVE_ATTACHMENT                       |slave_attachment_13                                            |    71|
+|14    |            I_DECODER                              |address_decoder_14                                             |    23|
+|15    |        gpio_core_1                                |GPIO_Core__parameterized0                                      |    45|
+|16    |          \Not_Dual.INPUT_DOUBLE_REGS3             |cdc_sync__parameterized0                                       |    12|
+|17    |    axi_gpio_2                                     |kyberBD_axi_gpio_2_0                                           |   102|
+|18    |      U0                                           |axi_gpio__parameterized3                                       |   102|
+|19    |        AXI_LITE_IPIF_I                            |axi_lite_ipif                                                  |    71|
+|20    |          I_SLAVE_ATTACHMENT                       |slave_attachment                                               |    71|
+|21    |            I_DECODER                              |address_decoder                                                |    25|
+|22    |        gpio_core_1                                |GPIO_Core__parameterized1                                      |    28|
+|23    |          \Dual.INPUT_DOUBLE_REGS4                 |cdc_sync__parameterized1                                       |     4|
+|24    |          \Dual.INPUT_DOUBLE_REGS5                 |cdc_sync__parameterized1_11                                    |     4|
+|25    |    axi_interconnect_0                             |kyberBD_axi_interconnect_0_0                                   |  1533|
+|26    |      xbar                                         |kyberBD_xbar_0                                                 |   387|
+|27    |        inst                                       |axi_crossbar_v2_1_20_axi_crossbar                              |   387|
+|28    |          \gen_sasd.crossbar_sasd_0                |axi_crossbar_v2_1_20_crossbar_sasd                             |   387|
+|29    |            addr_arbiter_inst                      |axi_crossbar_v2_1_20_addr_arbiter_sasd                         |   149|
+|30    |            \gen_decerr.decerr_slave_inst          |axi_crossbar_v2_1_20_decerr_slave                              |    15|
+|31    |            reg_slice_r                            |axi_register_slice_v2_1_19_axic_register_slice__parameterized7 |   189|
+|32    |            splitter_ar                            |axi_crossbar_v2_1_20_splitter__parameterized0                  |     6|
+|33    |            splitter_aw                            |axi_crossbar_v2_1_20_splitter                                  |    12|
+|34    |      s00_couplers                                 |s00_couplers_imp_SILQ2H                                        |  1146|
+|35    |        auto_pc                                    |kyberBD_auto_pc_0                                              |  1146|
+|36    |          inst                                     |axi_protocol_converter_v2_1_19_axi_protocol_converter          |  1146|
+|37    |            \gen_axilite.gen_b2s_conv.axilite_b2s  |axi_protocol_converter_v2_1_19_b2s                             |  1146|
+|38    |              \RD.ar_channel_0                     |axi_protocol_converter_v2_1_19_b2s_ar_channel                  |   186|
+|39    |                ar_cmd_fsm_0                       |axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm                  |    30|
+|40    |                cmd_translator_0                   |axi_protocol_converter_v2_1_19_b2s_cmd_translator_8            |   144|
+|41    |                  incr_cmd_0                       |axi_protocol_converter_v2_1_19_b2s_incr_cmd_9                  |    77|
+|42    |                  wrap_cmd_0                       |axi_protocol_converter_v2_1_19_b2s_wrap_cmd_10                 |    62|
+|43    |              \RD.r_channel_0                      |axi_protocol_converter_v2_1_19_b2s_r_channel                   |    93|
+|44    |                rd_data_fifo_0                     |axi_protocol_converter_v2_1_19_b2s_simple_fifo__parameterized1 |    49|
+|45    |                transaction_fifo_0                 |axi_protocol_converter_v2_1_19_b2s_simple_fifo__parameterized2 |    30|
+|46    |              SI_REG                               |axi_register_slice_v2_1_19_axi_register_slice                  |   617|
+|47    |                \ar.ar_pipe                        |axi_register_slice_v2_1_19_axic_register_slice                 |   210|
+|48    |                \aw.aw_pipe                        |axi_register_slice_v2_1_19_axic_register_slice_7               |   214|
+|49    |                \b.b_pipe                          |axi_register_slice_v2_1_19_axic_register_slice__parameterized1 |    47|
+|50    |                \r.r_pipe                          |axi_register_slice_v2_1_19_axic_register_slice__parameterized2 |   146|
+|51    |              \WR.aw_channel_0                     |axi_protocol_converter_v2_1_19_b2s_aw_channel                  |   186|
+|52    |                aw_cmd_fsm_0                       |axi_protocol_converter_v2_1_19_b2s_wr_cmd_fsm                  |    18|
+|53    |                cmd_translator_0                   |axi_protocol_converter_v2_1_19_b2s_cmd_translator              |   152|
+|54    |                  incr_cmd_0                       |axi_protocol_converter_v2_1_19_b2s_incr_cmd                    |    76|
+|55    |                  wrap_cmd_0                       |axi_protocol_converter_v2_1_19_b2s_wrap_cmd                    |    72|
+|56    |              \WR.b_channel_0                      |axi_protocol_converter_v2_1_19_b2s_b_channel                   |    62|
+|57    |                bid_fifo_0                         |axi_protocol_converter_v2_1_19_b2s_simple_fifo                 |    28|
+|58    |                bresp_fifo_0                       |axi_protocol_converter_v2_1_19_b2s_simple_fifo__parameterized0 |     9|
+|59    |    barrett_reduce_0                               |kyberBD_barrett_reduce_0_0                                     |    38|
+|60    |      U0                                           |barrett_reduce_v1_0_6                                          |    38|
+|61    |    barrett_reduce_1                               |kyberBD_barrett_reduce_1_0                                     |    38|
+|62    |      U0                                           |barrett_reduce_v1_0                                            |    38|
+|63    |    bram_port_selector_0                           |kyberBD_bram_port_selector_0_0                                 |    89|
+|64    |    bram_port_selector_1                           |kyberBD_bram_port_selector_1_0                                 |    89|
+|65    |    double_signal_multip_0                         |kyberBD_double_signal_multip_0_0                               |    32|
+|66    |      U0                                           |double_signal_multiplexer_v1_0_5                               |    32|
+|67    |    double_signal_multip_1                         |kyberBD_double_signal_multip_1_0                               |    32|
+|68    |      U0                                           |double_signal_multiplexer_v1_0                                 |    32|
+|69    |    double_signal_multip_2                         |kyberBD_double_signal_multip_2_0                               |    16|
+|70    |      U0                                           |double_signal_multiplexer_v1_0__parameterized2_4               |    16|
+|71    |    double_signal_multip_3                         |kyberBD_double_signal_multip_3_0                               |    16|
+|72    |      U0                                           |double_signal_multiplexer_v1_0__parameterized2                 |    16|
+|73    |    dual_bram_0                                    |kyberBD_dual_bram_0_0                                          |   278|
+|74    |      U0                                           |dual_bram_v1_0                                                 |   278|
+|75    |        bram_v1_0_S00_AXI_inst                     |bram_v1_0_S_AXI                                                |   139|
+|76    |          true_dual_bram_inst0                     |true_dual_bram_3                                               |     8|
+|77    |        bram_v1_0_S01_AXI_inst                     |bram_v1_0_S_AXI_2                                              |   139|
+|78    |          true_dual_bram_inst0                     |true_dual_bram                                                 |     8|
+|79    |    montgomery_reduction_0                         |kyberBD_montgomery_reduction_0_0                               |     2|
+|80    |      U0                                           |montgomery_reduction_v1_0_1                                    |     2|
+|81    |    montgomery_reduction_1                         |kyberBD_montgomery_reduction_1_0                               |     2|
+|82    |      U0                                           |montgomery_reduction_v1_0                                      |     2|
+|83    |    poly_tomont_0                                  |kyberBD_poly_tomont_0_0                                        |   127|
+|84    |      U0                                           |poly_tomont_v1_0                                               |   127|
+|85    |    polyvec_reduce_0                               |kyberBD_polyvec_reduce_0_0                                     |   202|
+|86    |      U0                                           |polyvec_reduce_v1_0                                            |   202|
+|87    |    proc_sys_reset_0                               |kyberBD_proc_sys_reset_0_0                                     |    66|
+|88    |      U0                                           |proc_sys_reset                                                 |    66|
+|89    |        EXT_LPF                                    |lpf                                                            |    23|
+|90    |          \ACTIVE_LOW_AUX.ACT_LO_AUX               |cdc_sync__parameterized2                                       |     6|
+|91    |          \ACTIVE_LOW_EXT.ACT_LO_EXT               |cdc_sync__parameterized2_0                                     |     6|
+|92    |        SEQ                                        |sequence_psr                                                   |    38|
+|93    |          SEQ_COUNTER                              |upcnt_n                                                        |    13|
+|94    |    processing_system7_0                           |kyberBD_processing_system7_0_0                                 |   244|
+|95    |      inst                                         |processing_system7_v5_5_processing_system7                     |   244|
+|96    |    timer2_0                                       |kyberBD_timer2_0_0                                             |    41|
+|97    |      U0                                           |timer2_v1_0                                                    |    41|
++------+---------------------------------------------------+---------------------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:52 ; elapsed = 00:01:59 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:49 ; elapsed = 00:01:54 . Memory (MB): peak = 1191.348 ; gain = 633.590
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 298 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:48 ; elapsed = 00:01:52 . Memory (MB): peak = 1188.164 ; gain = 576.203
-Synthesis Optimization Complete : Time (s): cpu = 00:01:52 ; elapsed = 00:01:59 . Memory (MB): peak = 1188.164 ; gain = 630.441
+Synthesis finished with 0 errors, 0 critical warnings and 345 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:49 ; elapsed = 00:01:48 . Memory (MB): peak = 1191.348 ; gain = 581.812
+Synthesis Optimization Complete : Time (s): cpu = 00:01:50 ; elapsed = 00:01:55 . Memory (MB): peak = 1191.348 ; gain = 633.590
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 245 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 207 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1188.164 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1191.348 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 205 instances were transformed.
-  FDR => FDRE: 204 instances
+  A total of 157 instances were transformed.
+  FDR => FDRE: 156 instances
   SRL16 => SRL16E: 1 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-627 Infos, 178 Warnings, 0 Critical Warnings and 0 Errors encountered.
+626 Infos, 171 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:01 ; elapsed = 00:02:09 . Memory (MB): peak = 1188.164 ; gain = 887.348
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1188.164 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:59 ; elapsed = 00:02:05 . Memory (MB): peak = 1191.348 ; gain = 890.496
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1191.348 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/kyberBD_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file kyberBD_wrapper_utilization_synth.rpt -pb kyberBD_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Feb 15 16:28:02 2021...
+INFO: [Common 17-206] Exiting Vivado at Mon Feb 15 20:09:50 2021...

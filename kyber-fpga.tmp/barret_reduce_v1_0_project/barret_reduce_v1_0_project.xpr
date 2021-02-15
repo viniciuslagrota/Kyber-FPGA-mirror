@@ -6,7 +6,7 @@
 <Project Version="7" Minor="40" Path="c:/projects/kyber-fpga/kyber-fpga.tmp/barret_reduce_v1_0_project/barret_reduce_v1_0_project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="62ac687e3bfc47d9868887506d24e363"/>
+    <Option Name="Id" Val="0f121b3ee53f49858a56b196e78de451"/>
     <Option Name="Part" Val="xc7z010clg400-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -22,6 +22,7 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../../../../Projects/ip_repo/polyvec_reduce_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../../../../Projects/ip_repo/barret_reduce_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../../../../Projects/ip_repo/dual_bram_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../../../../Projects/ip_repo/poly_tomont_1.0"/>
@@ -46,7 +47,7 @@
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSABoardId" Val="microzed_7010"/>
     <Option Name="DSANumComputeUnits" Val="60"/>
-    <Option Name="WTXSimLaunchSim" Val="22"/>
+    <Option Name="WTXSimLaunchSim" Val="0"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -100,23 +101,24 @@
       <File Path="$PPRDIR/../../../../Projects/ip_repo/barret_reduce_1.0/src/testbench.vhd">
         <FileInfo>
           <Attr Name="Library" Val="work"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="UsedIn" Val="testbench"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../../Projects/kyber-fpga/testbench_behav_barret_reduce.wcfg">
         <FileInfo>
+          <Attr Name="Library" Val=""/>
           <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="UsedIn" Val="testbench"/>
         </FileInfo>
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="testbench"/>
-        <Option Name="TopAutoSet" Val="TRUE"/>
+        <Option Name="TopRTLFile" Val="$PPRDIR/../../../../Projects/ip_repo/barret_reduce_1.0/src/testbench.vhd"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SrcSet" Val="sources_1"/>
-        <Option Name="XSimWcfgFile" Val="$PPRDIR/../../../../Projects/kyber-fpga/testbench_behav_barret_reduce.wcfg"/>
       </Config>
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">

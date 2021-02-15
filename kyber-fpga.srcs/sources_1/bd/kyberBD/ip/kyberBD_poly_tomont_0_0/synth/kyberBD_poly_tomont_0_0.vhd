@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:poly_tomont:1.0
--- IP Revision: 6
+-- IP Revision: 7
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -62,12 +62,12 @@ ENTITY kyberBD_poly_tomont_0_0 IS
     aresetn : IN STD_LOGIC;
     bram_ena : OUT STD_LOGIC;
     bram_wea : OUT STD_LOGIC;
-    bram_addra : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+    bram_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     bram_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     bram_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     bram_enb : OUT STD_LOGIC;
     bram_web : OUT STD_LOGIC;
-    bram_addrb : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+    bram_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     bram_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     bram_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     do_lower_mont : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -95,12 +95,12 @@ ARCHITECTURE kyberBD_poly_tomont_0_0_arch OF kyberBD_poly_tomont_0_0 IS
       aresetn : IN STD_LOGIC;
       bram_ena : OUT STD_LOGIC;
       bram_wea : OUT STD_LOGIC;
-      bram_addra : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+      bram_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       bram_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       bram_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       bram_enb : OUT STD_LOGIC;
       bram_web : OUT STD_LOGIC;
-      bram_addrb : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+      bram_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       bram_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       bram_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       do_lower_mont : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -118,7 +118,7 @@ ARCHITECTURE kyberBD_poly_tomont_0_0_arch OF kyberBD_poly_tomont_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_poly_tomont_0_0_arch : ARCHITECTURE IS "kyberBD_poly_tomont_0_0,poly_tomont_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_poly_tomont_0_0_arch: ARCHITECTURE IS "kyberBD_poly_tomont_0_0,poly_tomont_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=poly_tomont,x_ipVersion=1.0,x_ipCoreRevision=6,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=10,KYBER_Q=3329}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_poly_tomont_0_0_arch: ARCHITECTURE IS "kyberBD_poly_tomont_0_0,poly_tomont_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=poly_tomont,x_ipVersion=1.0,x_ipCoreRevision=7,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11,KYBER_Q=3329}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF bram_dob: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_B DOUT";
@@ -141,7 +141,7 @@ BEGIN
   U0 : poly_tomont_v1_0
     GENERIC MAP (
       DATA_WIDTH => 32,
-      ADDR_WIDTH => 10,
+      ADDR_WIDTH => 11,
       KYBER_Q => 3329
     )
     PORT MAP (
