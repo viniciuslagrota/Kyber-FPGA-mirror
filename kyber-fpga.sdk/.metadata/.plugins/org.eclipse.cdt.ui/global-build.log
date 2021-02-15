@@ -1,9 +1,3 @@
-make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s clean 
-make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s clean 
-make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s clean 
-make -C ps7_cortexa9_0/libsrc/dual_bram_v1_0/src -s clean 
-make -C ps7_cortexa9_0/libsrc/emacps_v3_9/src -s clean 
-make -C ps7_cortexa9_0/libsrc/gpiops_v3_5/src -s clean 
 make -C ps7_cortexa9_0/libsrc/gpio_v4_4/src -s clean 
 make -C ps7_cortexa9_0/libsrc/qspips_v3_6/src -s clean 
 make -C ps7_cortexa9_0/libsrc/scugic_v4_0/src -s clean 
@@ -16,7 +10,7 @@ make -C ps7_cortexa9_0/libsrc/uartps_v3_7/src -s clean
 make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s clean 
 make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s clean 
 rm -f ps7_cortexa9_0/lib/libxil.a
-21:01:39 **** Build of project kyber-fpga_bsp ****
+15:36:10 **** Build of project kyber-fpga_bsp ****
 make -k all 
 "Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_5/src"
 make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
@@ -138,7 +132,7 @@ make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s libs  "SHELL=CMD" "COMPILER=arm-
 make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
 "Compiling xadcps"
 'Finished building libraries'
-21:02:52 **** Build of configuration Debug for project kyber-fpga ****
+15:37:27 **** Build of configuration Debug for project kyber-fpga ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -252,7 +246,12 @@ arm-none-eabi-size kyber-fpga.elf  |tee "kyber-fpga.elf.size"
  310328	   2632	  23392	 336352	  521e0	kyber-fpga.elf
 Finished building: kyber-fpga.elf.size
  
-21:03:30 **** Incremental Build of configuration Debug for project kyber-fpga ****
+15:38:40 **** Incremental Build of configuration Debug for project kyber-fpga ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+15:39:00 **** Incremental Build of configuration Debug for project kyber-fpga ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
