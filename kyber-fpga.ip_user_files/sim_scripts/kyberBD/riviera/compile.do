@@ -129,15 +129,16 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ipshared/2996/src/true_dual_bram.vhd" \
 "../../../bd/kyberBD/ipshared/2996/hdl/dual_bram_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_dual_bram_0_0/sim/kyberBD_dual_bram_0_0.vhd" \
+"../../../bd/kyberBD/ipshared/8a95/hdl/barret_reduce_v1_0.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_barret_reduce_0_0/sim/kyberBD_barret_reduce_0_0.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_axi_gpio_2_0/sim/kyberBD_axi_gpio_2_0.vhd" \
+"../../../bd/kyberBD/sim/kyberBD.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
 "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
 "../../../bd/kyberBD/ip/kyberBD_auto_pc_0/sim/kyberBD_auto_pc_0.v" \
-
-vcom -work xil_defaultlib -93 \
-"../../../bd/kyberBD/sim/kyberBD.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

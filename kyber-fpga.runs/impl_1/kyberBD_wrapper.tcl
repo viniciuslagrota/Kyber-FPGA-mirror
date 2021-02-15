@@ -60,12 +60,15 @@ proc step_failed { step } {
   close $ch
 }
 
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 2
+  set_param synth.incrementalSynthesisCache C:/Projects/kyber-fpga/.Xil/Vivado-15212-DESKTOP-0F4OK3D/incrSyn
   create_project -in_memory -part xc7z010clg400-1
   set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
@@ -73,6 +76,7 @@ set rc [catch {
   set_property webtalk.parent_dir C:/Projects/kyber-fpga/kyber-fpga.cache/wt [current_project]
   set_property parent.project_path C:/Projects/kyber-fpga/kyber-fpga.xpr [current_project]
   set_property ip_repo_paths {
+  C:/Projects/ip_repo/barret_reduce_1.0
   C:/Projects/ip_repo/dual_bram_1.0
   C:/Projects/ip_repo/poly_tomont_1.0
   C:/Projects/ip_repo/triple_signal_multiplexer_1.0
