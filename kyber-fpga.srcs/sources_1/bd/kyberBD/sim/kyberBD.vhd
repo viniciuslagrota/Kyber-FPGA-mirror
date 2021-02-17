@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Mon Feb 15 20:06:52 2021
+--Date        : Tue Feb 16 19:52:16 2021
 --Host        : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -1987,38 +1987,6 @@ architecture STRUCTURE of kyberBD is
     gpio_io_t : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component kyberBD_axi_gpio_1_0;
-  component kyberBD_montgomery_reduction_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_montgomery_reduction_0_0;
-  component kyberBD_double_signal_multip_0_0 is
-  port (
-    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    enable_in_0 : in STD_LOGIC;
-    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    enable_in_1 : in STD_LOGIC;
-    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_double_signal_multip_0_0;
-  component kyberBD_double_signal_multip_1_0 is
-  port (
-    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    enable_in_0 : in STD_LOGIC;
-    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    enable_in_1 : in STD_LOGIC;
-    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_double_signal_multip_1_0;
-  component kyberBD_montgomery_reduction_1_0 is
-  port (
-    clk : in STD_LOGIC;
-    data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_montgomery_reduction_1_0;
   component kyberBD_axi_gpio_2_0 is
   port (
     s_axi_aclk : in STD_LOGIC;
@@ -2172,30 +2140,46 @@ architecture STRUCTURE of kyberBD is
     s01_axi_aresetn : in STD_LOGIC
   );
   end component kyberBD_dual_bram_0_0;
-  component kyberBD_poly_tomont_0_0 is
+  component kyberBD_double_signal_multip_0_0 is
   port (
     clk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    bram_ena : out STD_LOGIC;
-    bram_wea : out STD_LOGIC;
-    bram_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    bram_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_enb : out STD_LOGIC;
-    bram_web : out STD_LOGIC;
-    bram_addrb : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    bram_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    do_lower_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    di_lower_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_lower_mont : out STD_LOGIC;
-    do_upper_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    di_upper_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_upper_mont : out STD_LOGIC;
-    start : in STD_LOGIC;
-    busy : out STD_LOGIC
+    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_0 : in STD_LOGIC;
+    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_1 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component kyberBD_poly_tomont_0_0;
+  end component kyberBD_double_signal_multip_0_0;
+  component kyberBD_double_signal_multip_1_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_0 : in STD_LOGIC;
+    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_1 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_double_signal_multip_1_0;
+  component kyberBD_double_signal_multip_2_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    enable_in_0 : in STD_LOGIC;
+    data_in_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    enable_in_1 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_double_signal_multip_2_0;
+  component kyberBD_double_signal_multip_3_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    enable_in_0 : in STD_LOGIC;
+    data_in_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    enable_in_1 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_double_signal_multip_3_0;
   component kyberBD_barrett_reduce_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2203,6 +2187,13 @@ architecture STRUCTURE of kyberBD is
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component kyberBD_barrett_reduce_0_0;
+  component kyberBD_barrett_reduce_1_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_barrett_reduce_1_0;
   component kyberBD_polyvec_reduce_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2228,31 +2219,44 @@ architecture STRUCTURE of kyberBD is
     busy : out STD_LOGIC
   );
   end component kyberBD_polyvec_reduce_0_0;
-  component kyberBD_barrett_reduce_1_0 is
+  component kyberBD_montgomery_reduction_0_0 is
   port (
     clk : in STD_LOGIC;
-    data_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  end component kyberBD_barrett_reduce_1_0;
-  component kyberBD_double_signal_multip_2_0 is
+  end component kyberBD_montgomery_reduction_0_0;
+  component kyberBD_montgomery_reduction_1_0 is
   port (
-    data_in_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    enable_in_0 : in STD_LOGIC;
-    data_in_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    enable_in_1 : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  end component kyberBD_double_signal_multip_2_0;
-  component kyberBD_double_signal_multip_3_0 is
+  end component kyberBD_montgomery_reduction_1_0;
+  component kyberBD_poly_tomont_0_0 is
   port (
-    data_in_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    enable_in_0 : in STD_LOGIC;
-    data_in_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    enable_in_1 : in STD_LOGIC;
-    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    bram_ena : out STD_LOGIC;
+    bram_wea : out STD_LOGIC;
+    bram_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    bram_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_enb : out STD_LOGIC;
+    bram_web : out STD_LOGIC;
+    bram_addrb : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    bram_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    do_lower_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    di_lower_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en_lower_mont : out STD_LOGIC;
+    do_upper_mont : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    di_upper_mont : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en_upper_mont : out STD_LOGIC;
+    start : in STD_LOGIC;
+    busy : out STD_LOGIC
   );
-  end component kyberBD_double_signal_multip_3_0;
+  end component kyberBD_poly_tomont_0_0;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal axi_gpio_2_gpio2_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2804,6 +2808,7 @@ bram_port_selector_1: component kyberBD_bram_port_selector_1_0
     );
 double_signal_multip_0: component kyberBD_double_signal_multip_0_0
      port map (
+      clk => processing_system7_0_FCLK_CLK0,
       data_in_0(31 downto 0) => poly_tomont_0_do_lower_mont(31 downto 0),
       data_in_1(31 downto 0) => B"00000000000000000000000000000000",
       data_out(31 downto 0) => double_signal_multip_0_data_out(31 downto 0),
@@ -2812,6 +2817,7 @@ double_signal_multip_0: component kyberBD_double_signal_multip_0_0
     );
 double_signal_multip_1: component kyberBD_double_signal_multip_1_0
      port map (
+      clk => processing_system7_0_FCLK_CLK0,
       data_in_0(31 downto 0) => poly_tomont_0_do_upper_mont(31 downto 0),
       data_in_1(31 downto 0) => B"00000000000000000000000000000000",
       data_out(31 downto 0) => double_signal_multip_1_data_out(31 downto 0),
@@ -2820,6 +2826,7 @@ double_signal_multip_1: component kyberBD_double_signal_multip_1_0
     );
 double_signal_multip_2: component kyberBD_double_signal_multip_2_0
      port map (
+      clk => processing_system7_0_FCLK_CLK0,
       data_in_0(15 downto 0) => polyvec_reduce_0_do_upper_barrett(15 downto 0),
       data_in_1(15 downto 0) => B"0000000000000000",
       data_out(15 downto 0) => double_signal_multip_2_data_out(15 downto 0),
@@ -2828,6 +2835,7 @@ double_signal_multip_2: component kyberBD_double_signal_multip_2_0
     );
 double_signal_multip_3: component kyberBD_double_signal_multip_3_0
      port map (
+      clk => processing_system7_0_FCLK_CLK0,
       data_in_0(15 downto 0) => polyvec_reduce_0_do_lower_barrett(15 downto 0),
       data_in_1(15 downto 0) => B"0000000000000000",
       data_out(15 downto 0) => double_signal_multip_3_data_out(15 downto 0),

@@ -292,15 +292,15 @@ void poly_tomont_hw(poly * r)
 	memcpy(memoryBram0, (u32 *)r, 512);
 
 	//Start flag up
-	XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x1);
+	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x1);
 
 	//Read busy signal
-	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 1);
 	while(u32ReadGpio == 1)
-		u32ReadGpio = XGpio_DiscreteRead(&XGpioPolyTomont, 1);
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 1);
 
 	//Start flag down
-	XGpio_DiscreteWrite(&XGpioPolyTomont, 1, 0x0);
+	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x0);
 
 	memcpy(r, (poly *)memoryBram1, 512);
 }

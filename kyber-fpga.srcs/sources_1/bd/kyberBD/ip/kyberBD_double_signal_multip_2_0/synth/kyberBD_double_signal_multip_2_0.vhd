@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:double_signal_multiplexer:1.0
--- IP Revision: 3
+-- IP Revision: 4
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,6 +55,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY kyberBD_double_signal_multip_2_0 IS
   PORT (
+    clk : IN STD_LOGIC;
     data_in_0 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     enable_in_0 : IN STD_LOGIC;
     data_in_1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -71,6 +72,7 @@ ARCHITECTURE kyberBD_double_signal_multip_2_0_arch OF kyberBD_double_signal_mult
       DATA_WIDTH : INTEGER
     );
     PORT (
+      clk : IN STD_LOGIC;
       data_in_0 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       enable_in_0 : IN STD_LOGIC;
       data_in_1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -83,13 +85,18 @@ ARCHITECTURE kyberBD_double_signal_multip_2_0_arch OF kyberBD_double_signal_mult
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_double_signal_multip_2_0_arch : ARCHITECTURE IS "kyberBD_double_signal_multip_2_0,double_signal_multiplexer_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_double_signal_multip_2_0_arch: ARCHITECTURE IS "kyberBD_double_signal_multip_2_0,double_signal_multiplexer_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=double_signal_multiplexer,x_ipVersion=1.0,x_ipCoreRevision=3,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=16}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_double_signal_multip_2_0_arch: ARCHITECTURE IS "kyberBD_double_signal_multip_2_0,double_signal_multiplexer_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=double_signal_multiplexer,x_ipVersion=1.0,x_ipCoreRevision=4,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=16}";
+  ATTRIBUTE X_INTERFACE_INFO : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 166666672, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
   U0 : double_signal_multiplexer_v1_0
     GENERIC MAP (
       DATA_WIDTH => 16
     )
     PORT MAP (
+      clk => clk,
       data_in_0 => data_in_0,
       enable_in_0 => enable_in_0,
       data_in_1 => data_in_1,
