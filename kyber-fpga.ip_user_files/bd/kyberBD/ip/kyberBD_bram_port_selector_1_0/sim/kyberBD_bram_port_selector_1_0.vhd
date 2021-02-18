@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:bram_port_selector:1.0
--- IP Revision: 2
+-- IP Revision: 3
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -57,32 +57,32 @@ ENTITY kyberBD_bram_port_selector_1_0 IS
   PORT (
     master_en : OUT STD_LOGIC;
     master_we : OUT STD_LOGIC;
-    master_addr : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+    master_addr : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     master_di : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     master_do : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave0_en : IN STD_LOGIC;
     slave0_we : IN STD_LOGIC;
-    slave0_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+    slave0_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave0_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave0_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave1_en : IN STD_LOGIC;
     slave1_we : IN STD_LOGIC;
-    slave1_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+    slave1_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave1_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave1_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave2_en : IN STD_LOGIC;
     slave2_we : IN STD_LOGIC;
-    slave2_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+    slave2_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave2_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave2_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave3_en : IN STD_LOGIC;
     slave3_we : IN STD_LOGIC;
-    slave3_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+    slave3_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave3_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave3_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave4_en : IN STD_LOGIC;
     slave4_we : IN STD_LOGIC;
-    slave4_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+    slave4_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave4_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     slave4_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
@@ -99,32 +99,32 @@ ARCHITECTURE kyberBD_bram_port_selector_1_0_arch OF kyberBD_bram_port_selector_1
     PORT (
       master_en : OUT STD_LOGIC;
       master_we : OUT STD_LOGIC;
-      master_addr : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+      master_addr : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       master_di : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       master_do : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave0_en : IN STD_LOGIC;
       slave0_we : IN STD_LOGIC;
-      slave0_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+      slave0_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave0_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave0_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave1_en : IN STD_LOGIC;
       slave1_we : IN STD_LOGIC;
-      slave1_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+      slave1_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave1_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave1_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave2_en : IN STD_LOGIC;
       slave2_we : IN STD_LOGIC;
-      slave2_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+      slave2_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave2_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave2_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave3_en : IN STD_LOGIC;
       slave3_we : IN STD_LOGIC;
-      slave3_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+      slave3_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave3_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave3_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave4_en : IN STD_LOGIC;
       slave4_we : IN STD_LOGIC;
-      slave4_addr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+      slave4_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave4_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       slave4_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
@@ -171,7 +171,7 @@ BEGIN
   U0 : bram_port_selector_v1_0
     GENERIC MAP (
       DATA_WIDTH => 32,
-      ADDR_WIDTH => 10
+      ADDR_WIDTH => 11
     )
     PORT MAP (
       master_en => master_en,

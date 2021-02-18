@@ -49,11 +49,23 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_montgom
 # IP: bd/kyberBD/ip/kyberBD_dual_bram_0_0/kyberBD_dual_bram_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_dual_bram_0_0 || ORIG_REF_NAME==kyberBD_dual_bram_0_0} -quiet] -quiet
 
-# IP: bd/kyberBD/ip/kyberBD_barret_reduce_0_0/kyberBD_barret_reduce_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_barret_reduce_0_0 || ORIG_REF_NAME==kyberBD_barret_reduce_0_0} -quiet] -quiet
-
 # IP: bd/kyberBD/ip/kyberBD_axi_gpio_2_0/kyberBD_axi_gpio_2_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_2_0 || ORIG_REF_NAME==kyberBD_axi_gpio_2_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/kyberBD_polyvec_reduce_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_polyvec_reduce_0_0 || ORIG_REF_NAME==kyberBD_polyvec_reduce_0_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_barrett_reduce_0_0/kyberBD_barrett_reduce_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_barrett_reduce_0_0 || ORIG_REF_NAME==kyberBD_barrett_reduce_0_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_barrett_reduce_1_0/kyberBD_barrett_reduce_1_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_barrett_reduce_1_0 || ORIG_REF_NAME==kyberBD_barrett_reduce_1_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_2_0/kyberBD_double_signal_multip_2_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_2_0 || ORIG_REF_NAME==kyberBD_double_signal_multip_2_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_3_0/kyberBD_double_signal_multip_3_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_3_0 || ORIG_REF_NAME==kyberBD_double_signal_multip_3_0} -quiet] -quiet
 
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet

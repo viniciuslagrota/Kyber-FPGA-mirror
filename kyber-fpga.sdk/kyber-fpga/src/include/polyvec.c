@@ -209,11 +209,41 @@ void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
 *
 * Arguments:   - polyvec *r: pointer to input/output polynomial
 **************************************************/
-void polyvec_reduce(polyvec *r)
+void polyvec_reduce_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_reduce(&r->vec[i]);
+}
+
+void polyvec_reduce_hw(polyvec *r)
+{
+	memcpy(memoryBram0, (u32 *)r, 1024);
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x0);
+
+	memcpy(r, (polyvec *)memoryBram1, 1024);
+}
+
+void polyvec_reduce(polyvec *r)
+{
+	if(u32SystemState & POLYVEC_REDUCE_MASK)
+	{
+		polyvec_reduce_hw(r);
+	}
+	else
+	{
+		polyvec_reduce_sw(r);
+	}
 }
 
 /*************************************************

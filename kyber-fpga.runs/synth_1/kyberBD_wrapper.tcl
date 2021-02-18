@@ -18,9 +18,7 @@ proc create_report { reportName command } {
   }
 }
 set_param chipscope.maxJobs 2
-set_param synth.incrementalSynthesisCache C:/Projects/kyber-fpga/.Xil/Vivado-15212-DESKTOP-0F4OK3D/incrSyn
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -34,6 +32,8 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
 set_property ip_repo_paths {
+  c:/Projects/ip_repo/barrett_reduce_1.0
+  c:/Projects/ip_repo/polyvec_reduce_1.0
   c:/Projects/ip_repo/barret_reduce_1.0
   c:/Projects/ip_repo/dual_bram_1.0
   c:/Projects/ip_repo/poly_tomont_1.0

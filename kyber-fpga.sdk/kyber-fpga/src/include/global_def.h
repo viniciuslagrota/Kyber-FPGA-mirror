@@ -49,7 +49,8 @@
 //	System mask
 //
 //////////////////////////////////////////////
-#define POLY_TOMONT_MASK				0x00000001
+#define POLY_TOMONT_MASK				1 << 0
+#define POLYVEC_REDUCE_MASK				1 << 1
 
 //////////////////////////////////////////////
 //
@@ -57,6 +58,13 @@
 //
 //////////////////////////////////////////////
 #define ledpin 47
+
+//////////////////////////////////////////////
+//
+//	Hardware clock period
+//
+//////////////////////////////////////////////
+#define HW_CLOCK_PERIOD			5 //ns
 
 //////////////////////////////////////////////
 //
@@ -140,8 +148,8 @@ XGpio XGpioGlobalTimer;
 XGpio_Config * XGpioConfigKyberK;
 XGpio XGpioKyberK;
 
-XGpio_Config * XGpioConfigPolyTomont;
-XGpio XGpioPolyTomont;
+XGpio_Config * XGpioConfigTomontAndReduce;
+XGpio XGpioTomontAndReduce;
 
 u32 *memoryBram0;
 u32 *memoryBram1;
