@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../../ip_repo/polyvec_basemul_acc_montgomery_1.0/src/double_signal_multiplexer_v1_0.vhd" \
+"../../../../../../../ip_repo/polyvec_basemul_acc_montgomery_1.0/src/fqmul_v1_0.vhd" \
+"../../../../../../../ip_repo/polyvec_basemul_acc_montgomery_1.0/src/montgomery_reduction_v1_0.vhd" \
+
+vhdl work  \
+"../../../../../../../ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
+"../../../../../../../ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Tue Feb 16 19:57:57 2021
-| Host             : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
+| Date             : Fri Feb 19 17:52:23 2021
+| Host             : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
 | Command          : report_power -file kyberBD_wrapper_power_routed.rpt -pb kyberBD_wrapper_power_summary_routed.pb -rpx kyberBD_wrapper_power_routed.rpx
 | Design           : kyberBD_wrapper
 | Device           : xc7z010clg400-1
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.699        |
+| Total On-Chip Power (W)  | 1.685        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.578        |
+| Dynamic (W)              | 1.564        |
 | Device Static (W)        | 0.121        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 65.4         |
-| Junction Temperature (C) | 44.6         |
+| Max Ambient (C)          | 65.6         |
+| Junction Temperature (C) | 44.4         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,19 +52,19 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.019 |        3 |       --- |             --- |
-| Slice Logic             |     0.003 |     3691 |       --- |             --- |
-|   LUT as Logic          |     0.002 |     1204 |     17600 |            6.84 |
-|   Register              |    <0.001 |     1896 |     35200 |            5.39 |
-|   CARRY4                |    <0.001 |       28 |      4400 |            0.64 |
-|   LUT as Shift Register |    <0.001 |       62 |      6000 |            1.03 |
-|   Others                |     0.000 |      261 |       --- |             --- |
-| Signals                 |     0.007 |     3070 |       --- |             --- |
-| Block RAM               |     0.007 |        4 |        60 |            6.67 |
-| DSPs                    |     0.011 |       10 |        80 |           12.50 |
-| PS7                     |     1.532 |        1 |       --- |             --- |
+| Clocks                  |     0.012 |        3 |       --- |             --- |
+| Slice Logic             |     0.004 |     5243 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     1784 |     17600 |           10.14 |
+|   LUT as Shift Register |    <0.001 |      142 |      6000 |            2.37 |
+|   Register              |    <0.001 |     2519 |     35200 |            7.16 |
+|   CARRY4                |    <0.001 |       41 |      4400 |            0.93 |
+|   Others                |     0.000 |      322 |       --- |             --- |
+| Signals                 |     0.006 |     4499 |       --- |             --- |
+| Block RAM               |     0.003 |        4 |        60 |            6.67 |
+| DSPs                    |     0.010 |       24 |        80 |           30.00 |
+| PS7                     |     1.530 |        1 |       --- |             --- |
 | Static Power            |     0.121 |          |           |                 |
-| Total                   |     1.699 |          |           |                 |
+| Total                   |     1.685 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.052 |       0.045 |      0.007 |
+| Vccint    |       1.000 |     0.041 |       0.034 |      0.007 |
 | Vccaux    |       1.800 |     0.008 |       0.000 |      0.008 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -83,11 +83,11 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.001 |       0.001 |      0.001 |
+| Vccbram   |       1.000 |     0.001 |       0.000 |      0.001 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccpint   |       1.000 |     0.751 |       0.720 |      0.030 |
+| Vccpint   |       1.000 |     0.748 |       0.718 |      0.030 |
 | Vccpaux   |       1.800 |     0.061 |       0.051 |      0.010 |
 | Vccpll    |       1.800 |     0.017 |       0.014 |      0.003 |
 | Vcco_ddr  |       1.500 |     0.459 |       0.457 |      0.002 |
@@ -137,7 +137,7 @@ Table of Contents
 +------------+------------------------------------------------------------+-----------------+
 | Clock      | Domain                                                     | Constraint (ns) |
 +------------+------------------------------------------------------------+-----------------+
-| clk_fpga_0 | kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |             5.0 |
+| clk_fpga_0 | kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |            10.0 |
 +------------+------------------------------------------------------------+-----------------+
 
 
@@ -150,29 +150,32 @@ Table of Contents
 +----------------------------+-----------+
 | Name                       | Power (W) |
 +----------------------------+-----------+
-| kyberBD_wrapper            |     1.578 |
-|   kyberBD_i                |     1.578 |
-|     axi_gpio_0             |     0.004 |
-|       U0                   |     0.004 |
-|     axi_interconnect_0     |     0.010 |
-|       s00_couplers         |     0.009 |
-|       xbar                 |     0.001 |
-|     barrett_reduce_0       |     0.002 |
+| kyberBD_wrapper            |     1.564 |
+|   kyberBD_i                |     1.564 |
+|     axi_gpio_0             |     0.002 |
 |       U0                   |     0.002 |
-|     barrett_reduce_1       |     0.002 |
-|       U0                   |     0.002 |
-|     dual_bram_0            |     0.008 |
-|       U0                   |     0.008 |
-|     montgomery_reduction_0 |     0.004 |
+|     axi_interconnect_0     |     0.005 |
+|       s00_couplers         |     0.004 |
+|     dual_bram_0            |     0.004 |
 |       U0                   |     0.004 |
-|     montgomery_reduction_1 |     0.004 |
-|       U0                   |     0.004 |
-|     poly_tomont_0          |     0.005 |
-|       U0                   |     0.005 |
-|     polyvec_reduce_0       |     0.002 |
+|     montgomery_reduction_0 |     0.002 |
 |       U0                   |     0.002 |
-|     processing_system7_0   |     1.533 |
-|       inst                 |     1.533 |
+|     montgomery_reduction_1 |     0.001 |
+|       U0                   |     0.001 |
+|     montgomery_reduction_2 |     0.002 |
+|       U0                   |     0.002 |
+|     montgomery_reduction_3 |     0.001 |
+|       U0                   |     0.001 |
+|     montgomery_reduction_4 |     0.001 |
+|       U0                   |     0.001 |
+|     montgomery_reduction_5 |     0.001 |
+|       U0                   |     0.001 |
+|     poly_tomont_0          |     0.002 |
+|       U0                   |     0.002 |
+|     polyvec_basemul_acc_0  |     0.006 |
+|       U0                   |     0.006 |
+|     processing_system7_0   |     1.531 |
+|       inst                 |     1.531 |
 +----------------------------+-----------+
 
 

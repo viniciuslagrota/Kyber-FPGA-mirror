@@ -17,8 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -32,6 +30,8 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
 set_property ip_repo_paths {
+  c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0
+  c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0
   c:/Projects/ip_repo/barrett_reduce_1.0
   c:/Projects/ip_repo/polyvec_reduce_1.0
   c:/Projects/ip_repo/barret_reduce_1.0
@@ -67,6 +67,9 @@ set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/kyberBD_axi_gpio_2_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/kyberBD_axi_gpio_2_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_2_0/kyberBD_axi_gpio_2_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_3_0/kyberBD_axi_gpio_3_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_3_0/kyberBD_axi_gpio_3_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_3_0/kyberBD_axi_gpio_3_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD_ooc.xdc]
 
