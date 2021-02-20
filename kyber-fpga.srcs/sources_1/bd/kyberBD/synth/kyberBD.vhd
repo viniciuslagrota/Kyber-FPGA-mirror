@@ -1,8 +1,8 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Fri Feb 19 17:47:24 2021
---Host        : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
+--Date        : Sat Feb 20 20:21:45 2021
+--Host        : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
 --Purpose     : IP block netlist
@@ -2065,7 +2065,7 @@ entity kyberBD is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=46,numReposBlks=38,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=47,numReposBlks=39,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of kyberBD : entity is "kyberBD.hwdef";
 end kyberBD;
@@ -2353,20 +2353,6 @@ architecture STRUCTURE of kyberBD is
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component kyberBD_double_signal_multip_3_0;
-  component kyberBD_barrett_reduce_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    data_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_barrett_reduce_0_0;
-  component kyberBD_barrett_reduce_1_0 is
-  port (
-    clk : in STD_LOGIC;
-    data_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_barrett_reduce_1_0;
   component kyberBD_poly_tomont_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2642,49 +2628,6 @@ architecture STRUCTURE of kyberBD is
     data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component kyberBD_double_signal_multip_4_2;
-  component kyberBD_polyvec_basemul_acc_0_1 is
-  port (
-    clk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    bram_read_ena : out STD_LOGIC;
-    bram_read_wea : out STD_LOGIC;
-    bram_read_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    bram_read_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_read_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_read_enb : out STD_LOGIC;
-    bram_read_web : out STD_LOGIC;
-    bram_read_addrb : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    bram_read_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_read_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_write_ena : out STD_LOGIC;
-    bram_write_wea : out STD_LOGIC;
-    bram_write_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    bram_write_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_write_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    coeff0_to_fqmul0 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff1_to_fqmul0 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff0_to_fqmul1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff1_to_fqmul1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff0_to_fqmul2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff1_to_fqmul2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff0_to_fqmul3 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff1_to_fqmul3 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff0_to_fqmul4 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff1_to_fqmul4 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff0_to_fqmul5 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff1_to_fqmul5 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff_from_fqmul0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff_from_fqmul1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff_from_fqmul2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff_from_fqmul3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff_from_fqmul4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    coeff_from_fqmul5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_fqmul : out STD_LOGIC;
-    kyber_k : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    start : in STD_LOGIC;
-    busy : out STD_LOGIC
-  );
-  end component kyberBD_polyvec_basemul_acc_0_1;
   component kyberBD_montgomery_reduction_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2727,6 +2670,106 @@ architecture STRUCTURE of kyberBD is
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component kyberBD_montgomery_reduction_1_0;
+  component kyberBD_bram_port_selector_1_1 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_en : in STD_LOGIC;
+    slave3_we : in STD_LOGIC;
+    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_en : in STD_LOGIC;
+    slave4_we : in STD_LOGIC;
+    slave4_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_1_1;
+  component kyberBD_barrett_reduce_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_barrett_reduce_0_0;
+  component kyberBD_barrett_reduce_1_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_barrett_reduce_1_0;
+  component kyberBD_polyvec_basemul_acc_0_1 is
+  port (
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    bram_read_ena : out STD_LOGIC;
+    bram_read_wea : out STD_LOGIC;
+    bram_read_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    bram_read_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_read_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_read_enb : out STD_LOGIC;
+    bram_read_web : out STD_LOGIC;
+    bram_read_addrb : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    bram_read_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_read_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_write_ena : out STD_LOGIC;
+    bram_write_wea : out STD_LOGIC;
+    bram_write_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    bram_write_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_write_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_write_enb : out STD_LOGIC;
+    bram_write_web : out STD_LOGIC;
+    bram_write_addrb : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    bram_write_dib : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_write_dob : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    coeff0_to_fqmul0 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff1_to_fqmul0 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff0_to_fqmul1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff1_to_fqmul1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff0_to_fqmul2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff1_to_fqmul2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff0_to_fqmul3 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff1_to_fqmul3 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff0_to_fqmul4 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff1_to_fqmul4 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff0_to_fqmul5 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff1_to_fqmul5 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff_from_fqmul0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff_from_fqmul1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff_from_fqmul2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff_from_fqmul3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff_from_fqmul4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    coeff_from_fqmul5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0_to_barrett : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    data1_to_barrett : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0_from_barrett : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data1_from_barrett : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en_dsm : out STD_LOGIC;
+    kyber_k : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    start : in STD_LOGIC;
+    busy : out STD_LOGIC
+  );
+  end component kyberBD_polyvec_basemul_acc_0_1;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal axi_gpio_2_gpio2_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2855,6 +2898,11 @@ architecture STRUCTURE of kyberBD is
   signal bram_port_selector_2_BRAM_PORT_MASTER_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal bram_port_selector_2_BRAM_PORT_MASTER_EN : STD_LOGIC;
   signal bram_port_selector_2_BRAM_PORT_MASTER_WE : STD_LOGIC;
+  signal bram_port_selector_3_BRAM_PORT_MASTER_ADDR : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal bram_port_selector_3_BRAM_PORT_MASTER_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_port_selector_3_BRAM_PORT_MASTER_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_port_selector_3_BRAM_PORT_MASTER_EN : STD_LOGIC;
+  signal bram_port_selector_3_BRAM_PORT_MASTER_WE : STD_LOGIC;
   signal double_signal_multip_0_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal double_signal_multip_1_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal double_signal_multip_2_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -2911,6 +2959,11 @@ architecture STRUCTURE of kyberBD is
   signal polyvec_basemul_acc_0_BRAM1_PORT_A_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal polyvec_basemul_acc_0_BRAM1_PORT_A_EN : STD_LOGIC;
   signal polyvec_basemul_acc_0_BRAM1_PORT_A_WE : STD_LOGIC;
+  signal polyvec_basemul_acc_0_BRAM1_PORT_B_ADDR : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal polyvec_basemul_acc_0_BRAM1_PORT_B_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal polyvec_basemul_acc_0_BRAM1_PORT_B_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal polyvec_basemul_acc_0_BRAM1_PORT_B_EN : STD_LOGIC;
+  signal polyvec_basemul_acc_0_BRAM1_PORT_B_WE : STD_LOGIC;
   signal polyvec_basemul_acc_0_busy : STD_LOGIC;
   signal polyvec_basemul_acc_0_coeff0_to_fqmul0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal polyvec_basemul_acc_0_coeff0_to_fqmul1 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -2924,6 +2977,8 @@ architecture STRUCTURE of kyberBD is
   signal polyvec_basemul_acc_0_coeff1_to_fqmul3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal polyvec_basemul_acc_0_coeff1_to_fqmul4 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal polyvec_basemul_acc_0_coeff1_to_fqmul5 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal polyvec_basemul_acc_0_data0_to_barrett : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal polyvec_basemul_acc_0_data1_to_barrett : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal polyvec_basemul_acc_0_en_fqmul : STD_LOGIC;
   signal polyvec_reduce_0_BRAM_PORT_A_ADDR : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal polyvec_reduce_0_BRAM_PORT_A_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3016,7 +3071,10 @@ architecture STRUCTURE of kyberBD is
   signal NLW_bram_port_selector_1_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_port_selector_2_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_bram_port_selector_2_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_dual_bram_0_s01_dob_bram_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_3_slave1_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_3_slave2_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_3_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_bram_port_selector_3_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3429,6 +3487,39 @@ bram_port_selector_2: component kyberBD_bram_port_selector_2_0
       slave4_en => '0',
       slave4_we => '0'
     );
+bram_port_selector_3: component kyberBD_bram_port_selector_1_1
+     port map (
+      master_addr(10 downto 0) => bram_port_selector_3_BRAM_PORT_MASTER_ADDR(10 downto 0),
+      master_di(31 downto 0) => bram_port_selector_3_BRAM_PORT_MASTER_DIN(31 downto 0),
+      master_do(31 downto 0) => bram_port_selector_3_BRAM_PORT_MASTER_DOUT(31 downto 0),
+      master_en => bram_port_selector_3_BRAM_PORT_MASTER_EN,
+      master_we => bram_port_selector_3_BRAM_PORT_MASTER_WE,
+      slave0_addr(10 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_ADDR(10 downto 0),
+      slave0_di(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_DIN(31 downto 0),
+      slave0_do(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_DOUT(31 downto 0),
+      slave0_en => polyvec_basemul_acc_0_BRAM1_PORT_B_EN,
+      slave0_we => polyvec_basemul_acc_0_BRAM1_PORT_B_WE,
+      slave1_addr(10 downto 0) => B"00000000000",
+      slave1_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave1_do(31 downto 0) => NLW_bram_port_selector_3_slave1_do_UNCONNECTED(31 downto 0),
+      slave1_en => '0',
+      slave1_we => '0',
+      slave2_addr(10 downto 0) => B"00000000000",
+      slave2_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave2_do(31 downto 0) => NLW_bram_port_selector_3_slave2_do_UNCONNECTED(31 downto 0),
+      slave2_en => '0',
+      slave2_we => '0',
+      slave3_addr(10 downto 0) => B"00000000000",
+      slave3_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave3_do(31 downto 0) => NLW_bram_port_selector_3_slave3_do_UNCONNECTED(31 downto 0),
+      slave3_en => '0',
+      slave3_we => '0',
+      slave4_addr(10 downto 0) => B"00000000000",
+      slave4_di(31 downto 0) => B"00000000000000000000000000001000",
+      slave4_do(31 downto 0) => NLW_bram_port_selector_3_slave4_do_UNCONNECTED(31 downto 0),
+      slave4_en => '0',
+      slave4_we => '0'
+    );
 double_signal_multip_0: component kyberBD_double_signal_multip_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
@@ -3451,19 +3542,19 @@ double_signal_multip_2: component kyberBD_double_signal_multip_2_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data_in_0(15 downto 0) => polyvec_reduce_0_do_upper_barrett(15 downto 0),
-      data_in_1(15 downto 0) => B"0000000000000000",
+      data_in_1(15 downto 0) => polyvec_basemul_acc_0_data1_to_barrett(15 downto 0),
       data_out(15 downto 0) => double_signal_multip_2_data_out(15 downto 0),
       enable_in_0 => polyvec_reduce_0_en_upper_barrett,
-      enable_in_1 => '0'
+      enable_in_1 => polyvec_basemul_acc_0_en_fqmul
     );
 double_signal_multip_3: component kyberBD_double_signal_multip_3_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data_in_0(15 downto 0) => polyvec_reduce_0_do_lower_barrett(15 downto 0),
-      data_in_1(15 downto 0) => B"0000000000000000",
+      data_in_1(15 downto 0) => polyvec_basemul_acc_0_data0_to_barrett(15 downto 0),
       data_out(15 downto 0) => double_signal_multip_3_data_out(15 downto 0),
       enable_in_0 => polyvec_reduce_0_en_lower_barrett,
-      enable_in_1 => '0'
+      enable_in_1 => polyvec_basemul_acc_0_en_fqmul
     );
 double_signal_multip_4: component kyberBD_double_signal_multip_1_1
      port map (
@@ -3535,7 +3626,7 @@ dual_bram_0: component kyberBD_dual_bram_0_0
       s00_wea_bram => bram_port_selector_0_BRAM_PORT_MASTER_WE,
       s00_web_bram => bram_port_selector_1_BRAM_PORT_MASTER_WE,
       s01_addra_bram(10 downto 0) => bram_port_selector_2_BRAM_PORT_MASTER_ADDR(10 downto 0),
-      s01_addrb_bram(10 downto 0) => B"00000000000",
+      s01_addrb_bram(10 downto 0) => bram_port_selector_3_BRAM_PORT_MASTER_ADDR(10 downto 0),
       s01_axi_aclk => processing_system7_0_FCLK_CLK0,
       s01_axi_araddr(12 downto 0) => axi_interconnect_0_M02_AXI_ARADDR(12 downto 0),
       s01_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),
@@ -3558,13 +3649,13 @@ dual_bram_0: component kyberBD_dual_bram_0_0
       s01_axi_wstrb(3 downto 0) => axi_interconnect_0_M02_AXI_WSTRB(3 downto 0),
       s01_axi_wvalid => axi_interconnect_0_M02_AXI_WVALID,
       s01_dia_bram(31 downto 0) => bram_port_selector_2_BRAM_PORT_MASTER_DIN(31 downto 0),
-      s01_dib_bram(31 downto 0) => B"00000000000000000000000000001000",
+      s01_dib_bram(31 downto 0) => bram_port_selector_3_BRAM_PORT_MASTER_DIN(31 downto 0),
       s01_doa_bram(31 downto 0) => bram_port_selector_2_BRAM_PORT_MASTER_DOUT(31 downto 0),
-      s01_dob_bram(31 downto 0) => NLW_dual_bram_0_s01_dob_bram_UNCONNECTED(31 downto 0),
+      s01_dob_bram(31 downto 0) => bram_port_selector_3_BRAM_PORT_MASTER_DOUT(31 downto 0),
       s01_ena_bram => bram_port_selector_2_BRAM_PORT_MASTER_EN,
-      s01_enb_bram => '0',
+      s01_enb_bram => bram_port_selector_3_BRAM_PORT_MASTER_EN,
       s01_wea_bram => bram_port_selector_2_BRAM_PORT_MASTER_WE,
-      s01_web_bram => '0'
+      s01_web_bram => bram_port_selector_3_BRAM_PORT_MASTER_WE
     );
 fqmul_0: component kyberBD_fqmul_0_1
      port map (
@@ -3693,10 +3784,15 @@ polyvec_basemul_acc_0: component kyberBD_polyvec_basemul_acc_0_1
       bram_read_wea => polyvec_basemul_acc_0_BRAM0_PORT_A_WE,
       bram_read_web => polyvec_basemul_acc_0_BRAM0_PORT_B_WE,
       bram_write_addra(10 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_A_ADDR(10 downto 0),
+      bram_write_addrb(10 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_ADDR(10 downto 0),
       bram_write_dia(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_A_DIN(31 downto 0),
+      bram_write_dib(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_DIN(31 downto 0),
       bram_write_doa(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_A_DOUT(31 downto 0),
+      bram_write_dob(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_DOUT(31 downto 0),
       bram_write_ena => polyvec_basemul_acc_0_BRAM1_PORT_A_EN,
+      bram_write_enb => polyvec_basemul_acc_0_BRAM1_PORT_B_EN,
       bram_write_wea => polyvec_basemul_acc_0_BRAM1_PORT_A_WE,
+      bram_write_web => polyvec_basemul_acc_0_BRAM1_PORT_B_WE,
       busy => polyvec_basemul_acc_0_busy,
       clk => processing_system7_0_FCLK_CLK0,
       coeff0_to_fqmul0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul0(15 downto 0),
@@ -3712,12 +3808,16 @@ polyvec_basemul_acc_0: component kyberBD_polyvec_basemul_acc_0_1
       coeff1_to_fqmul4(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul4(15 downto 0),
       coeff1_to_fqmul5(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul5(15 downto 0),
       coeff_from_fqmul0(15 downto 0) => fqmul_0_data_out(15 downto 0),
-      coeff_from_fqmul1(15 downto 0) => B"0000000000000000",
+      coeff_from_fqmul1(15 downto 0) => fqmul_1_data_out(15 downto 0),
       coeff_from_fqmul2(15 downto 0) => fqmul_2_data_out(15 downto 0),
       coeff_from_fqmul3(15 downto 0) => fqmul_3_data_out(15 downto 0),
       coeff_from_fqmul4(15 downto 0) => fqmul_4_data_out(15 downto 0),
       coeff_from_fqmul5(15 downto 0) => fqmul_5_data_out(15 downto 0),
-      en_fqmul => polyvec_basemul_acc_0_en_fqmul,
+      data0_from_barrett(15 downto 0) => barrett_reduce_0_data_out(15 downto 0),
+      data0_to_barrett(15 downto 0) => polyvec_basemul_acc_0_data0_to_barrett(15 downto 0),
+      data1_from_barrett(15 downto 0) => barrett_reduce_1_data_out(15 downto 0),
+      data1_to_barrett(15 downto 0) => polyvec_basemul_acc_0_data1_to_barrett(15 downto 0),
+      en_dsm => polyvec_basemul_acc_0_en_fqmul,
       kyber_k(2 downto 0) => axi_gpio_1_gpio_io_o(2 downto 0),
       start => axi_gpio_3_gpio_io_o(0)
     );

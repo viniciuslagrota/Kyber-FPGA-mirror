@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:polyvec_basemul_acc_montgomery:1.0
--- IP Revision: 8
+-- IP Revision: 10
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -75,6 +75,11 @@ ENTITY kyberBD_polyvec_basemul_acc_0_1 IS
     bram_write_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     bram_write_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     bram_write_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram_write_enb : OUT STD_LOGIC;
+    bram_write_web : OUT STD_LOGIC;
+    bram_write_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+    bram_write_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram_write_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     coeff0_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff0_to_fqmul1 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -93,7 +98,11 @@ ENTITY kyberBD_polyvec_basemul_acc_0_1 IS
     coeff_from_fqmul3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff_from_fqmul4 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff_from_fqmul5 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    en_fqmul : OUT STD_LOGIC;
+    data0_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    data1_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    data0_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    data1_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    en_dsm : OUT STD_LOGIC;
     kyber_k : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
     start : IN STD_LOGIC;
     busy : OUT STD_LOGIC
@@ -126,6 +135,11 @@ ARCHITECTURE kyberBD_polyvec_basemul_acc_0_1_arch OF kyberBD_polyvec_basemul_acc
       bram_write_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       bram_write_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       bram_write_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram_write_enb : OUT STD_LOGIC;
+      bram_write_web : OUT STD_LOGIC;
+      bram_write_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+      bram_write_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram_write_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       coeff0_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff0_to_fqmul1 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -144,7 +158,11 @@ ARCHITECTURE kyberBD_polyvec_basemul_acc_0_1_arch OF kyberBD_polyvec_basemul_acc
       coeff_from_fqmul3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff_from_fqmul4 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff_from_fqmul5 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-      en_fqmul : OUT STD_LOGIC;
+      data0_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      data1_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      data0_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      data1_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      en_dsm : OUT STD_LOGIC;
       kyber_k : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
       start : IN STD_LOGIC;
       busy : OUT STD_LOGIC
@@ -152,6 +170,12 @@ ARCHITECTURE kyberBD_polyvec_basemul_acc_0_1_arch OF kyberBD_polyvec_basemul_acc
   END COMPONENT polyvec_basemul_acc_montgomery_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_INFO OF bram_write_dob: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF bram_write_dib: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram_write_addrb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF bram_write_web: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF bram_write_enb: SIGNAL IS "XIL_INTERFACENAME BRAM1_PORT_B, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF bram_write_enb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B EN";
   ATTRIBUTE X_INTERFACE_INFO OF bram_write_doa: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A DOUT";
   ATTRIBUTE X_INTERFACE_INFO OF bram_write_dia: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A DIN";
   ATTRIBUTE X_INTERFACE_INFO OF bram_write_addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A ADDR";
@@ -198,6 +222,11 @@ BEGIN
       bram_write_addra => bram_write_addra,
       bram_write_dia => bram_write_dia,
       bram_write_doa => bram_write_doa,
+      bram_write_enb => bram_write_enb,
+      bram_write_web => bram_write_web,
+      bram_write_addrb => bram_write_addrb,
+      bram_write_dib => bram_write_dib,
+      bram_write_dob => bram_write_dob,
       coeff0_to_fqmul0 => coeff0_to_fqmul0,
       coeff1_to_fqmul0 => coeff1_to_fqmul0,
       coeff0_to_fqmul1 => coeff0_to_fqmul1,
@@ -216,7 +245,11 @@ BEGIN
       coeff_from_fqmul3 => coeff_from_fqmul3,
       coeff_from_fqmul4 => coeff_from_fqmul4,
       coeff_from_fqmul5 => coeff_from_fqmul5,
-      en_fqmul => en_fqmul,
+      data0_to_barrett => data0_to_barrett,
+      data1_to_barrett => data1_to_barrett,
+      data0_from_barrett => data0_from_barrett,
+      data1_from_barrett => data1_from_barrett,
+      en_dsm => en_dsm,
       kyber_k => kyber_k,
       start => start,
       busy => busy
