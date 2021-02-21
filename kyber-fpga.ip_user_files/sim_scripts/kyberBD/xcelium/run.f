@@ -102,7 +102,7 @@
   "../../../bd/kyberBD/ip/kyberBD_fqmul_0_1/sim/kyberBD_fqmul_0_1.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_fqmul_1_0/sim/kyberBD_fqmul_1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_2_0/sim/kyberBD_bram_port_selector_2_0.vhd" \
-  "../../../bd/kyberBD/ipshared/b95d/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/bd6d/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_polyvec_basemul_acc_0_1/sim/kyberBD_polyvec_basemul_acc_0_1.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_axi_gpio_3_0/sim/kyberBD_axi_gpio_3_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_fqmul_1_1/sim/kyberBD_fqmul_1_1.vhd" \
@@ -118,13 +118,15 @@
   "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_0_3/sim/kyberBD_montgomery_reduction_0_3.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_0_4/sim/kyberBD_montgomery_reduction_0_4.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_1/sim/kyberBD_bram_port_selector_1_1.vhd" \
-  "../../../bd/kyberBD/sim/kyberBD.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_19 \
   "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/kyberBD/ip/kyberBD_auto_pc_0/sim/kyberBD_auto_pc_0.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/kyberBD/sim/kyberBD.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v
