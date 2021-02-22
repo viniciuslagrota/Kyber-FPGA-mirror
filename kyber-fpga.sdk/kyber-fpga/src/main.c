@@ -437,7 +437,7 @@ int main()
 		else
 			print_debug(DEBUG_MAIN, "Polyvec basemul acc montgomery software used.\n");
 
-		u32SystemState += 4;
+		u32SystemState ++;
 #endif
 
 		sleep(1);

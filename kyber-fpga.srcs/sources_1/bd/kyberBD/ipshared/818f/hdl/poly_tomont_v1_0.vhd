@@ -114,7 +114,7 @@ begin
             else
                 if(start = '1' and s_start = '0') then
                     s_busy <= '1';
-                elsif(s_en_vec_mont(10) = '1' and s_en_vec_mont(9) = '0') then
+                elsif(s_en_vec_mont(6) = '1' and s_en_vec_mont(5) = '0') then
                     s_busy <= '0';
                 else
                     s_busy <= s_busy;
@@ -205,8 +205,8 @@ begin
                 s_bram_dib   <= (others => '0');
             else
                 if(start = '1') then
-                    s_bram_enb   <= s_en_vec_mont(8);
-                    s_bram_web   <= s_en_vec_mont(8);
+                    s_bram_enb   <= s_en_vec_mont(4);
+                    s_bram_web   <= s_en_vec_mont(4);
                     if(s_bram_web = '1') then
                         s_bram_addrb <= std_logic_vector(unsigned(s_bram_addrb) + 1);                        
                     end if;                    
