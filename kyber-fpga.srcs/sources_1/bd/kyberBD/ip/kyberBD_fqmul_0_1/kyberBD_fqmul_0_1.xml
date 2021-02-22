@@ -41,7 +41,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">kyberBD_processing_system7_0_0_FCLK_CLK0</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -79,99 +79,6 @@
     </spirit:busInterface>
   </spirit:busInterfaces>
   <spirit:model>
-    <spirit:views>
-      <spirit:view>
-        <spirit:name>xilinx_vhdlsynthesis</spirit:name>
-        <spirit:displayName>VHDL Synthesis</spirit:displayName>
-        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
-        <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>fqmul_v1_0</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_vhdlsynthesis_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c3205a76</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_synthesisconstraints</spirit:name>
-        <spirit:displayName>Synthesis Constraints</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c3205a76</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_vhdlsynthesiswrapper</spirit:name>
-        <spirit:displayName>VHDL Synthesis Wrapper</spirit:displayName>
-        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
-        <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>kyberBD_fqmul_0_1</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:c3205a76</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_vhdlbehavioralsimulation</spirit:name>
-        <spirit:displayName>VHDL Simulation</spirit:displayName>
-        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
-        <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>fqmul_v1_0</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5e2edf82</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_vhdlsimulationwrapper</spirit:name>
-        <spirit:displayName>VHDL Simulation Wrapper</spirit:displayName>
-        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
-        <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>kyberBD_fqmul_0_1</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_vhdlsimulationwrapper_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5e2edf82</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-    </spirit:views>
     <spirit:ports>
       <spirit:port>
         <spirit:name>clk</spirit:name>
@@ -180,8 +87,19 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_in</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -197,8 +115,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -214,8 +131,19 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_in_mont</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -231,8 +159,19 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_out_mont</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -248,8 +187,19 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -265,48 +215,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
       </spirit:port>
     </spirit:ports>
   </spirit:model>
-  <spirit:fileSets>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>../../ipshared/5447/hdl/fqmul_v1_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:logicalName>work</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>synth/kyberBD_fqmul_0_1.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>../../ipshared/5447/hdl/fqmul_v1_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:logicalName>work</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>sim/kyberBD_fqmul_0_1.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-  </spirit:fileSets>
   <spirit:description>Multiplication in body</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
@@ -317,7 +232,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>fqmul_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>4</xilinx:coreRevision>
+      <xilinx:coreRevision>5</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4c7fb024_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@6ef9ffa8_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
@@ -409,17 +324,51 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2abc8ee3_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@66fc09b4_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7f0dbcb9_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23492592_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21a0c440_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7201755a_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61225284_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d02c849_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f7bb3cc_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8646fde_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16476916_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e7e7f6f_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5292c4e2_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55dc5292_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67edc9ac_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4487c3be_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43056dec_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5dedc163_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f77ea65_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49088cbb_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7500cc4a_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50dc2fd0_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30816db1_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b6ec1f6_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69f43de0_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@301bbfc3_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@504b95df_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28533aed_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fe73ea7_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69f0b0c2_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22014c2_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16f75e4d_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71dad33e_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@526e37b9_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@583a3cb4_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69ee05d3_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@679421e1_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45b55ea8_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6360431d_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57b6e963_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dcaff13_ARCHIVE_LOCATION">c:/Projects/ip_repo/fqmul_1.0</xilinx:tag>
       </xilinx:tags>
-      <xilinx:configElementInfos>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-      </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="a88d4390"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="735837da"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="f5a73a0e"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="d9c520dd"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="5f52a943"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="3f957138"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

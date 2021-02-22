@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1010000000fs"></ZoomStartTime>
-      <ZoomEndTime time="16850000001fs"></ZoomEndTime>
-      <Cursor1Time time="3790000000fs"></Cursor1Time>
+      <ZoomStartTime time="3666133334fs"></ZoomStartTime>
+      <ZoomEndTime time="3809333335fs"></ZoomEndTime>
+      <Cursor1Time time="3726133000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="167"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="225"></NameColumnWidth>
+      <ValueColumnWidth column_width="76"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="16" />
    <wvobject fp_name="/testbench/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -236,12 +236,28 @@
          <obj_property name="ObjectShortName">f[15:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/utt/s_en_vec_mont" type="array">
-         <obj_property name="ElementShortName">s_en_vec_mont[15:0]</obj_property>
-         <obj_property name="ObjectShortName">s_en_vec_mont[15:0]</obj_property>
+         <obj_property name="ElementShortName">s_en_vec_mont[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s_en_vec_mont[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/utt/valid_out_lower_mont" type="logic">
+         <obj_property name="ElementShortName">valid_out_lower_mont</obj_property>
+         <obj_property name="ObjectShortName">valid_out_lower_mont</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/do_lower_mont" type="array">
          <obj_property name="ElementShortName">do_lower_mont[31:0]</obj_property>
          <obj_property name="ObjectShortName">do_lower_mont[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/utt/valid_out_upper_mont" type="logic">
+         <obj_property name="ElementShortName">valid_out_upper_mont</obj_property>
+         <obj_property name="ObjectShortName">valid_out_upper_mont</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/do_upper_mont" type="array">
+         <obj_property name="ElementShortName">do_upper_mont[31:0]</obj_property>
+         <obj_property name="ObjectShortName">do_upper_mont[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/utt/valid_in_lower_mont" type="logic">
+         <obj_property name="ElementShortName">valid_in_lower_mont</obj_property>
+         <obj_property name="ObjectShortName">valid_in_lower_mont</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/di_lower_mont" type="array">
          <obj_property name="ElementShortName">di_lower_mont[15:0]</obj_property>
@@ -251,9 +267,9 @@
          <obj_property name="ElementShortName">en_lower_mont</obj_property>
          <obj_property name="ObjectShortName">en_lower_mont</obj_property>
       </wvobject>
-      <wvobject fp_name="/testbench/do_upper_mont" type="array">
-         <obj_property name="ElementShortName">do_upper_mont[31:0]</obj_property>
-         <obj_property name="ObjectShortName">do_upper_mont[31:0]</obj_property>
+      <wvobject fp_name="/testbench/utt/valid_in_upper_mont" type="logic">
+         <obj_property name="ElementShortName">valid_in_upper_mont</obj_property>
+         <obj_property name="ObjectShortName">valid_in_upper_mont</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/di_upper_mont" type="array">
          <obj_property name="ElementShortName">di_upper_mont[15:0]</obj_property>
@@ -264,12 +280,26 @@
          <obj_property name="ObjectShortName">en_upper_mont</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject fp_name="group294" type="group">
+      <obj_property name="label">DSM_INST0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
    <wvobject fp_name="group211" type="group">
       <obj_property name="label">MONTGOMERY_INST0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/testbench/mont_inst0/valid_in" type="logic">
+         <obj_property name="ElementShortName">valid_in</obj_property>
+         <obj_property name="ObjectShortName">valid_in</obj_property>
+      </wvobject>
       <wvobject fp_name="/testbench/mont_inst0/data_in" type="array">
          <obj_property name="ElementShortName">data_in[31:0]</obj_property>
          <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/mont_inst0/valid_out" type="logic">
+         <obj_property name="ElementShortName">valid_out</obj_property>
+         <obj_property name="ObjectShortName">valid_out</obj_property>
       </wvobject>
       <wvobject fp_name="/testbench/mont_inst0/data_out" type="array">
          <obj_property name="ElementShortName">data_out[15:0]</obj_property>
