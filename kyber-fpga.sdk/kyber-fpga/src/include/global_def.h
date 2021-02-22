@@ -51,6 +51,7 @@
 //////////////////////////////////////////////
 #define POLY_TOMONT_MASK				1 << 0
 #define POLYVEC_REDUCE_MASK				1 << 1
+#define POLYVEC_BASEMUL_MASK			1 << 2
 
 //////////////////////////////////////////////
 //
@@ -64,7 +65,7 @@
 //	Hardware clock period
 //
 //////////////////////////////////////////////
-#define HW_CLOCK_PERIOD			5 //ns
+#define HW_CLOCK_PERIOD			10 //ns
 
 //////////////////////////////////////////////
 //
@@ -150,6 +151,9 @@ XGpio XGpioKyberK;
 
 XGpio_Config * XGpioConfigTomontAndReduce;
 XGpio XGpioTomontAndReduce;
+
+XGpio_Config * XGpioConfigAccMont;
+XGpio XGpioAccMont;
 
 u32 *memoryBram0;
 u32 *memoryBram1;

@@ -1,0 +1,219 @@
+Críticos
+	- fqmul (14%)
+	- montgomery_reduce (21%)
+	- barret_reduce (9.5%)
+	- keccakf1600_StatePermute (8.6%)
+	
+	-> Verificar possibilidade de colocar uma BRAM grande na frente de todos os blocos. Salva os dados ali e retorna eles por lá também. Se não der, cada funçõa principal tem que ter sua BRAM.
+	
+	-> Tem que implementar o polyvec_ntt, polyvec_invntt_tomont, polyvec_reduce, polyvec_basemul_acc_montgomery, poly_tomont e KeccakF1600_StatePermute em HW.
+		- as funçoes dentro das funcoes acimas, devem ser IPs separadas.
+	
+
+kem_bench
+	crypto_kem_keypair
+		indcpa_keypair
+			randombytes
+			hash_g (sha3_512)
+				keccak_absorb_once
+				KeccakF1600_StatePermute
+			gen_a
+				xof_absorb
+					kyber_shake128_absorb
+						keccak_absorb_once
+							KeccakF1600_StatePermute
+				xof_squeezeblocks - shake128 (2x)
+					shake128_squeezeblocks
+						KeccakF1600_StatePermute
+				rej_uniform (2x)
+			poly_getnoise_eta1 (2 x loop)	
+				prf
+					kyber_shake256_prf
+						shake256_absorb_once
+							keccak_absorb_once
+								KeccakF1600_StatePermute
+						shake256_squeezeblocks
+							keccak_squeezeblocks
+								KeccakF1600_StatePermute
+						shake256_squeeze
+							keccak_squeeze
+								KeccakF1600_StatePermute
+				poly_cbd_eta1
+			polyvec_ntt (2x)
+				poly_ntt
+					ntt
+						fqmul
+							montgomery_reduce
+					poly_reduce
+						barrett_reduce
+			polyvec_basemul_acc_montgomery
+				poly_basemul_montgomery (1 + loop)
+					basemul
+						fqmul
+							montgomery_reduce
+				poly_add (loop)
+				poly_reduce
+					barrett_reduce
+			poly_tomont
+				montgomery_reduce (loop)
+			polyvec_add
+				poly_add
+			polyvec_reduce
+				poly_reduce
+					barrett_reduce
+			pack_sk
+			pack_pk
+		hash_h
+			keccak_absorb_once
+			KeccakF1600_StatePermute
+		randombytes
+	crypto_kem_enc
+		randombytes
+		hash_h (3x)
+			keccak_absorb_once
+			KeccakF1600_StatePermute
+		hash_g
+		indcpa_enc
+			unpack_pk
+			poly_frommsg
+			gen_at
+			poly_getnoise_eta1 (loop)
+			poly_getnoise_eta2 (loop + 1)
+			polyvec_ntt
+				poly_ntt
+					ntt
+						fqmul
+							montgomery_reduce
+					poly_reduce
+						barrett_reduce
+			polyvec_basemul_acc_montgomery (loop + 1)
+				poly_basemul_montgomery (1 + loop)
+					basemul
+						fqmul
+							montgomery_reduce
+				poly_add (loop)
+				poly_reduce
+					barrett_reduce
+			polyvec_invntt_tomont
+				poly_invntt_tomont
+					invntt
+						barrett_reduce
+						fqmul
+							montgomery_reduce
+			poly_invntt_tomont
+				invntt
+					barrett_reduce
+						fqmul
+							montgomery_reduce
+			polyvec_add
+				poly_add
+			poly_add (2x)
+			polyvec_reduce
+				poly_reduce
+					barrett_reduce
+			poly_reduce
+				barrett_reduce
+			pack_ciphertext
+				polyvec_compress
+				poly_compress			
+		kdf (shake256)
+			shake256_absorb_once
+				keccak_absorb_once
+					KeccakF1600_StatePermute
+			shake256_squeezeblocks
+				keccak_squeezeblocks
+					KeccakF1600_StatePermute
+			shake256_squeeze
+				keccak_squeeze
+					KeccakF1600_StatePermute
+	crypto_kem_dec
+		indcpa_dec
+			unpack_ciphertext
+				polyvec_decompress
+				poly_decompress
+			unpack_sk
+				polyvec_frombytes
+					poly_frombytes
+			polyvec_ntt
+				poly_ntt
+					ntt
+						fqmul
+							montgomery_reduce
+					poly_reduce
+						barrett_reduce
+			polyvec_basemul_acc_montgomery (loop + 1)
+				poly_basemul_montgomery (1 + loop)
+					basemul
+						fqmul
+							montgomery_reduce
+				poly_add (loop)
+				poly_reduce
+					barrett_reduce
+			poly_invntt_tomont
+				invntt
+					barrett_reduce
+						fqmul
+							montgomery_reduce
+			poly_sub
+			poly_reduce
+				barrett_reduce
+			poly_tomsg
+		hash_g
+		indcpa_enc
+			unpack_pk
+			poly_frommsg
+			gen_at
+			poly_getnoise_eta1 (loop)
+			poly_getnoise_eta2 (loop + 1)
+			polyvec_ntt
+				poly_ntt
+					ntt
+						fqmul
+							montgomery_reduce
+					poly_reduce
+						barrett_reduce
+			polyvec_basemul_acc_montgomery (loop + 1)
+				poly_basemul_montgomery (1 + loop)
+					basemul
+						fqmul
+							montgomery_reduce
+				poly_add (loop)
+				poly_reduce
+					barrett_reduce
+			polyvec_invntt_tomont
+				poly_invntt_tomont
+					invntt
+						barrett_reduce
+						fqmul
+							montgomery_reduce
+			poly_invntt_tomont
+				invntt
+					barrett_reduce
+						fqmul
+							montgomery_reduce
+			polyvec_add
+				poly_add
+			poly_add (2x)
+			polyvec_reduce
+				poly_reduce
+					barrett_reduce
+			poly_reduce
+				barrett_reduce
+			pack_ciphertext
+				polyvec_compress
+				poly_compress	
+		verify
+		hash_h
+			keccak_absorb_once
+			KeccakF1600_StatePermute
+		cmov
+		kdf (shake256)
+			shake256_absorb_once
+				keccak_absorb_once
+					KeccakF1600_StatePermute
+			shake256_squeezeblocks
+				keccak_squeezeblocks
+					KeccakF1600_StatePermute
+			shake256_squeeze
+				keccak_squeeze
+					KeccakF1600_StatePermute
