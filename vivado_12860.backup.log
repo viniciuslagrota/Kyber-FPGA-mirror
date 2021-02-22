@@ -1,0 +1,1073 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Sat Feb 20 12:04:38 2021
+# Process ID: 12860
+# Current directory: C:/Projects/kyber-fpga
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10084 C:\Projects\kyber-fpga\kyber-fpga.xpr
+# Log file: C:/Projects/kyber-fpga/vivado.log
+# Journal file: C:/Projects/kyber-fpga\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Projects/kyber-fpga/kyber-fpga.xpr
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/barret_reduce_1.0'.
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/signal_multiplexer_1.0'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-2207] Repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0' already exists; ignoring attempt to add it again.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barrett_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barret_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/dual_bram_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/poly_tomont_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/triple_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/double_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_port_selector_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_mm_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+open_project: Time (s): cpu = 00:00:30 ; elapsed = 00:00:17 . Memory (MB): peak = 774.125 ; gain = 164.672
+update_compile_order -fileset sources_1
+file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+
+INFO: [Vivado 12-4158] Exported Hardware file is out of date. Exported hardware information may be inconsistent with respect to the current state of the design. It is recommended that you re-export the design and launch SDK otherwise SDK is launched with out of date hardware system file.
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Sat Feb 20 12:07:57 2021] Launched synth_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/runme.log
+[Sat Feb 20 12:07:57 2021] Launched impl_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/runme.log
+file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+
+launch_sdk -workspace C:/Projects/kyber-fpga/kyber-fpga.sdk -hwspec C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -workspace C:/Projects/kyber-fpga/kyber-fpga.sdk -hwspec C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
+open_bd_design {C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd}
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - axi_interconnect_0
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding component instance block -- xilinx.com:user:timer2:1.0 - timer2_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_1
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_2
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_0
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_1
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_0
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_1
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_2
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_3
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_0
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_1
+Adding component instance block -- xilinx.com:user:poly_tomont:1.0 - poly_tomont_0
+Adding component instance block -- xilinx.com:user:dual_bram:1.0 - dual_bram_0
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_0
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_1
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_2
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_3
+Adding component instance block -- xilinx.com:user:polyvec_reduce:1.0 - polyvec_reduce_0
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_2
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_3
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_4
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_5
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_4
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_5
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_6
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_7
+Adding component instance block -- xilinx.com:user:polyvec_basemul_acc_montgomery:1.0 - polyvec_basemul_acc_0
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_0
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_2
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_3
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_4
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_5
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_1
+Successfully read diagram <kyberBD> from BD file <C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd>
+open_bd_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 903.734 ; gain = 104.605
+ipx::edit_ip_in_project -upgrade true -name polyvec_basemul_acc_montgomery_v1_0_project -directory C:/Projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/component.xml
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project'
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 903.734 ; gain = 0.000
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-2207] Repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0' already exists; ignoring attempt to add it again.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barrett_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barret_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/dual_bram_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/poly_tomont_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/triple_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/double_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_port_selector_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_mm_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+INFO: [IP_Flow 19-795] Syncing license key meta-data
+ipx::edit_ip_in_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 904.488 ; gain = 0.754
+update_compile_order -fileset sources_1
+add_files -norecurse -copy_to c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src {C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/double_signal_multiplexer_v1_0.vhd C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/fqmul_v1_0.vhd C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/montgomery_reduction_v1_0.vhd}
+ERROR: [Vivado 12-3630] The destination file 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/double_signal_multiplexer_v1_0.vhd' already exists, please use -force if you want to overwrite!
+add_files -force -norecurse -copy_to c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src {C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/double_signal_multiplexer_v1_0.vhd C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/fqmul_v1_0.vhd C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/montgomery_reduction_v1_0.vhd}
+WARNING: [Vivado 12-3631] The destination file or directory 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/double_signal_multiplexer_v1_0.vhd' already exists, -force is used to overwrite it
+WARNING: [Vivado 12-3631] The destination file or directory 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/fqmul_v1_0.vhd' already exists, -force is used to overwrite it
+WARNING: [Vivado 12-3631] The destination file or directory 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/montgomery_reduction_v1_0.vhd' already exists, -force is used to overwrite it
+c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/double_signal_multiplexer_v1_0.vhd c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/fqmul_v1_0.vhd c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/montgomery_reduction_v1_0.vhd
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/double_signal_multiplexer_v1_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'double_signal_multiplexer_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/fqmul_v1_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'fqmul_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/montgomery_reduction_v1_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'montgomery_reduction_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Sat Feb 20 12:39:10 2021. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2019.1/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Sat Feb 20 12:39:10 2021...
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 944.109 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '13' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+open_wave_config: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 944.109 ; gain = 0.000
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+xsim: Time (s): cpu = 00:00:17 ; elapsed = 00:00:13 . Memory (MB): peak = 1026.367 ; gain = 82.258
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:21 ; elapsed = 00:00:31 . Memory (MB): peak = 1026.367 ; gain = 82.258
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:02 ; elapsed = 00:00:10 . Memory (MB): peak = 1035.625 ; gain = 0.000
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '5' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+open_wave_config: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1035.625 ; gain = 0.000
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+xsim: Time (s): cpu = 00:00:15 ; elapsed = 00:00:12 . Memory (MB): peak = 1035.625 ; gain = 0.000
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 1035.625 ; gain = 0.000
+set_property -name {xsim.simulate.runtime} -value {30us} -objects [get_filesets sim_1]
+ERROR: [Common 17-180] Spawn failed: No error
+run 30 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+ERROR: [VRFC 10-3801] use <= to assign to signal 'ram' [c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd:287]
+ERROR: [VRFC 10-3801] use <= to assign to signal 'ram' [c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd:299]
+ERROR: [VRFC 10-3801] use <= to assign to signal 'ram2' [c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd:311]
+ERROR: [VRFC 10-3801] use <= to assign to signal 'ram2' [c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd:323]
+ERROR: [VRFC 10-3782] unit 'behavioral' ignored due to previous errors [c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd:39]
+INFO: [VRFC 10-3070] VHDL file 'c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd' ignored due to errors
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim/xvhdl.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim/xvhdl.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+open_wave_config: Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 1709.332 ; gain = 0.000
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+xsim: Time (s): cpu = 00:00:15 ; elapsed = 00:00:12 . Memory (MB): peak = 1709.332 ; gain = 0.000
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 1709.332 ; gain = 0.000
+current_wave_config {testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+add_wave {{/testbench/RAM2[127]}} {{/testbench/RAM2[126]}} {{/testbench/RAM2[125]}} {{/testbench/RAM2[124]}} {{/testbench/RAM2[123]}} {{/testbench/RAM2[122]}} {{/testbench/RAM2[121]}} {{/testbench/RAM2[120]}} {{/testbench/RAM2[119]}} {{/testbench/RAM2[118]}} {{/testbench/RAM2[117]}} {{/testbench/RAM2[116]}} {{/testbench/RAM2[115]}} {{/testbench/RAM2[114]}} {{/testbench/RAM2[113]}} {{/testbench/RAM2[112]}} {{/testbench/RAM2[111]}} {{/testbench/RAM2[110]}} {{/testbench/RAM2[109]}} {{/testbench/RAM2[108]}} {{/testbench/RAM2[107]}} {{/testbench/RAM2[106]}} {{/testbench/RAM2[105]}} {{/testbench/RAM2[104]}} {{/testbench/RAM2[103]}} {{/testbench/RAM2[102]}} {{/testbench/RAM2[101]}} {{/testbench/RAM2[100]}} {{/testbench/RAM2[99]}} {{/testbench/RAM2[98]}} {{/testbench/RAM2[97]}} {{/testbench/RAM2[96]}} {{/testbench/RAM2[95]}} {{/testbench/RAM2[94]}} {{/testbench/RAM2[93]}} {{/testbench/RAM2[92]}} {{/testbench/RAM2[91]}} {{/testbench/RAM2[90]}} {{/testbench/RAM2[89]}} {{/testbench/RAM2[88]}} {{/testbench/RAM2[87]}} {{/testbench/RAM2[86]}} {{/testbench/RAM2[85]}} {{/testbench/RAM2[84]}} {{/testbench/RAM2[83]}} {{/testbench/RAM2[82]}} {{/testbench/RAM2[81]}} {{/testbench/RAM2[80]}} {{/testbench/RAM2[79]}} {{/testbench/RAM2[78]}} {{/testbench/RAM2[77]}} {{/testbench/RAM2[76]}} {{/testbench/RAM2[75]}} {{/testbench/RAM2[74]}} {{/testbench/RAM2[73]}} {{/testbench/RAM2[72]}} {{/testbench/RAM2[71]}} {{/testbench/RAM2[70]}} {{/testbench/RAM2[69]}} {{/testbench/RAM2[68]}} {{/testbench/RAM2[67]}} {{/testbench/RAM2[66]}} {{/testbench/RAM2[65]}} {{/testbench/RAM2[64]}} {{/testbench/RAM2[63]}} {{/testbench/RAM2[62]}} {{/testbench/RAM2[61]}} {{/testbench/RAM2[60]}} {{/testbench/RAM2[59]}} {{/testbench/RAM2[58]}} {{/testbench/RAM2[57]}} {{/testbench/RAM2[56]}} {{/testbench/RAM2[55]}} {{/testbench/RAM2[54]}} {{/testbench/RAM2[53]}} {{/testbench/RAM2[52]}} {{/testbench/RAM2[51]}} {{/testbench/RAM2[50]}} {{/testbench/RAM2[49]}} {{/testbench/RAM2[48]}} {{/testbench/RAM2[47]}} {{/testbench/RAM2[46]}} {{/testbench/RAM2[45]}} {{/testbench/RAM2[44]}} {{/testbench/RAM2[43]}} {{/testbench/RAM2[42]}} {{/testbench/RAM2[41]}} {{/testbench/RAM2[40]}} {{/testbench/RAM2[39]}} {{/testbench/RAM2[38]}} {{/testbench/RAM2[37]}} {{/testbench/RAM2[36]}} {{/testbench/RAM2[35]}} {{/testbench/RAM2[34]}} {{/testbench/RAM2[33]}} {{/testbench/RAM2[32]}} {{/testbench/RAM2[31]}} {{/testbench/RAM2[30]}} {{/testbench/RAM2[29]}} {{/testbench/RAM2[28]}} {{/testbench/RAM2[27]}} {{/testbench/RAM2[26]}} {{/testbench/RAM2[25]}} {{/testbench/RAM2[24]}} {{/testbench/RAM2[23]}} {{/testbench/RAM2[22]}} {{/testbench/RAM2[21]}} {{/testbench/RAM2[20]}} {{/testbench/RAM2[19]}} {{/testbench/RAM2[18]}} {{/testbench/RAM2[17]}} {{/testbench/RAM2[16]}} {{/testbench/RAM2[15]}} {{/testbench/RAM2[14]}} {{/testbench/RAM2[13]}} {{/testbench/RAM2[12]}} {{/testbench/RAM2[11]}} {{/testbench/RAM2[10]}} {{/testbench/RAM2[9]}} {{/testbench/RAM2[8]}} {{/testbench/RAM2[7]}} {{/testbench/RAM2[6]}} {{/testbench/RAM2[5]}} {{/testbench/RAM2[4]}} {{/testbench/RAM2[3]}} {{/testbench/RAM2[2]}} {{/testbench/RAM2[1]}} {{/testbench/RAM2[0]}} 
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_sim: Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 1709.332 ; gain = 0.000
+save_wave_config {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+save_wave_config {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_sim: Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1709.332 ; gain = 0.000
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_sim: Time (s): cpu = 00:00:02 ; elapsed = 00:00:11 . Memory (MB): peak = 1709.332 ; gain = 0.000
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/hdl/testbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L work -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_sim: Time (s): cpu = 00:00:03 ; elapsed = 00:00:12 . Memory (MB): peak = 1709.332 ; gain = 0.000
+update_compile_order -fileset sources_1
+set_property source_mgmt_mode DisplayOnly [current_project]
+current_project kyber-fpga
+current_project polyvec_basemul_acc_montgomery_v1_0_project
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 1709.332 ; gain = 0.000
+save_wave_config {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+relaunch_sim: Time (s): cpu = 00:00:03 ; elapsed = 00:00:11 . Memory (MB): peak = 1709.332 ; gain = 0.000
+save_wave_config {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1709.332 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1709.332 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 1709.332 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '5' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1709.332 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1709.332 ; gain = 0.000
+save_wave_config {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 2006.461 ; gain = 0.000
+save_wave_config {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xelab -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 87cb3e80b99f41108f1b024dea7d3e6f --incr --debug typical --relax --mt 2 -L work -L xil_defaultlib -L secureip --snapshot testbench_behav work.testbench -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture arch_imp of entity xil_defaultlib.fqmul_v1_0 [fqmul_v1_0_default]
+Compiling architecture arch_imp of entity xil_defaultlib.double_signal_multiplexer_v1_0 [double_signal_multiplexer_v1_0_d...]
+Compiling architecture arch_imp of entity xil_defaultlib.montgomery_reduction_v1_0 [montgomery_reduction_v1_0_defaul...]
+Compiling architecture arch_imp of entity work.polyvec_basemul_acc_montgomery_v1_0 [polyvec_basemul_acc_montgomery_v...]
+Compiling architecture behavioral of entity work.testbench
+Built simulation snapshot testbench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+open_wave_config c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg
+source testbench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 30us
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 30us
+launch_simulation: Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2006.461 ; gain = 0.000
+save_wave_config {c:/Projects/kyber-fpga/testbench_behav_polyvec_basemul_acc_montgomery.wcfg}
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/projects/kyber-fpga/kyber-fpga.tmp/polyvec_basemul_acc_montgomery_v1_0_project/polyvec_basemul_acc_montgomery_v1_0_project.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj testbench_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "c:/projects/ip_repo/polyvec_basemul_acc_montgomery_1.0/src/polyvec_basemul_acc_montgomery_v1_0.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'polyvec_basemul_acc_montgomery_v1_0'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
