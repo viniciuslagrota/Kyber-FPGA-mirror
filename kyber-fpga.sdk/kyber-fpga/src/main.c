@@ -442,7 +442,7 @@ int main()
 
 		if((u32SystemState & 0x7) == 0x0)
 		{
-			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
+//			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
 			sleep(1);
 		}
 
