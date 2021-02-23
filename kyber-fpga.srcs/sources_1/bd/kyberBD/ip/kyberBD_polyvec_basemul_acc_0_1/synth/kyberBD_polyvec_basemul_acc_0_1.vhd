@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:polyvec_basemul_acc_montgomery:1.0
--- IP Revision: 11
+-- IP Revision: 13
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -80,27 +80,43 @@ ENTITY kyberBD_polyvec_basemul_acc_0_1 IS
     bram_write_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     bram_write_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     bram_write_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    valid_to_fqmul0 : OUT STD_LOGIC;
     coeff0_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_to_fqmul1 : OUT STD_LOGIC;
     coeff0_to_fqmul1 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul1 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_to_fqmul2 : OUT STD_LOGIC;
     coeff0_to_fqmul2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_to_fqmul3 : OUT STD_LOGIC;
     coeff0_to_fqmul3 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul3 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_to_fqmul4 : OUT STD_LOGIC;
     coeff0_to_fqmul4 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul4 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_to_fqmul5 : OUT STD_LOGIC;
     coeff0_to_fqmul5 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul5 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_from_fqmul0 : IN STD_LOGIC;
     coeff_from_fqmul0 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_from_fqmul1 : IN STD_LOGIC;
     coeff_from_fqmul1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_from_fqmul2 : IN STD_LOGIC;
     coeff_from_fqmul2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_from_fqmul3 : IN STD_LOGIC;
     coeff_from_fqmul3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_from_fqmul4 : IN STD_LOGIC;
     coeff_from_fqmul4 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_from_fqmul5 : IN STD_LOGIC;
     coeff_from_fqmul5 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid0_to_barrett : OUT STD_LOGIC;
     data0_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid1_to_barrett : OUT STD_LOGIC;
     data1_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid0_from_barrett : IN STD_LOGIC;
     data0_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid1_from_barrett : IN STD_LOGIC;
     data1_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     en_dsm : OUT STD_LOGIC;
     kyber_k : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -140,27 +156,43 @@ ARCHITECTURE kyberBD_polyvec_basemul_acc_0_1_arch OF kyberBD_polyvec_basemul_acc
       bram_write_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       bram_write_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       bram_write_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      valid_to_fqmul0 : OUT STD_LOGIC;
       coeff0_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_to_fqmul1 : OUT STD_LOGIC;
       coeff0_to_fqmul1 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul1 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_to_fqmul2 : OUT STD_LOGIC;
       coeff0_to_fqmul2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_to_fqmul3 : OUT STD_LOGIC;
       coeff0_to_fqmul3 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul3 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_to_fqmul4 : OUT STD_LOGIC;
       coeff0_to_fqmul4 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul4 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_to_fqmul5 : OUT STD_LOGIC;
       coeff0_to_fqmul5 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul5 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_from_fqmul0 : IN STD_LOGIC;
       coeff_from_fqmul0 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_from_fqmul1 : IN STD_LOGIC;
       coeff_from_fqmul1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_from_fqmul2 : IN STD_LOGIC;
       coeff_from_fqmul2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_from_fqmul3 : IN STD_LOGIC;
       coeff_from_fqmul3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_from_fqmul4 : IN STD_LOGIC;
       coeff_from_fqmul4 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_from_fqmul5 : IN STD_LOGIC;
       coeff_from_fqmul5 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid0_to_barrett : OUT STD_LOGIC;
       data0_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid1_to_barrett : OUT STD_LOGIC;
       data1_to_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid0_from_barrett : IN STD_LOGIC;
       data0_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid1_from_barrett : IN STD_LOGIC;
       data1_from_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       en_dsm : OUT STD_LOGIC;
       kyber_k : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -173,7 +205,7 @@ ARCHITECTURE kyberBD_polyvec_basemul_acc_0_1_arch OF kyberBD_polyvec_basemul_acc
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_polyvec_basemul_acc_0_1_arch : ARCHITECTURE IS "kyberBD_polyvec_basemul_acc_0_1,polyvec_basemul_acc_montgomery_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_polyvec_basemul_acc_0_1_arch: ARCHITECTURE IS "kyberBD_polyvec_basemul_acc_0_1,polyvec_basemul_acc_montgomery_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=polyvec_basemul_acc_montgomery,x_ipVersion=1.0,x_ipCoreRevision=11,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_polyvec_basemul_acc_0_1_arch: ARCHITECTURE IS "kyberBD_polyvec_basemul_acc_0_1,polyvec_basemul_acc_montgomery_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=polyvec_basemul_acc_montgomery,x_ipVersion=1.0,x_ipCoreRevision=13,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF bram_write_dob: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B DOUT";
@@ -233,27 +265,43 @@ BEGIN
       bram_write_addrb => bram_write_addrb,
       bram_write_dib => bram_write_dib,
       bram_write_dob => bram_write_dob,
+      valid_to_fqmul0 => valid_to_fqmul0,
       coeff0_to_fqmul0 => coeff0_to_fqmul0,
       coeff1_to_fqmul0 => coeff1_to_fqmul0,
+      valid_to_fqmul1 => valid_to_fqmul1,
       coeff0_to_fqmul1 => coeff0_to_fqmul1,
       coeff1_to_fqmul1 => coeff1_to_fqmul1,
+      valid_to_fqmul2 => valid_to_fqmul2,
       coeff0_to_fqmul2 => coeff0_to_fqmul2,
       coeff1_to_fqmul2 => coeff1_to_fqmul2,
+      valid_to_fqmul3 => valid_to_fqmul3,
       coeff0_to_fqmul3 => coeff0_to_fqmul3,
       coeff1_to_fqmul3 => coeff1_to_fqmul3,
+      valid_to_fqmul4 => valid_to_fqmul4,
       coeff0_to_fqmul4 => coeff0_to_fqmul4,
       coeff1_to_fqmul4 => coeff1_to_fqmul4,
+      valid_to_fqmul5 => valid_to_fqmul5,
       coeff0_to_fqmul5 => coeff0_to_fqmul5,
       coeff1_to_fqmul5 => coeff1_to_fqmul5,
+      valid_from_fqmul0 => valid_from_fqmul0,
       coeff_from_fqmul0 => coeff_from_fqmul0,
+      valid_from_fqmul1 => valid_from_fqmul1,
       coeff_from_fqmul1 => coeff_from_fqmul1,
+      valid_from_fqmul2 => valid_from_fqmul2,
       coeff_from_fqmul2 => coeff_from_fqmul2,
+      valid_from_fqmul3 => valid_from_fqmul3,
       coeff_from_fqmul3 => coeff_from_fqmul3,
+      valid_from_fqmul4 => valid_from_fqmul4,
       coeff_from_fqmul4 => coeff_from_fqmul4,
+      valid_from_fqmul5 => valid_from_fqmul5,
       coeff_from_fqmul5 => coeff_from_fqmul5,
+      valid0_to_barrett => valid0_to_barrett,
       data0_to_barrett => data0_to_barrett,
+      valid1_to_barrett => valid1_to_barrett,
       data1_to_barrett => data1_to_barrett,
+      valid0_from_barrett => valid0_from_barrett,
       data0_from_barrett => data0_from_barrett,
+      valid1_from_barrett => valid1_from_barrett,
       data1_from_barrett => data1_from_barrett,
       en_dsm => en_dsm,
       kyber_k => kyber_k,

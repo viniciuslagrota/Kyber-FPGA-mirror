@@ -440,7 +440,12 @@ int main()
 		u32SystemState ++;
 #endif
 
-		sleep(1);
+		if((u32SystemState & 0x7) == 0x0)
+		{
+			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
+			sleep(1);
+		}
+
     }
 
     cleanup_platform();
