@@ -65,7 +65,8 @@
 #define TEST_POLY_TOMONT				0
 #define TEST_POLYVEC_REDUCE				0
 #define TEST_POLYVEC_ACC				0
-#define TEST_KEM						1
+#define TEST_POLYVEC_NTT				1
+#define TEST_KEM						0
 #define SYSTEM_STATE					1
 
 //////////////////////////////////////////////
@@ -407,6 +408,91 @@ int main()
 		}
 		else
 			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
+
+#endif
+
+#if TEST_POLYVEC_NTT == 1
+		//Test polyvec basemul acc montgomery
+		polyvec r1, r2;
+
+		for (int i = 0; i < 256; i += 2)
+		{
+			r1.vec[0].coeffs[i] = i + 1;
+			r1.vec[0].coeffs[i + 1] = i + 2;
+		}
+		for (int i = 0; i < 256; i += 2)
+		{
+			r1.vec[1].coeffs[i] = i + 0x0801;
+			r1.vec[1].coeffs[i + 1] = i + 0x0802;
+		}
+
+		if(u32SystemState & POLYVEC_BASEMUL_MASK)
+			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_ntt_hw\n");
+		else
+			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_ntt_sw\n");
+
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32 u32Timer7 = getTimer(&XGpioGlobalTimer, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
+		startTimer(&XGpioGlobalTimer, 1);
+
+//		polyvec_basemul_acc_montgomery(&r, &r1, &r2);
+		polyvec_ntt(&r1);
+
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer7 = getTimer(&XGpioGlobalTimer, 1);
+
+//		resetTimer(&XGpioGlobalTimer, 1);
+//		u32 u32Timer6 = getTimer(&XGpioGlobalTimer, 1);
+//		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer6 * HW_CLOCK_PERIOD);
+//		startTimer(&XGpioGlobalTimer, 1);
+//
+////		polyvec_basemul_acc_montgomery(&r, &r1, &r2);
+//		polyvec_basemul_acc_montgomery_hw(&r3, &r1, &r2);
+//
+//		stopTimer(&XGpioGlobalTimer, 1);
+//		u32Timer6 = getTimer(&XGpioGlobalTimer, 1);
+
+//		for (int i = 0; i < 16; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "memBram0[%d]: 0x%08lx\n", i, memoryBram0[i]);
+//		}
+//		for (int i = 128; i < 134; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "memBram0[%d]: 0x%08lx\n", i, memoryBram0[i]);
+//		}
+//		for (int i = 256; i < 272; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "memBram0[%d]: 0x%08lx\n", i, memoryBram0[i]);
+//		}
+//		for (int i = 384; i < 400; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "memBram0[%d]: 0x%08lx\n", i, memoryBram0[i]);
+//		}
+//		for (int i = 0; i < 128; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "memBram1[%d]: 0x%08lx\n", i, memoryBram1[i]);
+//		}
+//		for (int i = 0; i < 16; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "r[%d]: 0x%04x\n", i, r.coeffs[i]);
+//		}
+		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
+//		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer6 * HW_CLOCK_PERIOD);
+
+//		for (int i = 0; i < 256; i++)
+//		{
+//			if(r.coeffs[i] != r3.coeffs[i])
+//			{
+//				print_debug(DEBUG_MAIN, "Error at r[%d]: 0x%04x and r3[%d]: 0x%04x\n", i, r.coeffs[i], i, r3.coeffs[i]);
+//			}
+//		}
+//		if(memcmp(&r, &r3, 512) != 0)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
+//		}
+//		else
+//			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
 
 #endif
 
