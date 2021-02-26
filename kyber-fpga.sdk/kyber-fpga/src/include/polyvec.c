@@ -154,11 +154,41 @@ void polyvec_frombytes(polyvec *r, const uint8_t a[KYBER_POLYVECBYTES])
 *
 * Arguments:   - polyvec *r: pointer to in/output vector of polynomials
 **************************************************/
-void polyvec_ntt(polyvec *r)
+void polyvec_ntt_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_ntt(&r->vec[i]);
+}
+
+void polyvec_ntt_hw(polyvec *r)
+{
+	memcpy(memoryBram0, (u32 *)r, 1024);
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x0);
+
+	memcpy(r, (poly *)memoryBram0, 1024);
+}
+
+void polyvec_ntt(polyvec *r)
+{
+	if(u32SystemState & POLYVEC_NTT_MASK)
+	{
+		polyvec_ntt_hw(r);
+	}
+	else
+	{
+		polyvec_ntt_sw(r);
+	}
 }
 
 /*************************************************

@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>xilinx.com</spirit:vendor>
+  <spirit:library>customized_ip</spirit:library>
+  <spirit:name>kyberBD_barrett_reduce_2_0</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>clk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>FREQ_HZ</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">100000000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHASE</spirit:name>
+          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.PHASE">0.000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>CLK_DOMAIN</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">kyberBD_processing_system7_0_0_FCLK_CLK0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF"/>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET"/>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.CLK.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsynthesis</spirit:name>
+        <spirit:displayName>VHDL Synthesis</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>barrett_reduce_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Tue Feb 23 19:18:51 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:9e6762bc</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_synthesisconstraints</spirit:name>
+        <spirit:displayName>Synthesis Constraints</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:9e6762bc</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsynthesiswrapper</spirit:name>
+        <spirit:displayName>VHDL Synthesis Wrapper</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>kyberBD_barrett_reduce_2_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Feb 26 15:02:30 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:9e6762bc</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlbehavioralsimulation</spirit:name>
+        <spirit:displayName>VHDL Simulation</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>barrett_reduce_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Tue Feb 23 19:18:51 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:d901ce7d</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsimulationwrapper</spirit:name>
+        <spirit:displayName>VHDL Simulation Wrapper</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>kyberBD_barrett_reduce_2_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsimulationwrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Feb 26 15:02:30 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:d901ce7d</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_in</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>data_in</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">15</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>data_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">15</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>KYBER_Q</spirit:name>
+        <spirit:displayName>Kyber Q</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.KYBER_Q">3329</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/56a9/hdl/barrett_reduce_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>synth/kyberBD_barrett_reduce_2_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/56a9/hdl/barrett_reduce_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>sim/kyberBD_barrett_reduce_2_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>Barrett reduce</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">kyberBD_barrett_reduce_2_0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>KYBER_Q</spirit:name>
+      <spirit:displayName>Kyber Q</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.KYBER_Q">3329</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:displayName>barrett_reduce_v1.0</xilinx:displayName>
+      <xilinx:coreRevision>13</xilinx:coreRevision>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d66ee2d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f69742_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53025984_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@642400ad_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@237f695a_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3269880d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3559f6f6_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b097a87_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7677a77f_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eca9c1d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fb35237_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70374f8c_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a9c2676_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2aff353_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3150983b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a70d391_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@565af5c1_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d08c011_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fb29992_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@254b54a_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ef0c0fb_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ff01a36_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d8898a7_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6931cecc_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27ff1c7a_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1df77bd3_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a855000_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6893769f_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30fc03ab_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ede5d76_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ec3ed2_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4eda086b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a0ea887_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2306b04_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d08b552_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d8cb095_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58757413_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75b2b4f8_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@317c6a7d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b57eb94_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6814779c_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@416fdfce_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12491452_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53ace47f_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13da39eb_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e82f8e5_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36f07c7f_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fc2ac04_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e892e00_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@454bc639_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d630a0c_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fb63fe4_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@703d7efc_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@287486e_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f0357a0_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@794d9c91_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48fa31fa_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1adcf613_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d5866c0_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5eb2ef97_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@823b46e_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b272c78_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bdc699d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d878d17_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fbf837a_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40a48432_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14f99010_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65576730_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56f4c2dd_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35fe0ed5_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a24f458_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bd26982_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f3363c3_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5647ae7e_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7be4fe50_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7be3fef6_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c3ffbd5_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68b9bb4_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@622c026d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@728b9715_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ed1798b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c41c316_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ee5ff9b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b0c0ed8_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cb47720_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2843f573_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@378c1ab1_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42ef92ab_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37664036_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d438180_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a7f5585_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2881ef7f_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40677692_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68c6564d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@422235d4_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4762486b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@511f6ede_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61146a7b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b81803e_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52dfdb85_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fa56b61_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ea38f3_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60c5911b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6714d710_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fefea68_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fc8e927_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c7b53a7_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21c1949e_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@290fd80_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66941a8c_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29dfe79d_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54f8f651_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@331b2a9_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2663848a_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72924255_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a31da00_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c26f0d6_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41535516_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@418491cc_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a35c5cd_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1de6da65_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67c45e97_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5aabf613_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@638328cd_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e65cf6f_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@496c0a78_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f456422_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54acaafc_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a108308_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ad5b493_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@732b02f7_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@569fef02_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c194056_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@819d8ca_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21743514_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32acfdb1_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b392cbb_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ebe1caf_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c69b598_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d3bdc7c_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4394d9cc_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20483991_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36c9e835_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b7d0e52_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fe589d2_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@434bdbe5_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ba58527_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@97d94e0_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b278e7b_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a82b2dc_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c0b7fe0_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3276a7cd_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3227829e_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b2fba73_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@370639e7_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bfae488_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b91e5c6_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51c92282_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75242e58_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ab592c9_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26daccaa_ARCHIVE_LOCATION">c:/Projects/ip_repo/barrett_reduce_1.0</xilinx:tag>
+      </xilinx:tags>
+      <xilinx:configElementInfos>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+      </xilinx:configElementInfos>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="a88d4390"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="3beaa1da"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="d9102846"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="87d34400"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="a0901b39"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>

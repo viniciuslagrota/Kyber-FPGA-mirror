@@ -65,6 +65,7 @@
 #define TEST_POLY_TOMONT				0
 #define TEST_POLYVEC_REDUCE				0
 #define TEST_POLYVEC_ACC				0
+#define TEST_POLYVEC_NTT				0
 #define TEST_KEM						1
 #define SYSTEM_STATE					1
 
@@ -84,6 +85,9 @@ extern XGpio XGpioTomontAndReduce;
 
 extern XGpio_Config * XGpioConfigAccMont;
 extern XGpio XGpioAccMont;
+
+extern XGpio_Config * XGpioConfigNtt;
+extern XGpio XGpioNtt;
 
 extern u32 *memoryBram0;
 extern u32 *memoryBram1;
@@ -121,6 +125,10 @@ int main()
 	//Polyvec basemul acc montgomery
 	XGpioConfigAccMont = XGpio_LookupConfig(XPAR_AXI_GPIO_3_DEVICE_ID);
 	XGpio_CfgInitialize(&XGpioAccMont, XGpioConfigAccMont, XGpioConfigAccMont->BaseAddress);
+
+	//Polyvec NTT
+	XGpioConfigNtt = XGpio_LookupConfig(XPAR_AXI_GPIO_4_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioNtt, XGpioConfigNtt, XGpioConfigNtt->BaseAddress);
 
 	//---- Configure AXI BRAM ----
 	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
@@ -410,6 +418,61 @@ int main()
 
 #endif
 
+#if TEST_POLYVEC_NTT == 1
+		//Test polyvec basemul acc montgomery
+		polyvec r1, r2;
+
+		for (int i = 0; i < 256; i += 2)
+		{
+			r1.vec[0].coeffs[i] = i + 1;
+			r1.vec[0].coeffs[i + 1] = i + 2;
+			r2.vec[0].coeffs[i] = i + 1;
+			r2.vec[0].coeffs[i + 1] = i + 2;
+		}
+		for (int i = 0; i < 256; i += 2)
+		{
+			r1.vec[1].coeffs[i] = i + 0x0801;
+			r1.vec[1].coeffs[i + 1] = i + 0x0802;
+			r2.vec[1].coeffs[i] = i + 0x0801;
+			r2.vec[1].coeffs[i + 1] = i + 0x0802;
+		}
+
+		if(u32SystemState & POLYVEC_BASEMUL_MASK)
+			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_ntt_hw\n");
+		else
+			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_ntt_sw\n");
+
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32 u32Timer7 = getTimer(&XGpioGlobalTimer, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
+		startTimer(&XGpioGlobalTimer, 1);
+
+		polyvec_ntt_sw(&r1);
+
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer7 = getTimer(&XGpioGlobalTimer, 1);
+
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32 u32Timer8 = getTimer(&XGpioGlobalTimer, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer8 * HW_CLOCK_PERIOD);
+		startTimer(&XGpioGlobalTimer, 1);
+
+		polyvec_ntt_hw(&r2);
+
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer8 = getTimer(&XGpioGlobalTimer, 1);
+
+		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
+		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer8 * HW_CLOCK_PERIOD);
+
+		if(memcmp(&r1, &r2, 1024) != 0)
+		{
+			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
+		}
+		else
+			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
+#endif
+
 
 #if TEST_KEM == 1
 ////		//KEM test
@@ -437,12 +500,17 @@ int main()
 		else
 			print_debug(DEBUG_MAIN, "Polyvec basemul acc montgomery software used.\n");
 
+		if(u32SystemState & POLYVEC_NTT_MASK)
+			print_debug(DEBUG_MAIN, "Polyvec NTT hardware used.\n");
+		else
+			print_debug(DEBUG_MAIN, "Polyvec NTT software used.\n");
+
 		u32SystemState ++;
 #endif
 
-		if((u32SystemState & 0x7) == 0x0)
+		if((u32SystemState & 0xf) == 0x0)
 		{
-			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
+//			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
 			sleep(1);
 		}
 
