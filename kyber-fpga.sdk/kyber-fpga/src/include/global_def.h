@@ -156,6 +156,9 @@ XGpio XGpioTomontAndReduce;
 XGpio_Config * XGpioConfigAccMont;
 XGpio XGpioAccMont;
 
+XGpio_Config * XGpioConfigNtt;
+XGpio XGpioNtt;
+
 u32 *memoryBram0;
 u32 *memoryBram1;
 

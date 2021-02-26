@@ -76,7 +76,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN"/>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">kyberBD_processing_system7_0_0_FCLK_CLK0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -315,6 +315,99 @@
     </spirit:busInterface>
   </spirit:busInterfaces>
   <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsynthesis</spirit:name>
+        <spirit:displayName>VHDL Synthesis</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>polyvec_ntt_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Feb 26 16:22:59 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:0296f22d</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_synthesisconstraints</spirit:name>
+        <spirit:displayName>Synthesis Constraints</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:0296f22d</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsynthesiswrapper</spirit:name>
+        <spirit:displayName>VHDL Synthesis Wrapper</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>kyberBD_polyvec_ntt_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Feb 26 16:22:59 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:0296f22d</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlbehavioralsimulation</spirit:name>
+        <spirit:displayName>VHDL Simulation</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>polyvec_ntt_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Feb 26 16:22:59 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:e72f70b2</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsimulationwrapper</spirit:name>
+        <spirit:displayName>VHDL Simulation Wrapper</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>kyberBD_polyvec_ntt_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsimulationwrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Feb 26 16:22:59 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:e72f70b2</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
     <spirit:ports>
       <spirit:port>
         <spirit:name>clk</spirit:name>
@@ -323,7 +416,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -335,7 +429,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -347,7 +442,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -359,7 +455,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -375,7 +472,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -391,7 +489,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -407,7 +506,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -419,7 +519,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -431,7 +532,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -447,7 +549,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -463,7 +566,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -479,7 +583,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -491,7 +596,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -507,7 +613,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -523,7 +630,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -535,7 +643,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -551,7 +660,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -567,7 +677,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -579,7 +690,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -595,7 +707,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -607,7 +720,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -623,7 +737,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -635,7 +750,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -651,7 +767,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -663,7 +780,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -679,7 +797,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -691,7 +810,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -707,7 +827,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -719,7 +840,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -735,7 +857,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -747,7 +870,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -763,7 +887,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -775,7 +900,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -787,7 +913,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -813,6 +940,40 @@
       <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
     </spirit:choice>
   </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/d873/hdl/polyvec_ntt_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>synth/kyberBD_polyvec_ntt_0_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/d873/hdl/polyvec_ntt_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>sim/kyberBD_polyvec_ntt_0_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
   <spirit:description>Polyvec NTT</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
@@ -833,7 +994,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>polyvec_ntt_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>5</xilinx:coreRevision>
+      <xilinx:coreRevision>7</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1201e98a_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7cda4aa7_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
@@ -989,12 +1150,110 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@11881399_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@244fa06b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1ede8892_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@129685e3_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5919ea26_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c7357a6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3910eafd_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6067845c_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@85e589e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47acf16b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48997109_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ab68f0b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5da762fb_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@499fa7ee_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a658e71_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b29ffc0_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@408e76ab_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31691097_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59f3c90e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2044991c_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16c66b4b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ee32bba_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15a31728_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a4072de_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f0e8e7e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58b6b8d1_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f1bde05_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54e3126_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36ac90f6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a07c77a_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4df79def_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d983e49_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e290957_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54f065eb_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@309792d7_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b71fcb6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46cff4fe_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3669562d_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f68cfec_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bb46ebb_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@439e2360_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dbbcef1_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55d47db4_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@262e9d27_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@382ddac_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d661367_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f0e13ec_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62675bcb_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7661266e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15637dff_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a4653c_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@539794b5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7611ecdd_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ff5e76_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fc1a3a6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@599cda1e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67534a8e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7df7d820_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30084d38_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4eb1467a_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@113d0748_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4142011c_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5872b7df_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7baf7933_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48228af5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41432eb5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fbe5148_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1aba357_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@74cbaed6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@144baff3_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e6d4e8f_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cec4771_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c0ff7fd_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e5e57d_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2030b20f_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b818b64_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d303ee5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7048057c_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12b8881b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41628adc_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cf01ff8_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e12a3bf_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@190e6cf1_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ffc6ea1_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f84321_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7df1533b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16c0926e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6dcda6f9_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25a8a8a7_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@686fa874_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c8b6d48_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c8ab7a2_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5115c269_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7df08595_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@752d4f9b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29f15d6e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4420e40c_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_ntt_1.0</xilinx:tag>
       </xilinx:tags>
+      <xilinx:configElementInfos>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+      </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="ebd0d4ca"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="c8224a03"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="64f7d2c8"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="255a5790"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="b26acd08"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="67223844"/>

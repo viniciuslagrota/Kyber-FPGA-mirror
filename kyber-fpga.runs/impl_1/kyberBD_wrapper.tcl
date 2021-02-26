@@ -73,6 +73,8 @@ set rc [catch {
   set_property webtalk.parent_dir C:/Projects/kyber-fpga/kyber-fpga.cache/wt [current_project]
   set_property parent.project_path C:/Projects/kyber-fpga/kyber-fpga.xpr [current_project]
   set_property ip_repo_paths {
+  C:/Projects/ip_repo/polyvec_ntt_1.0
+  C:/Projects/ip_repo/ntt_1.0
   C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0
   C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0
   C:/Projects/ip_repo/barrett_reduce_1.0
