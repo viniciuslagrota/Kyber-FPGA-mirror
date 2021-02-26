@@ -1,8 +1,8 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Fri Feb 26 13:22:58 2021
---Host        : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
+--Date        : Fri Feb 26 19:49:28 2021
+--Host        : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
 --Purpose     : IP block netlist
@@ -2294,7 +2294,7 @@ entity kyberBD is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=62,numReposBlks=53,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=64,numReposBlks=55,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of kyberBD : entity is "kyberBD.hwdef";
 end kyberBD;
@@ -3293,6 +3293,32 @@ architecture STRUCTURE of kyberBD is
     busy : out STD_LOGIC
   );
   end component kyberBD_polyvec_ntt_0_0;
+  component kyberBD_double_signal_multip_14_0 is
+  port (
+    clk : in STD_LOGIC;
+    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_0 : in STD_LOGIC;
+    valid_in_0 : in STD_LOGIC;
+    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    valid_out : out STD_LOGIC;
+    enable_in_1 : in STD_LOGIC;
+    valid_in_1 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_double_signal_multip_14_0;
+  component kyberBD_double_signal_multip_14_1 is
+  port (
+    clk : in STD_LOGIC;
+    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    enable_in_0 : in STD_LOGIC;
+    valid_in_0 : in STD_LOGIC;
+    data_in_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    valid_out : out STD_LOGIC;
+    enable_in_1 : in STD_LOGIC;
+    valid_in_1 : in STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_double_signal_multip_14_1;
   signal Net : STD_LOGIC;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -3460,6 +3486,10 @@ architecture STRUCTURE of kyberBD is
   signal double_signal_multip_12_valid_out : STD_LOGIC;
   signal double_signal_multip_13_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal double_signal_multip_13_valid_out : STD_LOGIC;
+  signal double_signal_multip_14_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal double_signal_multip_14_valid_out : STD_LOGIC;
+  signal double_signal_multip_15_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal double_signal_multip_15_valid_out : STD_LOGIC;
   signal double_signal_multip_1_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal double_signal_multip_1_valid_out : STD_LOGIC;
   signal double_signal_multip_2_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -4286,6 +4316,30 @@ double_signal_multip_13: component kyberBD_double_signal_multip_8_5
       valid_in_1 => '0',
       valid_out => double_signal_multip_13_valid_out
     );
+double_signal_multip_14: component kyberBD_double_signal_multip_14_0
+     port map (
+      clk => processing_system7_0_FCLK_CLK0,
+      data_in_0(31 downto 0) => fqmul_6_data_out_mont(31 downto 0),
+      data_in_1(31 downto 0) => B"00000000000000000000000000000000",
+      data_out(31 downto 0) => double_signal_multip_14_data_out(31 downto 0),
+      enable_in_0 => polyvec_ntt_0_en_dsm,
+      enable_in_1 => '0',
+      valid_in_0 => fqmul_6_valid_out_mont,
+      valid_in_1 => '0',
+      valid_out => double_signal_multip_14_valid_out
+    );
+double_signal_multip_15: component kyberBD_double_signal_multip_14_1
+     port map (
+      clk => processing_system7_0_FCLK_CLK0,
+      data_in_0(31 downto 0) => fqmul_7_data_out_mont(31 downto 0),
+      data_in_1(31 downto 0) => B"00000000000000000000000000000000",
+      data_out(31 downto 0) => double_signal_multip_15_data_out(31 downto 0),
+      enable_in_0 => polyvec_ntt_0_en_dsm,
+      enable_in_1 => '0',
+      valid_in_0 => fqmul_7_valid_out_mont,
+      valid_in_1 => '0',
+      valid_out => double_signal_multip_15_valid_out
+    );
 double_signal_multip_2: component kyberBD_double_signal_multip_0_2
      port map (
       clk => processing_system7_0_FCLK_CLK0,
@@ -4602,17 +4656,17 @@ montgomery_reduction_5: component kyberBD_montgomery_reduction_0_5
 montgomery_reduction_6: component kyberBD_montgomery_reduction_6_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      data_in(31 downto 0) => fqmul_6_data_out_mont(31 downto 0),
+      data_in(31 downto 0) => double_signal_multip_14_data_out(31 downto 0),
       data_out(15 downto 0) => montgomery_reduction_6_data_out(15 downto 0),
-      valid_in => fqmul_6_valid_out_mont,
+      valid_in => double_signal_multip_14_valid_out,
       valid_out => montgomery_reduction_6_valid_out
     );
 montgomery_reduction_7: component kyberBD_montgomery_reduction_6_1
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      data_in(31 downto 0) => fqmul_7_data_out_mont(31 downto 0),
+      data_in(31 downto 0) => double_signal_multip_15_data_out(31 downto 0),
       data_out(15 downto 0) => montgomery_reduction_7_data_out(15 downto 0),
-      valid_in => fqmul_7_valid_out_mont,
+      valid_in => double_signal_multip_15_valid_out,
       valid_out => montgomery_reduction_7_valid_out
     );
 poly_tomont_0: component kyberBD_poly_tomont_0_0
