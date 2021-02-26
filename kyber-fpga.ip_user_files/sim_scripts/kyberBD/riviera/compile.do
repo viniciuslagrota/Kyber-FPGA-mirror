@@ -157,7 +157,7 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ipshared/56a9/hdl/barrett_reduce_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_0_0/sim/kyberBD_barrett_reduce_0_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_0_1/sim/kyberBD_barrett_reduce_0_1.vhd" \
-"../../../bd/kyberBD/ipshared/d873/hdl/polyvec_ntt_v1_0.vhd" \
+"../../../bd/kyberBD/ipshared/4195/hdl/polyvec_ntt_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_polyvec_ntt_0_0/sim/kyberBD_polyvec_ntt_0_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_0/sim/kyberBD_double_signal_multip_8_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_1/sim/kyberBD_double_signal_multip_8_1.vhd" \
@@ -172,6 +172,8 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_2_0/sim/kyberBD_barrett_reduce_2_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_2_1/sim/kyberBD_barrett_reduce_2_1.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_axi_gpio_4_0/sim/kyberBD_axi_gpio_4_0.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_14_0/sim/kyberBD_double_signal_multip_14_0.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_14_1/sim/kyberBD_double_signal_multip_14_1.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
 "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

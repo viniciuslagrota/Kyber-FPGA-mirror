@@ -163,6 +163,12 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_barrett
 # IP: bd/kyberBD/ip/kyberBD_axi_gpio_4_0/kyberBD_axi_gpio_4_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_4_0 || ORIG_REF_NAME==kyberBD_axi_gpio_4_0} -quiet] -quiet
 
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_14_0/kyberBD_double_signal_multip_14_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_14_0 || ORIG_REF_NAME==kyberBD_double_signal_multip_14_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_14_1/kyberBD_double_signal_multip_14_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_14_1 || ORIG_REF_NAME==kyberBD_double_signal_multip_14_1} -quiet] -quiet
+
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
 

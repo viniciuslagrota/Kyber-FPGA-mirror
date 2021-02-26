@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Fri Feb 26 13:28:39 2021
-| Host         : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
+| Date         : Fri Feb 26 19:55:58 2021
+| Host         : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file kyberBD_wrapper_timing_summary_routed.rpt -pb kyberBD_wrapper_timing_summary_routed.pb -rpx kyberBD_wrapper_timing_summary_routed.rpx -warn_on_violation
 | Design       : kyberBD_wrapper
 | Device       : 7z010-clg400
@@ -127,7 +127,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     -0.587      -25.295                    116                 8381        0.056        0.000                      0                 8381        4.020        0.000                       0                  3709  
+     -0.572      -45.052                    168                 8547        0.052        0.000                      0                 8547        4.020        0.000                       0                  3746  
 
 
 Timing constraints are not met.
@@ -150,7 +150,7 @@ clk_fpga_0  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk_fpga_0         -0.587      -25.295                    116                 8381        0.056        0.000                      0                 8381        4.020        0.000                       0                  3709  
+clk_fpga_0         -0.572      -45.052                    168                 8547        0.052        0.000                      0                 8547        4.020        0.000                       0                  3746  
 
 
 ------------------------------------------------------------------------------------------------
@@ -181,27 +181,27 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  clk_fpga_0
   To Clock:  clk_fpga_0
 
-Setup :          116  Failing Endpoints,  Worst Slack       -0.587ns,  Total Violation      -25.295ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.056ns,  Total Violation        0.000ns
+Setup :          168  Failing Endpoints,  Worst Slack       -0.572ns,  Total Violation      -45.052ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.052ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.020ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (VIOLATED) :        -0.587ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
+Slack (VIOLATED) :        -0.572ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[20]
+  Destination:            kyberBD_i/montgomery_reduction_1/U0/t3/A[20]
                             (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_fpga_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.740ns  (logic 4.483ns (66.514%)  route 2.257ns (33.486%))
+  Data Path Delay:        6.726ns  (logic 4.483ns (66.647%)  route 2.243ns (33.353%))
   Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
+  Clock Path Skew:        0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.788ns = ( 12.788 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.988ns
     Clock Pessimism Removal (CPR):    0.230ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -216,74 +216,17 @@ Slack (VIOLATED) :        -0.587ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
+                         net (fo=3746, routed)        1.680     2.988    kyberBD_i/double_signal_multip_1/U0/clk
+    SLICE_X10Y7          FDRE                                         r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.953     9.725    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[20]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                     10.000    10.000 r  
-    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[20])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
-  -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.725    
-  -------------------------------------------------------------------
-                         slack                                 -0.587    
-
-Slack (VIOLATED) :        -0.587ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[21]
-                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.740ns  (logic 4.483ns (66.514%)  route 2.257ns (33.486%))
-  Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
-    Clock Pessimism Removal (CPR):    0.230ns
-  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.300ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.953     9.725    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[21]
+    SLICE_X10Y7          FDRE (Prop_fdre_C_Q)         0.518     3.506 r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.745     4.251    kyberBD_i/double_signal_multip_1/U0/s_enable_in_0
+    SLICE_X10Y6          LUT4 (Prop_lut4_I1_O)        0.124     4.375 r  kyberBD_i/double_signal_multip_1/U0/data_out[6]_INST_0/O
+                         net (fo=2, routed)           0.565     4.940    kyberBD_i/montgomery_reduction_1/U0/data_in[6]
+    DSP48_X0Y2           DSP48E1 (Prop_dsp48e1_A[6]_P[15])
+                                                      3.841     8.781 r  kyberBD_i/montgomery_reduction_1/U0/t/P[15]
+                         net (fo=15, routed)          0.934     9.714    kyberBD_i/montgomery_reduction_1/U0/t_n_90
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/A[20]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -291,304 +234,19 @@ Slack (VIOLATED) :        -0.587ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[21])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
+                         net (fo=3746, routed)        1.596    12.788    kyberBD_i/montgomery_reduction_1/U0/clk
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/CLK
+                         clock pessimism              0.230    13.019    
+                         clock uncertainty           -0.154    12.864    
+    DSP48_X0Y3           DSP48E1 (Setup_dsp48e1_CLK_A[20])
+                                                     -3.722     9.142    kyberBD_i/montgomery_reduction_1/U0/t3
   -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.725    
+                         required time                          9.142    
+                         arrival time                          -9.714    
   -------------------------------------------------------------------
-                         slack                                 -0.587    
+                         slack                                 -0.572    
 
-Slack (VIOLATED) :        -0.467ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[15]
-                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.620ns  (logic 4.483ns (67.717%)  route 2.137ns (32.283%))
-  Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
-    Clock Pessimism Removal (CPR):    0.230ns
-  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.300ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.833     9.605    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[15]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                     10.000    10.000 r  
-    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[15])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
-  -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.605    
-  -------------------------------------------------------------------
-                         slack                                 -0.467    
-
-Slack (VIOLATED) :        -0.438ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[24]
-                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.591ns  (logic 4.483ns (68.018%)  route 2.108ns (31.982%))
-  Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
-    Clock Pessimism Removal (CPR):    0.230ns
-  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.300ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.804     9.576    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[24]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                     10.000    10.000 r  
-    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[24])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
-  -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.576    
-  -------------------------------------------------------------------
-                         slack                                 -0.438    
-
-Slack (VIOLATED) :        -0.438ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[25]
-                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.591ns  (logic 4.483ns (68.018%)  route 2.108ns (31.982%))
-  Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
-    Clock Pessimism Removal (CPR):    0.230ns
-  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.300ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.804     9.576    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[25]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                     10.000    10.000 r  
-    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[25])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
-  -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.576    
-  -------------------------------------------------------------------
-                         slack                                 -0.438    
-
-Slack (VIOLATED) :        -0.428ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[26]
-                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.582ns  (logic 4.483ns (68.112%)  route 2.099ns (31.888%))
-  Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
-    Clock Pessimism Removal (CPR):    0.230ns
-  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.300ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.795     9.567    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[26]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                     10.000    10.000 r  
-    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[26])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
-  -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.567    
-  -------------------------------------------------------------------
-                         slack                                 -0.428    
-
-Slack (VIOLATED) :        -0.428ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[27]
-                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.582ns  (logic 4.483ns (68.112%)  route 2.099ns (31.888%))
-  Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
-    Clock Pessimism Removal (CPR):    0.230ns
-  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.300ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.795     9.567    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[27]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                     10.000    10.000 r  
-    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[27])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
-  -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.567    
-  -------------------------------------------------------------------
-                         slack                                 -0.428    
-
-Slack (VIOLATED) :        -0.427ns  (required time - arrival time)
+Slack (VIOLATED) :        -0.572ns  (required time - arrival time)
   Source:                 kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            kyberBD_i/montgomery_reduction_1/U0/t3/A[21]
@@ -596,11 +254,68 @@ Slack (VIOLATED) :        -0.427ns  (required time - arrival time)
   Path Group:             clk_fpga_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.615ns  (logic 4.421ns (66.836%)  route 2.194ns (33.164%))
+  Data Path Delay:        6.726ns  (logic 4.483ns (66.647%)  route 2.243ns (33.353%))
   Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.064ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.782ns = ( 12.782 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.983ns
+  Clock Path Skew:        0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.788ns = ( 12.788 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.988ns
+    Clock Pessimism Removal (CPR):    0.230ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.680     2.988    kyberBD_i/double_signal_multip_1/U0/clk
+    SLICE_X10Y7          FDRE                                         r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X10Y7          FDRE (Prop_fdre_C_Q)         0.518     3.506 r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.745     4.251    kyberBD_i/double_signal_multip_1/U0/s_enable_in_0
+    SLICE_X10Y6          LUT4 (Prop_lut4_I1_O)        0.124     4.375 r  kyberBD_i/double_signal_multip_1/U0/data_out[6]_INST_0/O
+                         net (fo=2, routed)           0.565     4.940    kyberBD_i/montgomery_reduction_1/U0/data_in[6]
+    DSP48_X0Y2           DSP48E1 (Prop_dsp48e1_A[6]_P[15])
+                                                      3.841     8.781 r  kyberBD_i/montgomery_reduction_1/U0/t/P[15]
+                         net (fo=15, routed)          0.934     9.714    kyberBD_i/montgomery_reduction_1/U0/t_n_90
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/A[21]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.596    12.788    kyberBD_i/montgomery_reduction_1/U0/clk
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/CLK
+                         clock pessimism              0.230    13.019    
+                         clock uncertainty           -0.154    12.864    
+    DSP48_X0Y3           DSP48E1 (Setup_dsp48e1_CLK_A[21])
+                                                     -3.722     9.142    kyberBD_i/montgomery_reduction_1/U0/t3
+  -------------------------------------------------------------------
+                         required time                          9.142    
+                         arrival time                          -9.714    
+  -------------------------------------------------------------------
+                         slack                                 -0.572    
+
+Slack (VIOLATED) :        -0.549ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/montgomery_reduction_4/U0/t3/A[20]
+                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        6.744ns  (logic 4.421ns (65.558%)  route 2.323ns (34.442%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        0.071ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.770ns = ( 12.770 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.964ns
     Clock Pessimism Removal (CPR):    0.265ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -615,17 +330,17 @@ Slack (VIOLATED) :        -0.427ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.675     2.983    kyberBD_i/double_signal_multip_1/U0/clk
-    SLICE_X33Y2          FDRE                                         r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+                         net (fo=3746, routed)        1.656     2.964    kyberBD_i/double_signal_multip_4/U0/clk
+    SLICE_X33Y26         FDRE                                         r  kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X33Y2          FDRE (Prop_fdre_C_Q)         0.456     3.439 r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/Q
-                         net (fo=32, routed)          0.670     4.109    kyberBD_i/double_signal_multip_1/U0/s_enable_in_0
-    SLICE_X32Y3          LUT4 (Prop_lut4_I1_O)        0.124     4.233 r  kyberBD_i/double_signal_multip_1/U0/data_out[13]_INST_0/O
-                         net (fo=2, routed)           0.580     4.813    kyberBD_i/montgomery_reduction_1/U0/data_in[13]
-    DSP48_X1Y0           DSP48E1 (Prop_dsp48e1_A[13]_P[15])
-                                                      3.841     8.654 r  kyberBD_i/montgomery_reduction_1/U0/t/P[15]
-                         net (fo=15, routed)          0.944     9.598    kyberBD_i/montgomery_reduction_1/U0/t_n_90
-    DSP48_X1Y1           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/A[21]
+    SLICE_X33Y26         FDRE (Prop_fdre_C_Q)         0.456     3.420 r  kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.731     4.151    kyberBD_i/double_signal_multip_4/U0/s_enable_in_0
+    SLICE_X33Y28         LUT2 (Prop_lut2_I1_O)        0.124     4.275 r  kyberBD_i/double_signal_multip_4/U0/data_out[12]_INST_0/O
+                         net (fo=2, routed)           0.670     4.945    kyberBD_i/montgomery_reduction_4/U0/data_in[12]
+    DSP48_X1Y10          DSP48E1 (Prop_dsp48e1_A[12]_P[15])
+                                                      3.841     8.786 r  kyberBD_i/montgomery_reduction_4/U0/t/P[15]
+                         net (fo=15, routed)          0.921     9.708    kyberBD_i/montgomery_reduction_4/U0/t_n_90
+    DSP48_X1Y11          DSP48E1                                      r  kyberBD_i/montgomery_reduction_4/U0/t3/A[20]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -633,31 +348,88 @@ Slack (VIOLATED) :        -0.427ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.590    12.782    kyberBD_i/montgomery_reduction_1/U0/clk
-    DSP48_X1Y1           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/CLK
-                         clock pessimism              0.265    13.047    
-                         clock uncertainty           -0.154    12.892    
-    DSP48_X1Y1           DSP48E1 (Setup_dsp48e1_CLK_A[21])
-                                                     -3.722     9.170    kyberBD_i/montgomery_reduction_1/U0/t3
+                         net (fo=3746, routed)        1.578    12.770    kyberBD_i/montgomery_reduction_4/U0/clk
+    DSP48_X1Y11          DSP48E1                                      r  kyberBD_i/montgomery_reduction_4/U0/t3/CLK
+                         clock pessimism              0.265    13.035    
+                         clock uncertainty           -0.154    12.880    
+    DSP48_X1Y11          DSP48E1 (Setup_dsp48e1_CLK_A[20])
+                                                     -3.722     9.158    kyberBD_i/montgomery_reduction_4/U0/t3
   -------------------------------------------------------------------
-                         required time                          9.170    
-                         arrival time                          -9.598    
+                         required time                          9.158    
+                         arrival time                          -9.708    
   -------------------------------------------------------------------
-                         slack                                 -0.427    
+                         slack                                 -0.549    
 
-Slack (VIOLATED) :        -0.426ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
+Slack (VIOLATED) :        -0.549ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[18]
+  Destination:            kyberBD_i/montgomery_reduction_4/U0/t3/A[21]
                             (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_fpga_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.580ns  (logic 4.483ns (68.132%)  route 2.097ns (31.868%))
+  Data Path Delay:        6.744ns  (logic 4.421ns (65.558%)  route 2.323ns (34.442%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        0.071ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.770ns = ( 12.770 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.964ns
+    Clock Pessimism Removal (CPR):    0.265ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.656     2.964    kyberBD_i/double_signal_multip_4/U0/clk
+    SLICE_X33Y26         FDRE                                         r  kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X33Y26         FDRE (Prop_fdre_C_Q)         0.456     3.420 r  kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.731     4.151    kyberBD_i/double_signal_multip_4/U0/s_enable_in_0
+    SLICE_X33Y28         LUT2 (Prop_lut2_I1_O)        0.124     4.275 r  kyberBD_i/double_signal_multip_4/U0/data_out[12]_INST_0/O
+                         net (fo=2, routed)           0.670     4.945    kyberBD_i/montgomery_reduction_4/U0/data_in[12]
+    DSP48_X1Y10          DSP48E1 (Prop_dsp48e1_A[12]_P[15])
+                                                      3.841     8.786 r  kyberBD_i/montgomery_reduction_4/U0/t/P[15]
+                         net (fo=15, routed)          0.921     9.708    kyberBD_i/montgomery_reduction_4/U0/t_n_90
+    DSP48_X1Y11          DSP48E1                                      r  kyberBD_i/montgomery_reduction_4/U0/t3/A[21]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.578    12.770    kyberBD_i/montgomery_reduction_4/U0/clk
+    DSP48_X1Y11          DSP48E1                                      r  kyberBD_i/montgomery_reduction_4/U0/t3/CLK
+                         clock pessimism              0.265    13.035    
+                         clock uncertainty           -0.154    12.880    
+    DSP48_X1Y11          DSP48E1 (Setup_dsp48e1_CLK_A[21])
+                                                     -3.722     9.158    kyberBD_i/montgomery_reduction_4/U0/t3
+  -------------------------------------------------------------------
+                         required time                          9.158    
+                         arrival time                          -9.708    
+  -------------------------------------------------------------------
+                         slack                                 -0.549    
+
+Slack (VIOLATED) :        -0.512ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_1_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[20]
+                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        6.664ns  (logic 4.421ns (66.341%)  route 2.243ns (33.659%))
   Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
+  Clock Path Skew:        0.029ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.779ns = ( 12.779 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.981ns
     Clock Pessimism Removal (CPR):    0.230ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -672,17 +444,17 @@ Slack (VIOLATED) :        -0.426ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
+                         net (fo=3746, routed)        1.673     2.981    kyberBD_i/double_signal_multip_0/U0/clk
+    SLICE_X11Y16         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_1_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.793     9.565    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[18]
+    SLICE_X11Y16         FDRE (Prop_fdre_C_Q)         0.456     3.437 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_1_reg/Q
+                         net (fo=33, routed)          0.876     4.313    kyberBD_i/double_signal_multip_0/U0/s_enable_in_1
+    SLICE_X10Y15         LUT4 (Prop_lut4_I2_O)        0.124     4.437 r  kyberBD_i/double_signal_multip_0/U0/data_out[7]_INST_0/O
+                         net (fo=2, routed)           0.415     4.851    kyberBD_i/montgomery_reduction_0/U0/data_in[7]
+    DSP48_X0Y6           DSP48E1 (Prop_dsp48e1_A[7]_P[15])
+                                                      3.841     8.692 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
+                         net (fo=15, routed)          0.953     9.645    kyberBD_i/montgomery_reduction_0/U0/t_n_90
+    DSP48_X0Y7           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[20]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -690,31 +462,31 @@ Slack (VIOLATED) :        -0.426ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[18])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
+                         net (fo=3746, routed)        1.587    12.779    kyberBD_i/montgomery_reduction_0/U0/clk
+    DSP48_X0Y7           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
+                         clock pessimism              0.230    13.010    
+                         clock uncertainty           -0.154    12.855    
+    DSP48_X0Y7           DSP48E1 (Setup_dsp48e1_CLK_A[20])
+                                                     -3.722     9.133    kyberBD_i/montgomery_reduction_0/U0/t3
   -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.565    
+                         required time                          9.133    
+                         arrival time                          -9.645    
   -------------------------------------------------------------------
-                         slack                                 -0.426    
+                         slack                                 -0.512    
 
-Slack (VIOLATED) :        -0.426ns  (required time - arrival time)
-  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
+Slack (VIOLATED) :        -0.512ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_0/U0/s_enable_in_1_reg/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[19]
+  Destination:            kyberBD_i/montgomery_reduction_0/U0/t3/A[21]
                             (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_fpga_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        6.580ns  (logic 4.483ns (68.132%)  route 2.097ns (31.868%))
+  Data Path Delay:        6.664ns  (logic 4.421ns (66.341%)  route 2.243ns (33.659%))
   Logic Levels:           2  (DSP48E1=1 LUT4=1)
-  Clock Path Skew:        0.030ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.784ns = ( 12.784 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.985ns
+  Clock Path Skew:        0.029ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.779ns = ( 12.779 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.981ns
     Clock Pessimism Removal (CPR):    0.230ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -729,17 +501,17 @@ Slack (VIOLATED) :        -0.426ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.677     2.985    kyberBD_i/double_signal_multip_0/U0/clk
-    SLICE_X10Y12         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/C
+                         net (fo=3746, routed)        1.673     2.981    kyberBD_i/double_signal_multip_0/U0/clk
+    SLICE_X11Y16         FDRE                                         r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_1_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X10Y12         FDRE (Prop_fdre_C_Q)         0.518     3.503 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_0_reg/Q
-                         net (fo=33, routed)          0.685     4.188    kyberBD_i/double_signal_multip_0/U0/s_enable_in_0
-    SLICE_X9Y12          LUT4 (Prop_lut4_I1_O)        0.124     4.312 r  kyberBD_i/double_signal_multip_0/U0/data_out[15]_INST_0/O
-                         net (fo=16, routed)          0.619     4.931    kyberBD_i/montgomery_reduction_0/U0/data_in[15]
-    DSP48_X0Y4           DSP48E1 (Prop_dsp48e1_A[23]_P[15])
-                                                      3.841     8.772 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
-                         net (fo=15, routed)          0.793     9.565    kyberBD_i/montgomery_reduction_0/U0/t_n_90
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[19]
+    SLICE_X11Y16         FDRE (Prop_fdre_C_Q)         0.456     3.437 r  kyberBD_i/double_signal_multip_0/U0/s_enable_in_1_reg/Q
+                         net (fo=33, routed)          0.876     4.313    kyberBD_i/double_signal_multip_0/U0/s_enable_in_1
+    SLICE_X10Y15         LUT4 (Prop_lut4_I2_O)        0.124     4.437 r  kyberBD_i/double_signal_multip_0/U0/data_out[7]_INST_0/O
+                         net (fo=2, routed)           0.415     4.851    kyberBD_i/montgomery_reduction_0/U0/data_in[7]
+    DSP48_X0Y6           DSP48E1 (Prop_dsp48e1_A[7]_P[15])
+                                                      3.841     8.692 r  kyberBD_i/montgomery_reduction_0/U0/t/P[15]
+                         net (fo=15, routed)          0.953     9.645    kyberBD_i/montgomery_reduction_0/U0/t_n_90
+    DSP48_X0Y7           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/A[21]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -747,17 +519,245 @@ Slack (VIOLATED) :        -0.426ns  (required time - arrival time)
     PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        1.592    12.784    kyberBD_i/montgomery_reduction_0/U0/clk
-    DSP48_X0Y5           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
-                         clock pessimism              0.230    13.015    
-                         clock uncertainty           -0.154    12.860    
-    DSP48_X0Y5           DSP48E1 (Setup_dsp48e1_CLK_A[19])
-                                                     -3.722     9.138    kyberBD_i/montgomery_reduction_0/U0/t3
+                         net (fo=3746, routed)        1.587    12.779    kyberBD_i/montgomery_reduction_0/U0/clk
+    DSP48_X0Y7           DSP48E1                                      r  kyberBD_i/montgomery_reduction_0/U0/t3/CLK
+                         clock pessimism              0.230    13.010    
+                         clock uncertainty           -0.154    12.855    
+    DSP48_X0Y7           DSP48E1 (Setup_dsp48e1_CLK_A[21])
+                                                     -3.722     9.133    kyberBD_i/montgomery_reduction_0/U0/t3
   -------------------------------------------------------------------
-                         required time                          9.138    
-                         arrival time                          -9.565    
+                         required time                          9.133    
+                         arrival time                          -9.645    
   -------------------------------------------------------------------
-                         slack                                 -0.426    
+                         slack                                 -0.512    
+
+Slack (VIOLATED) :        -0.475ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/montgomery_reduction_1/U0/t3/A[26]
+                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        6.630ns  (logic 4.483ns (67.618%)  route 2.147ns (32.382%))
+  Logic Levels:           2  (DSP48E1=1 LUT4=1)
+  Clock Path Skew:        0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.788ns = ( 12.788 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.988ns
+    Clock Pessimism Removal (CPR):    0.230ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.680     2.988    kyberBD_i/double_signal_multip_1/U0/clk
+    SLICE_X10Y7          FDRE                                         r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X10Y7          FDRE (Prop_fdre_C_Q)         0.518     3.506 r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.745     4.251    kyberBD_i/double_signal_multip_1/U0/s_enable_in_0
+    SLICE_X10Y6          LUT4 (Prop_lut4_I1_O)        0.124     4.375 r  kyberBD_i/double_signal_multip_1/U0/data_out[6]_INST_0/O
+                         net (fo=2, routed)           0.565     4.940    kyberBD_i/montgomery_reduction_1/U0/data_in[6]
+    DSP48_X0Y2           DSP48E1 (Prop_dsp48e1_A[6]_P[15])
+                                                      3.841     8.781 r  kyberBD_i/montgomery_reduction_1/U0/t/P[15]
+                         net (fo=15, routed)          0.837     9.618    kyberBD_i/montgomery_reduction_1/U0/t_n_90
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/A[26]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.596    12.788    kyberBD_i/montgomery_reduction_1/U0/clk
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/CLK
+                         clock pessimism              0.230    13.019    
+                         clock uncertainty           -0.154    12.864    
+    DSP48_X0Y3           DSP48E1 (Setup_dsp48e1_CLK_A[26])
+                                                     -3.722     9.142    kyberBD_i/montgomery_reduction_1/U0/t3
+  -------------------------------------------------------------------
+                         required time                          9.142    
+                         arrival time                          -9.618    
+  -------------------------------------------------------------------
+                         slack                                 -0.475    
+
+Slack (VIOLATED) :        -0.475ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/montgomery_reduction_1/U0/t3/A[27]
+                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        6.630ns  (logic 4.483ns (67.618%)  route 2.147ns (32.382%))
+  Logic Levels:           2  (DSP48E1=1 LUT4=1)
+  Clock Path Skew:        0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.788ns = ( 12.788 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.988ns
+    Clock Pessimism Removal (CPR):    0.230ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.680     2.988    kyberBD_i/double_signal_multip_1/U0/clk
+    SLICE_X10Y7          FDRE                                         r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X10Y7          FDRE (Prop_fdre_C_Q)         0.518     3.506 r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.745     4.251    kyberBD_i/double_signal_multip_1/U0/s_enable_in_0
+    SLICE_X10Y6          LUT4 (Prop_lut4_I1_O)        0.124     4.375 r  kyberBD_i/double_signal_multip_1/U0/data_out[6]_INST_0/O
+                         net (fo=2, routed)           0.565     4.940    kyberBD_i/montgomery_reduction_1/U0/data_in[6]
+    DSP48_X0Y2           DSP48E1 (Prop_dsp48e1_A[6]_P[15])
+                                                      3.841     8.781 r  kyberBD_i/montgomery_reduction_1/U0/t/P[15]
+                         net (fo=15, routed)          0.837     9.618    kyberBD_i/montgomery_reduction_1/U0/t_n_90
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/A[27]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.596    12.788    kyberBD_i/montgomery_reduction_1/U0/clk
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/CLK
+                         clock pessimism              0.230    13.019    
+                         clock uncertainty           -0.154    12.864    
+    DSP48_X0Y3           DSP48E1 (Setup_dsp48e1_CLK_A[27])
+                                                     -3.722     9.142    kyberBD_i/montgomery_reduction_1/U0/t3
+  -------------------------------------------------------------------
+                         required time                          9.142    
+                         arrival time                          -9.618    
+  -------------------------------------------------------------------
+                         slack                                 -0.475    
+
+Slack (VIOLATED) :        -0.472ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/montgomery_reduction_4/U0/t3/A[15]
+                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        6.667ns  (logic 4.421ns (66.313%)  route 2.246ns (33.687%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        0.071ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.770ns = ( 12.770 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.964ns
+    Clock Pessimism Removal (CPR):    0.265ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.656     2.964    kyberBD_i/double_signal_multip_4/U0/clk
+    SLICE_X33Y26         FDRE                                         r  kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X33Y26         FDRE (Prop_fdre_C_Q)         0.456     3.420 r  kyberBD_i/double_signal_multip_4/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.731     4.151    kyberBD_i/double_signal_multip_4/U0/s_enable_in_0
+    SLICE_X33Y28         LUT2 (Prop_lut2_I1_O)        0.124     4.275 r  kyberBD_i/double_signal_multip_4/U0/data_out[12]_INST_0/O
+                         net (fo=2, routed)           0.670     4.945    kyberBD_i/montgomery_reduction_4/U0/data_in[12]
+    DSP48_X1Y10          DSP48E1 (Prop_dsp48e1_A[12]_P[15])
+                                                      3.841     8.786 r  kyberBD_i/montgomery_reduction_4/U0/t/P[15]
+                         net (fo=15, routed)          0.845     9.631    kyberBD_i/montgomery_reduction_4/U0/t_n_90
+    DSP48_X1Y11          DSP48E1                                      r  kyberBD_i/montgomery_reduction_4/U0/t3/A[15]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.578    12.770    kyberBD_i/montgomery_reduction_4/U0/clk
+    DSP48_X1Y11          DSP48E1                                      r  kyberBD_i/montgomery_reduction_4/U0/t3/CLK
+                         clock pessimism              0.265    13.035    
+                         clock uncertainty           -0.154    12.880    
+    DSP48_X1Y11          DSP48E1 (Setup_dsp48e1_CLK_A[15])
+                                                     -3.722     9.158    kyberBD_i/montgomery_reduction_4/U0/t3
+  -------------------------------------------------------------------
+                         required time                          9.158    
+                         arrival time                          -9.631    
+  -------------------------------------------------------------------
+                         slack                                 -0.472    
+
+Slack (VIOLATED) :        -0.461ns  (required time - arrival time)
+  Source:                 kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/montgomery_reduction_1/U0/t3/A[15]
+                            (rising edge-triggered cell DSP48E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        6.615ns  (logic 4.483ns (67.770%)  route 2.132ns (32.230%))
+  Logic Levels:           2  (DSP48E1=1 LUT4=1)
+  Clock Path Skew:        0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.788ns = ( 12.788 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.988ns
+    Clock Pessimism Removal (CPR):    0.230ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.207     1.207    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.101     1.308 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.680     2.988    kyberBD_i/double_signal_multip_1/U0/clk
+    SLICE_X10Y7          FDRE                                         r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X10Y7          FDRE (Prop_fdre_C_Q)         0.518     3.506 r  kyberBD_i/double_signal_multip_1/U0/s_enable_in_0_reg/Q
+                         net (fo=32, routed)          0.745     4.251    kyberBD_i/double_signal_multip_1/U0/s_enable_in_0
+    SLICE_X10Y6          LUT4 (Prop_lut4_I1_O)        0.124     4.375 r  kyberBD_i/double_signal_multip_1/U0/data_out[6]_INST_0/O
+                         net (fo=2, routed)           0.565     4.940    kyberBD_i/montgomery_reduction_1/U0/data_in[6]
+    DSP48_X0Y2           DSP48E1 (Prop_dsp48e1_A[6]_P[15])
+                                                      3.841     8.781 r  kyberBD_i/montgomery_reduction_1/U0/t/P[15]
+                         net (fo=15, routed)          0.822     9.603    kyberBD_i/montgomery_reduction_1/U0/t_n_90
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/A[15]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.101    11.101    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.091    11.192 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        1.596    12.788    kyberBD_i/montgomery_reduction_1/U0/clk
+    DSP48_X0Y3           DSP48E1                                      r  kyberBD_i/montgomery_reduction_1/U0/t3/CLK
+                         clock pessimism              0.230    13.019    
+                         clock uncertainty           -0.154    12.864    
+    DSP48_X0Y3           DSP48E1 (Setup_dsp48e1_CLK_A[15])
+                                                     -3.722     9.142    kyberBD_i/montgomery_reduction_1/U0/t3
+  -------------------------------------------------------------------
+                         required time                          9.142    
+                         arrival time                          -9.603    
+  -------------------------------------------------------------------
+                         slack                                 -0.461    
 
 
 
@@ -765,20 +765,20 @@ Slack (VIOLATED) :        -0.426ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.056ns  (arrival time - required time)
-  Source:                 kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/m_payload_i_reg[14]/C
+Slack (MET) :             0.052ns  (arrival time - required time)
+  Source:                 kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg[12]/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/gen_no_arbiter.m_amesg_i_reg[15]/D
+  Destination:            kyberBD_i/polyvec_ntt_0/U0/s_data0_to_barrett_reg[12]/D
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_fpga_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.415ns  (logic 0.186ns (44.834%)  route 0.229ns (55.166%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.267ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.223ns
-    Source Clock Delay      (SCD):    0.927ns
-    Clock Pessimism Removal (CPR):    0.029ns
+  Data Path Delay:        0.385ns  (logic 0.141ns (36.664%)  route 0.244ns (63.336%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.262ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.196ns
+    Source Clock Delay      (SCD):    0.900ns
+    Clock Pessimism Removal (CPR):    0.034ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -787,14 +787,12 @@ Slack (MET) :             0.056ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.586     0.927    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/aclk
-    SLICE_X2Y49          FDRE                                         r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/m_payload_i_reg[14]/C
+                         net (fo=3746, routed)        0.559     0.900    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X15Y13         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg[12]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y49          FDRE (Prop_fdre_C_Q)         0.141     1.068 r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/m_payload_i_reg[14]/Q
-                         net (fo=1, routed)           0.229     1.296    kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/s_axi_awaddr[14]
-    SLICE_X2Y50          LUT4 (Prop_lut4_I3_O)        0.045     1.341 r  kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/gen_no_arbiter.m_amesg_i[15]_i_1/O
-                         net (fo=1, routed)           0.000     1.341    kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/s_amesg[15]
-    SLICE_X2Y50          FDRE                                         r  kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/gen_no_arbiter.m_amesg_i_reg[15]/D
+    SLICE_X15Y13         FDRE (Prop_fdre_C_Q)         0.141     1.041 r  kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg[12]/Q
+                         net (fo=2, routed)           0.244     1.284    kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg_n_0_[12]
+    SLICE_X23Y11         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_data0_to_barrett_reg[12]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -802,26 +800,308 @@ Slack (MET) :             0.056ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.853     1.223    kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/aclk
-    SLICE_X2Y50          FDRE                                         r  kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/gen_no_arbiter.m_amesg_i_reg[15]/C
-                         clock pessimism             -0.029     1.194    
-    SLICE_X2Y50          FDRE (Hold_fdre_C_D)         0.091     1.285    kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/addr_arbiter_inst/gen_no_arbiter.m_amesg_i_reg[15]
+                         net (fo=3746, routed)        0.826     1.196    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X23Y11         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_data0_to_barrett_reg[12]/C
+                         clock pessimism             -0.034     1.162    
+    SLICE_X23Y11         FDRE (Hold_fdre_C_D)         0.070     1.232    kyberBD_i/polyvec_ntt_0/U0/s_data0_to_barrett_reg[12]
   -------------------------------------------------------------------
-                         required time                         -1.285    
-                         arrival time                           1.341    
+                         required time                         -1.232    
+                         arrival time                           1.284    
   -------------------------------------------------------------------
-                         slack                                  0.056    
+                         slack                                  0.052    
 
-Slack (MET) :             0.057ns  (arrival time - required time)
-  Source:                 kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[8][2]/C
+Slack (MET) :             0.052ns  (arrival time - required time)
+  Source:                 kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg[12]/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[9][2]/D
+  Destination:            kyberBD_i/polyvec_ntt_0/U0/s_coeff1_to_fqmul0_reg[12]/D
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_fpga_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.338ns  (logic 0.128ns (37.860%)  route 0.210ns (62.140%))
+  Data Path Delay:        0.374ns  (logic 0.141ns (37.726%)  route 0.233ns (62.274%))
   Logic Levels:           0  
+  Clock Path Skew:        0.262ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.196ns
+    Source Clock Delay      (SCD):    0.900ns
+    Clock Pessimism Removal (CPR):    0.034ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.559     0.900    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X15Y13         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y13         FDRE (Prop_fdre_C_Q)         0.141     1.041 r  kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg[12]/Q
+                         net (fo=2, routed)           0.233     1.273    kyberBD_i/polyvec_ntt_0/U0/s_bram_doa_reg_n_0_[12]
+    SLICE_X24Y11         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_coeff1_to_fqmul0_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.826     1.196    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X24Y11         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_coeff1_to_fqmul0_reg[12]/C
+                         clock pessimism             -0.034     1.162    
+    SLICE_X24Y11         FDRE (Hold_fdre_C_D)         0.059     1.221    kyberBD_i/polyvec_ntt_0/U0/s_coeff1_to_fqmul0_reg[12]
+  -------------------------------------------------------------------
+                         required time                         -1.221    
+                         arrival time                           1.273    
+  -------------------------------------------------------------------
+                         slack                                  0.052    
+
+Slack (MET) :             0.062ns  (arrival time - required time)
+  Source:                 kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg[6][15]_srl7/D
+                            (rising edge-triggered cell SRL16E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.257ns  (logic 0.141ns (54.812%)  route 0.116ns (45.188%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.192ns
+    Source Clock Delay      (SCD):    0.899ns
+    Clock Pessimism Removal (CPR):    0.281ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.558     0.899    kyberBD_i/polyvec_basemul_acc_0/U0/clk
+    SLICE_X13Y19         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_reg[15]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X13Y19         FDRE (Prop_fdre_C_Q)         0.141     1.039 r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_reg[15]/Q
+                         net (fo=1, routed)           0.116     1.156    kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob[15]
+    SLICE_X12Y21         SRL16E                                       r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg[6][15]_srl7/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.822     1.192    kyberBD_i/polyvec_basemul_acc_0/U0/clk
+    SLICE_X12Y21         SRL16E                                       r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg[6][15]_srl7/CLK
+                         clock pessimism             -0.281     0.911    
+    SLICE_X12Y21         SRL16E (Hold_srl16e_CLK_D)
+                                                      0.183     1.094    kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg[6][15]_srl7
+  -------------------------------------------------------------------
+                         required time                         -1.094    
+                         arrival time                           1.156    
+  -------------------------------------------------------------------
+                         slack                                  0.062    
+
+Slack (MET) :             0.074ns  (arrival time - required time)
+  Source:                 kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.gpio_Data_In_reg[12]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg1_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.462ns  (logic 0.226ns (48.966%)  route 0.236ns (51.034%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.267ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.200ns
+    Source Clock Delay      (SCD):    0.899ns
+    Clock Pessimism Removal (CPR):    0.034ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.558     0.899    kyberBD_i/axi_gpio_0/U0/gpio_core_1/s_axi_aclk
+    SLICE_X23Y38         FDRE                                         r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.gpio_Data_In_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X23Y38         FDRE (Prop_fdre_C_Q)         0.128     1.026 r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.gpio_Data_In_reg[12]/Q
+                         net (fo=2, routed)           0.236     1.262    kyberBD_i/axi_gpio_0/U0/gpio_core_1/gpio_Data_In[12]
+    SLICE_X16Y40         LUT5 (Prop_lut5_I3_O)        0.098     1.360 r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg1[12]_i_1/O
+                         net (fo=1, routed)           0.000     1.360    kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg1[12]_i_1_n_0
+    SLICE_X16Y40         FDRE                                         r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg1_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.830     1.200    kyberBD_i/axi_gpio_0/U0/gpio_core_1/s_axi_aclk
+    SLICE_X16Y40         FDRE                                         r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg1_reg[12]/C
+                         clock pessimism             -0.034     1.166    
+    SLICE_X16Y40         FDRE (Hold_fdre_C_D)         0.120     1.286    kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg1_reg[12]
+  -------------------------------------------------------------------
+                         required time                         -1.286    
+                         arrival time                           1.360    
+  -------------------------------------------------------------------
+                         slack                                  0.074    
+
+Slack (MET) :             0.077ns  (arrival time - required time)
+  Source:                 kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.gpio_Data_In_reg[12]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg2_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.466ns  (logic 0.226ns (48.546%)  route 0.240ns (51.454%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.267ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.200ns
+    Source Clock Delay      (SCD):    0.899ns
+    Clock Pessimism Removal (CPR):    0.034ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.558     0.899    kyberBD_i/axi_gpio_0/U0/gpio_core_1/s_axi_aclk
+    SLICE_X23Y38         FDRE                                         r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.gpio_Data_In_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X23Y38         FDRE (Prop_fdre_C_Q)         0.128     1.026 r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.gpio_Data_In_reg[12]/Q
+                         net (fo=2, routed)           0.240     1.266    kyberBD_i/axi_gpio_0/U0/gpio_core_1/gpio_Data_In[12]
+    SLICE_X16Y40         LUT5 (Prop_lut5_I3_O)        0.098     1.364 r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg2[12]_i_1/O
+                         net (fo=1, routed)           0.000     1.364    kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg2[12]_i_1_n_0
+    SLICE_X16Y40         FDRE                                         r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg2_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.830     1.200    kyberBD_i/axi_gpio_0/U0/gpio_core_1/s_axi_aclk
+    SLICE_X16Y40         FDRE                                         r  kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg2_reg[12]/C
+                         clock pessimism             -0.034     1.166    
+    SLICE_X16Y40         FDRE (Hold_fdre_C_D)         0.121     1.287    kyberBD_i/axi_gpio_0/U0/gpio_core_1/Not_Dual.ALLOUT0_ND.READ_REG_GEN[12].reg2_reg[12]
+  -------------------------------------------------------------------
+                         required time                         -1.287    
+                         arrival time                           1.364    
+  -------------------------------------------------------------------
+                         slack                                  0.077    
+
+Slack (MET) :             0.077ns  (arrival time - required time)
+  Source:                 kyberBD_i/polyvec_ntt_0/U0/s_data1_from_barrett_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/polyvec_ntt_0/U0/s_bram_dib_reg[17]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.433ns  (logic 0.186ns (42.989%)  route 0.247ns (57.011%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.193ns
+    Source Clock Delay      (SCD):    0.895ns
+    Clock Pessimism Removal (CPR):    0.034ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.554     0.895    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X22Y17         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_data1_from_barrett_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X22Y17         FDRE (Prop_fdre_C_Q)         0.141     1.036 r  kyberBD_i/polyvec_ntt_0/U0/s_data1_from_barrett_reg[1]/Q
+                         net (fo=1, routed)           0.247     1.282    kyberBD_i/polyvec_ntt_0/U0/s_data1_from_barrett[1]
+    SLICE_X17Y17         LUT3 (Prop_lut3_I2_O)        0.045     1.327 r  kyberBD_i/polyvec_ntt_0/U0/s_bram_dib[17]_i_1/O
+                         net (fo=1, routed)           0.000     1.327    kyberBD_i/polyvec_ntt_0/U0/s_bram_dib[17]_i_1_n_0
+    SLICE_X17Y17         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_bram_dib_reg[17]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.823     1.193    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X17Y17         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_bram_dib_reg[17]/C
+                         clock pessimism             -0.034     1.159    
+    SLICE_X17Y17         FDRE (Hold_fdre_C_D)         0.091     1.250    kyberBD_i/polyvec_ntt_0/U0/s_bram_dib_reg[17]
+  -------------------------------------------------------------------
+                         required time                         -1.250    
+                         arrival time                           1.327    
+  -------------------------------------------------------------------
+                         slack                                  0.077    
+
+Slack (MET) :             0.078ns  (arrival time - required time)
+  Source:                 kyberBD_i/polyvec_ntt_0/U0/s_coeff_from_fqmul0_reg[13]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/polyvec_ntt_0/U0/s_bram_dia_reg[13]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.447ns  (logic 0.251ns (56.120%)  route 0.196ns (43.880%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
+  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.195ns
+    Source Clock Delay      (SCD):    0.897ns
+    Clock Pessimism Removal (CPR):    0.034ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.556     0.897    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X23Y13         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_coeff_from_fqmul0_reg[13]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X23Y13         FDRE (Prop_fdre_C_Q)         0.141     1.038 r  kyberBD_i/polyvec_ntt_0/U0/s_coeff_from_fqmul0_reg[13]/Q
+                         net (fo=2, routed)           0.196     1.234    kyberBD_i/polyvec_ntt_0/U0/s_coeff_from_fqmul0[13]
+    SLICE_X17Y15         LUT2 (Prop_lut2_I1_O)        0.045     1.279 r  kyberBD_i/polyvec_ntt_0/U0/s_bram_dia0_carry__2_i_3/O
+                         net (fo=1, routed)           0.000     1.279    kyberBD_i/polyvec_ntt_0/U0/s_bram_dia0_carry__2_i_3_n_0
+    SLICE_X17Y15         CARRY4 (Prop_carry4_S[1]_O[1])
+                                                      0.065     1.344 r  kyberBD_i/polyvec_ntt_0/U0/s_bram_dia0_carry__2/O[1]
+                         net (fo=1, routed)           0.000     1.344    kyberBD_i/polyvec_ntt_0/U0/s_bram_dia00_out[13]
+    SLICE_X17Y15         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_bram_dia_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=3746, routed)        0.825     1.195    kyberBD_i/polyvec_ntt_0/U0/clk
+    SLICE_X17Y15         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_bram_dia_reg[13]/C
+                         clock pessimism             -0.034     1.161    
+    SLICE_X17Y15         FDRE (Hold_fdre_C_D)         0.105     1.266    kyberBD_i/polyvec_ntt_0/U0/s_bram_dia_reg[13]
+  -------------------------------------------------------------------
+                         required time                         -1.266    
+                         arrival time                           1.344    
+  -------------------------------------------------------------------
+                         slack                                  0.078    
+
+Slack (MET) :             0.082ns  (arrival time - required time)
+  Source:                 kyberBD_i/axi_gpio_3/U0/ip2bus_data_i_D1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[31]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.478ns  (logic 0.207ns (43.276%)  route 0.271ns (56.724%))
+  Logic Levels:           1  (LUT3=1)
   Clock Path Skew:        0.265ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.200ns
     Source Clock Delay      (SCD):    0.901ns
@@ -834,12 +1114,14 @@ Slack (MET) :             0.057ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.560     0.901    kyberBD_i/polyvec_ntt_0/U0/clk
-    SLICE_X22Y44         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[8][2]/C
+                         net (fo=3746, routed)        0.560     0.901    kyberBD_i/axi_gpio_3/U0/s_axi_aclk
+    SLICE_X24Y44         FDRE                                         r  kyberBD_i/axi_gpio_3/U0/ip2bus_data_i_D1_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X22Y44         FDRE (Prop_fdre_C_Q)         0.128     1.029 r  kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[8][2]/Q
-                         net (fo=3, routed)           0.210     1.239    kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[8][2]
-    SLICE_X21Y44         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[9][2]/D
+    SLICE_X24Y44         FDRE (Prop_fdre_C_Q)         0.164     1.065 r  kyberBD_i/axi_gpio_3/U0/ip2bus_data_i_D1_reg[0]/Q
+                         net (fo=1, routed)           0.271     1.336    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/Q[1]
+    SLICE_X20Y44         LUT3 (Prop_lut3_I0_O)        0.043     1.379 r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i[31]_i_1/O
+                         net (fo=1, routed)           0.000     1.379    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i[31]_i_1_n_0
+    SLICE_X20Y44         FDRE                                         r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[31]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -847,122 +1129,29 @@ Slack (MET) :             0.057ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.830     1.200    kyberBD_i/polyvec_ntt_0/U0/clk
-    SLICE_X21Y44         FDRE                                         r  kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[9][2]/C
+                         net (fo=3746, routed)        0.830     1.200    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_aclk
+    SLICE_X20Y44         FDRE                                         r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[31]/C
                          clock pessimism             -0.034     1.166    
-    SLICE_X21Y44         FDRE (Hold_fdre_C_D)         0.016     1.182    kyberBD_i/polyvec_ntt_0/U0/s_kyber_k_it_reg[9][2]
+    SLICE_X20Y44         FDRE (Hold_fdre_C_D)         0.131     1.297    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[31]
   -------------------------------------------------------------------
-                         required time                         -1.182    
-                         arrival time                           1.239    
+                         required time                         -1.297    
+                         arrival time                           1.379    
   -------------------------------------------------------------------
-                         slack                                  0.057    
+                         slack                                  0.082    
 
-Slack (MET) :             0.058ns  (arrival time - required time)
-  Source:                 kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/r_arid_r_reg[8]/C
+Slack (MET) :             0.082ns  (arrival time - required time)
+  Source:                 kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/reg_slice_r/m_payload_i_reg[8]/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][9]_srl32/D
+  Destination:            kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][5]_srl32/D
                             (rising edge-triggered cell SRLC32E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_fpga_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.256ns  (logic 0.141ns (55.026%)  route 0.115ns (44.974%))
+  Data Path Delay:        0.247ns  (logic 0.128ns (51.834%)  route 0.119ns (48.166%))
   Logic Levels:           0  
-  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.220ns
-    Source Clock Delay      (SCD):    0.924ns
-    Clock Pessimism Removal (CPR):    0.281ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.583     0.924    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/aclk
-    SLICE_X1Y44          FDRE                                         r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/r_arid_r_reg[8]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y44          FDRE (Prop_fdre_C_Q)         0.141     1.064 r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/r_arid_r_reg[8]/Q
-                         net (fo=1, routed)           0.115     1.180    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/in[9]
-    SLICE_X0Y42          SRLC32E                                      r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][9]_srl32/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.850     1.220    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/aclk
-    SLICE_X0Y42          SRLC32E                                      r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][9]_srl32/CLK
-                         clock pessimism             -0.281     0.939    
-    SLICE_X0Y42          SRLC32E (Hold_srlc32e_CLK_D)
-                                                      0.183     1.122    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][9]_srl32
-  -------------------------------------------------------------------
-                         required time                         -1.122    
-                         arrival time                           1.180    
-  -------------------------------------------------------------------
-                         slack                                  0.058    
-
-Slack (MET) :             0.059ns  (arrival time - required time)
-  Source:                 kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_reg[1]/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i_reg/D
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.421ns  (logic 0.186ns (44.193%)  route 0.235ns (55.807%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.270ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.204ns
-    Source Clock Delay      (SCD):    0.905ns
-    Clock Pessimism Removal (CPR):    0.029ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.564     0.905    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_aclk
-    SLICE_X15Y49         FDRE                                         r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_reg[1]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X15Y49         FDRE (Prop_fdre_C_Q)         0.141     1.046 r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_reg[1]/Q
-                         net (fo=7, routed)           0.235     1.280    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state[1]
-    SLICE_X13Y50         LUT5 (Prop_lut5_I1_O)        0.045     1.325 r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i_i_1/O
-                         net (fo=1, routed)           0.000     1.325    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i_i_1_n_0
-    SLICE_X13Y50         FDRE                                         r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i_reg/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.834     1.204    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_aclk
-    SLICE_X13Y50         FDRE                                         r  kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i_reg/C
-                         clock pessimism             -0.029     1.175    
-    SLICE_X13Y50         FDRE (Hold_fdre_C_D)         0.091     1.266    kyberBD_i/axi_gpio_3/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bvalid_i_reg
-  -------------------------------------------------------------------
-                         required time                         -1.266    
-                         arrival time                           1.325    
-  -------------------------------------------------------------------
-                         slack                                  0.059    
-
-Slack (MET) :             0.060ns  (arrival time - required time)
-  Source:                 kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_reg[31]/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][31]_srl7/D
-                            (rising edge-triggered cell SRL16E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.275ns  (logic 0.141ns (51.293%)  route 0.134ns (48.707%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.032ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.190ns
-    Source Clock Delay      (SCD):    0.896ns
+  Clock Path Skew:        0.035ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.203ns
+    Source Clock Delay      (SCD):    0.906ns
     Clock Pessimism Removal (CPR):    0.262ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -972,58 +1161,12 @@ Slack (MET) :             0.060ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.555     0.896    kyberBD_i/polyvec_basemul_acc_0/U0/clk
-    SLICE_X18Y19         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_reg[31]/C
+                         net (fo=3746, routed)        0.565     0.906    kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/reg_slice_r/aclk
+    SLICE_X9Y41          FDRE                                         r  kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/reg_slice_r/m_payload_i_reg[8]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y19         FDRE (Prop_fdre_C_Q)         0.141     1.037 r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_reg[31]/Q
-                         net (fo=4, routed)           0.134     1.170    kyberBD_i/polyvec_basemul_acc_0/U0/p_0_in1_in[15]
-    SLICE_X20Y19         SRL16E                                       r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][31]_srl7/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.820     1.190    kyberBD_i/polyvec_basemul_acc_0/U0/clk
-    SLICE_X20Y19         SRL16E                                       r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][31]_srl7/CLK
-                         clock pessimism             -0.262     0.928    
-    SLICE_X20Y19         SRL16E (Hold_srl16e_CLK_D)
-                                                      0.183     1.110    kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][31]_srl7
-  -------------------------------------------------------------------
-                         required time                         -1.110    
-                         arrival time                           1.170    
-  -------------------------------------------------------------------
-                         slack                                  0.060    
-
-Slack (MET) :             0.064ns  (arrival time - required time)
-  Source:                 kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[10]/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[8]
-                            (rising edge-triggered cell PS7 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.373ns  (logic 0.164ns (43.980%)  route 0.209ns (56.020%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.309ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.263ns
-    Source Clock Delay      (SCD):    0.925ns
-    Clock Pessimism Removal (CPR):    0.029ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.584     0.925    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aclk
-    SLICE_X4Y52          FDRE                                         r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[10]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y52          FDRE (Prop_fdre_C_Q)         0.164     1.089 r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[10]/Q
-                         net (fo=1, routed)           0.209     1.297    kyberBD_i/processing_system7_0/inst/M_AXI_GP0_BID[8]
-    PS7_X0Y0             PS7                                          r  kyberBD_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[8]
+    SLICE_X9Y41          FDRE (Prop_fdre_C_Q)         0.128     1.034 r  kyberBD_i/axi_interconnect_0/xbar/inst/gen_sasd.crossbar_sasd_0/reg_slice_r/m_payload_i_reg[8]/Q
+                         net (fo=1, routed)           0.119     1.152    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/in[5]
+    SLICE_X6Y40          SRLC32E                                      r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][5]_srl32/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -1031,171 +1174,31 @@ Slack (MET) :             0.064ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.893     1.263    kyberBD_i/processing_system7_0/inst/M_AXI_GP0_ACLK
-    PS7_X0Y0             PS7                                          r  kyberBD_i/processing_system7_0/inst/PS7_i/MAXIGP0ACLK
-                         clock pessimism             -0.029     1.234    
-    PS7_X0Y0             PS7 (Hold_ps7_MAXIGP0ACLK_MAXIGP0BID[8])
-                                                      0.000     1.234    kyberBD_i/processing_system7_0/inst/PS7_i
+                         net (fo=3746, routed)        0.833     1.203    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/aclk
+    SLICE_X6Y40          SRLC32E                                      r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][5]_srl32/CLK
+                         clock pessimism             -0.262     0.941    
+    SLICE_X6Y40          SRLC32E (Hold_srlc32e_CLK_D)
+                                                      0.130     1.071    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][5]_srl32
   -------------------------------------------------------------------
-                         required time                         -1.234    
-                         arrival time                           1.297    
+                         required time                         -1.071    
+                         arrival time                           1.152    
   -------------------------------------------------------------------
-                         slack                                  0.064    
+                         slack                                  0.082    
 
-Slack (MET) :             0.064ns  (arrival time - required time)
-  Source:                 kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[7][25]/C
+Slack (MET) :             0.084ns  (arrival time - required time)
+  Source:                 kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/s_awid_r_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff0_to_fqmul5_reg[9]/D
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.431ns  (logic 0.212ns (49.143%)  route 0.219ns (50.857%))
-  Logic Levels:           1  (LUT3=1)
-  Clock Path Skew:        0.260ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.187ns
-    Source Clock Delay      (SCD):    0.893ns
-    Clock Pessimism Removal (CPR):    0.034ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.552     0.893    kyberBD_i/polyvec_basemul_acc_0/U0/clk
-    SLICE_X20Y19         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[7][25]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X20Y19         FDRE (Prop_fdre_C_Q)         0.164     1.057 r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[7][25]/Q
-                         net (fo=3, routed)           0.219     1.276    kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg_n_0_[7][25]
-    SLICE_X22Y20         LUT3 (Prop_lut3_I0_O)        0.048     1.324 r  kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff0_to_fqmul5[9]_i_1/O
-                         net (fo=1, routed)           0.000     1.324    kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff0_to_fqmul5[9]_i_1_n_0
-    SLICE_X22Y20         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff0_to_fqmul5_reg[9]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.817     1.187    kyberBD_i/polyvec_basemul_acc_0/U0/clk
-    SLICE_X22Y20         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff0_to_fqmul5_reg[9]/C
-                         clock pessimism             -0.034     1.153    
-    SLICE_X22Y20         FDRE (Hold_fdre_C_D)         0.107     1.260    kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff0_to_fqmul5_reg[9]
-  -------------------------------------------------------------------
-                         required time                         -1.260    
-                         arrival time                           1.324    
-  -------------------------------------------------------------------
-                         slack                                  0.064    
-
-Slack (MET) :             0.066ns  (arrival time - required time)
-  Source:                 kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[11]/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[9]
-                            (rising edge-triggered cell PS7 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.375ns  (logic 0.164ns (43.745%)  route 0.211ns (56.255%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.309ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.263ns
-    Source Clock Delay      (SCD):    0.925ns
-    Clock Pessimism Removal (CPR):    0.029ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.584     0.925    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aclk
-    SLICE_X4Y52          FDRE                                         r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[11]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y52          FDRE (Prop_fdre_C_Q)         0.164     1.089 r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[11]/Q
-                         net (fo=1, routed)           0.211     1.299    kyberBD_i/processing_system7_0/inst/M_AXI_GP0_BID[9]
-    PS7_X0Y0             PS7                                          r  kyberBD_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[9]
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.893     1.263    kyberBD_i/processing_system7_0/inst/M_AXI_GP0_ACLK
-    PS7_X0Y0             PS7                                          r  kyberBD_i/processing_system7_0/inst/PS7_i/MAXIGP0ACLK
-                         clock pessimism             -0.029     1.234    
-    PS7_X0Y0             PS7 (Hold_ps7_MAXIGP0ACLK_MAXIGP0BID[9])
-                                                      0.000     1.234    kyberBD_i/processing_system7_0/inst/PS7_i
-  -------------------------------------------------------------------
-                         required time                         -1.234    
-                         arrival time                           1.299    
-  -------------------------------------------------------------------
-                         slack                                  0.066    
-
-Slack (MET) :             0.067ns  (arrival time - required time)
-  Source:                 kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg[3][24]/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff1_to_fqmul4_reg[8]/D
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             clk_fpga_0
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.422ns  (logic 0.209ns (49.501%)  route 0.213ns (50.499%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.263ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.185ns
-    Source Clock Delay      (SCD):    0.888ns
-    Clock Pessimism Removal (CPR):    0.034ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.547     0.888    kyberBD_i/polyvec_basemul_acc_0/U0/clk
-    SLICE_X20Y24         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg[3][24]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X20Y24         FDRE (Prop_fdre_C_Q)         0.164     1.052 r  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg[3][24]/Q
-                         net (fo=3, routed)           0.213     1.265    kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_dob_vec_reg_n_0_[3][24]
-    SLICE_X25Y22         LUT5 (Prop_lut5_I0_O)        0.045     1.310 r  kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff1_to_fqmul4[8]_i_1/O
-                         net (fo=1, routed)           0.000     1.310    kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff1_to_fqmul4[8]_i_1_n_0
-    SLICE_X25Y22         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff1_to_fqmul4_reg[8]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk_fpga_0 rise edge)
-                                                      0.000     0.000 r  
-    PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
-                         net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
-    BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.815     1.185    kyberBD_i/polyvec_basemul_acc_0/U0/clk
-    SLICE_X25Y22         FDRE                                         r  kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff1_to_fqmul4_reg[8]/C
-                         clock pessimism             -0.034     1.151    
-    SLICE_X25Y22         FDRE (Hold_fdre_C_D)         0.092     1.243    kyberBD_i/polyvec_basemul_acc_0/U0/s_coeff1_to_fqmul4_reg[8]
-  -------------------------------------------------------------------
-                         required time                         -1.243    
-                         arrival time                           1.310    
-  -------------------------------------------------------------------
-                         slack                                  0.067    
-
-Slack (MET) :             0.067ns  (arrival time - required time)
-  Source:                 kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/s_awid_r_reg[4]/C
-                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][12]_srl4/D
+  Destination:            kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][15]_srl4/D
                             (rising edge-triggered cell SRL16E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_fpga_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
-  Data Path Delay:        0.197ns  (logic 0.141ns (71.611%)  route 0.056ns (28.389%))
+  Data Path Delay:        0.247ns  (logic 0.128ns (51.862%)  route 0.119ns (48.138%))
   Logic Levels:           0  
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.222ns
-    Source Clock Delay      (SCD):    0.924ns
-    Clock Pessimism Removal (CPR):    0.285ns
+  Clock Path Skew:        0.033ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.221ns
+    Source Clock Delay      (SCD):    0.925ns
+    Clock Pessimism Removal (CPR):    0.263ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1204,12 +1207,12 @@ Slack (MET) :             0.067ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.315     0.315    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.026     0.341 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.583     0.924    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/aclk
-    SLICE_X5Y53          FDRE                                         r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/s_awid_r_reg[4]/C
+                         net (fo=3746, routed)        0.584     0.925    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/aclk
+    SLICE_X3Y52          FDRE                                         r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/s_awid_r_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X5Y53          FDRE (Prop_fdre_C_Q)         0.141     1.065 r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/s_awid_r_reg[4]/Q
-                         net (fo=1, routed)           0.056     1.120    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/in[8]
-    SLICE_X4Y53          SRL16E                                       r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][12]_srl4/D
+    SLICE_X3Y52          FDRE (Prop_fdre_C_Q)         0.128     1.053 r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.aw_channel_0/s_awid_r_reg[7]/Q
+                         net (fo=1, routed)           0.119     1.171    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/in[11]
+    SLICE_X0Y51          SRL16E                                       r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][15]_srl4/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_fpga_0 rise edge)
@@ -1217,16 +1220,16 @@ Slack (MET) :             0.067ns  (arrival time - required time)
     PS7_X0Y0             PS7                          0.000     0.000 r  kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
                          net (fo=1, routed)           0.341     0.341    kyberBD_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
     BUFGCTRL_X0Y15       BUFG (Prop_bufg_I_O)         0.029     0.370 r  kyberBD_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
-                         net (fo=3711, routed)        0.852     1.222    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/aclk
-    SLICE_X4Y53          SRL16E                                       r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][12]_srl4/CLK
-                         clock pessimism             -0.285     0.937    
-    SLICE_X4Y53          SRL16E (Hold_srl16e_CLK_D)
-                                                      0.117     1.054    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][12]_srl4
+                         net (fo=3746, routed)        0.851     1.221    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/aclk
+    SLICE_X0Y51          SRL16E                                       r  kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][15]_srl4/CLK
+                         clock pessimism             -0.263     0.958    
+    SLICE_X0Y51          SRL16E (Hold_srl16e_CLK_D)
+                                                      0.130     1.088    kyberBD_i/axi_interconnect_0/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][15]_srl4
   -------------------------------------------------------------------
-                         required time                         -1.054    
-                         arrival time                           1.120    
+                         required time                         -1.088    
+                         arrival time                           1.171    
   -------------------------------------------------------------------
-                         slack                                  0.067    
+                         slack                                  0.084    
 
 
 
@@ -1240,36 +1243,36 @@ Period(ns):         10.000
 Sources:            { kyberBD_i/processing_system7_0/inst/PS7_i/FCLKCLK[0] }
 
 Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location      Pin
-Min Period        n/a     DSP48E1/CLK         n/a            3.884         10.000      6.116      DSP48_X0Y6    kyberBD_i/poly_tomont_0/U0/s_do_lower_mont_reg/CLK
-Min Period        n/a     DSP48E1/CLK         n/a            3.884         10.000      6.116      DSP48_X1Y3    kyberBD_i/poly_tomont_0/U0/s_do_upper_mont_reg/CLK
-Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.944         10.000      7.056      RAMB36_X1Y7   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_0/CLKARDCLK
-Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.944         10.000      7.056      RAMB36_X1Y7   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_0/CLKBWRCLK
-Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.944         10.000      7.056      RAMB36_X1Y6   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_1/CLKARDCLK
-Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.944         10.000      7.056      RAMB36_X1Y6   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_1/CLKBWRCLK
+Min Period        n/a     DSP48E1/CLK         n/a            3.884         10.000      6.116      DSP48_X0Y5    kyberBD_i/poly_tomont_0/U0/s_do_lower_mont_reg/CLK
+Min Period        n/a     DSP48E1/CLK         n/a            3.884         10.000      6.116      DSP48_X0Y4    kyberBD_i/poly_tomont_0/U0/s_do_upper_mont_reg/CLK
+Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y3   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_0/CLKARDCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y3   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_0/CLKBWRCLK
+Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y4   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_1/CLKARDCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y4   kyberBD_i/dual_bram_0/U0/bram_v1_0_S00_AXI_inst/true_dual_bram_inst0/RAM_reg_1/CLKBWRCLK
 Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y6   kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_0/CLKARDCLK
 Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y6   kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_0/CLKBWRCLK
 Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y7   kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_1/CLKARDCLK
 Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.944         10.000      7.056      RAMB36_X0Y7   kyberBD_i/dual_bram_0/U0/bram_v1_0_S01_AXI_inst/true_dual_bram_inst0/RAM_reg_1/CLKBWRCLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][0]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][1]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][2]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][3]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][4]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][5]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][6]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y24  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul3_vec_reg[2][7]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y25  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul4_vec_reg[2][0]_srl3/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y25  kyberBD_i/polyvec_basemul_acc_0/U0/s_fqmul4_vec_reg[2][1]_srl3/CLK
-High Pulse Width  Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X8Y28   kyberBD_i/barrett_reduce_0/U0/valid_in_vec_reg[2]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][0]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][1]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][2]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][3]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][4]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][5]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][6]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][7]_srl3/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X20Y20  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][10]_srl3/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y32  kyberBD_i/barrett_reduce_0/U0/valid_in_vec_reg[2]_srl3/CLK
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y32  kyberBD_i/barrett_reduce_0/U0/valid_in_vec_reg[2]_srl3/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y13  kyberBD_i/barrett_reduce_2/U0/valid_in_vec_reg[2]_srl3/CLK
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X24Y13  kyberBD_i/barrett_reduce_2/U0/valid_in_vec_reg[2]_srl3/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X12Y27  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][10]_srl3/CLK
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X12Y27  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][10]_srl3/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X12Y27  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][11]_srl3/CLK
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X12Y27  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][11]_srl3/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X12Y27  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][12]_srl3/CLK
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X12Y27  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][12]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][10]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][11]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][12]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][13]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][14]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][15]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][8]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X16Y28  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[2][9]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X10Y25  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][0]_srl3/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X12Y25  kyberBD_i/polyvec_basemul_acc_0/U0/s_bram_read_doa_vec_reg[6][16]_srl7/CLK
 
 
 
