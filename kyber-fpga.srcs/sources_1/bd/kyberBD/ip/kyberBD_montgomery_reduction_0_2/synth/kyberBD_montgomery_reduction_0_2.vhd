@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:montgomery_reduction:1.0
--- IP Revision: 5
+-- IP Revision: 6
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -59,7 +59,9 @@ USE work.montgomery_reduction_v1_0;
 ENTITY kyberBD_montgomery_reduction_0_2 IS
   PORT (
     clk : IN STD_LOGIC;
+    valid_in : IN STD_LOGIC;
     data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    valid_out : OUT STD_LOGIC;
     data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END kyberBD_montgomery_reduction_0_2;
@@ -74,7 +76,9 @@ ARCHITECTURE kyberBD_montgomery_reduction_0_2_arch OF kyberBD_montgomery_reducti
     );
     PORT (
       clk : IN STD_LOGIC;
+      valid_in : IN STD_LOGIC;
       data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      valid_out : OUT STD_LOGIC;
       data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT montgomery_reduction_v1_0;
@@ -83,7 +87,7 @@ ARCHITECTURE kyberBD_montgomery_reduction_0_2_arch OF kyberBD_montgomery_reducti
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_montgomery_reduction_0_2_arch : ARCHITECTURE IS "kyberBD_montgomery_reduction_0_2,montgomery_reduction_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_montgomery_reduction_0_2_arch: ARCHITECTURE IS "kyberBD_montgomery_reduction_0_2,montgomery_reduction_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=montgomery_reduction,x_ipVersion=1.0,x_ipCoreRevision=5,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,QINV=-3327,KYBER_Q=3329}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_montgomery_reduction_0_2_arch: ARCHITECTURE IS "kyberBD_montgomery_reduction_0_2,montgomery_reduction_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=montgomery_reduction,x_ipVersion=1.0,x_ipCoreRevision=6,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,QINV=-3327,KYBER_Q=3329}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
@@ -96,7 +100,9 @@ BEGIN
     )
     PORT MAP (
       clk => clk,
+      valid_in => valid_in,
       data_in => data_in,
+      valid_out => valid_out,
       data_out => data_out
     );
 END kyberBD_montgomery_reduction_0_2_arch;

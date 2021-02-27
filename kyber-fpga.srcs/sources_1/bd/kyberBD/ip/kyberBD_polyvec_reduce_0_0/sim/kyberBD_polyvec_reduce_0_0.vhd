@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:polyvec_reduce:1.0
--- IP Revision: 5
+-- IP Revision: 7
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -71,11 +71,15 @@ ENTITY kyberBD_polyvec_reduce_0_0 IS
     bram_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     bram_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     do_lower_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_in_lower_barrett : IN STD_LOGIC;
     di_lower_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     en_lower_barrett : OUT STD_LOGIC;
+    valid_out_lower_barrett : OUT STD_LOGIC;
     do_upper_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_in_upper_barrett : IN STD_LOGIC;
     di_upper_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     en_upper_barrett : OUT STD_LOGIC;
+    valid_out_upper_barrett : OUT STD_LOGIC;
     kyber_k : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
     start : IN STD_LOGIC;
     busy : OUT STD_LOGIC
@@ -104,11 +108,15 @@ ARCHITECTURE kyberBD_polyvec_reduce_0_0_arch OF kyberBD_polyvec_reduce_0_0 IS
       bram_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       bram_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       do_lower_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_in_lower_barrett : IN STD_LOGIC;
       di_lower_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       en_lower_barrett : OUT STD_LOGIC;
+      valid_out_lower_barrett : OUT STD_LOGIC;
       do_upper_barrett : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_in_upper_barrett : IN STD_LOGIC;
       di_upper_barrett : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       en_upper_barrett : OUT STD_LOGIC;
+      valid_out_upper_barrett : OUT STD_LOGIC;
       kyber_k : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
       start : IN STD_LOGIC;
       busy : OUT STD_LOGIC
@@ -130,7 +138,7 @@ ARCHITECTURE kyberBD_polyvec_reduce_0_0_arch OF kyberBD_polyvec_reduce_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF bram_ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_A EN";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET aresetn, FREQ_HZ 200000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET aresetn, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
   U0 : polyvec_reduce_v1_0
@@ -152,11 +160,15 @@ BEGIN
       bram_dib => bram_dib,
       bram_dob => bram_dob,
       do_lower_barrett => do_lower_barrett,
+      valid_in_lower_barrett => valid_in_lower_barrett,
       di_lower_barrett => di_lower_barrett,
       en_lower_barrett => en_lower_barrett,
+      valid_out_lower_barrett => valid_out_lower_barrett,
       do_upper_barrett => do_upper_barrett,
+      valid_in_upper_barrett => valid_in_upper_barrett,
       di_upper_barrett => di_upper_barrett,
       en_upper_barrett => en_upper_barrett,
+      valid_out_upper_barrett => valid_out_upper_barrett,
       kyber_k => kyber_k,
       start => start,
       busy => busy

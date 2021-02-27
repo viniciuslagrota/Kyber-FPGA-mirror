@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:barrett_reduce:1.0
--- IP Revision: 11
+-- IP Revision: 13
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -59,7 +59,9 @@ USE work.barrett_reduce_v1_0;
 ENTITY kyberBD_barrett_reduce_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
+    valid_in : IN STD_LOGIC;
     data_in : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    valid_out : OUT STD_LOGIC;
     data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END kyberBD_barrett_reduce_0_0;
@@ -73,7 +75,9 @@ ARCHITECTURE kyberBD_barrett_reduce_0_0_arch OF kyberBD_barrett_reduce_0_0 IS
     );
     PORT (
       clk : IN STD_LOGIC;
+      valid_in : IN STD_LOGIC;
       data_in : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      valid_out : OUT STD_LOGIC;
       data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT barrett_reduce_v1_0;
@@ -82,7 +86,7 @@ ARCHITECTURE kyberBD_barrett_reduce_0_0_arch OF kyberBD_barrett_reduce_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_barrett_reduce_0_0_arch : ARCHITECTURE IS "kyberBD_barrett_reduce_0_0,barrett_reduce_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_barrett_reduce_0_0_arch: ARCHITECTURE IS "kyberBD_barrett_reduce_0_0,barrett_reduce_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=barrett_reduce,x_ipVersion=1.0,x_ipCoreRevision=11,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,KYBER_Q=3329}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_barrett_reduce_0_0_arch: ARCHITECTURE IS "kyberBD_barrett_reduce_0_0,barrett_reduce_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=barrett_reduce,x_ipVersion=1.0,x_ipCoreRevision=13,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,KYBER_Q=3329}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
@@ -94,7 +98,9 @@ BEGIN
     )
     PORT MAP (
       clk => clk,
+      valid_in => valid_in,
       data_in => data_in,
+      valid_out => valid_out,
       data_out => data_out
     );
 END kyberBD_barrett_reduce_0_0_arch;

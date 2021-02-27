@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:montgomery_reduction:1.0
--- IP Revision: 5
+-- IP Revision: 6
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -59,7 +59,9 @@ USE work.montgomery_reduction_v1_0;
 ENTITY kyberBD_montgomery_reduction_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
+    valid_in : IN STD_LOGIC;
     data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    valid_out : OUT STD_LOGIC;
     data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END kyberBD_montgomery_reduction_0_0;
@@ -74,7 +76,9 @@ ARCHITECTURE kyberBD_montgomery_reduction_0_0_arch OF kyberBD_montgomery_reducti
     );
     PORT (
       clk : IN STD_LOGIC;
+      valid_in : IN STD_LOGIC;
       data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      valid_out : OUT STD_LOGIC;
       data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT montgomery_reduction_v1_0;
@@ -90,7 +94,9 @@ BEGIN
     )
     PORT MAP (
       clk => clk,
+      valid_in => valid_in,
       data_in => data_in,
+      valid_out => valid_out,
       data_out => data_out
     );
 END kyberBD_montgomery_reduction_0_0_arch;

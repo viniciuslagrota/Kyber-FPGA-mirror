@@ -66,7 +66,7 @@ int kem_test(const char *name, int iterations)
 	floatToIntegers((double)ui32TimeDecSw/1000000, 		&ui32Integer[2], &ui32Fraction[2]);
 	floatToIntegers((double)ui32TimeTotalSw/1000000, 	&ui32Integer[3], &ui32Fraction[3]);
 
-	print_debug(DEBUG_TEST_KEM, "[TEST_KEM] Total time using software is %lu ns or %lu.%03lu ms (%lu.%03lu/%lu.%03lu/%lu.%03lu) (including function call)\n", ui32TimeTotalSw, ui32Integer[3], ui32Fraction[3], ui32Integer[0], ui32Fraction[0], ui32Integer[1], ui32Fraction[1], ui32Integer[2], ui32Fraction[2]);
+	print_debug(DEBUG_TEST_KEM, "[TEST_KEM] Total time is %lu ns or %lu.%03lu ms (%lu.%03lu/%lu.%03lu/%lu.%03lu) (including function call)\n", ui32TimeTotalSw, ui32Integer[3], ui32Fraction[3], ui32Integer[0], ui32Fraction[0], ui32Integer[1], ui32Fraction[1], ui32Integer[2], ui32Fraction[2]);
 
 	if (memcmp(key_b, key_a, CRYPTO_BYTES) != 0) {
 		print_debug(DEBUG_ERROR, "[TEST_KEM] Shared keys ERROR!\n");

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:double_signal_multiplexer:1.0
--- IP Revision: 4
+-- IP Revision: 5
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -58,8 +58,11 @@ ENTITY kyberBD_double_signal_multip_0_0 IS
     clk : IN STD_LOGIC;
     data_in_0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     enable_in_0 : IN STD_LOGIC;
+    valid_in_0 : IN STD_LOGIC;
     data_in_1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    valid_out : OUT STD_LOGIC;
     enable_in_1 : IN STD_LOGIC;
+    valid_in_1 : IN STD_LOGIC;
     data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END kyberBD_double_signal_multip_0_0;
@@ -75,14 +78,17 @@ ARCHITECTURE kyberBD_double_signal_multip_0_0_arch OF kyberBD_double_signal_mult
       clk : IN STD_LOGIC;
       data_in_0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       enable_in_0 : IN STD_LOGIC;
+      valid_in_0 : IN STD_LOGIC;
       data_in_1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      valid_out : OUT STD_LOGIC;
       enable_in_1 : IN STD_LOGIC;
+      valid_in_1 : IN STD_LOGIC;
       data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT double_signal_multiplexer_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 166666672, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
   U0 : double_signal_multiplexer_v1_0
@@ -93,8 +99,11 @@ BEGIN
       clk => clk,
       data_in_0 => data_in_0,
       enable_in_0 => enable_in_0,
+      valid_in_0 => valid_in_0,
       data_in_1 => data_in_1,
+      valid_out => valid_out,
       enable_in_1 => enable_in_1,
+      valid_in_1 => valid_in_1,
       data_out => data_out
     );
 END kyberBD_double_signal_multip_0_0_arch;

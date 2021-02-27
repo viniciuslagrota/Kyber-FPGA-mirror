@@ -328,11 +328,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
+            <spirit:value>Tue Feb 23 19:18:47 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7721197f</spirit:value>
+            <spirit:value>9:f6f1849e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -343,7 +343,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7721197f</spirit:value>
+            <spirit:value>9:f6f1849e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -359,11 +359,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
+            <spirit:value>Tue Feb 23 19:18:47 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7721197f</spirit:value>
+            <spirit:value>9:f6f1849e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -379,11 +379,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
+            <spirit:value>Tue Feb 23 19:18:47 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:af064320</spirit:value>
+            <spirit:value>9:c91f3c5c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -399,11 +399,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Feb 18 18:39:25 UTC 2021</spirit:value>
+            <spirit:value>Tue Feb 23 19:18:47 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:af064320</spirit:value>
+            <spirit:value>9:c91f3c5c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -607,6 +607,19 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>valid_in_lower_barrett</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>di_lower_barrett</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
@@ -637,6 +650,19 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>valid_out_lower_barrett</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>do_upper_barrett</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
@@ -647,6 +673,19 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_in_upper_barrett</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -672,6 +711,19 @@
       </spirit:port>
       <spirit:port>
         <spirit:name>en_upper_barrett</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_out_upper_barrett</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -751,7 +803,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/0ce2/hdl/polyvec_reduce_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/a89a/hdl/polyvec_reduce_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>work</spirit:logicalName>
       </spirit:file>
@@ -767,7 +819,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/0ce2/hdl/polyvec_reduce_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/a89a/hdl/polyvec_reduce_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>work</spirit:logicalName>
       </spirit:file>
@@ -801,7 +853,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>polyvec_reduce_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>5</xilinx:coreRevision>
+      <xilinx:coreRevision>7</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@419d974b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@61dd7ce6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
@@ -1001,6 +1053,74 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@42391568_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@711ccb12_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@31dde47d_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@604c3a40_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53a532a9_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19170654_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f53275b_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a48a8bb_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@540ed51c_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62a5162a_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@705564e6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50347762_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fbcaf3_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eeae3c3_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1663c2ff_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c72dc33_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e5ae8c5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@420438fd_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cb12f06_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53a8ad99_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e624b8a_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56edf02f_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2765b616_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b40a8fa_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16513db5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@383770d2_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d9a2d4d_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@742ebba6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73426f6e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c6c3093_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@351708bf_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ff69063_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@226a8d31_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71c8bb85_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f4265b1_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5df5f3ee_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d6ea72_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a871e09_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30e7fa83_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@696c7277_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fa39f16_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c5442f5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d8eaac1_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@662931de_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7228c734_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1503c006_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@125a3646_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5dbf808_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2453f48f_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cde5fab_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@89ba5bb_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@695d433_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a076c1d_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46728c73_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e61a8fa_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d785888_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1202a20e_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6574ccb6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4085efe8_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68153e6f_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@602f38fe_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16521548_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1acb0cd_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e654f3a_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73bb9bc5_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6126cb21_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f1f9bb8_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44f2e174_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f5422a6_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4993f27d_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b9acadb_ARCHIVE_LOCATION">c:/Projects/ip_repo/polyvec_reduce_1.0</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
@@ -1010,8 +1130,8 @@
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="ebd0d4ca"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="26ce822f"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="a12ee3f1"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="308a4b18"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="648caaff"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="b26acd08"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="752d7fe7"/>
     </xilinx:packagingInfo>

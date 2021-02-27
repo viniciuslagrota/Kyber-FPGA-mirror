@@ -52,6 +52,7 @@
 #define POLY_TOMONT_MASK				1 << 0
 #define POLYVEC_REDUCE_MASK				1 << 1
 #define POLYVEC_BASEMUL_MASK			1 << 2
+#define POLYVEC_NTT_MASK				1 << 3
 
 //////////////////////////////////////////////
 //
@@ -154,6 +155,9 @@ XGpio XGpioTomontAndReduce;
 
 XGpio_Config * XGpioConfigAccMont;
 XGpio XGpioAccMont;
+
+XGpio_Config * XGpioConfigNtt;
+XGpio XGpioNtt;
 
 u32 *memoryBram0;
 u32 *memoryBram1;
