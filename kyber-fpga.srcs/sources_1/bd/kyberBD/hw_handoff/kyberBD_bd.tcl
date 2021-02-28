@@ -318,6 +318,78 @@ proc create_root_design { parentCell } {
   # Create instance: double_signal_multip_15, and set properties
   set double_signal_multip_15 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_15 ]
 
+  # Create instance: double_signal_multip_16, and set properties
+  set double_signal_multip_16 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_16 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_16
+
+  # Create instance: double_signal_multip_17, and set properties
+  set double_signal_multip_17 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_17 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_17
+
+  # Create instance: double_signal_multip_18, and set properties
+  set double_signal_multip_18 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_18 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_18
+
+  # Create instance: double_signal_multip_19, and set properties
+  set double_signal_multip_19 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_19 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_19
+
+  # Create instance: double_signal_multip_20, and set properties
+  set double_signal_multip_20 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_20 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_20
+
+  # Create instance: double_signal_multip_21, and set properties
+  set double_signal_multip_21 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_21 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_21
+
+  # Create instance: double_signal_multip_22, and set properties
+  set double_signal_multip_22 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_22 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_22
+
+  # Create instance: double_signal_multip_23, and set properties
+  set double_signal_multip_23 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_23 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_23
+
+  # Create instance: double_signal_multip_24, and set properties
+  set double_signal_multip_24 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_24 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_24
+
+  # Create instance: double_signal_multip_25, and set properties
+  set double_signal_multip_25 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_25 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_25
+
+  # Create instance: double_signal_multip_26, and set properties
+  set double_signal_multip_26 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_26 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_26
+
+  # Create instance: double_signal_multip_27, and set properties
+  set double_signal_multip_27 [ create_bd_cell -type ip -vlnv xilinx.com:user:double_signal_multiplexer:1.0 double_signal_multip_27 ]
+  set_property -dict [ list \
+   CONFIG.DATA_WIDTH {16} \
+ ] $double_signal_multip_27
+
   # Create instance: dual_bram_0, and set properties
   set dual_bram_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:dual_bram:1.0 dual_bram_0 ]
   set_property -dict [ list \
@@ -878,7 +950,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins processing_system7_0/M_AXI_GP0]
 
   # Create port connections
-  connect_bd_net -net Net [get_bd_pins double_signal_multip_0/enable_in_1] [get_bd_pins double_signal_multip_1/enable_in_1] [get_bd_pins double_signal_multip_2/enable_in_0] [get_bd_pins double_signal_multip_3/enable_in_0] [get_bd_pins double_signal_multip_4/enable_in_0] [get_bd_pins double_signal_multip_5/enable_in_0] [get_bd_pins double_signal_multip_6/enable_in_1] [get_bd_pins double_signal_multip_7/enable_in_1] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
+  connect_bd_net -net Net [get_bd_pins double_signal_multip_0/enable_in_1] [get_bd_pins double_signal_multip_1/enable_in_1] [get_bd_pins double_signal_multip_16/enable_in_0] [get_bd_pins double_signal_multip_17/enable_in_0] [get_bd_pins double_signal_multip_18/enable_in_0] [get_bd_pins double_signal_multip_19/enable_in_0] [get_bd_pins double_signal_multip_2/enable_in_0] [get_bd_pins double_signal_multip_20/enable_in_0] [get_bd_pins double_signal_multip_21/enable_in_0] [get_bd_pins double_signal_multip_22/enable_in_0] [get_bd_pins double_signal_multip_23/enable_in_0] [get_bd_pins double_signal_multip_24/enable_in_0] [get_bd_pins double_signal_multip_25/enable_in_0] [get_bd_pins double_signal_multip_26/enable_in_0] [get_bd_pins double_signal_multip_27/enable_in_0] [get_bd_pins double_signal_multip_3/enable_in_0] [get_bd_pins double_signal_multip_4/enable_in_0] [get_bd_pins double_signal_multip_5/enable_in_0] [get_bd_pins double_signal_multip_6/enable_in_1] [get_bd_pins double_signal_multip_7/enable_in_1] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins timer2_0/control]
   connect_bd_net -net axi_gpio_1_gpio_io_o [get_bd_pins axi_gpio_1/gpio_io_i] [get_bd_pins axi_gpio_1/gpio_io_o] [get_bd_pins polyvec_basemul_acc_0/kyber_k] [get_bd_pins polyvec_ntt_0/kyber_k] [get_bd_pins polyvec_reduce_0/kyber_k]
   connect_bd_net -net axi_gpio_2_gpio2_io_o [get_bd_pins axi_gpio_2/gpio2_io_o] [get_bd_pins polyvec_reduce_0/start]
@@ -906,8 +978,26 @@ proc create_root_design { parentCell } {
   connect_bd_net -net double_signal_multip_14_valid_out [get_bd_pins double_signal_multip_14/valid_out] [get_bd_pins montgomery_reduction_6/valid_in]
   connect_bd_net -net double_signal_multip_15_data_out [get_bd_pins double_signal_multip_15/data_out] [get_bd_pins montgomery_reduction_7/data_in]
   connect_bd_net -net double_signal_multip_15_valid_out [get_bd_pins double_signal_multip_15/valid_out] [get_bd_pins montgomery_reduction_7/valid_in]
+  connect_bd_net -net double_signal_multip_16_data_out [get_bd_pins double_signal_multip_16/data_out] [get_bd_pins fqmul_0/data_in_1]
+  connect_bd_net -net double_signal_multip_16_valid_out [get_bd_pins double_signal_multip_16/valid_out] [get_bd_pins fqmul_0/valid_in]
+  connect_bd_net -net double_signal_multip_17_data_out [get_bd_pins double_signal_multip_17/data_out] [get_bd_pins fqmul_0/data_in_2]
+  connect_bd_net -net double_signal_multip_18_data_out [get_bd_pins double_signal_multip_18/data_out] [get_bd_pins fqmul_1/data_in_1]
+  connect_bd_net -net double_signal_multip_18_valid_out [get_bd_pins double_signal_multip_18/valid_out] [get_bd_pins fqmul_1/valid_in]
+  connect_bd_net -net double_signal_multip_19_data_out [get_bd_pins double_signal_multip_19/data_out] [get_bd_pins fqmul_1/data_in_2]
   connect_bd_net -net double_signal_multip_1_data_out [get_bd_pins double_signal_multip_1/data_out] [get_bd_pins montgomery_reduction_1/data_in]
   connect_bd_net -net double_signal_multip_1_valid_out [get_bd_pins double_signal_multip_1/valid_out] [get_bd_pins montgomery_reduction_1/valid_in]
+  connect_bd_net -net double_signal_multip_20_data_out [get_bd_pins double_signal_multip_20/data_out] [get_bd_pins fqmul_2/data_in_1]
+  connect_bd_net -net double_signal_multip_20_valid_out [get_bd_pins double_signal_multip_20/valid_out] [get_bd_pins fqmul_2/valid_in]
+  connect_bd_net -net double_signal_multip_21_data_out [get_bd_pins double_signal_multip_21/data_out] [get_bd_pins fqmul_2/data_in_2]
+  connect_bd_net -net double_signal_multip_22_data_out [get_bd_pins double_signal_multip_22/data_out] [get_bd_pins fqmul_3/data_in_1]
+  connect_bd_net -net double_signal_multip_22_valid_out [get_bd_pins double_signal_multip_22/valid_out] [get_bd_pins fqmul_3/valid_in]
+  connect_bd_net -net double_signal_multip_23_data_out [get_bd_pins double_signal_multip_23/data_out] [get_bd_pins fqmul_3/data_in_2]
+  connect_bd_net -net double_signal_multip_24_data_out [get_bd_pins double_signal_multip_24/data_out] [get_bd_pins fqmul_4/data_in_1]
+  connect_bd_net -net double_signal_multip_24_valid_out [get_bd_pins double_signal_multip_24/valid_out] [get_bd_pins fqmul_4/valid_in]
+  connect_bd_net -net double_signal_multip_25_data_out [get_bd_pins double_signal_multip_25/data_out] [get_bd_pins fqmul_4/data_in_2]
+  connect_bd_net -net double_signal_multip_26_data_out [get_bd_pins double_signal_multip_26/data_out] [get_bd_pins fqmul_5/data_in_1]
+  connect_bd_net -net double_signal_multip_26_valid_out [get_bd_pins double_signal_multip_26/valid_out] [get_bd_pins fqmul_5/valid_in]
+  connect_bd_net -net double_signal_multip_27_data_out [get_bd_pins double_signal_multip_27/data_out] [get_bd_pins fqmul_5/data_in_2]
   connect_bd_net -net double_signal_multip_2_data_out [get_bd_pins double_signal_multip_2/data_out] [get_bd_pins montgomery_reduction_2/data_in]
   connect_bd_net -net double_signal_multip_2_valid_out [get_bd_pins double_signal_multip_2/valid_out] [get_bd_pins montgomery_reduction_2/valid_in]
   connect_bd_net -net double_signal_multip_3_data_out [get_bd_pins double_signal_multip_3/data_out] [get_bd_pins montgomery_reduction_3/data_in]
@@ -979,28 +1069,28 @@ proc create_root_design { parentCell } {
   connect_bd_net -net poly_tomont_0_valid_out_lower_mont [get_bd_pins double_signal_multip_0/valid_in_0] [get_bd_pins poly_tomont_0/valid_out_lower_mont]
   connect_bd_net -net poly_tomont_0_valid_out_upper_mont [get_bd_pins double_signal_multip_1/valid_in_0] [get_bd_pins poly_tomont_0/valid_out_upper_mont]
   connect_bd_net -net polyvec_basemul_acc_0_busy [get_bd_pins axi_gpio_3/gpio_io_i] [get_bd_pins polyvec_basemul_acc_0/busy]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul0 [get_bd_pins fqmul_0/data_in_1] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul0]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul1 [get_bd_pins fqmul_1/data_in_1] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul1]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul2 [get_bd_pins fqmul_2/data_in_1] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul2]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul3 [get_bd_pins fqmul_3/data_in_1] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul3]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul4 [get_bd_pins fqmul_4/data_in_1] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul4]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul5 [get_bd_pins fqmul_5/data_in_1] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul5]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul0 [get_bd_pins fqmul_0/data_in_2] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul0]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul1 [get_bd_pins fqmul_1/data_in_2] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul1]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul2 [get_bd_pins fqmul_2/data_in_2] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul2]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul3 [get_bd_pins fqmul_3/data_in_2] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul3]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul4 [get_bd_pins fqmul_4/data_in_2] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul4]
-  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul5 [get_bd_pins fqmul_5/data_in_2] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul5]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul0 [get_bd_pins double_signal_multip_16/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul0]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul1 [get_bd_pins double_signal_multip_18/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul1]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul2 [get_bd_pins double_signal_multip_20/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul2]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul3 [get_bd_pins double_signal_multip_22/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul3]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul4 [get_bd_pins double_signal_multip_24/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul4]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff0_to_fqmul5 [get_bd_pins double_signal_multip_26/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul5]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul0 [get_bd_pins double_signal_multip_17/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul0]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul1 [get_bd_pins double_signal_multip_19/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul1]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul2 [get_bd_pins double_signal_multip_21/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul2]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul3 [get_bd_pins double_signal_multip_23/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul3]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul4 [get_bd_pins double_signal_multip_25/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul4]
+  connect_bd_net -net polyvec_basemul_acc_0_coeff1_to_fqmul5 [get_bd_pins double_signal_multip_27/data_in_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul5]
   connect_bd_net -net polyvec_basemul_acc_0_data0_to_barrett [get_bd_pins double_signal_multip_6/data_in_1] [get_bd_pins polyvec_basemul_acc_0/data0_to_barrett]
   connect_bd_net -net polyvec_basemul_acc_0_data1_to_barrett [get_bd_pins double_signal_multip_7/data_in_1] [get_bd_pins polyvec_basemul_acc_0/data1_to_barrett]
   connect_bd_net -net polyvec_basemul_acc_0_valid0_to_barrett [get_bd_pins double_signal_multip_6/valid_in_1] [get_bd_pins polyvec_basemul_acc_0/valid0_to_barrett]
   connect_bd_net -net polyvec_basemul_acc_0_valid1_to_barrett [get_bd_pins double_signal_multip_7/valid_in_1] [get_bd_pins polyvec_basemul_acc_0/valid1_to_barrett]
-  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul0 [get_bd_pins fqmul_0/valid_in] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul0]
-  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul1 [get_bd_pins fqmul_1/valid_in] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul1]
-  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul2 [get_bd_pins fqmul_2/valid_in] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul2]
-  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul3 [get_bd_pins fqmul_3/valid_in] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul3]
-  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul4 [get_bd_pins fqmul_4/valid_in] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul4]
-  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul5 [get_bd_pins fqmul_5/valid_in] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul5]
+  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul0 [get_bd_pins double_signal_multip_16/valid_in_0] [get_bd_pins double_signal_multip_17/valid_in_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul0]
+  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul1 [get_bd_pins double_signal_multip_18/valid_in_0] [get_bd_pins double_signal_multip_19/valid_in_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul1]
+  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul2 [get_bd_pins double_signal_multip_20/valid_in_0] [get_bd_pins double_signal_multip_21/valid_in_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul2]
+  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul3 [get_bd_pins double_signal_multip_22/valid_in_0] [get_bd_pins double_signal_multip_23/valid_in_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul3]
+  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul4 [get_bd_pins double_signal_multip_24/valid_in_0] [get_bd_pins double_signal_multip_25/valid_in_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul4]
+  connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul5 [get_bd_pins double_signal_multip_26/valid_in_0] [get_bd_pins double_signal_multip_27/valid_in_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul5]
   connect_bd_net -net polyvec_ntt_0_busy [get_bd_pins axi_gpio_4/gpio_io_i] [get_bd_pins polyvec_ntt_0/busy]
   connect_bd_net -net polyvec_ntt_0_coeff0_to_fqmul0 [get_bd_pins double_signal_multip_8/data_in_0] [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul0]
   connect_bd_net -net polyvec_ntt_0_coeff0_to_fqmul1 [get_bd_pins double_signal_multip_10/data_in_0] [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul1]
@@ -1021,7 +1111,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net polyvec_reduce_0_valid_out_lower_barrett [get_bd_pins double_signal_multip_6/valid_in_0] [get_bd_pins polyvec_reduce_0/valid_out_lower_barrett]
   connect_bd_net -net polyvec_reduce_0_valid_out_upper_barrett [get_bd_pins double_signal_multip_7/valid_in_0] [get_bd_pins polyvec_reduce_0/valid_out_upper_barrett]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_gpio_2/s_axi_aresetn] [get_bd_pins axi_gpio_3/s_axi_aresetn] [get_bd_pins axi_gpio_4/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins axi_interconnect_0/M04_ARESETN] [get_bd_pins axi_interconnect_0/M05_ARESETN] [get_bd_pins axi_interconnect_0/M06_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins dual_bram_0/s00_axi_aresetn] [get_bd_pins dual_bram_0/s01_axi_aresetn] [get_bd_pins poly_tomont_0/aresetn] [get_bd_pins polyvec_basemul_acc_0/aresetn] [get_bd_pins polyvec_ntt_0/aresetn] [get_bd_pins polyvec_reduce_0/aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_gpio_3/s_axi_aclk] [get_bd_pins axi_gpio_4/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins axi_interconnect_0/M05_ACLK] [get_bd_pins axi_interconnect_0/M06_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins barrett_reduce_0/clk] [get_bd_pins barrett_reduce_1/clk] [get_bd_pins barrett_reduce_2/clk] [get_bd_pins barrett_reduce_3/clk] [get_bd_pins double_signal_multip_0/clk] [get_bd_pins double_signal_multip_1/clk] [get_bd_pins double_signal_multip_10/clk] [get_bd_pins double_signal_multip_11/clk] [get_bd_pins double_signal_multip_12/clk] [get_bd_pins double_signal_multip_13/clk] [get_bd_pins double_signal_multip_14/clk] [get_bd_pins double_signal_multip_15/clk] [get_bd_pins double_signal_multip_2/clk] [get_bd_pins double_signal_multip_3/clk] [get_bd_pins double_signal_multip_4/clk] [get_bd_pins double_signal_multip_5/clk] [get_bd_pins double_signal_multip_6/clk] [get_bd_pins double_signal_multip_7/clk] [get_bd_pins double_signal_multip_8/clk] [get_bd_pins double_signal_multip_9/clk] [get_bd_pins dual_bram_0/s00_axi_aclk] [get_bd_pins dual_bram_0/s01_axi_aclk] [get_bd_pins fqmul_0/clk] [get_bd_pins fqmul_1/clk] [get_bd_pins fqmul_2/clk] [get_bd_pins fqmul_3/clk] [get_bd_pins fqmul_4/clk] [get_bd_pins fqmul_5/clk] [get_bd_pins fqmul_6/clk] [get_bd_pins fqmul_7/clk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins montgomery_reduction_1/clk] [get_bd_pins montgomery_reduction_2/clk] [get_bd_pins montgomery_reduction_3/clk] [get_bd_pins montgomery_reduction_4/clk] [get_bd_pins montgomery_reduction_5/clk] [get_bd_pins montgomery_reduction_6/clk] [get_bd_pins montgomery_reduction_7/clk] [get_bd_pins poly_tomont_0/clk] [get_bd_pins polyvec_basemul_acc_0/clk] [get_bd_pins polyvec_ntt_0/clk] [get_bd_pins polyvec_reduce_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins timer2_0/clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_gpio_3/s_axi_aclk] [get_bd_pins axi_gpio_4/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins axi_interconnect_0/M05_ACLK] [get_bd_pins axi_interconnect_0/M06_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins barrett_reduce_0/clk] [get_bd_pins barrett_reduce_1/clk] [get_bd_pins barrett_reduce_2/clk] [get_bd_pins barrett_reduce_3/clk] [get_bd_pins double_signal_multip_0/clk] [get_bd_pins double_signal_multip_1/clk] [get_bd_pins double_signal_multip_10/clk] [get_bd_pins double_signal_multip_11/clk] [get_bd_pins double_signal_multip_12/clk] [get_bd_pins double_signal_multip_13/clk] [get_bd_pins double_signal_multip_14/clk] [get_bd_pins double_signal_multip_15/clk] [get_bd_pins double_signal_multip_16/clk] [get_bd_pins double_signal_multip_17/clk] [get_bd_pins double_signal_multip_18/clk] [get_bd_pins double_signal_multip_19/clk] [get_bd_pins double_signal_multip_2/clk] [get_bd_pins double_signal_multip_20/clk] [get_bd_pins double_signal_multip_21/clk] [get_bd_pins double_signal_multip_22/clk] [get_bd_pins double_signal_multip_23/clk] [get_bd_pins double_signal_multip_24/clk] [get_bd_pins double_signal_multip_25/clk] [get_bd_pins double_signal_multip_26/clk] [get_bd_pins double_signal_multip_27/clk] [get_bd_pins double_signal_multip_3/clk] [get_bd_pins double_signal_multip_4/clk] [get_bd_pins double_signal_multip_5/clk] [get_bd_pins double_signal_multip_6/clk] [get_bd_pins double_signal_multip_7/clk] [get_bd_pins double_signal_multip_8/clk] [get_bd_pins double_signal_multip_9/clk] [get_bd_pins dual_bram_0/s00_axi_aclk] [get_bd_pins dual_bram_0/s01_axi_aclk] [get_bd_pins fqmul_0/clk] [get_bd_pins fqmul_1/clk] [get_bd_pins fqmul_2/clk] [get_bd_pins fqmul_3/clk] [get_bd_pins fqmul_4/clk] [get_bd_pins fqmul_5/clk] [get_bd_pins fqmul_6/clk] [get_bd_pins fqmul_7/clk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins montgomery_reduction_1/clk] [get_bd_pins montgomery_reduction_2/clk] [get_bd_pins montgomery_reduction_3/clk] [get_bd_pins montgomery_reduction_4/clk] [get_bd_pins montgomery_reduction_5/clk] [get_bd_pins montgomery_reduction_6/clk] [get_bd_pins montgomery_reduction_7/clk] [get_bd_pins poly_tomont_0/clk] [get_bd_pins polyvec_basemul_acc_0/clk] [get_bd_pins polyvec_ntt_0/clk] [get_bd_pins polyvec_reduce_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins timer2_0/clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
   connect_bd_net -net timer2_0_count [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins timer2_0/count]
 

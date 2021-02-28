@@ -169,6 +169,42 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_
 # IP: bd/kyberBD/ip/kyberBD_double_signal_multip_14_1/kyberBD_double_signal_multip_14_1.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_14_1 || ORIG_REF_NAME==kyberBD_double_signal_multip_14_1} -quiet] -quiet
 
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_0/kyberBD_double_signal_multip_16_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_0 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_1/kyberBD_double_signal_multip_16_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_1 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_1} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_2/kyberBD_double_signal_multip_16_2.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_2 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_2} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_3/kyberBD_double_signal_multip_16_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_3 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_3} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_4/kyberBD_double_signal_multip_16_4.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_4 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_4} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_5/kyberBD_double_signal_multip_16_5.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_5 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_5} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_6/kyberBD_double_signal_multip_16_6.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_6 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_6} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_7/kyberBD_double_signal_multip_16_7.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_7 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_7} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_8/kyberBD_double_signal_multip_16_8.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_8 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_8} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_9/kyberBD_double_signal_multip_16_9.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_9 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_9} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_10/kyberBD_double_signal_multip_16_10.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_10 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_10} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_double_signal_multip_16_11/kyberBD_double_signal_multip_16_11.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_double_signal_multip_16_11 || ORIG_REF_NAME==kyberBD_double_signal_multip_16_11} -quiet] -quiet
+
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
 
