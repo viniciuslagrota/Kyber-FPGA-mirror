@@ -127,7 +127,7 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ipshared/a89a/hdl/polyvec_reduce_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/sim/kyberBD_polyvec_reduce_0_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_2_0/sim/kyberBD_bram_port_selector_2_0.vhd" \
-"../../../bd/kyberBD/ipshared/099a/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
+"../../../bd/kyberBD/ipshared/c31d/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_polyvec_basemul_acc_0_1/sim/kyberBD_polyvec_basemul_acc_0_1.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_axi_gpio_3_0/sim/kyberBD_axi_gpio_3_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_1/sim/kyberBD_bram_port_selector_1_1.vhd" \
@@ -174,6 +174,18 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ip/kyberBD_axi_gpio_4_0/sim/kyberBD_axi_gpio_4_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_14_0/sim/kyberBD_double_signal_multip_14_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_14_1/sim/kyberBD_double_signal_multip_14_1.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_0/sim/kyberBD_double_signal_multip_16_0.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_1/sim/kyberBD_double_signal_multip_16_1.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_2/sim/kyberBD_double_signal_multip_16_2.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_3/sim/kyberBD_double_signal_multip_16_3.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_4/sim/kyberBD_double_signal_multip_16_4.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_5/sim/kyberBD_double_signal_multip_16_5.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_6/sim/kyberBD_double_signal_multip_16_6.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_7/sim/kyberBD_double_signal_multip_16_7.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_8/sim/kyberBD_double_signal_multip_16_8.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_9/sim/kyberBD_double_signal_multip_16_9.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_10/sim/kyberBD_double_signal_multip_16_10.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_11/sim/kyberBD_double_signal_multip_16_11.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
 "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

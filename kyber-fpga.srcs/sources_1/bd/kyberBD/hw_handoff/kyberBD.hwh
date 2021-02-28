@@ -1,39 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Feb 26 19:49:29 2021" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Feb 28 15:20:46 2021" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:microzed_7010:part0:1.1" DEVICE="7z010" NAME="kyberBD" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
-    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_MIO">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="MIO"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRN">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRN"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRP">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRP"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="processing_system7_0_PS_SRSTB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_SRSTB"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="processing_system7_0_PS_CLK">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_CLK"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="processing_system7_0_PS_PORB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_PORB"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef" SIGNAME="processing_system7_0_DDR_CAS_n">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_CAS_n"/>
@@ -107,6 +77,36 @@
     <PORT DIR="IO" LEFT="3" NAME="DDR_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_DDR_DQS">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_DQS"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_MIO">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="MIO"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRN">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRN"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRP"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="processing_system7_0_PS_SRSTB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_SRSTB"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="processing_system7_0_PS_CLK">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_CLK"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="processing_system7_0_PS_PORB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_PORB"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -821,9 +821,9 @@
         <PORT DIR="O" LEFT="2" NAME="gpio_io_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_1" PORT="gpio_io_i"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="kyber_k"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="kyber_k"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
@@ -2413,6 +2413,283 @@
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M06_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M06_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="11" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awlen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWLEN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awsize">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWSIZE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S00_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awburst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWBURST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S00_AXI_awlock" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awlock">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awcache">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWCACHE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awqos">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWQOS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_awvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_awready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="11" NAME="S00_AXI_wid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WSTRB"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_wlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wlast">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WLAST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_wvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_wready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="11" NAME="S00_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_bvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_bready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="11" NAME="S00_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arlen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARLEN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arsize">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARSIZE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S00_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arburst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARBURST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S00_AXI_arlock" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arlock">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arcache">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARCACHE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arqos">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARQOS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_arvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_arready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="11" NAME="S00_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="S00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_rlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rlast">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RLAST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_rvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_rready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RREADY"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_awaddr"/>
@@ -2951,283 +3228,6 @@
             <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M06_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M06_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awlen">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWLEN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awsize">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWSIZE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S00_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awburst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWBURST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S00_AXI_awlock" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awlock">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWLOCK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awcache">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWCACHE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awqos">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWQOS"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_awvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_awready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="S00_AXI_wid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WSTRB"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_wlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wlast">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WLAST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_wvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_wready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_WREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="S00_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_bvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_bready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_BREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="S00_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arlen">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARLEN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arsize">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARSIZE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S00_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arburst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARBURST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S00_AXI_arlock" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arlock">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARLOCK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arcache">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARCACHE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arqos">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARQOS"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_arvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_arready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ARREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="S00_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="S00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_rlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rlast">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RLAST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_rvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_rready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RREADY"/>
-          </CONNECTIONS>
-        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="processing_system7_0_M_AXI_GP0" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -3460,14 +3460,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="barrett_reduce_0_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_lower_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_0_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_lower_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3498,14 +3498,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="barrett_reduce_1_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_upper_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_1_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_upper_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4783,6 +4783,174 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_16" HWVERSION="1.0" INSTANCE="double_signal_multip_16" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="double_signal_multip_16_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_0" PORT="valid_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_16_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_0" PORT="data_in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_17" HWVERSION="1.0" INSTANCE="double_signal_multip_17" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef"/>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_17_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_0" PORT="data_in_2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_18" HWVERSION="1.0" INSTANCE="double_signal_multip_18" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="double_signal_multip_18_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_1" PORT="valid_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_18_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_1" PORT="data_in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_19" HWVERSION="1.0" INSTANCE="double_signal_multip_19" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_3"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef"/>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_19_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_1" PORT="data_in_2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_2" HWVERSION="1.0" INSTANCE="double_signal_multip_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -4822,6 +4990,342 @@
         <PORT DIR="O" LEFT="31" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_2_data_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="montgomery_reduction_2" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_20" HWVERSION="1.0" INSTANCE="double_signal_multip_20" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_4"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="double_signal_multip_20_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_2" PORT="valid_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_20_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_2" PORT="data_in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_21" HWVERSION="1.0" INSTANCE="double_signal_multip_21" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_5"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef"/>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_21_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_2" PORT="data_in_2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_22" HWVERSION="1.0" INSTANCE="double_signal_multip_22" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_6"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="double_signal_multip_22_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_3" PORT="valid_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_22_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_3" PORT="data_in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_23" HWVERSION="1.0" INSTANCE="double_signal_multip_23" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_7"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef"/>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_23_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_3" PORT="data_in_2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_24" HWVERSION="1.0" INSTANCE="double_signal_multip_24" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_8"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="double_signal_multip_24_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_4" PORT="valid_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_24_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_4" PORT="data_in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_25" HWVERSION="1.0" INSTANCE="double_signal_multip_25" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_9"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef"/>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_25_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_4" PORT="data_in_2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_26" HWVERSION="1.0" INSTANCE="double_signal_multip_26" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_10"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul5">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul5">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="double_signal_multip_26_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_5" PORT="valid_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_26_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_5" PORT="data_in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/double_signal_multip_27" HWVERSION="1.0" INSTANCE="double_signal_multip_27" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="double_signal_multiplexer" VLNV="xilinx.com:user:double_signal_multiplexer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_double_signal_multip_16_11"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul5">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_in_0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul5">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="valid_out" SIGIS="undef"/>
+        <PORT DIR="I" NAME="enable_in_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="valid_in_1" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_27_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_5" PORT="data_in_2"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5674,19 +6178,19 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul0">
+        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="double_signal_multip_16_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul0"/>
+            <CONNECTION INSTANCE="double_signal_multip_16" PORT="valid_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul0">
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_16_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul0"/>
+            <CONNECTION INSTANCE="double_signal_multip_16" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul0">
+        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_17_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul0"/>
+            <CONNECTION INSTANCE="double_signal_multip_17" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_in_mont" SIGIS="undef" SIGNAME="montgomery_reduction_0_valid_out">
@@ -5734,19 +6238,19 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul1">
+        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="double_signal_multip_18_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul1"/>
+            <CONNECTION INSTANCE="double_signal_multip_18" PORT="valid_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul1">
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_18_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul1"/>
+            <CONNECTION INSTANCE="double_signal_multip_18" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul1">
+        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_19_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul1"/>
+            <CONNECTION INSTANCE="double_signal_multip_19" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_in_mont" SIGIS="undef" SIGNAME="montgomery_reduction_1_valid_out">
@@ -5794,19 +6298,19 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul2">
+        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="double_signal_multip_20_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul2"/>
+            <CONNECTION INSTANCE="double_signal_multip_20" PORT="valid_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul2">
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_20_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul2"/>
+            <CONNECTION INSTANCE="double_signal_multip_20" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul2">
+        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_21_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul2"/>
+            <CONNECTION INSTANCE="double_signal_multip_21" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_in_mont" SIGIS="undef" SIGNAME="montgomery_reduction_2_valid_out">
@@ -5854,19 +6358,19 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul3">
+        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="double_signal_multip_22_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul3"/>
+            <CONNECTION INSTANCE="double_signal_multip_22" PORT="valid_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul3">
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_22_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul3"/>
+            <CONNECTION INSTANCE="double_signal_multip_22" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul3">
+        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_23_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul3"/>
+            <CONNECTION INSTANCE="double_signal_multip_23" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_in_mont" SIGIS="undef" SIGNAME="montgomery_reduction_3_valid_out">
@@ -5914,19 +6418,19 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul4">
+        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="double_signal_multip_24_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul4"/>
+            <CONNECTION INSTANCE="double_signal_multip_24" PORT="valid_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul4">
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_24_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul4"/>
+            <CONNECTION INSTANCE="double_signal_multip_24" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul4">
+        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_25_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul4"/>
+            <CONNECTION INSTANCE="double_signal_multip_25" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_in_mont" SIGIS="undef" SIGNAME="montgomery_reduction_4_valid_out">
@@ -5974,19 +6478,19 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul5">
+        <PORT DIR="I" NAME="valid_in" SIGIS="undef" SIGNAME="double_signal_multip_26_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_to_fqmul5"/>
+            <CONNECTION INSTANCE="double_signal_multip_26" PORT="valid_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul5">
+        <PORT DIR="I" LEFT="15" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_26_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff0_to_fqmul5"/>
+            <CONNECTION INSTANCE="double_signal_multip_26" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul5">
+        <PORT DIR="I" LEFT="15" NAME="data_in_2" RIGHT="0" SIGIS="undef" SIGNAME="double_signal_multip_27_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul5"/>
+            <CONNECTION INSTANCE="double_signal_multip_27" PORT="data_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_in_mont" SIGIS="undef" SIGNAME="montgomery_reduction_5_valid_out">
@@ -6606,7 +7110,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="13" FULLNAME="/polyvec_basemul_acc_0" HWVERSION="1.0" INSTANCE="polyvec_basemul_acc_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_basemul_acc_montgomery" VLNV="xilinx.com:user:polyvec_basemul_acc_montgomery:1.0">
+    <MODULE COREREVISION="15" FULLNAME="/polyvec_basemul_acc_0" HWVERSION="1.0" INSTANCE="polyvec_basemul_acc_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_basemul_acc_montgomery" VLNV="xilinx.com:user:polyvec_basemul_acc_montgomery:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
@@ -6727,92 +7231,98 @@
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_0" PORT="valid_in"/>
+            <CONNECTION INSTANCE="double_signal_multip_16" PORT="valid_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_17" PORT="valid_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_0" PORT="data_in_1"/>
+            <CONNECTION INSTANCE="double_signal_multip_16" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_0" PORT="data_in_2"/>
+            <CONNECTION INSTANCE="double_signal_multip_17" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul1" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_1" PORT="valid_in"/>
+            <CONNECTION INSTANCE="double_signal_multip_18" PORT="valid_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_19" PORT="valid_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_1" PORT="data_in_1"/>
+            <CONNECTION INSTANCE="double_signal_multip_18" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_1" PORT="data_in_2"/>
+            <CONNECTION INSTANCE="double_signal_multip_19" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul2" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_2" PORT="valid_in"/>
+            <CONNECTION INSTANCE="double_signal_multip_20" PORT="valid_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_21" PORT="valid_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_2" PORT="data_in_1"/>
+            <CONNECTION INSTANCE="double_signal_multip_20" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_2" PORT="data_in_2"/>
+            <CONNECTION INSTANCE="double_signal_multip_21" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul3" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul3">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_3" PORT="valid_in"/>
+            <CONNECTION INSTANCE="double_signal_multip_22" PORT="valid_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_23" PORT="valid_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul3" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul3">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_3" PORT="data_in_1"/>
+            <CONNECTION INSTANCE="double_signal_multip_22" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul3" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul3">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_3" PORT="data_in_2"/>
+            <CONNECTION INSTANCE="double_signal_multip_23" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul4" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul4">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_4" PORT="valid_in"/>
+            <CONNECTION INSTANCE="double_signal_multip_24" PORT="valid_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_25" PORT="valid_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul4" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul4">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_4" PORT="data_in_1"/>
+            <CONNECTION INSTANCE="double_signal_multip_24" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul4" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul4">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_4" PORT="data_in_2"/>
+            <CONNECTION INSTANCE="double_signal_multip_25" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul5" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_valid_to_fqmul5">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_5" PORT="valid_in"/>
+            <CONNECTION INSTANCE="double_signal_multip_26" PORT="valid_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_27" PORT="valid_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul5" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff0_to_fqmul5">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_5" PORT="data_in_1"/>
+            <CONNECTION INSTANCE="double_signal_multip_26" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul5" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul5">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fqmul_5" PORT="data_in_2"/>
+            <CONNECTION INSTANCE="double_signal_multip_27" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_from_fqmul0" SIGIS="undef" SIGNAME="fqmul_0_valid_out">
@@ -6925,6 +7435,18 @@
             <CONNECTION INSTANCE="double_signal_multip_5" PORT="enable_in_0"/>
             <CONNECTION INSTANCE="double_signal_multip_6" PORT="enable_in_1"/>
             <CONNECTION INSTANCE="double_signal_multip_7" PORT="enable_in_1"/>
+            <CONNECTION INSTANCE="double_signal_multip_27" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_26" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_25" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_24" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_23" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_22" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_21" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_20" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_19" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_18" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_17" PORT="enable_in_0"/>
+            <CONNECTION INSTANCE="double_signal_multip_16" PORT="enable_in_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="2" NAME="kyber_k" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_gpio_io_o">
@@ -7452,11 +7974,11 @@
             <CONNECTION INSTANCE="dual_bram_0" PORT="s00_axi_aresetn"/>
             <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_aresetn"/>
             <CONNECTION INSTANCE="poly_tomont_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M06_ARESETN"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -8646,7 +9168,6 @@
             <CONNECTION INSTANCE="montgomery_reduction_4" PORT="clk"/>
             <CONNECTION INSTANCE="montgomery_reduction_5" PORT="clk"/>
             <CONNECTION INSTANCE="poly_tomont_0" PORT="clk"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="clk"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="clk"/>
             <CONNECTION INSTANCE="timer2_0" PORT="clk"/>
             <CONNECTION INSTANCE="double_signal_multip_8" PORT="clk"/>
@@ -8666,6 +9187,19 @@
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="clk"/>
             <CONNECTION INSTANCE="double_signal_multip_14" PORT="clk"/>
             <CONNECTION INSTANCE="double_signal_multip_15" PORT="clk"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_16" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_17" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_18" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_19" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_20" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_21" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_22" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_23" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_24" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_25" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_26" PORT="clk"/>
+            <CONNECTION INSTANCE="double_signal_multip_27" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
