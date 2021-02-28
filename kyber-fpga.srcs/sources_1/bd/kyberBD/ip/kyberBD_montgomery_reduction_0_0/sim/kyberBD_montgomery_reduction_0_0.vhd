@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:montgomery_reduction:1.0
--- IP Revision: 3
+-- IP Revision: 6
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -59,7 +59,9 @@ USE work.montgomery_reduction_v1_0;
 ENTITY kyberBD_montgomery_reduction_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
+    valid_in : IN STD_LOGIC;
     data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    valid_out : OUT STD_LOGIC;
     data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END kyberBD_montgomery_reduction_0_0;
@@ -74,10 +76,16 @@ ARCHITECTURE kyberBD_montgomery_reduction_0_0_arch OF kyberBD_montgomery_reducti
     );
     PORT (
       clk : IN STD_LOGIC;
+      valid_in : IN STD_LOGIC;
       data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      valid_out : OUT STD_LOGIC;
       data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT montgomery_reduction_v1_0;
+  ATTRIBUTE X_INTERFACE_INFO : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
   U0 : montgomery_reduction_v1_0
     GENERIC MAP (
@@ -86,7 +94,9 @@ BEGIN
     )
     PORT MAP (
       clk => clk,
+      valid_in => valid_in,
       data_in => data_in,
+      valid_out => valid_out,
       data_out => data_out
     );
 END kyberBD_montgomery_reduction_0_0_arch;

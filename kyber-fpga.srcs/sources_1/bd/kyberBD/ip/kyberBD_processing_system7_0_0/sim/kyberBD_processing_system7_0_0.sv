@@ -377,7 +377,7 @@
       bit  [1 : 0] S_AXI_HP0_RRESP;
       bit  [5 : 0] S_AXI_HP0_BID;
       bit  [5 : 0] S_AXI_HP0_RID;
-      bit  [63 : 0] S_AXI_HP0_RDATA;
+      bit  [31 : 0] S_AXI_HP0_RDATA;
       bit  [7 : 0] S_AXI_HP0_RCOUNT;
       bit  [7 : 0] S_AXI_HP0_WCOUNT;
       bit  [2 : 0] S_AXI_HP0_RACOUNT;
@@ -410,8 +410,8 @@
       bit  [5 : 0] S_AXI_HP0_ARID;
       bit  [5 : 0] S_AXI_HP0_AWID;
       bit  [5 : 0] S_AXI_HP0_WID;
-      bit  [63 : 0] S_AXI_HP0_WDATA;
-      bit  [7 : 0] S_AXI_HP0_WSTRB;
+      bit  [31 : 0] S_AXI_HP0_WDATA;
+      bit  [3 : 0] S_AXI_HP0_WSTRB;
       bit  S_AXI_HP1_ARREADY;
       bit  S_AXI_HP1_AWREADY;
       bit  S_AXI_HP1_BVALID;
@@ -771,7 +771,7 @@
       parameter C_S_AXI_GP1_ID_WIDTH = 6;
       parameter C_S_AXI_ACP_ID_WIDTH = 3;
       parameter C_S_AXI_HP0_ID_WIDTH = 6;
-      parameter C_S_AXI_HP0_DATA_WIDTH = 64;
+      parameter C_S_AXI_HP0_DATA_WIDTH = 32;
       parameter C_S_AXI_HP1_ID_WIDTH = 6;
       parameter C_S_AXI_HP1_DATA_WIDTH = 64;
       parameter C_S_AXI_HP2_ID_WIDTH = 6;

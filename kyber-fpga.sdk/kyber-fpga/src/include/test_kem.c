@@ -17,7 +17,7 @@ uint32_t start_crypto_kem_keypair(unsigned char * pk, unsigned char * sk)
 	startTimer(&XGpioGlobalTimer, 1);
 	crypto_kem_keypair(pk, sk);
 	stopTimer(&XGpioGlobalTimer, 1);
-	return getTimer(&XGpioGlobalTimer, 1) * 10; //x10 ticks to ns
+	return getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
 }
 
 uint32_t start_crypto_kem_enc(unsigned char *ct, unsigned char *ss, const unsigned char *pk)
@@ -26,7 +26,7 @@ uint32_t start_crypto_kem_enc(unsigned char *ct, unsigned char *ss, const unsign
 	startTimer(&XGpioGlobalTimer, 1);
 	crypto_kem_enc(ct, ss, pk);
 	stopTimer(&XGpioGlobalTimer, 1);
-	return getTimer(&XGpioGlobalTimer, 1) * 10; //x10 ticks to ns
+	return getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
 }
 
 uint32_t start_crypto_kem_dec(unsigned char *ss, const unsigned char *ct, const unsigned char *sk)
@@ -35,7 +35,7 @@ uint32_t start_crypto_kem_dec(unsigned char *ss, const unsigned char *ct, const 
 	startTimer(&XGpioGlobalTimer, 1);
 	crypto_kem_dec(ss, ct, sk);
 	stopTimer(&XGpioGlobalTimer, 1);
-	return getTimer(&XGpioGlobalTimer, 1) * 10; //x10 ticks to ns
+	return getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
 }
 
 int kem_test(const char *name, int iterations)
@@ -66,7 +66,7 @@ int kem_test(const char *name, int iterations)
 	floatToIntegers((double)ui32TimeDecSw/1000000, 		&ui32Integer[2], &ui32Fraction[2]);
 	floatToIntegers((double)ui32TimeTotalSw/1000000, 	&ui32Integer[3], &ui32Fraction[3]);
 
-	print_debug(DEBUG_TEST_KEM, "[TEST_KEM] Total time using software is %lu ns or %lu.%03lu ms (%lu.%03lu/%lu.%03lu/%lu.%03lu) (including function call)\n", ui32TimeTotalSw, ui32Integer[3], ui32Fraction[3], ui32Integer[0], ui32Fraction[0], ui32Integer[1], ui32Fraction[1], ui32Integer[2], ui32Fraction[2]);
+	print_debug(DEBUG_TEST_KEM, "[TEST_KEM] Total time is %lu ns or %lu.%03lu ms (%lu.%03lu/%lu.%03lu/%lu.%03lu) (including function call)\n", ui32TimeTotalSw, ui32Integer[3], ui32Fraction[3], ui32Integer[0], ui32Fraction[0], ui32Integer[1], ui32Fraction[1], ui32Integer[2], ui32Fraction[2]);
 
 	if (memcmp(key_b, key_a, CRYPTO_BYTES) != 0) {
 		print_debug(DEBUG_ERROR, "[TEST_KEM] Shared keys ERROR!\n");

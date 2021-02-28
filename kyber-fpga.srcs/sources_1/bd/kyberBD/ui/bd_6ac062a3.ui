@@ -2,40 +2,264 @@
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 7 -x 2050 -y 20 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 7 -x 2050 -y 0 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 1 -x 220 -y 490 -defaultsOSRD
-preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -x 220 -y 270 -defaultsOSRD
-preplace inst axi_interconnect_0 -pg 1 -lvl 2 -x 630 -y 400 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 970 -y 110 -defaultsOSRD
-preplace inst timer2_0 -pg 1 -lvl 4 -x 1320 -y 160 -defaultsOSRD
-preplace inst axi_gpio_1 -pg 1 -lvl 3 -x 970 -y 440 -defaultsOSRD
-preplace inst montgomery_reduction_0 -pg 1 -lvl 5 -x 1640 -y 420 -defaultsOSRD
-preplace inst axi_gpio_2 -pg 1 -lvl 3 -x 970 -y 590 -defaultsOSRD
-preplace inst fqmul_0 -pg 1 -lvl 4 -x 1320 -y 480 -defaultsOSRD
-preplace inst bram_mm_0 -pg 1 -lvl 3 -x 970 -y 270 -defaultsOSRD
-preplace inst bram_port_selector_0 -pg 1 -lvl 4 -x 1320 -y 310 -defaultsOSRD
-preplace inst double_signal_multip_0 -pg 1 -lvl 6 -x 1890 -y 290 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 0 160 460 160 790 10 1130 70 1520
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 2 480 220 810
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 10 170 430
-preplace netloc axi_gpio_0_gpio_io_o 1 3 1 1120 130n
-preplace netloc timer2_0_count 1 3 2 1120 90 1500
-preplace netloc fqmul_0_data_out_mont 1 4 1 1510 430n
-preplace netloc axi_gpio_1_gpio_io_o 1 3 1 1120J 430n
-preplace netloc axi_gpio_1_gpio2_io_o 1 3 1 1110J 470n
-preplace netloc fqmul_0_data_out 1 3 2 N 600 1500J
-preplace netloc montgomery_reduction_0_data_out 1 3 3 1140 80 NJ 80 1760
-preplace netloc axi_interconnect_0_M02_AXI 1 2 1 800 410n
-preplace netloc axi_interconnect_0_M01_AXI 1 2 1 820 230n
-preplace netloc axi_interconnect_0_M00_AXI 1 2 1 780 90n
-preplace netloc axi_interconnect_0_M03_AXI 1 2 1 780 430n
-preplace netloc processing_system7_0_DDR 1 1 6 450 20 N 20 N 20 N 20 N 20 N
-preplace netloc processing_system7_0_FIXED_IO 1 1 6 440 0 N 0 N 0 N 0 N 0 N
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 470 280n
-preplace netloc bram_port_selector_0_BRAM_PORT_MASTER 1 2 3 830 30 NJ 30 1510
-levelinfo -pg 1 -20 220 630 970 1320 1640 1890 2050
-pagesize -pg 1 -db -bbox -sgen -20 -320 2170 1290
+preplace port DDR -pg 1 -lvl 11 -x 5170 -y 400 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 11 -x 5170 -y 370 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 230 -y 480 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -x 230 -y 260 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 2 -x 600 -y 870 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 970 -y 570 -defaultsOSRD
+preplace inst axi_gpio_1 -pg 1 -lvl 3 -x 970 -y 710 -defaultsOSRD
+preplace inst axi_gpio_2 -pg 1 -lvl 3 -x 970 -y 1160 -defaultsOSRD
+preplace inst axi_gpio_3 -pg 1 -lvl 3 -x 970 -y 1330 -defaultsOSRD
+preplace inst barrett_reduce_0 -pg 1 -lvl 10 -x 4830 -y 1970 -defaultsOSRD
+preplace inst barrett_reduce_1 -pg 1 -lvl 10 -x 4830 -y 2190 -defaultsOSRD
+preplace inst bram_port_selector_0 -pg 1 -lvl 4 -x 1460 -y 870 -defaultsOSRD
+preplace inst bram_port_selector_1 -pg 1 -lvl 4 -x 1460 -y 1050 -defaultsOSRD
+preplace inst bram_port_selector_3 -pg 1 -lvl 4 -x 1460 -y 1410 -defaultsOSRD
+preplace inst bram_port_selector_2 -pg 1 -lvl 4 -x 1460 -y 1230 -defaultsOSRD
+preplace inst double_signal_multip_0 -pg 1 -lvl 8 -x 4120 -y 660 -defaultsOSRD
+preplace inst double_signal_multip_1 -pg 1 -lvl 8 -x 4120 -y 880 -defaultsOSRD
+preplace inst double_signal_multip_2 -pg 1 -lvl 8 -x 4120 -y 1100 -defaultsOSRD
+preplace inst double_signal_multip_3 -pg 1 -lvl 8 -x 4120 -y 1320 -defaultsOSRD
+preplace inst double_signal_multip_4 -pg 1 -lvl 8 -x 4120 -y 1540 -defaultsOSRD
+preplace inst double_signal_multip_5 -pg 1 -lvl 8 -x 4120 -y 1760 -defaultsOSRD
+preplace inst double_signal_multip_6 -pg 1 -lvl 8 -x 4120 -y 1980 -defaultsOSRD
+preplace inst double_signal_multip_7 -pg 1 -lvl 8 -x 4120 -y 2200 -defaultsOSRD
+preplace inst dual_bram_0 -pg 1 -lvl 3 -x 970 -y 920 -defaultsOSRD
+preplace inst fqmul_0 -pg 1 -lvl 7 -x 3500 -y 660 -defaultsOSRD
+preplace inst fqmul_1 -pg 1 -lvl 7 -x 3500 -y 910 -defaultsOSRD
+preplace inst fqmul_2 -pg 1 -lvl 7 -x 3500 -y 1110 -defaultsOSRD
+preplace inst fqmul_3 -pg 1 -lvl 7 -x 3500 -y 1310 -defaultsOSRD
+preplace inst fqmul_4 -pg 1 -lvl 7 -x 3500 -y 1510 -defaultsOSRD
+preplace inst fqmul_5 -pg 1 -lvl 7 -x 3500 -y 1730 -defaultsOSRD
+preplace inst montgomery_reduction_0 -pg 1 -lvl 10 -x 4830 -y 650 -defaultsOSRD
+preplace inst montgomery_reduction_1 -pg 1 -lvl 10 -x 4830 -y 870 -defaultsOSRD
+preplace inst montgomery_reduction_2 -pg 1 -lvl 10 -x 4830 -y 1090 -defaultsOSRD
+preplace inst montgomery_reduction_3 -pg 1 -lvl 10 -x 4830 -y 1310 -defaultsOSRD
+preplace inst montgomery_reduction_4 -pg 1 -lvl 10 -x 4830 -y 1530 -defaultsOSRD
+preplace inst montgomery_reduction_5 -pg 1 -lvl 10 -x 4830 -y 1750 -defaultsOSRD
+preplace inst poly_tomont_0 -pg 1 -lvl 5 -x 2210 -y 730 -defaultsOSRD
+preplace inst polyvec_reduce_0 -pg 1 -lvl 5 -x 2210 -y 990 -defaultsOSRD
+preplace inst timer2_0 -pg 1 -lvl 4 -x 1460 -y 720 -defaultsOSRD
+preplace inst double_signal_multip_8 -pg 1 -lvl 7 -x 3500 -y 2220 -defaultsOSRD
+preplace inst double_signal_multip_9 -pg 1 -lvl 7 -x 3500 -y 2440 -defaultsOSRD
+preplace inst double_signal_multip_10 -pg 1 -lvl 7 -x 3500 -y 2710 -defaultsOSRD
+preplace inst double_signal_multip_11 -pg 1 -lvl 7 -x 3500 -y 2930 -defaultsOSRD
+preplace inst double_signal_multip_12 -pg 1 -lvl 7 -x 3500 -y 3150 -defaultsOSRD
+preplace inst double_signal_multip_13 -pg 1 -lvl 7 -x 3500 -y 3370 -defaultsOSRD
+preplace inst fqmul_6 -pg 1 -lvl 8 -x 4120 -y 2440 -defaultsOSRD
+preplace inst fqmul_7 -pg 1 -lvl 8 -x 4120 -y 2640 -defaultsOSRD
+preplace inst montgomery_reduction_6 -pg 1 -lvl 10 -x 4830 -y 2380 -defaultsOSRD
+preplace inst montgomery_reduction_7 -pg 1 -lvl 10 -x 4830 -y 2600 -defaultsOSRD
+preplace inst barrett_reduce_2 -pg 1 -lvl 10 -x 4830 -y 2760 -defaultsOSRD
+preplace inst barrett_reduce_3 -pg 1 -lvl 10 -x 4830 -y 2900 -defaultsOSRD
+preplace inst axi_gpio_4 -pg 1 -lvl 3 -x 970 -y 1470 -defaultsOSRD
+preplace inst polyvec_ntt_0 -pg 1 -lvl 5 -x 2210 -y 1960 -defaultsOSRD
+preplace inst double_signal_multip_14 -pg 1 -lvl 9 -x 4500 -y 2390 -defaultsOSRD
+preplace inst double_signal_multip_15 -pg 1 -lvl 9 -x 4500 -y 2610 -defaultsOSRD
+preplace inst polyvec_basemul_acc_0 -pg 1 -lvl 5 -x 2210 -y 1440 -defaultsOSRD
+preplace inst double_signal_multip_16 -pg 1 -lvl 6 -x 2890 -y 560 -defaultsOSRD
+preplace inst double_signal_multip_17 -pg 1 -lvl 6 -x 2890 -y 780 -defaultsOSRD
+preplace inst double_signal_multip_18 -pg 1 -lvl 6 -x 2890 -y 1000 -defaultsOSRD
+preplace inst double_signal_multip_19 -pg 1 -lvl 6 -x 2890 -y 1220 -defaultsOSRD
+preplace inst double_signal_multip_20 -pg 1 -lvl 6 -x 2890 -y 1440 -defaultsOSRD
+preplace inst double_signal_multip_21 -pg 1 -lvl 6 -x 2890 -y 1660 -defaultsOSRD
+preplace inst double_signal_multip_22 -pg 1 -lvl 6 -x 2890 -y 1880 -defaultsOSRD
+preplace inst double_signal_multip_23 -pg 1 -lvl 6 -x 2890 -y 2100 -defaultsOSRD
+preplace inst double_signal_multip_24 -pg 1 -lvl 6 -x 2890 -y 2320 -defaultsOSRD
+preplace inst double_signal_multip_25 -pg 1 -lvl 6 -x 2890 -y 2540 -defaultsOSRD
+preplace inst double_signal_multip_26 -pg 1 -lvl 6 -x 2890 -y 2760 -defaultsOSRD
+preplace inst double_signal_multip_27 -pg 1 -lvl 6 -x 2890 -y 2980 -defaultsOSRD
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 4 440 480 770 480 1180 560 1690
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 30 160 430
+preplace netloc axi_gpio_0_gpio_io_o 1 3 1 1140 590n
+preplace netloc timer2_0_count 1 3 2 1160 610 1620
+preplace netloc poly_tomont_0_busy 1 3 3 1120 600 1750J 590 2390
+preplace netloc axi_gpio_2_gpio_io_o 1 3 2 1190 650 1700J
+preplace netloc axi_gpio_1_gpio_io_o 1 3 2 1130 620 1670
+preplace netloc axi_gpio_2_gpio2_io_o 1 3 2 1180J 630 1710
+preplace netloc polyvec_reduce_0_busy 1 3 3 1110J 580 1730J 570 2400
+preplace netloc axi_gpio_3_gpio_io_o 1 3 2 1200J 640 1680
+preplace netloc polyvec_basemul_acc_0_busy 1 3 3 1150J 590 1740 580 2440
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 10 20 150 460 490 760 490 1170 570 1720 560 2480 440 3040 550 3780 2320 4330 2740 4670
+preplace netloc poly_tomont_0_do_lower_mont 1 5 3 2530 170 3340 180 3960J
+preplace netloc poly_tomont_0_en_lower_mont 1 5 3 2550 240 3270 250 3940J
+preplace netloc poly_tomont_0_valid_out_lower_mont 1 5 3 2600 280 3230 290 3930J
+preplace netloc poly_tomont_0_do_upper_mont 1 5 3 2540 180 3330 190 3950J
+preplace netloc poly_tomont_0_en_upper_mont 1 5 3 2620 270 3240 280 3910J
+preplace netloc poly_tomont_0_valid_out_upper_mont 1 5 3 2590 250 3260 260 3920J
+preplace netloc fqmul_0_valid_out_mont 1 7 1 3890 630n
+preplace netloc fqmul_0_data_out_mont 1 7 1 3880 650n
+preplace netloc fqmul_1_valid_out_mont 1 7 1 3820 880n
+preplace netloc fqmul_1_data_out_mont 1 7 1 N 900
+preplace netloc fqmul_2_valid_out_mont 1 7 1 3800 1080n
+preplace netloc fqmul_2_data_out_mont 1 7 1 3790 1060n
+preplace netloc fqmul_3_valid_out_mont 1 7 1 3790 1280n
+preplace netloc fqmul_3_data_out_mont 1 7 1 3800 1280n
+preplace netloc fqmul_4_valid_out_mont 1 7 1 3750 1480n
+preplace netloc fqmul_4_data_out_mont 1 7 1 N 1500
+preplace netloc fqmul_5_valid_out_mont 1 7 1 3740 1700n
+preplace netloc fqmul_5_data_out_mont 1 7 1 N 1720
+preplace netloc double_signal_multip_0_valid_out 1 8 2 N 650 N
+preplace netloc double_signal_multip_0_data_out 1 8 2 N 670 N
+preplace netloc double_signal_multip_1_valid_out 1 8 2 N 870 N
+preplace netloc double_signal_multip_1_data_out 1 8 2 N 890 N
+preplace netloc double_signal_multip_2_valid_out 1 8 2 N 1090 N
+preplace netloc double_signal_multip_2_data_out 1 8 2 N 1110 N
+preplace netloc double_signal_multip_3_valid_out 1 8 2 N 1310 N
+preplace netloc double_signal_multip_3_data_out 1 8 2 N 1330 N
+preplace netloc double_signal_multip_4_data_out 1 8 2 N 1550 N
+preplace netloc double_signal_multip_4_valid_out 1 8 2 N 1530 N
+preplace netloc double_signal_multip_5_valid_out 1 8 2 N 1750 N
+preplace netloc double_signal_multip_5_data_out 1 8 2 N 1770 N
+preplace netloc double_signal_multip_6_data_out 1 8 2 N 1990 N
+preplace netloc double_signal_multip_6_valid_out 1 8 2 N 1970 N
+preplace netloc double_signal_multip_7_valid_out 1 8 2 N 2190 N
+preplace netloc double_signal_multip_7_data_out 1 8 2 N 2210 N
+preplace netloc montgomery_reduction_0_valid_out 1 4 7 2030 400 NJ 400 3030 430 NJ 430 NJ 430 N 430 5000
+preplace netloc montgomery_reduction_0_data_out 1 4 7 2010 390 NJ 390 3080 420 NJ 420 NJ 420 N 420 5060
+preplace netloc montgomery_reduction_1_valid_out 1 4 7 2000 160 NJ 160 3210 450 NJ 450 NJ 450 N 450 4990
+preplace netloc montgomery_reduction_1_data_out 1 4 7 2020 420 NJ 420 3060 440 NJ 440 NJ 440 N 440 5050
+preplace netloc fqmul_0_data_out 1 4 4 1880 100 NJ 100 N 100 3770
+preplace netloc fqmul_1_data_out 1 4 4 1890 120 NJ 120 N 120 3760
+preplace netloc fqmul_2_data_out 1 4 4 1900 140 NJ 140 N 140 3750
+preplace netloc fqmul_3_data_out 1 4 4 1910 290 NJ 290 3220 300 3740
+preplace netloc fqmul_4_data_out 1 4 4 1920 310 NJ 310 3160 320 3730
+preplace netloc fqmul_5_data_out 1 4 4 1930 330 NJ 330 3140 340 3720
+preplace netloc montgomery_reduction_2_valid_out 1 6 5 3310 470 NJ 470 NJ 470 N 470 4980
+preplace netloc montgomery_reduction_2_data_out 1 6 5 3270 460 NJ 460 NJ 460 N 460 5040
+preplace netloc montgomery_reduction_3_valid_out 1 6 5 3320 490 NJ 490 NJ 490 N 490 4970
+preplace netloc montgomery_reduction_3_data_out 1 6 5 3280 480 NJ 480 NJ 480 N 480 5030
+preplace netloc montgomery_reduction_4_valid_out 1 6 5 3330 510 NJ 510 NJ 510 N 510 4960
+preplace netloc montgomery_reduction_4_data_out 1 6 5 3290 500 NJ 500 NJ 500 N 500 5020
+preplace netloc montgomery_reduction_5_valid_out 1 6 5 3340 530 NJ 530 NJ 530 N 530 4950
+preplace netloc montgomery_reduction_5_data_out 1 6 5 3300 520 NJ 520 NJ 520 N 520 5010
+preplace netloc barrett_reduce_0_data_out 1 4 7 1800 10 NJ 10 N 10 NJ 10 NJ 10 N 10 5100
+preplace netloc barrett_reduce_1_data_out 1 4 7 1820 40 NJ 40 N 40 NJ 40 NJ 40 N 40 5080
+preplace netloc Net 1 5 3 2700 50 N 50 3870
+preplace netloc polyvec_basemul_acc_0_data0_to_barrett 1 5 3 2540J 3120 3260 2560 3790
+preplace netloc polyvec_basemul_acc_0_data1_to_barrett 1 5 3 2530J 3110 3290 2590 3670
+preplace netloc polyvec_reduce_0_do_lower_barrett 1 5 3 2630J 260 3250 270 3830
+preplace netloc polyvec_reduce_0_en_lower_barrett 1 5 3 2560J 200 3310 210 3900
+preplace netloc polyvec_reduce_0_valid_out_lower_barrett 1 5 3 2580J 220 3290 230 3850
+preplace netloc polyvec_reduce_0_do_upper_barrett 1 5 3 2570J 190 3320 200 3860
+preplace netloc polyvec_reduce_0_en_upper_barrett 1 5 3 2610J 210 3300 220 3840
+preplace netloc polyvec_reduce_0_valid_out_upper_barrett 1 5 3 2640J 230 3280 240 3810
+preplace netloc barrett_reduce_0_valid_out 1 4 7 1830 20 NJ 20 N 20 NJ 20 NJ 20 N 20 5070
+preplace netloc barrett_reduce_1_valid_out 1 4 7 1810 30 NJ 30 N 30 NJ 30 NJ 30 N 30 5090
+preplace netloc fqmul_0_valid_out 1 4 4 1940 110 NJ 110 N 110 3710
+preplace netloc fqmul_1_valid_out 1 4 4 1950 130 NJ 130 N 130 3700
+preplace netloc fqmul_2_valid_out 1 4 4 1960 150 NJ 150 N 150 3690
+preplace netloc fqmul_3_valid_out 1 4 4 1970 300 NJ 300 3200 310 3680
+preplace netloc fqmul_4_valid_out 1 4 4 1980 320 NJ 320 3150 330 3670
+preplace netloc fqmul_5_valid_out 1 4 4 1990 340 NJ 340 3130 350 3660
+preplace netloc polyvec_basemul_acc_0_valid1_to_barrett 1 5 3 2520J 3130 3030 2580 3910
+preplace netloc polyvec_ntt_0_valid_to_fqmul0 1 5 2 2510 3160 3280
+preplace netloc polyvec_ntt_0_coeff0_to_fqmul0 1 5 2 2500 3170 3270
+preplace netloc polyvec_ntt_0_en_dsm 1 5 4 2400 3230 3200 540 N 540 4360
+preplace netloc polyvec_ntt_0_coeff1_to_fqmul0 1 5 2 2490 3180 3300
+preplace netloc polyvec_ntt_0_valid_to_fqmul1 1 5 2 2450 3190 3330
+preplace netloc polyvec_ntt_0_coeff0_to_fqmul1 1 5 2 2440 3200 3320
+preplace netloc polyvec_ntt_0_coeff1_to_fqmul1 1 5 2 2430 3210 3340
+preplace netloc polyvec_ntt_0_valid0_to_barrett 1 5 2 2470 3150 N
+preplace netloc polyvec_ntt_0_data0_to_barrett 1 5 2 2460 3140 3310
+preplace netloc polyvec_ntt_0_valid1_to_barrett 1 5 2 2410 3240 3020
+preplace netloc polyvec_ntt_0_data1_to_barrett 1 5 2 2420 3220 3030
+preplace netloc double_signal_multip_8_valid_out 1 7 1 3680 2210n
+preplace netloc double_signal_multip_8_data_out 1 7 1 3660 2230n
+preplace netloc double_signal_multip_9_data_out 1 7 1 N 2450
+preplace netloc double_signal_multip_10_valid_out 1 7 1 3720 2610n
+preplace netloc double_signal_multip_10_data_out 1 7 1 3840 2630n
+preplace netloc double_signal_multip_11_data_out 1 7 1 3910 2650n
+preplace netloc montgomery_reduction_6_valid_out 1 7 4 3960 2330 4320J 2730 4640 2510 4960
+preplace netloc montgomery_reduction_6_data_out 1 7 4 3940 2750 NJ 2750 4630 2500 4950
+preplace netloc fqmul_6_valid_out 1 4 5 1860 360 NJ 360 3110 370 NJ 370 4290
+preplace netloc fqmul_6_data_out 1 4 5 1840 350 NJ 350 3120 360 NJ 360 4310
+preplace netloc montgomery_reduction_7_valid_out 1 7 4 3950 2760 NJ 2760 4660 2680 4950
+preplace netloc montgomery_reduction_7_data_out 1 7 4 3960 2770 NJ 2770 4650 2520 4960
+preplace netloc fqmul_7_data_out 1 4 5 1850 370 NJ 370 3100 380 NJ 380 4300
+preplace netloc fqmul_7_valid_out 1 4 5 1870 380 NJ 380 3090 390 NJ 390 4280
+preplace netloc double_signal_multip_12_valid_out 1 7 3 NJ 3140 N 3140 4680
+preplace netloc double_signal_multip_12_data_out 1 7 3 3810J 3130 N 3130 4690
+preplace netloc double_signal_multip_13_valid_out 1 7 3 NJ 3360 N 3360 4700
+preplace netloc double_signal_multip_13_data_out 1 7 3 NJ 3380 N 3380 4710
+preplace netloc barrett_reduce_2_valid_out 1 4 7 1780 70 NJ 70 N 70 NJ 70 NJ 70 N 70 5120
+preplace netloc barrett_reduce_2_data_out 1 4 7 1760 60 NJ 60 N 60 NJ 60 NJ 60 N 60 5140
+preplace netloc barrett_reduce_3_valid_out 1 4 7 1790 90 NJ 90 N 90 NJ 90 NJ 90 N 90 5110
+preplace netloc barrett_reduce_3_data_out 1 4 7 1770 80 NJ 80 N 80 NJ 80 NJ 80 N 80 5130
+preplace netloc polyvec_ntt_0_busy 1 3 3 1240J 1510 1630J 1770 2390
+preplace netloc axi_gpio_4_gpio_io_o 1 3 2 1120J 1520 1620
+preplace netloc fqmul_6_valid_out_mont 1 8 1 4350 2390n
+preplace netloc fqmul_6_data_out_mont 1 8 1 4340 2350n
+preplace netloc fqmul_7_valid_out_mont 1 8 1 N 2610
+preplace netloc fqmul_7_data_out_mont 1 8 1 4370 2570n
+preplace netloc double_signal_multip_14_valid_out 1 9 1 N 2380
+preplace netloc double_signal_multip_14_data_out 1 9 1 N 2400
+preplace netloc double_signal_multip_15_valid_out 1 9 1 N 2600
+preplace netloc double_signal_multip_15_data_out 1 9 1 N 2620
+preplace netloc polyvec_basemul_acc_0_valid0_to_barrett 1 5 3 2560J 3100 3250J 2570 3830
+preplace netloc polyvec_basemul_acc_0_coeff0_to_fqmul0 1 5 1 2650 520n
+preplace netloc polyvec_basemul_acc_0_coeff1_to_fqmul0 1 5 1 2670 740n
+preplace netloc polyvec_basemul_acc_0_coeff0_to_fqmul1 1 5 1 2680 960n
+preplace netloc polyvec_basemul_acc_0_coeff1_to_fqmul1 1 5 1 2760 1180n
+preplace netloc polyvec_basemul_acc_0_coeff0_to_fqmul2 1 5 1 2760 1390n
+preplace netloc polyvec_basemul_acc_0_coeff1_to_fqmul2 1 5 1 2740 1410n
+preplace netloc polyvec_basemul_acc_0_coeff0_to_fqmul3 1 5 1 2730 1450n
+preplace netloc polyvec_basemul_acc_0_coeff1_to_fqmul3 1 5 1 2710 1470n
+preplace netloc polyvec_basemul_acc_0_coeff0_to_fqmul4 1 5 1 2670 1510n
+preplace netloc polyvec_basemul_acc_0_coeff1_to_fqmul4 1 5 1 2610 1530n
+preplace netloc polyvec_basemul_acc_0_coeff0_to_fqmul5 1 5 1 2600 1570n
+preplace netloc polyvec_basemul_acc_0_coeff1_to_fqmul5 1 5 1 2580 1590n
+preplace netloc polyvec_basemul_acc_0_valid_to_fqmul0 1 5 1 2660 560n
+preplace netloc polyvec_basemul_acc_0_valid_to_fqmul1 1 5 1 2690 1000n
+preplace netloc polyvec_basemul_acc_0_valid_to_fqmul2 1 5 1 2750 1370n
+preplace netloc polyvec_basemul_acc_0_valid_to_fqmul3 1 5 1 2720 1430n
+preplace netloc polyvec_basemul_acc_0_valid_to_fqmul4 1 5 1 2640 1490n
+preplace netloc polyvec_basemul_acc_0_valid_to_fqmul5 1 5 1 2590 1550n
+preplace netloc double_signal_multip_16_valid_out 1 6 1 3020 550n
+preplace netloc double_signal_multip_16_data_out 1 6 1 3070 570n
+preplace netloc double_signal_multip_17_data_out 1 6 1 3050 670n
+preplace netloc double_signal_multip_18_valid_out 1 6 1 3070 880n
+preplace netloc double_signal_multip_18_data_out 1 6 1 3080 900n
+preplace netloc double_signal_multip_19_data_out 1 6 1 3090 920n
+preplace netloc double_signal_multip_20_valid_out 1 6 1 3100 1080n
+preplace netloc double_signal_multip_20_data_out 1 6 1 3110 1100n
+preplace netloc double_signal_multip_21_data_out 1 6 1 3120 1120n
+preplace netloc double_signal_multip_22_valid_out 1 6 1 3130 1280n
+preplace netloc double_signal_multip_22_data_out 1 6 1 3140 1300n
+preplace netloc double_signal_multip_23_data_out 1 6 1 3150 1320n
+preplace netloc double_signal_multip_24_valid_out 1 6 1 3160 1480n
+preplace netloc double_signal_multip_24_data_out 1 6 1 3170 1500n
+preplace netloc double_signal_multip_25_data_out 1 6 1 3180 1520n
+preplace netloc double_signal_multip_26_valid_out 1 6 1 3190 1700n
+preplace netloc double_signal_multip_26_data_out 1 6 1 3220 1720n
+preplace netloc double_signal_multip_27_data_out 1 6 1 3230 1740n
+preplace netloc bram_port_selector_1_BRAM_PORT_MASTER 1 2 3 820 430 NJ 430 1640
+preplace netloc processing_system7_0_DDR 1 1 10 N 400 N 400 N 400 1690 410 N 410 3040 400 N 400 N 400 N 400 N
+preplace netloc axi_interconnect_0_M01_AXI 1 2 1 N 830
+preplace netloc polyvec_basemul_acc_0_BRAM0_PORT_B 1 3 3 1250 480 NJ 480 2490
+preplace netloc processing_system7_0_FIXED_IO 1 1 10 N 420 800 410 N 410 1660 430 N 430 3050 410 N 410 N 410 N 410 5150
+preplace netloc polyvec_basemul_acc_0_BRAM1_PORT_B 1 3 3 1230 510 NJ 510 2460
+preplace netloc bram_port_selector_2_BRAM_PORT_MASTER 1 2 3 830 470 1190J 490 1630
+preplace netloc polyvec_basemul_acc_0_BRAM0_PORT_A 1 3 3 1240 450 NJ 450 2520
+preplace netloc polyvec_reduce_0_BRAM_PORT_B 1 3 3 1280 550 NJ 550 2410
+preplace netloc polyvec_reduce_0_BRAM_PORT_A 1 3 3 1300 540 NJ 540 2420
+preplace netloc polyvec_ntt_0_BRAM_PORT_A 1 3 3 1290 520 NJ 520 2510
+preplace netloc poly_tomont_0_BRAM_PORT_B 1 3 3 1210 440 NJ 440 2450
+preplace netloc polyvec_ntt_0_BRAM_PORT_B 1 3 3 1270 530 NJ 530 2500
+preplace netloc axi_interconnect_0_M06_AXI 1 2 1 740 930n
+preplace netloc bram_port_selector_3_BRAM_PORT_MASTER 1 2 3 800 460 NJ 460 1660
+preplace netloc bram_port_selector_0_BRAM_PORT_MASTER 1 2 3 810 420 N 420 1650
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 450 460n
+preplace netloc axi_interconnect_0_M02_AXI 1 2 1 N 850
+preplace netloc axi_interconnect_0_M03_AXI 1 2 1 790 690n
+preplace netloc axi_interconnect_0_M04_AXI 1 2 1 780 890n
+preplace netloc polyvec_basemul_acc_0_BRAM1_PORT_A 1 3 3 1220 500 NJ 500 2470
+preplace netloc axi_interconnect_0_M00_AXI 1 2 1 780 550n
+preplace netloc axi_interconnect_0_M05_AXI 1 2 1 750 910n
+preplace netloc poly_tomont_0_BRAM_PORT_A 1 3 3 1260 470 NJ 470 2430
+levelinfo -pg 1 0 230 600 970 1460 2210 2890 3500 4120 4500 4830 5170
+pagesize -pg 1 -db -bbox -sgen 0 0 5280 3490
 "
 }
 {

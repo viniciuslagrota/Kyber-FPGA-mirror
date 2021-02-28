@@ -1,0 +1,442 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Feb 16 19:06:37 2021
+# Process ID: 17148
+# Current directory: C:/Projects/kyber-fpga
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3284 C:\Projects\kyber-fpga\kyber-fpga.xpr
+# Log file: C:/Projects/kyber-fpga/vivado.log
+# Journal file: C:/Projects/kyber-fpga\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Projects/kyber-fpga/kyber-fpga.xpr
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/barret_reduce_1.0'.
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/signal_multiplexer_1.0'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barrett_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barret_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/dual_bram_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/poly_tomont_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/triple_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/double_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_port_selector_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_mm_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+open_project: Time (s): cpu = 00:00:22 ; elapsed = 00:00:10 . Memory (MB): peak = 790.520 ; gain = 151.793
+update_compile_order -fileset sources_1
+open_bd_design {C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd}
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - axi_interconnect_0
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding component instance block -- xilinx.com:user:timer2:1.0 - timer2_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_1
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_2
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_0
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_1
+Adding component instance block -- xilinx.com:user:dual_bram:1.0 - dual_bram_0
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_0
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_1
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_2
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_3
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_0
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_1
+Adding component instance block -- xilinx.com:user:polyvec_reduce:1.0 - polyvec_reduce_0
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_0
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_1
+Adding component instance block -- xilinx.com:user:poly_tomont:1.0 - poly_tomont_0
+Successfully read diagram <kyberBD> from BD file <C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd>
+open_bd_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:10 . Memory (MB): peak = 942.285 ; gain = 76.273
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+generate_target all [get_files  {C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd}]
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'kyberBD' - hence not re-generating.
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+make_wrapper -files [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -top
+reset_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
+export_ip_user_files -of_objects  [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -sync -no_script -force -quiet
+make_wrapper -files [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -top
+INFO: [BD 41-1662] The design 'kyberBD.bd' is already validated. Therefore parameter propagation will not be re-run.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/bram_port_selector_0/slave2_en
+/bram_port_selector_0/slave2_we
+/bram_port_selector_0/slave2_addr
+/bram_port_selector_0/slave3_en
+/bram_port_selector_0/slave3_we
+/bram_port_selector_0/slave3_addr
+/bram_port_selector_0/slave4_en
+/bram_port_selector_0/slave4_we
+/bram_port_selector_0/slave4_addr
+/bram_port_selector_1/slave2_en
+/bram_port_selector_1/slave2_we
+/bram_port_selector_1/slave2_addr
+/bram_port_selector_1/slave3_en
+/bram_port_selector_1/slave3_we
+/bram_port_selector_1/slave3_addr
+/bram_port_selector_1/slave4_en
+/bram_port_selector_1/slave4_we
+/bram_port_selector_1/slave4_addr
+/double_signal_multip_0/data_in_1
+/double_signal_multip_0/enable_in_1
+/double_signal_multip_1/data_in_1
+/double_signal_multip_1/enable_in_1
+/double_signal_multip_2/data_in_1
+/double_signal_multip_2/enable_in_1
+/double_signal_multip_3/data_in_1
+/double_signal_multip_3/enable_in_1
+
+Wrote  : <C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ui/bd_6ac062a3.ui> 
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/sim/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd
+generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
+INFO: [BD 41-1662] The design 'kyberBD.bd' is already validated. Therefore parameter propagation will not be re-run.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/bram_port_selector_0/slave2_en
+/bram_port_selector_0/slave2_we
+/bram_port_selector_0/slave2_addr
+/bram_port_selector_0/slave3_en
+/bram_port_selector_0/slave3_we
+/bram_port_selector_0/slave3_addr
+/bram_port_selector_0/slave4_en
+/bram_port_selector_0/slave4_we
+/bram_port_selector_0/slave4_addr
+/bram_port_selector_1/slave2_en
+/bram_port_selector_1/slave2_we
+/bram_port_selector_1/slave2_addr
+/bram_port_selector_1/slave3_en
+/bram_port_selector_1/slave3_we
+/bram_port_selector_1/slave3_addr
+/bram_port_selector_1/slave4_en
+/bram_port_selector_1/slave4_we
+/bram_port_selector_1/slave4_addr
+/double_signal_multip_0/data_in_1
+/double_signal_multip_0/enable_in_1
+/double_signal_multip_1/data_in_1
+/double_signal_multip_1/enable_in_1
+/double_signal_multip_2/data_in_1
+/double_signal_multip_2/enable_in_1
+/double_signal_multip_3/data_in_1
+/double_signal_multip_3/enable_in_1
+
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/sim/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block timer2_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block poly_tomont_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dual_bram_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block polyvec_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_3 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/s00_couplers/auto_pc .
+Exporting to file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD.hwh
+Generated Block Design Tcl file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD_bd.tcl
+Generated Hardware Definition File C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.hwdef
+generate_target: Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 1212.684 ; gain = 113.402
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Tue Feb 16 19:12:55 2021] Launched synth_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/runme.log
+[Tue Feb 16 19:12:55 2021] Launched impl_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/runme.log
+file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Netlist 29-17] Analyzing 42 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2019.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.717 . Memory (MB): peak = 2007.305 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.717 . Memory (MB): peak = 2007.305 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2007.305 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:38 ; elapsed = 00:00:28 . Memory (MB): peak = 2124.828 ; gain = 871.184
+set_property location {1 256 333} [get_bd_cells processing_system7_0]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+startgroup
+set_property -dict [list CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {180}] [get_bd_cells processing_system7_0]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+endgroup
+generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/bram_port_selector_0/slave2_en
+/bram_port_selector_0/slave2_we
+/bram_port_selector_0/slave2_addr
+/bram_port_selector_0/slave3_en
+/bram_port_selector_0/slave3_we
+/bram_port_selector_0/slave3_addr
+/bram_port_selector_0/slave4_en
+/bram_port_selector_0/slave4_we
+/bram_port_selector_0/slave4_addr
+/bram_port_selector_1/slave2_en
+/bram_port_selector_1/slave2_we
+/bram_port_selector_1/slave2_addr
+/bram_port_selector_1/slave3_en
+/bram_port_selector_1/slave3_we
+/bram_port_selector_1/slave3_addr
+/bram_port_selector_1/slave4_en
+/bram_port_selector_1/slave4_we
+/bram_port_selector_1/slave4_addr
+/double_signal_multip_0/data_in_1
+/double_signal_multip_0/enable_in_1
+/double_signal_multip_1/data_in_1
+/double_signal_multip_1/enable_in_1
+/double_signal_multip_2/data_in_1
+/double_signal_multip_2/enable_in_1
+/double_signal_multip_3/data_in_1
+/double_signal_multip_3/enable_in_1
+
+Wrote  : <C:\Projects\kyber-fpga\kyber-fpga.srcs\sources_1\bd\kyberBD\kyberBD.bd> 
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/sim/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block timer2_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block poly_tomont_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dual_bram_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block polyvec_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_3 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/s00_couplers/auto_pc .
+Exporting to file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD.hwh
+Generated Block Design Tcl file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD_bd.tcl
+Generated Hardware Definition File C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.hwdef
+generate_target: Time (s): cpu = 00:00:36 ; elapsed = 00:00:36 . Memory (MB): peak = 2290.531 ; gain = 75.578
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Tue Feb 16 19:29:56 2021] Launched synth_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/runme.log
+[Tue Feb 16 19:29:56 2021] Launched impl_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/runme.log
+file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+
+refresh_design
+INFO: [Netlist 29-17] Analyzing 42 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2019.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.727 . Memory (MB): peak = 2296.223 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.727 . Memory (MB): peak = 2296.223 ; gain = 0.000
+refresh_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:08 . Memory (MB): peak = 2343.445 ; gain = 52.914
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+startgroup
+set_property -dict [list CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {200}] [get_bd_cells processing_system7_0]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+endgroup
+generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/bram_port_selector_0/slave2_en
+/bram_port_selector_0/slave2_we
+/bram_port_selector_0/slave2_addr
+/bram_port_selector_0/slave3_en
+/bram_port_selector_0/slave3_we
+/bram_port_selector_0/slave3_addr
+/bram_port_selector_0/slave4_en
+/bram_port_selector_0/slave4_we
+/bram_port_selector_0/slave4_addr
+/bram_port_selector_1/slave2_en
+/bram_port_selector_1/slave2_we
+/bram_port_selector_1/slave2_addr
+/bram_port_selector_1/slave3_en
+/bram_port_selector_1/slave3_we
+/bram_port_selector_1/slave3_addr
+/bram_port_selector_1/slave4_en
+/bram_port_selector_1/slave4_we
+/bram_port_selector_1/slave4_addr
+/double_signal_multip_0/data_in_1
+/double_signal_multip_0/enable_in_1
+/double_signal_multip_1/data_in_1
+/double_signal_multip_1/enable_in_1
+/double_signal_multip_2/data_in_1
+/double_signal_multip_2/enable_in_1
+/double_signal_multip_3/data_in_1
+/double_signal_multip_3/enable_in_1
+
+Wrote  : <C:\Projects\kyber-fpga\kyber-fpga.srcs\sources_1\bd\kyberBD\kyberBD.bd> 
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/sim/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block timer2_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block poly_tomont_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dual_bram_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block polyvec_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_3 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/s00_couplers/auto_pc .
+Exporting to file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD.hwh
+Generated Block Design Tcl file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD_bd.tcl
+Generated Hardware Definition File C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.hwdef
+generate_target: Time (s): cpu = 00:00:35 ; elapsed = 00:00:35 . Memory (MB): peak = 2709.812 ; gain = 60.324
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Tue Feb 16 19:53:28 2021] Launched synth_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/runme.log
+[Tue Feb 16 19:53:28 2021] Launched impl_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/runme.log
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Tue Feb 16 19:59:17 2021] Launched impl_1...
+Run output will be captured here: C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/runme.log
+ERROR: [Vivado 12-4452] The hardware handoff file (.sysdef) does not exist. It may not have been generated due to: 
+ 1. A bitstream might not have been generated. Generate Bitstream and export again, or do not request a bitstream to be included in export.
+ 2. There are no block design hardware handoff files. Check the vivado log messages for more details. 
+file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 17 10:13:56 2021...
