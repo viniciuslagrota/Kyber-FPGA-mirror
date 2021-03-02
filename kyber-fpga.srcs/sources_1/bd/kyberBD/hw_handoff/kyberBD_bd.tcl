@@ -265,12 +265,6 @@ proc create_root_design { parentCell } {
   # Create instance: fqmul_5, and set properties
   set fqmul_5 [ create_bd_cell -type ip -vlnv xilinx.com:user:fqmul:1.0 fqmul_5 ]
 
-  # Create instance: fqmul_6, and set properties
-  set fqmul_6 [ create_bd_cell -type ip -vlnv xilinx.com:user:fqmul:1.0 fqmul_6 ]
-
-  # Create instance: fqmul_7, and set properties
-  set fqmul_7 [ create_bd_cell -type ip -vlnv xilinx.com:user:fqmul:1.0 fqmul_7 ]
-
   # Create instance: montgomery_reduction_0, and set properties
   set montgomery_reduction_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:montgomery_reduction:1.0 montgomery_reduction_0 ]
 
@@ -786,49 +780,27 @@ proc create_root_design { parentCell } {
 
   # Create instance: signal_multiplexer_4, and set properties
   set signal_multiplexer_4 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_4 ]
+  set_property -dict [ list \
+   CONFIG.NUMBER_OF_CHANNELS {1} \
+ ] $signal_multiplexer_4
 
   # Create instance: signal_multiplexer_5, and set properties
   set signal_multiplexer_5 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_5 ]
+  set_property -dict [ list \
+   CONFIG.NUMBER_OF_CHANNELS {1} \
+ ] $signal_multiplexer_5
 
   # Create instance: signal_multiplexer_6, and set properties
   set signal_multiplexer_6 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_6 ]
   set_property -dict [ list \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
+   CONFIG.NUMBER_OF_CHANNELS {2} \
  ] $signal_multiplexer_6
 
   # Create instance: signal_multiplexer_7, and set properties
   set signal_multiplexer_7 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_7 ]
   set_property -dict [ list \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
+   CONFIG.NUMBER_OF_CHANNELS {2} \
  ] $signal_multiplexer_7
-
-  # Create instance: signal_multiplexer_8, and set properties
-  set signal_multiplexer_8 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_8 ]
-  set_property -dict [ list \
-   CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
- ] $signal_multiplexer_8
-
-  # Create instance: signal_multiplexer_9, and set properties
-  set signal_multiplexer_9 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_9 ]
-  set_property -dict [ list \
-   CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
- ] $signal_multiplexer_9
-
-  # Create instance: signal_multiplexer_10, and set properties
-  set signal_multiplexer_10 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_10 ]
-  set_property -dict [ list \
-   CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
- ] $signal_multiplexer_10
-
-  # Create instance: signal_multiplexer_11, and set properties
-  set signal_multiplexer_11 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_11 ]
-  set_property -dict [ list \
-   CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
- ] $signal_multiplexer_11
 
   # Create instance: signal_multiplexer_12, and set properties
   set signal_multiplexer_12 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_12 ]
@@ -890,28 +862,28 @@ proc create_root_design { parentCell } {
   set signal_multiplexer_20 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_20 ]
   set_property -dict [ list \
    CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
+   CONFIG.NUMBER_OF_CHANNELS {2} \
  ] $signal_multiplexer_20
 
   # Create instance: signal_multiplexer_21, and set properties
   set signal_multiplexer_21 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_21 ]
   set_property -dict [ list \
    CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
+   CONFIG.NUMBER_OF_CHANNELS {2} \
  ] $signal_multiplexer_21
 
   # Create instance: signal_multiplexer_22, and set properties
   set signal_multiplexer_22 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_22 ]
   set_property -dict [ list \
    CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
+   CONFIG.NUMBER_OF_CHANNELS {2} \
  ] $signal_multiplexer_22
 
   # Create instance: signal_multiplexer_23, and set properties
   set signal_multiplexer_23 [ create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_23 ]
   set_property -dict [ list \
    CONFIG.DATA_WIDTH {16} \
-   CONFIG.NUMBER_OF_CHANNELS {1} \
+   CONFIG.NUMBER_OF_CHANNELS {2} \
  ] $signal_multiplexer_23
 
   # Create instance: timer2_0, and set properties
@@ -971,30 +943,22 @@ proc create_root_design { parentCell } {
   connect_bd_net -net fqmul_3_data_out_mont [get_bd_pins fqmul_3/data_out_mont] [get_bd_pins signal_multiplexer_5/data_0]
   connect_bd_net -net fqmul_3_valid_out [get_bd_pins fqmul_3/valid_out] [get_bd_pins polyvec_basemul_acc_0/valid_from_fqmul3]
   connect_bd_net -net fqmul_3_valid_out_mont [get_bd_pins fqmul_3/valid_out_mont] [get_bd_pins signal_multiplexer_5/valid_0]
-  connect_bd_net -net fqmul_4_data_out [get_bd_pins fqmul_4/data_out] [get_bd_pins polyvec_basemul_acc_0/coeff_from_fqmul4]
-  connect_bd_net -net fqmul_4_data_out_mont [get_bd_pins fqmul_4/data_out_mont] [get_bd_pins signal_multiplexer_6/data_0]
-  connect_bd_net -net fqmul_4_valid_out [get_bd_pins fqmul_4/valid_out] [get_bd_pins polyvec_basemul_acc_0/valid_from_fqmul4]
-  connect_bd_net -net fqmul_4_valid_out_mont [get_bd_pins fqmul_4/valid_out_mont] [get_bd_pins signal_multiplexer_6/valid_0]
-  connect_bd_net -net fqmul_5_data_out [get_bd_pins fqmul_5/data_out] [get_bd_pins polyvec_basemul_acc_0/coeff_from_fqmul5]
-  connect_bd_net -net fqmul_5_data_out_mont [get_bd_pins fqmul_5/data_out_mont] [get_bd_pins signal_multiplexer_7/data_0]
-  connect_bd_net -net fqmul_5_valid_out [get_bd_pins fqmul_5/valid_out] [get_bd_pins polyvec_basemul_acc_0/valid_from_fqmul5]
-  connect_bd_net -net fqmul_5_valid_out_mont [get_bd_pins fqmul_5/valid_out_mont] [get_bd_pins signal_multiplexer_7/valid_0]
-  connect_bd_net -net fqmul_6_data_out [get_bd_pins fqmul_6/data_out] [get_bd_pins polyvec_ntt_0/coeff_from_fqmul0]
-  connect_bd_net -net fqmul_6_data_out_mont [get_bd_pins fqmul_6/data_out_mont] [get_bd_pins signal_multiplexer_4/data_1]
-  connect_bd_net -net fqmul_6_valid_out [get_bd_pins fqmul_6/valid_out] [get_bd_pins polyvec_ntt_0/valid_from_fqmul0]
-  connect_bd_net -net fqmul_6_valid_out_mont [get_bd_pins fqmul_6/valid_out_mont] [get_bd_pins signal_multiplexer_4/valid_1]
-  connect_bd_net -net fqmul_7_data_out [get_bd_pins fqmul_7/data_out] [get_bd_pins polyvec_ntt_0/coeff_from_fqmul1]
-  connect_bd_net -net fqmul_7_data_out_mont [get_bd_pins fqmul_7/data_out_mont] [get_bd_pins signal_multiplexer_5/data_1]
-  connect_bd_net -net fqmul_7_valid_out [get_bd_pins fqmul_7/valid_out] [get_bd_pins polyvec_ntt_0/valid_from_fqmul1]
-  connect_bd_net -net fqmul_7_valid_out_mont [get_bd_pins fqmul_7/valid_out_mont] [get_bd_pins signal_multiplexer_5/valid_1]
+  connect_bd_net -net fqmul_4_data_out [get_bd_pins fqmul_4/data_out] [get_bd_pins polyvec_basemul_acc_0/coeff_from_fqmul4] [get_bd_pins polyvec_ntt_0/coeff_from_fqmul0]
+  connect_bd_net -net fqmul_4_data_out_mont [get_bd_pins fqmul_4/data_out_mont] [get_bd_pins signal_multiplexer_6/data_0] [get_bd_pins signal_multiplexer_6/data_1]
+  connect_bd_net -net fqmul_4_valid_out [get_bd_pins fqmul_4/valid_out] [get_bd_pins polyvec_basemul_acc_0/valid_from_fqmul4] [get_bd_pins polyvec_ntt_0/valid_from_fqmul0]
+  connect_bd_net -net fqmul_4_valid_out_mont [get_bd_pins fqmul_4/valid_out_mont] [get_bd_pins signal_multiplexer_6/valid_0] [get_bd_pins signal_multiplexer_6/valid_1]
+  connect_bd_net -net fqmul_5_data_out [get_bd_pins fqmul_5/data_out] [get_bd_pins polyvec_basemul_acc_0/coeff_from_fqmul5] [get_bd_pins polyvec_ntt_0/coeff_from_fqmul1]
+  connect_bd_net -net fqmul_5_data_out_mont [get_bd_pins fqmul_5/data_out_mont] [get_bd_pins signal_multiplexer_7/data_0] [get_bd_pins signal_multiplexer_7/data_1]
+  connect_bd_net -net fqmul_5_valid_out [get_bd_pins fqmul_5/valid_out] [get_bd_pins polyvec_basemul_acc_0/valid_from_fqmul5] [get_bd_pins polyvec_ntt_0/valid_from_fqmul1]
+  connect_bd_net -net fqmul_5_valid_out_mont [get_bd_pins fqmul_5/valid_out_mont] [get_bd_pins signal_multiplexer_7/valid_0] [get_bd_pins signal_multiplexer_7/valid_1]
   connect_bd_net -net montgomery_reduction_0_data_out [get_bd_pins fqmul_0/data_in_mont] [get_bd_pins montgomery_reduction_0/data_out] [get_bd_pins poly_tomont_0/di_lower_mont]
   connect_bd_net -net montgomery_reduction_0_valid_out [get_bd_pins fqmul_0/valid_in_mont] [get_bd_pins montgomery_reduction_0/valid_out] [get_bd_pins poly_tomont_0/valid_in_lower_mont]
   connect_bd_net -net montgomery_reduction_1_data_out [get_bd_pins fqmul_1/data_in_mont] [get_bd_pins montgomery_reduction_1/data_out] [get_bd_pins poly_tomont_0/di_upper_mont]
   connect_bd_net -net montgomery_reduction_1_valid_out [get_bd_pins fqmul_1/valid_in_mont] [get_bd_pins montgomery_reduction_1/valid_out] [get_bd_pins poly_tomont_0/valid_in_upper_mont]
-  connect_bd_net -net montgomery_reduction_2_data_out [get_bd_pins fqmul_2/data_in_mont] [get_bd_pins fqmul_6/data_in_mont] [get_bd_pins montgomery_reduction_2/data_out]
-  connect_bd_net -net montgomery_reduction_2_valid_out [get_bd_pins fqmul_2/valid_in_mont] [get_bd_pins fqmul_6/valid_in_mont] [get_bd_pins montgomery_reduction_2/valid_out]
-  connect_bd_net -net montgomery_reduction_3_data_out [get_bd_pins fqmul_3/data_in_mont] [get_bd_pins fqmul_7/data_in_mont] [get_bd_pins montgomery_reduction_3/data_out]
-  connect_bd_net -net montgomery_reduction_3_valid_out [get_bd_pins fqmul_3/valid_in_mont] [get_bd_pins fqmul_7/valid_in_mont] [get_bd_pins montgomery_reduction_3/valid_out]
+  connect_bd_net -net montgomery_reduction_2_data_out [get_bd_pins fqmul_2/data_in_mont] [get_bd_pins montgomery_reduction_2/data_out]
+  connect_bd_net -net montgomery_reduction_2_valid_out [get_bd_pins fqmul_2/valid_in_mont] [get_bd_pins montgomery_reduction_2/valid_out]
+  connect_bd_net -net montgomery_reduction_3_data_out [get_bd_pins fqmul_3/data_in_mont] [get_bd_pins montgomery_reduction_3/data_out]
+  connect_bd_net -net montgomery_reduction_3_valid_out [get_bd_pins fqmul_3/valid_in_mont] [get_bd_pins montgomery_reduction_3/valid_out]
   connect_bd_net -net montgomery_reduction_4_data_out [get_bd_pins fqmul_4/data_in_mont] [get_bd_pins montgomery_reduction_4/data_out]
   connect_bd_net -net montgomery_reduction_4_valid_out [get_bd_pins fqmul_4/valid_in_mont] [get_bd_pins montgomery_reduction_4/valid_out]
   connect_bd_net -net montgomery_reduction_5_data_out [get_bd_pins fqmul_5/data_in_mont] [get_bd_pins montgomery_reduction_5/data_out]
@@ -1030,17 +994,17 @@ proc create_root_design { parentCell } {
   connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul4 [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul4] [get_bd_pins signal_multiplexer_20/valid_0] [get_bd_pins signal_multiplexer_21/valid_0]
   connect_bd_net -net polyvec_basemul_acc_0_valid_to_fqmul5 [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul5] [get_bd_pins signal_multiplexer_22/valid_0] [get_bd_pins signal_multiplexer_23/valid_0]
   connect_bd_net -net polyvec_ntt_0_busy [get_bd_pins axi_gpio_4/gpio_io_i] [get_bd_pins polyvec_ntt_0/busy]
-  connect_bd_net -net polyvec_ntt_0_coeff0_to_fqmul0 [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul0] [get_bd_pins signal_multiplexer_8/data_0]
-  connect_bd_net -net polyvec_ntt_0_coeff0_to_fqmul1 [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul1] [get_bd_pins signal_multiplexer_10/data_0]
-  connect_bd_net -net polyvec_ntt_0_coeff1_to_fqmul0 [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul0] [get_bd_pins signal_multiplexer_9/data_0]
-  connect_bd_net -net polyvec_ntt_0_coeff1_to_fqmul1 [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul1] [get_bd_pins signal_multiplexer_11/data_0]
+  connect_bd_net -net polyvec_ntt_0_coeff0_to_fqmul0 [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul0] [get_bd_pins signal_multiplexer_20/data_1]
+  connect_bd_net -net polyvec_ntt_0_coeff0_to_fqmul1 [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul1] [get_bd_pins signal_multiplexer_22/data_1]
+  connect_bd_net -net polyvec_ntt_0_coeff1_to_fqmul0 [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul0] [get_bd_pins signal_multiplexer_21/data_1]
+  connect_bd_net -net polyvec_ntt_0_coeff1_to_fqmul1 [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul1] [get_bd_pins signal_multiplexer_23/data_1]
   connect_bd_net -net polyvec_ntt_0_data0_to_barrett [get_bd_pins polyvec_ntt_0/data0_to_barrett] [get_bd_pins signal_multiplexer_0/data_2]
   connect_bd_net -net polyvec_ntt_0_data1_to_barrett [get_bd_pins polyvec_ntt_0/data1_to_barrett] [get_bd_pins signal_multiplexer_1/data_2]
-  connect_bd_net -net polyvec_ntt_0_en_dsm [get_bd_pins polyvec_ntt_0/en_dsm] [get_bd_pins signal_multiplexer_0/en_2] [get_bd_pins signal_multiplexer_1/en_2] [get_bd_pins signal_multiplexer_10/en_0] [get_bd_pins signal_multiplexer_11/en_0] [get_bd_pins signal_multiplexer_4/en_1] [get_bd_pins signal_multiplexer_5/en_1] [get_bd_pins signal_multiplexer_8/en_0] [get_bd_pins signal_multiplexer_9/en_0]
+  connect_bd_net -net polyvec_ntt_0_en_dsm [get_bd_pins polyvec_ntt_0/en_dsm] [get_bd_pins signal_multiplexer_0/en_2] [get_bd_pins signal_multiplexer_1/en_2] [get_bd_pins signal_multiplexer_20/en_1] [get_bd_pins signal_multiplexer_21/en_1] [get_bd_pins signal_multiplexer_22/en_1] [get_bd_pins signal_multiplexer_23/en_1] [get_bd_pins signal_multiplexer_6/en_1] [get_bd_pins signal_multiplexer_7/en_1]
   connect_bd_net -net polyvec_ntt_0_valid0_to_barrett [get_bd_pins polyvec_ntt_0/valid0_to_barrett] [get_bd_pins signal_multiplexer_0/valid_2]
   connect_bd_net -net polyvec_ntt_0_valid1_to_barrett [get_bd_pins polyvec_ntt_0/valid1_to_barrett] [get_bd_pins signal_multiplexer_1/valid_2]
-  connect_bd_net -net polyvec_ntt_0_valid_to_fqmul0 [get_bd_pins polyvec_ntt_0/valid_to_fqmul0] [get_bd_pins signal_multiplexer_8/valid_0] [get_bd_pins signal_multiplexer_9/valid_0]
-  connect_bd_net -net polyvec_ntt_0_valid_to_fqmul1 [get_bd_pins polyvec_ntt_0/valid_to_fqmul1] [get_bd_pins signal_multiplexer_10/valid_0] [get_bd_pins signal_multiplexer_11/valid_0]
+  connect_bd_net -net polyvec_ntt_0_valid_to_fqmul0 [get_bd_pins polyvec_ntt_0/valid_to_fqmul0] [get_bd_pins signal_multiplexer_20/valid_1] [get_bd_pins signal_multiplexer_21/valid_1]
+  connect_bd_net -net polyvec_ntt_0_valid_to_fqmul1 [get_bd_pins polyvec_ntt_0/valid_to_fqmul1] [get_bd_pins signal_multiplexer_22/valid_1] [get_bd_pins signal_multiplexer_23/valid_1]
   connect_bd_net -net polyvec_reduce_0_busy [get_bd_pins axi_gpio_2/gpio2_io_i] [get_bd_pins polyvec_reduce_0/busy]
   connect_bd_net -net polyvec_reduce_0_do_lower_barrett [get_bd_pins polyvec_reduce_0/do_lower_barrett] [get_bd_pins signal_multiplexer_0/data_0]
   connect_bd_net -net polyvec_reduce_0_do_upper_barrett [get_bd_pins polyvec_reduce_0/do_upper_barrett] [get_bd_pins signal_multiplexer_1/data_0]
@@ -1049,13 +1013,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net polyvec_reduce_0_valid_out_lower_barrett [get_bd_pins polyvec_reduce_0/valid_out_lower_barrett] [get_bd_pins signal_multiplexer_0/valid_0]
   connect_bd_net -net polyvec_reduce_0_valid_out_upper_barrett [get_bd_pins polyvec_reduce_0/valid_out_upper_barrett] [get_bd_pins signal_multiplexer_1/valid_0]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_gpio_2/s_axi_aresetn] [get_bd_pins axi_gpio_3/s_axi_aresetn] [get_bd_pins axi_gpio_4/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins axi_interconnect_0/M04_ARESETN] [get_bd_pins axi_interconnect_0/M05_ARESETN] [get_bd_pins axi_interconnect_0/M06_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins dual_bram_0/s00_axi_aresetn] [get_bd_pins dual_bram_0/s01_axi_aresetn] [get_bd_pins poly_tomont_0/aresetn] [get_bd_pins polyvec_basemul_acc_0/aresetn] [get_bd_pins polyvec_ntt_0/aresetn] [get_bd_pins polyvec_reduce_0/aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_gpio_3/s_axi_aclk] [get_bd_pins axi_gpio_4/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins axi_interconnect_0/M05_ACLK] [get_bd_pins axi_interconnect_0/M06_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins barrett_reduce_0/clk] [get_bd_pins barrett_reduce_1/clk] [get_bd_pins dual_bram_0/s00_axi_aclk] [get_bd_pins dual_bram_0/s01_axi_aclk] [get_bd_pins fqmul_0/clk] [get_bd_pins fqmul_1/clk] [get_bd_pins fqmul_2/clk] [get_bd_pins fqmul_3/clk] [get_bd_pins fqmul_4/clk] [get_bd_pins fqmul_5/clk] [get_bd_pins fqmul_6/clk] [get_bd_pins fqmul_7/clk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins montgomery_reduction_1/clk] [get_bd_pins montgomery_reduction_2/clk] [get_bd_pins montgomery_reduction_3/clk] [get_bd_pins montgomery_reduction_4/clk] [get_bd_pins montgomery_reduction_5/clk] [get_bd_pins poly_tomont_0/clk] [get_bd_pins polyvec_basemul_acc_0/clk] [get_bd_pins polyvec_ntt_0/clk] [get_bd_pins polyvec_reduce_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins signal_multiplexer_0/clk] [get_bd_pins signal_multiplexer_1/clk] [get_bd_pins signal_multiplexer_10/clk] [get_bd_pins signal_multiplexer_11/clk] [get_bd_pins signal_multiplexer_12/clk] [get_bd_pins signal_multiplexer_13/clk] [get_bd_pins signal_multiplexer_14/clk] [get_bd_pins signal_multiplexer_15/clk] [get_bd_pins signal_multiplexer_16/clk] [get_bd_pins signal_multiplexer_17/clk] [get_bd_pins signal_multiplexer_18/clk] [get_bd_pins signal_multiplexer_19/clk] [get_bd_pins signal_multiplexer_2/clk] [get_bd_pins signal_multiplexer_20/clk] [get_bd_pins signal_multiplexer_21/clk] [get_bd_pins signal_multiplexer_22/clk] [get_bd_pins signal_multiplexer_23/clk] [get_bd_pins signal_multiplexer_3/clk] [get_bd_pins signal_multiplexer_4/clk] [get_bd_pins signal_multiplexer_5/clk] [get_bd_pins signal_multiplexer_6/clk] [get_bd_pins signal_multiplexer_7/clk] [get_bd_pins signal_multiplexer_8/clk] [get_bd_pins signal_multiplexer_9/clk] [get_bd_pins timer2_0/clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_gpio_3/s_axi_aclk] [get_bd_pins axi_gpio_4/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins axi_interconnect_0/M05_ACLK] [get_bd_pins axi_interconnect_0/M06_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins barrett_reduce_0/clk] [get_bd_pins barrett_reduce_1/clk] [get_bd_pins dual_bram_0/s00_axi_aclk] [get_bd_pins dual_bram_0/s01_axi_aclk] [get_bd_pins fqmul_0/clk] [get_bd_pins fqmul_1/clk] [get_bd_pins fqmul_2/clk] [get_bd_pins fqmul_3/clk] [get_bd_pins fqmul_4/clk] [get_bd_pins fqmul_5/clk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins montgomery_reduction_1/clk] [get_bd_pins montgomery_reduction_2/clk] [get_bd_pins montgomery_reduction_3/clk] [get_bd_pins montgomery_reduction_4/clk] [get_bd_pins montgomery_reduction_5/clk] [get_bd_pins poly_tomont_0/clk] [get_bd_pins polyvec_basemul_acc_0/clk] [get_bd_pins polyvec_ntt_0/clk] [get_bd_pins polyvec_reduce_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins signal_multiplexer_0/clk] [get_bd_pins signal_multiplexer_1/clk] [get_bd_pins signal_multiplexer_12/clk] [get_bd_pins signal_multiplexer_13/clk] [get_bd_pins signal_multiplexer_14/clk] [get_bd_pins signal_multiplexer_15/clk] [get_bd_pins signal_multiplexer_16/clk] [get_bd_pins signal_multiplexer_17/clk] [get_bd_pins signal_multiplexer_18/clk] [get_bd_pins signal_multiplexer_19/clk] [get_bd_pins signal_multiplexer_2/clk] [get_bd_pins signal_multiplexer_20/clk] [get_bd_pins signal_multiplexer_21/clk] [get_bd_pins signal_multiplexer_22/clk] [get_bd_pins signal_multiplexer_23/clk] [get_bd_pins signal_multiplexer_3/clk] [get_bd_pins signal_multiplexer_4/clk] [get_bd_pins signal_multiplexer_5/clk] [get_bd_pins signal_multiplexer_6/clk] [get_bd_pins signal_multiplexer_7/clk] [get_bd_pins timer2_0/clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
   connect_bd_net -net signal_multiplexer_0_data [get_bd_pins barrett_reduce_0/data_in] [get_bd_pins signal_multiplexer_0/data]
   connect_bd_net -net signal_multiplexer_0_valid [get_bd_pins barrett_reduce_0/valid_in] [get_bd_pins signal_multiplexer_0/valid]
-  connect_bd_net -net signal_multiplexer_10_data [get_bd_pins fqmul_7/data_in_1] [get_bd_pins signal_multiplexer_10/data]
-  connect_bd_net -net signal_multiplexer_10_valid [get_bd_pins fqmul_7/valid_in] [get_bd_pins signal_multiplexer_10/valid]
-  connect_bd_net -net signal_multiplexer_11_data [get_bd_pins fqmul_7/data_in_2] [get_bd_pins signal_multiplexer_11/data]
   connect_bd_net -net signal_multiplexer_12_data [get_bd_pins fqmul_0/data_in_1] [get_bd_pins signal_multiplexer_12/data]
   connect_bd_net -net signal_multiplexer_12_valid [get_bd_pins fqmul_0/valid_in] [get_bd_pins signal_multiplexer_12/valid]
   connect_bd_net -net signal_multiplexer_13_data [get_bd_pins fqmul_0/data_in_2] [get_bd_pins signal_multiplexer_13/data]
@@ -1088,9 +1049,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net signal_multiplexer_6_valid [get_bd_pins montgomery_reduction_4/valid_in] [get_bd_pins signal_multiplexer_6/valid]
   connect_bd_net -net signal_multiplexer_7_data [get_bd_pins montgomery_reduction_5/data_in] [get_bd_pins signal_multiplexer_7/data]
   connect_bd_net -net signal_multiplexer_7_valid [get_bd_pins montgomery_reduction_5/valid_in] [get_bd_pins signal_multiplexer_7/valid]
-  connect_bd_net -net signal_multiplexer_8_data [get_bd_pins fqmul_6/data_in_1] [get_bd_pins signal_multiplexer_8/data]
-  connect_bd_net -net signal_multiplexer_8_valid [get_bd_pins fqmul_6/valid_in] [get_bd_pins signal_multiplexer_8/valid]
-  connect_bd_net -net signal_multiplexer_9_data [get_bd_pins fqmul_6/data_in_2] [get_bd_pins signal_multiplexer_9/data]
   connect_bd_net -net timer2_0_count [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins timer2_0/count]
 
   # Create address segments

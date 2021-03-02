@@ -59,6 +59,9 @@ ENTITY kyberBD_signal_multiplexer_17_5 IS
     en_0 : IN STD_LOGIC;
     valid_0 : IN STD_LOGIC;
     data_0 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    en_1 : IN STD_LOGIC;
+    valid_1 : IN STD_LOGIC;
+    data_1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     valid : OUT STD_LOGIC;
     data : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
@@ -109,9 +112,9 @@ BEGIN
       en_0 => en_0,
       valid_0 => valid_0,
       data_0 => data_0,
-      en_1 => '0',
-      valid_1 => '0',
-      data_1 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 16)),
+      en_1 => en_1,
+      valid_1 => valid_1,
+      data_1 => data_1,
       en_2 => '0',
       valid_2 => '0',
       data_2 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 16)),

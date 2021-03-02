@@ -150,8 +150,6 @@ vcom -work xil_defaultlib -64 -93 \
 "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_0_1/sim/kyberBD_barrett_reduce_0_1.vhd" \
 "../../../bd/kyberBD/ipshared/4195/hdl/polyvec_ntt_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_polyvec_ntt_0_0/sim/kyberBD_polyvec_ntt_0_0.vhd" \
-"../../../bd/kyberBD/ip/kyberBD_fqmul_6_1/sim/kyberBD_fqmul_6_1.vhd" \
-"../../../bd/kyberBD/ip/kyberBD_fqmul_6_2/sim/kyberBD_fqmul_6_2.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_axi_gpio_4_0/sim/kyberBD_axi_gpio_4_0.vhd" \
 "../../../bd/kyberBD/sim/kyberBD.vhd" \
 "../../../bd/kyberBD/ipshared/3867/hdl/signal_multiplexer_v1_0.vhd" \
@@ -163,10 +161,6 @@ vcom -work xil_defaultlib -64 -93 \
 "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_3/sim/kyberBD_signal_multiplexer_2_3.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_4/sim/kyberBD_signal_multiplexer_2_4.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_5/sim/kyberBD_signal_multiplexer_2_5.vhd" \
-"../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_0/sim/kyberBD_signal_multiplexer_8_0.vhd" \
-"../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_1/sim/kyberBD_signal_multiplexer_8_1.vhd" \
-"../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_2/sim/kyberBD_signal_multiplexer_8_2.vhd" \
-"../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_3/sim/kyberBD_signal_multiplexer_8_3.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_0/sim/kyberBD_signal_multiplexer_12_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_1/sim/kyberBD_signal_multiplexer_12_1.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_2/sim/kyberBD_signal_multiplexer_12_2.vhd" \

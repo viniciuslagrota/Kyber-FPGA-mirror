@@ -2,10 +2,10 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Mon Mar  1 13:53:17 2021
-# Process ID: 15292
+# Start of session at: Tue Mar  2 12:53:02 2021
+# Process ID: 24780
 # Current directory: C:/Projects/kyber-fpga
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10788 C:\Projects\kyber-fpga\kyber-fpga.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent27192 C:\Projects\kyber-fpga\kyber-fpga.xpr
 # Log file: C:/Projects/kyber-fpga/vivado.log
 # Journal file: C:/Projects/kyber-fpga\vivado.jou
 #-----------------------------------------------------------
@@ -13,482 +13,129 @@ start_gui
 open_project C:/Projects/kyber-fpga/kyber-fpga.xpr
 update_compile_order -fileset sources_1
 open_bd_design {C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd}
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 20
+wait_on_run impl_1
+file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
+
 launch_sdk -workspace C:/Projects/kyber-fpga/kyber-fpga.sdk -hwspec C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
 startgroup
-create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_0
-endgroup
-set_property location {10 5287 2184} [get_bd_cells signal_multiplexer_0]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_0}]
-set_property location {9 5399 2312} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5423 1955} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5444 2138} [get_bd_cells signal_multiplexer_1]
-set_property location {8 4932 2249} [get_bd_cells double_signal_multip_7]
-set_property location {8 4952 2032} [get_bd_cells double_signal_multip_6]
-set_property location {9 5444 2258} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5435 2030} [get_bd_cells signal_multiplexer_0]
-connect_bd_net [get_bd_pins signal_multiplexer_0/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_0/en_0] [get_bd_pins polyvec_reduce_0/en_lower_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_0/valid_0] [get_bd_pins polyvec_reduce_0/valid_out_lower_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_0/data_0] [get_bd_pins polyvec_reduce_0/do_lower_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_0/en_1] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_0/valid_1] [get_bd_pins polyvec_basemul_acc_0/valid0_to_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_0/data_1] [get_bd_pins polyvec_basemul_acc_0/data0_to_barrett]
-startgroup
-set_property -dict [list CONFIG.DATA_WIDTH {15}] [get_bd_cells signal_multiplexer_0]
-endgroup
-delete_bd_objs [get_bd_nets double_signal_multip_6_valid_out] [get_bd_nets double_signal_multip_6_data_out] [get_bd_cells double_signal_multip_6]
-connect_bd_net [get_bd_pins barrett_reduce_0/valid_in] [get_bd_pins signal_multiplexer_0/valid]
-connect_bd_net [get_bd_pins signal_multiplexer_0/data] [get_bd_pins barrett_reduce_0/data_in]
-startgroup
-set_property -dict [list CONFIG.DATA_WIDTH {16}] [get_bd_cells signal_multiplexer_0]
-endgroup
-set_property location {9 5455 1987} [get_bd_cells signal_multiplexer_0]
-connect_bd_net [get_bd_pins signal_multiplexer_1/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_1/en_0] [get_bd_pins polyvec_reduce_0/en_upper_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_1/valid_0] [get_bd_pins polyvec_reduce_0/valid_out_upper_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_1/data_0] [get_bd_pins polyvec_reduce_0/do_upper_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_1/en_1] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_1/valid_1] [get_bd_pins polyvec_basemul_acc_0/valid1_to_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_1/data_1] [get_bd_pins polyvec_basemul_acc_0/data1_to_barrett]
-startgroup
-set_property -dict [list CONFIG.DATA_WIDTH {16}] [get_bd_cells signal_multiplexer_1]
-endgroup
-delete_bd_objs [get_bd_nets double_signal_multip_7_data_out] [get_bd_nets double_signal_multip_7_valid_out] [get_bd_cells double_signal_multip_7]
-connect_bd_net [get_bd_pins signal_multiplexer_1/valid] [get_bd_pins barrett_reduce_1/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_1/data] [get_bd_pins barrett_reduce_1/data_in]
-startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {3}] [get_bd_cells signal_multiplexer_0]
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_20]
 endgroup
 startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {3}] [get_bd_cells signal_multiplexer_1]
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_21]
 endgroup
-set_property location {9 5446 2153} [get_bd_cells double_signal_multip_12]
-set_property location {9 5465 2516} [get_bd_cells double_signal_multip_13]
-connect_bd_net [get_bd_pins signal_multiplexer_0/en_2] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_0/valid_2] [get_bd_pins polyvec_ntt_0/valid0_to_barrett]
-connect_bd_net [get_bd_pins signal_multiplexer_0/data_2] [get_bd_pins polyvec_ntt_0/data0_to_barrett]
-delete_bd_objs [get_bd_nets double_signal_multip_12_valid_out] [get_bd_nets double_signal_multip_12_data_out] [get_bd_cells double_signal_multip_12]
-delete_bd_objs [get_bd_nets barrett_reduce_2_valid_out]
+startgroup
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_22]
+endgroup
+startgroup
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_23]
+endgroup
+set_property location {7 3557 2410} [get_bd_cells fqmul_5]
+set_property location {7 3557 1977} [get_bd_cells fqmul_4]
+set_property location {7 3557 1997} [get_bd_cells fqmul_4]
+set_property location {7 3576 2693} [get_bd_cells fqmul_6]
+set_property location {7 3566 3172} [get_bd_cells fqmul_7]
+set_property location {7 3564 2846} [get_bd_cells fqmul_6]
+set_property location {7 3563 2461} [get_bd_cells fqmul_5]
+set_property location {7 3571 2441} [get_bd_cells fqmul_5]
+connect_bd_net [get_bd_pins signal_multiplexer_21/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
+connect_bd_net [get_bd_pins signal_multiplexer_21/valid_1] [get_bd_pins polyvec_ntt_0/valid_to_fqmul0]
 undo
-set_property location {9 5481 2069} [get_bd_cells signal_multiplexer_1]
-delete_bd_objs [get_bd_nets polyvec_ntt_0_data1_to_barrett] [get_bd_nets polyvec_ntt_0_valid1_to_barrett] [get_bd_nets double_signal_multip_13_valid_out] [get_bd_nets double_signal_multip_13_data_out] [get_bd_cells double_signal_multip_13]
-set_property location {9 5464 2380} [get_bd_cells double_signal_multip_14]
-set_property location {9 5450 2571} [get_bd_cells double_signal_multip_15]
-delete_bd_objs [get_bd_nets barrett_reduce_2_valid_out] [get_bd_nets barrett_reduce_2_data_out] [get_bd_cells barrett_reduce_2]
-delete_bd_objs [get_bd_nets barrett_reduce_3_valid_out] [get_bd_nets barrett_reduce_3_data_out] [get_bd_cells barrett_reduce_3]
-connect_bd_net [get_bd_pins polyvec_ntt_0/valid1_to_barrett] [get_bd_pins signal_multiplexer_1/valid_2]
-connect_bd_net [get_bd_pins signal_multiplexer_1/en_2] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins polyvec_ntt_0/data1_to_barrett] [get_bd_pins signal_multiplexer_1/data_2]
-connect_bd_net [get_bd_pins barrett_reduce_0/valid_out] [get_bd_pins polyvec_ntt_0/valid0_from_barrett]
-connect_bd_net [get_bd_pins barrett_reduce_0/data_out] [get_bd_pins polyvec_ntt_0/data0_from_barrett]
-connect_bd_net [get_bd_pins polyvec_ntt_0/valid1_from_barrett] [get_bd_pins barrett_reduce_1/valid_out]
-connect_bd_net [get_bd_pins barrett_reduce_1/data_out] [get_bd_pins polyvec_ntt_0/data1_from_barrett]
-save_bd_design
+undo
+connect_bd_net [get_bd_pins signal_multiplexer_20/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
+connect_bd_net [get_bd_pins signal_multiplexer_20/valid_1] [get_bd_pins polyvec_ntt_0/valid_to_fqmul0]
+connect_bd_net [get_bd_pins signal_multiplexer_20/data_1] [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul0]
+connect_bd_net [get_bd_pins signal_multiplexer_21/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
+connect_bd_net [get_bd_pins signal_multiplexer_21/valid_1] [get_bd_pins polyvec_ntt_0/valid_to_fqmul0]
+connect_bd_net [get_bd_pins signal_multiplexer_21/data_1] [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul0]
+connect_bd_net [get_bd_pins signal_multiplexer_22/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
+connect_bd_net [get_bd_pins signal_multiplexer_22/valid_1] [get_bd_pins polyvec_ntt_0/valid_to_fqmul1]
+connect_bd_net [get_bd_pins signal_multiplexer_22/data_1] [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul1]
+connect_bd_net [get_bd_pins signal_multiplexer_23/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
+connect_bd_net [get_bd_pins signal_multiplexer_23/valid_1] [get_bd_pins polyvec_ntt_0/valid_to_fqmul1]
+connect_bd_net [get_bd_pins signal_multiplexer_23/data_1] [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul1]
+delete_bd_objs [get_bd_nets fqmul_6_data_out]
+delete_bd_objs [get_bd_nets fqmul_7_valid_out]
+delete_bd_objs [get_bd_nets fqmul_7_data_out]
+delete_bd_objs [get_bd_nets fqmul_6_valid_out]
+connect_bd_net [get_bd_pins fqmul_4/valid_out] [get_bd_pins polyvec_ntt_0/valid_from_fqmul0]
+connect_bd_net [get_bd_pins fqmul_4/data_out] [get_bd_pins polyvec_ntt_0/coeff_from_fqmul0]
+connect_bd_net [get_bd_pins fqmul_5/valid_out] [get_bd_pins polyvec_ntt_0/valid_from_fqmul1]
+connect_bd_net [get_bd_pins fqmul_5/data_out] [get_bd_pins polyvec_ntt_0/coeff_from_fqmul1]
+delete_bd_objs [get_bd_nets signal_multiplexer_11_data] [get_bd_cells signal_multiplexer_11]
+delete_bd_objs [get_bd_nets signal_multiplexer_10_valid] [get_bd_nets signal_multiplexer_10_data] [get_bd_cells signal_multiplexer_10]
+delete_bd_objs [get_bd_nets signal_multiplexer_9_data] [get_bd_cells signal_multiplexer_9]
+delete_bd_objs [get_bd_nets signal_multiplexer_8_valid] [get_bd_nets signal_multiplexer_8_data] [get_bd_cells signal_multiplexer_8]
+delete_bd_objs [get_bd_nets fqmul_6_valid_out_mont] [get_bd_nets fqmul_6_data_out_mont] [get_bd_cells fqmul_6]
+delete_bd_objs [get_bd_nets fqmul_7_valid_out_mont] [get_bd_nets fqmul_7_data_out_mont] [get_bd_cells fqmul_7]
+startgroup
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_4]
+endgroup
+startgroup
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_5]
+endgroup
 generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
 export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
 export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
 reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
-
-set_property location {9 5452 2164} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5454 1940} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5453 1979} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5448 2188} [get_bd_cells signal_multiplexer_1]
-set_property location {10 5817 2272} [get_bd_cells barrett_reduce_1]
-set_property location {9 5431 2361} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5443 2270} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5451 2302} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5453 2261} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5457 2289} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5432 2307} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5431 2317} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5435 2328} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5437 2310} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5440 2294} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5439 2299} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5438 2287} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5439 2280} [get_bd_cells signal_multiplexer_1]
-set_property location {9 5445 1939} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5453 1955} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5449 1954} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5452 1974} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5446 1976} [get_bd_cells signal_multiplexer_0]
-set_property location {10 5774 2839} [get_bd_cells montgomery_reduction_7]
-set_property location {10 5773 2607} [get_bd_cells montgomery_reduction_6]
-open_run impl_1
-report_utilization -name utilization_1
-set_property location {7 4342 2695} [get_bd_cells double_signal_multip_10]
-set_property location {8 4940 1191} [get_bd_cells double_signal_multip_14]
-connect_bd_net [get_bd_pins double_signal_multip_2/data_in_1] [get_bd_pins fqmul_6/data_out_mont]
-connect_bd_net [get_bd_pins double_signal_multip_2/enable_in_1] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins double_signal_multip_2/valid_in_1] [get_bd_pins fqmul_6/valid_out_mont]
-delete_bd_objs [get_bd_nets montgomery_reduction_6_data_out]
-delete_bd_objs [get_bd_nets montgomery_reduction_6_valid_out]
-connect_bd_net [get_bd_pins montgomery_reduction_2/data_out] [get_bd_pins fqmul_6/data_in_mont]
-connect_bd_net [get_bd_pins montgomery_reduction_2/valid_out] [get_bd_pins fqmul_6/valid_in_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_14_valid_out] [get_bd_nets double_signal_multip_14_data_out] [get_bd_cells montgomery_reduction_6]
-delete_bd_objs [get_bd_cells double_signal_multip_14]
-set_property location {8 4873 1186} [get_bd_cells double_signal_multip_15]
-connect_bd_net [get_bd_pins double_signal_multip_3/data_in_1] [get_bd_pins fqmul_7/data_out_mont]
-connect_bd_net [get_bd_pins double_signal_multip_3/enable_in_1] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins double_signal_multip_3/valid_in_1] [get_bd_pins fqmul_7/valid_out_mont]
-delete_bd_objs [get_bd_nets montgomery_reduction_7_data_out]
-delete_bd_objs [get_bd_nets montgomery_reduction_7_valid_out]
-connect_bd_net [get_bd_pins montgomery_reduction_3/valid_out] [get_bd_pins fqmul_7/data_in_mont]
-undo
-connect_bd_net [get_bd_pins montgomery_reduction_3/valid_out] [get_bd_pins fqmul_7/valid_in_mont]
-connect_bd_net [get_bd_pins montgomery_reduction_3/data_out] [get_bd_pins fqmul_7/data_in_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_15_valid_out] [get_bd_nets double_signal_multip_15_data_out] [get_bd_cells montgomery_reduction_7]
-delete_bd_objs [get_bd_cells double_signal_multip_15]
-set_property location {8 4899 1172} [get_bd_cells double_signal_multip_2]
-set_property location {8 4858 940} [get_bd_cells double_signal_multip_1]
-set_property location {8 4888 692} [get_bd_cells double_signal_multip_0]
-save_bd_design
-generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
-export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
-export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
+launch_runs impl_1 -to_step write_bitstream -jobs 20
 wait_on_run impl_1
 file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
 
 startgroup
-create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_2
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_5]
 endgroup
-set_property location {9.5 5174 678} [get_bd_cells signal_multiplexer_2]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_2}]
-set_property location {10 5421 906} [get_bd_cells signal_multiplexer_3]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_2}]
-set_property location {10 5402 1300} [get_bd_cells signal_multiplexer_4]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_2}]
-set_property location {10 5439 1488} [get_bd_cells signal_multiplexer_5]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_2}]
-set_property location {10 5450 1787} [get_bd_cells signal_multiplexer_6]
-set_property location {9 5420 906} [get_bd_cells signal_multiplexer_3]
-set_property location {9 5406 1146} [get_bd_cells signal_multiplexer_4]
-set_property location {9 5419 1401} [get_bd_cells signal_multiplexer_5]
-set_property location {9 5415 1610} [get_bd_cells signal_multiplexer_6]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_2}]
-set_property location {10 5432 1805} [get_bd_cells signal_multiplexer_7]
-connect_bd_net [get_bd_pins signal_multiplexer_2/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_2/en_0] [get_bd_pins poly_tomont_0/en_lower_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_2/valid_0] [get_bd_pins poly_tomont_0/valid_out_lower_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_2/data_0] [get_bd_pins poly_tomont_0/do_lower_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_2/en_1] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_2/valid_1] [get_bd_pins fqmul_0/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_2/data_1] [get_bd_pins fqmul_0/data_out_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_0_data_out]
-delete_bd_objs [get_bd_nets double_signal_multip_0_valid_out]
-connect_bd_net [get_bd_pins signal_multiplexer_2/valid] [get_bd_pins montgomery_reduction_0/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_2/data] [get_bd_pins montgomery_reduction_0/data_in]
-connect_bd_net [get_bd_pins signal_multiplexer_3/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_3/en_0] [get_bd_pins poly_tomont_0/en_upper_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_3/valid_0] [get_bd_pins poly_tomont_0/valid_out_upper_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_3/data_0] [get_bd_pins poly_tomont_0/do_upper_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_3/en_1] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_3/valid_1] [get_bd_pins fqmul_1/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_3/data_1] [get_bd_pins fqmul_1/data_out_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_1_data_out]
-delete_bd_objs [get_bd_nets double_signal_multip_1_valid_out]
-connect_bd_net [get_bd_pins signal_multiplexer_3/valid] [get_bd_pins montgomery_reduction_1/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_3/data] [get_bd_pins montgomery_reduction_1/data_in]
-connect_bd_net [get_bd_pins signal_multiplexer_4/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_4/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_4/valid_0] [get_bd_pins fqmul_2/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_4/data_0] [get_bd_pins fqmul_2/data_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_4/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_4/valid_1] [get_bd_pins fqmul_6/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_4/data_1] [get_bd_pins fqmul_6/data_out_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_2_valid_out]
-delete_bd_objs [get_bd_nets double_signal_multip_2_data_out]
-connect_bd_net [get_bd_pins signal_multiplexer_4/valid] [get_bd_pins montgomery_reduction_2/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_4/data] [get_bd_pins montgomery_reduction_2/data_in]
-connect_bd_net [get_bd_pins signal_multiplexer_5/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_5/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_5/valid_0] [get_bd_pins fqmul_3/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_5/data_0] [get_bd_pins fqmul_3/data_out_mont]
+connect_bd_net [get_bd_pins signal_multiplexer_5/en_1] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
+connect_bd_net [get_bd_pins signal_multiplexer_5/valid_1] [get_bd_pins fqmul_3/valid_out_mont]
+connect_bd_net [get_bd_pins signal_multiplexer_5/data_1] [get_bd_pins fqmul_3/data_out_mont]
+undo
+undo
+undo
+connect_bd_net [get_bd_pins signal_multiplexer_5/valid_1] [get_bd_pins fqmul_3/valid_out_mont]
+connect_bd_net [get_bd_pins signal_multiplexer_5/data_1] [get_bd_pins fqmul_3/data_out_mont]
 connect_bd_net [get_bd_pins signal_multiplexer_5/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_5/valid_1] [get_bd_pins fqmul_7/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_5/data_1] [get_bd_pins fqmul_7/data_out_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_3_data_out]
-delete_bd_objs [get_bd_nets double_signal_multip_3_valid_out]
-connect_bd_net [get_bd_pins signal_multiplexer_5/valid] [get_bd_pins montgomery_reduction_3/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_5/data] [get_bd_pins montgomery_reduction_3/data_in]
-connect_bd_net [get_bd_pins signal_multiplexer_6/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_6/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_6/valid_0] [get_bd_pins fqmul_4/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_6/data_0] [get_bd_pins fqmul_4/data_out_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_4_valid_out]
-delete_bd_objs [get_bd_nets double_signal_multip_4_data_out]
-connect_bd_net [get_bd_pins signal_multiplexer_6/valid] [get_bd_pins montgomery_reduction_4/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_6/data] [get_bd_pins montgomery_reduction_4/data_in]
-connect_bd_net [get_bd_pins signal_multiplexer_7/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_7/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_7/valid_0] [get_bd_pins fqmul_5/valid_out_mont]
-connect_bd_net [get_bd_pins signal_multiplexer_7/data_0] [get_bd_pins fqmul_5/data_out_mont]
-delete_bd_objs [get_bd_nets double_signal_multip_5_data_out]
-delete_bd_objs [get_bd_nets double_signal_multip_5_valid_out]
-connect_bd_net [get_bd_pins signal_multiplexer_7/valid] [get_bd_pins montgomery_reduction_5/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_7/data] [get_bd_pins montgomery_reduction_5/data_in]
+undo
+undo
+undo
+undo
 startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_7]
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_6]
 endgroup
 startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_6]
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_7]
 endgroup
-delete_bd_objs [get_bd_cells double_signal_multip_0]
-delete_bd_objs [get_bd_cells double_signal_multip_1]
-delete_bd_objs [get_bd_cells double_signal_multip_2]
-delete_bd_objs [get_bd_cells double_signal_multip_3]
-delete_bd_objs [get_bd_cells double_signal_multip_4]
-delete_bd_objs [get_bd_cells double_signal_multip_5]
+connect_bd_net [get_bd_pins signal_multiplexer_6/valid_1] [get_bd_pins fqmul_4/valid_out_mont]
+connect_bd_net [get_bd_pins signal_multiplexer_6/data_1] [get_bd_pins fqmul_4/data_out_mont]
+connect_bd_net [get_bd_pins signal_multiplexer_7/valid_1] [get_bd_pins fqmul_5/valid_out_mont]
+connect_bd_net [get_bd_pins signal_multiplexer_7/data_1] [get_bd_pins fqmul_5/data_out_mont]
+connect_bd_net [get_bd_pins signal_multiplexer_6/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
+connect_bd_net [get_bd_pins signal_multiplexer_7/en_1] [get_bd_pins polyvec_ntt_0/en_dsm]
 save_bd_design
 generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
 export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
 export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
 reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
-
-set_property location {9 5397 2010} [get_bd_cells signal_multiplexer_0]
-set_property location {9 5420 2291} [get_bd_cells signal_multiplexer_1]
-startgroup
-create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_8
-endgroup
-set_property location {8.5 4531 2203} [get_bd_cells signal_multiplexer_8]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_8}]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_8}]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_8}]
-set_property location {8 4547 2706} [get_bd_cells signal_multiplexer_10]
-set_property location {8 4557 2957} [get_bd_cells signal_multiplexer_11]
-set_property location {8 4563 2453} [get_bd_cells signal_multiplexer_9]
-set_property location {8 4555 2242} [get_bd_cells signal_multiplexer_8]
-set_property -dict [list CONFIG.DATA_WIDTH {16}] [get_bd_cells signal_multiplexer_8]
-set_property location {8 4547 2480} [get_bd_cells signal_multiplexer_9]
-set_property -dict [list CONFIG.DATA_WIDTH {16}] [get_bd_cells signal_multiplexer_9]
-set_property -dict [list CONFIG.DATA_WIDTH {16}] [get_bd_cells signal_multiplexer_10]
-set_property -dict [list CONFIG.DATA_WIDTH {16}] [get_bd_cells signal_multiplexer_11]
-set_property location {8 4542 2965} [get_bd_cells signal_multiplexer_11]
-connect_bd_net [get_bd_pins signal_multiplexer_8/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_8/en_0] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_8/valid_0] [get_bd_pins polyvec_ntt_0/valid_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_8/data_0] [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_9/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_9/en_0] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_9/valid_0] [get_bd_pins polyvec_ntt_0/valid_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_9/data_0] [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_10/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_10/en_0] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_10/valid_0] [get_bd_pins polyvec_ntt_0/valid_to_fqmul1]
-connect_bd_net [get_bd_pins signal_multiplexer_10/data_0] [get_bd_pins polyvec_ntt_0/coeff0_to_fqmul1]
-connect_bd_net [get_bd_pins signal_multiplexer_11/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_11/en_0] [get_bd_pins polyvec_ntt_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_11/valid_0] [get_bd_pins polyvec_ntt_0/valid_to_fqmul1]
-connect_bd_net [get_bd_pins signal_multiplexer_11/data_0] [get_bd_pins polyvec_ntt_0/coeff1_to_fqmul1]
-delete_bd_objs [get_bd_nets double_signal_multip_8_valid_out] [get_bd_nets double_signal_multip_8_data_out] [get_bd_cells double_signal_multip_8]
-delete_bd_objs [get_bd_nets double_signal_multip_9_data_out] [get_bd_cells double_signal_multip_9]
-delete_bd_objs [get_bd_nets double_signal_multip_10_valid_out] [get_bd_nets double_signal_multip_10_data_out] [get_bd_cells double_signal_multip_10]
-delete_bd_objs [get_bd_nets double_signal_multip_11_data_out] [get_bd_cells double_signal_multip_11]
-connect_bd_net [get_bd_pins fqmul_6/valid_in] [get_bd_pins signal_multiplexer_8/valid]
-connect_bd_net [get_bd_pins signal_multiplexer_8/data] [get_bd_pins fqmul_6/data_in_1]
-connect_bd_net [get_bd_pins fqmul_6/data_in_2] [get_bd_pins signal_multiplexer_9/data]
-connect_bd_net [get_bd_pins signal_multiplexer_10/valid] [get_bd_pins fqmul_7/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_10/data] [get_bd_pins fqmul_7/data_in_1]
-connect_bd_net [get_bd_pins signal_multiplexer_11/data] [get_bd_pins fqmul_7/data_in_2]
-startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_11]
-endgroup
-startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_10]
-endgroup
-startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_9]
-endgroup
-startgroup
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_8]
-endgroup
-set_property location {8 4575 3054} [get_bd_cells signal_multiplexer_11]
-set_property location {8 4562 2890} [get_bd_cells signal_multiplexer_10]
-set_property location {8 4575 2727} [get_bd_cells signal_multiplexer_9]
-set_property location {8 4583 2564} [get_bd_cells signal_multiplexer_8]
-save_bd_design
-generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
-export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
-export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
+launch_runs impl_1 -to_step write_bitstream -jobs 20
 wait_on_run impl_1
 file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
 
 startgroup
-create_bd_cell -type ip -vlnv xilinx.com:user:signal_multiplexer:1.0 signal_multiplexer_12
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_18]
 endgroup
-set_property location {6.5 3337 554} [get_bd_cells signal_multiplexer_12]
-set_property -dict [list CONFIG.DATA_WIDTH {16}] [get_bd_cells signal_multiplexer_12]
-set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {1}] [get_bd_cells signal_multiplexer_12]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_12}]
-set_property location {6 3320 778} [get_bd_cells signal_multiplexer_13]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_12}]
-set_property location {6 3332 970} [get_bd_cells signal_multiplexer_14]
-set_property location {7 4026 905} [get_bd_cells double_signal_multip_17]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_12}]
-set_property location {7 3426 1220} [get_bd_cells signal_multiplexer_15]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_12}]
-set_property location {7 3443 1426} [get_bd_cells signal_multiplexer_16]
-set_property location {6 3457 1275} [get_bd_cells signal_multiplexer_15]
-set_property location {6 3464 1644} [get_bd_cells signal_multiplexer_16]
-set_property location {6 3434 1411} [get_bd_cells signal_multiplexer_15]
-set_property location {6 3465 1209} [get_bd_cells signal_multiplexer_14]
-set_property location {6 3452 914} [get_bd_cells signal_multiplexer_13]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_16}]
-set_property location {6 3446 1821} [get_bd_cells signal_multiplexer_17]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_17}]
-set_property location {6 3448 2042} [get_bd_cells signal_multiplexer_18]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_17}]
-set_property location {6 3460 2263} [get_bd_cells signal_multiplexer_19]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_17}]
-set_property location {6 3439 2485} [get_bd_cells signal_multiplexer_20]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_17}]
-set_property location {6 3478 2703} [get_bd_cells signal_multiplexer_21]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_17}]
-set_property location {6 3459 2924} [get_bd_cells signal_multiplexer_22]
-copy_bd_objs /  [get_bd_cells {signal_multiplexer_17}]
-set_property location {6 3432 3121} [get_bd_cells signal_multiplexer_23]
-connect_bd_net [get_bd_pins signal_multiplexer_12/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_12/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_12/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_12/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_13/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_13/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_13/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_13/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul0]
-connect_bd_net [get_bd_pins signal_multiplexer_14/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_14/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_14/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul1]
-connect_bd_net [get_bd_pins signal_multiplexer_14/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul1]
-connect_bd_net [get_bd_pins signal_multiplexer_15/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_15/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_15/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul1]
-connect_bd_net [get_bd_pins signal_multiplexer_15/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul1]
-connect_bd_net [get_bd_pins signal_multiplexer_16/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_16/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_16/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul2]
-connect_bd_net [get_bd_pins signal_multiplexer_16/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul2]
-connect_bd_net [get_bd_pins signal_multiplexer_17/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_17/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_17/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul2]
-connect_bd_net [get_bd_pins signal_multiplexer_17/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul2]
-connect_bd_net [get_bd_pins signal_multiplexer_18/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_18/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_18/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul3]
-connect_bd_net [get_bd_pins signal_multiplexer_18/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul3]
-connect_bd_net [get_bd_pins signal_multiplexer_19/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_19/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_19/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul3]
-connect_bd_net [get_bd_pins signal_multiplexer_19/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul3]
-connect_bd_net [get_bd_pins signal_multiplexer_20/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_20/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_20/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul4]
-connect_bd_net [get_bd_pins signal_multiplexer_20/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul4]
-connect_bd_net [get_bd_pins signal_multiplexer_21/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_21/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_21/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul4]
-connect_bd_net [get_bd_pins signal_multiplexer_21/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul4]
-connect_bd_net [get_bd_pins signal_multiplexer_22/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_22/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_22/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul5]
-connect_bd_net [get_bd_pins signal_multiplexer_22/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff0_to_fqmul5]
-connect_bd_net [get_bd_pins signal_multiplexer_23/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
-connect_bd_net [get_bd_pins signal_multiplexer_23/en_0] [get_bd_pins polyvec_basemul_acc_0/en_dsm]
-connect_bd_net [get_bd_pins signal_multiplexer_23/valid_0] [get_bd_pins polyvec_basemul_acc_0/valid_to_fqmul5]
-connect_bd_net [get_bd_pins signal_multiplexer_23/data_0] [get_bd_pins polyvec_basemul_acc_0/coeff1_to_fqmul5]
-delete_bd_objs [get_bd_nets double_signal_multip_16_data_out] [get_bd_nets double_signal_multip_16_valid_out] [get_bd_cells double_signal_multip_16]
-delete_bd_objs [get_bd_nets double_signal_multip_17_data_out] [get_bd_cells double_signal_multip_17]
-delete_bd_objs [get_bd_nets double_signal_multip_19_data_out] [get_bd_cells double_signal_multip_19]
-delete_bd_objs [get_bd_nets double_signal_multip_18_valid_out] [get_bd_nets double_signal_multip_18_data_out] [get_bd_cells double_signal_multip_18]
-delete_bd_objs [get_bd_nets double_signal_multip_20_valid_out] [get_bd_nets double_signal_multip_20_data_out] [get_bd_cells double_signal_multip_20]
-delete_bd_objs [get_bd_nets double_signal_multip_21_data_out] [get_bd_cells double_signal_multip_21]
-delete_bd_objs [get_bd_nets double_signal_multip_22_valid_out] [get_bd_nets double_signal_multip_22_data_out] [get_bd_cells double_signal_multip_22]
-delete_bd_objs [get_bd_nets double_signal_multip_23_data_out] [get_bd_cells double_signal_multip_23]
-delete_bd_objs [get_bd_nets double_signal_multip_24_data_out] [get_bd_nets double_signal_multip_24_valid_out] [get_bd_cells double_signal_multip_24]
-delete_bd_objs [get_bd_nets double_signal_multip_25_data_out] [get_bd_cells double_signal_multip_25]
-delete_bd_objs [get_bd_nets double_signal_multip_27_data_out] [get_bd_cells double_signal_multip_27]
-delete_bd_objs [get_bd_nets double_signal_multip_26_data_out] [get_bd_nets double_signal_multip_26_valid_out] [get_bd_cells double_signal_multip_26]
-connect_bd_net [get_bd_pins signal_multiplexer_12/valid] [get_bd_pins fqmul_0/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_12/data] [get_bd_pins fqmul_0/data_in_1]
-connect_bd_net [get_bd_pins signal_multiplexer_13/data] [get_bd_pins fqmul_0/data_in_2]
-connect_bd_net [get_bd_pins signal_multiplexer_14/valid] [get_bd_pins fqmul_1/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_14/data] [get_bd_pins fqmul_1/data_in_1]
-connect_bd_net [get_bd_pins signal_multiplexer_15/data] [get_bd_pins fqmul_1/data_in_2]
-connect_bd_net [get_bd_pins signal_multiplexer_16/valid] [get_bd_pins fqmul_2/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_16/data] [get_bd_pins fqmul_2/data_in_1]
-connect_bd_net [get_bd_pins signal_multiplexer_17/data] [get_bd_pins fqmul_2/data_in_2]
-connect_bd_net [get_bd_pins signal_multiplexer_18/valid] [get_bd_pins fqmul_3/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_18/data] [get_bd_pins fqmul_3/data_in_1]
-connect_bd_net [get_bd_pins signal_multiplexer_19/data] [get_bd_pins fqmul_3/data_in_2]
-connect_bd_net [get_bd_pins signal_multiplexer_20/valid] [get_bd_pins fqmul_4/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_20/data] [get_bd_pins fqmul_4/data_in_1]
-connect_bd_net [get_bd_pins signal_multiplexer_21/data] [get_bd_pins fqmul_4/data_in_2]
-connect_bd_net [get_bd_pins signal_multiplexer_22/valid] [get_bd_pins fqmul_5/valid_in]
-connect_bd_net [get_bd_pins signal_multiplexer_22/data] [get_bd_pins fqmul_5/data_in_1]
-connect_bd_net [get_bd_pins signal_multiplexer_23/data] [get_bd_pins fqmul_5/data_in_2]
-set_property location {6.5 3827 675} [get_bd_cells fqmul_0]
-set_property location {7 3919 931} [get_bd_cells fqmul_1]
-set_property location {7 3825 1764} [get_bd_cells fqmul_2]
-set_property location {7 3908 1613} [get_bd_cells fqmul_2]
-set_property location {6 3285 719} [get_bd_cells signal_multiplexer_13]
-set_property location {6.5 3653 588} [get_bd_cells fqmul_0]
-set_property location {7 3653 640} [get_bd_cells fqmul_0]
-set_property location {6 3180 931} [get_bd_cells signal_multiplexer_14]
-set_property location {6 3189 1100} [get_bd_cells signal_multiplexer_15]
-set_property location {7 3695 993} [get_bd_cells fqmul_1]
-set_property location {6 3193 1285} [get_bd_cells signal_multiplexer_16]
-set_property location {6 3205 1460} [get_bd_cells signal_multiplexer_17]
-set_property location {7 3588 1307} [get_bd_cells fqmul_2]
-set_property location {6 3173 1602} [get_bd_cells signal_multiplexer_18]
-set_property location {6 3199 1757} [get_bd_cells signal_multiplexer_19]
-set_property location {7 3625 1653} [get_bd_cells fqmul_3]
-set_property location {6 3268 1937} [get_bd_cells signal_multiplexer_20]
-set_property location {6 3266 2086} [get_bd_cells signal_multiplexer_21]
-set_property location {7 3595 1957} [get_bd_cells fqmul_4]
-set_property location {6 3179 2224} [get_bd_cells signal_multiplexer_22]
-set_property location {6 3190 2372} [get_bd_cells signal_multiplexer_23]
-set_property location {7 3770 2251} [get_bd_cells fqmul_5]
-set_property location {6 3239 2532} [get_bd_cells signal_multiplexer_8]
-set_property location {6 3194 2711} [get_bd_cells signal_multiplexer_9]
-set_property location {6 3225 2873} [get_bd_cells signal_multiplexer_10]
-set_property location {6 3222 3031} [get_bd_cells signal_multiplexer_11]
-set_property location {7 3820 2607} [get_bd_cells fqmul_6]
-set_property location {7 3666 2903} [get_bd_cells fqmul_7]
-set_property location {7.5 4184 664} [get_bd_cells signal_multiplexer_2]
-set_property location {8.5 4335 642} [get_bd_cells signal_multiplexer_2]
-set_property location {8.5 5029 693} [get_bd_cells signal_multiplexer_2]
-set_property location {7.5 4173 640} [get_bd_cells signal_multiplexer_2]
-set_property location {8 4137 963} [get_bd_cells signal_multiplexer_3]
-set_property location {8 4169 1322} [get_bd_cells signal_multiplexer_4]
-set_property location {8 4217 1629} [get_bd_cells signal_multiplexer_5]
-set_property location {8 4164 1924} [get_bd_cells signal_multiplexer_6]
-set_property location {8 4164 2210} [get_bd_cells signal_multiplexer_7]
-set_property location {8.5 4590 650} [get_bd_cells montgomery_reduction_0]
-set_property location {9 4593 970} [get_bd_cells montgomery_reduction_1]
-set_property location {9 4640 1283} [get_bd_cells montgomery_reduction_2]
-set_property location {9 4559 1648} [get_bd_cells montgomery_reduction_3]
-set_property location {9 4499 1896} [get_bd_cells montgomery_reduction_4]
-set_property location {9 4603 2221} [get_bd_cells montgomery_reduction_5]
-set_property location {8 4175 2552} [get_bd_cells signal_multiplexer_0]
-set_property location {8 4206 2903} [get_bd_cells signal_multiplexer_1]
-set_property location {8 4180 2567} [get_bd_cells signal_multiplexer_0]
-set_property location {9 4563 2561} [get_bd_cells barrett_reduce_0]
-set_property location {9 4608 2929} [get_bd_cells barrett_reduce_1]
-save_bd_design
-generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
-export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
-export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-file copy -force C:/Projects/kyber-fpga/kyber-fpga.runs/impl_1/kyberBD_wrapper.sysdef C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper.hdf
-
+startgroup
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_19]
+endgroup
+startgroup
+endgroup
+startgroup
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_16]
+endgroup
+startgroup
+set_property -dict [list CONFIG.NUMBER_OF_CHANNELS {2}] [get_bd_cells signal_multiplexer_17]
+endgroup
+undo
+undo
+undo
+undo
+undo
