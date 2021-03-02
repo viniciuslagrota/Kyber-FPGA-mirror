@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:polyvec_basemul_acc_montgomery:1.0
--- IP Revision: 15
+-- IP Revision: 16
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -205,7 +205,7 @@ ARCHITECTURE kyberBD_polyvec_basemul_acc_0_1_arch OF kyberBD_polyvec_basemul_acc
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_polyvec_basemul_acc_0_1_arch : ARCHITECTURE IS "kyberBD_polyvec_basemul_acc_0_1,polyvec_basemul_acc_montgomery_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_polyvec_basemul_acc_0_1_arch: ARCHITECTURE IS "kyberBD_polyvec_basemul_acc_0_1,polyvec_basemul_acc_montgomery_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=polyvec_basemul_acc_montgomery,x_ipVersion=1.0,x_ipCoreRevision=15,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_polyvec_basemul_acc_0_1_arch: ARCHITECTURE IS "kyberBD_polyvec_basemul_acc_0_1,polyvec_basemul_acc_montgomery_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=polyvec_basemul_acc_montgomery,x_ipVersion=1.0,x_ipCoreRevision=16,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF bram_write_dob: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B DOUT";

@@ -34,14 +34,6 @@
       "bram_port_selector_1": "",
       "bram_port_selector_3": "",
       "bram_port_selector_2": "",
-      "double_signal_multip_0": "",
-      "double_signal_multip_1": "",
-      "double_signal_multip_2": "",
-      "double_signal_multip_3": "",
-      "double_signal_multip_4": "",
-      "double_signal_multip_5": "",
-      "double_signal_multip_6": "",
-      "double_signal_multip_7": "",
       "dual_bram_0": "",
       "fqmul_0": "",
       "fqmul_1": "",
@@ -58,35 +50,23 @@
       "poly_tomont_0": "",
       "polyvec_reduce_0": "",
       "timer2_0": "",
-      "double_signal_multip_8": "",
-      "double_signal_multip_9": "",
-      "double_signal_multip_10": "",
-      "double_signal_multip_11": "",
-      "double_signal_multip_12": "",
-      "double_signal_multip_13": "",
-      "fqmul_6": "",
-      "fqmul_7": "",
-      "montgomery_reduction_6": "",
-      "montgomery_reduction_7": "",
-      "barrett_reduce_2": "",
-      "barrett_reduce_3": "",
       "axi_gpio_4": "",
       "polyvec_ntt_0": "",
-      "double_signal_multip_14": "",
-      "double_signal_multip_15": "",
       "polyvec_basemul_acc_0": "",
-      "double_signal_multip_16": "",
-      "double_signal_multip_17": "",
-      "double_signal_multip_18": "",
-      "double_signal_multip_19": "",
-      "double_signal_multip_20": "",
-      "double_signal_multip_21": "",
-      "double_signal_multip_22": "",
-      "double_signal_multip_23": "",
-      "double_signal_multip_24": "",
-      "double_signal_multip_25": "",
-      "double_signal_multip_26": "",
-      "double_signal_multip_27": ""
+      "signal_multiplexer_0": "",
+      "signal_multiplexer_1": "",
+      "signal_multiplexer_12": "",
+      "signal_multiplexer_14": "",
+      "signal_multiplexer_16": "",
+      "signal_multiplexer_17": "",
+      "signal_multiplexer_18": "",
+      "signal_multiplexer_19": "",
+      "signal_multiplexer_2": "",
+      "signal_multiplexer_3": "",
+      "signal_multiplexer_4": "",
+      "signal_multiplexer_5": "",
+      "signal_multiplexer_6": "",
+      "signal_multiplexer_7": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1392,16 +1372,16 @@
               }
             },
             "interface_nets": {
-              "s00_couplers_to_auto_pc": {
-                "interface_ports": [
-                  "S_AXI",
-                  "auto_pc/S_AXI"
-                ]
-              },
               "auto_pc_to_s00_couplers": {
                 "interface_ports": [
                   "M_AXI",
                   "auto_pc/M_AXI"
+                ]
+              },
+              "s00_couplers_to_auto_pc": {
+                "interface_ports": [
+                  "S_AXI",
+                  "auto_pc/S_AXI"
                 ]
               }
             },
@@ -1800,28 +1780,64 @@
           }
         },
         "interface_nets": {
+          "xbar_to_m04_couplers": {
+            "interface_ports": [
+              "xbar/M04_AXI",
+              "m04_couplers/S_AXI"
+            ]
+          },
+          "m05_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M05_AXI",
+              "m05_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m05_couplers": {
+            "interface_ports": [
+              "xbar/M05_AXI",
+              "m05_couplers/S_AXI"
+            ]
+          },
+          "m06_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M06_AXI",
+              "m06_couplers/M_AXI"
+            ]
+          },
           "xbar_to_m06_couplers": {
             "interface_ports": [
               "xbar/M06_AXI",
               "m06_couplers/S_AXI"
             ]
           },
-          "xbar_to_m03_couplers": {
+          "axi_interconnect_0_to_s00_couplers": {
             "interface_ports": [
-              "xbar/M03_AXI",
-              "m03_couplers/S_AXI"
+              "S00_AXI",
+              "s00_couplers/S_AXI"
             ]
           },
-          "m04_couplers_to_axi_interconnect_0": {
+          "s00_couplers_to_xbar": {
             "interface_ports": [
-              "M04_AXI",
-              "m04_couplers/M_AXI"
+              "s00_couplers/M_AXI",
+              "xbar/S00_AXI"
             ]
           },
-          "m03_couplers_to_axi_interconnect_0": {
+          "m00_couplers_to_axi_interconnect_0": {
             "interface_ports": [
-              "M03_AXI",
-              "m03_couplers/M_AXI"
+              "M00_AXI",
+              "m00_couplers/M_AXI"
+            ]
+          },
+          "m01_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
             ]
           },
           "xbar_to_m01_couplers": {
@@ -1836,64 +1852,28 @@
               "m02_couplers/M_AXI"
             ]
           },
+          "m03_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M03_AXI",
+              "m03_couplers/M_AXI"
+            ]
+          },
           "xbar_to_m02_couplers": {
             "interface_ports": [
               "xbar/M02_AXI",
               "m02_couplers/S_AXI"
             ]
           },
-          "m05_couplers_to_axi_interconnect_0": {
+          "xbar_to_m03_couplers": {
             "interface_ports": [
-              "M05_AXI",
-              "m05_couplers/M_AXI"
+              "xbar/M03_AXI",
+              "m03_couplers/S_AXI"
             ]
           },
-          "xbar_to_m04_couplers": {
+          "m04_couplers_to_axi_interconnect_0": {
             "interface_ports": [
-              "xbar/M04_AXI",
-              "m04_couplers/S_AXI"
-            ]
-          },
-          "m06_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M06_AXI",
-              "m06_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m05_couplers": {
-            "interface_ports": [
-              "xbar/M05_AXI",
-              "m05_couplers/S_AXI"
-            ]
-          },
-          "m00_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
-            ]
-          },
-          "s00_couplers_to_xbar": {
-            "interface_ports": [
-              "s00_couplers/M_AXI",
-              "xbar/S00_AXI"
-            ]
-          },
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
-            ]
-          },
-          "m01_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
-            ]
-          },
-          "axi_interconnect_0_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
+              "M04_AXI",
+              "m04_couplers/M_AXI"
             ]
           }
         },
@@ -2043,48 +2023,6 @@
         "vlnv": "xilinx.com:user:bram_port_selector:1.0",
         "xci_name": "kyberBD_bram_port_selector_2_0"
       },
-      "double_signal_multip_0": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_0"
-      },
-      "double_signal_multip_1": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_1"
-      },
-      "double_signal_multip_2": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_2"
-      },
-      "double_signal_multip_3": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_3"
-      },
-      "double_signal_multip_4": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_4"
-      },
-      "double_signal_multip_5": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_5"
-      },
-      "double_signal_multip_6": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_6",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
-      "double_signal_multip_7": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_0_7",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
       "dual_bram_0": {
         "vlnv": "xilinx.com:user:dual_bram:1.0",
         "xci_name": "kyberBD_dual_bram_0_0",
@@ -2162,84 +2100,6 @@
         "vlnv": "xilinx.com:user:timer2:1.0",
         "xci_name": "kyberBD_timer2_0_0"
       },
-      "double_signal_multip_8": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_8_0",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
-      "double_signal_multip_9": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_8_1",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
-      "double_signal_multip_10": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_8_2",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
-      "double_signal_multip_11": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_8_3",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
-      "double_signal_multip_12": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_8_4",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
-      "double_signal_multip_13": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_8_5",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          }
-        }
-      },
-      "fqmul_6": {
-        "vlnv": "xilinx.com:user:fqmul:1.0",
-        "xci_name": "kyberBD_fqmul_6_1"
-      },
-      "fqmul_7": {
-        "vlnv": "xilinx.com:user:fqmul:1.0",
-        "xci_name": "kyberBD_fqmul_6_2"
-      },
-      "montgomery_reduction_6": {
-        "vlnv": "xilinx.com:user:montgomery_reduction:1.0",
-        "xci_name": "kyberBD_montgomery_reduction_6_0"
-      },
-      "montgomery_reduction_7": {
-        "vlnv": "xilinx.com:user:montgomery_reduction:1.0",
-        "xci_name": "kyberBD_montgomery_reduction_6_1"
-      },
-      "barrett_reduce_2": {
-        "vlnv": "xilinx.com:user:barrett_reduce:1.0",
-        "xci_name": "kyberBD_barrett_reduce_2_0"
-      },
-      "barrett_reduce_3": {
-        "vlnv": "xilinx.com:user:barrett_reduce:1.0",
-        "xci_name": "kyberBD_barrett_reduce_2_1"
-      },
       "axi_gpio_4": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "xci_name": "kyberBD_axi_gpio_4_0",
@@ -2253,162 +2113,186 @@
         "vlnv": "xilinx.com:user:polyvec_ntt:1.0",
         "xci_name": "kyberBD_polyvec_ntt_0_0"
       },
-      "double_signal_multip_14": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_14_0"
-      },
-      "double_signal_multip_15": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_14_1"
-      },
       "polyvec_basemul_acc_0": {
         "vlnv": "xilinx.com:user:polyvec_basemul_acc_montgomery:1.0",
         "xci_name": "kyberBD_polyvec_basemul_acc_0_1"
       },
-      "double_signal_multip_16": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_0",
+      "signal_multiplexer_0": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_0_0",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "3"
           }
         }
       },
-      "double_signal_multip_17": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_1",
+      "signal_multiplexer_1": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_0_1",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "3"
           }
         }
       },
-      "double_signal_multip_18": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_2",
+      "signal_multiplexer_12": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_12_0",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
           }
         }
       },
-      "double_signal_multip_19": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_3",
+      "signal_multiplexer_14": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_12_2",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
           }
         }
       },
-      "double_signal_multip_20": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_4",
+      "signal_multiplexer_16": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_12_4",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
           }
         }
       },
-      "double_signal_multip_21": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_5",
+      "signal_multiplexer_17": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_16_0",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
           }
         }
       },
-      "double_signal_multip_22": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_6",
+      "signal_multiplexer_18": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_17_0",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
           }
         }
       },
-      "double_signal_multip_23": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_7",
+      "signal_multiplexer_19": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_17_1",
         "parameters": {
           "DATA_WIDTH": {
             "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
           }
         }
       },
-      "double_signal_multip_24": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_8",
+      "signal_multiplexer_2": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_2_0"
+      },
+      "signal_multiplexer_3": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_2_1"
+      },
+      "signal_multiplexer_4": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_2_2",
         "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
           }
         }
       },
-      "double_signal_multip_25": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_9",
+      "signal_multiplexer_5": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_2_3",
         "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
           }
         }
       },
-      "double_signal_multip_26": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_10",
+      "signal_multiplexer_6": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_2_4",
         "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
           }
         }
       },
-      "double_signal_multip_27": {
-        "vlnv": "xilinx.com:user:double_signal_multiplexer:1.0",
-        "xci_name": "kyberBD_double_signal_multip_16_11",
+      "signal_multiplexer_7": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_2_5",
         "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
           }
         }
       }
     },
     "interface_nets": {
-      "bram_port_selector_1_BRAM_PORT_MASTER": {
+      "processing_system7_0_M_AXI_GP0": {
         "interface_ports": [
-          "bram_port_selector_1/BRAM_PORT_MASTER",
-          "dual_bram_0/BRAM0_PORT_B"
+          "processing_system7_0/M_AXI_GP0",
+          "axi_interconnect_0/S00_AXI"
         ]
       },
-      "processing_system7_0_DDR": {
+      "polyvec_ntt_0_BRAM_PORT_A": {
         "interface_ports": [
-          "DDR",
-          "processing_system7_0/DDR"
+          "bram_port_selector_0/BRAM_PORT_3",
+          "polyvec_ntt_0/BRAM_PORT_A"
         ]
       },
-      "axi_interconnect_0_M01_AXI": {
+      "axi_interconnect_0_M04_AXI": {
         "interface_ports": [
-          "axi_interconnect_0/M01_AXI",
-          "dual_bram_0/S00_AXI"
-        ]
-      },
-      "bram_port_selector_2_BRAM_PORT_MASTER": {
-        "interface_ports": [
-          "bram_port_selector_2/BRAM_PORT_MASTER",
-          "dual_bram_0/BRAM1_PORT_A"
-        ]
-      },
-      "axi_interconnect_0_M06_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M06_AXI",
-          "axi_gpio_4/S_AXI"
-        ]
-      },
-      "poly_tomont_0_BRAM_PORT_A": {
-        "interface_ports": [
-          "poly_tomont_0/BRAM_PORT_A",
-          "bram_port_selector_0/BRAM_PORT_0"
+          "axi_interconnect_0/M04_AXI",
+          "axi_gpio_2/S_AXI"
         ]
       },
       "polyvec_basemul_acc_0_BRAM0_PORT_A": {
@@ -2423,28 +2307,10 @@
           "bram_port_selector_0/BRAM_PORT_1"
         ]
       },
-      "poly_tomont_0_BRAM_PORT_B": {
+      "bram_port_selector_1_BRAM_PORT_MASTER": {
         "interface_ports": [
-          "poly_tomont_0/BRAM_PORT_B",
-          "bram_port_selector_2/BRAM_PORT_0"
-        ]
-      },
-      "bram_port_selector_0_BRAM_PORT_MASTER": {
-        "interface_ports": [
-          "bram_port_selector_0/BRAM_PORT_MASTER",
-          "dual_bram_0/BRAM0_PORT_A"
-        ]
-      },
-      "processing_system7_0_M_AXI_GP0": {
-        "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "axi_interconnect_0/S00_AXI"
-        ]
-      },
-      "processing_system7_0_FIXED_IO": {
-        "interface_ports": [
-          "FIXED_IO",
-          "processing_system7_0/FIXED_IO"
+          "bram_port_selector_1/BRAM_PORT_MASTER",
+          "dual_bram_0/BRAM0_PORT_B"
         ]
       },
       "polyvec_basemul_acc_0_BRAM0_PORT_B": {
@@ -2453,16 +2319,10 @@
           "bram_port_selector_1/BRAM_PORT_0"
         ]
       },
-      "polyvec_ntt_0_BRAM_PORT_A": {
+      "axi_interconnect_0_M00_AXI": {
         "interface_ports": [
-          "bram_port_selector_0/BRAM_PORT_3",
-          "polyvec_ntt_0/BRAM_PORT_A"
-        ]
-      },
-      "polyvec_basemul_acc_0_BRAM1_PORT_B": {
-        "interface_ports": [
-          "polyvec_basemul_acc_0/BRAM1_PORT_B",
-          "bram_port_selector_3/BRAM_PORT_0"
+          "axi_interconnect_0/M00_AXI",
+          "axi_gpio_0/S_AXI"
         ]
       },
       "polyvec_reduce_0_BRAM_PORT_B": {
@@ -2471,40 +2331,34 @@
           "bram_port_selector_2/BRAM_PORT_1"
         ]
       },
+      "axi_interconnect_0_M01_AXI": {
+        "interface_ports": [
+          "axi_interconnect_0/M01_AXI",
+          "dual_bram_0/S00_AXI"
+        ]
+      },
+      "bram_port_selector_2_BRAM_PORT_MASTER": {
+        "interface_ports": [
+          "bram_port_selector_2/BRAM_PORT_MASTER",
+          "dual_bram_0/BRAM1_PORT_A"
+        ]
+      },
+      "polyvec_basemul_acc_0_BRAM1_PORT_B": {
+        "interface_ports": [
+          "polyvec_basemul_acc_0/BRAM1_PORT_B",
+          "bram_port_selector_3/BRAM_PORT_0"
+        ]
+      },
       "polyvec_ntt_0_BRAM_PORT_B": {
         "interface_ports": [
           "bram_port_selector_1/BRAM_PORT_1",
           "polyvec_ntt_0/BRAM_PORT_B"
         ]
       },
-      "axi_interconnect_0_M03_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M03_AXI",
-          "axi_gpio_1/S_AXI"
-        ]
-      },
       "axi_interconnect_0_M02_AXI": {
         "interface_ports": [
           "axi_interconnect_0/M02_AXI",
           "dual_bram_0/S01_AXI"
-        ]
-      },
-      "axi_interconnect_0_M04_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M04_AXI",
-          "axi_gpio_2/S_AXI"
-        ]
-      },
-      "polyvec_basemul_acc_0_BRAM1_PORT_A": {
-        "interface_ports": [
-          "polyvec_basemul_acc_0/BRAM1_PORT_A",
-          "bram_port_selector_2/BRAM_PORT_2"
-        ]
-      },
-      "axi_interconnect_0_M00_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M00_AXI",
-          "axi_gpio_0/S_AXI"
         ]
       },
       "bram_port_selector_3_BRAM_PORT_MASTER": {
@@ -2517,6 +2371,54 @@
         "interface_ports": [
           "axi_interconnect_0/M05_AXI",
           "axi_gpio_3/S_AXI"
+        ]
+      },
+      "polyvec_basemul_acc_0_BRAM1_PORT_A": {
+        "interface_ports": [
+          "polyvec_basemul_acc_0/BRAM1_PORT_A",
+          "bram_port_selector_2/BRAM_PORT_2"
+        ]
+      },
+      "processing_system7_0_FIXED_IO": {
+        "interface_ports": [
+          "FIXED_IO",
+          "processing_system7_0/FIXED_IO"
+        ]
+      },
+      "axi_interconnect_0_M03_AXI": {
+        "interface_ports": [
+          "axi_interconnect_0/M03_AXI",
+          "axi_gpio_1/S_AXI"
+        ]
+      },
+      "poly_tomont_0_BRAM_PORT_B": {
+        "interface_ports": [
+          "poly_tomont_0/BRAM_PORT_B",
+          "bram_port_selector_2/BRAM_PORT_0"
+        ]
+      },
+      "processing_system7_0_DDR": {
+        "interface_ports": [
+          "DDR",
+          "processing_system7_0/DDR"
+        ]
+      },
+      "bram_port_selector_0_BRAM_PORT_MASTER": {
+        "interface_ports": [
+          "bram_port_selector_0/BRAM_PORT_MASTER",
+          "dual_bram_0/BRAM0_PORT_A"
+        ]
+      },
+      "poly_tomont_0_BRAM_PORT_A": {
+        "interface_ports": [
+          "poly_tomont_0/BRAM_PORT_A",
+          "bram_port_selector_0/BRAM_PORT_0"
+        ]
+      },
+      "axi_interconnect_0_M06_AXI": {
+        "interface_ports": [
+          "axi_interconnect_0/M06_AXI",
+          "axi_gpio_4/S_AXI"
         ]
       }
     },
@@ -2628,14 +2530,6 @@
           "axi_interconnect_0/M05_ACLK",
           "barrett_reduce_0/clk",
           "barrett_reduce_1/clk",
-          "double_signal_multip_0/clk",
-          "double_signal_multip_1/clk",
-          "double_signal_multip_2/clk",
-          "double_signal_multip_3/clk",
-          "double_signal_multip_4/clk",
-          "double_signal_multip_5/clk",
-          "double_signal_multip_6/clk",
-          "double_signal_multip_7/clk",
           "dual_bram_0/s00_axi_aclk",
           "dual_bram_0/s01_axi_aclk",
           "fqmul_0/clk",
@@ -2653,240 +2547,136 @@
           "poly_tomont_0/clk",
           "polyvec_reduce_0/clk",
           "timer2_0/clk",
-          "double_signal_multip_8/clk",
-          "double_signal_multip_9/clk",
-          "double_signal_multip_10/clk",
-          "double_signal_multip_11/clk",
-          "double_signal_multip_12/clk",
-          "double_signal_multip_13/clk",
-          "fqmul_6/clk",
-          "fqmul_7/clk",
-          "montgomery_reduction_7/clk",
-          "montgomery_reduction_6/clk",
-          "barrett_reduce_2/clk",
-          "barrett_reduce_3/clk",
           "axi_gpio_4/s_axi_aclk",
           "axi_interconnect_0/M06_ACLK",
           "polyvec_ntt_0/clk",
-          "double_signal_multip_14/clk",
-          "double_signal_multip_15/clk",
           "polyvec_basemul_acc_0/clk",
-          "double_signal_multip_16/clk",
-          "double_signal_multip_17/clk",
-          "double_signal_multip_18/clk",
-          "double_signal_multip_19/clk",
-          "double_signal_multip_20/clk",
-          "double_signal_multip_21/clk",
-          "double_signal_multip_22/clk",
-          "double_signal_multip_23/clk",
-          "double_signal_multip_24/clk",
-          "double_signal_multip_25/clk",
-          "double_signal_multip_26/clk",
-          "double_signal_multip_27/clk"
+          "signal_multiplexer_0/clk",
+          "signal_multiplexer_1/clk",
+          "signal_multiplexer_12/clk",
+          "signal_multiplexer_14/clk",
+          "signal_multiplexer_16/clk",
+          "signal_multiplexer_17/clk",
+          "signal_multiplexer_18/clk",
+          "signal_multiplexer_19/clk",
+          "signal_multiplexer_2/clk",
+          "signal_multiplexer_3/clk",
+          "signal_multiplexer_4/clk",
+          "signal_multiplexer_5/clk",
+          "signal_multiplexer_6/clk",
+          "signal_multiplexer_7/clk"
         ]
       },
       "poly_tomont_0_do_lower_mont": {
         "ports": [
           "poly_tomont_0/do_lower_mont",
-          "double_signal_multip_0/data_in_0"
+          "signal_multiplexer_2/data0"
         ]
       },
       "poly_tomont_0_en_lower_mont": {
         "ports": [
           "poly_tomont_0/en_lower_mont",
-          "double_signal_multip_0/enable_in_0"
+          "signal_multiplexer_2/en0"
         ]
       },
       "poly_tomont_0_valid_out_lower_mont": {
         "ports": [
           "poly_tomont_0/valid_out_lower_mont",
-          "double_signal_multip_0/valid_in_0"
+          "signal_multiplexer_2/valid0"
         ]
       },
       "poly_tomont_0_do_upper_mont": {
         "ports": [
           "poly_tomont_0/do_upper_mont",
-          "double_signal_multip_1/data_in_0"
+          "signal_multiplexer_3/data0"
         ]
       },
       "poly_tomont_0_en_upper_mont": {
         "ports": [
           "poly_tomont_0/en_upper_mont",
-          "double_signal_multip_1/enable_in_0"
+          "signal_multiplexer_3/en0"
         ]
       },
       "poly_tomont_0_valid_out_upper_mont": {
         "ports": [
           "poly_tomont_0/valid_out_upper_mont",
-          "double_signal_multip_1/valid_in_0"
+          "signal_multiplexer_3/valid0"
         ]
       },
       "fqmul_0_valid_out_mont": {
         "ports": [
           "fqmul_0/valid_out_mont",
-          "double_signal_multip_0/valid_in_1"
+          "signal_multiplexer_2/valid1"
         ]
       },
       "fqmul_0_data_out_mont": {
         "ports": [
           "fqmul_0/data_out_mont",
-          "double_signal_multip_0/data_in_1"
+          "signal_multiplexer_2/data1"
         ]
       },
       "fqmul_1_valid_out_mont": {
         "ports": [
           "fqmul_1/valid_out_mont",
-          "double_signal_multip_1/valid_in_1"
+          "signal_multiplexer_3/valid1"
         ]
       },
       "fqmul_1_data_out_mont": {
         "ports": [
           "fqmul_1/data_out_mont",
-          "double_signal_multip_1/data_in_1"
+          "signal_multiplexer_3/data1"
         ]
       },
       "fqmul_2_valid_out_mont": {
         "ports": [
           "fqmul_2/valid_out_mont",
-          "double_signal_multip_2/valid_in_0"
+          "signal_multiplexer_4/valid0",
+          "signal_multiplexer_4/valid1"
         ]
       },
       "fqmul_2_data_out_mont": {
         "ports": [
           "fqmul_2/data_out_mont",
-          "double_signal_multip_2/data_in_0"
+          "signal_multiplexer_4/data0",
+          "signal_multiplexer_4/data1"
         ]
       },
       "fqmul_3_valid_out_mont": {
         "ports": [
           "fqmul_3/valid_out_mont",
-          "double_signal_multip_3/valid_in_0"
+          "signal_multiplexer_5/valid0",
+          "signal_multiplexer_5/valid1"
         ]
       },
       "fqmul_3_data_out_mont": {
         "ports": [
           "fqmul_3/data_out_mont",
-          "double_signal_multip_3/data_in_0"
+          "signal_multiplexer_5/data0",
+          "signal_multiplexer_5/data1"
         ]
       },
       "fqmul_4_valid_out_mont": {
         "ports": [
           "fqmul_4/valid_out_mont",
-          "double_signal_multip_4/valid_in_0"
+          "signal_multiplexer_6/valid0"
         ]
       },
       "fqmul_4_data_out_mont": {
         "ports": [
           "fqmul_4/data_out_mont",
-          "double_signal_multip_4/data_in_0"
+          "signal_multiplexer_6/data0"
         ]
       },
       "fqmul_5_valid_out_mont": {
         "ports": [
           "fqmul_5/valid_out_mont",
-          "double_signal_multip_5/valid_in_0"
+          "signal_multiplexer_7/valid0"
         ]
       },
       "fqmul_5_data_out_mont": {
         "ports": [
           "fqmul_5/data_out_mont",
-          "double_signal_multip_5/data_in_0"
-        ]
-      },
-      "double_signal_multip_0_valid_out": {
-        "ports": [
-          "double_signal_multip_0/valid_out",
-          "montgomery_reduction_0/valid_in"
-        ]
-      },
-      "double_signal_multip_0_data_out": {
-        "ports": [
-          "double_signal_multip_0/data_out",
-          "montgomery_reduction_0/data_in"
-        ]
-      },
-      "double_signal_multip_1_valid_out": {
-        "ports": [
-          "double_signal_multip_1/valid_out",
-          "montgomery_reduction_1/valid_in"
-        ]
-      },
-      "double_signal_multip_1_data_out": {
-        "ports": [
-          "double_signal_multip_1/data_out",
-          "montgomery_reduction_1/data_in"
-        ]
-      },
-      "double_signal_multip_2_valid_out": {
-        "ports": [
-          "double_signal_multip_2/valid_out",
-          "montgomery_reduction_2/valid_in"
-        ]
-      },
-      "double_signal_multip_2_data_out": {
-        "ports": [
-          "double_signal_multip_2/data_out",
-          "montgomery_reduction_2/data_in"
-        ]
-      },
-      "double_signal_multip_3_valid_out": {
-        "ports": [
-          "double_signal_multip_3/valid_out",
-          "montgomery_reduction_3/valid_in"
-        ]
-      },
-      "double_signal_multip_3_data_out": {
-        "ports": [
-          "double_signal_multip_3/data_out",
-          "montgomery_reduction_3/data_in"
-        ]
-      },
-      "double_signal_multip_4_data_out": {
-        "ports": [
-          "double_signal_multip_4/data_out",
-          "montgomery_reduction_4/data_in"
-        ]
-      },
-      "double_signal_multip_4_valid_out": {
-        "ports": [
-          "double_signal_multip_4/valid_out",
-          "montgomery_reduction_4/valid_in"
-        ]
-      },
-      "double_signal_multip_5_valid_out": {
-        "ports": [
-          "double_signal_multip_5/valid_out",
-          "montgomery_reduction_5/valid_in"
-        ]
-      },
-      "double_signal_multip_5_data_out": {
-        "ports": [
-          "double_signal_multip_5/data_out",
-          "montgomery_reduction_5/data_in"
-        ]
-      },
-      "double_signal_multip_6_data_out": {
-        "ports": [
-          "double_signal_multip_6/data_out",
-          "barrett_reduce_0/data_in"
-        ]
-      },
-      "double_signal_multip_6_valid_out": {
-        "ports": [
-          "double_signal_multip_6/valid_out",
-          "barrett_reduce_0/valid_in"
-        ]
-      },
-      "double_signal_multip_7_valid_out": {
-        "ports": [
-          "double_signal_multip_7/valid_out",
-          "barrett_reduce_1/valid_in"
-        ]
-      },
-      "double_signal_multip_7_data_out": {
-        "ports": [
-          "double_signal_multip_7/data_out",
-          "barrett_reduce_1/data_in"
+          "signal_multiplexer_7/data0"
         ]
       },
       "montgomery_reduction_0_valid_out": {
@@ -2932,25 +2722,15 @@
       "fqmul_2_data_out": {
         "ports": [
           "fqmul_2/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul2"
+          "polyvec_basemul_acc_0/coeff_from_fqmul2",
+          "polyvec_ntt_0/coeff_from_fqmul0"
         ]
       },
       "fqmul_3_data_out": {
         "ports": [
           "fqmul_3/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul3"
-        ]
-      },
-      "fqmul_4_data_out": {
-        "ports": [
-          "fqmul_4/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul4"
-        ]
-      },
-      "fqmul_5_data_out": {
-        "ports": [
-          "fqmul_5/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul5"
+          "polyvec_basemul_acc_0/coeff_from_fqmul3",
+          "polyvec_ntt_0/coeff_from_fqmul1"
         ]
       },
       "montgomery_reduction_2_valid_out": {
@@ -3005,101 +2785,99 @@
         "ports": [
           "barrett_reduce_0/data_out",
           "polyvec_reduce_0/di_lower_barrett",
-          "polyvec_basemul_acc_0/data0_from_barrett"
+          "polyvec_basemul_acc_0/data0_from_barrett",
+          "polyvec_ntt_0/data0_from_barrett"
         ]
       },
       "barrett_reduce_1_data_out": {
         "ports": [
           "barrett_reduce_1/data_out",
           "polyvec_reduce_0/di_upper_barrett",
-          "polyvec_basemul_acc_0/data1_from_barrett"
+          "polyvec_basemul_acc_0/data1_from_barrett",
+          "polyvec_ntt_0/data1_from_barrett"
         ]
       },
       "Net": {
         "ports": [
           "polyvec_basemul_acc_0/en_dsm",
-          "double_signal_multip_0/enable_in_1",
-          "double_signal_multip_1/enable_in_1",
-          "double_signal_multip_2/enable_in_0",
-          "double_signal_multip_3/enable_in_0",
-          "double_signal_multip_4/enable_in_0",
-          "double_signal_multip_5/enable_in_0",
-          "double_signal_multip_6/enable_in_1",
-          "double_signal_multip_7/enable_in_1",
-          "double_signal_multip_27/enable_in_0",
-          "double_signal_multip_26/enable_in_0",
-          "double_signal_multip_25/enable_in_0",
-          "double_signal_multip_24/enable_in_0",
-          "double_signal_multip_23/enable_in_0",
-          "double_signal_multip_22/enable_in_0",
-          "double_signal_multip_21/enable_in_0",
-          "double_signal_multip_20/enable_in_0",
-          "double_signal_multip_19/enable_in_0",
-          "double_signal_multip_18/enable_in_0",
-          "double_signal_multip_17/enable_in_0",
-          "double_signal_multip_16/enable_in_0"
+          "signal_multiplexer_12/en0",
+          "signal_multiplexer_14/en0",
+          "signal_multiplexer_16/en0",
+          "signal_multiplexer_17/en0",
+          "signal_multiplexer_18/en0",
+          "signal_multiplexer_19/en0",
+          "signal_multiplexer_2/en1",
+          "signal_multiplexer_3/en1",
+          "signal_multiplexer_4/en0",
+          "signal_multiplexer_5/en0",
+          "signal_multiplexer_6/en0",
+          "signal_multiplexer_7/en0",
+          "signal_multiplexer_0/en1",
+          "signal_multiplexer_1/en1"
         ]
       },
       "polyvec_basemul_acc_0_data0_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/data0_to_barrett",
-          "double_signal_multip_6/data_in_1"
+          "signal_multiplexer_0/data1"
         ]
       },
       "polyvec_basemul_acc_0_data1_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/data1_to_barrett",
-          "double_signal_multip_7/data_in_1"
+          "signal_multiplexer_1/data1"
         ]
       },
       "polyvec_reduce_0_do_lower_barrett": {
         "ports": [
           "polyvec_reduce_0/do_lower_barrett",
-          "double_signal_multip_6/data_in_0"
+          "signal_multiplexer_0/data0"
         ]
       },
       "polyvec_reduce_0_en_lower_barrett": {
         "ports": [
           "polyvec_reduce_0/en_lower_barrett",
-          "double_signal_multip_6/enable_in_0"
+          "signal_multiplexer_0/en0"
         ]
       },
       "polyvec_reduce_0_valid_out_lower_barrett": {
         "ports": [
           "polyvec_reduce_0/valid_out_lower_barrett",
-          "double_signal_multip_6/valid_in_0"
+          "signal_multiplexer_0/valid0"
         ]
       },
       "polyvec_reduce_0_do_upper_barrett": {
         "ports": [
           "polyvec_reduce_0/do_upper_barrett",
-          "double_signal_multip_7/data_in_0"
+          "signal_multiplexer_1/data0"
         ]
       },
       "polyvec_reduce_0_en_upper_barrett": {
         "ports": [
           "polyvec_reduce_0/en_upper_barrett",
-          "double_signal_multip_7/enable_in_0"
+          "signal_multiplexer_1/en0"
         ]
       },
       "polyvec_reduce_0_valid_out_upper_barrett": {
         "ports": [
           "polyvec_reduce_0/valid_out_upper_barrett",
-          "double_signal_multip_7/valid_in_0"
+          "signal_multiplexer_1/valid0"
         ]
       },
       "barrett_reduce_0_valid_out": {
         "ports": [
           "barrett_reduce_0/valid_out",
           "polyvec_reduce_0/valid_in_lower_barrett",
-          "polyvec_basemul_acc_0/valid0_from_barrett"
+          "polyvec_basemul_acc_0/valid0_from_barrett",
+          "polyvec_ntt_0/valid0_from_barrett"
         ]
       },
       "barrett_reduce_1_valid_out": {
         "ports": [
           "barrett_reduce_1/valid_out",
           "polyvec_reduce_0/valid_in_upper_barrett",
-          "polyvec_basemul_acc_0/valid1_from_barrett"
+          "polyvec_basemul_acc_0/valid1_from_barrett",
+          "polyvec_ntt_0/valid1_from_barrett"
         ]
       },
       "fqmul_0_valid_out": {
@@ -3117,238 +2895,80 @@
       "fqmul_2_valid_out": {
         "ports": [
           "fqmul_2/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul2"
+          "polyvec_basemul_acc_0/valid_from_fqmul2",
+          "polyvec_ntt_0/valid_from_fqmul0"
         ]
       },
       "fqmul_3_valid_out": {
         "ports": [
           "fqmul_3/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul3"
-        ]
-      },
-      "fqmul_4_valid_out": {
-        "ports": [
-          "fqmul_4/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul4"
-        ]
-      },
-      "fqmul_5_valid_out": {
-        "ports": [
-          "fqmul_5/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul5"
+          "polyvec_basemul_acc_0/valid_from_fqmul3",
+          "polyvec_ntt_0/valid_from_fqmul1"
         ]
       },
       "polyvec_basemul_acc_0_valid1_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/valid1_to_barrett",
-          "double_signal_multip_7/valid_in_1"
+          "signal_multiplexer_1/valid1"
         ]
       },
       "polyvec_ntt_0_valid_to_fqmul0": {
         "ports": [
           "polyvec_ntt_0/valid_to_fqmul0",
-          "double_signal_multip_8/valid_in_0",
-          "double_signal_multip_9/valid_in_0"
+          "signal_multiplexer_16/valid1"
         ]
       },
       "polyvec_ntt_0_coeff0_to_fqmul0": {
         "ports": [
           "polyvec_ntt_0/coeff0_to_fqmul0",
-          "double_signal_multip_8/data_in_0"
+          "signal_multiplexer_16/data1"
         ]
       },
       "polyvec_ntt_0_en_dsm": {
         "ports": [
           "polyvec_ntt_0/en_dsm",
-          "double_signal_multip_8/enable_in_0",
-          "double_signal_multip_9/enable_in_0",
-          "double_signal_multip_10/enable_in_0",
-          "double_signal_multip_11/enable_in_0",
-          "double_signal_multip_12/enable_in_0",
-          "double_signal_multip_13/enable_in_0",
-          "double_signal_multip_14/enable_in_0",
-          "double_signal_multip_15/enable_in_0"
+          "signal_multiplexer_16/en1",
+          "signal_multiplexer_4/en1",
+          "signal_multiplexer_5/en1",
+          "signal_multiplexer_17/en1",
+          "signal_multiplexer_0/en2",
+          "signal_multiplexer_1/en2"
         ]
       },
       "polyvec_ntt_0_coeff1_to_fqmul0": {
         "ports": [
           "polyvec_ntt_0/coeff1_to_fqmul0",
-          "double_signal_multip_9/data_in_0"
+          "signal_multiplexer_16/data1b"
         ]
       },
       "polyvec_ntt_0_valid_to_fqmul1": {
         "ports": [
           "polyvec_ntt_0/valid_to_fqmul1",
-          "double_signal_multip_10/valid_in_0",
-          "double_signal_multip_11/valid_in_0"
+          "signal_multiplexer_17/valid1"
         ]
       },
       "polyvec_ntt_0_coeff0_to_fqmul1": {
         "ports": [
           "polyvec_ntt_0/coeff0_to_fqmul1",
-          "double_signal_multip_10/data_in_0"
+          "signal_multiplexer_17/data1"
         ]
       },
       "polyvec_ntt_0_coeff1_to_fqmul1": {
         "ports": [
           "polyvec_ntt_0/coeff1_to_fqmul1",
-          "double_signal_multip_11/data_in_0"
+          "signal_multiplexer_17/data1b"
         ]
       },
       "polyvec_ntt_0_valid0_to_barrett": {
         "ports": [
           "polyvec_ntt_0/valid0_to_barrett",
-          "double_signal_multip_12/valid_in_0"
+          "signal_multiplexer_0/valid2"
         ]
       },
       "polyvec_ntt_0_data0_to_barrett": {
         "ports": [
           "polyvec_ntt_0/data0_to_barrett",
-          "double_signal_multip_12/data_in_0"
-        ]
-      },
-      "polyvec_ntt_0_valid1_to_barrett": {
-        "ports": [
-          "polyvec_ntt_0/valid1_to_barrett",
-          "double_signal_multip_13/valid_in_0"
-        ]
-      },
-      "polyvec_ntt_0_data1_to_barrett": {
-        "ports": [
-          "polyvec_ntt_0/data1_to_barrett",
-          "double_signal_multip_13/data_in_0"
-        ]
-      },
-      "double_signal_multip_8_valid_out": {
-        "ports": [
-          "double_signal_multip_8/valid_out",
-          "fqmul_6/valid_in"
-        ]
-      },
-      "double_signal_multip_8_data_out": {
-        "ports": [
-          "double_signal_multip_8/data_out",
-          "fqmul_6/data_in_1"
-        ]
-      },
-      "double_signal_multip_9_data_out": {
-        "ports": [
-          "double_signal_multip_9/data_out",
-          "fqmul_6/data_in_2"
-        ]
-      },
-      "double_signal_multip_10_valid_out": {
-        "ports": [
-          "double_signal_multip_10/valid_out",
-          "fqmul_7/valid_in"
-        ]
-      },
-      "double_signal_multip_10_data_out": {
-        "ports": [
-          "double_signal_multip_10/data_out",
-          "fqmul_7/data_in_1"
-        ]
-      },
-      "double_signal_multip_11_data_out": {
-        "ports": [
-          "double_signal_multip_11/data_out",
-          "fqmul_7/data_in_2"
-        ]
-      },
-      "montgomery_reduction_6_valid_out": {
-        "ports": [
-          "montgomery_reduction_6/valid_out",
-          "fqmul_6/valid_in_mont"
-        ]
-      },
-      "montgomery_reduction_6_data_out": {
-        "ports": [
-          "montgomery_reduction_6/data_out",
-          "fqmul_6/data_in_mont"
-        ]
-      },
-      "fqmul_6_valid_out": {
-        "ports": [
-          "fqmul_6/valid_out",
-          "polyvec_ntt_0/valid_from_fqmul0"
-        ]
-      },
-      "fqmul_6_data_out": {
-        "ports": [
-          "fqmul_6/data_out",
-          "polyvec_ntt_0/coeff_from_fqmul0"
-        ]
-      },
-      "montgomery_reduction_7_valid_out": {
-        "ports": [
-          "montgomery_reduction_7/valid_out",
-          "fqmul_7/valid_in_mont"
-        ]
-      },
-      "montgomery_reduction_7_data_out": {
-        "ports": [
-          "montgomery_reduction_7/data_out",
-          "fqmul_7/data_in_mont"
-        ]
-      },
-      "fqmul_7_data_out": {
-        "ports": [
-          "fqmul_7/data_out",
-          "polyvec_ntt_0/coeff_from_fqmul1"
-        ]
-      },
-      "fqmul_7_valid_out": {
-        "ports": [
-          "fqmul_7/valid_out",
-          "polyvec_ntt_0/valid_from_fqmul1"
-        ]
-      },
-      "double_signal_multip_12_valid_out": {
-        "ports": [
-          "double_signal_multip_12/valid_out",
-          "barrett_reduce_2/valid_in"
-        ]
-      },
-      "double_signal_multip_12_data_out": {
-        "ports": [
-          "double_signal_multip_12/data_out",
-          "barrett_reduce_2/data_in"
-        ]
-      },
-      "double_signal_multip_13_valid_out": {
-        "ports": [
-          "double_signal_multip_13/valid_out",
-          "barrett_reduce_3/valid_in"
-        ]
-      },
-      "double_signal_multip_13_data_out": {
-        "ports": [
-          "double_signal_multip_13/data_out",
-          "barrett_reduce_3/data_in"
-        ]
-      },
-      "barrett_reduce_2_valid_out": {
-        "ports": [
-          "barrett_reduce_2/valid_out",
-          "polyvec_ntt_0/valid0_from_barrett"
-        ]
-      },
-      "barrett_reduce_2_data_out": {
-        "ports": [
-          "barrett_reduce_2/data_out",
-          "polyvec_ntt_0/data0_from_barrett"
-        ]
-      },
-      "barrett_reduce_3_valid_out": {
-        "ports": [
-          "barrett_reduce_3/valid_out",
-          "polyvec_ntt_0/valid1_from_barrett"
-        ]
-      },
-      "barrett_reduce_3_data_out": {
-        "ports": [
-          "barrett_reduce_3/data_out",
-          "polyvec_ntt_0/data1_from_barrett"
+          "signal_multiplexer_0/data2"
         ]
       },
       "polyvec_ntt_0_busy": {
@@ -3363,280 +2983,358 @@
           "polyvec_ntt_0/start"
         ]
       },
-      "fqmul_6_valid_out_mont": {
-        "ports": [
-          "fqmul_6/valid_out_mont",
-          "double_signal_multip_14/valid_in_0"
-        ]
-      },
-      "fqmul_6_data_out_mont": {
-        "ports": [
-          "fqmul_6/data_out_mont",
-          "double_signal_multip_14/data_in_0"
-        ]
-      },
-      "fqmul_7_valid_out_mont": {
-        "ports": [
-          "fqmul_7/valid_out_mont",
-          "double_signal_multip_15/valid_in_0"
-        ]
-      },
-      "fqmul_7_data_out_mont": {
-        "ports": [
-          "fqmul_7/data_out_mont",
-          "double_signal_multip_15/data_in_0"
-        ]
-      },
-      "double_signal_multip_14_valid_out": {
-        "ports": [
-          "double_signal_multip_14/valid_out",
-          "montgomery_reduction_6/valid_in"
-        ]
-      },
-      "double_signal_multip_14_data_out": {
-        "ports": [
-          "double_signal_multip_14/data_out",
-          "montgomery_reduction_6/data_in"
-        ]
-      },
-      "double_signal_multip_15_valid_out": {
-        "ports": [
-          "double_signal_multip_15/valid_out",
-          "montgomery_reduction_7/valid_in"
-        ]
-      },
-      "double_signal_multip_15_data_out": {
-        "ports": [
-          "double_signal_multip_15/data_out",
-          "montgomery_reduction_7/data_in"
-        ]
-      },
       "polyvec_basemul_acc_0_valid0_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/valid0_to_barrett",
-          "double_signal_multip_6/valid_in_1"
+          "signal_multiplexer_0/valid1"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul0": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul0",
-          "double_signal_multip_16/data_in_0"
+          "signal_multiplexer_12/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul0": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul0",
-          "double_signal_multip_17/data_in_0"
+          "signal_multiplexer_12/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul1": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul1",
-          "double_signal_multip_18/data_in_0"
+          "signal_multiplexer_14/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul1": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul1",
-          "double_signal_multip_19/data_in_0"
+          "signal_multiplexer_14/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul2": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul2",
-          "double_signal_multip_20/data_in_0"
+          "signal_multiplexer_16/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul2": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul2",
-          "double_signal_multip_21/data_in_0"
+          "signal_multiplexer_16/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul3": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul3",
-          "double_signal_multip_22/data_in_0"
+          "signal_multiplexer_17/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul3": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul3",
-          "double_signal_multip_23/data_in_0"
+          "signal_multiplexer_17/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul4": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul4",
-          "double_signal_multip_24/data_in_0"
+          "signal_multiplexer_18/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul4": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul4",
-          "double_signal_multip_25/data_in_0"
+          "signal_multiplexer_18/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul5": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul5",
-          "double_signal_multip_26/data_in_0"
+          "signal_multiplexer_19/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul5": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul5",
-          "double_signal_multip_27/data_in_0"
+          "signal_multiplexer_19/data0b"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul0": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul0",
-          "double_signal_multip_16/valid_in_0",
-          "double_signal_multip_17/valid_in_0"
+          "signal_multiplexer_12/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul1": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul1",
-          "double_signal_multip_18/valid_in_0",
-          "double_signal_multip_19/valid_in_0"
-        ]
-      },
-      "polyvec_basemul_acc_0_valid_to_fqmul2": {
-        "ports": [
-          "polyvec_basemul_acc_0/valid_to_fqmul2",
-          "double_signal_multip_20/valid_in_0",
-          "double_signal_multip_21/valid_in_0"
+          "signal_multiplexer_14/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul3": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul3",
-          "double_signal_multip_22/valid_in_0",
-          "double_signal_multip_23/valid_in_0"
+          "signal_multiplexer_17/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul4": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul4",
-          "double_signal_multip_24/valid_in_0",
-          "double_signal_multip_25/valid_in_0"
+          "signal_multiplexer_18/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul5": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul5",
-          "double_signal_multip_26/valid_in_0",
-          "double_signal_multip_27/valid_in_0"
+          "signal_multiplexer_19/valid0"
         ]
       },
-      "double_signal_multip_16_valid_out": {
+      "signal_multiplexer_0_valid": {
         "ports": [
-          "double_signal_multip_16/valid_out",
+          "signal_multiplexer_0/valid",
+          "barrett_reduce_0/valid_in"
+        ]
+      },
+      "signal_multiplexer_0_data": {
+        "ports": [
+          "signal_multiplexer_0/data",
+          "barrett_reduce_0/data_in"
+        ]
+      },
+      "signal_multiplexer_1_valid": {
+        "ports": [
+          "signal_multiplexer_1/valid",
+          "barrett_reduce_1/valid_in"
+        ]
+      },
+      "signal_multiplexer_1_data": {
+        "ports": [
+          "signal_multiplexer_1/data",
+          "barrett_reduce_1/data_in"
+        ]
+      },
+      "polyvec_ntt_0_valid1_to_barrett": {
+        "ports": [
+          "polyvec_ntt_0/valid1_to_barrett",
+          "signal_multiplexer_1/valid2"
+        ]
+      },
+      "polyvec_ntt_0_data1_to_barrett": {
+        "ports": [
+          "polyvec_ntt_0/data1_to_barrett",
+          "signal_multiplexer_1/data2"
+        ]
+      },
+      "signal_multiplexer_2_valid": {
+        "ports": [
+          "signal_multiplexer_2/valid",
+          "montgomery_reduction_0/valid_in"
+        ]
+      },
+      "signal_multiplexer_2_data": {
+        "ports": [
+          "signal_multiplexer_2/data",
+          "montgomery_reduction_0/data_in"
+        ]
+      },
+      "signal_multiplexer_3_valid": {
+        "ports": [
+          "signal_multiplexer_3/valid",
+          "montgomery_reduction_1/valid_in"
+        ]
+      },
+      "signal_multiplexer_3_data": {
+        "ports": [
+          "signal_multiplexer_3/data",
+          "montgomery_reduction_1/data_in"
+        ]
+      },
+      "signal_multiplexer_4_valid": {
+        "ports": [
+          "signal_multiplexer_4/valid",
+          "montgomery_reduction_2/valid_in"
+        ]
+      },
+      "signal_multiplexer_4_data": {
+        "ports": [
+          "signal_multiplexer_4/data",
+          "montgomery_reduction_2/data_in"
+        ]
+      },
+      "signal_multiplexer_5_valid": {
+        "ports": [
+          "signal_multiplexer_5/valid",
+          "montgomery_reduction_3/valid_in"
+        ]
+      },
+      "signal_multiplexer_5_data": {
+        "ports": [
+          "signal_multiplexer_5/data",
+          "montgomery_reduction_3/data_in"
+        ]
+      },
+      "signal_multiplexer_6_valid": {
+        "ports": [
+          "signal_multiplexer_6/valid",
+          "montgomery_reduction_4/valid_in"
+        ]
+      },
+      "signal_multiplexer_6_data": {
+        "ports": [
+          "signal_multiplexer_6/data",
+          "montgomery_reduction_4/data_in"
+        ]
+      },
+      "signal_multiplexer_7_valid": {
+        "ports": [
+          "signal_multiplexer_7/valid",
+          "montgomery_reduction_5/valid_in"
+        ]
+      },
+      "signal_multiplexer_7_data": {
+        "ports": [
+          "signal_multiplexer_7/data",
+          "montgomery_reduction_5/data_in"
+        ]
+      },
+      "signal_multiplexer_12_valid": {
+        "ports": [
+          "signal_multiplexer_12/valid",
           "fqmul_0/valid_in"
         ]
       },
-      "double_signal_multip_16_data_out": {
+      "signal_multiplexer_12_data": {
         "ports": [
-          "double_signal_multip_16/data_out",
+          "signal_multiplexer_12/data",
           "fqmul_0/data_in_1"
         ]
       },
-      "double_signal_multip_17_data_out": {
+      "signal_multiplexer_14_valid": {
         "ports": [
-          "double_signal_multip_17/data_out",
-          "fqmul_0/data_in_2"
-        ]
-      },
-      "double_signal_multip_18_valid_out": {
-        "ports": [
-          "double_signal_multip_18/valid_out",
+          "signal_multiplexer_14/valid",
           "fqmul_1/valid_in"
         ]
       },
-      "double_signal_multip_18_data_out": {
+      "signal_multiplexer_14_data": {
         "ports": [
-          "double_signal_multip_18/data_out",
+          "signal_multiplexer_14/data",
           "fqmul_1/data_in_1"
         ]
       },
-      "double_signal_multip_19_data_out": {
+      "signal_multiplexer_16_valid": {
         "ports": [
-          "double_signal_multip_19/data_out",
-          "fqmul_1/data_in_2"
-        ]
-      },
-      "double_signal_multip_20_valid_out": {
-        "ports": [
-          "double_signal_multip_20/valid_out",
+          "signal_multiplexer_16/valid",
           "fqmul_2/valid_in"
         ]
       },
-      "double_signal_multip_20_data_out": {
+      "signal_multiplexer_16_data": {
         "ports": [
-          "double_signal_multip_20/data_out",
+          "signal_multiplexer_16/data",
           "fqmul_2/data_in_1"
         ]
       },
-      "double_signal_multip_21_data_out": {
+      "signal_multiplexer_12_datab": {
         "ports": [
-          "double_signal_multip_21/data_out",
+          "signal_multiplexer_12/datab",
+          "fqmul_0/data_in_2"
+        ]
+      },
+      "signal_multiplexer_14_datab": {
+        "ports": [
+          "signal_multiplexer_14/datab",
+          "fqmul_1/data_in_2"
+        ]
+      },
+      "polyvec_basemul_acc_0_valid_to_fqmul2": {
+        "ports": [
+          "polyvec_basemul_acc_0/valid_to_fqmul2",
+          "signal_multiplexer_16/valid0"
+        ]
+      },
+      "signal_multiplexer_16_datab": {
+        "ports": [
+          "signal_multiplexer_16/datab",
           "fqmul_2/data_in_2"
         ]
       },
-      "double_signal_multip_22_valid_out": {
+      "signal_multiplexer_17_valid": {
         "ports": [
-          "double_signal_multip_22/valid_out",
+          "signal_multiplexer_17/valid",
           "fqmul_3/valid_in"
         ]
       },
-      "double_signal_multip_22_data_out": {
+      "signal_multiplexer_17_data": {
         "ports": [
-          "double_signal_multip_22/data_out",
+          "signal_multiplexer_17/data",
           "fqmul_3/data_in_1"
         ]
       },
-      "double_signal_multip_23_data_out": {
+      "signal_multiplexer_17_datab": {
         "ports": [
-          "double_signal_multip_23/data_out",
+          "signal_multiplexer_17/datab",
           "fqmul_3/data_in_2"
         ]
       },
-      "double_signal_multip_24_valid_out": {
+      "signal_multiplexer_18_valid": {
         "ports": [
-          "double_signal_multip_24/valid_out",
+          "signal_multiplexer_18/valid",
           "fqmul_4/valid_in"
         ]
       },
-      "double_signal_multip_24_data_out": {
+      "signal_multiplexer_18_data": {
         "ports": [
-          "double_signal_multip_24/data_out",
+          "signal_multiplexer_18/data",
           "fqmul_4/data_in_1"
         ]
       },
-      "double_signal_multip_25_data_out": {
+      "signal_multiplexer_18_datab": {
         "ports": [
-          "double_signal_multip_25/data_out",
+          "signal_multiplexer_18/datab",
           "fqmul_4/data_in_2"
         ]
       },
-      "double_signal_multip_26_valid_out": {
+      "signal_multiplexer_19_valid": {
         "ports": [
-          "double_signal_multip_26/valid_out",
+          "signal_multiplexer_19/valid",
           "fqmul_5/valid_in"
         ]
       },
-      "double_signal_multip_26_data_out": {
+      "signal_multiplexer_19_data": {
         "ports": [
-          "double_signal_multip_26/data_out",
+          "signal_multiplexer_19/data",
           "fqmul_5/data_in_1"
         ]
       },
-      "double_signal_multip_27_data_out": {
+      "signal_multiplexer_19_datab": {
         "ports": [
-          "double_signal_multip_27/data_out",
+          "signal_multiplexer_19/datab",
           "fqmul_5/data_in_2"
+        ]
+      },
+      "fqmul_4_valid_out": {
+        "ports": [
+          "fqmul_4/valid_out",
+          "polyvec_basemul_acc_0/valid_from_fqmul4"
+        ]
+      },
+      "fqmul_4_data_out": {
+        "ports": [
+          "fqmul_4/data_out",
+          "polyvec_basemul_acc_0/coeff_from_fqmul4"
+        ]
+      },
+      "fqmul_5_data_out": {
+        "ports": [
+          "fqmul_5/data_out",
+          "polyvec_basemul_acc_0/coeff_from_fqmul5"
+        ]
+      },
+      "fqmul_5_valid_out": {
+        "ports": [
+          "fqmul_5/valid_out",
+          "polyvec_basemul_acc_0/valid_from_fqmul5"
         ]
       }
     },
