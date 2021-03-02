@@ -88,7 +88,7 @@
   "../../../bd/kyberBD/ipshared/a89a/hdl/polyvec_reduce_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/sim/kyberBD_polyvec_reduce_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_2_0/sim/kyberBD_bram_port_selector_2_0.vhd" \
-  "../../../bd/kyberBD/ipshared/c31d/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/1349/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_polyvec_basemul_acc_0_1/sim/kyberBD_polyvec_basemul_acc_0_1.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_axi_gpio_3_0/sim/kyberBD_axi_gpio_3_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_1/sim/kyberBD_bram_port_selector_1_1.vhd" \
@@ -99,15 +99,6 @@
   "../../../bd/kyberBD/ip/kyberBD_fqmul_0_3/sim/kyberBD_fqmul_0_3.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_fqmul_0_4/sim/kyberBD_fqmul_0_4.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_fqmul_0_5/sim/kyberBD_fqmul_0_5.vhd" \
-  "../../../bd/kyberBD/ipshared/ae0a/hdl/double_signal_multiplexer_v1_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_0/sim/kyberBD_double_signal_multip_0_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_1/sim/kyberBD_double_signal_multip_0_1.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_2/sim/kyberBD_double_signal_multip_0_2.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_3/sim/kyberBD_double_signal_multip_0_3.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_4/sim/kyberBD_double_signal_multip_0_4.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_5/sim/kyberBD_double_signal_multip_0_5.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_6/sim/kyberBD_double_signal_multip_0_6.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_0_7/sim/kyberBD_double_signal_multip_0_7.vhd" \
   "../../../bd/kyberBD/ipshared/b59d/hdl/montgomery_reduction_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_0_0/sim/kyberBD_montgomery_reduction_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_0_1/sim/kyberBD_montgomery_reduction_0_1.vhd" \
@@ -120,42 +111,41 @@
   "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_0_1/sim/kyberBD_barrett_reduce_0_1.vhd" \
   "../../../bd/kyberBD/ipshared/4195/hdl/polyvec_ntt_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_polyvec_ntt_0_0/sim/kyberBD_polyvec_ntt_0_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_0/sim/kyberBD_double_signal_multip_8_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_1/sim/kyberBD_double_signal_multip_8_1.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_2/sim/kyberBD_double_signal_multip_8_2.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_3/sim/kyberBD_double_signal_multip_8_3.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_4/sim/kyberBD_double_signal_multip_8_4.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_8_5/sim/kyberBD_double_signal_multip_8_5.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_fqmul_6_1/sim/kyberBD_fqmul_6_1.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_fqmul_6_2/sim/kyberBD_fqmul_6_2.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_6_0/sim/kyberBD_montgomery_reduction_6_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_montgomery_reduction_6_1/sim/kyberBD_montgomery_reduction_6_1.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_2_0/sim/kyberBD_barrett_reduce_2_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_barrett_reduce_2_1/sim/kyberBD_barrett_reduce_2_1.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_axi_gpio_4_0/sim/kyberBD_axi_gpio_4_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_14_0/sim/kyberBD_double_signal_multip_14_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_14_1/sim/kyberBD_double_signal_multip_14_1.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_0/sim/kyberBD_double_signal_multip_16_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_1/sim/kyberBD_double_signal_multip_16_1.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_2/sim/kyberBD_double_signal_multip_16_2.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_3/sim/kyberBD_double_signal_multip_16_3.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_4/sim/kyberBD_double_signal_multip_16_4.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_5/sim/kyberBD_double_signal_multip_16_5.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_6/sim/kyberBD_double_signal_multip_16_6.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_7/sim/kyberBD_double_signal_multip_16_7.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_8/sim/kyberBD_double_signal_multip_16_8.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_9/sim/kyberBD_double_signal_multip_16_9.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_10/sim/kyberBD_double_signal_multip_16_10.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_double_signal_multip_16_11/sim/kyberBD_double_signal_multip_16_11.vhd" \
+  "../../../bd/kyberBD/sim/kyberBD.vhd" \
+  "../../../bd/kyberBD/ipshared/3867/hdl/signal_multiplexer_v1_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_0_0/sim/kyberBD_signal_multiplexer_0_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_0_1/sim/kyberBD_signal_multiplexer_0_1.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_0/sim/kyberBD_signal_multiplexer_2_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_1/sim/kyberBD_signal_multiplexer_2_1.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_2/sim/kyberBD_signal_multiplexer_2_2.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_3/sim/kyberBD_signal_multiplexer_2_3.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_4/sim/kyberBD_signal_multiplexer_2_4.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_5/sim/kyberBD_signal_multiplexer_2_5.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_0/sim/kyberBD_signal_multiplexer_8_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_1/sim/kyberBD_signal_multiplexer_8_1.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_2/sim/kyberBD_signal_multiplexer_8_2.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_8_3/sim/kyberBD_signal_multiplexer_8_3.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_0/sim/kyberBD_signal_multiplexer_12_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_1/sim/kyberBD_signal_multiplexer_12_1.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_2/sim/kyberBD_signal_multiplexer_12_2.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_3/sim/kyberBD_signal_multiplexer_12_3.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_4/sim/kyberBD_signal_multiplexer_12_4.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_16_0/sim/kyberBD_signal_multiplexer_16_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_0/sim/kyberBD_signal_multiplexer_17_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_1/sim/kyberBD_signal_multiplexer_17_1.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_2/sim/kyberBD_signal_multiplexer_17_2.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_3/sim/kyberBD_signal_multiplexer_17_3.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_4/sim/kyberBD_signal_multiplexer_17_4.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_5/sim/kyberBD_signal_multiplexer_17_5.vhd" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/kyberBD/ip/kyberBD_auto_pc_0/sim/kyberBD_auto_pc_0.v" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/kyberBD/sim/kyberBD.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

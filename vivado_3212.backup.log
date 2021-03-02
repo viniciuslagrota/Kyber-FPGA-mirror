@@ -1,0 +1,310 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Sun Feb 28 20:41:49 2021
+# Process ID: 3212
+# Current directory: C:/Projects/kyber-fpga
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7496 C:\Projects\kyber-fpga\kyber-fpga.xpr
+# Log file: C:/Projects/kyber-fpga/vivado.log
+# Journal file: C:/Projects/kyber-fpga\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Projects/kyber-fpga/kyber-fpga.xpr
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/ntt_1.0'.
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Projects/ip_repo/barret_reduce_1.0'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_ntt_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/ntt_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-2207] Repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0' already exists; ignoring attempt to add it again.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barrett_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/polyvec_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/barret_reduce_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/dual_bram_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/poly_tomont_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/triple_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/double_signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-2207] Repository 'c:/Projects/ip_repo/signal_multiplexer_1.0' already exists; ignoring attempt to add it again.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/signal_multiplexer_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_port_selector_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/bram_mm_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/fqmul_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/splitter_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/montgomery_reduction_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'kyberBD.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+kyberBD_polyvec_basemul_acc_0_1
+
+open_project: Time (s): cpu = 00:00:21 ; elapsed = 00:00:11 . Memory (MB): peak = 784.645 ; gain = 156.980
+update_compile_order -fileset sources_1
+open_bd_design {C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd}
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - axi_interconnect_0
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_1
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_2
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_3
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_0
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_1
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_0
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_1
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_3
+Adding component instance block -- xilinx.com:user:bram_port_selector:1.0 - bram_port_selector_2
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_0
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_1
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_2
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_3
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_4
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_5
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_6
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_7
+Adding component instance block -- xilinx.com:user:dual_bram:1.0 - dual_bram_0
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_0
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_1
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_2
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_3
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_4
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_5
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_0
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_1
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_2
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_3
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_4
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_5
+Adding component instance block -- xilinx.com:user:poly_tomont:1.0 - poly_tomont_0
+Adding component instance block -- xilinx.com:user:polyvec_reduce:1.0 - polyvec_reduce_0
+Adding component instance block -- xilinx.com:user:timer2:1.0 - timer2_0
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_8
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_9
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_10
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_11
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_12
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_13
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_6
+Adding component instance block -- xilinx.com:user:fqmul:1.0 - fqmul_7
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_6
+Adding component instance block -- xilinx.com:user:montgomery_reduction:1.0 - montgomery_reduction_7
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_2
+Adding component instance block -- xilinx.com:user:barrett_reduce:1.0 - barrett_reduce_3
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_4
+Adding component instance block -- xilinx.com:user:polyvec_ntt:1.0 - polyvec_ntt_0
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_14
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_15
+Adding component instance block -- xilinx.com:user:polyvec_basemul_acc_montgomery:1.0 - polyvec_basemul_acc_0
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_16
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_17
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_18
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_19
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_20
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_21
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_22
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_23
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_24
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_25
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_26
+Adding component instance block -- xilinx.com:user:double_signal_multiplexer:1.0 - double_signal_multip_27
+Successfully read diagram <kyberBD> from BD file <C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd>
+open_bd_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:12 . Memory (MB): peak = 947.875 ; gain = 98.172
+report_ip_status -name ip_status 
+upgrade_ip -vlnv xilinx.com:user:polyvec_basemul_acc_montgomery:1.0 [get_ips  kyberBD_polyvec_basemul_acc_0_1] -log ip_upgrade.log
+Upgrading 'C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd'
+INFO: [IP_Flow 19-3422] Upgraded kyberBD_polyvec_basemul_acc_0_1 (polyvec_basemul_acc_montgomery_v1.0 1.0) from revision 15 to revision 16
+Wrote  : <C:\Projects\kyber-fpga\kyber-fpga.srcs\sources_1\bd\kyberBD\kyberBD.bd> 
+Wrote  : <C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ui/bd_6ac062a3.ui> 
+INFO: [Coretcl 2-1525] Wrote upgrade log to 'C:/Projects/kyber-fpga/ip_upgrade.log'.
+export_ip_user_files -of_objects [get_ips kyberBD_polyvec_basemul_acc_0_1] -no_script -sync -force -quiet
+generate_target all [get_files  C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd]
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/bram_port_selector_0/slave4_en
+/bram_port_selector_0/slave4_we
+/bram_port_selector_0/slave4_addr
+/bram_port_selector_1/slave2_en
+/bram_port_selector_1/slave2_we
+/bram_port_selector_1/slave2_addr
+/bram_port_selector_1/slave3_en
+/bram_port_selector_1/slave3_we
+/bram_port_selector_1/slave3_addr
+/bram_port_selector_1/slave4_en
+/bram_port_selector_1/slave4_we
+/bram_port_selector_1/slave4_addr
+/bram_port_selector_3/slave1_en
+/bram_port_selector_3/slave1_we
+/bram_port_selector_3/slave1_addr
+/bram_port_selector_3/slave2_en
+/bram_port_selector_3/slave2_we
+/bram_port_selector_3/slave2_addr
+/bram_port_selector_3/slave3_en
+/bram_port_selector_3/slave3_we
+/bram_port_selector_3/slave3_addr
+/bram_port_selector_3/slave4_en
+/bram_port_selector_3/slave4_we
+/bram_port_selector_3/slave4_addr
+/bram_port_selector_2/slave3_en
+/bram_port_selector_2/slave3_we
+/bram_port_selector_2/slave3_addr
+/bram_port_selector_2/slave4_en
+/bram_port_selector_2/slave4_we
+/bram_port_selector_2/slave4_addr
+/double_signal_multip_2/data_in_1
+/double_signal_multip_2/enable_in_1
+/double_signal_multip_2/valid_in_1
+/double_signal_multip_3/data_in_1
+/double_signal_multip_3/enable_in_1
+/double_signal_multip_3/valid_in_1
+/double_signal_multip_4/data_in_1
+/double_signal_multip_4/enable_in_1
+/double_signal_multip_4/valid_in_1
+/double_signal_multip_5/data_in_1
+/double_signal_multip_5/enable_in_1
+/double_signal_multip_5/valid_in_1
+/double_signal_multip_8/data_in_1
+/double_signal_multip_8/enable_in_1
+/double_signal_multip_8/valid_in_1
+/double_signal_multip_9/data_in_1
+/double_signal_multip_9/enable_in_1
+/double_signal_multip_9/valid_in_1
+/double_signal_multip_10/data_in_1
+/double_signal_multip_10/enable_in_1
+/double_signal_multip_10/valid_in_1
+/double_signal_multip_11/data_in_1
+/double_signal_multip_11/enable_in_1
+/double_signal_multip_11/valid_in_1
+/double_signal_multip_12/data_in_1
+/double_signal_multip_12/enable_in_1
+/double_signal_multip_12/valid_in_1
+/double_signal_multip_13/data_in_1
+/double_signal_multip_13/enable_in_1
+/double_signal_multip_13/valid_in_1
+/double_signal_multip_14/data_in_1
+/double_signal_multip_14/enable_in_1
+/double_signal_multip_14/valid_in_1
+/double_signal_multip_15/data_in_1
+/double_signal_multip_15/enable_in_1
+/double_signal_multip_15/valid_in_1
+/double_signal_multip_16/data_in_1
+/double_signal_multip_16/enable_in_1
+/double_signal_multip_16/valid_in_1
+/double_signal_multip_17/data_in_1
+/double_signal_multip_17/enable_in_1
+/double_signal_multip_17/valid_in_1
+/double_signal_multip_18/data_in_1
+/double_signal_multip_18/enable_in_1
+/double_signal_multip_18/valid_in_1
+/double_signal_multip_19/data_in_1
+/double_signal_multip_19/enable_in_1
+/double_signal_multip_19/valid_in_1
+/double_signal_multip_20/data_in_1
+/double_signal_multip_20/enable_in_1
+/double_signal_multip_20/valid_in_1
+/double_signal_multip_21/data_in_1
+/double_signal_multip_21/enable_in_1
+/double_signal_multip_21/valid_in_1
+/double_signal_multip_22/data_in_1
+/double_signal_multip_22/enable_in_1
+/double_signal_multip_22/valid_in_1
+/double_signal_multip_23/data_in_1
+/double_signal_multip_23/enable_in_1
+/double_signal_multip_23/valid_in_1
+/double_signal_multip_24/data_in_1
+/double_signal_multip_24/enable_in_1
+/double_signal_multip_24/valid_in_1
+/double_signal_multip_25/data_in_1
+/double_signal_multip_25/enable_in_1
+/double_signal_multip_25/valid_in_1
+/double_signal_multip_26/data_in_1
+/double_signal_multip_26/enable_in_1
+/double_signal_multip_26/valid_in_1
+/double_signal_multip_27/data_in_1
+/double_signal_multip_27/enable_in_1
+/double_signal_multip_27/valid_in_1
+
+Wrote  : <C:\Projects\kyber-fpga\kyber-fpga.srcs\sources_1\bd\kyberBD\kyberBD.bd> 
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/sim/kyberBD.vhd
+VHDL Output written to : C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block timer2_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block poly_tomont_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dual_bram_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block polyvec_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block polyvec_basemul_acc_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_3 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_port_selector_3 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_3 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_4 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_5 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_3 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_4 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_5 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_6 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_7 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_3 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_4 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_5 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block polyvec_ntt_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_8 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_9 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_10 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_11 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_12 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_13 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_6 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fqmul_7 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_6 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block montgomery_reduction_7 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block barrett_reduce_3 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_4 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_14 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_15 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_16 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_17 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_18 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_19 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_20 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_21 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_22 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_23 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_24 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_25 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_26 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block double_signal_multip_27 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/s00_couplers/auto_pc .
+Exporting to file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD.hwh
+Generated Block Design Tcl file C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hw_handoff/kyberBD_bd.tcl
+Generated Hardware Definition File C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.hwdef
+generate_target: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 1156.020 ; gain = 169.328
+export_ip_user_files -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD.bd] -directory C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/sim_scripts -ip_user_files_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files -ipstatic_source_dir C:/Projects/kyber-fpga/kyber-fpga.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/modelsim} {questa=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/questa} {riviera=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/riviera} {activehdl=C:/Projects/kyber-fpga/kyber-fpga.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
