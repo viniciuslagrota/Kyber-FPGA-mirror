@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:signal_multiplexer:1.0
--- IP Revision: 3
+-- IP Revision: 4
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -56,9 +56,12 @@ USE ieee.numeric_std.ALL;
 ENTITY kyberBD_signal_multiplexer_2_3 IS
   PORT (
     clk : IN STD_LOGIC;
-    en_0 : IN STD_LOGIC;
-    valid_0 : IN STD_LOGIC;
-    data_0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    en0 : IN STD_LOGIC;
+    valid0 : IN STD_LOGIC;
+    data0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    en1 : IN STD_LOGIC;
+    valid1 : IN STD_LOGIC;
+    data1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     valid : OUT STD_LOGIC;
     data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
@@ -73,26 +76,33 @@ ARCHITECTURE kyberBD_signal_multiplexer_2_3_arch OF kyberBD_signal_multiplexer_2
     );
     PORT (
       clk : IN STD_LOGIC;
-      en_0 : IN STD_LOGIC;
-      valid_0 : IN STD_LOGIC;
-      data_0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      en_1 : IN STD_LOGIC;
-      valid_1 : IN STD_LOGIC;
-      data_1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      en_2 : IN STD_LOGIC;
-      valid_2 : IN STD_LOGIC;
-      data_2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      en_3 : IN STD_LOGIC;
-      valid_3 : IN STD_LOGIC;
-      data_3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      en_4 : IN STD_LOGIC;
-      valid_4 : IN STD_LOGIC;
-      data_4 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      en_5 : IN STD_LOGIC;
-      valid_5 : IN STD_LOGIC;
-      data_5 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      en0 : IN STD_LOGIC;
+      valid0 : IN STD_LOGIC;
+      data0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      data0b : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      en1 : IN STD_LOGIC;
+      valid1 : IN STD_LOGIC;
+      data1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      data1b : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      en2 : IN STD_LOGIC;
+      valid2 : IN STD_LOGIC;
+      data2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      data2b : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      en3 : IN STD_LOGIC;
+      valid3 : IN STD_LOGIC;
+      data3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      data3b : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      en4 : IN STD_LOGIC;
+      valid4 : IN STD_LOGIC;
+      data4 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      data4b : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      en5 : IN STD_LOGIC;
+      valid5 : IN STD_LOGIC;
+      data5 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      data5b : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       valid : OUT STD_LOGIC;
-      data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+      data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      datab : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT signal_multiplexer_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -106,24 +116,30 @@ BEGIN
     )
     PORT MAP (
       clk => clk,
-      en_0 => en_0,
-      valid_0 => valid_0,
-      data_0 => data_0,
-      en_1 => '0',
-      valid_1 => '0',
-      data_1 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
-      en_2 => '0',
-      valid_2 => '0',
-      data_2 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
-      en_3 => '0',
-      valid_3 => '0',
-      data_3 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
-      en_4 => '0',
-      valid_4 => '0',
-      data_4 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
-      en_5 => '0',
-      valid_5 => '0',
-      data_5 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      en0 => en0,
+      valid0 => valid0,
+      data0 => data0,
+      data0b => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      en1 => en1,
+      valid1 => valid1,
+      data1 => data1,
+      data1b => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      en2 => '0',
+      valid2 => '0',
+      data2 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      data2b => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      en3 => '0',
+      valid3 => '0',
+      data3 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      data3b => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      en4 => '0',
+      valid4 => '0',
+      data4 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      data4b => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      en5 => '0',
+      valid5 => '0',
+      data5 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      data5b => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
       valid => valid,
       data => data
     );

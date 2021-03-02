@@ -55,24 +55,18 @@
       "polyvec_basemul_acc_0": "",
       "signal_multiplexer_0": "",
       "signal_multiplexer_1": "",
+      "signal_multiplexer_12": "",
+      "signal_multiplexer_14": "",
+      "signal_multiplexer_16": "",
+      "signal_multiplexer_17": "",
+      "signal_multiplexer_18": "",
+      "signal_multiplexer_19": "",
       "signal_multiplexer_2": "",
       "signal_multiplexer_3": "",
       "signal_multiplexer_4": "",
       "signal_multiplexer_5": "",
       "signal_multiplexer_6": "",
-      "signal_multiplexer_7": "",
-      "signal_multiplexer_12": "",
-      "signal_multiplexer_13": "",
-      "signal_multiplexer_14": "",
-      "signal_multiplexer_15": "",
-      "signal_multiplexer_16": "",
-      "signal_multiplexer_17": "",
-      "signal_multiplexer_18": "",
-      "signal_multiplexer_19": "",
-      "signal_multiplexer_20": "",
-      "signal_multiplexer_21": "",
-      "signal_multiplexer_22": "",
-      "signal_multiplexer_23": ""
+      "signal_multiplexer_7": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1786,16 +1780,28 @@
           }
         },
         "interface_nets": {
-          "m06_couplers_to_axi_interconnect_0": {
+          "xbar_to_m04_couplers": {
             "interface_ports": [
-              "M06_AXI",
-              "m06_couplers/M_AXI"
+              "xbar/M04_AXI",
+              "m04_couplers/S_AXI"
+            ]
+          },
+          "m05_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M05_AXI",
+              "m05_couplers/M_AXI"
             ]
           },
           "xbar_to_m05_couplers": {
             "interface_ports": [
               "xbar/M05_AXI",
               "m05_couplers/S_AXI"
+            ]
+          },
+          "m06_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M06_AXI",
+              "m06_couplers/M_AXI"
             ]
           },
           "xbar_to_m06_couplers": {
@@ -1834,28 +1840,28 @@
               "m00_couplers/S_AXI"
             ]
           },
-          "m02_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M02_AXI",
-              "m02_couplers/M_AXI"
-            ]
-          },
           "xbar_to_m01_couplers": {
             "interface_ports": [
               "xbar/M01_AXI",
               "m01_couplers/S_AXI"
             ]
           },
-          "xbar_to_m02_couplers": {
+          "m02_couplers_to_axi_interconnect_0": {
             "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
+              "M02_AXI",
+              "m02_couplers/M_AXI"
             ]
           },
           "m03_couplers_to_axi_interconnect_0": {
             "interface_ports": [
               "M03_AXI",
               "m03_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m02_couplers": {
+            "interface_ports": [
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
             ]
           },
           "xbar_to_m03_couplers": {
@@ -1868,18 +1874,6 @@
             "interface_ports": [
               "M04_AXI",
               "m04_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m04_couplers": {
-            "interface_ports": [
-              "xbar/M04_AXI",
-              "m04_couplers/S_AXI"
-            ]
-          },
-          "m05_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M05_AXI",
-              "m05_couplers/M_AXI"
             ]
           }
         },
@@ -2147,6 +2141,96 @@
           }
         }
       },
+      "signal_multiplexer_12": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_12_0",
+        "parameters": {
+          "DATA_WIDTH": {
+            "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
+          }
+        }
+      },
+      "signal_multiplexer_14": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_12_2",
+        "parameters": {
+          "DATA_WIDTH": {
+            "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
+          }
+        }
+      },
+      "signal_multiplexer_16": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_12_4",
+        "parameters": {
+          "DATA_WIDTH": {
+            "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
+          }
+        }
+      },
+      "signal_multiplexer_17": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_16_0",
+        "parameters": {
+          "DATA_WIDTH": {
+            "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "2"
+          }
+        }
+      },
+      "signal_multiplexer_18": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_17_0",
+        "parameters": {
+          "DATA_WIDTH": {
+            "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
+          }
+        }
+      },
+      "signal_multiplexer_19": {
+        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
+        "xci_name": "kyberBD_signal_multiplexer_17_1",
+        "parameters": {
+          "DATA_WIDTH": {
+            "value": "16"
+          },
+          "ENABLE_SECOND_DATA_CHANNEL": {
+            "value": "true"
+          },
+          "NUMBER_OF_CHANNELS": {
+            "value": "1"
+          }
+        }
+      },
       "signal_multiplexer_2": {
         "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
         "xci_name": "kyberBD_signal_multiplexer_2_0"
@@ -2160,7 +2244,7 @@
         "xci_name": "kyberBD_signal_multiplexer_2_2",
         "parameters": {
           "NUMBER_OF_CHANNELS": {
-            "value": "1"
+            "value": "2"
           }
         }
       },
@@ -2169,7 +2253,7 @@
         "xci_name": "kyberBD_signal_multiplexer_2_3",
         "parameters": {
           "NUMBER_OF_CHANNELS": {
-            "value": "1"
+            "value": "2"
           }
         }
       },
@@ -2186,150 +2270,6 @@
         "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
         "xci_name": "kyberBD_signal_multiplexer_2_5",
         "parameters": {
-          "NUMBER_OF_CHANNELS": {
-            "value": "2"
-          }
-        }
-      },
-      "signal_multiplexer_12": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_12_0",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_13": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_12_1",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_14": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_12_2",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_15": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_12_3",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_16": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_12_4",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_17": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_16_0",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_18": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_17_0",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_19": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_17_1",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "1"
-          }
-        }
-      },
-      "signal_multiplexer_20": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_17_2",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "2"
-          }
-        }
-      },
-      "signal_multiplexer_21": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_17_3",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "2"
-          }
-        }
-      },
-      "signal_multiplexer_22": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_17_4",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
-          "NUMBER_OF_CHANNELS": {
-            "value": "2"
-          }
-        }
-      },
-      "signal_multiplexer_23": {
-        "vlnv": "xilinx.com:user:signal_multiplexer:1.0",
-        "xci_name": "kyberBD_signal_multiplexer_17_5",
-        "parameters": {
-          "DATA_WIDTH": {
-            "value": "16"
-          },
           "NUMBER_OF_CHANNELS": {
             "value": "2"
           }
@@ -2613,136 +2553,130 @@
           "polyvec_basemul_acc_0/clk",
           "signal_multiplexer_0/clk",
           "signal_multiplexer_1/clk",
+          "signal_multiplexer_12/clk",
+          "signal_multiplexer_14/clk",
+          "signal_multiplexer_16/clk",
+          "signal_multiplexer_17/clk",
+          "signal_multiplexer_18/clk",
+          "signal_multiplexer_19/clk",
           "signal_multiplexer_2/clk",
           "signal_multiplexer_3/clk",
           "signal_multiplexer_4/clk",
           "signal_multiplexer_5/clk",
           "signal_multiplexer_6/clk",
-          "signal_multiplexer_7/clk",
-          "signal_multiplexer_12/clk",
-          "signal_multiplexer_13/clk",
-          "signal_multiplexer_14/clk",
-          "signal_multiplexer_15/clk",
-          "signal_multiplexer_16/clk",
-          "signal_multiplexer_17/clk",
-          "signal_multiplexer_18/clk",
-          "signal_multiplexer_19/clk",
-          "signal_multiplexer_20/clk",
-          "signal_multiplexer_21/clk",
-          "signal_multiplexer_22/clk",
-          "signal_multiplexer_23/clk"
+          "signal_multiplexer_7/clk"
         ]
       },
       "poly_tomont_0_do_lower_mont": {
         "ports": [
           "poly_tomont_0/do_lower_mont",
-          "signal_multiplexer_2/data_0"
+          "signal_multiplexer_2/data0"
         ]
       },
       "poly_tomont_0_en_lower_mont": {
         "ports": [
           "poly_tomont_0/en_lower_mont",
-          "signal_multiplexer_2/en_0"
+          "signal_multiplexer_2/en0"
         ]
       },
       "poly_tomont_0_valid_out_lower_mont": {
         "ports": [
           "poly_tomont_0/valid_out_lower_mont",
-          "signal_multiplexer_2/valid_0"
+          "signal_multiplexer_2/valid0"
         ]
       },
       "poly_tomont_0_do_upper_mont": {
         "ports": [
           "poly_tomont_0/do_upper_mont",
-          "signal_multiplexer_3/data_0"
+          "signal_multiplexer_3/data0"
         ]
       },
       "poly_tomont_0_en_upper_mont": {
         "ports": [
           "poly_tomont_0/en_upper_mont",
-          "signal_multiplexer_3/en_0"
+          "signal_multiplexer_3/en0"
         ]
       },
       "poly_tomont_0_valid_out_upper_mont": {
         "ports": [
           "poly_tomont_0/valid_out_upper_mont",
-          "signal_multiplexer_3/valid_0"
+          "signal_multiplexer_3/valid0"
         ]
       },
       "fqmul_0_valid_out_mont": {
         "ports": [
           "fqmul_0/valid_out_mont",
-          "signal_multiplexer_2/valid_1"
+          "signal_multiplexer_2/valid1"
         ]
       },
       "fqmul_0_data_out_mont": {
         "ports": [
           "fqmul_0/data_out_mont",
-          "signal_multiplexer_2/data_1"
+          "signal_multiplexer_2/data1"
         ]
       },
       "fqmul_1_valid_out_mont": {
         "ports": [
           "fqmul_1/valid_out_mont",
-          "signal_multiplexer_3/valid_1"
+          "signal_multiplexer_3/valid1"
         ]
       },
       "fqmul_1_data_out_mont": {
         "ports": [
           "fqmul_1/data_out_mont",
-          "signal_multiplexer_3/data_1"
+          "signal_multiplexer_3/data1"
         ]
       },
       "fqmul_2_valid_out_mont": {
         "ports": [
           "fqmul_2/valid_out_mont",
-          "signal_multiplexer_4/valid_0"
+          "signal_multiplexer_4/valid0",
+          "signal_multiplexer_4/valid1"
         ]
       },
       "fqmul_2_data_out_mont": {
         "ports": [
           "fqmul_2/data_out_mont",
-          "signal_multiplexer_4/data_0"
+          "signal_multiplexer_4/data0",
+          "signal_multiplexer_4/data1"
         ]
       },
       "fqmul_3_valid_out_mont": {
         "ports": [
           "fqmul_3/valid_out_mont",
-          "signal_multiplexer_5/valid_0"
+          "signal_multiplexer_5/valid0",
+          "signal_multiplexer_5/valid1"
         ]
       },
       "fqmul_3_data_out_mont": {
         "ports": [
           "fqmul_3/data_out_mont",
-          "signal_multiplexer_5/data_0"
+          "signal_multiplexer_5/data0",
+          "signal_multiplexer_5/data1"
         ]
       },
       "fqmul_4_valid_out_mont": {
         "ports": [
           "fqmul_4/valid_out_mont",
-          "signal_multiplexer_6/valid_0",
-          "signal_multiplexer_6/valid_1"
+          "signal_multiplexer_6/valid0"
         ]
       },
       "fqmul_4_data_out_mont": {
         "ports": [
           "fqmul_4/data_out_mont",
-          "signal_multiplexer_6/data_0",
-          "signal_multiplexer_6/data_1"
+          "signal_multiplexer_6/data0"
         ]
       },
       "fqmul_5_valid_out_mont": {
         "ports": [
           "fqmul_5/valid_out_mont",
-          "signal_multiplexer_7/valid_0",
-          "signal_multiplexer_7/valid_1"
+          "signal_multiplexer_7/valid0"
         ]
       },
       "fqmul_5_data_out_mont": {
         "ports": [
           "fqmul_5/data_out_mont",
-          "signal_multiplexer_7/data_0",
-          "signal_multiplexer_7/data_1"
+          "signal_multiplexer_7/data0"
         ]
       },
       "montgomery_reduction_0_valid_out": {
@@ -2788,26 +2722,14 @@
       "fqmul_2_data_out": {
         "ports": [
           "fqmul_2/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul2"
+          "polyvec_basemul_acc_0/coeff_from_fqmul2",
+          "polyvec_ntt_0/coeff_from_fqmul0"
         ]
       },
       "fqmul_3_data_out": {
         "ports": [
           "fqmul_3/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul3"
-        ]
-      },
-      "fqmul_4_data_out": {
-        "ports": [
-          "fqmul_4/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul4",
-          "polyvec_ntt_0/coeff_from_fqmul0"
-        ]
-      },
-      "fqmul_5_data_out": {
-        "ports": [
-          "fqmul_5/data_out",
-          "polyvec_basemul_acc_0/coeff_from_fqmul5",
+          "polyvec_basemul_acc_0/coeff_from_fqmul3",
           "polyvec_ntt_0/coeff_from_fqmul1"
         ]
       },
@@ -2878,74 +2800,68 @@
       "Net": {
         "ports": [
           "polyvec_basemul_acc_0/en_dsm",
-          "signal_multiplexer_0/en_1",
-          "signal_multiplexer_1/en_1",
-          "signal_multiplexer_2/en_1",
-          "signal_multiplexer_3/en_1",
-          "signal_multiplexer_4/en_0",
-          "signal_multiplexer_5/en_0",
-          "signal_multiplexer_6/en_0",
-          "signal_multiplexer_7/en_0",
-          "signal_multiplexer_12/en_0",
-          "signal_multiplexer_13/en_0",
-          "signal_multiplexer_14/en_0",
-          "signal_multiplexer_15/en_0",
-          "signal_multiplexer_16/en_0",
-          "signal_multiplexer_17/en_0",
-          "signal_multiplexer_18/en_0",
-          "signal_multiplexer_19/en_0",
-          "signal_multiplexer_20/en_0",
-          "signal_multiplexer_21/en_0",
-          "signal_multiplexer_22/en_0",
-          "signal_multiplexer_23/en_0"
+          "signal_multiplexer_12/en0",
+          "signal_multiplexer_14/en0",
+          "signal_multiplexer_16/en0",
+          "signal_multiplexer_17/en0",
+          "signal_multiplexer_18/en0",
+          "signal_multiplexer_19/en0",
+          "signal_multiplexer_2/en1",
+          "signal_multiplexer_3/en1",
+          "signal_multiplexer_4/en0",
+          "signal_multiplexer_5/en0",
+          "signal_multiplexer_6/en0",
+          "signal_multiplexer_7/en0",
+          "signal_multiplexer_0/en1",
+          "signal_multiplexer_1/en1"
         ]
       },
       "polyvec_basemul_acc_0_data0_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/data0_to_barrett",
-          "signal_multiplexer_0/data_1"
+          "signal_multiplexer_0/data1"
         ]
       },
       "polyvec_basemul_acc_0_data1_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/data1_to_barrett",
-          "signal_multiplexer_1/data_1"
+          "signal_multiplexer_1/data1"
         ]
       },
       "polyvec_reduce_0_do_lower_barrett": {
         "ports": [
           "polyvec_reduce_0/do_lower_barrett",
-          "signal_multiplexer_0/data_0"
+          "signal_multiplexer_0/data0"
         ]
       },
       "polyvec_reduce_0_en_lower_barrett": {
         "ports": [
           "polyvec_reduce_0/en_lower_barrett",
-          "signal_multiplexer_0/en_0"
+          "signal_multiplexer_0/en0"
         ]
       },
       "polyvec_reduce_0_valid_out_lower_barrett": {
         "ports": [
           "polyvec_reduce_0/valid_out_lower_barrett",
-          "signal_multiplexer_0/valid_0"
+          "signal_multiplexer_0/valid0"
         ]
       },
       "polyvec_reduce_0_do_upper_barrett": {
         "ports": [
           "polyvec_reduce_0/do_upper_barrett",
-          "signal_multiplexer_1/data_0"
+          "signal_multiplexer_1/data0"
         ]
       },
       "polyvec_reduce_0_en_upper_barrett": {
         "ports": [
           "polyvec_reduce_0/en_upper_barrett",
-          "signal_multiplexer_1/en_0"
+          "signal_multiplexer_1/en0"
         ]
       },
       "polyvec_reduce_0_valid_out_upper_barrett": {
         "ports": [
           "polyvec_reduce_0/valid_out_upper_barrett",
-          "signal_multiplexer_1/valid_0"
+          "signal_multiplexer_1/valid0"
         ]
       },
       "barrett_reduce_0_valid_out": {
@@ -2979,96 +2895,80 @@
       "fqmul_2_valid_out": {
         "ports": [
           "fqmul_2/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul2"
+          "polyvec_basemul_acc_0/valid_from_fqmul2",
+          "polyvec_ntt_0/valid_from_fqmul0"
         ]
       },
       "fqmul_3_valid_out": {
         "ports": [
           "fqmul_3/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul3"
-        ]
-      },
-      "fqmul_4_valid_out": {
-        "ports": [
-          "fqmul_4/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul4",
-          "polyvec_ntt_0/valid_from_fqmul0"
-        ]
-      },
-      "fqmul_5_valid_out": {
-        "ports": [
-          "fqmul_5/valid_out",
-          "polyvec_basemul_acc_0/valid_from_fqmul5",
+          "polyvec_basemul_acc_0/valid_from_fqmul3",
           "polyvec_ntt_0/valid_from_fqmul1"
         ]
       },
       "polyvec_basemul_acc_0_valid1_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/valid1_to_barrett",
-          "signal_multiplexer_1/valid_1"
+          "signal_multiplexer_1/valid1"
         ]
       },
       "polyvec_ntt_0_valid_to_fqmul0": {
         "ports": [
           "polyvec_ntt_0/valid_to_fqmul0",
-          "signal_multiplexer_20/valid_1",
-          "signal_multiplexer_21/valid_1"
+          "signal_multiplexer_16/valid1"
         ]
       },
       "polyvec_ntt_0_coeff0_to_fqmul0": {
         "ports": [
           "polyvec_ntt_0/coeff0_to_fqmul0",
-          "signal_multiplexer_20/data_1"
+          "signal_multiplexer_16/data1"
         ]
       },
       "polyvec_ntt_0_en_dsm": {
         "ports": [
           "polyvec_ntt_0/en_dsm",
-          "signal_multiplexer_0/en_2",
-          "signal_multiplexer_1/en_2",
-          "signal_multiplexer_20/en_1",
-          "signal_multiplexer_21/en_1",
-          "signal_multiplexer_22/en_1",
-          "signal_multiplexer_23/en_1",
-          "signal_multiplexer_6/en_1",
-          "signal_multiplexer_7/en_1"
+          "signal_multiplexer_16/en1",
+          "signal_multiplexer_4/en1",
+          "signal_multiplexer_5/en1",
+          "signal_multiplexer_17/en1",
+          "signal_multiplexer_0/en2",
+          "signal_multiplexer_1/en2"
         ]
       },
       "polyvec_ntt_0_coeff1_to_fqmul0": {
         "ports": [
           "polyvec_ntt_0/coeff1_to_fqmul0",
-          "signal_multiplexer_21/data_1"
+          "signal_multiplexer_16/data1b"
         ]
       },
       "polyvec_ntt_0_valid_to_fqmul1": {
         "ports": [
           "polyvec_ntt_0/valid_to_fqmul1",
-          "signal_multiplexer_22/valid_1",
-          "signal_multiplexer_23/valid_1"
+          "signal_multiplexer_17/valid1"
         ]
       },
       "polyvec_ntt_0_coeff0_to_fqmul1": {
         "ports": [
           "polyvec_ntt_0/coeff0_to_fqmul1",
-          "signal_multiplexer_22/data_1"
+          "signal_multiplexer_17/data1"
         ]
       },
       "polyvec_ntt_0_coeff1_to_fqmul1": {
         "ports": [
           "polyvec_ntt_0/coeff1_to_fqmul1",
-          "signal_multiplexer_23/data_1"
+          "signal_multiplexer_17/data1b"
         ]
       },
       "polyvec_ntt_0_valid0_to_barrett": {
         "ports": [
           "polyvec_ntt_0/valid0_to_barrett",
-          "signal_multiplexer_0/valid_2"
+          "signal_multiplexer_0/valid2"
         ]
       },
       "polyvec_ntt_0_data0_to_barrett": {
         "ports": [
           "polyvec_ntt_0/data0_to_barrett",
-          "signal_multiplexer_0/data_2"
+          "signal_multiplexer_0/data2"
         ]
       },
       "polyvec_ntt_0_busy": {
@@ -3086,121 +2986,109 @@
       "polyvec_basemul_acc_0_valid0_to_barrett": {
         "ports": [
           "polyvec_basemul_acc_0/valid0_to_barrett",
-          "signal_multiplexer_0/valid_1"
+          "signal_multiplexer_0/valid1"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul0": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul0",
-          "signal_multiplexer_12/data_0"
+          "signal_multiplexer_12/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul0": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul0",
-          "signal_multiplexer_13/data_0"
+          "signal_multiplexer_12/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul1": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul1",
-          "signal_multiplexer_14/data_0"
+          "signal_multiplexer_14/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul1": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul1",
-          "signal_multiplexer_15/data_0"
+          "signal_multiplexer_14/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul2": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul2",
-          "signal_multiplexer_16/data_0"
+          "signal_multiplexer_16/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul2": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul2",
-          "signal_multiplexer_17/data_0"
+          "signal_multiplexer_16/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul3": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul3",
-          "signal_multiplexer_18/data_0"
+          "signal_multiplexer_17/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul3": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul3",
-          "signal_multiplexer_19/data_0"
+          "signal_multiplexer_17/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul4": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul4",
-          "signal_multiplexer_20/data_0"
+          "signal_multiplexer_18/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul4": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul4",
-          "signal_multiplexer_21/data_0"
+          "signal_multiplexer_18/data0b"
         ]
       },
       "polyvec_basemul_acc_0_coeff0_to_fqmul5": {
         "ports": [
           "polyvec_basemul_acc_0/coeff0_to_fqmul5",
-          "signal_multiplexer_22/data_0"
+          "signal_multiplexer_19/data0"
         ]
       },
       "polyvec_basemul_acc_0_coeff1_to_fqmul5": {
         "ports": [
           "polyvec_basemul_acc_0/coeff1_to_fqmul5",
-          "signal_multiplexer_23/data_0"
+          "signal_multiplexer_19/data0b"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul0": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul0",
-          "signal_multiplexer_12/valid_0",
-          "signal_multiplexer_13/valid_0"
+          "signal_multiplexer_12/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul1": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul1",
-          "signal_multiplexer_14/valid_0",
-          "signal_multiplexer_15/valid_0"
-        ]
-      },
-      "polyvec_basemul_acc_0_valid_to_fqmul2": {
-        "ports": [
-          "polyvec_basemul_acc_0/valid_to_fqmul2",
-          "signal_multiplexer_16/valid_0",
-          "signal_multiplexer_17/valid_0"
+          "signal_multiplexer_14/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul3": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul3",
-          "signal_multiplexer_18/valid_0",
-          "signal_multiplexer_19/valid_0"
+          "signal_multiplexer_17/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul4": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul4",
-          "signal_multiplexer_20/valid_0",
-          "signal_multiplexer_21/valid_0"
+          "signal_multiplexer_18/valid0"
         ]
       },
       "polyvec_basemul_acc_0_valid_to_fqmul5": {
         "ports": [
           "polyvec_basemul_acc_0/valid_to_fqmul5",
-          "signal_multiplexer_22/valid_0",
-          "signal_multiplexer_23/valid_0"
+          "signal_multiplexer_19/valid0"
         ]
       },
       "signal_multiplexer_0_valid": {
@@ -3230,13 +3118,13 @@
       "polyvec_ntt_0_valid1_to_barrett": {
         "ports": [
           "polyvec_ntt_0/valid1_to_barrett",
-          "signal_multiplexer_1/valid_2"
+          "signal_multiplexer_1/valid2"
         ]
       },
       "polyvec_ntt_0_data1_to_barrett": {
         "ports": [
           "polyvec_ntt_0/data1_to_barrett",
-          "signal_multiplexer_1/data_2"
+          "signal_multiplexer_1/data2"
         ]
       },
       "signal_multiplexer_2_valid": {
@@ -3323,12 +3211,6 @@
           "fqmul_0/data_in_1"
         ]
       },
-      "signal_multiplexer_13_data": {
-        "ports": [
-          "signal_multiplexer_13/data",
-          "fqmul_0/data_in_2"
-        ]
-      },
       "signal_multiplexer_14_valid": {
         "ports": [
           "signal_multiplexer_14/valid",
@@ -3339,12 +3221,6 @@
         "ports": [
           "signal_multiplexer_14/data",
           "fqmul_1/data_in_1"
-        ]
-      },
-      "signal_multiplexer_15_data": {
-        "ports": [
-          "signal_multiplexer_15/data",
-          "fqmul_1/data_in_2"
         ]
       },
       "signal_multiplexer_16_valid": {
@@ -3359,64 +3235,106 @@
           "fqmul_2/data_in_1"
         ]
       },
+      "signal_multiplexer_12_datab": {
+        "ports": [
+          "signal_multiplexer_12/datab",
+          "fqmul_0/data_in_2"
+        ]
+      },
+      "signal_multiplexer_14_datab": {
+        "ports": [
+          "signal_multiplexer_14/datab",
+          "fqmul_1/data_in_2"
+        ]
+      },
+      "polyvec_basemul_acc_0_valid_to_fqmul2": {
+        "ports": [
+          "polyvec_basemul_acc_0/valid_to_fqmul2",
+          "signal_multiplexer_16/valid0"
+        ]
+      },
+      "signal_multiplexer_16_datab": {
+        "ports": [
+          "signal_multiplexer_16/datab",
+          "fqmul_2/data_in_2"
+        ]
+      },
+      "signal_multiplexer_17_valid": {
+        "ports": [
+          "signal_multiplexer_17/valid",
+          "fqmul_3/valid_in"
+        ]
+      },
       "signal_multiplexer_17_data": {
         "ports": [
           "signal_multiplexer_17/data",
-          "fqmul_2/data_in_2"
+          "fqmul_3/data_in_1"
+        ]
+      },
+      "signal_multiplexer_17_datab": {
+        "ports": [
+          "signal_multiplexer_17/datab",
+          "fqmul_3/data_in_2"
         ]
       },
       "signal_multiplexer_18_valid": {
         "ports": [
           "signal_multiplexer_18/valid",
-          "fqmul_3/valid_in"
+          "fqmul_4/valid_in"
         ]
       },
       "signal_multiplexer_18_data": {
         "ports": [
           "signal_multiplexer_18/data",
-          "fqmul_3/data_in_1"
+          "fqmul_4/data_in_1"
+        ]
+      },
+      "signal_multiplexer_18_datab": {
+        "ports": [
+          "signal_multiplexer_18/datab",
+          "fqmul_4/data_in_2"
+        ]
+      },
+      "signal_multiplexer_19_valid": {
+        "ports": [
+          "signal_multiplexer_19/valid",
+          "fqmul_5/valid_in"
         ]
       },
       "signal_multiplexer_19_data": {
         "ports": [
           "signal_multiplexer_19/data",
-          "fqmul_3/data_in_2"
-        ]
-      },
-      "signal_multiplexer_20_valid": {
-        "ports": [
-          "signal_multiplexer_20/valid",
-          "fqmul_4/valid_in"
-        ]
-      },
-      "signal_multiplexer_20_data": {
-        "ports": [
-          "signal_multiplexer_20/data",
-          "fqmul_4/data_in_1"
-        ]
-      },
-      "signal_multiplexer_21_data": {
-        "ports": [
-          "signal_multiplexer_21/data",
-          "fqmul_4/data_in_2"
-        ]
-      },
-      "signal_multiplexer_22_valid": {
-        "ports": [
-          "signal_multiplexer_22/valid",
-          "fqmul_5/valid_in"
-        ]
-      },
-      "signal_multiplexer_22_data": {
-        "ports": [
-          "signal_multiplexer_22/data",
           "fqmul_5/data_in_1"
         ]
       },
-      "signal_multiplexer_23_data": {
+      "signal_multiplexer_19_datab": {
         "ports": [
-          "signal_multiplexer_23/data",
+          "signal_multiplexer_19/datab",
           "fqmul_5/data_in_2"
+        ]
+      },
+      "fqmul_4_valid_out": {
+        "ports": [
+          "fqmul_4/valid_out",
+          "polyvec_basemul_acc_0/valid_from_fqmul4"
+        ]
+      },
+      "fqmul_4_data_out": {
+        "ports": [
+          "fqmul_4/data_out",
+          "polyvec_basemul_acc_0/coeff_from_fqmul4"
+        ]
+      },
+      "fqmul_5_data_out": {
+        "ports": [
+          "fqmul_5/data_out",
+          "polyvec_basemul_acc_0/coeff_from_fqmul5"
+        ]
+      },
+      "fqmul_5_valid_out": {
+        "ports": [
+          "fqmul_5/valid_out",
+          "polyvec_basemul_acc_0/valid_from_fqmul5"
         ]
       }
     },

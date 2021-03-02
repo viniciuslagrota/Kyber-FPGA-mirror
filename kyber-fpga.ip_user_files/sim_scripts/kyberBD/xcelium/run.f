@@ -112,8 +112,7 @@
   "../../../bd/kyberBD/ipshared/4195/hdl/polyvec_ntt_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_polyvec_ntt_0_0/sim/kyberBD_polyvec_ntt_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_axi_gpio_4_0/sim/kyberBD_axi_gpio_4_0.vhd" \
-  "../../../bd/kyberBD/sim/kyberBD.vhd" \
-  "../../../bd/kyberBD/ipshared/3867/hdl/signal_multiplexer_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/9555/hdl/signal_multiplexer_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_0_0/sim/kyberBD_signal_multiplexer_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_0_1/sim/kyberBD_signal_multiplexer_0_1.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_0/sim/kyberBD_signal_multiplexer_2_0.vhd" \
@@ -123,17 +122,12 @@
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_4/sim/kyberBD_signal_multiplexer_2_4.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_2_5/sim/kyberBD_signal_multiplexer_2_5.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_0/sim/kyberBD_signal_multiplexer_12_0.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_1/sim/kyberBD_signal_multiplexer_12_1.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_2/sim/kyberBD_signal_multiplexer_12_2.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_3/sim/kyberBD_signal_multiplexer_12_3.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_12_4/sim/kyberBD_signal_multiplexer_12_4.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_16_0/sim/kyberBD_signal_multiplexer_16_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_0/sim/kyberBD_signal_multiplexer_17_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_1/sim/kyberBD_signal_multiplexer_17_1.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_2/sim/kyberBD_signal_multiplexer_17_2.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_3/sim/kyberBD_signal_multiplexer_17_3.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_4/sim/kyberBD_signal_multiplexer_17_4.vhd" \
-  "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_5/sim/kyberBD_signal_multiplexer_17_5.vhd" \
+  "../../../bd/kyberBD/sim/kyberBD.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_19 \
   "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

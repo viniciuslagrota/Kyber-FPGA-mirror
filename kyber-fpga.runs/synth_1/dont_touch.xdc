@@ -130,14 +130,8 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_
 # IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_12_0/kyberBD_signal_multiplexer_12_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_12_0 || ORIG_REF_NAME==kyberBD_signal_multiplexer_12_0} -quiet] -quiet
 
-# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_12_1/kyberBD_signal_multiplexer_12_1.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_12_1 || ORIG_REF_NAME==kyberBD_signal_multiplexer_12_1} -quiet] -quiet
-
 # IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_12_2/kyberBD_signal_multiplexer_12_2.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_12_2 || ORIG_REF_NAME==kyberBD_signal_multiplexer_12_2} -quiet] -quiet
-
-# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_12_3/kyberBD_signal_multiplexer_12_3.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_12_3 || ORIG_REF_NAME==kyberBD_signal_multiplexer_12_3} -quiet] -quiet
 
 # IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_12_4/kyberBD_signal_multiplexer_12_4.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_12_4 || ORIG_REF_NAME==kyberBD_signal_multiplexer_12_4} -quiet] -quiet
@@ -150,18 +144,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_
 
 # IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_17_1/kyberBD_signal_multiplexer_17_1.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_17_1 || ORIG_REF_NAME==kyberBD_signal_multiplexer_17_1} -quiet] -quiet
-
-# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_17_2/kyberBD_signal_multiplexer_17_2.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_17_2 || ORIG_REF_NAME==kyberBD_signal_multiplexer_17_2} -quiet] -quiet
-
-# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_17_3/kyberBD_signal_multiplexer_17_3.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_17_3 || ORIG_REF_NAME==kyberBD_signal_multiplexer_17_3} -quiet] -quiet
-
-# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_17_4/kyberBD_signal_multiplexer_17_4.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_17_4 || ORIG_REF_NAME==kyberBD_signal_multiplexer_17_4} -quiet] -quiet
-
-# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_17_5/kyberBD_signal_multiplexer_17_5.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_17_5 || ORIG_REF_NAME==kyberBD_signal_multiplexer_17_5} -quiet] -quiet
 
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet

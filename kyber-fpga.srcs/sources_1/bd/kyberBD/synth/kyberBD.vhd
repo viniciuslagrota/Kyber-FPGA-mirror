@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Tue Mar  2 13:45:50 2021
+--Date        : Tue Mar  2 16:37:22 2021
 --Host        : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -2294,7 +2294,7 @@ entity kyberBD is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=62,numReposBlks=53,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=56,numReposBlks=47,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of kyberBD : entity is "kyberBD.hwdef";
 end kyberBD;
@@ -3050,15 +3050,15 @@ architecture STRUCTURE of kyberBD is
   component kyberBD_signal_multiplexer_0_0 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_2 : in STD_LOGIC;
-    valid_2 : in STD_LOGIC;
-    data_2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en2 : in STD_LOGIC;
+    valid2 : in STD_LOGIC;
+    data2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
@@ -3066,28 +3066,108 @@ architecture STRUCTURE of kyberBD is
   component kyberBD_signal_multiplexer_0_1 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_2 : in STD_LOGIC;
-    valid_2 : in STD_LOGIC;
-    data_2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en2 : in STD_LOGIC;
+    valid2 : in STD_LOGIC;
+    data2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component kyberBD_signal_multiplexer_0_1;
+  component kyberBD_signal_multiplexer_12_0 is
+  port (
+    clk : in STD_LOGIC;
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid : out STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datab : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_signal_multiplexer_12_0;
+  component kyberBD_signal_multiplexer_12_2 is
+  port (
+    clk : in STD_LOGIC;
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid : out STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datab : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_signal_multiplexer_12_2;
+  component kyberBD_signal_multiplexer_12_4 is
+  port (
+    clk : in STD_LOGIC;
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data1b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid : out STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datab : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_signal_multiplexer_12_4;
+  component kyberBD_signal_multiplexer_16_0 is
+  port (
+    clk : in STD_LOGIC;
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data1b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid : out STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datab : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_signal_multiplexer_16_0;
+  component kyberBD_signal_multiplexer_17_0 is
+  port (
+    clk : in STD_LOGIC;
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid : out STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datab : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_signal_multiplexer_17_0;
+  component kyberBD_signal_multiplexer_17_1 is
+  port (
+    clk : in STD_LOGIC;
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data0b : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    valid : out STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datab : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component kyberBD_signal_multiplexer_17_1;
   component kyberBD_signal_multiplexer_2_0 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -3095,12 +3175,12 @@ architecture STRUCTURE of kyberBD is
   component kyberBD_signal_multiplexer_2_1 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -3108,9 +3188,12 @@ architecture STRUCTURE of kyberBD is
   component kyberBD_signal_multiplexer_2_2 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -3118,9 +3201,12 @@ architecture STRUCTURE of kyberBD is
   component kyberBD_signal_multiplexer_2_3 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -3128,12 +3214,12 @@ architecture STRUCTURE of kyberBD is
   component kyberBD_signal_multiplexer_2_4 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -3141,148 +3227,16 @@ architecture STRUCTURE of kyberBD is
   component kyberBD_signal_multiplexer_2_5 is
   port (
     clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en0 : in STD_LOGIC;
+    valid0 : in STD_LOGIC;
+    data0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    en1 : in STD_LOGIC;
+    valid1 : in STD_LOGIC;
+    data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     valid : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component kyberBD_signal_multiplexer_2_5;
-  component kyberBD_signal_multiplexer_12_0 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_12_0;
-  component kyberBD_signal_multiplexer_12_1 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_12_1;
-  component kyberBD_signal_multiplexer_12_2 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_12_2;
-  component kyberBD_signal_multiplexer_12_3 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_12_3;
-  component kyberBD_signal_multiplexer_12_4 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_12_4;
-  component kyberBD_signal_multiplexer_16_0 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_16_0;
-  component kyberBD_signal_multiplexer_17_0 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_17_0;
-  component kyberBD_signal_multiplexer_17_1 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_17_1;
-  component kyberBD_signal_multiplexer_17_2 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_17_2;
-  component kyberBD_signal_multiplexer_17_3 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_17_3;
-  component kyberBD_signal_multiplexer_17_4 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_17_4;
-  component kyberBD_signal_multiplexer_17_5 is
-  port (
-    clk : in STD_LOGIC;
-    en_0 : in STD_LOGIC;
-    valid_0 : in STD_LOGIC;
-    data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    en_1 : in STD_LOGIC;
-    valid_1 : in STD_LOGIC;
-    data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    valid : out STD_LOGIC;
-    data : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component kyberBD_signal_multiplexer_17_5;
   signal Net : STD_LOGIC;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -3637,25 +3591,25 @@ architecture STRUCTURE of kyberBD is
   signal signal_multiplexer_0_data : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_0_valid : STD_LOGIC;
   signal signal_multiplexer_12_data : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_12_datab : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_12_valid : STD_LOGIC;
-  signal signal_multiplexer_13_data : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_14_data : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_14_datab : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_14_valid : STD_LOGIC;
-  signal signal_multiplexer_15_data : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_16_data : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_16_datab : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_16_valid : STD_LOGIC;
   signal signal_multiplexer_17_data : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_17_datab : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_17_valid : STD_LOGIC;
   signal signal_multiplexer_18_data : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_18_datab : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_18_valid : STD_LOGIC;
   signal signal_multiplexer_19_data : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_19_datab : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal signal_multiplexer_19_valid : STD_LOGIC;
   signal signal_multiplexer_1_data : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_1_valid : STD_LOGIC;
-  signal signal_multiplexer_20_data : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal signal_multiplexer_20_valid : STD_LOGIC;
-  signal signal_multiplexer_21_data : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal signal_multiplexer_22_data : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal signal_multiplexer_22_valid : STD_LOGIC;
-  signal signal_multiplexer_23_data : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_multiplexer_2_data : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal signal_multiplexer_2_valid : STD_LOGIC;
   signal signal_multiplexer_3_data : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3694,12 +3648,6 @@ architecture STRUCTURE of kyberBD is
   signal NLW_processing_system7_0_TTC0_WAVE2_OUT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_USB0_VBUS_PWRSELECT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_USB0_PORT_INDCTL_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_signal_multiplexer_13_valid_UNCONNECTED : STD_LOGIC;
-  signal NLW_signal_multiplexer_15_valid_UNCONNECTED : STD_LOGIC;
-  signal NLW_signal_multiplexer_17_valid_UNCONNECTED : STD_LOGIC;
-  signal NLW_signal_multiplexer_19_valid_UNCONNECTED : STD_LOGIC;
-  signal NLW_signal_multiplexer_21_valid_UNCONNECTED : STD_LOGIC;
-  signal NLW_signal_multiplexer_23_valid_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
   attribute X_INTERFACE_INFO of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
@@ -4253,7 +4201,7 @@ fqmul_0: component kyberBD_fqmul_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data_in_1(15 downto 0) => signal_multiplexer_12_data(15 downto 0),
-      data_in_2(15 downto 0) => signal_multiplexer_13_data(15 downto 0),
+      data_in_2(15 downto 0) => signal_multiplexer_12_datab(15 downto 0),
       data_in_mont(15 downto 0) => montgomery_reduction_0_data_out(15 downto 0),
       data_out(15 downto 0) => fqmul_0_data_out(15 downto 0),
       data_out_mont(31 downto 0) => fqmul_0_data_out_mont(31 downto 0),
@@ -4266,7 +4214,7 @@ fqmul_1: component kyberBD_fqmul_0_1
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data_in_1(15 downto 0) => signal_multiplexer_14_data(15 downto 0),
-      data_in_2(15 downto 0) => signal_multiplexer_15_data(15 downto 0),
+      data_in_2(15 downto 0) => signal_multiplexer_14_datab(15 downto 0),
       data_in_mont(15 downto 0) => montgomery_reduction_1_data_out(15 downto 0),
       data_out(15 downto 0) => fqmul_1_data_out(15 downto 0),
       data_out_mont(31 downto 0) => fqmul_1_data_out_mont(31 downto 0),
@@ -4279,7 +4227,7 @@ fqmul_2: component kyberBD_fqmul_0_2
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data_in_1(15 downto 0) => signal_multiplexer_16_data(15 downto 0),
-      data_in_2(15 downto 0) => signal_multiplexer_17_data(15 downto 0),
+      data_in_2(15 downto 0) => signal_multiplexer_16_datab(15 downto 0),
       data_in_mont(15 downto 0) => montgomery_reduction_2_data_out(15 downto 0),
       data_out(15 downto 0) => fqmul_2_data_out(15 downto 0),
       data_out_mont(31 downto 0) => fqmul_2_data_out_mont(31 downto 0),
@@ -4291,12 +4239,12 @@ fqmul_2: component kyberBD_fqmul_0_2
 fqmul_3: component kyberBD_fqmul_0_3
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      data_in_1(15 downto 0) => signal_multiplexer_18_data(15 downto 0),
-      data_in_2(15 downto 0) => signal_multiplexer_19_data(15 downto 0),
+      data_in_1(15 downto 0) => signal_multiplexer_17_data(15 downto 0),
+      data_in_2(15 downto 0) => signal_multiplexer_17_datab(15 downto 0),
       data_in_mont(15 downto 0) => montgomery_reduction_3_data_out(15 downto 0),
       data_out(15 downto 0) => fqmul_3_data_out(15 downto 0),
       data_out_mont(31 downto 0) => fqmul_3_data_out_mont(31 downto 0),
-      valid_in => signal_multiplexer_18_valid,
+      valid_in => signal_multiplexer_17_valid,
       valid_in_mont => montgomery_reduction_3_valid_out,
       valid_out => fqmul_3_valid_out,
       valid_out_mont => fqmul_3_valid_out_mont
@@ -4304,12 +4252,12 @@ fqmul_3: component kyberBD_fqmul_0_3
 fqmul_4: component kyberBD_fqmul_0_4
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      data_in_1(15 downto 0) => signal_multiplexer_20_data(15 downto 0),
-      data_in_2(15 downto 0) => signal_multiplexer_21_data(15 downto 0),
+      data_in_1(15 downto 0) => signal_multiplexer_18_data(15 downto 0),
+      data_in_2(15 downto 0) => signal_multiplexer_18_datab(15 downto 0),
       data_in_mont(15 downto 0) => montgomery_reduction_4_data_out(15 downto 0),
       data_out(15 downto 0) => fqmul_4_data_out(15 downto 0),
       data_out_mont(31 downto 0) => fqmul_4_data_out_mont(31 downto 0),
-      valid_in => signal_multiplexer_20_valid,
+      valid_in => signal_multiplexer_18_valid,
       valid_in_mont => montgomery_reduction_4_valid_out,
       valid_out => fqmul_4_valid_out,
       valid_out_mont => fqmul_4_valid_out_mont
@@ -4317,12 +4265,12 @@ fqmul_4: component kyberBD_fqmul_0_4
 fqmul_5: component kyberBD_fqmul_0_5
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      data_in_1(15 downto 0) => signal_multiplexer_22_data(15 downto 0),
-      data_in_2(15 downto 0) => signal_multiplexer_23_data(15 downto 0),
+      data_in_1(15 downto 0) => signal_multiplexer_19_data(15 downto 0),
+      data_in_2(15 downto 0) => signal_multiplexer_19_datab(15 downto 0),
       data_in_mont(15 downto 0) => montgomery_reduction_5_data_out(15 downto 0),
       data_out(15 downto 0) => fqmul_5_data_out(15 downto 0),
       data_out_mont(31 downto 0) => fqmul_5_data_out_mont(31 downto 0),
-      valid_in => signal_multiplexer_22_valid,
+      valid_in => signal_multiplexer_19_valid,
       valid_in_mont => montgomery_reduction_5_valid_out,
       valid_out => fqmul_5_valid_out,
       valid_out_mont => fqmul_5_valid_out_mont
@@ -4488,8 +4436,8 @@ polyvec_ntt_0: component kyberBD_polyvec_ntt_0_0
       coeff0_to_fqmul1(15 downto 0) => polyvec_ntt_0_coeff0_to_fqmul1(15 downto 0),
       coeff1_to_fqmul0(15 downto 0) => polyvec_ntt_0_coeff1_to_fqmul0(15 downto 0),
       coeff1_to_fqmul1(15 downto 0) => polyvec_ntt_0_coeff1_to_fqmul1(15 downto 0),
-      coeff_from_fqmul0(15 downto 0) => fqmul_4_data_out(15 downto 0),
-      coeff_from_fqmul1(15 downto 0) => fqmul_5_data_out(15 downto 0),
+      coeff_from_fqmul0(15 downto 0) => fqmul_2_data_out(15 downto 0),
+      coeff_from_fqmul1(15 downto 0) => fqmul_3_data_out(15 downto 0),
       data0_from_barrett(15 downto 0) => barrett_reduce_0_data_out(15 downto 0),
       data0_to_barrett(15 downto 0) => polyvec_ntt_0_data0_to_barrett(15 downto 0),
       data1_from_barrett(15 downto 0) => barrett_reduce_1_data_out(15 downto 0),
@@ -4501,8 +4449,8 @@ polyvec_ntt_0: component kyberBD_polyvec_ntt_0_0
       valid0_to_barrett => polyvec_ntt_0_valid0_to_barrett,
       valid1_from_barrett => barrett_reduce_1_valid_out,
       valid1_to_barrett => polyvec_ntt_0_valid1_to_barrett,
-      valid_from_fqmul0 => fqmul_4_valid_out,
-      valid_from_fqmul1 => fqmul_5_valid_out,
+      valid_from_fqmul0 => fqmul_2_valid_out,
+      valid_from_fqmul1 => fqmul_3_valid_out,
       valid_to_fqmul0 => polyvec_ntt_0_valid_to_fqmul0,
       valid_to_fqmul1 => polyvec_ntt_0_valid_to_fqmul1
     );
@@ -4622,217 +4570,177 @@ signal_multiplexer_0: component kyberBD_signal_multiplexer_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_0_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_reduce_0_do_lower_barrett(15 downto 0),
-      data_1(15 downto 0) => polyvec_basemul_acc_0_data0_to_barrett(15 downto 0),
-      data_2(15 downto 0) => polyvec_ntt_0_data0_to_barrett(15 downto 0),
-      en_0 => polyvec_reduce_0_en_lower_barrett,
-      en_1 => Net,
-      en_2 => polyvec_ntt_0_en_dsm,
+      data0(15 downto 0) => polyvec_reduce_0_do_lower_barrett(15 downto 0),
+      data1(15 downto 0) => polyvec_basemul_acc_0_data0_to_barrett(15 downto 0),
+      data2(15 downto 0) => polyvec_ntt_0_data0_to_barrett(15 downto 0),
+      en0 => polyvec_reduce_0_en_lower_barrett,
+      en1 => Net,
+      en2 => polyvec_ntt_0_en_dsm,
       valid => signal_multiplexer_0_valid,
-      valid_0 => polyvec_reduce_0_valid_out_lower_barrett,
-      valid_1 => polyvec_basemul_acc_0_valid0_to_barrett,
-      valid_2 => polyvec_ntt_0_valid0_to_barrett
+      valid0 => polyvec_reduce_0_valid_out_lower_barrett,
+      valid1 => polyvec_basemul_acc_0_valid0_to_barrett,
+      valid2 => polyvec_ntt_0_valid0_to_barrett
     );
 signal_multiplexer_1: component kyberBD_signal_multiplexer_0_1
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_1_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_reduce_0_do_upper_barrett(15 downto 0),
-      data_1(15 downto 0) => polyvec_basemul_acc_0_data1_to_barrett(15 downto 0),
-      data_2(15 downto 0) => polyvec_ntt_0_data1_to_barrett(15 downto 0),
-      en_0 => polyvec_reduce_0_en_upper_barrett,
-      en_1 => Net,
-      en_2 => polyvec_ntt_0_en_dsm,
+      data0(15 downto 0) => polyvec_reduce_0_do_upper_barrett(15 downto 0),
+      data1(15 downto 0) => polyvec_basemul_acc_0_data1_to_barrett(15 downto 0),
+      data2(15 downto 0) => polyvec_ntt_0_data1_to_barrett(15 downto 0),
+      en0 => polyvec_reduce_0_en_upper_barrett,
+      en1 => Net,
+      en2 => polyvec_ntt_0_en_dsm,
       valid => signal_multiplexer_1_valid,
-      valid_0 => polyvec_reduce_0_valid_out_upper_barrett,
-      valid_1 => polyvec_basemul_acc_0_valid1_to_barrett,
-      valid_2 => polyvec_ntt_0_valid1_to_barrett
+      valid0 => polyvec_reduce_0_valid_out_upper_barrett,
+      valid1 => polyvec_basemul_acc_0_valid1_to_barrett,
+      valid2 => polyvec_ntt_0_valid1_to_barrett
     );
 signal_multiplexer_12: component kyberBD_signal_multiplexer_12_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_12_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul0(15 downto 0),
-      en_0 => Net,
+      data0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul0(15 downto 0),
+      data0b(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul0(15 downto 0),
+      datab(15 downto 0) => signal_multiplexer_12_datab(15 downto 0),
+      en0 => Net,
       valid => signal_multiplexer_12_valid,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul0
-    );
-signal_multiplexer_13: component kyberBD_signal_multiplexer_12_1
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      data(15 downto 0) => signal_multiplexer_13_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul0(15 downto 0),
-      en_0 => Net,
-      valid => NLW_signal_multiplexer_13_valid_UNCONNECTED,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul0
+      valid0 => polyvec_basemul_acc_0_valid_to_fqmul0
     );
 signal_multiplexer_14: component kyberBD_signal_multiplexer_12_2
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_14_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul1(15 downto 0),
-      en_0 => Net,
+      data0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul1(15 downto 0),
+      data0b(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul1(15 downto 0),
+      datab(15 downto 0) => signal_multiplexer_14_datab(15 downto 0),
+      en0 => Net,
       valid => signal_multiplexer_14_valid,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul1
-    );
-signal_multiplexer_15: component kyberBD_signal_multiplexer_12_3
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      data(15 downto 0) => signal_multiplexer_15_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul1(15 downto 0),
-      en_0 => Net,
-      valid => NLW_signal_multiplexer_15_valid_UNCONNECTED,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul1
+      valid0 => polyvec_basemul_acc_0_valid_to_fqmul1
     );
 signal_multiplexer_16: component kyberBD_signal_multiplexer_12_4
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_16_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul2(15 downto 0),
-      en_0 => Net,
+      data0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul2(15 downto 0),
+      data0b(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul2(15 downto 0),
+      data1(15 downto 0) => polyvec_ntt_0_coeff0_to_fqmul0(15 downto 0),
+      data1b(15 downto 0) => polyvec_ntt_0_coeff1_to_fqmul0(15 downto 0),
+      datab(15 downto 0) => signal_multiplexer_16_datab(15 downto 0),
+      en0 => Net,
+      en1 => polyvec_ntt_0_en_dsm,
       valid => signal_multiplexer_16_valid,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul2
+      valid0 => polyvec_basemul_acc_0_valid_to_fqmul2,
+      valid1 => polyvec_ntt_0_valid_to_fqmul0
     );
 signal_multiplexer_17: component kyberBD_signal_multiplexer_16_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_17_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul2(15 downto 0),
-      en_0 => Net,
-      valid => NLW_signal_multiplexer_17_valid_UNCONNECTED,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul2
+      data0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul3(15 downto 0),
+      data0b(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul3(15 downto 0),
+      data1(15 downto 0) => polyvec_ntt_0_coeff0_to_fqmul1(15 downto 0),
+      data1b(15 downto 0) => polyvec_ntt_0_coeff1_to_fqmul1(15 downto 0),
+      datab(15 downto 0) => signal_multiplexer_17_datab(15 downto 0),
+      en0 => Net,
+      en1 => polyvec_ntt_0_en_dsm,
+      valid => signal_multiplexer_17_valid,
+      valid0 => polyvec_basemul_acc_0_valid_to_fqmul3,
+      valid1 => polyvec_ntt_0_valid_to_fqmul1
     );
 signal_multiplexer_18: component kyberBD_signal_multiplexer_17_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_18_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul3(15 downto 0),
-      en_0 => Net,
+      data0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul4(15 downto 0),
+      data0b(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul4(15 downto 0),
+      datab(15 downto 0) => signal_multiplexer_18_datab(15 downto 0),
+      en0 => Net,
       valid => signal_multiplexer_18_valid,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul3
+      valid0 => polyvec_basemul_acc_0_valid_to_fqmul4
     );
 signal_multiplexer_19: component kyberBD_signal_multiplexer_17_1
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(15 downto 0) => signal_multiplexer_19_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul3(15 downto 0),
-      en_0 => Net,
-      valid => NLW_signal_multiplexer_19_valid_UNCONNECTED,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul3
+      data0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul5(15 downto 0),
+      data0b(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul5(15 downto 0),
+      datab(15 downto 0) => signal_multiplexer_19_datab(15 downto 0),
+      en0 => Net,
+      valid => signal_multiplexer_19_valid,
+      valid0 => polyvec_basemul_acc_0_valid_to_fqmul5
     );
 signal_multiplexer_2: component kyberBD_signal_multiplexer_2_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(31 downto 0) => signal_multiplexer_2_data(31 downto 0),
-      data_0(31 downto 0) => poly_tomont_0_do_lower_mont(31 downto 0),
-      data_1(31 downto 0) => fqmul_0_data_out_mont(31 downto 0),
-      en_0 => poly_tomont_0_en_lower_mont,
-      en_1 => Net,
+      data0(31 downto 0) => poly_tomont_0_do_lower_mont(31 downto 0),
+      data1(31 downto 0) => fqmul_0_data_out_mont(31 downto 0),
+      en0 => poly_tomont_0_en_lower_mont,
+      en1 => Net,
       valid => signal_multiplexer_2_valid,
-      valid_0 => poly_tomont_0_valid_out_lower_mont,
-      valid_1 => fqmul_0_valid_out_mont
-    );
-signal_multiplexer_20: component kyberBD_signal_multiplexer_17_2
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      data(15 downto 0) => signal_multiplexer_20_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul4(15 downto 0),
-      data_1(15 downto 0) => polyvec_ntt_0_coeff0_to_fqmul0(15 downto 0),
-      en_0 => Net,
-      en_1 => polyvec_ntt_0_en_dsm,
-      valid => signal_multiplexer_20_valid,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul4,
-      valid_1 => polyvec_ntt_0_valid_to_fqmul0
-    );
-signal_multiplexer_21: component kyberBD_signal_multiplexer_17_3
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      data(15 downto 0) => signal_multiplexer_21_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul4(15 downto 0),
-      data_1(15 downto 0) => polyvec_ntt_0_coeff1_to_fqmul0(15 downto 0),
-      en_0 => Net,
-      en_1 => polyvec_ntt_0_en_dsm,
-      valid => NLW_signal_multiplexer_21_valid_UNCONNECTED,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul4,
-      valid_1 => polyvec_ntt_0_valid_to_fqmul0
-    );
-signal_multiplexer_22: component kyberBD_signal_multiplexer_17_4
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      data(15 downto 0) => signal_multiplexer_22_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff0_to_fqmul5(15 downto 0),
-      data_1(15 downto 0) => polyvec_ntt_0_coeff0_to_fqmul1(15 downto 0),
-      en_0 => Net,
-      en_1 => polyvec_ntt_0_en_dsm,
-      valid => signal_multiplexer_22_valid,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul5,
-      valid_1 => polyvec_ntt_0_valid_to_fqmul1
-    );
-signal_multiplexer_23: component kyberBD_signal_multiplexer_17_5
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      data(15 downto 0) => signal_multiplexer_23_data(15 downto 0),
-      data_0(15 downto 0) => polyvec_basemul_acc_0_coeff1_to_fqmul5(15 downto 0),
-      data_1(15 downto 0) => polyvec_ntt_0_coeff1_to_fqmul1(15 downto 0),
-      en_0 => Net,
-      en_1 => polyvec_ntt_0_en_dsm,
-      valid => NLW_signal_multiplexer_23_valid_UNCONNECTED,
-      valid_0 => polyvec_basemul_acc_0_valid_to_fqmul5,
-      valid_1 => polyvec_ntt_0_valid_to_fqmul1
+      valid0 => poly_tomont_0_valid_out_lower_mont,
+      valid1 => fqmul_0_valid_out_mont
     );
 signal_multiplexer_3: component kyberBD_signal_multiplexer_2_1
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(31 downto 0) => signal_multiplexer_3_data(31 downto 0),
-      data_0(31 downto 0) => poly_tomont_0_do_upper_mont(31 downto 0),
-      data_1(31 downto 0) => fqmul_1_data_out_mont(31 downto 0),
-      en_0 => poly_tomont_0_en_upper_mont,
-      en_1 => Net,
+      data0(31 downto 0) => poly_tomont_0_do_upper_mont(31 downto 0),
+      data1(31 downto 0) => fqmul_1_data_out_mont(31 downto 0),
+      en0 => poly_tomont_0_en_upper_mont,
+      en1 => Net,
       valid => signal_multiplexer_3_valid,
-      valid_0 => poly_tomont_0_valid_out_upper_mont,
-      valid_1 => fqmul_1_valid_out_mont
+      valid0 => poly_tomont_0_valid_out_upper_mont,
+      valid1 => fqmul_1_valid_out_mont
     );
 signal_multiplexer_4: component kyberBD_signal_multiplexer_2_2
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(31 downto 0) => signal_multiplexer_4_data(31 downto 0),
-      data_0(31 downto 0) => fqmul_2_data_out_mont(31 downto 0),
-      en_0 => Net,
+      data0(31 downto 0) => fqmul_2_data_out_mont(31 downto 0),
+      data1(31 downto 0) => fqmul_2_data_out_mont(31 downto 0),
+      en0 => Net,
+      en1 => polyvec_ntt_0_en_dsm,
       valid => signal_multiplexer_4_valid,
-      valid_0 => fqmul_2_valid_out_mont
+      valid0 => fqmul_2_valid_out_mont,
+      valid1 => fqmul_2_valid_out_mont
     );
 signal_multiplexer_5: component kyberBD_signal_multiplexer_2_3
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(31 downto 0) => signal_multiplexer_5_data(31 downto 0),
-      data_0(31 downto 0) => fqmul_3_data_out_mont(31 downto 0),
-      en_0 => Net,
+      data0(31 downto 0) => fqmul_3_data_out_mont(31 downto 0),
+      data1(31 downto 0) => fqmul_3_data_out_mont(31 downto 0),
+      en0 => Net,
+      en1 => polyvec_ntt_0_en_dsm,
       valid => signal_multiplexer_5_valid,
-      valid_0 => fqmul_3_valid_out_mont
+      valid0 => fqmul_3_valid_out_mont,
+      valid1 => fqmul_3_valid_out_mont
     );
 signal_multiplexer_6: component kyberBD_signal_multiplexer_2_4
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(31 downto 0) => signal_multiplexer_6_data(31 downto 0),
-      data_0(31 downto 0) => fqmul_4_data_out_mont(31 downto 0),
-      data_1(31 downto 0) => fqmul_4_data_out_mont(31 downto 0),
-      en_0 => Net,
-      en_1 => polyvec_ntt_0_en_dsm,
+      data0(31 downto 0) => fqmul_4_data_out_mont(31 downto 0),
+      data1(31 downto 0) => B"00000000000000000000000000000000",
+      en0 => Net,
+      en1 => '0',
       valid => signal_multiplexer_6_valid,
-      valid_0 => fqmul_4_valid_out_mont,
-      valid_1 => fqmul_4_valid_out_mont
+      valid0 => fqmul_4_valid_out_mont,
+      valid1 => '0'
     );
 signal_multiplexer_7: component kyberBD_signal_multiplexer_2_5
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       data(31 downto 0) => signal_multiplexer_7_data(31 downto 0),
-      data_0(31 downto 0) => fqmul_5_data_out_mont(31 downto 0),
-      data_1(31 downto 0) => fqmul_5_data_out_mont(31 downto 0),
-      en_0 => Net,
-      en_1 => polyvec_ntt_0_en_dsm,
+      data0(31 downto 0) => fqmul_5_data_out_mont(31 downto 0),
+      data1(31 downto 0) => B"00000000000000000000000000000000",
+      en0 => Net,
+      en1 => '0',
       valid => signal_multiplexer_7_valid,
-      valid_0 => fqmul_5_valid_out_mont,
-      valid_1 => fqmul_5_valid_out_mont
+      valid0 => fqmul_5_valid_out_mont,
+      valid1 => '0'
     );
 timer2_0: component kyberBD_timer2_0_0
      port map (
