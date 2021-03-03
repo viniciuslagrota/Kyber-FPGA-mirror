@@ -1,9 +1,39 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar  2 16:37:23 2021" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar  3 15:14:35 2021" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:microzed_7010:part0:1.1" DEVICE="7z010" NAME="kyberBD" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_MIO">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="MIO"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRN">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRN"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRP"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="processing_system7_0_PS_SRSTB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_SRSTB"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="processing_system7_0_PS_CLK">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_CLK"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="processing_system7_0_PS_PORB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_PORB"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef" SIGNAME="processing_system7_0_DDR_CAS_n">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_CAS_n"/>
@@ -77,36 +107,6 @@
     <PORT DIR="IO" LEFT="3" NAME="DDR_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_DDR_DQS">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_DQS"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_MIO">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="MIO"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRN">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRN"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="processing_system7_0_DDR_VRP">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_VRP"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="processing_system7_0_PS_SRSTB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_SRSTB"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="processing_system7_0_PS_CLK">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_CLK"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="processing_system7_0_PS_PORB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="processing_system7_0" PORT="PS_PORB"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -3054,93 +3054,6 @@
             <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M04_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M04_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M04_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M04_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M04_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M04_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M04_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M04_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M04_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="O" LEFT="31" NAME="M03_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_awaddr"/>
@@ -3226,6 +3139,93 @@
         <PORT DIR="O" NAME="M03_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M04_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M04_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M04_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M04_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M04_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M04_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3515,12 +3515,13 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/bram_port_selector_0" HWVERSION="1.0" INSTANCE="bram_port_selector_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
+    <MODULE COREREVISION="4" FULLNAME="/bram_port_selector_0" HWVERSION="1.0" INSTANCE="bram_port_selector_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_0_0"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="4"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -3649,11 +3650,6 @@
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_doa"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="slave4_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave4_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave4_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave4_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave4_do" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_0_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -3735,29 +3731,15 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave3_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave4_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave4_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave4_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave4_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave4_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/bram_port_selector_1" HWVERSION="1.0" INSTANCE="bram_port_selector_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
+    <MODULE COREREVISION="4" FULLNAME="/bram_port_selector_1" HWVERSION="1.0" INSTANCE="bram_port_selector_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_1_0"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="2"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -3836,21 +3818,6 @@
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_dob"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="slave2_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave2_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave2_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave2_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave2_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave3_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave3_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave3_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave3_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave3_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave4_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave4_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave4_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave4_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave4_do" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_1_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -3900,61 +3867,15 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave1_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_2" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave2_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave2_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave2_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave2_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave2_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_3" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="NUM_READ_OUTSTANDING"/>
-          <PARAMETER NAME="NUM_WRITE_OUTSTANDING"/>
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave3_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave3_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave3_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave3_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave3_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave4_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave4_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave4_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave4_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave4_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/bram_port_selector_2" HWVERSION="1.0" INSTANCE="bram_port_selector_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
+    <MODULE COREREVISION="4" FULLNAME="/bram_port_selector_2" HWVERSION="1.0" INSTANCE="bram_port_selector_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_2_0"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="3"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -4058,16 +3979,6 @@
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="bram_write_doa"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="slave3_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave3_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave3_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave3_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave3_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave4_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave4_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave4_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave4_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave4_do" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_2_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -4132,46 +4043,15 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave2_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_3" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="NUM_READ_OUTSTANDING"/>
-          <PARAMETER NAME="NUM_WRITE_OUTSTANDING"/>
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave3_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave3_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave3_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave3_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave3_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave4_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave4_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave4_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave4_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave4_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/bram_port_selector_3" HWVERSION="1.0" INSTANCE="bram_port_selector_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
+    <MODULE COREREVISION="4" FULLNAME="/bram_port_selector_3" HWVERSION="1.0" INSTANCE="bram_port_selector_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_1_1"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -4225,26 +4105,6 @@
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="bram_write_dob"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="slave1_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave1_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave1_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave1_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave1_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave2_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave2_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave2_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave2_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave2_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave3_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave3_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave3_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave3_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave3_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave4_en" SIGIS="undef"/>
-        <PORT DIR="I" NAME="slave4_we" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="10" NAME="slave4_addr" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="slave4_di" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="slave4_do" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_3_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -4277,68 +4137,6 @@
             <PORTMAP LOGICAL="DOUT" PHYSICAL="slave0_do"/>
             <PORTMAP LOGICAL="WE" PHYSICAL="slave0_we"/>
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave0_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_1" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave1_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave1_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave1_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave1_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave1_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_2" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave2_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave2_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave2_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave2_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave2_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_3" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="NUM_READ_OUTSTANDING"/>
-          <PARAMETER NAME="NUM_WRITE_OUTSTANDING"/>
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave3_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave3_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave3_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave3_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave3_addr"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
-          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
-          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
-          <PARAMETER NAME="READ_WRITE_MODE"/>
-          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="slave4_di"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="slave4_en"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave4_do"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="slave4_we"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave4_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>

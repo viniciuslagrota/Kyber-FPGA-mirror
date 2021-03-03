@@ -223,16 +223,21 @@ proc create_root_design { parentCell } {
   set bram_port_selector_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_0 ]
   set_property -dict [ list \
    CONFIG.ADDR_WIDTH {11} \
+   CONFIG.NUMBER_OF_CHANNELS {4} \
  ] $bram_port_selector_0
 
   # Create instance: bram_port_selector_1, and set properties
   set bram_port_selector_1 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_1 ]
   set_property -dict [ list \
    CONFIG.ADDR_WIDTH {11} \
+   CONFIG.NUMBER_OF_CHANNELS {2} \
  ] $bram_port_selector_1
 
   # Create instance: bram_port_selector_2, and set properties
   set bram_port_selector_2 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_2 ]
+  set_property -dict [ list \
+   CONFIG.NUMBER_OF_CHANNELS {3} \
+ ] $bram_port_selector_2
 
   # Create instance: bram_port_selector_3, and set properties
   set bram_port_selector_3 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_3 ]
