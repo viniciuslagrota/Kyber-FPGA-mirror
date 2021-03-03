@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:bram_port_selector:1.0
--- IP Revision: 3
+-- IP Revision: 4
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -79,12 +79,7 @@ ENTITY kyberBD_bram_port_selector_0_0 IS
     slave3_we : IN STD_LOGIC;
     slave3_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave3_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave3_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave4_en : IN STD_LOGIC;
-    slave4_we : IN STD_LOGIC;
-    slave4_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-    slave4_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave4_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    slave3_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END kyberBD_bram_port_selector_0_0;
 
@@ -134,15 +129,9 @@ ARCHITECTURE kyberBD_bram_port_selector_0_0_arch OF kyberBD_bram_port_selector_0
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_bram_port_selector_0_0_arch : ARCHITECTURE IS "kyberBD_bram_port_selector_0_0,bram_port_selector_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_bram_port_selector_0_0_arch: ARCHITECTURE IS "kyberBD_bram_port_selector_0_0,bram_port_selector_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=bram_port_selector,x_ipVersion=1.0,x_ipCoreRevision=3,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_bram_port_selector_0_0_arch: ARCHITECTURE IS "kyberBD_bram_port_selector_0_0,bram_port_selector_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=bram_port_selector,x_ipVersion=1.0,x_ipCoreRevision=4,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_we: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF slave4_en: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_4, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_en: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 EN";
   ATTRIBUTE X_INTERFACE_INFO OF slave3_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 DOUT";
   ATTRIBUTE X_INTERFACE_INFO OF slave3_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 DIN";
   ATTRIBUTE X_INTERFACE_INFO OF slave3_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 ADDR";
@@ -205,10 +194,9 @@ BEGIN
       slave3_addr => slave3_addr,
       slave3_di => slave3_di,
       slave3_do => slave3_do,
-      slave4_en => slave4_en,
-      slave4_we => slave4_we,
-      slave4_addr => slave4_addr,
-      slave4_di => slave4_di,
-      slave4_do => slave4_do
+      slave4_en => '0',
+      slave4_we => '0',
+      slave4_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
+      slave4_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32))
     );
 END kyberBD_bram_port_selector_0_0_arch;

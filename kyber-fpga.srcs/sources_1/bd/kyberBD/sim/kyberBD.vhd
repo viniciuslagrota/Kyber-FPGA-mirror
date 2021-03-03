@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Tue Mar  2 16:37:22 2021
+--Date        : Wed Mar  3 15:14:33 2021
 --Host        : DESKTOP-3K3DVHO running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -2511,142 +2511,6 @@ architecture STRUCTURE of kyberBD is
     data_out : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component kyberBD_barrett_reduce_0_1;
-  component kyberBD_bram_port_selector_0_0 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_en : in STD_LOGIC;
-    slave1_we : in STD_LOGIC;
-    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_en : in STD_LOGIC;
-    slave2_we : in STD_LOGIC;
-    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_en : in STD_LOGIC;
-    slave3_we : in STD_LOGIC;
-    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_en : in STD_LOGIC;
-    slave4_we : in STD_LOGIC;
-    slave4_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_0_0;
-  component kyberBD_bram_port_selector_1_0 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_en : in STD_LOGIC;
-    slave1_we : in STD_LOGIC;
-    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_en : in STD_LOGIC;
-    slave2_we : in STD_LOGIC;
-    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_en : in STD_LOGIC;
-    slave3_we : in STD_LOGIC;
-    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_en : in STD_LOGIC;
-    slave4_we : in STD_LOGIC;
-    slave4_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_1_0;
-  component kyberBD_bram_port_selector_1_1 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_en : in STD_LOGIC;
-    slave1_we : in STD_LOGIC;
-    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_en : in STD_LOGIC;
-    slave2_we : in STD_LOGIC;
-    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_en : in STD_LOGIC;
-    slave3_we : in STD_LOGIC;
-    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_en : in STD_LOGIC;
-    slave4_we : in STD_LOGIC;
-    slave4_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_1_1;
-  component kyberBD_bram_port_selector_2_0 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_en : in STD_LOGIC;
-    slave1_we : in STD_LOGIC;
-    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_en : in STD_LOGIC;
-    slave2_we : in STD_LOGIC;
-    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_en : in STD_LOGIC;
-    slave3_we : in STD_LOGIC;
-    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_en : in STD_LOGIC;
-    slave4_we : in STD_LOGIC;
-    slave4_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_2_0;
   component kyberBD_dual_bram_0_0 is
   port (
     s00_axi_awaddr : in STD_LOGIC_VECTOR ( 12 downto 0 );
@@ -3237,6 +3101,92 @@ architecture STRUCTURE of kyberBD is
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component kyberBD_signal_multiplexer_2_5;
+  component kyberBD_bram_port_selector_0_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_en : in STD_LOGIC;
+    slave3_we : in STD_LOGIC;
+    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_0_0;
+  component kyberBD_bram_port_selector_1_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_1_0;
+  component kyberBD_bram_port_selector_1_1 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_1_1;
+  component kyberBD_bram_port_selector_2_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_2_0;
   signal Net : STD_LOGIC;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -3629,16 +3579,6 @@ architecture STRUCTURE of kyberBD is
   signal NLW_axi_gpio_2_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_3_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_4_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_bram_port_selector_0_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_1_slave2_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_1_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_1_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_2_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_2_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_3_slave1_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_3_slave2_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_3_slave3_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_bram_port_selector_3_slave4_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -4026,12 +3966,7 @@ bram_port_selector_0: component kyberBD_bram_port_selector_0_0
       slave3_di(31 downto 0) => polyvec_ntt_0_BRAM_PORT_A_DIN(31 downto 0),
       slave3_do(31 downto 0) => polyvec_ntt_0_BRAM_PORT_A_DOUT(31 downto 0),
       slave3_en => polyvec_ntt_0_BRAM_PORT_A_EN,
-      slave3_we => polyvec_ntt_0_BRAM_PORT_A_WE,
-      slave4_addr(10 downto 0) => B"00000000000",
-      slave4_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave4_do(31 downto 0) => NLW_bram_port_selector_0_slave4_do_UNCONNECTED(31 downto 0),
-      slave4_en => '0',
-      slave4_we => '0'
+      slave3_we => polyvec_ntt_0_BRAM_PORT_A_WE
     );
 bram_port_selector_1: component kyberBD_bram_port_selector_1_0
      port map (
@@ -4049,22 +3984,7 @@ bram_port_selector_1: component kyberBD_bram_port_selector_1_0
       slave1_di(31 downto 0) => polyvec_ntt_0_BRAM_PORT_B_DIN(31 downto 0),
       slave1_do(31 downto 0) => polyvec_ntt_0_BRAM_PORT_B_DOUT(31 downto 0),
       slave1_en => polyvec_ntt_0_BRAM_PORT_B_EN,
-      slave1_we => polyvec_ntt_0_BRAM_PORT_B_WE,
-      slave2_addr(10 downto 0) => B"00000000000",
-      slave2_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave2_do(31 downto 0) => NLW_bram_port_selector_1_slave2_do_UNCONNECTED(31 downto 0),
-      slave2_en => '0',
-      slave2_we => '0',
-      slave3_addr(10 downto 0) => B"00000000000",
-      slave3_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave3_do(31 downto 0) => NLW_bram_port_selector_1_slave3_do_UNCONNECTED(31 downto 0),
-      slave3_en => '0',
-      slave3_we => '0',
-      slave4_addr(10 downto 0) => B"00000000000",
-      slave4_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave4_do(31 downto 0) => NLW_bram_port_selector_1_slave4_do_UNCONNECTED(31 downto 0),
-      slave4_en => '0',
-      slave4_we => '0'
+      slave1_we => polyvec_ntt_0_BRAM_PORT_B_WE
     );
 bram_port_selector_2: component kyberBD_bram_port_selector_2_0
      port map (
@@ -4087,17 +4007,7 @@ bram_port_selector_2: component kyberBD_bram_port_selector_2_0
       slave2_di(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_A_DIN(31 downto 0),
       slave2_do(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_A_DOUT(31 downto 0),
       slave2_en => polyvec_basemul_acc_0_BRAM1_PORT_A_EN,
-      slave2_we => polyvec_basemul_acc_0_BRAM1_PORT_A_WE,
-      slave3_addr(10 downto 0) => B"00000000000",
-      slave3_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave3_do(31 downto 0) => NLW_bram_port_selector_2_slave3_do_UNCONNECTED(31 downto 0),
-      slave3_en => '0',
-      slave3_we => '0',
-      slave4_addr(10 downto 0) => B"00000000000",
-      slave4_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave4_do(31 downto 0) => NLW_bram_port_selector_2_slave4_do_UNCONNECTED(31 downto 0),
-      slave4_en => '0',
-      slave4_we => '0'
+      slave2_we => polyvec_basemul_acc_0_BRAM1_PORT_A_WE
     );
 bram_port_selector_3: component kyberBD_bram_port_selector_1_1
      port map (
@@ -4110,27 +4020,7 @@ bram_port_selector_3: component kyberBD_bram_port_selector_1_1
       slave0_di(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_DIN(31 downto 0),
       slave0_do(31 downto 0) => polyvec_basemul_acc_0_BRAM1_PORT_B_DOUT(31 downto 0),
       slave0_en => polyvec_basemul_acc_0_BRAM1_PORT_B_EN,
-      slave0_we => polyvec_basemul_acc_0_BRAM1_PORT_B_WE,
-      slave1_addr(10 downto 0) => B"00000000000",
-      slave1_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave1_do(31 downto 0) => NLW_bram_port_selector_3_slave1_do_UNCONNECTED(31 downto 0),
-      slave1_en => '0',
-      slave1_we => '0',
-      slave2_addr(10 downto 0) => B"00000000000",
-      slave2_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave2_do(31 downto 0) => NLW_bram_port_selector_3_slave2_do_UNCONNECTED(31 downto 0),
-      slave2_en => '0',
-      slave2_we => '0',
-      slave3_addr(10 downto 0) => B"00000000000",
-      slave3_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave3_do(31 downto 0) => NLW_bram_port_selector_3_slave3_do_UNCONNECTED(31 downto 0),
-      slave3_en => '0',
-      slave3_we => '0',
-      slave4_addr(10 downto 0) => B"00000000000",
-      slave4_di(31 downto 0) => B"00000000000000000000000000001000",
-      slave4_do(31 downto 0) => NLW_bram_port_selector_3_slave4_do_UNCONNECTED(31 downto 0),
-      slave4_en => '0',
-      slave4_we => '0'
+      slave0_we => polyvec_basemul_acc_0_BRAM1_PORT_B_WE
     );
 dual_bram_0: component kyberBD_dual_bram_0_0
      port map (

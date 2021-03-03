@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:bram_port_selector:1.0
--- IP Revision: 3
+-- IP Revision: 4
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -64,27 +64,7 @@ ENTITY kyberBD_bram_port_selector_1_1 IS
     slave0_we : IN STD_LOGIC;
     slave0_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave0_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave0_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave1_en : IN STD_LOGIC;
-    slave1_we : IN STD_LOGIC;
-    slave1_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-    slave1_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave1_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave2_en : IN STD_LOGIC;
-    slave2_we : IN STD_LOGIC;
-    slave2_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-    slave2_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave2_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave3_en : IN STD_LOGIC;
-    slave3_we : IN STD_LOGIC;
-    slave3_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-    slave3_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave3_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave4_en : IN STD_LOGIC;
-    slave4_we : IN STD_LOGIC;
-    slave4_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-    slave4_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave4_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    slave0_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END kyberBD_bram_port_selector_1_1;
 
@@ -131,30 +111,6 @@ ARCHITECTURE kyberBD_bram_port_selector_1_1_arch OF kyberBD_bram_port_selector_1
   END COMPONENT bram_port_selector_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_we: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF slave4_en: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_4, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF slave4_en: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_4 EN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave3_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF slave3_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave3_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF slave3_we: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF slave3_en: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_3, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF slave3_en: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_3 EN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave2_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF slave2_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave2_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF slave2_we: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF slave2_en: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_2, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF slave2_en: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 EN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave1_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF slave1_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF slave1_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF slave1_we: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF slave1_en: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_1, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF slave1_en: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 EN";
   ATTRIBUTE X_INTERFACE_INFO OF slave0_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_0 DOUT";
   ATTRIBUTE X_INTERFACE_INFO OF slave0_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_0 DIN";
   ATTRIBUTE X_INTERFACE_INFO OF slave0_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_0 ADDR";
@@ -184,25 +140,21 @@ BEGIN
       slave0_addr => slave0_addr,
       slave0_di => slave0_di,
       slave0_do => slave0_do,
-      slave1_en => slave1_en,
-      slave1_we => slave1_we,
-      slave1_addr => slave1_addr,
-      slave1_di => slave1_di,
-      slave1_do => slave1_do,
-      slave2_en => slave2_en,
-      slave2_we => slave2_we,
-      slave2_addr => slave2_addr,
-      slave2_di => slave2_di,
-      slave2_do => slave2_do,
-      slave3_en => slave3_en,
-      slave3_we => slave3_we,
-      slave3_addr => slave3_addr,
-      slave3_di => slave3_di,
-      slave3_do => slave3_do,
-      slave4_en => slave4_en,
-      slave4_we => slave4_we,
-      slave4_addr => slave4_addr,
-      slave4_di => slave4_di,
-      slave4_do => slave4_do
+      slave1_en => '0',
+      slave1_we => '0',
+      slave1_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
+      slave1_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      slave2_en => '0',
+      slave2_we => '0',
+      slave2_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
+      slave2_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      slave3_en => '0',
+      slave3_we => '0',
+      slave3_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
+      slave3_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      slave4_en => '0',
+      slave4_we => '0',
+      slave4_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
+      slave4_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32))
     );
 END kyberBD_bram_port_selector_1_1_arch;
