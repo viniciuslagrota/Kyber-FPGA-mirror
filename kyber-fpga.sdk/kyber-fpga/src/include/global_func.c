@@ -64,6 +64,18 @@ void ledInit(XGpioPs * Gpio)
 
 //////////////////////////////////////////////
 //
+//	Configure Kyber K
+//
+//////////////////////////////////////////////
+void configKyberK(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel)
+{
+	pConfigStruct = XGpio_LookupConfig(ui8DeviceId);
+	XGpio_CfgInitialize(pGpioStruct, pConfigStruct, pConfigStruct->BaseAddress);
+	XGpio_DiscreteWrite(pGpioStruct, ui8Channel, KYBER_K); //Set enable bit and reset bit low.
+}
+
+//////////////////////////////////////////////
+//
 //	Configure timer
 //
 //////////////////////////////////////////////

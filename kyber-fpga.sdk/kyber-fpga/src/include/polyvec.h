@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "params.h"
 #include "poly.h"
+#include "global_def.h"
 
 typedef struct{
   poly vec[KYBER_K];

@@ -154,11 +154,41 @@ void polyvec_frombytes(polyvec *r, const uint8_t a[KYBER_POLYVECBYTES])
 *
 * Arguments:   - polyvec *r: pointer to in/output vector of polynomials
 **************************************************/
-void polyvec_ntt(polyvec *r)
+void polyvec_ntt_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_ntt(&r->vec[i]);
+}
+
+void polyvec_ntt_hw(polyvec *r)
+{
+	memcpy(memoryBram0, (u32 *)r, 1024);
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x0);
+
+	memcpy(r, (poly *)memoryBram0, 1024);
+}
+
+void polyvec_ntt(polyvec *r)
+{
+	if(u32SystemState & POLYVEC_NTT_MASK)
+	{
+		polyvec_ntt_hw(r);
+	}
+	else
+	{
+		polyvec_ntt_sw(r);
+	}
 }
 
 /*************************************************
@@ -186,7 +216,7 @@ void polyvec_invntt_tomont(polyvec *r)
 *            - const polyvec *a: pointer to first input vector of polynomials
 *            - const polyvec *b: pointer to second input vector of polynomials
 **************************************************/
-void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
+void polyvec_basemul_acc_montgomery_sw(poly *r, const polyvec *a, const polyvec *b)
 {
   unsigned int i;
   poly t;
@@ -200,6 +230,45 @@ void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
   poly_reduce(r);
 }
 
+void polyvec_basemul_acc_montgomery_hw(poly *r, const polyvec *a, const polyvec *b)
+{
+#if  KYBER_K == 2
+	memcpy(memoryBram0, (u32 *)a, 1024);
+	memcpy(&memoryBram0[256], (u32 *)b, 1024);
+#elif KYBER_K == 3
+	memcpy(memoryBram0, (u32 *)a, 1536);
+	memcpy(memoryBram0 + 1536, (u32 *)b, 1536);
+#else
+	memcpy(memoryBram0, (u32 *)a, 2048);
+	memcpy(memoryBram0 + 2048, (u32 *)b, 2048);
+#endif
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioAccMont, 1, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMont, 1);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMont, 1);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioAccMont, 1, 0x0);
+
+	memcpy(r, (poly *)memoryBram1, 512);
+}
+
+void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
+{
+	if(u32SystemState & POLYVEC_BASEMUL_MASK)
+	{
+		polyvec_basemul_acc_montgomery_hw(r, a, b);
+	}
+	else
+	{
+		polyvec_basemul_acc_montgomery_sw(r, a, b);
+	}
+}
+
 /*************************************************
 * Name:        polyvec_reduce
 *
@@ -209,11 +278,41 @@ void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
 *
 * Arguments:   - polyvec *r: pointer to input/output polynomial
 **************************************************/
-void polyvec_reduce(polyvec *r)
+void polyvec_reduce_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_reduce(&r->vec[i]);
+}
+
+void polyvec_reduce_hw(polyvec *r)
+{
+	memcpy(memoryBram0, (u32 *)r, 1024);
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x0);
+
+	memcpy(r, (polyvec *)memoryBram1, 1024);
+}
+
+void polyvec_reduce(polyvec *r)
+{
+	if(u32SystemState & POLYVEC_REDUCE_MASK)
+	{
+		polyvec_reduce_hw(r);
+	}
+	else
+	{
+		polyvec_reduce_sw(r);
+	}
 }
 
 /*************************************************

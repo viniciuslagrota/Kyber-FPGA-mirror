@@ -26,26 +26,33 @@
 #include "xadcps.h"
 
 //Software
+#include "params.h"
 #include "test_kem.h"
 #include "kem.h"
 #include "reduce.h"
-
-
-//#include "frodo640.h"
-//#include "keccak_f1600.h"
-//#include "api_frodo640.h"
-//#include "test_kem.h"
-//#include "test_KEM640.h"
-//#include "kem.h"
-//#include "random.h"
-//#include "frodo_macrify.h"
 
 //////////////////////////////////////////////
 //
 //	System name
 //
 //////////////////////////////////////////////
-#define SYSTEM_NAME    "CRYSTALS-Kyber-512"
+#if KYBER_K == 2
+	#define SYSTEM_NAME    "CRYSTALS-Kyber-512"
+#elif KYBER_K == 3
+	#define SYSTEM_NAME    "CRYSTALS-Kyber-768"
+#else
+	#define SYSTEM_NAME    "CRYSTALS-Kyber-1024"
+#endif
+
+//////////////////////////////////////////////
+//
+//	System mask
+//
+//////////////////////////////////////////////
+#define POLY_TOMONT_MASK				1 << 0
+#define POLYVEC_REDUCE_MASK				1 << 1
+#define POLYVEC_BASEMUL_MASK			1 << 2
+#define POLYVEC_NTT_MASK				1 << 3
 
 //////////////////////////////////////////////
 //
@@ -53,6 +60,13 @@
 //
 //////////////////////////////////////////////
 #define ledpin 47
+
+//////////////////////////////////////////////
+//
+//	Hardware clock period
+//
+//////////////////////////////////////////////
+#define HW_CLOCK_PERIOD			10 //ns
 
 //////////////////////////////////////////////
 //
@@ -91,6 +105,8 @@
 #define DEBUG_MAIN					1
 //Test KEM
 #define DEBUG_TEST_KEM				1
+//Accelerations
+#define DEBUG_POLY_TOMONT			1
 
 //////////////////////////////////////////////
 //
@@ -131,12 +147,22 @@
 XGpio_Config * XGpioConfigPtrGlobalTimer;
 XGpio XGpioGlobalTimer;
 
-XGpio_Config * XGpioConfigPtrFqmulInput;
-XGpio XGpioFqmulInput;
-XGpio_Config * XGpioConfigPtrFqmulOutput;
-XGpio XGpioFqmulOutput;
+XGpio_Config * XGpioConfigKyberK;
+XGpio XGpioKyberK;
 
-u32 *memoryBram;
+XGpio_Config * XGpioConfigTomontAndReduce;
+XGpio XGpioTomontAndReduce;
+
+XGpio_Config * XGpioConfigAccMont;
+XGpio XGpioAccMont;
+
+XGpio_Config * XGpioConfigNtt;
+XGpio XGpioNtt;
+
+u32 *memoryBram0;
+u32 *memoryBram1;
+
+u32 u32SystemState;
 
 //////////////////////////////////////////////
 //
@@ -145,6 +171,7 @@ u32 *memoryBram;
 //////////////////////////////////////////////
 void getChipTemperature();
 void ledInit(XGpioPs * Gpio);
+void configKyberK(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel);
 void configTimer(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel);
 void resetTimer(XGpio * pStruct, uint8_t ui8Channel);
 void startTimer(XGpio * pStruct, uint8_t ui8Channel);
