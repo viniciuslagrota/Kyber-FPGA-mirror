@@ -69,7 +69,12 @@ ENTITY kyberBD_bram_port_selector_1_0 IS
     slave1_we : IN STD_LOGIC;
     slave1_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave1_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave1_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    slave1_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    slave2_en : IN STD_LOGIC;
+    slave2_we : IN STD_LOGIC;
+    slave2_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+    slave2_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    slave2_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END kyberBD_bram_port_selector_1_0;
 
@@ -116,6 +121,12 @@ ARCHITECTURE kyberBD_bram_port_selector_1_0_arch OF kyberBD_bram_port_selector_1
   END COMPONENT bram_port_selector_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_INFO OF slave2_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF slave2_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF slave2_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF slave2_we: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF slave2_en: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_2, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF slave2_en: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 EN";
   ATTRIBUTE X_INTERFACE_INFO OF slave1_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 DOUT";
   ATTRIBUTE X_INTERFACE_INFO OF slave1_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 DIN";
   ATTRIBUTE X_INTERFACE_INFO OF slave1_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_1 ADDR";
@@ -156,10 +167,11 @@ BEGIN
       slave1_addr => slave1_addr,
       slave1_di => slave1_di,
       slave1_do => slave1_do,
-      slave2_en => '0',
-      slave2_we => '0',
-      slave2_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
-      slave2_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      slave2_en => slave2_en,
+      slave2_we => slave2_we,
+      slave2_addr => slave2_addr,
+      slave2_di => slave2_di,
+      slave2_do => slave2_do,
       slave3_en => '0',
       slave3_we => '0',
       slave3_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),

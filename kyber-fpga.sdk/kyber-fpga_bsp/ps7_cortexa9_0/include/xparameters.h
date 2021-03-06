@@ -273,7 +273,7 @@
 #define XPAR_AXI_GPIO_4_HIGHADDR 0x41240FFF
 #define XPAR_AXI_GPIO_4_DEVICE_ID 4
 #define XPAR_AXI_GPIO_4_INTERRUPT_PRESENT 0
-#define XPAR_AXI_GPIO_4_IS_DUAL 0
+#define XPAR_AXI_GPIO_4_IS_DUAL 1
 
 
 /******************************************************************/
@@ -311,7 +311,7 @@
 #define XPAR_GPIO_4_HIGHADDR 0x41240FFF
 #define XPAR_GPIO_4_DEVICE_ID XPAR_AXI_GPIO_4_DEVICE_ID
 #define XPAR_GPIO_4_INTERRUPT_PRESENT 0
-#define XPAR_GPIO_4_IS_DUAL 0
+#define XPAR_GPIO_4_IS_DUAL 1
 
 
 /******************************************************************/

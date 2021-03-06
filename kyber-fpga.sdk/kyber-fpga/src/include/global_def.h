@@ -53,6 +53,7 @@
 #define POLYVEC_REDUCE_MASK				1 << 1
 #define POLYVEC_BASEMUL_MASK			1 << 2
 #define POLYVEC_NTT_MASK				1 << 3
+#define POLYVEC_INVNTT_MASK				1 << 4
 
 //////////////////////////////////////////////
 //

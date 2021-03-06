@@ -66,6 +66,7 @@
 #define TEST_POLYVEC_REDUCE				0
 #define TEST_POLYVEC_ACC				0
 #define TEST_POLYVEC_NTT				0
+#define TEST_POLYVEC_INVNTT				0
 #define TEST_KEM						1
 #define SYSTEM_STATE					1
 
@@ -473,6 +474,56 @@ int main()
 			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
 #endif
 
+#if TEST_POLYVEC_INVNTT == 1
+		//Test polyvec basemul acc montgomery
+		polyvec r1, r2;
+
+		for (int i = 0; i < 256; i += 2)
+		{
+			r1.vec[0].coeffs[i] = i + 1;
+			r1.vec[0].coeffs[i + 1] = i + 2;
+			r2.vec[0].coeffs[i] = i + 1;
+			r2.vec[0].coeffs[i + 1] = i + 2;
+		}
+		for (int i = 0; i < 256; i += 2)
+		{
+			r1.vec[1].coeffs[i] = i + 0x0801;
+			r1.vec[1].coeffs[i + 1] = i + 0x0802;
+			r2.vec[1].coeffs[i] = i + 0x0801;
+			r2.vec[1].coeffs[i + 1] = i + 0x0802;
+		}
+
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32 u32Timer9 = getTimer(&XGpioGlobalTimer, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer9 * HW_CLOCK_PERIOD);
+		startTimer(&XGpioGlobalTimer, 1);
+
+		polyvec_invntt_tomont_sw(&r1);
+
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer9 = getTimer(&XGpioGlobalTimer, 1);
+
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32 u32Timer10 = getTimer(&XGpioGlobalTimer, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer10 * HW_CLOCK_PERIOD);
+		startTimer(&XGpioGlobalTimer, 1);
+
+		polyvec_invntt_tomont_hw(&r2);
+
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer10 = getTimer(&XGpioGlobalTimer, 1);
+
+		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer9 * HW_CLOCK_PERIOD);
+		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer10 * HW_CLOCK_PERIOD);
+
+		if(memcmp(&r1, &r2, 1024) != 0)
+		{
+			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
+		}
+		else
+			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
+#endif
+
 
 #if TEST_KEM == 1
 ////		//KEM test
@@ -505,10 +556,15 @@ int main()
 		else
 			print_debug(DEBUG_MAIN, "Polyvec NTT software used.\n");
 
+		if(u32SystemState & POLYVEC_INVNTT_MASK)
+			print_debug(DEBUG_MAIN, "Polyvec INVNTT hardware used.\n");
+		else
+			print_debug(DEBUG_MAIN, "Polyvec INVNTT software used.\n");
+
 		u32SystemState ++;
 #endif
 
-		if((u32SystemState & 0xf) == 0x0)
+		if((u32SystemState & 0x1f) == 0x0)
 		{
 //			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
 			sleep(1);
