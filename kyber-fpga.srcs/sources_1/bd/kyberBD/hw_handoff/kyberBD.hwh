@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar  3 15:14:35 2021" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Mar  5 20:29:10 2021" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:microzed_7010:part0:1.1" DEVICE="7z010" NAME="kyberBD" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -824,6 +824,7 @@
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="kyber_k"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="kyber_k"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
@@ -1686,7 +1687,7 @@
             <REGISTER NAME="GPIO2_DATA">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-2 AXI GPIO Data register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x8"/>
-              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -1699,14 +1700,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="GPIO2_TRI">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-2 AXI GPIO 3-State Control register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xC"/>
-              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -1719,7 +1720,7 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
@@ -1811,7 +1812,7 @@
         <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="9"/>
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_GPIO_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_ALL_INPUTS" VALUE="0"/>
         <PARAMETER NAME="C_ALL_INPUTS_2" VALUE="0"/>
         <PARAMETER NAME="C_ALL_OUTPUTS" VALUE="0"/>
@@ -1819,7 +1820,7 @@
         <PARAMETER NAME="C_INTERRUPT_PRESENT" VALUE="0"/>
         <PARAMETER NAME="C_DOUT_DEFAULT" VALUE="0x00000000"/>
         <PARAMETER NAME="C_TRI_DEFAULT" VALUE="0xFFFFFFFF"/>
-        <PARAMETER NAME="C_IS_DUAL" VALUE="0"/>
+        <PARAMETER NAME="C_IS_DUAL" VALUE="1"/>
         <PARAMETER NAME="C_DOUT_DEFAULT_2" VALUE="0x00000000"/>
         <PARAMETER NAME="C_TRI_DEFAULT_2" VALUE="0xFFFFFFFF"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_axi_gpio_4_0"/>
@@ -1937,6 +1938,17 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="0" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_busy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="busy"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="gpio2_io_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_gpio2_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="start"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="gpio2_io_t" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="axi_interconnect_0_M06_AXI" DATAWIDTH="32" NAME="S_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -1996,6 +2008,13 @@
             <PORTMAP LOGICAL="TRI_I" PHYSICAL="gpio_io_i"/>
             <PORTMAP LOGICAL="TRI_O" PHYSICAL="gpio_io_o"/>
             <PORTMAP LOGICAL="TRI_T" PHYSICAL="gpio_io_t"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="GPIO2" TYPE="INITIATOR" VLNV="xilinx.com:interface:gpio:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TRI_I" PHYSICAL="gpio2_io_i"/>
+            <PORTMAP LOGICAL="TRI_O" PHYSICAL="gpio2_io_o"/>
+            <PORTMAP LOGICAL="TRI_T" PHYSICAL="gpio2_io_t"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -2413,180 +2432,6 @@
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M05_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M05_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M05_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M05_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M05_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M05_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M05_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M05_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M05_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M06_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M06_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="I" LEFT="11" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_awid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWID"/>
@@ -2777,91 +2622,186 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_RREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_awaddr">
+        <PORT DIR="O" LEFT="31" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_awaddr"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M00_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_awvalid">
+        <PORT DIR="O" LEFT="2" NAME="M02_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awprot">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_awvalid"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_awready">
+        <PORT DIR="O" NAME="M02_AXI_awvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_awready"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wdata">
+        <PORT DIR="I" NAME="M02_AXI_awready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wdata"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wstrb">
+        <PORT DIR="O" LEFT="31" NAME="M02_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wstrb"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wvalid">
+        <PORT DIR="O" LEFT="3" NAME="M02_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wvalid"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wready">
+        <PORT DIR="O" NAME="M02_AXI_wvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wready"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_bresp">
+        <PORT DIR="I" NAME="M02_AXI_wready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_bresp"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_bvalid">
+        <PORT DIR="I" LEFT="1" NAME="M02_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_bvalid"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_bready">
+        <PORT DIR="I" NAME="M02_AXI_bvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_bready"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_araddr">
+        <PORT DIR="O" NAME="M02_AXI_bready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_araddr"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M00_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_arvalid">
+        <PORT DIR="O" LEFT="31" NAME="M02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_arvalid"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_arready">
+        <PORT DIR="O" LEFT="2" NAME="M02_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_arprot">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_arready"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_arprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rdata">
+        <PORT DIR="O" NAME="M02_AXI_arvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rdata"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rresp">
+        <PORT DIR="I" NAME="M02_AXI_arready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rresp"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rvalid">
+        <PORT DIR="I" LEFT="31" NAME="M02_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rvalid"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rready">
+        <PORT DIR="I" LEFT="1" NAME="M02_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rready"/>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M02_AXI_rvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M02_AXI_rready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M06_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M06_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M06_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M06_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_4_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M01_AXI_awaddr">
@@ -2959,99 +2899,91 @@
             <CONNECTION INSTANCE="dual_bram_0" PORT="s00_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awaddr">
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awaddr"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M02_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awprot">
+        <PORT DIR="O" NAME="M05_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awprot"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M02_AXI_awvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awvalid">
+        <PORT DIR="I" NAME="M05_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awvalid"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M02_AXI_awready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_awready">
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_awready"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M02_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wdata">
+        <PORT DIR="O" LEFT="3" NAME="M05_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wdata"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M02_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wstrb">
+        <PORT DIR="O" NAME="M05_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wstrb"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M02_AXI_wvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wvalid">
+        <PORT DIR="I" NAME="M05_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wvalid"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M02_AXI_wready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_wready">
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_wready"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M02_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_bresp">
+        <PORT DIR="I" NAME="M05_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_bresp"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M02_AXI_bvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_bvalid">
+        <PORT DIR="O" NAME="M05_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_bvalid"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M02_AXI_bready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_bready">
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_bready"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_araddr">
+        <PORT DIR="O" NAME="M05_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_araddr"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M02_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_arprot">
+        <PORT DIR="I" NAME="M05_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_arprot"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M02_AXI_arvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_arvalid">
+        <PORT DIR="I" LEFT="31" NAME="M05_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_arvalid"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M02_AXI_arready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_arready">
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_arready"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M02_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rdata">
+        <PORT DIR="I" NAME="M05_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rdata"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M02_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rresp">
+        <PORT DIR="O" NAME="M05_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_3_s_axi_rready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M02_AXI_rvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M02_AXI_rready" SIGIS="undef" SIGNAME="axi_interconnect_0_M02_AXI_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_rready"/>
+            <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M03_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awaddr">
@@ -3226,6 +3158,93 @@
         <PORT DIR="O" NAME="M04_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_2_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M00_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M00_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_0_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3463,6 +3482,7 @@
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_lower_barrett"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid0_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_0_data_out">
@@ -3470,6 +3490,7 @@
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_lower_barrett"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data0_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3503,6 +3524,7 @@
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_upper_barrett"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid1_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_1_data_out">
@@ -3510,6 +3532,7 @@
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_upper_barrett"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data1_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3521,7 +3544,7 @@
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_0_0"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="4"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="5"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -3650,6 +3673,31 @@
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_doa"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="slave4_en" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_ena"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave4_we" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_wea"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="slave4_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_addra"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="slave4_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_dia"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slave4_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_doa"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_0_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -3731,6 +3779,21 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave3_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_A" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="slave4_di"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="slave4_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave4_do"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="slave4_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave4_addr"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
     <MODULE COREREVISION="4" FULLNAME="/bram_port_selector_1" HWVERSION="1.0" INSTANCE="bram_port_selector_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
@@ -3739,7 +3802,7 @@
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_1_0"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="2"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="3"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -3818,6 +3881,31 @@
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_dob"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="slave2_en" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_enb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave2_we" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_web"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="slave2_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_addrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="slave2_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_dib"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slave2_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_dob"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_1_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -3865,6 +3953,21 @@
             <PORTMAP LOGICAL="DOUT" PHYSICAL="slave1_do"/>
             <PORTMAP LOGICAL="WE" PHYSICAL="slave1_we"/>
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave1_addr"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_B" NAME="BRAM_PORT_2" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="slave2_di"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="slave2_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave2_do"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="slave2_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave2_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -4936,21 +5039,25 @@
         <PORT DIR="O" NAME="valid_out_mont" SIGIS="undef" SIGNAME="fqmul_4_valid_out_mont">
           <CONNECTIONS>
             <CONNECTION INSTANCE="signal_multiplexer_6" PORT="valid0"/>
+            <CONNECTION INSTANCE="signal_multiplexer_6" PORT="valid1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="data_out_mont" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_4_data_out_mont">
           <CONNECTIONS>
             <CONNECTION INSTANCE="signal_multiplexer_6" PORT="data0"/>
+            <CONNECTION INSTANCE="signal_multiplexer_6" PORT="data1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_4_valid_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul4"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_4_data_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul4"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4996,21 +5103,25 @@
         <PORT DIR="O" NAME="valid_out_mont" SIGIS="undef" SIGNAME="fqmul_5_valid_out_mont">
           <CONNECTIONS>
             <CONNECTION INSTANCE="signal_multiplexer_7" PORT="valid0"/>
+            <CONNECTION INSTANCE="signal_multiplexer_7" PORT="valid1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="data_out_mont" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_5_data_out_mont">
           <CONNECTIONS>
             <CONNECTION INSTANCE="signal_multiplexer_7" PORT="data0"/>
+            <CONNECTION INSTANCE="signal_multiplexer_7" PORT="data1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_5_valid_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul5"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_5_data_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul5"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5814,6 +5925,224 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/polyvec_invntt_0" HWVERSION="1.0" INSTANCE="polyvec_invntt_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_invntt" VLNV="xilinx.com:user:polyvec_invntt:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
+        <PARAMETER NAME="Component_Name" VALUE="kyberBD_polyvec_invntt_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram_ena" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram_wea" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="bram_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_di"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram_enb" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram_web" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="bram_addrb" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram_dib" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_di"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram_dob" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="valid_to_fqmul0" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_18" PORT="valid1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff0_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_18" PORT="data1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul0" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff1_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_18" PORT="data1b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="valid_to_fqmul1" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_19" PORT="valid1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="coeff0_to_fqmul1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff0_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_19" PORT="data1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="coeff1_to_fqmul1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff1_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_19" PORT="data1b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_from_fqmul0" SIGIS="undef" SIGNAME="fqmul_4_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_4" PORT="valid_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="coeff_from_fqmul0" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_4_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_4" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid_from_fqmul1" SIGIS="undef" SIGNAME="fqmul_5_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_5" PORT="valid_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="coeff_from_fqmul1" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_5_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_5" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="valid0_to_barrett" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid0_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_0" PORT="valid3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="data0_to_barrett" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_data0_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_0" PORT="data3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="valid1_to_barrett" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid1_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_1" PORT="valid3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="data1_to_barrett" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_data1_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_1" PORT="data3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid0_from_barrett" SIGIS="undef" SIGNAME="barrett_reduce_0_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="barrett_reduce_0" PORT="valid_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data0_from_barrett" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_0_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="barrett_reduce_0" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid1_from_barrett" SIGIS="undef" SIGNAME="barrett_reduce_1_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="barrett_reduce_1" PORT="valid_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data1_from_barrett" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_1_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="barrett_reduce_1" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="en_dsm" SIGIS="undef" SIGNAME="polyvec_invntt_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="signal_multiplexer_19" PORT="en1"/>
+            <CONNECTION INSTANCE="signal_multiplexer_18" PORT="en1"/>
+            <CONNECTION INSTANCE="signal_multiplexer_7" PORT="en1"/>
+            <CONNECTION INSTANCE="signal_multiplexer_6" PORT="en1"/>
+            <CONNECTION INSTANCE="signal_multiplexer_0" PORT="en3"/>
+            <CONNECTION INSTANCE="signal_multiplexer_1" PORT="en3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="kyber_k" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_gpio_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="gpio_io_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="start" SIGIS="undef" SIGNAME="axi_gpio_4_gpio2_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="gpio2_io_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="busy" SIGIS="undef" SIGNAME="polyvec_invntt_0_busy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_4" PORT="gpio2_io_i"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_A" NAME="BRAM_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_dia"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram_ena"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_doa"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram_wea"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addra"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_B" NAME="BRAM_PORT_B" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_dib"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram_enb"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_dob"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram_web"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addrb"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
     <MODULE COREREVISION="8" FULLNAME="/polyvec_ntt_0" HWVERSION="1.0" INSTANCE="polyvec_ntt_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_ntt" VLNV="xilinx.com:user:polyvec_ntt:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -6259,6 +6588,7 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M06_ARESETN"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7460,6 +7790,7 @@
             <CONNECTION INSTANCE="signal_multiplexer_5" PORT="clk"/>
             <CONNECTION INSTANCE="signal_multiplexer_6" PORT="clk"/>
             <CONNECTION INSTANCE="signal_multiplexer_7" PORT="clk"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -7722,7 +8053,7 @@
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_signal_multiplexer_0_0"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="3"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="4"/>
         <PARAMETER NAME="ENABLE_SECOND_DATA_CHANNEL" VALUE="false"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -7777,6 +8108,21 @@
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data0_to_barrett"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="en3" SIGIS="undef" SIGNAME="polyvec_invntt_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid3" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid0_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid0_to_barrett"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data3" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_data0_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data0_to_barrett"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="valid" SIGIS="undef" SIGNAME="signal_multiplexer_0_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="barrett_reduce_0" PORT="valid_in"/>
@@ -7795,7 +8141,7 @@
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_signal_multiplexer_0_1"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="3"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="4"/>
         <PARAMETER NAME="ENABLE_SECOND_DATA_CHANNEL" VALUE="false"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -7848,6 +8194,21 @@
         <PORT DIR="I" LEFT="15" NAME="data2" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_ntt_0_data1_to_barrett">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data1_to_barrett"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en3" SIGIS="undef" SIGNAME="polyvec_invntt_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid3" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid1_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid1_to_barrett"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data3" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_data1_to_barrett">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data1_to_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid" SIGIS="undef" SIGNAME="signal_multiplexer_1_valid">
@@ -8120,7 +8481,7 @@
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_signal_multiplexer_17_0"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="1"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="2"/>
         <PARAMETER NAME="ENABLE_SECOND_DATA_CHANNEL" VALUE="true"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -8150,6 +8511,26 @@
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul4"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="en1" SIGIS="undef" SIGNAME="polyvec_invntt_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid1" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_to_fqmul0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff0_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff0_to_fqmul0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data1b" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff1_to_fqmul0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff1_to_fqmul0"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="valid" SIGIS="undef" SIGNAME="signal_multiplexer_18_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fqmul_4" PORT="valid_in"/>
@@ -8173,7 +8554,7 @@
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_signal_multiplexer_17_1"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="1"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="2"/>
         <PARAMETER NAME="ENABLE_SECOND_DATA_CHANNEL" VALUE="true"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -8201,6 +8582,26 @@
         <PORT DIR="I" LEFT="15" NAME="data0b" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_basemul_acc_0_coeff1_to_fqmul5">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff1_to_fqmul5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en1" SIGIS="undef" SIGNAME="polyvec_invntt_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid1" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_to_fqmul1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data1" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff0_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff0_to_fqmul1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="data1b" RIGHT="0" SIGIS="undef" SIGNAME="polyvec_invntt_0_coeff1_to_fqmul1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff1_to_fqmul1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid" SIGIS="undef" SIGNAME="signal_multiplexer_19_valid">
@@ -8483,9 +8884,21 @@
             <CONNECTION INSTANCE="fqmul_4" PORT="data_out_mont"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="en1" SIGIS="undef"/>
-        <PORT DIR="I" NAME="valid1" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="data1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="en1" SIGIS="undef" SIGNAME="polyvec_invntt_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid1" SIGIS="undef" SIGNAME="fqmul_4_valid_out_mont">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_4" PORT="valid_out_mont"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="data1" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_4_data_out_mont">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_4" PORT="data_out_mont"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="valid" SIGIS="undef" SIGNAME="signal_multiplexer_6_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="montgomery_reduction_4" PORT="valid_in"/>
@@ -8529,9 +8942,21 @@
             <CONNECTION INSTANCE="fqmul_5" PORT="data_out_mont"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="en1" SIGIS="undef"/>
-        <PORT DIR="I" NAME="valid1" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="data1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="en1" SIGIS="undef" SIGNAME="polyvec_invntt_0_en_dsm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="en_dsm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid1" SIGIS="undef" SIGNAME="fqmul_5_valid_out_mont">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_5" PORT="valid_out_mont"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="data1" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_5_data_out_mont">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fqmul_5" PORT="data_out_mont"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="valid" SIGIS="undef" SIGNAME="signal_multiplexer_7_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="montgomery_reduction_5" PORT="valid_in"/>

@@ -199,12 +199,43 @@ void polyvec_ntt(polyvec *r)
 *
 * Arguments:   - polyvec *r: pointer to in/output vector of polynomials
 **************************************************/
-void polyvec_invntt_tomont(polyvec *r)
+void polyvec_invntt_tomont_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_invntt_tomont(&r->vec[i]);
 }
+
+void polyvec_invntt_tomont_hw(polyvec *r)
+{
+	memcpy(memoryBram0, (u32 *)r, 1024);
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioNtt, 2, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 2);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 2);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioNtt, 2, 0x0);
+
+	memcpy(r, (poly *)memoryBram0, 1024);
+}
+
+void polyvec_invntt_tomont(polyvec *r)
+{
+	if(u32SystemState & POLYVEC_INVNTT_MASK)
+	{
+		polyvec_invntt_tomont_hw(r);
+	}
+	else
+	{
+		polyvec_invntt_tomont_sw(r);
+	}
+}
+
 
 /*************************************************
 * Name:        polyvec_basemul_acc_montgomery

@@ -30,6 +30,7 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
 set_property ip_repo_paths {
+  c:/Projects/ip_repo/polyvec_invntt_1.0
   c:/Projects/ip_repo/signal_multiplexer_1.0
   c:/Projects/ip_repo/polyvec_ntt_1.0
   c:/Projects/ip_repo/ntt_1.0

@@ -60,6 +60,10 @@ ENTITY kyberBD_signal_multiplexer_17_0 IS
     valid0 : IN STD_LOGIC;
     data0 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     data0b : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    en1 : IN STD_LOGIC;
+    valid1 : IN STD_LOGIC;
+    data1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    data1b : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     valid : OUT STD_LOGIC;
     data : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     datab : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
@@ -119,10 +123,10 @@ BEGIN
       valid0 => valid0,
       data0 => data0,
       data0b => data0b,
-      en1 => '0',
-      valid1 => '0',
-      data1 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 16)),
-      data1b => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 16)),
+      en1 => en1,
+      valid1 => valid1,
+      data1 => data1,
+      data1b => data1b,
       en2 => '0',
       valid2 => '0',
       data2 => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 16)),
