@@ -65,9 +65,9 @@
 #define TEST_POLY_TOMONT				0
 #define TEST_POLYVEC_REDUCE				0
 #define TEST_POLYVEC_ACC				0
-#define TEST_POLYVEC_NTT				0
+#define TEST_POLYVEC_NTT				1
 #define TEST_POLYVEC_INVNTT				0
-#define TEST_KEM						1
+#define TEST_KEM						0
 #define SYSTEM_STATE					1
 
 //////////////////////////////////////////////
