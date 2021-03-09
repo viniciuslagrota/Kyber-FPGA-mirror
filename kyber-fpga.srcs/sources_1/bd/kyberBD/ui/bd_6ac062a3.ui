@@ -24,7 +24,6 @@ preplace inst poly_tomont_0 -pg 1 -lvl 5 -x 2510 -y 730 -defaultsOSRD
 preplace inst polyvec_reduce_0 -pg 1 -lvl 5 -x 2510 -y 990 -defaultsOSRD
 preplace inst timer2_0 -pg 1 -lvl 4 -x 1600 -y 720 -defaultsOSRD
 preplace inst axi_gpio_4 -pg 1 -lvl 3 -x 1060 -y 1510 -defaultsOSRD
-preplace inst polyvec_basemul_acc_0 -pg 1 -lvl 5 -x 2510 -y 1440 -defaultsOSRD
 preplace inst signal_multiplexer_0 -pg 1 -lvl 8 -x 4480 -y 2010 -defaultsOSRD
 preplace inst signal_multiplexer_1 -pg 1 -lvl 8 -x 4480 -y 2350 -defaultsOSRD
 preplace inst signal_multiplexer_12 -pg 1 -lvl 6 -x 3450 -y 630 -defaultsOSRD
@@ -51,6 +50,7 @@ preplace inst montgomery_reduction_4 -pg 1 -lvl 9 -x 4740 -y 1500 -defaultsOSRD
 preplace inst montgomery_reduction_5 -pg 1 -lvl 9 -x 4740 -y 1730 -defaultsOSRD
 preplace inst polyvec_invntt_0 -pg 1 -lvl 5 -x 2510 -y 2320 -defaultsOSRD
 preplace inst polyvec_ntt_0 -pg 1 -lvl 5 -x 2510 -y 1960 -defaultsOSRD
+preplace inst polyvec_basemul_acc_0 -pg 1 -lvl 5 -x 2510 -y 1440 -defaultsOSRD
 preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 4 450 400 840 400 N 400 1840
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 10 160 430
 preplace netloc axi_gpio_0_gpio_io_o 1 3 1 1210 590n
@@ -199,31 +199,31 @@ preplace netloc axi_gpio_4_gpio2_io_o 1 3 2 NJ 1560 1760
 preplace netloc polyvec_invntt_0_busy 1 3 3 1280J 610 1830J 580 2780
 preplace netloc fqmul_4_data_out 1 4 4 1930 290 NJ 290 NJ 290 4080
 preplace netloc processing_system7_0_DDR 1 1 9 440 410 870 430 N 430 N 430 N 430 N 430 N 430 N 430 4960
-preplace netloc processing_system7_0_FIXED_IO 1 1 9 N 420 850 440 1250 450 N 450 2890 440 N 440 4140 370 N 370 N
-preplace netloc axi_interconnect_0_M05_AXI 1 2 1 830 910n
-preplace netloc axi_interconnect_0_M01_AXI 1 2 1 N 830
-preplace netloc poly_tomont_0_BRAM_PORT_B 1 3 3 1350 520 NJ 520 2700
-preplace netloc polyvec_reduce_0_BRAM_PORT_B 1 3 3 1300 470 N 470 2770
-preplace netloc polyvec_invntt_0_BRAM_PORT_B 1 3 3 1390 540 NJ 540 2790
-preplace netloc polyvec_invntt_0_BRAM_PORT_A 1 3 3 1360 490 NJ 490 2840
 preplace netloc axi_interconnect_0_M04_AXI 1 2 1 850 890n
 preplace netloc axi_interconnect_0_M00_AXI 1 2 1 850 550n
 preplace netloc bram_port_selector_0_BRAM_PORT_MASTER 1 2 3 910 490 1260 560 1770
-preplace netloc poly_tomont_0_BRAM_PORT_A 1 3 3 1400 510 NJ 510 2710
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 440 460n
-preplace netloc bram_port_selector_2_BRAM_PORT_MASTER 1 2 3 890 420 NJ 420 1790
-preplace netloc polyvec_ntt_0_BRAM_PORT_A 1 3 3 1410 620 1850 590 2720
 preplace netloc polyvec_reduce_0_BRAM_PORT_A 1 3 3 1380 480 N 480 2750
+preplace netloc axi_interconnect_0_M06_AXI 1 2 1 820 930n
 preplace netloc polyvec_basemul_acc_0_BRAM0_PORT_A 1 3 3 1330 410 N 410 2810
-preplace netloc bram_port_selector_1_BRAM_PORT_MASTER 1 2 3 880 370 NJ 370 1800
-preplace netloc axi_interconnect_0_M02_AXI 1 2 1 N 850
 preplace netloc polyvec_ntt_0_BRAM_PORT_B 1 3 3 1340 500 N 500 2830
 preplace netloc axi_interconnect_0_M03_AXI 1 2 1 870 690n
-preplace netloc polyvec_basemul_acc_0_BRAM1_PORT_A 1 3 3 1370 550 N 550 2740
-preplace netloc axi_interconnect_0_M06_AXI 1 2 1 820 930n
-preplace netloc bram_port_selector_3_BRAM_PORT_MASTER 1 2 3 900 460 NJ 460 1780
+preplace netloc axi_interconnect_0_M01_AXI 1 2 1 N 830
 preplace netloc polyvec_basemul_acc_0_BRAM1_PORT_B 1 3 3 1320 530 NJ 530 2760
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 440 460n
+preplace netloc bram_port_selector_1_BRAM_PORT_MASTER 1 2 3 880 370 NJ 370 1800
+preplace netloc poly_tomont_0_BRAM_PORT_B 1 3 3 1350 520 NJ 520 2700
+preplace netloc polyvec_basemul_acc_0_BRAM1_PORT_A 1 3 3 1370 550 N 550 2740
+preplace netloc poly_tomont_0_BRAM_PORT_A 1 3 3 1400 510 NJ 510 2710
+preplace netloc bram_port_selector_3_BRAM_PORT_MASTER 1 2 3 900 460 NJ 460 1780
+preplace netloc polyvec_reduce_0_BRAM_PORT_B 1 3 3 1300 470 N 470 2770
+preplace netloc processing_system7_0_FIXED_IO 1 1 9 N 420 850 440 1250 450 N 450 2890 440 N 440 4140 370 N 370 N
 preplace netloc polyvec_basemul_acc_0_BRAM0_PORT_B 1 3 3 1310 440 NJ 440 2800
+preplace netloc axi_interconnect_0_M05_AXI 1 2 1 830 910n
+preplace netloc bram_port_selector_2_BRAM_PORT_MASTER 1 2 3 890 420 NJ 420 1790
+preplace netloc polyvec_ntt_0_BRAM_PORT_A 1 3 3 1410 620 1850 590 2720
+preplace netloc axi_interconnect_0_M02_AXI 1 2 1 N 850
+preplace netloc polyvec_invntt_0_BRAM_PORT_A 1 3 3 1360 490 NJ 490 2840
+preplace netloc polyvec_invntt_0_BRAM_PORT_B 1 3 3 1390 540 NJ 540 2790
 levelinfo -pg 1 -10 230 680 1060 1600 2510 3450 3870 4480 4740 4990
 pagesize -pg 1 -db -bbox -sgen -10 -110 5100 3490
 "

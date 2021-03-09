@@ -127,7 +127,7 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ipshared/a89a/hdl/polyvec_reduce_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_polyvec_reduce_0_0/sim/kyberBD_polyvec_reduce_0_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_2_0/sim/kyberBD_bram_port_selector_2_0.vhd" \
-"../../../bd/kyberBD/ipshared/1349/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
+"../../../bd/kyberBD/ipshared/b618/src/polyvec_basemul_acc_montgomery_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_polyvec_basemul_acc_0_1/sim/kyberBD_polyvec_basemul_acc_0_1.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_axi_gpio_3_0/sim/kyberBD_axi_gpio_3_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_1/sim/kyberBD_bram_port_selector_1_1.vhd" \

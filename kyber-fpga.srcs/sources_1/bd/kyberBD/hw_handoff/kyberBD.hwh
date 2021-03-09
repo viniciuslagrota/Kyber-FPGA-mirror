@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar  7 14:33:15 2021" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar  9 00:15:44 2021" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:microzed_7010:part0:1.1" DEVICE="7z010" NAME="kyberBD" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -822,9 +822,9 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_1" PORT="gpio_io_i"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="kyber_k"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="kyber_k"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="kyber_k"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
@@ -3480,17 +3480,17 @@
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="barrett_reduce_0_valid_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_lower_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid0_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_0_data_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_lower_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data0_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3522,17 +3522,17 @@
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="barrett_reduce_1_valid_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_upper_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid1_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_1_data_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_upper_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data1_from_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4922,14 +4922,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_2_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul2"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid_from_fqmul0"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_2_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul2"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="coeff_from_fqmul0"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul2"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4986,14 +4986,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_3_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul3"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid_from_fqmul1"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul3"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_3_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul3"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="coeff_from_fqmul1"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul3"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5050,14 +5050,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_4_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul4"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul0"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul4"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_4_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul4"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul0"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul4"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5114,14 +5114,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_5_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul5"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul1"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul5"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_5_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul5"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul1"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul5"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5517,7 +5517,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="16" FULLNAME="/polyvec_basemul_acc_0" HWVERSION="1.0" INSTANCE="polyvec_basemul_acc_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_basemul_acc_montgomery" VLNV="xilinx.com:user:polyvec_basemul_acc_montgomery:1.0">
+    <MODULE COREREVISION="17" FULLNAME="/polyvec_basemul_acc_0" HWVERSION="1.0" INSTANCE="polyvec_basemul_acc_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_basemul_acc_montgomery" VLNV="xilinx.com:user:polyvec_basemul_acc_montgomery:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
@@ -6586,9 +6586,9 @@
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M06_ARESETN"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7768,7 +7768,6 @@
             <CONNECTION INSTANCE="timer2_0" PORT="clk"/>
             <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M06_ACLK"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="clk"/>
             <CONNECTION INSTANCE="signal_multiplexer_0" PORT="clk"/>
             <CONNECTION INSTANCE="signal_multiplexer_1" PORT="clk"/>
             <CONNECTION INSTANCE="signal_multiplexer_12" PORT="clk"/>
@@ -7791,6 +7790,7 @@
             <CONNECTION INSTANCE="montgomery_reduction_5" PORT="clk"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="clk"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="clk"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">

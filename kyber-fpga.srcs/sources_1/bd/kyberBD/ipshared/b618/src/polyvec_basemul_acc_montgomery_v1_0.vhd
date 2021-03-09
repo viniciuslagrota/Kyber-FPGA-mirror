@@ -159,9 +159,9 @@ architecture arch_imp of polyvec_basemul_acc_montgomery_v1_0 is
     signal s_kyber_k                 : std_logic_vector(2 downto 0);
     
     -- LOCAL
-    signal s_counter                 : unsigned(2 downto 0);
+    signal s_counter                 : unsigned(3 downto 0);
     signal s_counter_fqmul           : unsigned(1 downto 0);
-    constant en_vec_max              : integer := 25;
+    constant en_vec_max              : integer := 37;
     signal s_en_vec                  : std_logic_vector(en_vec_max downto 0);
     signal s_last_addra              : std_logic_vector(ADDR_WIDTH-1 downto 0);
     signal s_addr_delta              : std_logic_vector(ADDR_WIDTH-1 downto 0);
@@ -178,13 +178,13 @@ architecture arch_imp of polyvec_basemul_acc_montgomery_v1_0 is
     signal s_idx_zeta                : unsigned(6 downto 0);  
     
     -- REGISTER READ DATA FROM BRAM
-    constant bram_vec_length         : integer := 12;
+    constant bram_vec_length         : integer := 20;
     type reg_type is array ((bram_vec_length)-1 downto 0) of std_logic_vector(31 downto 0); 
     signal s_bram_read_doa_vec       : reg_type;
     signal s_bram_read_dob_vec       : reg_type;
     
     -- REGISTER RESULT FQMUL
-    constant fqmul_vec_length        : integer := 5;
+    constant fqmul_vec_length        : integer := 9;
     type fqmul_reg_type is array ((fqmul_vec_length)-1 downto 0) of std_logic_vector(15 downto 0); 
     signal s_fqmul0_vec               : fqmul_reg_type;
     signal s_fqmul1_vec               : fqmul_reg_type;
@@ -298,7 +298,7 @@ begin
             else
                 if(start = '1' and s_start = '0') then
                     s_busy <= '1';
-                elsif(s_en_vec(25) = '1' and s_en_vec(24) = '0') then
+                elsif(s_en_vec(37) = '1' and s_en_vec(36) = '0') then
                     s_busy <= '0';
                 else
                     s_busy <= s_busy;
@@ -387,8 +387,8 @@ begin
                 s_counter_fqmul <= (others => '0');          
             else
 --                if(or_reduce(s_en_vec(8 downto 1)) = '1') then
-                if(or_reduce(s_en_vec(14 downto 1)) = '1') then
-                    if(s_counter = 4) then
+                if(or_reduce(s_en_vec(35 downto 1)) = '1') then
+                    if(s_counter = 8) then
                         s_counter <= (others => '0'); 
                         if(s_counter_fqmul = 2) then
                             s_counter_fqmul <= (others => '0');    
@@ -435,13 +435,13 @@ begin
                 s_coeff1_to_fqmul5 <= (others => '0');
             else
                 if(start = '1') then
-                    if(or_reduce(s_en_vec(14 downto 6)) = '1') then
+                    if(or_reduce(s_en_vec(18 downto 10)) = '1') then
                         s_idx_zeta <= s_idx_zeta + 1;
                     end if; 
                     
                     s_valid_to_fqmul0 <= s_en_vec(1);
-                    s_valid_to_fqmul1 <= s_en_vec(6);
-                    s_valid_to_fqmul2 <= s_en_vec(11);                  
+                    s_valid_to_fqmul1 <= s_en_vec(10);
+                    s_valid_to_fqmul2 <= s_en_vec(19);                  
                 
                     if(s_counter_fqmul = 0) then
                         -- fqmul0
@@ -453,12 +453,12 @@ begin
                         s_coeff1_to_fqmul3 <= s_coeff0_to_fqmul3;
                         
                         -- fqmul1
-                        s_coeff0_to_fqmul1 <= s_bram_read_doa_vec(9)(15 downto 0); -- a[0]
-                        s_coeff1_to_fqmul1 <= s_bram_read_dob_vec(9)(15 downto 0); -- b[0]
+                        s_coeff0_to_fqmul1 <= s_bram_read_doa_vec(17)(15 downto 0); -- a[0]
+                        s_coeff1_to_fqmul1 <= s_bram_read_dob_vec(17)(15 downto 0); -- b[0]
                         -- fqmul4       
-                        s_valid_to_fqmul4 <= s_en_vec(6);                                                    
-                        s_coeff0_to_fqmul4 <= s_bram_read_doa_vec(9)(31 downto 16); -- a[1] 
-                        s_coeff1_to_fqmul4 <= s_bram_read_dob_vec(9)(15 downto 0); -- b[0]  
+                        s_valid_to_fqmul4 <= s_en_vec(10);                                                    
+                        s_coeff0_to_fqmul4 <= s_bram_read_doa_vec(17)(31 downto 16); -- a[1] 
+                        s_coeff1_to_fqmul4 <= s_bram_read_dob_vec(17)(15 downto 0); -- b[0]  
                         
                         -- fqmul2
                         s_coeff0_to_fqmul2 <= coeff_from_fqmul2; -- r[0]
@@ -468,9 +468,9 @@ begin
                             s_coeff1_to_fqmul2 <= std_logic_vector(signed(not(zetas(to_integer(s_idx_zeta(6 downto 1))))) + 1); -- zeta
                         end if;   
                         -- fqmul5
-                        s_valid_to_fqmul5 <= s_en_vec(11);     
-                        s_coeff0_to_fqmul5 <= s_bram_read_doa_vec(4)(15 downto 0); -- a[0]
-                        s_coeff1_to_fqmul5 <= s_bram_read_dob_vec(4)(31 downto 16); -- b[1]                     
+                        s_valid_to_fqmul5 <= s_en_vec(19);     
+                        s_coeff0_to_fqmul5 <= s_bram_read_doa_vec(8)(15 downto 0); -- a[0]
+                        s_coeff1_to_fqmul5 <= s_bram_read_dob_vec(8)(31 downto 16); -- b[1]                     
                         
                     elsif(s_counter_fqmul = 1) then 
                         -- fqmul0
@@ -482,8 +482,8 @@ begin
                         end if;
                         -- fqmul3
                         s_valid_to_fqmul3 <= s_en_vec(1);
-                        s_coeff0_to_fqmul3 <= s_bram_read_doa_vec(4)(15 downto 0); -- a[0]
-                        s_coeff1_to_fqmul3 <= s_bram_read_dob_vec(4)(31 downto 16); -- b[1]                        
+                        s_coeff0_to_fqmul3 <= s_bram_read_doa_vec(8)(15 downto 0); -- a[0]
+                        s_coeff1_to_fqmul3 <= s_bram_read_dob_vec(8)(31 downto 16); -- b[1]                        
                         
                         -- fqmul1
                         s_coeff0_to_fqmul1 <= s_bram_read_doa(31 downto 16); -- a[1]
@@ -494,20 +494,20 @@ begin
                         s_coeff1_to_fqmul4 <= s_coeff0_to_fqmul4;
                         
                         -- fqmul2
-                        s_coeff0_to_fqmul2 <= s_bram_read_doa_vec(9)(15 downto 0); -- a[0]
-                        s_coeff1_to_fqmul2 <= s_bram_read_dob_vec(9)(15 downto 0); -- b[0]
+                        s_coeff0_to_fqmul2 <= s_bram_read_doa_vec(17)(15 downto 0); -- a[0]
+                        s_coeff1_to_fqmul2 <= s_bram_read_dob_vec(17)(15 downto 0); -- b[0]
                         -- fqmul5   
-                        s_valid_to_fqmul5 <= s_en_vec(11);                                                             
-                        s_coeff0_to_fqmul5 <= s_bram_read_doa_vec(9)(31 downto 16); -- a[1] 
-                        s_coeff1_to_fqmul5 <= s_bram_read_dob_vec(9)(15 downto 0); -- b[0]  
+                        s_valid_to_fqmul5 <= s_en_vec(19);                                                             
+                        s_coeff0_to_fqmul5 <= s_bram_read_doa_vec(17)(31 downto 16); -- a[1] 
+                        s_coeff1_to_fqmul5 <= s_bram_read_dob_vec(17)(15 downto 0); -- b[0]  
                     else
                         -- fqmul0
-                        s_coeff0_to_fqmul0 <= s_bram_read_doa_vec(9)(15 downto 0); -- a[0]
-                        s_coeff1_to_fqmul0 <= s_bram_read_dob_vec(9)(15 downto 0); -- b[0]
+                        s_coeff0_to_fqmul0 <= s_bram_read_doa_vec(17)(15 downto 0); -- a[0]
+                        s_coeff1_to_fqmul0 <= s_bram_read_dob_vec(17)(15 downto 0); -- b[0]
                         -- fqmul3  
                         s_valid_to_fqmul3 <= s_en_vec(1);                                                         
-                        s_coeff0_to_fqmul3 <= s_bram_read_doa_vec(9)(31 downto 16); -- a[1] 
-                        s_coeff1_to_fqmul3 <= s_bram_read_dob_vec(9)(15 downto 0); -- b[0]  
+                        s_coeff0_to_fqmul3 <= s_bram_read_doa_vec(17)(31 downto 16); -- a[1] 
+                        s_coeff1_to_fqmul3 <= s_bram_read_dob_vec(17)(15 downto 0); -- b[0]  
                         
                         -- fqmul1
                         s_coeff0_to_fqmul1 <= coeff_from_fqmul1; -- r[0]
@@ -517,9 +517,9 @@ begin
                             s_coeff1_to_fqmul1 <= std_logic_vector(signed(not(zetas(to_integer(s_idx_zeta(6 downto 1))))) + 1); -- zeta
                         end if;
                         -- fqmul4
-                        s_valid_to_fqmul4 <= s_en_vec(6);
-                        s_coeff0_to_fqmul4 <= s_bram_read_doa_vec(4)(15 downto 0); -- a[0]
-                        s_coeff1_to_fqmul4 <= s_bram_read_dob_vec(4)(31 downto 16); -- b[1]
+                        s_valid_to_fqmul4 <= s_en_vec(10);
+                        s_coeff0_to_fqmul4 <= s_bram_read_doa_vec(8)(15 downto 0); -- a[0]
+                        s_coeff1_to_fqmul4 <= s_bram_read_dob_vec(8)(31 downto 16); -- b[1]
                         
                         -- fqmul2
                         s_coeff0_to_fqmul2 <= s_bram_read_doa(31 downto 16); -- a[1]
@@ -580,11 +580,11 @@ begin
             else
             
                 ---- PORT A ----
-                s_bram_write_ena <= or_reduce(s_en_vec(23 downto 17));                
+                s_bram_write_ena <= or_reduce(s_en_vec(35 downto 29));                
                 if(s_iteration(1) < unsigned(s_kyber_k) - 1) then
-                    s_bram_write_wea <= s_en_vec(17);
+                    s_bram_write_wea <= s_en_vec(29);
                 elsif(s_iteration(7) >= unsigned(s_kyber_k) - 1) then
-                    s_bram_write_wea <= s_en_vec(23);
+                    s_bram_write_wea <= s_en_vec(35);
                 else
                     s_bram_write_wea <= '0';
                 end if;
@@ -595,14 +595,14 @@ begin
                     s_bram_write_addra   <= (others => '0');
                 end if;
                 if(s_counter_fqmul = 0) then
-                    s_bram_write_dia_low  <= std_logic_vector(signed(coeff_from_fqmul0) + signed(s_fqmul0_vec(4)));
-                    s_bram_write_dia_high <= std_logic_vector(signed(coeff_from_fqmul3) + signed(s_fqmul3_vec(4)));
+                    s_bram_write_dia_low  <= std_logic_vector(signed(coeff_from_fqmul0) + signed(s_fqmul0_vec(8)));
+                    s_bram_write_dia_high <= std_logic_vector(signed(coeff_from_fqmul3) + signed(s_fqmul3_vec(8)));
                 elsif(s_counter_fqmul = 1) then 
-                    s_bram_write_dia_low  <= std_logic_vector(signed(coeff_from_fqmul1) + signed(s_fqmul1_vec(4)));
-                    s_bram_write_dia_high <= std_logic_vector(signed(coeff_from_fqmul4) + signed(s_fqmul4_vec(4)));
+                    s_bram_write_dia_low  <= std_logic_vector(signed(coeff_from_fqmul1) + signed(s_fqmul1_vec(8)));
+                    s_bram_write_dia_high <= std_logic_vector(signed(coeff_from_fqmul4) + signed(s_fqmul4_vec(8)));
                 else
-                    s_bram_write_dia_low  <= std_logic_vector(signed(coeff_from_fqmul2) + signed(s_fqmul2_vec(4)));
-                    s_bram_write_dia_high <= std_logic_vector(signed(coeff_from_fqmul5) + signed(s_fqmul5_vec(4)));                    
+                    s_bram_write_dia_low  <= std_logic_vector(signed(coeff_from_fqmul2) + signed(s_fqmul2_vec(8)));
+                    s_bram_write_dia_high <= std_logic_vector(signed(coeff_from_fqmul5) + signed(s_fqmul5_vec(8)));                    
                 end if; 
                 
                 -- full word
@@ -615,7 +615,7 @@ begin
                 end if;
                                 
                 ---- PORT B ----
-                s_bram_write_enb <= s_en_vec(14);
+                s_bram_write_enb <= s_en_vec(26);
                 if(s_bram_write_enb = '1' and s_bram_write_addrb < "00001111111") then
                     s_bram_write_addrb <= std_logic_vector(unsigned(s_bram_write_addrb) + 1);
                 else
