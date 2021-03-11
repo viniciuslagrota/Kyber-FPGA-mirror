@@ -77,7 +77,7 @@
   "../../../bd/kyberBD/ip/kyberBD_axi_gpio_1_0/sim/kyberBD_axi_gpio_1_0.vhd" \
   "../../../bd/kyberBD/ipshared/44ad/hdl/bram_port_selector_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/sim/kyberBD_bram_port_selector_0_0.vhd" \
-  "../../../bd/kyberBD/ipshared/f10d/hdl/poly_tomont_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/53ad/hdl/poly_tomont_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_poly_tomont_0_0/sim/kyberBD_poly_tomont_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_1_0/sim/kyberBD_bram_port_selector_1_0.vhd" \
   "../../../bd/kyberBD/ipshared/e5a7/hdl/bram_v1_0_S_AXI.vhd" \

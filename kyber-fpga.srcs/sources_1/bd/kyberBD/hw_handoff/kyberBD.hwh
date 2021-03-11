@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar  9 00:15:44 2021" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar 10 21:03:51 2021" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:microzed_7010:part0:1.1" DEVICE="7z010" NAME="kyberBD" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -5353,7 +5353,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="11" FULLNAME="/poly_tomont_0" HWVERSION="1.0" INSTANCE="poly_tomont_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="poly_tomont" VLNV="xilinx.com:user:poly_tomont:1.0">
+    <MODULE COREREVISION="13" FULLNAME="/poly_tomont_0" HWVERSION="1.0" INSTANCE="poly_tomont_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="poly_tomont" VLNV="xilinx.com:user:poly_tomont:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
@@ -6582,13 +6582,13 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M05_ARESETN"/>
             <CONNECTION INSTANCE="dual_bram_0" PORT="s00_axi_aresetn"/>
             <CONNECTION INSTANCE="dual_bram_0" PORT="s01_axi_aresetn"/>
-            <CONNECTION INSTANCE="poly_tomont_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M06_ARESETN"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="poly_tomont_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7763,7 +7763,6 @@
             <CONNECTION INSTANCE="fqmul_3" PORT="clk"/>
             <CONNECTION INSTANCE="fqmul_4" PORT="clk"/>
             <CONNECTION INSTANCE="fqmul_5" PORT="clk"/>
-            <CONNECTION INSTANCE="poly_tomont_0" PORT="clk"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="clk"/>
             <CONNECTION INSTANCE="timer2_0" PORT="clk"/>
             <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_aclk"/>
@@ -7791,6 +7790,7 @@
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="clk"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="clk"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="clk"/>
+            <CONNECTION INSTANCE="poly_tomont_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">

@@ -84,7 +84,7 @@ architecture arch_imp of poly_tomont_v1_0 is
     -- LOCAL
     signal s_en_vec_mont            : std_logic_vector(1 downto 0);
     signal s_valid_vec              : std_logic_vector(1 downto 0); 
-    
+        
 begin
 
     s_di_lower_mont         <= di_lower_mont;

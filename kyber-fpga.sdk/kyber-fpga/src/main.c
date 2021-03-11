@@ -64,10 +64,10 @@
 #define TEST_BARRETT_REDUCE				0
 #define TEST_POLY_TOMONT				0
 #define TEST_POLYVEC_REDUCE				0
-#define TEST_POLYVEC_ACC				1
+#define TEST_POLYVEC_ACC				0
 #define TEST_POLYVEC_NTT				0
 #define TEST_POLYVEC_INVNTT				0
-#define TEST_KEM						0
+#define TEST_KEM						1
 #define SYSTEM_STATE					1
 
 //////////////////////////////////////////////
@@ -231,28 +231,28 @@ int main()
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer1 = getTimer(&XGpioGlobalTimer, 1);
 
-		for(int i = 0; i < 4; i++)
-		{
-			print_debug(DEBUG_MAIN, "[MAIN] outside memoryBram1[%d]: 0x%08lx\n", i, memoryBram1[i]);
-		}
-		for(int i = 0; i < 4; i++)
-		{
-			print_debug(DEBUG_MAIN, "[MAIN] poly1 result[%d]: 0x%04x\n", i, r1.coeffs[i]);
-		}
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] outside memoryBram1[%d]: 0x%08lx\n", i, memoryBram1[i]);
+//		}
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] poly1 result[%d]: 0x%04x\n", i, r1.coeffs[i]);
+//		}
 
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer2 = getTimer(&XGpioGlobalTimer, 1);
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer2 * 10);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		poly_tomont(&r2);
+		poly_tomont_sw(&r2);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer2 = getTimer(&XGpioGlobalTimer, 1);
-		for(int i = 0; i < 4; i++)
-		{
-			print_debug(DEBUG_MAIN, "[MAIN] poly2 result[%d]: 0x%04x\n", i, r2.coeffs[i]);
-		}
+//		for(int i = 0; i < 4; i++)
+//		{
+//			print_debug(DEBUG_MAIN, "[MAIN] poly2 result[%d]: 0x%04x\n", i, r2.coeffs[i]);
+//		}
 
 		if(memcmp(&r1, &r2, 512) != 0)
 		{
