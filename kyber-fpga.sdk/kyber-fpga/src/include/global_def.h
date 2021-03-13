@@ -54,6 +54,7 @@
 #define POLYVEC_BASEMUL_MASK			1 << 2
 #define POLYVEC_NTT_MASK				1 << 3
 #define POLYVEC_INVNTT_MASK				1 << 4
+#define KECCAK_F1600_MASK				1 << 5
 
 //////////////////////////////////////////////
 //
@@ -154,8 +155,8 @@ XGpio XGpioKyberK;
 XGpio_Config * XGpioConfigTomontAndReduce;
 XGpio XGpioTomontAndReduce;
 
-XGpio_Config * XGpioConfigAccMont;
-XGpio XGpioAccMont;
+XGpio_Config * XGpioConfigAccMontKeccak;
+XGpio XGpioAccMontKeccak;
 
 XGpio_Config * XGpioConfigNtt;
 XGpio XGpioNtt;

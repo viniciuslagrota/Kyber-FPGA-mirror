@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "fips202.h"
+#include "global_def.h"
 
 #define NROUNDS 24
 #define ROL(a, offset) ((a << offset) ^ (a >> (64-offset)))
@@ -79,7 +80,7 @@ static const uint64_t KeccakF_RoundConstants[NROUNDS] = {
 *
 * Arguments:   - uint64_t *state: pointer to input/output Keccak state
 **************************************************/
-static void KeccakF1600_StatePermute(uint64_t state[25])
+void KeccakF1600_StatePermuteSw(uint64_t state[25])
 {
         int round;
 
@@ -341,6 +342,36 @@ static void KeccakF1600_StatePermute(uint64_t state[25])
         state[22] = Asi;
         state[23] = Aso;
         state[24] = Asu;
+}
+
+void KeccakF1600_StatePermuteHw(uint64_t state[25])
+{
+	memcpy(memoryBram0, (u32 *)state, 200);
+
+	//Start flag up
+	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 2, 0x1);
+
+	//Read busy signal
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 2);
+	while(u32ReadGpio == 1)
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 2);
+
+	//Start flag down
+	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 2, 0x0);
+
+	memcpy(state, (u64 *)memoryBram0, 200);
+}
+
+void KeccakF1600_StatePermute(uint64_t state[25])
+{
+	if(u32SystemState & KECCAK_F1600_MASK)
+	{
+		KeccakF1600_StatePermuteHw(state);
+	}
+	else
+	{
+		KeccakF1600_StatePermuteSw(state);
+	}
 }
 
 /*************************************************
