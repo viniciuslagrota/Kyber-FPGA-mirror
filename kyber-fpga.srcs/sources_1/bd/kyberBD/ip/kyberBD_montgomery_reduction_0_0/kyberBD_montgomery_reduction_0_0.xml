@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>xilinx.com</spirit:vendor>
+  <spirit:library>customized_ip</spirit:library>
+  <spirit:name>kyberBD_montgomery_reduction_0_0</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>clk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>FREQ_HZ</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">100000000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHASE</spirit:name>
+          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.PHASE">0.000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>CLK_DOMAIN</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">kyberBD_processing_system7_0_0_FCLK_CLK0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF"/>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET"/>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.CLK.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsynthesis</spirit:name>
+        <spirit:displayName>VHDL Synthesis</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>montgomery_reduction_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Thu Mar 11 00:03:49 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:b910f5ba</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_synthesisconstraints</spirit:name>
+        <spirit:displayName>Synthesis Constraints</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:b910f5ba</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsynthesiswrapper</spirit:name>
+        <spirit:displayName>VHDL Synthesis Wrapper</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>kyberBD_montgomery_reduction_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Thu Mar 11 00:03:49 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:b910f5ba</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlbehavioralsimulation</spirit:name>
+        <spirit:displayName>VHDL Simulation</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>montgomery_reduction_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Thu Mar 11 00:03:49 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:11bc946c</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_vhdlsimulationwrapper</spirit:name>
+        <spirit:displayName>VHDL Simulation Wrapper</spirit:displayName>
+        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
+        <spirit:language>vhdl</spirit:language>
+        <spirit:modelName>kyberBD_montgomery_reduction_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsimulationwrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Thu Mar 11 00:03:49 UTC 2021</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:11bc946c</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_in</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>data_in</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>valid_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>data_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">15</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>QINV</spirit:name>
+        <spirit:displayName>Qinv</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.QINV">-3327</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>KYBER_Q</spirit:name>
+        <spirit:displayName>Kyber Q</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.KYBER_Q">3329</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/6b7a/hdl/montgomery_reduction_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>synth/kyberBD_montgomery_reduction_0_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/6b7a/hdl/montgomery_reduction_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>sim/kyberBD_montgomery_reduction_0_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>Montgomery reduction</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">kyberBD_montgomery_reduction_0_0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>QINV</spirit:name>
+      <spirit:displayName>Qinv</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.QINV">-3327</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>KYBER_Q</spirit:name>
+      <spirit:displayName>Kyber Q</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.KYBER_Q">3329</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:displayName>montgomery_reduction_v1.0</xilinx:displayName>
+      <xilinx:coreRevision>7</xilinx:coreRevision>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fc23cf3_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@361bb764_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37bd605f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d2e4321_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@477612a8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a22c9d3_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ab036f8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a99e798_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5989d2b9_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@496e764e_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4567e134_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1470caaf_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fcfcd48_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c6e681d_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b1a0d40_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5804efad_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f94a225_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e00f44c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@552717e1_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c8e882f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76b5a2a2_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72eeb3fb_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10a4fdb3_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1dadd485_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51ece17b_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2bcea979_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49a9edf8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c88b0b3_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65196277_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e2dcc23_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29d570d8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@175f299f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@689f4d32_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d6af38f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32d3b613_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@614f1267_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13f000c4_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@275c9a99_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65c1d3a1_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@81ee7cc_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@545f9288_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4063bf70_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5805412_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7479900a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1707940_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e07eeee_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11b7a256_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26ef1d32_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10383dd6_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15a8894e_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@692c14bd_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72e9a99a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@269a4c9c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22808899_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61f48be2_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66c77364_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4742a32c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a3f3b94_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6eb2df57_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51a7f1e1_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@626ea279_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4641fca4_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a849645_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@113298bd_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4115bf8d_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@606c5949_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@722ba06_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44e427cb_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2587d3ca_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e8f1b63_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66c202d0_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ac024d1_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ea97a73_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@505cea44_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bfbd46_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d3d33d7_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68c866cb_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e31c08b_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30ff74d6_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e2ad39c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@236d57d_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79a932f1_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ddd7351_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17748fe2_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48fcb046_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d2753ee_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a957e9f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@756a75fb_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5865c968_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@722e893a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@649a613c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3af134f4_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b70b07f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60a55c15_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f346c42_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4daf2411_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a5a4c9e_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@697d7b5e_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69c5f9e2_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ed510cf_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9b95dda_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c5301e5_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d9b844b_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c05c170_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39dd4eed_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f2a5ee8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@105b969b_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f1ea67c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b62a578_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c920817_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52531111_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f4e2930_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5013d817_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54dda89f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@618ff643_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e3a8e32_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fa71980_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e3b6b07_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cf8d20e_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d751b62_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a9897d5_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ccc4251_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@691ead43_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7655a328_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@628bb83c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d0adb20_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d6cdc26_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d46497d_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6caa6873_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f81d8cc_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29901641_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31991693_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3048d408_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5614c1d0_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@235f67b7_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25acacab_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a0454e_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4eed28f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c0edf58_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d0e5dc3_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47badf9a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e0c7efc_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@319d7c9f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@176d1fc3_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2399d241_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78535442_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@433a39ec_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@718ad75_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8cb4cec_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e6df182_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@407ad00a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43bb109b_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ee78550_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@677643cc_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1722475b_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36381297_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32553f85_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61827e5a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72dc9922_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7779f1f1_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23dda193_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1517db4a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fcb7b2b_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4334a235_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22486993_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c7eeb35_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@459caae8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5347a05f_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d064d9d_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23ad11d8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cec6a09_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ff45d0c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6403b3b8_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1097b8e_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5369a8c7_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7046c9b4_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@790bf9c6_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b9a6647_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47c0079c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7526eabc_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3877d8c1_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eea84d6_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e6dab40_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@330ec65c_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35126cd6_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31deacee_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c9f0a97_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ae1a087_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8accb43_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5aea097_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61f9f451_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41f51c02_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f5ccea9_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@442af5ae_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dcb3f78_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1475caa6_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@106ace70_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c9cb154_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@216c6a4a_ARCHIVE_LOCATION">c:/Projects/ip_repo/montgomery_reduction_1.0</xilinx:tag>
+      </xilinx:tags>
+      <xilinx:configElementInfos>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+      </xilinx:configElementInfos>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="a88d4390"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1cbfb068"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="29075b82"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="e2b1d05e"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="712da227"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>

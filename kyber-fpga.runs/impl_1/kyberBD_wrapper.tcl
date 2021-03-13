@@ -72,8 +72,33 @@ set rc [catch {
   set_param project.singleFileAddWarning.threshold 0
   set_property webtalk.parent_dir C:/Projects/kyber-fpga/kyber-fpga.cache/wt [current_project]
   set_property parent.project_path C:/Projects/kyber-fpga/kyber-fpga.xpr [current_project]
+  set_property ip_repo_paths {
+  C:/Projects/ip_repo/polyvec_invntt_1.0
+  C:/Projects/ip_repo/signal_multiplexer_1.0
+  C:/Projects/ip_repo/polyvec_ntt_1.0
+  C:/Projects/ip_repo/ntt_1.0
+  C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0
+  C:/Projects/ip_repo/polyvec_basemul_acc_montgomery_1.0
+  C:/Projects/ip_repo/barrett_reduce_1.0
+  C:/Projects/ip_repo/polyvec_reduce_1.0
+  C:/Projects/ip_repo/barret_reduce_1.0
+  C:/Projects/ip_repo/dual_bram_1.0
+  C:/Projects/ip_repo/poly_tomont_1.0
+  C:/Projects/ip_repo/triple_signal_multiplexer_1.0
+  C:/Projects/ip_repo/double_signal_multiplexer_1.0
+  C:/Projects/ip_repo/signal_multiplexer_1.0
+  C:/Projects/ip_repo/bram_port_selector_1.0
+  C:/Projects/ip_repo/bram_mm_1.0
+  C:/Projects/ip_repo/fqmul_1.0
+  C:/Projects/ip_repo/splitter_1.0
+  C:/Projects/ip_repo/montgomery_reduction_1.0
+  C:/Projects/ip_repo/timer2_1.0
+  C:/Projects/ip_repo
+} [current_project]
+  update_ip_catalog
   set_property ip_output_repo C:/Projects/kyber-fpga/kyber-fpga.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   add_files -quiet C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/kyberBD_wrapper.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
@@ -161,6 +186,7 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   catch { write_mem_info -force kyberBD_wrapper.mmi }
   write_bitstream -force kyberBD_wrapper.bit 
   catch { write_sysdef -hwdef kyberBD_wrapper.hwdef -bitfile kyberBD_wrapper.bit -meminfo kyberBD_wrapper.mmi -file kyberBD_wrapper.sysdef }

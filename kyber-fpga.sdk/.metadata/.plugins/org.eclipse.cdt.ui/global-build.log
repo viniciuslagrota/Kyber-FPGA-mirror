@@ -1,9 +1,24 @@
-21:21:15 **** Incremental Build of configuration Debug for project kyber-fpga ****
+21:20:42 **** Incremental Build of configuration Debug for project kyber-fpga ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-make: Nothing to be done for 'main-build'.
-21:21:19 **** Incremental Build of configuration Debug for project kyber-fpga ****
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-fpga_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: kyber-fpga.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-fpga_bsp/ps7_cortexa9_0/lib -o "kyber-fpga.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: kyber-fpga.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-fpga.elf  |tee "kyber-fpga.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 312472	   2680	  23456	 338608	  52ab0	kyber-fpga.elf
+Finished building: kyber-fpga.elf.size
+ 
+21:20:49 **** Incremental Build of configuration Debug for project kyber-fpga ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
