@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Wed Mar 10 21:03:18 2021
+--Date        : Sat Mar 13 19:56:01 2021
 --Host        : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 --Command     : generate_target kyberBD.bd
 --Design      : kyberBD
@@ -2294,7 +2294,7 @@ entity kyberBD is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=57,numReposBlks=48,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of kyberBD : entity is "kyberBD,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=kyberBD,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=58,numReposBlks=49,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of kyberBD : entity is "kyberBD.hwdef";
 end kyberBD;
@@ -2490,7 +2490,10 @@ architecture STRUCTURE of kyberBD is
     s_axi_rready : in STD_LOGIC;
     gpio_io_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     gpio_io_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    gpio_io_t : out STD_LOGIC_VECTOR ( 0 to 0 )
+    gpio_io_t : out STD_LOGIC_VECTOR ( 0 to 0 );
+    gpio2_io_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    gpio2_io_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    gpio2_io_t : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component kyberBD_axi_gpio_3_0;
   component kyberBD_barrett_reduce_0_0 is
@@ -2930,102 +2933,6 @@ architecture STRUCTURE of kyberBD is
     data : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component kyberBD_signal_multiplexer_2_5;
-  component kyberBD_bram_port_selector_0_0 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_en : in STD_LOGIC;
-    slave1_we : in STD_LOGIC;
-    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_en : in STD_LOGIC;
-    slave2_we : in STD_LOGIC;
-    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_en : in STD_LOGIC;
-    slave3_we : in STD_LOGIC;
-    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_en : in STD_LOGIC;
-    slave4_we : in STD_LOGIC;
-    slave4_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_0_0;
-  component kyberBD_bram_port_selector_1_0 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_en : in STD_LOGIC;
-    slave1_we : in STD_LOGIC;
-    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_en : in STD_LOGIC;
-    slave2_we : in STD_LOGIC;
-    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_1_0;
-  component kyberBD_bram_port_selector_1_1 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_1_1;
-  component kyberBD_bram_port_selector_2_0 is
-  port (
-    master_en : out STD_LOGIC;
-    master_we : out STD_LOGIC;
-    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
-    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_en : in STD_LOGIC;
-    slave0_we : in STD_LOGIC;
-    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_en : in STD_LOGIC;
-    slave1_we : in STD_LOGIC;
-    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_en : in STD_LOGIC;
-    slave2_we : in STD_LOGIC;
-    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component kyberBD_bram_port_selector_2_0;
   component kyberBD_montgomery_reduction_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -3252,11 +3159,126 @@ architecture STRUCTURE of kyberBD is
     busy : out STD_LOGIC
   );
   end component kyberBD_poly_tomont_0_0;
+  component kyberBD_bram_port_selector_0_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_en : in STD_LOGIC;
+    slave3_we : in STD_LOGIC;
+    slave3_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave3_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave3_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_en : in STD_LOGIC;
+    slave4_we : in STD_LOGIC;
+    slave4_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave4_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave4_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave5_en : in STD_LOGIC;
+    slave5_we : in STD_LOGIC;
+    slave5_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave5_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave5_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_0_0;
+  component kyberBD_bram_port_selector_1_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_1_0;
+  component kyberBD_bram_port_selector_1_1 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_1_1;
+  component kyberBD_bram_port_selector_2_0 is
+  port (
+    master_en : out STD_LOGIC;
+    master_we : out STD_LOGIC;
+    master_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    master_di : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    master_do : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_en : in STD_LOGIC;
+    slave0_we : in STD_LOGIC;
+    slave0_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave0_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave0_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_en : in STD_LOGIC;
+    slave1_we : in STD_LOGIC;
+    slave1_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave1_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave1_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_en : in STD_LOGIC;
+    slave2_we : in STD_LOGIC;
+    slave2_addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    slave2_di : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    slave2_do : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component kyberBD_bram_port_selector_2_0;
+  component kyberBD_keccak_f1600_bram_ip_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    bram_ena : out STD_LOGIC;
+    bram_wea : out STD_LOGIC;
+    bram_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    bram_dia : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    bram_doa : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    start : in STD_LOGIC;
+    busy : out STD_LOGIC
+  );
+  end component kyberBD_keccak_f1600_bram_ip_0_0;
   signal Net : STD_LOGIC;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_gpio_1_gpio_io_o : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal axi_gpio_2_gpio2_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal axi_gpio_2_gpio_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal axi_gpio_3_gpio2_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal axi_gpio_3_gpio_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal axi_gpio_4_gpio2_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal axi_gpio_4_gpio_io_o : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3431,6 +3453,12 @@ architecture STRUCTURE of kyberBD is
   signal fqmul_5_data_out_mont : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal fqmul_5_valid_out : STD_LOGIC;
   signal fqmul_5_valid_out_mont : STD_LOGIC;
+  signal keccak_f1600_bram_ip_0_PORT_BRAM_ADDR : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal keccak_f1600_bram_ip_0_PORT_BRAM_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal keccak_f1600_bram_ip_0_PORT_BRAM_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal keccak_f1600_bram_ip_0_PORT_BRAM_EN : STD_LOGIC;
+  signal keccak_f1600_bram_ip_0_PORT_BRAM_WE : STD_LOGIC;
+  signal keccak_f1600_bram_ip_0_busy : STD_LOGIC;
   signal montgomery_reduction_0_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal montgomery_reduction_0_valid_out : STD_LOGIC;
   signal montgomery_reduction_1_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -3665,6 +3693,7 @@ architecture STRUCTURE of kyberBD is
   signal NLW_axi_gpio_1_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_axi_gpio_2_gpio2_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_2_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_axi_gpio_3_gpio2_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_3_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_4_gpio2_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_4_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3783,6 +3812,9 @@ axi_gpio_2: component kyberBD_axi_gpio_2_0
     );
 axi_gpio_3: component kyberBD_axi_gpio_3_0
      port map (
+      gpio2_io_i(0) => keccak_f1600_bram_ip_0_busy,
+      gpio2_io_o(0) => axi_gpio_3_gpio2_io_o(0),
+      gpio2_io_t(0) => NLW_axi_gpio_3_gpio2_io_t_UNCONNECTED(0),
       gpio_io_i(0) => polyvec_basemul_acc_0_busy,
       gpio_io_o(0) => axi_gpio_3_gpio_io_o(0),
       gpio_io_t(0) => NLW_axi_gpio_3_gpio_io_t_UNCONNECTED(0),
@@ -4063,7 +4095,12 @@ bram_port_selector_0: component kyberBD_bram_port_selector_0_0
       slave4_di(31 downto 0) => polyvec_invntt_0_BRAM_PORT_A_DIN(31 downto 0),
       slave4_do(31 downto 0) => polyvec_invntt_0_BRAM_PORT_A_DOUT(31 downto 0),
       slave4_en => polyvec_invntt_0_BRAM_PORT_A_EN,
-      slave4_we => polyvec_invntt_0_BRAM_PORT_A_WE
+      slave4_we => polyvec_invntt_0_BRAM_PORT_A_WE,
+      slave5_addr(10 downto 0) => keccak_f1600_bram_ip_0_PORT_BRAM_ADDR(10 downto 0),
+      slave5_di(31 downto 0) => keccak_f1600_bram_ip_0_PORT_BRAM_DIN(31 downto 0),
+      slave5_do(31 downto 0) => keccak_f1600_bram_ip_0_PORT_BRAM_DOUT(31 downto 0),
+      slave5_en => keccak_f1600_bram_ip_0_PORT_BRAM_EN,
+      slave5_we => keccak_f1600_bram_ip_0_PORT_BRAM_WE
     );
 bram_port_selector_1: component kyberBD_bram_port_selector_1_0
      port map (
@@ -4266,6 +4303,18 @@ fqmul_5: component kyberBD_fqmul_0_5
       valid_in_mont => montgomery_reduction_5_valid_out,
       valid_out => fqmul_5_valid_out,
       valid_out_mont => fqmul_5_valid_out_mont
+    );
+keccak_f1600_bram_ip_0: component kyberBD_keccak_f1600_bram_ip_0_0
+     port map (
+      aresetn => proc_sys_reset_0_peripheral_aresetn(0),
+      bram_addra(10 downto 0) => keccak_f1600_bram_ip_0_PORT_BRAM_ADDR(10 downto 0),
+      bram_dia(31 downto 0) => keccak_f1600_bram_ip_0_PORT_BRAM_DIN(31 downto 0),
+      bram_doa(31 downto 0) => keccak_f1600_bram_ip_0_PORT_BRAM_DOUT(31 downto 0),
+      bram_ena => keccak_f1600_bram_ip_0_PORT_BRAM_EN,
+      bram_wea => keccak_f1600_bram_ip_0_PORT_BRAM_WE,
+      busy => keccak_f1600_bram_ip_0_busy,
+      clk => processing_system7_0_FCLK_CLK0,
+      start => axi_gpio_3_gpio2_io_o(0)
     );
 montgomery_reduction_0: component kyberBD_montgomery_reduction_0_0
      port map (

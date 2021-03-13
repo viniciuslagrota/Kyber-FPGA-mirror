@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:bram_port_selector:1.0
--- IP Revision: 4
+-- IP Revision: 7
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -116,7 +116,12 @@ ARCHITECTURE kyberBD_bram_port_selector_1_0_arch OF kyberBD_bram_port_selector_1
       slave4_we : IN STD_LOGIC;
       slave4_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave4_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      slave4_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+      slave4_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      slave5_en : IN STD_LOGIC;
+      slave5_we : IN STD_LOGIC;
+      slave5_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+      slave5_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      slave5_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT bram_port_selector_v1_0;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -124,7 +129,7 @@ ARCHITECTURE kyberBD_bram_port_selector_1_0_arch OF kyberBD_bram_port_selector_1
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_bram_port_selector_1_0_arch : ARCHITECTURE IS "kyberBD_bram_port_selector_1_0,bram_port_selector_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_bram_port_selector_1_0_arch: ARCHITECTURE IS "kyberBD_bram_port_selector_1_0,bram_port_selector_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=bram_port_selector,x_ipVersion=1.0,x_ipCoreRevision=4,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_bram_port_selector_1_0_arch: ARCHITECTURE IS "kyberBD_bram_port_selector_1_0,bram_port_selector_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=bram_port_selector,x_ipVersion=1.0,x_ipCoreRevision=7,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF slave2_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_2 DOUT";
@@ -185,6 +190,10 @@ BEGIN
       slave4_en => '0',
       slave4_we => '0',
       slave4_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
-      slave4_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32))
+      slave4_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      slave5_en => '0',
+      slave5_we => '0',
+      slave5_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
+      slave5_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32))
     );
 END kyberBD_bram_port_selector_1_0_arch;

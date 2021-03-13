@@ -148,6 +148,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_
 # IP: bd/kyberBD/ip/kyberBD_polyvec_invntt_0_0/kyberBD_polyvec_invntt_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_polyvec_invntt_0_0 || ORIG_REF_NAME==kyberBD_polyvec_invntt_0_0} -quiet] -quiet
 
+# IP: bd/kyberBD/ip/kyberBD_keccak_f1600_bram_ip_0_0/kyberBD_keccak_f1600_bram_ip_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_keccak_f1600_bram_ip_0_0 || ORIG_REF_NAME==kyberBD_keccak_f1600_bram_ip_0_0} -quiet] -quiet
+
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
 

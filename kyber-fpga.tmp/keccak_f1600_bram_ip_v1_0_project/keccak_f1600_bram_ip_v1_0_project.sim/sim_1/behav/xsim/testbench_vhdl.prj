@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../../ip_repo/keccak_f1600_bram_ip_1.0/src/keccak_global.vhd" \
+
+vhdl work  \
+"../../../../../../../ip_repo/keccak_f1600_bram_ip_1.0/hdl/keccak_f1600_bram_ip_v1_0.vhd" \
+"../../../../../../../ip_repo/keccak_f1600_bram_ip_1.0/src/keccak_f1600_mm_core_fast.vhd" \
+"../../../../../../../ip_repo/keccak_f1600_bram_ip_1.0/src/true_dual_bram.vhd" \
+"../../../../../../../ip_repo/keccak_f1600_bram_ip_1.0/src/testbench.vhd" \
+
+# Do not sort compile order
+nosort
