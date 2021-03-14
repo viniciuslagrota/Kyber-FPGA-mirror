@@ -275,15 +275,15 @@ void polyvec_basemul_acc_montgomery_hw(poly *r, const polyvec *a, const polyvec 
 #endif
 
 	//Start flag up
-	XGpio_DiscreteWrite(&XGpioAccMont, 1, 0x1);
+	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x1);
 
 	//Read busy signal
-	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMont, 1);
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
 	while(u32ReadGpio == 1)
-		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMont, 1);
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
 
 	//Start flag down
-	XGpio_DiscreteWrite(&XGpioAccMont, 1, 0x0);
+	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x0);
 
 	memcpy(r, (poly *)memoryBram1, 512);
 }

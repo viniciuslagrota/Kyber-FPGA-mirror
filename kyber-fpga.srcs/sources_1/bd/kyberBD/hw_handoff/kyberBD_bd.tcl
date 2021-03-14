@@ -198,7 +198,9 @@ proc create_root_design { parentCell } {
   # Create instance: axi_gpio_3, and set properties
   set axi_gpio_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_3 ]
   set_property -dict [ list \
+   CONFIG.C_GPIO2_WIDTH {1} \
    CONFIG.C_GPIO_WIDTH {1} \
+   CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_3
 
   # Create instance: axi_gpio_4, and set properties
@@ -225,7 +227,7 @@ proc create_root_design { parentCell } {
   set bram_port_selector_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_0 ]
   set_property -dict [ list \
    CONFIG.ADDR_WIDTH {11} \
-   CONFIG.NUMBER_OF_CHANNELS {5} \
+   CONFIG.NUMBER_OF_CHANNELS {6} \
  ] $bram_port_selector_0
 
   # Create instance: bram_port_selector_1, and set properties
@@ -271,6 +273,9 @@ proc create_root_design { parentCell } {
 
   # Create instance: fqmul_5, and set properties
   set fqmul_5 [ create_bd_cell -type ip -vlnv xilinx.com:user:fqmul:1.0 fqmul_5 ]
+
+  # Create instance: keccak_f1600_bram_ip_0, and set properties
+  set keccak_f1600_bram_ip_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:keccak_f1600_bram_ip:1.0 keccak_f1600_bram_ip_0 ]
 
   # Create instance: montgomery_reduction_0, and set properties
   set montgomery_reduction_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:montgomery_reduction:1.0 montgomery_reduction_0 ]
@@ -875,6 +880,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net bram_port_selector_1_BRAM_PORT_MASTER [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_MASTER] [get_bd_intf_pins dual_bram_0/BRAM0_PORT_B]
   connect_bd_intf_net -intf_net bram_port_selector_2_BRAM_PORT_MASTER [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_MASTER] [get_bd_intf_pins dual_bram_0/BRAM1_PORT_A]
   connect_bd_intf_net -intf_net bram_port_selector_3_BRAM_PORT_MASTER [get_bd_intf_pins bram_port_selector_3/BRAM_PORT_MASTER] [get_bd_intf_pins dual_bram_0/BRAM1_PORT_B]
+  connect_bd_intf_net -intf_net keccak_f1600_bram_ip_0_PORT_BRAM [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_5] [get_bd_intf_pins keccak_f1600_bram_ip_0/PORT_BRAM]
   connect_bd_intf_net -intf_net poly_tomont_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_0] [get_bd_intf_pins poly_tomont_0/BRAM_PORT_A]
   connect_bd_intf_net -intf_net poly_tomont_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_0] [get_bd_intf_pins poly_tomont_0/BRAM_PORT_B]
   connect_bd_intf_net -intf_net polyvec_basemul_acc_0_BRAM0_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_2] [get_bd_intf_pins polyvec_basemul_acc_0/BRAM0_PORT_A]
@@ -897,6 +903,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_gpio_1_gpio_io_o [get_bd_pins axi_gpio_1/gpio_io_i] [get_bd_pins axi_gpio_1/gpio_io_o] [get_bd_pins polyvec_basemul_acc_0/kyber_k] [get_bd_pins polyvec_invntt_0/kyber_k] [get_bd_pins polyvec_ntt_0/kyber_k] [get_bd_pins polyvec_reduce_0/kyber_k]
   connect_bd_net -net axi_gpio_2_gpio2_io_o [get_bd_pins axi_gpio_2/gpio2_io_o] [get_bd_pins polyvec_reduce_0/start]
   connect_bd_net -net axi_gpio_2_gpio_io_o [get_bd_pins axi_gpio_2/gpio_io_o] [get_bd_pins poly_tomont_0/start]
+  connect_bd_net -net axi_gpio_3_gpio2_io_o [get_bd_pins axi_gpio_3/gpio2_io_o] [get_bd_pins keccak_f1600_bram_ip_0/start]
   connect_bd_net -net axi_gpio_3_gpio_io_o [get_bd_pins axi_gpio_3/gpio_io_o] [get_bd_pins polyvec_basemul_acc_0/start]
   connect_bd_net -net axi_gpio_4_gpio2_io_o [get_bd_pins axi_gpio_4/gpio2_io_o] [get_bd_pins polyvec_invntt_0/start]
   connect_bd_net -net axi_gpio_4_gpio_io_o [get_bd_pins axi_gpio_4/gpio_io_o] [get_bd_pins polyvec_ntt_0/start]
@@ -928,6 +935,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net fqmul_5_data_out_mont [get_bd_pins fqmul_5/data_out_mont] [get_bd_pins signal_multiplexer_7/data0] [get_bd_pins signal_multiplexer_7/data1]
   connect_bd_net -net fqmul_5_valid_out [get_bd_pins fqmul_5/valid_out] [get_bd_pins polyvec_basemul_acc_0/valid_from_fqmul5] [get_bd_pins polyvec_invntt_0/valid_from_fqmul1]
   connect_bd_net -net fqmul_5_valid_out_mont [get_bd_pins fqmul_5/valid_out_mont] [get_bd_pins signal_multiplexer_7/valid0] [get_bd_pins signal_multiplexer_7/valid1]
+  connect_bd_net -net keccak_f1600_bram_ip_0_busy [get_bd_pins axi_gpio_3/gpio2_io_i] [get_bd_pins keccak_f1600_bram_ip_0/busy]
   connect_bd_net -net montgomery_reduction_0_data_out [get_bd_pins fqmul_0/data_in_mont] [get_bd_pins montgomery_reduction_0/data_out] [get_bd_pins poly_tomont_0/di_lower_mont]
   connect_bd_net -net montgomery_reduction_0_valid_out [get_bd_pins fqmul_0/valid_in_mont] [get_bd_pins montgomery_reduction_0/valid_out] [get_bd_pins poly_tomont_0/valid_in_lower_mont]
   connect_bd_net -net montgomery_reduction_1_data_out [get_bd_pins fqmul_1/data_in_mont] [get_bd_pins montgomery_reduction_1/data_out] [get_bd_pins poly_tomont_0/di_upper_mont]
@@ -1001,8 +1009,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net polyvec_reduce_0_en_upper_barrett [get_bd_pins polyvec_reduce_0/en_upper_barrett] [get_bd_pins signal_multiplexer_1/en0]
   connect_bd_net -net polyvec_reduce_0_valid_out_lower_barrett [get_bd_pins polyvec_reduce_0/valid_out_lower_barrett] [get_bd_pins signal_multiplexer_0/valid0]
   connect_bd_net -net polyvec_reduce_0_valid_out_upper_barrett [get_bd_pins polyvec_reduce_0/valid_out_upper_barrett] [get_bd_pins signal_multiplexer_1/valid0]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_gpio_2/s_axi_aresetn] [get_bd_pins axi_gpio_3/s_axi_aresetn] [get_bd_pins axi_gpio_4/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins axi_interconnect_0/M04_ARESETN] [get_bd_pins axi_interconnect_0/M05_ARESETN] [get_bd_pins axi_interconnect_0/M06_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins dual_bram_0/s00_axi_aresetn] [get_bd_pins dual_bram_0/s01_axi_aresetn] [get_bd_pins poly_tomont_0/aresetn] [get_bd_pins polyvec_basemul_acc_0/aresetn] [get_bd_pins polyvec_invntt_0/aresetn] [get_bd_pins polyvec_ntt_0/aresetn] [get_bd_pins polyvec_reduce_0/aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_gpio_3/s_axi_aclk] [get_bd_pins axi_gpio_4/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins axi_interconnect_0/M05_ACLK] [get_bd_pins axi_interconnect_0/M06_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins barrett_reduce_0/clk] [get_bd_pins barrett_reduce_1/clk] [get_bd_pins dual_bram_0/s00_axi_aclk] [get_bd_pins dual_bram_0/s01_axi_aclk] [get_bd_pins fqmul_0/clk] [get_bd_pins fqmul_1/clk] [get_bd_pins fqmul_2/clk] [get_bd_pins fqmul_3/clk] [get_bd_pins fqmul_4/clk] [get_bd_pins fqmul_5/clk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins montgomery_reduction_1/clk] [get_bd_pins montgomery_reduction_2/clk] [get_bd_pins montgomery_reduction_3/clk] [get_bd_pins montgomery_reduction_4/clk] [get_bd_pins montgomery_reduction_5/clk] [get_bd_pins poly_tomont_0/clk] [get_bd_pins polyvec_basemul_acc_0/clk] [get_bd_pins polyvec_invntt_0/clk] [get_bd_pins polyvec_ntt_0/clk] [get_bd_pins polyvec_reduce_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins signal_multiplexer_0/clk] [get_bd_pins signal_multiplexer_1/clk] [get_bd_pins signal_multiplexer_12/clk] [get_bd_pins signal_multiplexer_14/clk] [get_bd_pins signal_multiplexer_16/clk] [get_bd_pins signal_multiplexer_17/clk] [get_bd_pins signal_multiplexer_18/clk] [get_bd_pins signal_multiplexer_19/clk] [get_bd_pins signal_multiplexer_2/clk] [get_bd_pins signal_multiplexer_3/clk] [get_bd_pins signal_multiplexer_4/clk] [get_bd_pins signal_multiplexer_5/clk] [get_bd_pins signal_multiplexer_6/clk] [get_bd_pins signal_multiplexer_7/clk] [get_bd_pins timer2_0/clk]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_gpio_2/s_axi_aresetn] [get_bd_pins axi_gpio_3/s_axi_aresetn] [get_bd_pins axi_gpio_4/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins axi_interconnect_0/M04_ARESETN] [get_bd_pins axi_interconnect_0/M05_ARESETN] [get_bd_pins axi_interconnect_0/M06_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins dual_bram_0/s00_axi_aresetn] [get_bd_pins dual_bram_0/s01_axi_aresetn] [get_bd_pins keccak_f1600_bram_ip_0/aresetn] [get_bd_pins poly_tomont_0/aresetn] [get_bd_pins polyvec_basemul_acc_0/aresetn] [get_bd_pins polyvec_invntt_0/aresetn] [get_bd_pins polyvec_ntt_0/aresetn] [get_bd_pins polyvec_reduce_0/aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_gpio_3/s_axi_aclk] [get_bd_pins axi_gpio_4/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins axi_interconnect_0/M05_ACLK] [get_bd_pins axi_interconnect_0/M06_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins barrett_reduce_0/clk] [get_bd_pins barrett_reduce_1/clk] [get_bd_pins dual_bram_0/s00_axi_aclk] [get_bd_pins dual_bram_0/s01_axi_aclk] [get_bd_pins fqmul_0/clk] [get_bd_pins fqmul_1/clk] [get_bd_pins fqmul_2/clk] [get_bd_pins fqmul_3/clk] [get_bd_pins fqmul_4/clk] [get_bd_pins fqmul_5/clk] [get_bd_pins keccak_f1600_bram_ip_0/clk] [get_bd_pins montgomery_reduction_0/clk] [get_bd_pins montgomery_reduction_1/clk] [get_bd_pins montgomery_reduction_2/clk] [get_bd_pins montgomery_reduction_3/clk] [get_bd_pins montgomery_reduction_4/clk] [get_bd_pins montgomery_reduction_5/clk] [get_bd_pins poly_tomont_0/clk] [get_bd_pins polyvec_basemul_acc_0/clk] [get_bd_pins polyvec_invntt_0/clk] [get_bd_pins polyvec_ntt_0/clk] [get_bd_pins polyvec_reduce_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins signal_multiplexer_0/clk] [get_bd_pins signal_multiplexer_1/clk] [get_bd_pins signal_multiplexer_12/clk] [get_bd_pins signal_multiplexer_14/clk] [get_bd_pins signal_multiplexer_16/clk] [get_bd_pins signal_multiplexer_17/clk] [get_bd_pins signal_multiplexer_18/clk] [get_bd_pins signal_multiplexer_19/clk] [get_bd_pins signal_multiplexer_2/clk] [get_bd_pins signal_multiplexer_3/clk] [get_bd_pins signal_multiplexer_4/clk] [get_bd_pins signal_multiplexer_5/clk] [get_bd_pins signal_multiplexer_6/clk] [get_bd_pins signal_multiplexer_7/clk] [get_bd_pins timer2_0/clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
   connect_bd_net -net signal_multiplexer_0_data [get_bd_pins barrett_reduce_0/data_in] [get_bd_pins signal_multiplexer_0/data]
   connect_bd_net -net signal_multiplexer_0_valid [get_bd_pins barrett_reduce_0/valid_in] [get_bd_pins signal_multiplexer_0/valid]

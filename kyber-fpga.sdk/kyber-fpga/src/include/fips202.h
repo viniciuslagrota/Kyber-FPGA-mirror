@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include "global_def.h"
 
 #define SHAKE128_RATE 168
 #define SHAKE256_RATE 136
@@ -15,6 +16,10 @@ typedef struct {
   uint64_t s[25];
   unsigned int pos;
 } keccak_state;
+
+void KeccakF1600_StatePermuteSw(uint64_t state[25]);
+void KeccakF1600_StatePermuteHw(uint64_t state[25]);
+void KeccakF1600_StatePermute(uint64_t state[25]);
 
 #define shake128_init FIPS202_NAMESPACE(shake128_init)
 void shake128_init(keccak_state *state);

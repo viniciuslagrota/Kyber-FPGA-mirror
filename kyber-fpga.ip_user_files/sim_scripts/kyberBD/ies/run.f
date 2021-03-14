@@ -75,7 +75,7 @@
   "../../../bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_timer2_0_0/sim/kyberBD_timer2_0_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_axi_gpio_1_0/sim/kyberBD_axi_gpio_1_0.vhd" \
-  "../../../bd/kyberBD/ipshared/44ad/hdl/bram_port_selector_v1_0.vhd" \
+  "../../../bd/kyberBD/ipshared/548b/hdl/bram_port_selector_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/sim/kyberBD_bram_port_selector_0_0.vhd" \
   "../../../bd/kyberBD/ipshared/53ad/hdl/poly_tomont_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_poly_tomont_0_0/sim/kyberBD_poly_tomont_0_0.vhd" \
@@ -129,6 +129,10 @@
   "../../../bd/kyberBD/ip/kyberBD_signal_multiplexer_17_1/sim/kyberBD_signal_multiplexer_17_1.vhd" \
   "../../../bd/kyberBD/ipshared/7acd/hdl/polyvec_invntt_v1_0.vhd" \
   "../../../bd/kyberBD/ip/kyberBD_polyvec_invntt_0_0/sim/kyberBD_polyvec_invntt_0_0.vhd" \
+  "../../../bd/kyberBD/ipshared/0679/src/keccak_global.vhd" \
+  "../../../bd/kyberBD/ipshared/0679/src/keccak_f1600_mm_core_fast.vhd" \
+  "../../../bd/kyberBD/ipshared/0679/hdl/keccak_f1600_bram_ip_v1_0.vhd" \
+  "../../../bd/kyberBD/ip/kyberBD_keccak_f1600_bram_ip_0_0/sim/kyberBD_keccak_f1600_bram_ip_0_0.vhd" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

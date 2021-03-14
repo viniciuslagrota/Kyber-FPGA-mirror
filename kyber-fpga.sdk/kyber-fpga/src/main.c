@@ -54,6 +54,7 @@
 #include "include/global_def.h"
 #include "include/poly.h"
 #include "include/polyvec.h"
+#include "include/fips202.h"
 
 //////////////////////////////////////////////
 //
@@ -67,6 +68,7 @@
 #define TEST_POLYVEC_ACC				0
 #define TEST_POLYVEC_NTT				0
 #define TEST_POLYVEC_INVNTT				0
+#define TEST_KECCAK_F1600				0
 #define TEST_KEM						1
 #define SYSTEM_STATE					1
 
@@ -84,8 +86,8 @@ extern XGpio XGpioKyberK;
 extern XGpio_Config * XGpioConfigTomontAndReduce;
 extern XGpio XGpioTomontAndReduce;
 
-extern XGpio_Config * XGpioConfigAccMont;
-extern XGpio XGpioAccMont;
+extern XGpio_Config * XGpioConfigAccMontKeccak;
+extern XGpio XGpioAccMontKeccak;
 
 extern XGpio_Config * XGpioConfigNtt;
 extern XGpio XGpioNtt;
@@ -124,8 +126,8 @@ int main()
 	XGpio_CfgInitialize(&XGpioTomontAndReduce, XGpioConfigTomontAndReduce, XGpioConfigTomontAndReduce->BaseAddress);
 
 	//Polyvec basemul acc montgomery
-	XGpioConfigAccMont = XGpio_LookupConfig(XPAR_AXI_GPIO_3_DEVICE_ID);
-	XGpio_CfgInitialize(&XGpioAccMont, XGpioConfigAccMont, XGpioConfigAccMont->BaseAddress);
+	XGpioConfigAccMontKeccak = XGpio_LookupConfig(XPAR_AXI_GPIO_3_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioAccMontKeccak, XGpioConfigAccMontKeccak, XGpioConfigAccMontKeccak->BaseAddress);
 
 	//Polyvec NTT
 	XGpioConfigNtt = XGpio_LookupConfig(XPAR_AXI_GPIO_4_DEVICE_ID);
@@ -524,6 +526,44 @@ int main()
 			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
 #endif
 
+#if TEST_KECCAK_F1600 == 1
+		uint64_t state[25] = { 0x0 };
+		state[0] = 0x000000000000001f;
+		state[20] = 0x8000000000000000;
+		uint64_t state2[25] = { 0x0 };
+		state2[0] = 0x000000000000001f;
+		state2[20] = 0x8000000000000000;
+
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32 u32Timer11 = getTimer(&XGpioGlobalTimer, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer11 * HW_CLOCK_PERIOD);
+		startTimer(&XGpioGlobalTimer, 1);
+
+		KeccakF1600_StatePermuteSw(state);
+
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer11 = getTimer(&XGpioGlobalTimer, 1);
+
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32 u32Timer12 = getTimer(&XGpioGlobalTimer, 1);
+		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer12 * HW_CLOCK_PERIOD);
+		startTimer(&XGpioGlobalTimer, 1);
+
+		KeccakF1600_StatePermuteHw(state2);
+
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer12 = getTimer(&XGpioGlobalTimer, 1);
+
+		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer11 * HW_CLOCK_PERIOD);
+		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer12 * HW_CLOCK_PERIOD);
+
+		if(memcmp(&state, &state2, 200) != 0)
+		{
+			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
+		}
+		else
+			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
+#endif
 
 #if TEST_KEM == 1
 ////		//KEM test
@@ -561,10 +601,15 @@ int main()
 		else
 			print_debug(DEBUG_MAIN, "Polyvec INVNTT software used.\n");
 
+		if(u32SystemState & KECCAK_F1600_MASK)
+			print_debug(DEBUG_MAIN, "Keccak F1600 hardware used.\n");
+		else
+			print_debug(DEBUG_MAIN, "Keccak F1600 software used.\n");
+
 		u32SystemState ++;
 #endif
 
-		if((u32SystemState & 0x1f) == 0x0)
+		if((u32SystemState & 0x3f) == 0x0)
 		{
 //			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
 			sleep(1);
