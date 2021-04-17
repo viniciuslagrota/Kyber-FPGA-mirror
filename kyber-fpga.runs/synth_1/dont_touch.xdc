@@ -151,8 +151,29 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_polyvec
 # IP: bd/kyberBD/ip/kyberBD_keccak_f1600_bram_ip_0_0/kyberBD_keccak_f1600_bram_ip_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_keccak_f1600_bram_ip_0_0 || ORIG_REF_NAME==kyberBD_keccak_f1600_bram_ip_0_0} -quiet] -quiet
 
+# IP: bd/kyberBD/ip/kyberBD_axi_bram_ctrl_0_0_1/kyberBD_axi_bram_ctrl_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_bram_ctrl_0_0 || ORIG_REF_NAME==kyberBD_axi_bram_ctrl_0_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_bram_ctrl_1_0_1/kyberBD_axi_bram_ctrl_1_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_bram_ctrl_1_0 || ORIG_REF_NAME==kyberBD_axi_bram_ctrl_1_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_auto_pc_5_1/kyberBD_auto_pc_5.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_5 || ORIG_REF_NAME==kyberBD_auto_pc_5} -quiet] -quiet
+
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_auto_pc_1_1/kyberBD_auto_pc_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_1 || ORIG_REF_NAME==kyberBD_auto_pc_1} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_auto_pc_2_1/kyberBD_auto_pc_2.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_2 || ORIG_REF_NAME==kyberBD_auto_pc_2} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_auto_pc_3_1/kyberBD_auto_pc_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_3 || ORIG_REF_NAME==kyberBD_auto_pc_3} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_auto_pc_4_1/kyberBD_auto_pc_4.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_4 || ORIG_REF_NAME==kyberBD_auto_pc_4} -quiet] -quiet
 
 # XDC: bd/kyberBD/ip/kyberBD_processing_system7_0_0/kyberBD_processing_system7_0_0.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_processing_system7_0_0 || ORIG_REF_NAME==kyberBD_processing_system7_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
@@ -207,6 +228,20 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 # XDC: bd/kyberBD/ip/kyberBD_axi_gpio_4_0/kyberBD_axi_gpio_4_0.xdc
 #dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_4_0 || ORIG_REF_NAME==kyberBD_axi_gpio_4_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
+# XDC: bd/kyberBD/ip/kyberBD_axi_bram_ctrl_0_0_1/kyberBD_axi_bram_ctrl_0_0_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_bram_ctrl_1_0_1/kyberBD_axi_bram_ctrl_1_0_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_auto_pc_5_1/kyberBD_auto_pc_5_ooc.xdc
+
 # XDC: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_auto_pc_1_1/kyberBD_auto_pc_1_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_auto_pc_2_1/kyberBD_auto_pc_2_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_auto_pc_3_1/kyberBD_auto_pc_3_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_auto_pc_4_1/kyberBD_auto_pc_4_ooc.xdc
 
 # XDC: bd/kyberBD/kyberBD_ooc.xdc

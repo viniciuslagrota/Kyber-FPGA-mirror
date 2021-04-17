@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -79,7 +78,14 @@ set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_4_0/kyberBD_axi_gpio_4_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_4_0/kyberBD_axi_gpio_4_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_4_0/kyberBD_axi_gpio_4_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_bram_ctrl_0_0_1/kyberBD_axi_bram_ctrl_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_bram_ctrl_1_0_1/kyberBD_axi_bram_ctrl_1_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_5_1/kyberBD_auto_pc_5_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_1_1/kyberBD_auto_pc_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_2_1/kyberBD_auto_pc_2_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_3_1/kyberBD_auto_pc_3_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_4_1/kyberBD_auto_pc_4_ooc.xdc]
 set_property used_in_implementation false [get_files -all C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being

@@ -17,6 +17,7 @@ vlib riviera/axi_crossbar_v2_1_20
 vlib riviera/axi_lite_ipif_v3_0_4
 vlib riviera/interrupt_control_v3_1_4
 vlib riviera/axi_gpio_v2_0_21
+vlib riviera/axi_bram_ctrl_v4_1_1
 vlib riviera/axi_protocol_converter_v2_1_19
 
 vmap xilinx_vip riviera/xilinx_vip
@@ -35,6 +36,7 @@ vmap axi_crossbar_v2_1_20 riviera/axi_crossbar_v2_1_20
 vmap axi_lite_ipif_v3_0_4 riviera/axi_lite_ipif_v3_0_4
 vmap interrupt_control_v3_1_4 riviera/interrupt_control_v3_1_4
 vmap axi_gpio_v2_0_21 riviera/axi_gpio_v2_0_21
+vmap axi_bram_ctrl_v4_1_1 riviera/axi_bram_ctrl_v4_1_1
 vmap axi_protocol_converter_v2_1_19 riviera/axi_protocol_converter_v2_1_19
 
 vlog -work xilinx_vip  -sv2k12 "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
@@ -114,7 +116,7 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ipshared/23a6/hdl/timer2_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_timer2_0_0/sim/kyberBD_timer2_0_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_axi_gpio_1_0/sim/kyberBD_axi_gpio_1_0.vhd" \
-"../../../bd/kyberBD/ipshared/548b/hdl/bram_port_selector_v1_0.vhd" \
+"../../../bd/kyberBD/ipshared/ab6a/hdl/bram_port_selector_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_bram_port_selector_0_0/sim/kyberBD_bram_port_selector_0_0.vhd" \
 "../../../bd/kyberBD/ipshared/53ad/hdl/poly_tomont_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_poly_tomont_0_0/sim/kyberBD_poly_tomont_0_0.vhd" \
@@ -173,11 +175,23 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/ipshared/0679/hdl/keccak_f1600_bram_ip_v1_0.vhd" \
 "../../../bd/kyberBD/ip/kyberBD_keccak_f1600_bram_ip_0_0/sim/kyberBD_keccak_f1600_bram_ip_0_0.vhd" \
 
+vcom -work axi_bram_ctrl_v4_1_1 -93 \
+"../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/70bf/hdl/axi_bram_ctrl_v4_1_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/kyberBD/ip/kyberBD_axi_bram_ctrl_0_0_1/sim/kyberBD_axi_bram_ctrl_0_0.vhd" \
+"../../../bd/kyberBD/ip/kyberBD_axi_bram_ctrl_1_0_1/sim/kyberBD_axi_bram_ctrl_1_0.vhd" \
+
 vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
 "../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/ec67/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/8c62/hdl" "+incdir+../../../../kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_processing_system7_0_0" "+incdir+C:/Xilinx/Vivado/2019.1/data/xilinx_vip/include" \
+"../../../bd/kyberBD/ip/kyberBD_auto_pc_5_1/sim/kyberBD_auto_pc_5.v" \
 "../../../bd/kyberBD/ip/kyberBD_auto_pc_0/sim/kyberBD_auto_pc_0.v" \
+"../../../bd/kyberBD/ip/kyberBD_auto_pc_1_1/sim/kyberBD_auto_pc_1.v" \
+"../../../bd/kyberBD/ip/kyberBD_auto_pc_2_1/sim/kyberBD_auto_pc_2.v" \
+"../../../bd/kyberBD/ip/kyberBD_auto_pc_3_1/sim/kyberBD_auto_pc_3.v" \
+"../../../bd/kyberBD/ip/kyberBD_auto_pc_4_1/sim/kyberBD_auto_pc_4.v" \
 
 vcom -work xil_defaultlib -93 \
 "../../../bd/kyberBD/sim/kyberBD.vhd" \

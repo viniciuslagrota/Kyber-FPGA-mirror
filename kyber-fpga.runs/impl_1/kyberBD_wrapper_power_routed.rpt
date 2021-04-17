@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Sat Mar 13 20:06:41 2021
+| Date             : Fri Apr 16 19:14:57 2021
 | Host             : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 | Command          : report_power -file kyberBD_wrapper_power_routed.rpt -pb kyberBD_wrapper_power_summary_routed.pb -rpx kyberBD_wrapper_power_routed.rpx
 | Design           : kyberBD_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.799        |
+| Total On-Chip Power (W)  | 1.816        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.676        |
+| Dynamic (W)              | 1.693        |
 | Device Static (W)        | 0.123        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 64.2         |
-| Junction Temperature (C) | 45.8         |
+| Max Ambient (C)          | 64.1         |
+| Junction Temperature (C) | 45.9         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,20 +52,20 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.025 |        3 |       --- |             --- |
-| Slice Logic             |     0.034 |    17805 |       --- |             --- |
-|   LUT as Logic          |     0.031 |     6953 |     17600 |           39.51 |
-|   Register              |     0.001 |     8155 |     35200 |           23.17 |
-|   LUT as Shift Register |    <0.001 |      241 |      6000 |            4.02 |
-|   CARRY4                |    <0.001 |      141 |      4400 |            3.20 |
-|   F7/F8 Muxes           |    <0.001 |       59 |     17600 |            0.34 |
-|   Others                |     0.000 |      354 |       --- |             --- |
-| Signals                 |     0.064 |    14532 |       --- |             --- |
-| Block RAM               |     0.008 |      4.5 |        60 |            7.50 |
-| DSPs                    |     0.015 |       24 |        80 |           30.00 |
+| Clocks                  |     0.028 |        3 |       --- |             --- |
+| Slice Logic             |     0.038 |    21121 |       --- |             --- |
+|   LUT as Logic          |     0.035 |     8484 |     17600 |           48.20 |
+|   Register              |     0.002 |     9388 |     35200 |           26.67 |
+|   LUT as Shift Register |    <0.001 |      282 |      6000 |            4.70 |
+|   CARRY4                |    <0.001 |      213 |      4400 |            4.84 |
+|   F7/F8 Muxes           |    <0.001 |       29 |     17600 |            0.16 |
+|   Others                |     0.000 |      498 |       --- |             --- |
+| Signals                 |     0.071 |    17006 |       --- |             --- |
+| Block RAM               |     0.009 |      4.5 |        60 |            7.50 |
+| DSPs                    |     0.017 |       24 |        80 |           30.00 |
 | PS7                     |     1.530 |        1 |       --- |             --- |
 | Static Power            |     0.123 |          |           |                 |
-| Total                   |     1.799 |          |           |                 |
+| Total                   |     1.816 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.153 |       0.146 |      0.008 |
+| Vccint    |       1.000 |     0.170 |       0.162 |      0.008 |
 | Vccaux    |       1.800 |     0.008 |       0.000 |      0.008 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -88,7 +88,7 @@ Table of Contents
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccpint   |       1.000 |     0.750 |       0.718 |      0.031 |
+| Vccpint   |       1.000 |     0.750 |       0.718 |      0.032 |
 | Vccpaux   |       1.800 |     0.061 |       0.051 |      0.010 |
 | Vccpll    |       1.800 |     0.017 |       0.014 |      0.003 |
 | Vcco_ddr  |       1.500 |     0.459 |       0.457 |      0.002 |
@@ -151,18 +151,29 @@ Table of Contents
 +----------------------------+-----------+
 | Name                       | Power (W) |
 +----------------------------+-----------+
-| kyberBD_wrapper            |     1.676 |
-|   kyberBD_i                |     1.676 |
+| kyberBD_wrapper            |     1.693 |
+|   kyberBD_i                |     1.693 |
+|     axi_bram_ctrl_0        |     0.001 |
+|       U0                   |     0.001 |
+|     axi_bram_ctrl_1        |     0.001 |
+|       U0                   |     0.001 |
 |     axi_gpio_0             |     0.001 |
 |       U0                   |     0.001 |
-|     axi_interconnect_0     |     0.004 |
-|       s00_couplers         |     0.004 |
+|     axi_interconnect_0     |     0.014 |
+|       m00_couplers         |     0.003 |
+|       m03_couplers         |     0.003 |
+|       m04_couplers         |     0.002 |
+|       m05_couplers         |     0.002 |
+|       m06_couplers         |     0.002 |
+|       xbar                 |     0.001 |
 |     barrett_reduce_0       |     0.003 |
 |       U0                   |     0.003 |
 |     barrett_reduce_1       |     0.003 |
 |       U0                   |     0.003 |
-|     dual_bram_0            |     0.008 |
-|       U0                   |     0.008 |
+|     dual_bram_0            |     0.009 |
+|       U0                   |     0.009 |
+|     fqmul_3                |     0.001 |
+|       U0                   |     0.001 |
 |     keccak_f1600_bram_ip_0 |     0.086 |
 |       U0                   |     0.086 |
 |     montgomery_reduction_0 |     0.002 |
@@ -171,14 +182,14 @@ Table of Contents
 |       U0                   |     0.002 |
 |     montgomery_reduction_2 |     0.003 |
 |       U0                   |     0.003 |
-|     montgomery_reduction_3 |     0.002 |
-|       U0                   |     0.002 |
+|     montgomery_reduction_3 |     0.003 |
+|       U0                   |     0.003 |
 |     montgomery_reduction_4 |     0.002 |
 |       U0                   |     0.002 |
 |     montgomery_reduction_5 |     0.002 |
 |       U0                   |     0.002 |
-|     poly_tomont_0          |     0.002 |
-|       U0                   |     0.002 |
+|     poly_tomont_0          |     0.003 |
+|       U0                   |     0.003 |
 |     polyvec_basemul_acc_0  |     0.008 |
 |       U0                   |     0.008 |
 |     polyvec_invntt_0       |     0.003 |

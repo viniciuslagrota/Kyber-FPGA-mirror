@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:bram_port_selector:1.0
--- IP Revision: 7
+-- IP Revision: 8
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -89,7 +89,12 @@ ENTITY kyberBD_bram_port_selector_0_0 IS
     slave5_we : IN STD_LOGIC;
     slave5_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     slave5_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    slave5_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    slave5_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    slave6_en : IN STD_LOGIC;
+    slave6_we : IN STD_LOGIC;
+    slave6_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+    slave6_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    slave6_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END kyberBD_bram_port_selector_0_0;
 
@@ -136,11 +141,22 @@ ARCHITECTURE kyberBD_bram_port_selector_0_0_arch OF kyberBD_bram_port_selector_0
       slave5_we : IN STD_LOGIC;
       slave5_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave5_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      slave5_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+      slave5_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      slave6_en : IN STD_LOGIC;
+      slave6_we : IN STD_LOGIC;
+      slave6_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+      slave6_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      slave6_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT bram_port_selector_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_INFO OF slave6_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_6 DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF slave6_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_6 DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF slave6_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_6 ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF slave6_we: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_6 WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF slave6_en: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_6, MEM_SIZE 65536, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF slave6_en: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_6 EN";
   ATTRIBUTE X_INTERFACE_INFO OF slave5_do: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_5 DOUT";
   ATTRIBUTE X_INTERFACE_INFO OF slave5_di: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_5 DIN";
   ATTRIBUTE X_INTERFACE_INFO OF slave5_addr: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_5 ADDR";
@@ -224,6 +240,11 @@ BEGIN
       slave5_we => slave5_we,
       slave5_addr => slave5_addr,
       slave5_di => slave5_di,
-      slave5_do => slave5_do
+      slave5_do => slave5_do,
+      slave6_en => slave6_en,
+      slave6_we => slave6_we,
+      slave6_addr => slave6_addr,
+      slave6_di => slave6_di,
+      slave6_do => slave6_do
     );
 END kyberBD_bram_port_selector_0_0_arch;

@@ -20,6 +20,7 @@
 
 //Hardware
 #include "xil_printf.h"
+#include "xil_mmu.h"
 #include "sleep.h"
 #include "xgpio.h"
 #include "xgpiops.h"

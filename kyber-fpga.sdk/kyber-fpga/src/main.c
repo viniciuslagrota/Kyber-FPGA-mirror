@@ -134,11 +134,19 @@ int main()
 	XGpio_CfgInitialize(&XGpioNtt, XGpioConfigNtt, XGpioConfigNtt->BaseAddress);
 
 	//---- Configure AXI BRAM ----
-	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
+//	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
+//	memoryBram0[0] = 0x0;
+//
+//	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
+//	memoryBram1[0] = 0x0;
+
+	memoryBram0 = (u32 *) XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR;
 	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
 	memoryBram0[0] = 0x0;
 
-	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
+	memoryBram1 = (u32 *) XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR;
 	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
 	memoryBram1[0] = 0x0;
 
