@@ -1,10 +1,14 @@
-20:14:29 **** Incremental Build of configuration Debug for project kyber-fpga ****
+14:49:48 **** Incremental Build of configuration Debug for project kyber-fpga ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 Building file: ../src/main.c
 Invoking: ARM v7 gcc compiler
 arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-fpga_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/main.c:54:
+../src/include/global_def.h:161:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
 Finished building: ../src/main.c
  
 Building target: kyber-fpga.elf
@@ -15,9 +19,9 @@ Finished building target: kyber-fpga.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-fpga.elf  |tee "kyber-fpga.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 312848	   2680	  23456	 338984	  52c28	kyber-fpga.elf
+ 323228	   2768	  25360	 351356	  55c7c	kyber-fpga.elf
 Finished building: kyber-fpga.elf.size
  
 
-20:14:32 Build Finished (took 3s.891ms)
+14:49:52 Build Finished (took 3s.834ms)
 

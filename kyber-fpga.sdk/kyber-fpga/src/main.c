@@ -63,20 +63,23 @@
 //////////////////////////////////////////////
 #define TEST_FQMUL						0
 #define TEST_BARRETT_REDUCE				0
-#define TEST_POLY_TOMONT				0
+#define TEST_POLY_TOMONT				1
 #define TEST_POLYVEC_REDUCE				0
 #define TEST_POLYVEC_ACC				0
 #define TEST_POLYVEC_NTT				0
 #define TEST_POLYVEC_INVNTT				0
 #define TEST_KECCAK_F1600				0
-#define TEST_KEM						1
-#define SYSTEM_STATE					1
+#define TEST_KEM						0
+#define SYSTEM_STATE					0
 
 //////////////////////////////////////////////
 //
 //	Variables
 //
 //////////////////////////////////////////////
+extern XGpio_Config * XGpioConfigDma;
+extern XGpio XGpioDma;
+
 extern XGpio_Config * XGpioConfigPtrGlobalTimer;
 extern XGpio XGpioGlobalTimer;
 
@@ -92,8 +95,14 @@ extern XGpio XGpioAccMontKeccak;
 extern XGpio_Config * XGpioConfigNtt;
 extern XGpio XGpioNtt;
 
+extern XAxiDma_Config * XAxiDmaConfig;
+extern XAxiDma XAxiDmaPtr;
+
 extern u32 *memoryBram0;
 extern u32 *memoryBram1;
+
+extern u8 *TxBufferPtr;
+extern u8 *RxBufferPtr;
 
 extern u32 u32SystemState;
 
@@ -113,6 +122,15 @@ int main()
     //---- Initialize LED ----
     XGpioPs Gpio;
     ledInit(&Gpio);
+
+    //---- DMA variables ----
+    int Status;
+	TxBufferPtr = (u8 *)TX_BUFFER_BASE ;
+	RxBufferPtr = (u8 *)RX_BUFFER_BASE;
+
+	//---- Configure DMA enable read GPIO ----
+	XGpioConfigDma = XGpio_LookupConfig(XPAR_AXI_GPIO_5_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioDma, XGpioConfigDma, XGpioConfigDma->BaseAddress);
 
     //---- Configure timers ----
     configTimer(XGpioConfigPtrGlobalTimer, &XGpioGlobalTimer, XPAR_AXI_GPIO_0_DEVICE_ID, 1);
@@ -134,13 +152,35 @@ int main()
 	XGpio_CfgInitialize(&XGpioNtt, XGpioConfigNtt, XGpioConfigNtt->BaseAddress);
 
 	//---- Configure AXI BRAM ----
-	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
-	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
-	memoryBram0[0] = 0x0;
+//	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
+//	memoryBram0[0] = 0x0;
+//
+//	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
+//	memoryBram1[0] = 0x0;
 
-	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
-	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
-	memoryBram1[0] = 0x0;
+	//---- Configure DMA ----
+	XAxiDmaConfig = XAxiDma_LookupConfig(XPAR_AXIDMA_0_DEVICE_ID);
+	if (!XAxiDmaConfig) {
+		print_debug(DEBUG_MAIN, "[MAIN] No config found for %d\r\n", XPAR_AXIDMA_0_DEVICE_ID);
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_CfgInitialize(&XAxiDmaPtr, XAxiDmaConfig);
+	if (Status != XST_SUCCESS) {
+		print_debug(DEBUG_MAIN, "[MAIN] Initialization failed %d\r\n", Status);
+		return XST_FAILURE;
+	}
+
+	if(XAxiDma_HasSg(&XAxiDmaPtr)){
+		print_debug(DEBUG_MAIN, "[MAIN] Device configured as SG mode \r\n");
+		return XST_FAILURE;
+	}
+
+	//Disable interrupts, we use polling mode
+	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
 
 	//System state
 	u32SystemState = 0;
@@ -220,8 +260,8 @@ int main()
 		memcpy(&r1, &r_test, 512);
 		memcpy(&r2, &r_test, 512);
 
-		memset(memoryBram0, 0x0, 512);
-		memset(memoryBram1, 0x0, 512);
+//		memset(memoryBram0, 0x0, 512);
+//		memset(memoryBram1, 0x0, 512);
 
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer1 = getTimer(&XGpioGlobalTimer, 1);

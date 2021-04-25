@@ -24,6 +24,7 @@
 #include "xgpio.h"
 #include "xgpiops.h"
 #include "xadcps.h"
+#include "xaxidma.h"
 
 //Software
 #include "params.h"
@@ -143,6 +144,33 @@
 
 //////////////////////////////////////////////
 //
+//	DMA
+//
+//////////////////////////////////////////////
+#ifdef XPAR_AXI_7SDDR_0_S_AXI_BASEADDR
+#define DDR_BASE_ADDR		XPAR_AXI_7SDDR_0_S_AXI_BASEADDR
+#elif defined (XPAR_MIG7SERIES_0_BASEADDR)
+#define DDR_BASE_ADDR	XPAR_MIG7SERIES_0_BASEADDR
+#elif defined (XPAR_MIG_0_BASEADDR)
+#define DDR_BASE_ADDR	XPAR_MIG_0_BASEADDR
+#elif defined (XPAR_PSU_DDR_0_S_AXI_BASEADDR)
+#define DDR_BASE_ADDR	XPAR_PSU_DDR_0_S_AXI_BASEADDR
+#endif
+
+#ifndef DDR_BASE_ADDR
+#warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+		 DEFAULT SET TO 0x01000000
+#define MEM_BASE_ADDR		0x01000000
+#else
+#define MEM_BASE_ADDR		(DDR_BASE_ADDR + 0x1000000)
+#endif
+
+#define TX_BUFFER_BASE		(MEM_BASE_ADDR + 0x00100000)
+#define RX_BUFFER_BASE		(MEM_BASE_ADDR + 0x00300000)
+#define RX_BUFFER_HIGH		(MEM_BASE_ADDR + 0x004FFFFF)
+
+//////////////////////////////////////////////
+//
 //	AXI GPIO
 //
 //////////////////////////////////////////////
@@ -161,10 +189,19 @@ XGpio XGpioAccMontKeccak;
 XGpio_Config * XGpioConfigNtt;
 XGpio XGpioNtt;
 
+XGpio_Config * XGpioConfigDma;
+XGpio XGpioDma;
+
+XAxiDma_Config * XAxiDmaConfig;
+XAxiDma XAxiDmaPtr;
+
 u32 *memoryBram0;
 u32 *memoryBram1;
 
 u32 u32SystemState;
+
+u8 *TxBufferPtr;
+u8 *RxBufferPtr;
 
 //////////////////////////////////////////////
 //

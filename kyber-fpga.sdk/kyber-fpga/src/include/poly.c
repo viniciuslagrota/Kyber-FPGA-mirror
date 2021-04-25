@@ -289,20 +289,63 @@ void poly_basemul_montgomery(poly *r, const poly *a, const poly *b)
 **************************************************/
 void poly_tomont_hw(poly * r)
 {
-	memcpy(memoryBram0, (u32 *)r, 512);
+//	memcpy(memoryBram0, (u32 *)r, 512);
+//
+//	//Start flag up
+//	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x1);
+//
+//	//Read busy signal
+//	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 1);
+//	while(u32ReadGpio == 1)
+//		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 1);
+//
+//	//Start flag down
+//	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x0);
+//
+//	memcpy(r, (poly *)memoryBram1, 512);
+
+	memcpy(TxBufferPtr, (u8*)r, 512);
+
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, 512);
+
+	//Configure RX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr,
+			512, XAXIDMA_DEVICE_TO_DMA);
+
+	//Configure TX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr,
+			512, XAXIDMA_DMA_TO_DEVICE);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
+			/* Wait */
+	}
 
 	//Start flag up
 	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x1);
+
+	//Send length to be read
+	XGpio_DiscreteWrite(&XGpioDma, 2, 128); //Number of words, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 1);
 	while(u32ReadGpio == 1)
 		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 1);
 
+	//Send signal to initialize packet transmission from DMA to PL
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x1);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DEVICE_TO_DMA)) {
+			/* Wait */
+	}
+
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 512);
+	memcpy(r, (poly *)RxBufferPtr, 512);
+
+	//Packet reception end
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
+
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x0);
-
-	memcpy(r, (poly *)memoryBram1, 512);
 }
 
 void poly_tomont_sw(poly *r)
