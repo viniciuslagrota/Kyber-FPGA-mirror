@@ -1,11 +1,16 @@
-14:49:34 **** Incremental Build of configuration Debug for project kyber-fpga ****
+14:54:24 **** Incremental Build of configuration Debug for project kyber-fpga ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-make: Nothing to be done for 'main-build'.
-14:49:48 **** Incremental Build of configuration Debug for project kyber-fpga ****
-make pre-build main-build 
-a9-linaro-pre-build-step
+Building file: ../src/include/polyvec.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-fpga_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
+In file included from ../src/include/polyvec.h:7,
+                 from ../src/include/polyvec.c:4:
+../src/include/global_def.h:161:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
+Finished building: ../src/include/polyvec.c
  
 Building file: ../src/main.c
 Invoking: ARM v7 gcc compiler
@@ -14,6 +19,15 @@ In file included from ../src/main.c:54:
 ../src/include/global_def.h:161:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
  #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
   ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:405:3: warning: implicit declaration of function 'polyvec_basemul_acc_montgomery_sw'; did you mean 'polyvec_basemul_acc_montgomery'? [-Wimplicit-function-declaration]
+   polyvec_basemul_acc_montgomery_sw(&r, &r1, &r2);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   polyvec_basemul_acc_montgomery
+../src/main.c:416:3: warning: implicit declaration of function 'polyvec_basemul_acc_montgomery_hw'; did you mean 'polyvec_basemul_acc_montgomery'? [-Wimplicit-function-declaration]
+   polyvec_basemul_acc_montgomery_hw(&r3, &r1, &r2);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   polyvec_basemul_acc_montgomery
 Finished building: ../src/main.c
  
 Building target: kyber-fpga.elf
@@ -24,6 +38,11 @@ Finished building target: kyber-fpga.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-fpga.elf  |tee "kyber-fpga.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 323228	   2768	  25360	 351356	  55c7c	kyber-fpga.elf
+ 323988	   2768	  25360	 352116	  55f74	kyber-fpga.elf
 Finished building: kyber-fpga.elf.size
  
+14:54:32 **** Incremental Build of configuration Debug for project kyber-fpga ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
