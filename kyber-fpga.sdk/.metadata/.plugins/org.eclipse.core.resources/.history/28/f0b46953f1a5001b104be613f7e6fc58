@@ -329,6 +329,8 @@ int main()
 		memcpy(&r3, &r, 1024);
 		memcpy(&r4, &r, 1024);
 
+		u32SystemState = 0x0;
+
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer3 = getTimer(&XGpioGlobalTimer, 1);
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer3 * HW_CLOCK_PERIOD);

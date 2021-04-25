@@ -391,38 +391,38 @@ void polyvec_reduce_hw(polyvec *r)
 	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, 1024, XAXIDMA_DEVICE_TO_DMA);
 
 	//Configure TX
-	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, 1024, XAXIDMA_DMA_TO_DEVICE);
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, 2048, XAXIDMA_DMA_TO_DEVICE);
 
 	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
 			/* Wait */
 	}
 
 	//Start flag up
-	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x1);
+	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x1);
 
 	//Send length to be read
-	XGpio_DiscreteWrite(&XGpioDma, 2, 256); //Number of words, not bytes.
+	XGpio_DiscreteWrite(&XGpioDma, 2, 512); //Number of words, not bytes.
 
 	//Read busy signal
-	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
 	while(u32ReadGpio == 1)
-		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
 
 	//Send signal to initialize packet transmission from DMA to PL
 	XGpio_DiscreteWrite(&XGpioDma, 1, 0x1);
 
-	while (XAxiDma_Busy(&XAxiDmaPtr, XAXIDMA_DEVICE_TO_DMA)) {
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DEVICE_TO_DMA)) {
 			/* Wait */
 	}
 
-	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 1024);
-	memcpy(r, (polyvec *)RxBufferPtr, 1024);
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 2048);
+	memcpy(r, (poly *)RxBufferPtr, 2048);
 
 	//Packet reception end
 	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
 
 	//Start flag down
-	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x0);
+	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x0);
 }
 
 void polyvec_reduce(polyvec *r)

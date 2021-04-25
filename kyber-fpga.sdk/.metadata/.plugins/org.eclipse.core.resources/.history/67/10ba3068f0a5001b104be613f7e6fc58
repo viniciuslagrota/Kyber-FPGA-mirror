@@ -329,22 +329,25 @@ int main()
 		memcpy(&r3, &r, 1024);
 		memcpy(&r4, &r, 1024);
 
+		u32SystemState = 0x0;
+
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer3 = getTimer(&XGpioGlobalTimer, 1);
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer3 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_reduce_sw(&r3);
+		polyvec_reduce_sw(&r1);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer3 = getTimer(&XGpioGlobalTimer, 1);
 
+		u32SystemState = 0x2;
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer4 = getTimer(&XGpioGlobalTimer, 1);
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer4 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_reduce_hw(&r4);
+		polyvec_reduce_hw(&r2);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer4 = getTimer(&XGpioGlobalTimer, 1);

@@ -309,10 +309,12 @@ void poly_tomont_hw(poly * r)
 	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, 512);
 
 	//Configure RX
-	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, 512, XAXIDMA_DEVICE_TO_DMA);
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr,
+			512, XAXIDMA_DEVICE_TO_DMA);
 
 	//Configure TX
-	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, 512, XAXIDMA_DMA_TO_DEVICE);
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr,
+			512, XAXIDMA_DMA_TO_DEVICE);
 
 	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
 			/* Wait */

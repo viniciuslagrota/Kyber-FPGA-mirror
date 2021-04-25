@@ -416,13 +416,13 @@ void polyvec_reduce_hw(polyvec *r)
 	}
 
 	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 1024);
-	memcpy(r, (polyvec *)RxBufferPtr, 1024);
+	memcpy(r, (poly *)RxBufferPtr, 1024);
 
 	//Packet reception end
 	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
 
 	//Start flag down
-	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x0);
+	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x0);
 }
 
 void polyvec_reduce(polyvec *r)
