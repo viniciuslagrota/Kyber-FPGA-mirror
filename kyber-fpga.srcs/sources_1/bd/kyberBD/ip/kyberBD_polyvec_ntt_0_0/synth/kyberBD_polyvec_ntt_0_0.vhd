@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:polyvec_ntt:1.0
--- IP Revision: 9
+-- IP Revision: 10
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -60,16 +60,26 @@ ENTITY kyberBD_polyvec_ntt_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
-    bram_ena : OUT STD_LOGIC;
-    bram_wea : OUT STD_LOGIC;
-    bram_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
-    bram_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    bram_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    bram_enb : OUT STD_LOGIC;
-    bram_web : OUT STD_LOGIC;
-    bram_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
-    bram_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    bram_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram0_ena : OUT STD_LOGIC;
+    bram0_wea : OUT STD_LOGIC;
+    bram0_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+    bram0_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram0_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram0_enb : OUT STD_LOGIC;
+    bram0_web : OUT STD_LOGIC;
+    bram0_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+    bram0_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram0_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram1_ena : OUT STD_LOGIC;
+    bram1_wea : OUT STD_LOGIC;
+    bram1_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+    bram1_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram1_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram1_enb : OUT STD_LOGIC;
+    bram1_web : OUT STD_LOGIC;
+    bram1_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+    bram1_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram1_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     valid_to_fqmul0 : OUT STD_LOGIC;
     coeff0_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     coeff1_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -106,16 +116,26 @@ ARCHITECTURE kyberBD_polyvec_ntt_0_0_arch OF kyberBD_polyvec_ntt_0_0 IS
     PORT (
       clk : IN STD_LOGIC;
       aresetn : IN STD_LOGIC;
-      bram_ena : OUT STD_LOGIC;
-      bram_wea : OUT STD_LOGIC;
-      bram_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
-      bram_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      bram_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      bram_enb : OUT STD_LOGIC;
-      bram_web : OUT STD_LOGIC;
-      bram_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
-      bram_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      bram_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram0_ena : OUT STD_LOGIC;
+      bram0_wea : OUT STD_LOGIC;
+      bram0_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+      bram0_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram0_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram0_enb : OUT STD_LOGIC;
+      bram0_web : OUT STD_LOGIC;
+      bram0_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+      bram0_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram0_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram1_ena : OUT STD_LOGIC;
+      bram1_wea : OUT STD_LOGIC;
+      bram1_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+      bram1_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram1_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram1_enb : OUT STD_LOGIC;
+      bram1_web : OUT STD_LOGIC;
+      bram1_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+      bram1_dib : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram1_dob : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       valid_to_fqmul0 : OUT STD_LOGIC;
       coeff0_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       coeff1_to_fqmul0 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -145,21 +165,33 @@ ARCHITECTURE kyberBD_polyvec_ntt_0_0_arch OF kyberBD_polyvec_ntt_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kyberBD_polyvec_ntt_0_0_arch : ARCHITECTURE IS "kyberBD_polyvec_ntt_0_0,polyvec_ntt_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_polyvec_ntt_0_0_arch: ARCHITECTURE IS "kyberBD_polyvec_ntt_0_0,polyvec_ntt_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=polyvec_ntt,x_ipVersion=1.0,x_ipCoreRevision=9,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kyberBD_polyvec_ntt_0_0_arch: ARCHITECTURE IS "kyberBD_polyvec_ntt_0_0,polyvec_ntt_v1_0,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=polyvec_ntt,x_ipVersion=1.0,x_ipCoreRevision=10,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=32,ADDR_WIDTH=11}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF bram_dob: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_B DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_dib: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_B DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_addrb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_B ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_web: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_B WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF bram_enb: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_B, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_enb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_B EN";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_doa: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_A DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_dia: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_A DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_A ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_wea: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_A WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF bram_ena: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT_A, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT_A EN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_dob: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_dib: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_addrb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_web: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF bram1_enb: SIGNAL IS "XIL_INTERFACENAME BRAM1_PORT_B, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_enb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_B EN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_doa: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_dia: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_wea: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF bram1_ena: SIGNAL IS "XIL_INTERFACENAME BRAM1_PORT_A, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A EN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_dob: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_B DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_dib: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_B DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_addrb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_B ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_web: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_B WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF bram0_enb: SIGNAL IS "XIL_INTERFACENAME BRAM0_PORT_B, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_enb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_B EN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_doa: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_dia: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_wea: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF bram0_ena: SIGNAL IS "XIL_INTERFACENAME BRAM0_PORT_A, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A EN";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET aresetn, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
@@ -173,16 +205,26 @@ BEGIN
     PORT MAP (
       clk => clk,
       aresetn => aresetn,
-      bram_ena => bram_ena,
-      bram_wea => bram_wea,
-      bram_addra => bram_addra,
-      bram_dia => bram_dia,
-      bram_doa => bram_doa,
-      bram_enb => bram_enb,
-      bram_web => bram_web,
-      bram_addrb => bram_addrb,
-      bram_dib => bram_dib,
-      bram_dob => bram_dob,
+      bram0_ena => bram0_ena,
+      bram0_wea => bram0_wea,
+      bram0_addra => bram0_addra,
+      bram0_dia => bram0_dia,
+      bram0_doa => bram0_doa,
+      bram0_enb => bram0_enb,
+      bram0_web => bram0_web,
+      bram0_addrb => bram0_addrb,
+      bram0_dib => bram0_dib,
+      bram0_dob => bram0_dob,
+      bram1_ena => bram1_ena,
+      bram1_wea => bram1_wea,
+      bram1_addra => bram1_addra,
+      bram1_dia => bram1_dia,
+      bram1_doa => bram1_doa,
+      bram1_enb => bram1_enb,
+      bram1_web => bram1_web,
+      bram1_addrb => bram1_addrb,
+      bram1_dib => bram1_dib,
+      bram1_dob => bram1_dob,
       valid_to_fqmul0 => valid_to_fqmul0,
       coeff0_to_fqmul0 => coeff0_to_fqmul0,
       coeff1_to_fqmul0 => coeff1_to_fqmul0,

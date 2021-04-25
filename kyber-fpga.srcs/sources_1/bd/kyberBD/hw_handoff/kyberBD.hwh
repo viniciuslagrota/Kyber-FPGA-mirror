@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Apr 25 12:20:13 2021" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Apr 25 17:10:22 2021" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:microzed_7010:part0:1.1" DEVICE="7z010" NAME="kyberBD" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -2220,9 +2220,9 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_1" PORT="gpio_io_i"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="kyber_k"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="kyber_k"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="kyber_k"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="kyber_k"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
@@ -5755,17 +5755,17 @@
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="barrett_reduce_0_valid_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_lower_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid0_from_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_0_data_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_lower_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data0_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data0_from_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data0_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5797,17 +5797,17 @@
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="barrett_reduce_1_valid_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="valid_in_upper_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid1_from_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="barrett_reduce_1_data_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="di_upper_barrett"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_invntt_0" PORT="data1_from_barrett"/>
             <CONNECTION INSTANCE="polyvec_ntt_0" PORT="data1_from_barrett"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="data1_from_barrett"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5925,77 +5925,77 @@
         </PORT>
         <PORT DIR="I" NAME="slave3_en" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_ena"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_ena"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave3_we" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_wea"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_wea"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="10" NAME="slave3_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_addra"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_addra"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="slave3_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_di">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_dia"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_dia"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="slave3_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_do">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_doa"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_doa"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave4_en" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_ena"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_ena"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave4_we" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_wea"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_wea"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="10" NAME="slave4_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_addra"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_addra"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="slave4_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_di">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_dia"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_dia"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="slave4_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_do">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_doa"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_doa"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave5_en" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram_ena"/>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram0_ena"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave5_we" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram_wea"/>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram0_wea"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="10" NAME="slave5_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram_addra"/>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram0_addra"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="slave5_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_di">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram_dia"/>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram0_dia"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="slave5_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_do">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram_doa"/>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram0_doa"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6062,7 +6062,7 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave2_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM_PORT_A" NAME="BRAM_PORT_3" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM0_PORT_A" NAME="BRAM_PORT_3" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="NUM_READ_OUTSTANDING"/>
           <PARAMETER NAME="NUM_WRITE_OUTSTANDING"/>
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
@@ -6079,7 +6079,7 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave3_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_A" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM0_PORT_A" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -6094,7 +6094,7 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave4_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="keccak_f1600_bram_ip_0_PORT_BRAM" NAME="BRAM_PORT_5" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="keccak_f1600_bram_ip_0_BRAM0_PORT_A" NAME="BRAM_PORT_5" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -6173,52 +6173,52 @@
         </PORT>
         <PORT DIR="I" NAME="slave1_en" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_enb"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_enb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave1_we" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_web"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_web"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="10" NAME="slave1_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_addrb"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_addrb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="slave1_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_di">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_dib"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_dib"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="slave1_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_do">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram_dob"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram0_dob"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave2_en" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_enb"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_enb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="slave2_we" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_web"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_web"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="10" NAME="slave2_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_addrb"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_addrb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="slave2_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_di">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_dib"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_dib"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="slave2_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_do">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram_dob"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram0_dob"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6255,7 +6255,7 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave0_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM_PORT_B" NAME="BRAM_PORT_1" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM0_PORT_B" NAME="BRAM_PORT_1" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -6270,7 +6270,7 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave1_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_B" NAME="BRAM_PORT_2" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM0_PORT_B" NAME="BRAM_PORT_2" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -6293,7 +6293,7 @@
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_2_0"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="3"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="6"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -6397,6 +6397,81 @@
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="bram_write_doa"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="slave3_en" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_ena"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave3_we" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_wea"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="slave3_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_addra"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="slave3_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_dia"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slave3_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_doa"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave4_en" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_ena"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave4_we" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_wea"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="slave4_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_addra"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="slave4_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_dia"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slave4_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_doa"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave5_en" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram1_ena"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave5_we" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram1_wea"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="slave5_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram1_addra"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="slave5_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram1_dia"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slave5_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="bram1_doa"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_2_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -6461,6 +6536,53 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave2_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM1_PORT_A" NAME="BRAM_PORT_3" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="NUM_READ_OUTSTANDING"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="slave3_di"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="slave3_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave3_do"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="slave3_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave3_addr"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM1_PORT_A" NAME="BRAM_PORT_4" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="slave4_di"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="slave4_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave4_do"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="slave4_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave4_addr"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="keccak_f1600_bram_ip_0_BRAM1_PORT_A" NAME="BRAM_PORT_5" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="slave5_di"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="slave5_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave5_do"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="slave5_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave5_addr"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
     <MODULE COREREVISION="8" FULLNAME="/bram_port_selector_3" HWVERSION="1.0" INSTANCE="bram_port_selector_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bram_port_selector" VLNV="xilinx.com:user:bram_port_selector:1.0">
@@ -6469,7 +6591,7 @@
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="Component_Name" VALUE="kyberBD_bram_port_selector_1_1"/>
-        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="1"/>
+        <PARAMETER NAME="NUMBER_OF_CHANNELS" VALUE="3"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -6523,6 +6645,56 @@
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="bram_write_dob"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="slave1_en" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_enb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave1_we" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_web"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="slave1_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_addrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="slave1_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_dib"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slave1_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="bram1_dob"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave2_en" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_enb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="slave2_we" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_web"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="slave2_addr" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_addrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="slave2_di" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_dib"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slave2_do" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="bram1_dob"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="bram_port_selector_3_BRAM_PORT_MASTER" NAME="BRAM_PORT_MASTER" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
@@ -6555,6 +6727,36 @@
             <PORTMAP LOGICAL="DOUT" PHYSICAL="slave0_do"/>
             <PORTMAP LOGICAL="WE" PHYSICAL="slave0_we"/>
             <PORTMAP LOGICAL="ADDR" PHYSICAL="slave0_addr"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM1_PORT_B" NAME="BRAM_PORT_1" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="slave1_di"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="slave1_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave1_do"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="slave1_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave1_addr"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM1_PORT_B" NAME="BRAM_PORT_2" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="slave2_di"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="slave2_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="slave2_do"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="slave2_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="slave2_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -7035,14 +7237,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_2_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid_from_fqmul0"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul2"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid_from_fqmul0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_2_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="coeff_from_fqmul0"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul2"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="coeff_from_fqmul0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7099,14 +7301,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_3_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid_from_fqmul1"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul3"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="valid_from_fqmul1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_3_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="coeff_from_fqmul1"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul3"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="coeff_from_fqmul1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7163,14 +7365,14 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_4_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul0"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul4"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_4_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul0"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul4"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7227,20 +7429,20 @@
         </PORT>
         <PORT DIR="O" NAME="valid_out" SIGIS="undef" SIGNAME="fqmul_5_valid_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul1"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="valid_from_fqmul5"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="valid_from_fqmul1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="fqmul_5_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul1"/>
             <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="coeff_from_fqmul5"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="coeff_from_fqmul1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="6" FULLNAME="/keccak_f1600_bram_ip_0" HWVERSION="1.0" INSTANCE="keccak_f1600_bram_ip_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="keccak_f1600_bram_ip" VLNV="xilinx.com:user:keccak_f1600_bram_ip:1.0">
+    <MODULE COREREVISION="7" FULLNAME="/keccak_f1600_bram_ip_0" HWVERSION="1.0" INSTANCE="keccak_f1600_bram_ip_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="keccak_f1600_bram_ip" VLNV="xilinx.com:user:keccak_f1600_bram_ip:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
@@ -7259,29 +7461,54 @@
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_ena" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_en">
+        <PORT DIR="O" NAME="bram0_ena" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave5_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_wea" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_we">
+        <PORT DIR="O" NAME="bram0_wea" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_we">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave5_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="bram_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_addr">
+        <PORT DIR="O" LEFT="10" NAME="bram0_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave5_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="bram_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_di">
+        <PORT DIR="O" LEFT="31" NAME="bram0_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_di">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave5_di"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="bram_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_do">
+        <PORT DIR="I" LEFT="31" NAME="bram0_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave5_do">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave5_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_ena" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave5_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_wea" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave5_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="bram1_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave5_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram1_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave5_di"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram1_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave5_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave5_do"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="start" SIGIS="undef" SIGNAME="axi_gpio_3_gpio2_io_o">
@@ -7296,7 +7523,7 @@
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="keccak_f1600_bram_ip_0_PORT_BRAM" NAME="PORT_BRAM" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="keccak_f1600_bram_ip_0_BRAM0_PORT_A" NAME="BRAM0_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -7304,11 +7531,26 @@
           <PARAMETER NAME="READ_WRITE_MODE"/>
           <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_dia"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="bram_ena"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_doa"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="bram_wea"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addra"/>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram0_dia"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram0_ena"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram0_doa"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram0_wea"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram0_addra"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="keccak_f1600_bram_ip_0_BRAM1_PORT_A" NAME="BRAM1_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram1_dia"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram1_ena"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram1_doa"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram1_wea"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram1_addra"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -8111,7 +8353,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="5" FULLNAME="/polyvec_invntt_0" HWVERSION="1.0" INSTANCE="polyvec_invntt_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_invntt" VLNV="xilinx.com:user:polyvec_invntt:1.0">
+    <MODULE COREREVISION="7" FULLNAME="/polyvec_invntt_0" HWVERSION="1.0" INSTANCE="polyvec_invntt_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_invntt" VLNV="xilinx.com:user:polyvec_invntt:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
@@ -8130,54 +8372,104 @@
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_ena" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_en">
+        <PORT DIR="O" NAME="bram0_ena" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_wea" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_we">
+        <PORT DIR="O" NAME="bram0_wea" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_we">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="bram_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_addr">
+        <PORT DIR="O" LEFT="10" NAME="bram0_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="bram_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_di">
+        <PORT DIR="O" LEFT="31" NAME="bram0_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_di">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_di"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="bram_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_do">
+        <PORT DIR="I" LEFT="31" NAME="bram0_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave4_do">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave4_do"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_enb" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_en">
+        <PORT DIR="O" NAME="bram0_enb" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_web" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_we">
+        <PORT DIR="O" NAME="bram0_web" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_we">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="bram_addrb" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_addr">
+        <PORT DIR="O" LEFT="10" NAME="bram0_addrb" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="bram_dib" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_di">
+        <PORT DIR="O" LEFT="31" NAME="bram0_dib" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_di">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_di"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="bram_dob" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_do">
+        <PORT DIR="I" LEFT="31" NAME="bram0_dob" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave2_do">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave2_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_ena" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave4_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_wea" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave4_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="bram1_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave4_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram1_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave4_di"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram1_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave4_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave4_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_enb" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave2_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_web" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave2_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="bram1_addrb" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave2_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram1_dib" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave2_di"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram1_dob" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave2_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave2_do"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul0" SIGIS="undef" SIGNAME="polyvec_invntt_0_valid_to_fqmul0">
@@ -8297,7 +8589,7 @@
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_A" NAME="BRAM_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM0_PORT_A" NAME="BRAM0_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -8305,14 +8597,14 @@
           <PARAMETER NAME="READ_WRITE_MODE"/>
           <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_dia"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="bram_ena"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_doa"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="bram_wea"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addra"/>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram0_dia"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram0_ena"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram0_doa"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram0_wea"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram0_addra"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM_PORT_B" NAME="BRAM_PORT_B" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM0_PORT_B" NAME="BRAM0_PORT_B" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -8320,16 +8612,48 @@
           <PARAMETER NAME="READ_WRITE_MODE"/>
           <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_dib"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="bram_enb"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_dob"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="bram_web"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addrb"/>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram0_dib"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram0_enb"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram0_dob"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram0_web"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram0_addrb"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM1_PORT_A" NAME="BRAM1_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram1_dia"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram1_ena"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram1_doa"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram1_wea"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram1_addra"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_invntt_0_BRAM1_PORT_B" NAME="BRAM1_PORT_B" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="NUM_READ_OUTSTANDING"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram1_dib"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram1_enb"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram1_dob"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram1_web"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram1_addrb"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="9" FULLNAME="/polyvec_ntt_0" HWVERSION="1.0" INSTANCE="polyvec_ntt_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_ntt" VLNV="xilinx.com:user:polyvec_ntt:1.0">
+    <MODULE COREREVISION="10" FULLNAME="/polyvec_ntt_0" HWVERSION="1.0" INSTANCE="polyvec_ntt_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="polyvec_ntt" VLNV="xilinx.com:user:polyvec_ntt:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
@@ -8348,54 +8672,104 @@
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_ena" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_en">
+        <PORT DIR="O" NAME="bram0_ena" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave3_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_wea" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_we">
+        <PORT DIR="O" NAME="bram0_wea" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_we">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave3_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="bram_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_addr">
+        <PORT DIR="O" LEFT="10" NAME="bram0_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave3_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="bram_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_di">
+        <PORT DIR="O" LEFT="31" NAME="bram0_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_di">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave3_di"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="bram_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_do">
+        <PORT DIR="I" LEFT="31" NAME="bram0_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_0_slave3_do">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_0" PORT="slave3_do"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_enb" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_en">
+        <PORT DIR="O" NAME="bram0_enb" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave1_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="bram_web" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_we">
+        <PORT DIR="O" NAME="bram0_web" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_we">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave1_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="bram_addrb" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_addr">
+        <PORT DIR="O" LEFT="10" NAME="bram0_addrb" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave1_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="bram_dib" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_di">
+        <PORT DIR="O" LEFT="31" NAME="bram0_dib" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_di">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave1_di"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="bram_dob" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_do">
+        <PORT DIR="I" LEFT="31" NAME="bram0_dob" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_1_slave1_do">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bram_port_selector_1" PORT="slave1_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_ena" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave3_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_wea" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave3_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="bram1_addra" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave3_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram1_dia" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave3_di"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram1_doa" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_2_slave3_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_2" PORT="slave3_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_enb" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave1_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram1_web" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave1_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="bram1_addrb" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave1_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram1_dib" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_di">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave1_di"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram1_dob" RIGHT="0" SIGIS="undef" SIGNAME="bram_port_selector_3_slave1_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bram_port_selector_3" PORT="slave1_do"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="valid_to_fqmul0" SIGIS="undef" SIGNAME="polyvec_ntt_0_valid_to_fqmul0">
@@ -8515,7 +8889,7 @@
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM_PORT_A" NAME="BRAM_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM0_PORT_A" NAME="BRAM0_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -8523,14 +8897,14 @@
           <PARAMETER NAME="READ_WRITE_MODE"/>
           <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_dia"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="bram_ena"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_doa"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="bram_wea"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addra"/>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram0_dia"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram0_ena"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram0_doa"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram0_wea"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram0_addra"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM_PORT_B" NAME="BRAM_PORT_B" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM0_PORT_B" NAME="BRAM0_PORT_B" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
           <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -8538,11 +8912,41 @@
           <PARAMETER NAME="READ_WRITE_MODE"/>
           <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_dib"/>
-            <PORTMAP LOGICAL="EN" PHYSICAL="bram_enb"/>
-            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_dob"/>
-            <PORTMAP LOGICAL="WE" PHYSICAL="bram_web"/>
-            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addrb"/>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram0_dib"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram0_enb"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram0_dob"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram0_web"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram0_addrb"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM1_PORT_A" NAME="BRAM1_PORT_A" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram1_dia"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram1_ena"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram1_doa"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram1_wea"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram1_addra"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="polyvec_ntt_0_BRAM1_PORT_B" NAME="BRAM1_PORT_B" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
+          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
+          <PARAMETER NAME="MASTER_TYPE" VALUE="OTHER"/>
+          <PARAMETER NAME="READ_WRITE_MODE"/>
+          <PARAMETER NAME="READ_LATENCY" VALUE="1"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram1_dib"/>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram1_enb"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram1_dob"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram1_web"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram1_addrb"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -8771,18 +9175,18 @@
             <CONNECTION INSTANCE="axi_gpio_2" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_gpio_3" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_gpio_4" PORT="s_axi_aresetn"/>
-            <CONNECTION INSTANCE="poly_tomont_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="polyvec_reduce_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="axi_smc" PORT="aresetn"/>
-            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="m00_axis_aresetn"/>
-            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="s00_axis_aresetn"/>
             <CONNECTION INSTANCE="axi_gpio_5" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M06_ARESETN"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="resetn"/>
+            <CONNECTION INSTANCE="poly_tomont_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="m00_axis_aresetn"/>
+            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="s00_axis_aresetn"/>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10166,21 +10570,21 @@
             <CONNECTION INSTANCE="montgomery_reduction_3" PORT="clk"/>
             <CONNECTION INSTANCE="montgomery_reduction_4" PORT="clk"/>
             <CONNECTION INSTANCE="montgomery_reduction_5" PORT="clk"/>
-            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="clk"/>
-            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="clk"/>
-            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="clk"/>
-            <CONNECTION INSTANCE="poly_tomont_0" PORT="clk"/>
-            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="clk"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_aclk"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="m_axi_mm2s_aclk"/>
             <CONNECTION INSTANCE="axi_smc" PORT="aclk"/>
             <CONNECTION INSTANCE="processing_system7_0" PORT="S_AXI_HP0_ACLK"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="m_axi_s2mm_aclk"/>
-            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="m00_axis_aclk"/>
-            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="s00_axis_aclk"/>
             <CONNECTION INSTANCE="axi_gpio_5" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M06_ACLK"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="clk"/>
+            <CONNECTION INSTANCE="poly_tomont_0" PORT="clk"/>
+            <CONNECTION INSTANCE="polyvec_basemul_acc_0" PORT="clk"/>
+            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="m00_axis_aclk"/>
+            <CONNECTION INSTANCE="dual_bram_axis_0" PORT="s00_axis_aclk"/>
+            <CONNECTION INSTANCE="keccak_f1600_bram_ip_0" PORT="clk"/>
+            <CONNECTION INSTANCE="polyvec_invntt_0" PORT="clk"/>
+            <CONNECTION INSTANCE="polyvec_ntt_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">

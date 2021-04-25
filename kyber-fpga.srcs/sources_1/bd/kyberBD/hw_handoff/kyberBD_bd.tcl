@@ -264,13 +264,14 @@ proc create_root_design { parentCell } {
   # Create instance: bram_port_selector_2, and set properties
   set bram_port_selector_2 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_2 ]
   set_property -dict [ list \
-   CONFIG.NUMBER_OF_CHANNELS {3} \
+   CONFIG.NUMBER_OF_CHANNELS {6} \
  ] $bram_port_selector_2
 
   # Create instance: bram_port_selector_3, and set properties
   set bram_port_selector_3 [ create_bd_cell -type ip -vlnv xilinx.com:user:bram_port_selector:1.0 bram_port_selector_3 ]
   set_property -dict [ list \
    CONFIG.ADDR_WIDTH {11} \
+   CONFIG.NUMBER_OF_CHANNELS {3} \
  ] $bram_port_selector_3
 
   # Create instance: dual_bram_axis_0, and set properties
@@ -929,17 +930,22 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets axi_dma_0_M_AXIS_MM2S] [get_bd_i
   connect_bd_intf_net -intf_net dual_bram_axis_0_M00_AXIS [get_bd_intf_pins axi_dma_0/S_AXIS_S2MM] [get_bd_intf_pins dual_bram_axis_0/M00_AXIS]
 connect_bd_intf_net -intf_net [get_bd_intf_nets dual_bram_axis_0_M00_AXIS] [get_bd_intf_pins dual_bram_axis_0/M00_AXIS] [get_bd_intf_pins system_ila_0/SLOT_1_AXIS]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets dual_bram_axis_0_M00_AXIS]
-  connect_bd_intf_net -intf_net keccak_f1600_bram_ip_0_PORT_BRAM [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_5] [get_bd_intf_pins keccak_f1600_bram_ip_0/PORT_BRAM]
+  connect_bd_intf_net -intf_net keccak_f1600_bram_ip_0_BRAM1_PORT_A [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_5] [get_bd_intf_pins keccak_f1600_bram_ip_0/BRAM1_PORT_A]
+  connect_bd_intf_net -intf_net keccak_f1600_bram_ip_0_PORT_BRAM [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_5] [get_bd_intf_pins keccak_f1600_bram_ip_0/BRAM0_PORT_A]
   connect_bd_intf_net -intf_net poly_tomont_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_0] [get_bd_intf_pins poly_tomont_0/BRAM_PORT_A]
   connect_bd_intf_net -intf_net poly_tomont_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_0] [get_bd_intf_pins poly_tomont_0/BRAM_PORT_B]
   connect_bd_intf_net -intf_net polyvec_basemul_acc_0_BRAM0_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_2] [get_bd_intf_pins polyvec_basemul_acc_0/BRAM0_PORT_A]
   connect_bd_intf_net -intf_net polyvec_basemul_acc_0_BRAM0_PORT_B [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_0] [get_bd_intf_pins polyvec_basemul_acc_0/BRAM0_PORT_B]
   connect_bd_intf_net -intf_net polyvec_basemul_acc_0_BRAM1_PORT_A [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_2] [get_bd_intf_pins polyvec_basemul_acc_0/BRAM1_PORT_A]
   connect_bd_intf_net -intf_net polyvec_basemul_acc_0_BRAM1_PORT_B [get_bd_intf_pins bram_port_selector_3/BRAM_PORT_0] [get_bd_intf_pins polyvec_basemul_acc_0/BRAM1_PORT_B]
-  connect_bd_intf_net -intf_net polyvec_invntt_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_4] [get_bd_intf_pins polyvec_invntt_0/BRAM_PORT_A]
-  connect_bd_intf_net -intf_net polyvec_invntt_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_2] [get_bd_intf_pins polyvec_invntt_0/BRAM_PORT_B]
-  connect_bd_intf_net -intf_net polyvec_ntt_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_3] [get_bd_intf_pins polyvec_ntt_0/BRAM_PORT_A]
-  connect_bd_intf_net -intf_net polyvec_ntt_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_1] [get_bd_intf_pins polyvec_ntt_0/BRAM_PORT_B]
+  connect_bd_intf_net -intf_net polyvec_invntt_0_BRAM1_PORT_A [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_4] [get_bd_intf_pins polyvec_invntt_0/BRAM1_PORT_A]
+  connect_bd_intf_net -intf_net polyvec_invntt_0_BRAM1_PORT_B [get_bd_intf_pins bram_port_selector_3/BRAM_PORT_2] [get_bd_intf_pins polyvec_invntt_0/BRAM1_PORT_B]
+  connect_bd_intf_net -intf_net polyvec_invntt_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_4] [get_bd_intf_pins polyvec_invntt_0/BRAM0_PORT_A]
+  connect_bd_intf_net -intf_net polyvec_invntt_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_2] [get_bd_intf_pins polyvec_invntt_0/BRAM0_PORT_B]
+  connect_bd_intf_net -intf_net polyvec_ntt_0_BRAM1_PORT_A [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_3] [get_bd_intf_pins polyvec_ntt_0/BRAM1_PORT_A]
+  connect_bd_intf_net -intf_net polyvec_ntt_0_BRAM1_PORT_B [get_bd_intf_pins bram_port_selector_3/BRAM_PORT_1] [get_bd_intf_pins polyvec_ntt_0/BRAM1_PORT_B]
+  connect_bd_intf_net -intf_net polyvec_ntt_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_3] [get_bd_intf_pins polyvec_ntt_0/BRAM0_PORT_A]
+  connect_bd_intf_net -intf_net polyvec_ntt_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_1/BRAM_PORT_1] [get_bd_intf_pins polyvec_ntt_0/BRAM0_PORT_B]
   connect_bd_intf_net -intf_net polyvec_reduce_0_BRAM_PORT_A [get_bd_intf_pins bram_port_selector_0/BRAM_PORT_1] [get_bd_intf_pins polyvec_reduce_0/BRAM_PORT_A]
   connect_bd_intf_net -intf_net polyvec_reduce_0_BRAM_PORT_B [get_bd_intf_pins bram_port_selector_2/BRAM_PORT_1] [get_bd_intf_pins polyvec_reduce_0/BRAM_PORT_B]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
