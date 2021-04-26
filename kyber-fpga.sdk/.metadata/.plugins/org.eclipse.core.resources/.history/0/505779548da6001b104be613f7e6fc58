@@ -163,10 +163,51 @@ void polyvec_ntt_sw(polyvec *r)
 
 void polyvec_ntt_hw(polyvec *r)
 {
-	memcpy(memoryBram0, (u32 *)r, 1024);
+//	memcpy(memoryBram0, (u32 *)r, 1024);
+//
+//	//Start flag up
+//	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x1);
+//
+//	//Read busy signal
+//	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
+//	while(u32ReadGpio == 1)
+//		u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
+//
+//	//Start flag down
+//	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x0);
+//
+//	memcpy(r, (poly *)memoryBram0, 1024);
+
+#if KYBER_K == 2
+	size_t sLen = 1024;
+	size_t sLenWords = 256; //1024/4
+#elif KYBER_K == 3
+	size_t sLen = 1536;
+	size_t sLenWords = 384;
+#else
+	size_t sLen = 2048;
+	size_t sLenWords = 512;
+#endif
+
+	memcpy(TxBufferPtr, (u8*)r, sLen);
+
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, sLen);
+
+	//Configure RX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, sLen, XAXIDMA_DEVICE_TO_DMA);
+
+	//Configure TX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, sLen, XAXIDMA_DMA_TO_DEVICE);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr, XAXIDMA_DMA_TO_DEVICE)) {
+			/* Wait */
+	}
 
 	//Start flag up
 	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x1);
+
+	//Send length to be read
+	XGpio_DiscreteWrite(&XGpioDma, 2, sLenWords); //Number of words, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
@@ -176,7 +217,19 @@ void polyvec_ntt_hw(polyvec *r)
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x0);
 
-	memcpy(r, (poly *)memoryBram0, 1024);
+	//Send signal to initialize packet transmission from DMA to PL
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x1);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr, XAXIDMA_DEVICE_TO_DMA)) {
+			/* Wait */
+	}
+
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, sLen);
+	memcpy(r, (polyvec *)RxBufferPtr, sLen);
+
+	//Packet reception end
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
+
 }
 
 void polyvec_ntt(polyvec *r)
@@ -208,10 +261,51 @@ void polyvec_invntt_tomont_sw(polyvec *r)
 
 void polyvec_invntt_tomont_hw(polyvec *r)
 {
-	memcpy(memoryBram0, (u32 *)r, 1024);
+//	memcpy(memoryBram0, (u32 *)r, 1024);
+//
+//	//Start flag up
+//	XGpio_DiscreteWrite(&XGpioNtt, 2, 0x1);
+//
+//	//Read busy signal
+//	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 2);
+//	while(u32ReadGpio == 1)
+//		u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 2);
+//
+//	//Start flag down
+//	XGpio_DiscreteWrite(&XGpioNtt, 2, 0x0);
+//
+//	memcpy(r, (poly *)memoryBram0, 1024);
+
+#if KYBER_K == 2
+	size_t sLen = 1024;
+	size_t sLenWords = 256; //1024/4
+#elif KYBER_K == 3
+	size_t sLen = 1536;
+	size_t sLenWords = 384;
+#else
+	size_t sLen = 2048;
+	size_t sLenWords = 512;
+#endif
+
+	memcpy(TxBufferPtr, (u8*)r, sLen);
+
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, sLen);
+
+	//Configure RX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, sLen, XAXIDMA_DEVICE_TO_DMA);
+
+	//Configure TX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, sLen, XAXIDMA_DMA_TO_DEVICE);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
+			/* Wait */
+	}
 
 	//Start flag up
 	XGpio_DiscreteWrite(&XGpioNtt, 2, 0x1);
+
+	//Send length to be read
+	XGpio_DiscreteWrite(&XGpioDma, 2, sLenWords); //Number of words, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 2);
@@ -221,7 +315,19 @@ void polyvec_invntt_tomont_hw(polyvec *r)
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioNtt, 2, 0x0);
 
-	memcpy(r, (poly *)memoryBram0, 1024);
+	//Send signal to initialize packet transmission from DMA to PL
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x1);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr, XAXIDMA_DEVICE_TO_DMA)) {
+			/* Wait */
+	}
+
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, sLen);
+	memcpy(r, (polyvec *)RxBufferPtr, sLen);
+
+	//Packet reception end
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
+
 }
 
 void polyvec_invntt_tomont(polyvec *r)
@@ -263,29 +369,82 @@ void polyvec_basemul_acc_montgomery_sw(poly *r, const polyvec *a, const polyvec 
 
 void polyvec_basemul_acc_montgomery_hw(poly *r, const polyvec *a, const polyvec *b)
 {
+//#if  KYBER_K == 2
+//	memcpy(memoryBram0, (u32 *)a, 1024);
+//	memcpy(&memoryBram0[256], (u32 *)b, 1024);
+//#elif KYBER_K == 3
+//	memcpy(memoryBram0, (u32 *)a, 1536);
+//	memcpy(memoryBram0 + 1536, (u32 *)b, 1536);
+//#else
+//	memcpy(memoryBram0, (u32 *)a, 2048);
+//	memcpy(memoryBram0 + 2048, (u32 *)b, 2048);
+//#endif
+//
+//	//Start flag up
+//	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x1);
+//
+//	//Read busy signal
+//	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
+//	while(u32ReadGpio == 1)
+//		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
+//
+//	//Start flag down
+//	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x0);
+//
+//	memcpy(r, (poly *)memoryBram1, 512);
+
 #if  KYBER_K == 2
-	memcpy(memoryBram0, (u32 *)a, 1024);
-	memcpy(&memoryBram0[256], (u32 *)b, 1024);
+	size_t sOneLen = 1024;
+	size_t sTotalLen = 2048
 #elif KYBER_K == 3
-	memcpy(memoryBram0, (u32 *)a, 1536);
-	memcpy(memoryBram0 + 1536, (u32 *)b, 1536);
+	size_t sOneLen = 1536;
+	size_t sTotalLen = 3072;
 #else
-	memcpy(memoryBram0, (u32 *)a, 2048);
-	memcpy(memoryBram0 + 2048, (u32 *)b, 2048);
+	size_t sOneLen = 2048;
+	size_t sTotalLen = 4096;
 #endif
+
+	memcpy(TxBufferPtr, (u8*)a, sOneLen);
+	memcpy(TxBufferPtr + sOneLen, (u8*)b, sOneLen);
+
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, sTotalLen);
+
+	//Configure RX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, 512, XAXIDMA_DEVICE_TO_DMA);
+
+	//Configure TX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, sTotalLen, XAXIDMA_DMA_TO_DEVICE);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
+			/* Wait */
+	}
 
 	//Start flag up
 	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x1);
+
+	//Send length to be read
+	XGpio_DiscreteWrite(&XGpioDma, 2, 128); //Number of words of 32 bits, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
 	while(u32ReadGpio == 1)
 		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 1);
 
+	//Send signal to initialize packet transmission from DMA to PL
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x1);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DEVICE_TO_DMA)) {
+			/* Wait */
+	}
+
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 512);
+	memcpy(r, (poly *)RxBufferPtr, 512);
+
+	//Packet reception end
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
+
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x0);
-
-	memcpy(r, (poly *)memoryBram1, 512);
 }
 
 void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
@@ -318,20 +477,72 @@ void polyvec_reduce_sw(polyvec *r)
 
 void polyvec_reduce_hw(polyvec *r)
 {
-	memcpy(memoryBram0, (u32 *)r, 1024);
+//	memcpy(memoryBram0, (u32 *)r, 1024);
+//
+//	//Start flag up
+//	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x1);
+//
+//	//Read busy signal
+//	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+//	while(u32ReadGpio == 1)
+//		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
+//
+//	//Start flag down
+//	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x0);
+//
+//	memcpy(r, (polyvec *)memoryBram1, 1024);
+
+#if KYBER_K == 2
+	size_t sLen = 1024;
+	size_t sLenWords = 256; //1024/4
+#elif KYBER_K == 3
+	size_t sLen = 1536;
+	size_t sLenWords = 384;
+#else
+	size_t sLen = 2048;
+	size_t sLenWords = 512;
+#endif
+
+	memcpy(TxBufferPtr, (u8*)r, sLen);
+
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, sLen);
+
+	//Configure RX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, sLen, XAXIDMA_DEVICE_TO_DMA);
+
+	//Configure TX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, sLen, XAXIDMA_DMA_TO_DEVICE);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
+			/* Wait */
+	}
 
 	//Start flag up
 	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x1);
+
+	//Send length to be read
+	XGpio_DiscreteWrite(&XGpioDma, 2, sLenWords); //Number of words, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
 	while(u32ReadGpio == 1)
 		u32ReadGpio = XGpio_DiscreteRead(&XGpioTomontAndReduce, 2);
 
+	//Send signal to initialize packet transmission from DMA to PL
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x1);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr, XAXIDMA_DEVICE_TO_DMA)) {
+			/* Wait */
+	}
+
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, sLen);
+	memcpy(r, (polyvec *)RxBufferPtr, sLen);
+
+	//Packet reception end
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
+
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x0);
-
-	memcpy(r, (polyvec *)memoryBram1, 1024);
 }
 
 void polyvec_reduce(polyvec *r)

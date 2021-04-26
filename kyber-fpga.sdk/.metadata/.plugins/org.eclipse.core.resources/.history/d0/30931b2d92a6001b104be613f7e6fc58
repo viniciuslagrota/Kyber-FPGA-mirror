@@ -77,6 +77,9 @@
 //	Variables
 //
 //////////////////////////////////////////////
+extern XGpio_Config * XGpioConfigDma;
+extern XGpio XGpioDma;
+
 extern XGpio_Config * XGpioConfigPtrGlobalTimer;
 extern XGpio XGpioGlobalTimer;
 
@@ -92,8 +95,14 @@ extern XGpio XGpioAccMontKeccak;
 extern XGpio_Config * XGpioConfigNtt;
 extern XGpio XGpioNtt;
 
+extern XAxiDma_Config * XAxiDmaConfig;
+extern XAxiDma XAxiDmaPtr;
+
 extern u32 *memoryBram0;
 extern u32 *memoryBram1;
+
+extern u8 *TxBufferPtr;
+extern u8 *RxBufferPtr;
 
 extern u32 u32SystemState;
 
@@ -113,6 +122,15 @@ int main()
     //---- Initialize LED ----
     XGpioPs Gpio;
     ledInit(&Gpio);
+
+    //---- DMA variables ----
+    int Status;
+	TxBufferPtr = (u8 *)TX_BUFFER_BASE ;
+	RxBufferPtr = (u8 *)RX_BUFFER_BASE;
+
+	//---- Configure DMA enable read GPIO ----
+	XGpioConfigDma = XGpio_LookupConfig(XPAR_AXI_GPIO_5_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioDma, XGpioConfigDma, XGpioConfigDma->BaseAddress);
 
     //---- Configure timers ----
     configTimer(XGpioConfigPtrGlobalTimer, &XGpioGlobalTimer, XPAR_AXI_GPIO_0_DEVICE_ID, 1);
@@ -134,13 +152,35 @@ int main()
 	XGpio_CfgInitialize(&XGpioNtt, XGpioConfigNtt, XGpioConfigNtt->BaseAddress);
 
 	//---- Configure AXI BRAM ----
-	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
-	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
-	memoryBram0[0] = 0x0;
+//	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
+//	memoryBram0[0] = 0x0;
+//
+//	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
+//	memoryBram1[0] = 0x0;
 
-	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
-	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
-	memoryBram1[0] = 0x0;
+	//---- Configure DMA ----
+	XAxiDmaConfig = XAxiDma_LookupConfig(XPAR_AXIDMA_0_DEVICE_ID);
+	if (!XAxiDmaConfig) {
+		print_debug(DEBUG_MAIN, "[MAIN] No config found for %d\r\n", XPAR_AXIDMA_0_DEVICE_ID);
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_CfgInitialize(&XAxiDmaPtr, XAxiDmaConfig);
+	if (Status != XST_SUCCESS) {
+		print_debug(DEBUG_MAIN, "[MAIN] Initialization failed %d\r\n", Status);
+		return XST_FAILURE;
+	}
+
+	if(XAxiDma_HasSg(&XAxiDmaPtr)){
+		print_debug(DEBUG_MAIN, "[MAIN] Device configured as SG mode \r\n");
+		return XST_FAILURE;
+	}
+
+	//Disable interrupts, we use polling mode
+	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
 
 	//System state
 	u32SystemState = 0;
@@ -205,6 +245,8 @@ int main()
 
 #if TEST_POLY_TOMONT == 1
 		//Poly tomont test
+		print_debug(DEBUG_MAIN, "\n[MAIN] poly_tomont\n");
+
 		poly r1;
 		poly r2;
 //		//Initialize BRAM with data
@@ -220,8 +262,8 @@ int main()
 		memcpy(&r1, &r_test, 512);
 		memcpy(&r2, &r_test, 512);
 
-		memset(memoryBram0, 0x0, 512);
-		memset(memoryBram1, 0x0, 512);
+//		memset(memoryBram0, 0x0, 512);
+//		memset(memoryBram1, 0x0, 512);
 
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer1 = getTimer(&XGpioGlobalTimer, 1);
@@ -270,6 +312,8 @@ int main()
 
 #if TEST_POLYVEC_REDUCE
 		//Test poly reduce
+		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_reduce\n");
+
 		polyvec r;
 		r.vec[0].coeffs[0] = rand();
 		r.vec[0].coeffs[1] = rand();
@@ -289,25 +333,22 @@ int main()
 		memcpy(&r3, &r, 1024);
 		memcpy(&r4, &r, 1024);
 
-		u32SystemState = 0x0;
-
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer3 = getTimer(&XGpioGlobalTimer, 1);
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer3 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_reduce(&r1);
+		polyvec_reduce_sw(&r3);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer3 = getTimer(&XGpioGlobalTimer, 1);
 
-		u32SystemState = 0x2;
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer4 = getTimer(&XGpioGlobalTimer, 1);
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer4 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_reduce(&r2);
+		polyvec_reduce_hw(&r4);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer4 = getTimer(&XGpioGlobalTimer, 1);
@@ -326,35 +367,30 @@ int main()
 
 #if TEST_POLYVEC_ACC == 1
 		//Test polyvec basemul acc montgomery
-		poly r;
-		poly r3;
-		polyvec r1, r2;
+		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_basemul_acc_montgomery\n");
+		poly r3_acc, r4_acc;
+		polyvec r1_acc, r2_acc;
 
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1.vec[0].coeffs[i] = i + 1;
-			r1.vec[0].coeffs[i + 1] = i + 2;
+			r1_acc.vec[0].coeffs[i] = i + 1;
+			r1_acc.vec[0].coeffs[i + 1] = i + 2;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1.vec[1].coeffs[i] = i + 0x0801;
-			r1.vec[1].coeffs[i + 1] = i + 0x0802;
+			r1_acc.vec[1].coeffs[i] = i + 0x0801;
+			r1_acc.vec[1].coeffs[i + 1] = i + 0x0802;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r2.vec[0].coeffs[i] = i + 0xF000;
-			r2.vec[0].coeffs[i + 1] = i + 0xF001;
+			r2_acc.vec[0].coeffs[i] = i + 0xF000;
+			r2_acc.vec[0].coeffs[i + 1] = i + 0xF001;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r2.vec[1].coeffs[i] = i + 0xF800;
-			r2.vec[1].coeffs[i + 1] = i + 0xF801;
+			r2_acc.vec[1].coeffs[i] = i + 0xF800;
+			r2_acc.vec[1].coeffs[i + 1] = i + 0xF801;
 		}
-
-		if(u32SystemState & POLYVEC_BASEMUL_MASK)
-			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_basemul_acc_montgomery_hw\n");
-		else
-			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_basemul_acc_montgomery_sw\n");
 
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer5 = getTimer(&XGpioGlobalTimer, 1);
@@ -362,7 +398,7 @@ int main()
 		startTimer(&XGpioGlobalTimer, 1);
 
 //		polyvec_basemul_acc_montgomery(&r, &r1, &r2);
-		polyvec_basemul_acc_montgomery_sw(&r, &r1, &r2);
+		polyvec_basemul_acc_montgomery_sw(&r3_acc, &r1_acc, &r2_acc);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer5 = getTimer(&XGpioGlobalTimer, 1);
@@ -373,7 +409,7 @@ int main()
 		startTimer(&XGpioGlobalTimer, 1);
 
 //		polyvec_basemul_acc_montgomery(&r, &r1, &r2);
-		polyvec_basemul_acc_montgomery_hw(&r3, &r1, &r2);
+		polyvec_basemul_acc_montgomery_hw(&r4_acc, &r1_acc, &r2_acc);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer6 = getTimer(&XGpioGlobalTimer, 1);
@@ -412,7 +448,7 @@ int main()
 //				print_debug(DEBUG_MAIN, "Error at r[%d]: 0x%04x and r3[%d]: 0x%04x\n", i, r.coeffs[i], i, r3.coeffs[i]);
 //			}
 //		}
-		if(memcmp(&r, &r3, 512) != 0)
+		if(memcmp(&r3_acc, &r4_acc, 512) != 0)
 		{
 			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
 		}
@@ -422,35 +458,32 @@ int main()
 #endif
 
 #if TEST_POLYVEC_NTT == 1
-		//Test polyvec basemul acc montgomery
-		polyvec r1, r2;
+		//Test polyvec ntt
+		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_ntt\n");
+
+		polyvec r1_ntt, r2_ntt;
 
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1.vec[0].coeffs[i] = i + 1;
-			r1.vec[0].coeffs[i + 1] = i + 2;
-			r2.vec[0].coeffs[i] = i + 1;
-			r2.vec[0].coeffs[i + 1] = i + 2;
+			r1_ntt.vec[0].coeffs[i] = i + 1;
+			r1_ntt.vec[0].coeffs[i + 1] = i + 2;
+			r2_ntt.vec[0].coeffs[i] = i + 1;
+			r2_ntt.vec[0].coeffs[i + 1] = i + 2;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1.vec[1].coeffs[i] = i + 0x0801;
-			r1.vec[1].coeffs[i + 1] = i + 0x0802;
-			r2.vec[1].coeffs[i] = i + 0x0801;
-			r2.vec[1].coeffs[i + 1] = i + 0x0802;
+			r1_ntt.vec[1].coeffs[i] = i + 0x0801;
+			r1_ntt.vec[1].coeffs[i + 1] = i + 0x0802;
+			r2_ntt.vec[1].coeffs[i] = i + 0x0801;
+			r2_ntt.vec[1].coeffs[i + 1] = i + 0x0802;
 		}
-
-		if(u32SystemState & POLYVEC_BASEMUL_MASK)
-			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_ntt_hw\n");
-		else
-			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_ntt_sw\n");
 
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer7 = getTimer(&XGpioGlobalTimer, 1);
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_ntt_sw(&r1);
+		polyvec_ntt_sw(&r1_ntt);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer7 = getTimer(&XGpioGlobalTimer, 1);
@@ -460,7 +493,7 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer8 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_ntt_hw(&r2);
+		polyvec_ntt_hw(&r2_ntt);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer8 = getTimer(&XGpioGlobalTimer, 1);
@@ -468,31 +501,38 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
 		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer8 * HW_CLOCK_PERIOD);
 
-		if(memcmp(&r1, &r2, 1024) != 0)
+		if(memcmp(&r1_ntt, &r2_ntt, 1024) != 0)
 		{
+			for(int i = 200; i < 256; i++)
+			{
+				print_debug(DEBUG_MAIN, "r1.vec[1].coeffs[%d]: 0x%04x | r2.vec[1].coeffs[%d]: 0x%04x\n", i, r1_ntt.vec[1].coeffs[i], i, r2_ntt.vec[1].coeffs[i]);
+			}
 			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
+			exit(0);
 		}
 		else
 			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
 #endif
 
 #if TEST_POLYVEC_INVNTT == 1
-		//Test polyvec basemul acc montgomery
-		polyvec r1, r2;
+		//Test polyvec invntt
+		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_invntt\n");
+
+		polyvec r1_invntt, r2_invntt;
 
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1.vec[0].coeffs[i] = i + 1;
-			r1.vec[0].coeffs[i + 1] = i + 2;
-			r2.vec[0].coeffs[i] = i + 1;
-			r2.vec[0].coeffs[i + 1] = i + 2;
+			r1_invntt.vec[0].coeffs[i] = i + 1;
+			r1_invntt.vec[0].coeffs[i + 1] = i + 2;
+			r2_invntt.vec[0].coeffs[i] = i + 1;
+			r2_invntt.vec[0].coeffs[i + 1] = i + 2;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1.vec[1].coeffs[i] = i + 0x0801;
-			r1.vec[1].coeffs[i + 1] = i + 0x0802;
-			r2.vec[1].coeffs[i] = i + 0x0801;
-			r2.vec[1].coeffs[i + 1] = i + 0x0802;
+			r1_invntt.vec[1].coeffs[i] = i + 0x0801;
+			r1_invntt.vec[1].coeffs[i + 1] = i + 0x0802;
+			r2_invntt.vec[1].coeffs[i] = i + 0x0801;
+			r2_invntt.vec[1].coeffs[i + 1] = i + 0x0802;
 		}
 
 		resetTimer(&XGpioGlobalTimer, 1);
@@ -500,7 +540,7 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer9 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_invntt_tomont_sw(&r1);
+		polyvec_invntt_tomont_sw(&r1_invntt);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer9 = getTimer(&XGpioGlobalTimer, 1);
@@ -510,7 +550,7 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer10 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_invntt_tomont_hw(&r2);
+		polyvec_invntt_tomont_hw(&r2_invntt);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer10 = getTimer(&XGpioGlobalTimer, 1);
@@ -518,15 +558,22 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer9 * HW_CLOCK_PERIOD);
 		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer10 * HW_CLOCK_PERIOD);
 
-		if(memcmp(&r1, &r2, 1024) != 0)
+		if(memcmp(&r1_invntt, &r2_invntt, 1024) != 0)
 		{
 			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
+			for(int i = 0; i < 16; i++)
+			{
+				print_debug(DEBUG_MAIN, "r1[%d]: 0x%02x | r2[%d]: 0x%02x\n", i, r1_invntt.vec[0].coeffs[i], i, r2_invntt.vec[0].coeffs[i]);
+			}
+			exit(0);
 		}
 		else
 			print_debug(DEBUG_MAIN, "[MAIN] Ok!\n");
 #endif
 
 #if TEST_KECCAK_F1600 == 1
+		print_debug(DEBUG_MAIN, "\n[MAIN] keccak\n");
+
 		uint64_t state[25] = { 0x0 };
 		state[0] = 0x000000000000001f;
 		state[20] = 0x8000000000000000;

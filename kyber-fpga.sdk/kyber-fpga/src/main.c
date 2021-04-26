@@ -98,8 +98,8 @@ extern XGpio XGpioNtt;
 extern XAxiDma_Config * XAxiDmaConfig;
 extern XAxiDma XAxiDmaPtr;
 
-extern u32 *memoryBram0;
-extern u32 *memoryBram1;
+//extern u32 *memoryBram0;
+//extern u32 *memoryBram1;
 
 extern u8 *TxBufferPtr;
 extern u8 *RxBufferPtr;
