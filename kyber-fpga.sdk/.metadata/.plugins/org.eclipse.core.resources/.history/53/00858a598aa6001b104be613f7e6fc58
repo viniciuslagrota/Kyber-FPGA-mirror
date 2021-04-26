@@ -179,25 +179,20 @@ void polyvec_ntt_hw(polyvec *r)
 //	memcpy(r, (poly *)memoryBram0, 1024);
 
 #if KYBER_K == 2
-	size_t sLen = 1024;
-	size_t sLenWords = 256; //1024/4
-#elif KYBER_K == 3
-	size_t sLen = 1536;
-	size_t sLenWords = 384;
+	memcpy(TxBufferPtr, (u8*)r, 1024);
+#else if KYBER_K == 3
+	memcpy(TxBufferPtr, (u8*)r, 1536);
 #else
-	size_t sLen = 2048;
-	size_t sLenWords = 512;
+	memcpy(TxBufferPtr, (u8*)r, 2048);
 #endif
 
-	memcpy(TxBufferPtr, (u8*)r, sLen);
-
-	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, sLen);
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, 1024);
 
 	//Configure RX
-	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, sLen, XAXIDMA_DEVICE_TO_DMA);
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, 1024, XAXIDMA_DEVICE_TO_DMA);
 
 	//Configure TX
-	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, sLen, XAXIDMA_DMA_TO_DEVICE);
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, 1024, XAXIDMA_DMA_TO_DEVICE);
 
 	while (XAxiDma_Busy(&XAxiDmaPtr, XAXIDMA_DMA_TO_DEVICE)) {
 			/* Wait */
@@ -207,7 +202,7 @@ void polyvec_ntt_hw(polyvec *r)
 	XGpio_DiscreteWrite(&XGpioNtt, 1, 0x1);
 
 	//Send length to be read
-	XGpio_DiscreteWrite(&XGpioDma, 2, sLenWords); //Number of words, not bytes.
+	XGpio_DiscreteWrite(&XGpioDma, 2, 256); //Number of words, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 1);
@@ -224,8 +219,8 @@ void polyvec_ntt_hw(polyvec *r)
 			/* Wait */
 	}
 
-	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, sLen);
-	memcpy(r, (polyvec *)RxBufferPtr, sLen);
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 1024);
+	memcpy(r, (polyvec *)RxBufferPtr, 1024);
 
 	//Packet reception end
 	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
@@ -276,26 +271,15 @@ void polyvec_invntt_tomont_hw(polyvec *r)
 //
 //	memcpy(r, (poly *)memoryBram0, 1024);
 
-#if KYBER_K == 2
-	size_t sLen = 1024;
-	size_t sLenWords = 256; //1024/4
-#elif KYBER_K == 3
-	size_t sLen = 1536;
-	size_t sLenWords = 384;
-#else
-	size_t sLen = 2048;
-	size_t sLenWords = 512;
-#endif
+	memcpy(TxBufferPtr, (u8*)r, 1024);
 
-	memcpy(TxBufferPtr, (u8*)r, sLen);
-
-	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, sLen);
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, 1024);
 
 	//Configure RX
-	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, sLen, XAXIDMA_DEVICE_TO_DMA);
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, 1024, XAXIDMA_DEVICE_TO_DMA);
 
 	//Configure TX
-	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, sLen, XAXIDMA_DMA_TO_DEVICE);
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, 1024, XAXIDMA_DMA_TO_DEVICE);
 
 	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
 			/* Wait */
@@ -305,7 +289,7 @@ void polyvec_invntt_tomont_hw(polyvec *r)
 	XGpio_DiscreteWrite(&XGpioNtt, 2, 0x1);
 
 	//Send length to be read
-	XGpio_DiscreteWrite(&XGpioDma, 2, sLenWords); //Number of words, not bytes.
+	XGpio_DiscreteWrite(&XGpioDma, 2, 256); //Number of words, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioNtt, 2);
@@ -322,8 +306,8 @@ void polyvec_invntt_tomont_hw(polyvec *r)
 			/* Wait */
 	}
 
-	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, sLen);
-	memcpy(r, (polyvec *)RxBufferPtr, sLen);
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 1024);
+	memcpy(r, (polyvec *)RxBufferPtr, 1024);
 
 	//Packet reception end
 	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);

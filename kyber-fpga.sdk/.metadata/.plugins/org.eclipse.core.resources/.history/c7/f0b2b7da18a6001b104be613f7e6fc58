@@ -64,13 +64,13 @@
 #define TEST_FQMUL						0
 #define TEST_BARRETT_REDUCE				0
 #define TEST_POLY_TOMONT				0
-#define TEST_POLYVEC_REDUCE				0
-#define TEST_POLYVEC_ACC				0
-#define TEST_POLYVEC_NTT				0
-#define TEST_POLYVEC_INVNTT				0
-#define TEST_KECCAK_F1600				0
-#define TEST_KEM						1
-#define SYSTEM_STATE					1
+#define TEST_POLYVEC_REDUCE				1
+#define TEST_POLYVEC_ACC				1
+#define TEST_POLYVEC_NTT				1
+#define TEST_POLYVEC_INVNTT				1
+#define TEST_KECCAK_F1600				1
+#define TEST_KEM						0
+#define SYSTEM_STATE					0
 
 //////////////////////////////////////////////
 //
@@ -245,8 +245,6 @@ int main()
 
 #if TEST_POLY_TOMONT == 1
 		//Poly tomont test
-		print_debug(DEBUG_MAIN, "\n[MAIN] poly_tomont\n");
-
 		poly r1;
 		poly r2;
 //		//Initialize BRAM with data
@@ -312,8 +310,6 @@ int main()
 
 #if TEST_POLYVEC_REDUCE
 		//Test poly reduce
-		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_reduce\n");
-
 		polyvec r;
 		r.vec[0].coeffs[0] = rand();
 		r.vec[0].coeffs[1] = rand();
@@ -367,30 +363,34 @@ int main()
 
 #if TEST_POLYVEC_ACC == 1
 		//Test polyvec basemul acc montgomery
-		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_basemul_acc_montgomery\n");
-		poly r3_acc, r4_acc;
-		polyvec r1_acc, r2_acc;
+		poly r3, r4;
+		polyvec r1, r2;
 
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1_acc.vec[0].coeffs[i] = i + 1;
-			r1_acc.vec[0].coeffs[i + 1] = i + 2;
+			r1.vec[0].coeffs[i] = i + 1;
+			r1.vec[0].coeffs[i + 1] = i + 2;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1_acc.vec[1].coeffs[i] = i + 0x0801;
-			r1_acc.vec[1].coeffs[i + 1] = i + 0x0802;
+			r1.vec[1].coeffs[i] = i + 0x0801;
+			r1.vec[1].coeffs[i + 1] = i + 0x0802;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r2_acc.vec[0].coeffs[i] = i + 0xF000;
-			r2_acc.vec[0].coeffs[i + 1] = i + 0xF001;
+			r2.vec[0].coeffs[i] = i + 0xF000;
+			r2.vec[0].coeffs[i + 1] = i + 0xF001;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r2_acc.vec[1].coeffs[i] = i + 0xF800;
-			r2_acc.vec[1].coeffs[i + 1] = i + 0xF801;
+			r2.vec[1].coeffs[i] = i + 0xF800;
+			r2.vec[1].coeffs[i + 1] = i + 0xF801;
 		}
+
+		if(u32SystemState & POLYVEC_BASEMUL_MASK)
+			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_basemul_acc_montgomery_hw\n");
+		else
+			print_debug(DEBUG_MAIN, "[POLYVEC] polyvec_basemul_acc_montgomery_sw\n");
 
 		resetTimer(&XGpioGlobalTimer, 1);
 		u32 u32Timer5 = getTimer(&XGpioGlobalTimer, 1);
@@ -398,7 +398,7 @@ int main()
 		startTimer(&XGpioGlobalTimer, 1);
 
 //		polyvec_basemul_acc_montgomery(&r, &r1, &r2);
-		polyvec_basemul_acc_montgomery_sw(&r3_acc, &r1_acc, &r2_acc);
+		polyvec_basemul_acc_montgomery_sw(&r4, &r1, &r2);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer5 = getTimer(&XGpioGlobalTimer, 1);
@@ -409,7 +409,7 @@ int main()
 		startTimer(&XGpioGlobalTimer, 1);
 
 //		polyvec_basemul_acc_montgomery(&r, &r1, &r2);
-		polyvec_basemul_acc_montgomery_hw(&r4_acc, &r1_acc, &r2_acc);
+		polyvec_basemul_acc_montgomery_hw(&r3, &r1, &r2);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer6 = getTimer(&XGpioGlobalTimer, 1);
@@ -448,7 +448,7 @@ int main()
 //				print_debug(DEBUG_MAIN, "Error at r[%d]: 0x%04x and r3[%d]: 0x%04x\n", i, r.coeffs[i], i, r3.coeffs[i]);
 //			}
 //		}
-		if(memcmp(&r3_acc, &r4_acc, 512) != 0)
+		if(memcmp(&r4, &r3, 512) != 0)
 		{
 			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
 		}
@@ -458,24 +458,22 @@ int main()
 #endif
 
 #if TEST_POLYVEC_NTT == 1
-		//Test polyvec ntt
-		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_ntt\n");
-
-		polyvec r1_ntt, r2_ntt;
+		//Test polyvec basemul acc montgomery
+		polyvec r1, r2;
 
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1_ntt.vec[0].coeffs[i] = i + 1;
-			r1_ntt.vec[0].coeffs[i + 1] = i + 2;
-			r2_ntt.vec[0].coeffs[i] = i + 1;
-			r2_ntt.vec[0].coeffs[i + 1] = i + 2;
+			r1.vec[0].coeffs[i] = i + 1;
+			r1.vec[0].coeffs[i + 1] = i + 2;
+			r2.vec[0].coeffs[i] = i + 1;
+			r2.vec[0].coeffs[i + 1] = i + 2;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1_ntt.vec[1].coeffs[i] = i + 0x0801;
-			r1_ntt.vec[1].coeffs[i + 1] = i + 0x0802;
-			r2_ntt.vec[1].coeffs[i] = i + 0x0801;
-			r2_ntt.vec[1].coeffs[i + 1] = i + 0x0802;
+			r1.vec[1].coeffs[i] = i + 0x0801;
+			r1.vec[1].coeffs[i + 1] = i + 0x0802;
+			r2.vec[1].coeffs[i] = i + 0x0801;
+			r2.vec[1].coeffs[i + 1] = i + 0x0802;
 		}
 
 		resetTimer(&XGpioGlobalTimer, 1);
@@ -483,7 +481,7 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_ntt_sw(&r1_ntt);
+		polyvec_ntt_sw(&r1);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer7 = getTimer(&XGpioGlobalTimer, 1);
@@ -493,7 +491,7 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer8 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_ntt_hw(&r2_ntt);
+		polyvec_ntt_hw(&r2);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer8 = getTimer(&XGpioGlobalTimer, 1);
@@ -501,11 +499,11 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer7 * HW_CLOCK_PERIOD);
 		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer8 * HW_CLOCK_PERIOD);
 
-		if(memcmp(&r1_ntt, &r2_ntt, 1024) != 0)
+		if(memcmp(&r1, &r2, 1024) != 0)
 		{
 			for(int i = 200; i < 256; i++)
 			{
-				print_debug(DEBUG_MAIN, "r1.vec[1].coeffs[%d]: 0x%04x | r2.vec[1].coeffs[%d]: 0x%04x\n", i, r1_ntt.vec[1].coeffs[i], i, r2_ntt.vec[1].coeffs[i]);
+				print_debug(DEBUG_MAIN, "r1.vec[1].coeffs[%d]: 0x%04x | r2.vec[1].coeffs[%d]: 0x%04x\n", i, r1.vec[1].coeffs[i], i, r2.vec[1].coeffs[i]);
 			}
 			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
 			exit(0);
@@ -515,24 +513,22 @@ int main()
 #endif
 
 #if TEST_POLYVEC_INVNTT == 1
-		//Test polyvec invntt
-		print_debug(DEBUG_MAIN, "\n[MAIN] polyvec_invntt\n");
-
-		polyvec r1_invntt, r2_invntt;
+		//Test polyvec basemul acc montgomery
+		polyvec r1, r2;
 
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1_invntt.vec[0].coeffs[i] = i + 1;
-			r1_invntt.vec[0].coeffs[i + 1] = i + 2;
-			r2_invntt.vec[0].coeffs[i] = i + 1;
-			r2_invntt.vec[0].coeffs[i + 1] = i + 2;
+			r1.vec[0].coeffs[i] = i + 1;
+			r1.vec[0].coeffs[i + 1] = i + 2;
+			r2.vec[0].coeffs[i] = i + 1;
+			r2.vec[0].coeffs[i + 1] = i + 2;
 		}
 		for (int i = 0; i < 256; i += 2)
 		{
-			r1_invntt.vec[1].coeffs[i] = i + 0x0801;
-			r1_invntt.vec[1].coeffs[i + 1] = i + 0x0802;
-			r2_invntt.vec[1].coeffs[i] = i + 0x0801;
-			r2_invntt.vec[1].coeffs[i + 1] = i + 0x0802;
+			r1.vec[1].coeffs[i] = i + 0x0801;
+			r1.vec[1].coeffs[i + 1] = i + 0x0802;
+			r2.vec[1].coeffs[i] = i + 0x0801;
+			r2.vec[1].coeffs[i + 1] = i + 0x0802;
 		}
 
 		resetTimer(&XGpioGlobalTimer, 1);
@@ -540,7 +536,7 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer9 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_invntt_tomont_sw(&r1_invntt);
+		polyvec_invntt_tomont_sw(&r1);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer9 = getTimer(&XGpioGlobalTimer, 1);
@@ -550,7 +546,7 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Reset Timer HW: %ld ns\n", u32Timer10 * HW_CLOCK_PERIOD);
 		startTimer(&XGpioGlobalTimer, 1);
 
-		polyvec_invntt_tomont_hw(&r2_invntt);
+		polyvec_invntt_tomont_hw(&r2);
 
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32Timer10 = getTimer(&XGpioGlobalTimer, 1);
@@ -558,12 +554,12 @@ int main()
 		print_debug(DEBUG_MAIN, "[MAIN] Timer SW: %ld ns\n", u32Timer9 * HW_CLOCK_PERIOD);
 		print_debug(DEBUG_MAIN, "[MAIN] Timer HW: %ld ns\n", u32Timer10 * HW_CLOCK_PERIOD);
 
-		if(memcmp(&r1_invntt, &r2_invntt, 1024) != 0)
+		if(memcmp(&r1, &r2, 1024) != 0)
 		{
 			print_debug(DEBUG_MAIN, "[MAIN] Error!\n");
 			for(int i = 0; i < 16; i++)
 			{
-				print_debug(DEBUG_MAIN, "r1[%d]: 0x%02x | r2[%d]: 0x%02x\n", i, r1_invntt.vec[0].coeffs[i], i, r2_invntt.vec[0].coeffs[i]);
+				print_debug(DEBUG_MAIN, "r1[%d]: 0x%02x | r2[%d]: 0x%02x\n", i, r1.vec[0].coeffs[i], i, r2.vec[0].coeffs[i]);
 			}
 			exit(0);
 		}
@@ -572,8 +568,6 @@ int main()
 #endif
 
 #if TEST_KECCAK_F1600 == 1
-		print_debug(DEBUG_MAIN, "\n[MAIN] keccak\n");
-
 		uint64_t state[25] = { 0x0 };
 		state[0] = 0x000000000000001f;
 		state[20] = 0x8000000000000000;
