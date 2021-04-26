@@ -39,5 +39,10 @@ void polyvec_ntt_sw(polyvec *r);
 void polyvec_ntt_hw(polyvec *r);
 void polyvec_invntt_tomont_sw(polyvec *r);
 void polyvec_invntt_tomont_hw(polyvec *r);
+void polyvec_reduce_sw(polyvec *r);
+void polyvec_reduce_hw(polyvec *r);
+void polyvec_basemul_acc_montgomery_sw(poly *r, const polyvec *a, const polyvec *b);
+void polyvec_basemul_acc_montgomery_hw(poly *r, const polyvec *a, const polyvec *b);
+
 
 #endif

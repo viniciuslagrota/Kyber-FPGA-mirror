@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:keccak_f1600_bram_ip:1.0
--- IP Revision: 6
+-- IP Revision: 7
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -60,11 +60,16 @@ ENTITY kyberBD_keccak_f1600_bram_ip_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
-    bram_ena : OUT STD_LOGIC;
-    bram_wea : OUT STD_LOGIC;
-    bram_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
-    bram_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    bram_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram0_ena : OUT STD_LOGIC;
+    bram0_wea : OUT STD_LOGIC;
+    bram0_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+    bram0_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram0_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram1_ena : OUT STD_LOGIC;
+    bram1_wea : OUT STD_LOGIC;
+    bram1_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+    bram1_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    bram1_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     start : IN STD_LOGIC;
     busy : OUT STD_LOGIC
   );
@@ -81,23 +86,34 @@ ARCHITECTURE kyberBD_keccak_f1600_bram_ip_0_0_arch OF kyberBD_keccak_f1600_bram_
     PORT (
       clk : IN STD_LOGIC;
       aresetn : IN STD_LOGIC;
-      bram_ena : OUT STD_LOGIC;
-      bram_wea : OUT STD_LOGIC;
-      bram_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
-      bram_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      bram_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram0_ena : OUT STD_LOGIC;
+      bram0_wea : OUT STD_LOGIC;
+      bram0_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+      bram0_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram0_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram1_ena : OUT STD_LOGIC;
+      bram1_wea : OUT STD_LOGIC;
+      bram1_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+      bram1_dia : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      bram1_doa : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       start : IN STD_LOGIC;
       busy : OUT STD_LOGIC
     );
   END COMPONENT keccak_f1600_bram_ip_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF bram_doa: SIGNAL IS "xilinx.com:interface:bram:1.0 PORT_BRAM DOUT";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_dia: SIGNAL IS "xilinx.com:interface:bram:1.0 PORT_BRAM DIN";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_addra: SIGNAL IS "xilinx.com:interface:bram:1.0 PORT_BRAM ADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_wea: SIGNAL IS "xilinx.com:interface:bram:1.0 PORT_BRAM WE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF bram_ena: SIGNAL IS "XIL_INTERFACENAME PORT_BRAM, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
-  ATTRIBUTE X_INTERFACE_INFO OF bram_ena: SIGNAL IS "xilinx.com:interface:bram:1.0 PORT_BRAM EN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_doa: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_dia: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_wea: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF bram1_ena: SIGNAL IS "XIL_INTERFACENAME BRAM1_PORT_A, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF bram1_ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM1_PORT_A EN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_doa: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A DOUT";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_dia: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_wea: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A WE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF bram0_ena: SIGNAL IS "XIL_INTERFACENAME BRAM0_PORT_A, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_INFO OF bram0_ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM0_PORT_A EN";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET aresetn, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN kyberBD_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
@@ -111,11 +127,16 @@ BEGIN
     PORT MAP (
       clk => clk,
       aresetn => aresetn,
-      bram_ena => bram_ena,
-      bram_wea => bram_wea,
-      bram_addra => bram_addra,
-      bram_dia => bram_dia,
-      bram_doa => bram_doa,
+      bram0_ena => bram0_ena,
+      bram0_wea => bram0_wea,
+      bram0_addra => bram0_addra,
+      bram0_dia => bram0_dia,
+      bram0_doa => bram0_doa,
+      bram1_ena => bram1_ena,
+      bram1_wea => bram1_wea,
+      bram1_addra => bram1_addra,
+      bram1_dia => bram1_dia,
+      bram1_doa => bram1_doa,
       start => start,
       busy => busy
     );

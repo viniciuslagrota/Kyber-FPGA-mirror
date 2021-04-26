@@ -346,20 +346,61 @@ void KeccakF1600_StatePermuteSw(uint64_t state[25])
 
 void KeccakF1600_StatePermuteHw(uint64_t state[25])
 {
-	memcpy(memoryBram0, (u32 *)state, 200);
+//	memcpy(memoryBram0, (u32 *)state, 200);
+//
+//	//Start flag up
+//	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 2, 0x1);
+//
+//	//Read busy signal
+//	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 2);
+//	while(u32ReadGpio == 1)
+//		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 2);
+//
+//	//Start flag down
+//	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 2, 0x0);
+//
+//	memcpy(state, (u64 *)memoryBram0, 200);
+
+	memcpy(TxBufferPtr, (u8*)state, 200);
+
+	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, 200);
+
+	//Configure RX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) RxBufferPtr, 200, XAXIDMA_DEVICE_TO_DMA);
+
+	//Configure TX
+	XAxiDma_SimpleTransfer(&XAxiDmaPtr,(UINTPTR) TxBufferPtr, 200, XAXIDMA_DMA_TO_DEVICE);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr,XAXIDMA_DMA_TO_DEVICE)) {
+			/* Wait */
+	}
 
 	//Start flag up
 	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 2, 0x1);
+
+	//Send length to be read
+	XGpio_DiscreteWrite(&XGpioDma, 2, 50); //Number of words, not bytes.
 
 	//Read busy signal
 	u32 u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 2);
 	while(u32ReadGpio == 1)
 		u32ReadGpio = XGpio_DiscreteRead(&XGpioAccMontKeccak, 2);
 
+	//Send signal to initialize packet transmission from DMA to PL
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x1);
+
+	while (XAxiDma_Busy(&XAxiDmaPtr, XAXIDMA_DEVICE_TO_DMA)) {
+			/* Wait */
+	}
+
+	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, 200);
+	memcpy(state, (u64 *)RxBufferPtr, 200);
+
+	//Packet reception end
+	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
+
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 2, 0x0);
-
-	memcpy(state, (u64 *)memoryBram0, 200);
 }
 
 void KeccakF1600_StatePermute(uint64_t state[25])
