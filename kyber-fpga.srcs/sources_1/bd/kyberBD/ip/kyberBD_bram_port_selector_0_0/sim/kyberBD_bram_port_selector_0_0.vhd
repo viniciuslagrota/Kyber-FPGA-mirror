@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:bram_port_selector:1.0
--- IP Revision: 7
+-- IP Revision: 8
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -136,7 +136,12 @@ ARCHITECTURE kyberBD_bram_port_selector_0_0_arch OF kyberBD_bram_port_selector_0
       slave5_we : IN STD_LOGIC;
       slave5_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
       slave5_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      slave5_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+      slave5_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      slave6_en : IN STD_LOGIC;
+      slave6_we : IN STD_LOGIC;
+      slave6_addr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+      slave6_di : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      slave6_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT bram_port_selector_v1_0;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -224,6 +229,10 @@ BEGIN
       slave5_we => slave5_we,
       slave5_addr => slave5_addr,
       slave5_di => slave5_di,
-      slave5_do => slave5_do
+      slave5_do => slave5_do,
+      slave6_en => '0',
+      slave6_we => '0',
+      slave6_addr => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 11)),
+      slave6_di => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32))
     );
 END kyberBD_bram_port_selector_0_0_arch;
