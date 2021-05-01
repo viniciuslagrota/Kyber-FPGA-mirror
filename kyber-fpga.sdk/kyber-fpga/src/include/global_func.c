@@ -138,3 +138,49 @@ void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction)
 	*u32Integer = dValue;
 	*u32Fraction = (dValue - *u32Integer) * 1000;
 }
+
+//////////////////////////////////////////////
+//
+//	Reset time variables
+//
+//////////////////////////////////////////////
+void resetTimeVariables()
+{
+	//Reset time variables
+	u32PolyTomontHwTime = u32PolyTomontHwIt = 0;
+	u32PolyTomontSwTime = u32PolyTomontSwIt = 0;
+}
+
+//////////////////////////////////////////////
+//
+//	Print time variables
+//
+//////////////////////////////////////////////
+void printTimeVariables(u32 u32SystemState)
+{
+	u32 u32Cycles = u32SystemState >> 1; //Each state uses only hardware or software, must be divided by 2.
+	u32 u32HwTime[] = {u32PolyTomontHwTime};
+	u32 u32SwTime[] = {u32PolyTomontSwTime};
+	u32 u32HwIt[] 	= {u32PolyTomontHwIt};
+	u32 u32SwIt[] 	= {u32PolyTomontSwIt};
+	u32 u32Integer[2], u32Fraction[2], u32AvgInteger[2], u32AvgFraction[2], u32ImproveInteger, u32ImproveFraction;
+	const char * array[] = {
+	    "Tomont",
+	    "Second entry",
+	    "Third entry",
+	};
+
+//	for(int i = 0; i < u32Cycles; i++)
+	for(int i = 0; i < 1; i++)
+	{
+		floatToIntegers((double)u32SwTime[i]/1000000, 					&u32Integer[0], &u32Fraction[0]);
+		floatToIntegers((double)u32SwTime[i]/u32SwIt[i]/1000, 			&u32AvgInteger[0], &u32AvgFraction[0]);
+		floatToIntegers((double)u32HwTime[i]/1000000, 					&u32Integer[1], &u32Fraction[1]);
+		floatToIntegers((double)u32HwTime[i]/u32HwIt[i]/1000, 			&u32AvgInteger[1], &u32AvgFraction[1]);
+		floatToIntegers((1.0 - (double)u32HwTime[i]/u32SwTime[i])*100, 	&u32ImproveInteger, &u32ImproveFraction);
+
+		print_debug(DEBUG_TIME, "[TIME] %s SW total iteractions: %lu | %s SW iteractions per cicle: %lu | %s SW total time: %lu ns or %lu.%03lu ms | %s SW avg time: %lu.%03lu us\n", array[i], u32SwIt[i], array[i], u32PolyTomontSwIt/u32Cycles, array[i], u32SwTime[i], u32Integer[0], u32Fraction[0], array[i], u32AvgInteger[0], u32AvgFraction[0]);
+		print_debug(DEBUG_TIME, "[TIME] %s HW total iteractions: %lu | %s HW iteractions per cicle: %lu | %s HW total time: %lu ns or %lu.%03lu ms | %s HW avg time: %lu.%03lu us | %s improvement: %lu.%03lu%%\n", array[i], u32HwIt[i], array[i], u32PolyTomontHwIt/u32Cycles, array[i], u32HwTime[i], u32Integer[1], u32Fraction[1], array[i], u32AvgInteger[1], u32AvgFraction[1], array[i], u32ImproveInteger, u32ImproveFraction);
+
+	}
+}

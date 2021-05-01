@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Sun Apr 25 17:27:37 2021
+| Date         : Wed Apr 28 22:06:44 2021
 | Host         : DESKTOP-0F4OK3D running 64-bit major release  (build 9200)
 | Command      : report_utilization -file kyberBD_wrapper_utilization_synth.rpt -pb kyberBD_wrapper_utilization_synth.pb
 | Design       : kyberBD_wrapper
@@ -30,15 +30,15 @@ Table of Contents
 +----------------------------+-------+-------+-----------+-------+
 |          Site Type         |  Used | Fixed | Available | Util% |
 +----------------------------+-------+-------+-----------+-------+
-| Slice LUTs*                | 12956 |     0 |     17600 | 73.61 |
-|   LUT as Logic             | 11508 |     0 |     17600 | 65.39 |
-|   LUT as Memory            |  1448 |     0 |      6000 | 24.13 |
-|     LUT as Distributed RAM |   670 |     0 |           |       |
-|     LUT as Shift Register  |   778 |     0 |           |       |
-| Slice Registers            | 15761 |     0 |     35200 | 44.78 |
-|   Register as Flip Flop    | 15761 |     0 |     35200 | 44.78 |
+| Slice LUTs*                | 10810 |     0 |     17600 | 61.42 |
+|   LUT as Logic             | 10270 |     0 |     17600 | 58.35 |
+|   LUT as Memory            |   540 |     0 |      6000 |  9.00 |
+|     LUT as Distributed RAM |    18 |     0 |           |       |
+|     LUT as Shift Register  |   522 |     0 |           |       |
+| Slice Registers            | 13524 |     0 |     35200 | 38.42 |
+|   Register as Flip Flop    | 13524 |     0 |     35200 | 38.42 |
 |   Register as Latch        |     0 |     0 |     35200 |  0.00 |
-| F7 Muxes                   |    34 |     0 |      8800 |  0.39 |
+| F7 Muxes                   |    36 |     0 |      8800 |  0.41 |
 | F8 Muxes                   |     0 |     0 |      4400 |  0.00 |
 +----------------------------+-------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -56,10 +56,10 @@ Table of Contents
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
-| 0     |          Yes |           - |          Set |
-| 0     |          Yes |           - |        Reset |
-| 311   |          Yes |         Set |            - |
-| 15450 |          Yes |       Reset |            - |
+| 33    |          Yes |           - |          Set |
+| 69    |          Yes |           - |        Reset |
+| 411   |          Yes |         Set |            - |
+| 13011 |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -69,11 +69,11 @@ Table of Contents
 +-------------------+------+-------+-----------+-------+
 |     Site Type     | Used | Fixed | Available | Util% |
 +-------------------+------+-------+-----------+-------+
-| Block RAM Tile    |    9 |     0 |        60 | 15.00 |
-|   RAMB36/FIFO*    |    8 |     0 |        60 | 13.33 |
-|     RAMB36E1 only |    8 |       |           |       |
-|   RAMB18          |    2 |     0 |       120 |  1.67 |
-|     RAMB18E1 only |    2 |       |           |       |
+| Block RAM Tile    |  6.5 |     0 |        60 | 10.83 |
+|   RAMB36/FIFO*    |    6 |     0 |        60 | 10.00 |
+|     RAMB36E1 only |    6 |       |           |       |
+|   RAMB18          |    1 |     0 |       120 |  0.83 |
+|     RAMB18E1 only |    1 |       |           |       |
 +-------------------+------+-------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E1 or one FIFO18E1. However, if a FIFO18E1 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E1
 
@@ -151,25 +151,26 @@ Table of Contents
 +----------+-------+----------------------+
 | Ref Name |  Used |  Functional Category |
 +----------+-------+----------------------+
-| FDRE     | 15450 |         Flop & Latch |
-| LUT6     |  4690 |                  LUT |
-| LUT3     |  3447 |                  LUT |
-| LUT5     |  2748 |                  LUT |
-| LUT4     |  1798 |                  LUT |
-| LUT2     |  1079 |                  LUT |
-| RAMD32   |   998 |   Distributed Memory |
-| SRL16E   |   665 |   Distributed Memory |
-| LUT1     |   445 |                  LUT |
-| RAMS32   |   328 |   Distributed Memory |
-| FDSE     |   311 |         Flop & Latch |
-| CARRY4   |   283 |           CarryLogic |
-| SRLC32E  |   211 |   Distributed Memory |
+| FDRE     | 13011 |         Flop & Latch |
+| LUT6     |  4143 |                  LUT |
+| LUT3     |  2903 |                  LUT |
+| LUT5     |  2758 |                  LUT |
+| LUT4     |  1456 |                  LUT |
+| LUT2     |  1086 |                  LUT |
+| SRL16E   |   440 |   Distributed Memory |
+| FDSE     |   411 |         Flop & Latch |
+| LUT1     |   317 |                  LUT |
+| CARRY4   |   275 |           CarryLogic |
 | BIBUF    |   130 |                   IO |
-| MUXF7    |    34 |                MuxFx |
+| SRLC32E  |    82 |   Distributed Memory |
+| FDCE     |    69 |         Flop & Latch |
+| MUXF7    |    36 |                MuxFx |
+| FDPE     |    33 |         Flop & Latch |
+| RAMD32   |    26 |   Distributed Memory |
 | DSP48E1  |    24 |     Block Arithmetic |
-| RAMB36E1 |     8 |         Block Memory |
-| SRLC16E  |     2 |   Distributed Memory |
-| RAMB18E1 |     2 |         Block Memory |
+| RAMS32   |     8 |   Distributed Memory |
+| RAMB36E1 |     6 |         Block Memory |
+| RAMB18E1 |     1 |         Block Memory |
 | PS7      |     1 | Specialized Resource |
 | BUFG     |     1 |                Clock |
 +----------+-------+----------------------+
@@ -178,11 +179,9 @@ Table of Contents
 8. Black Boxes
 --------------
 
-+------------+------+
-|  Ref Name  | Used |
-+------------+------+
-| dbg_hub_CV |    1 |
-+------------+------+
++----------+------+
+| Ref Name | Used |
++----------+------+
 
 
 9. Instantiated Netlists
