@@ -234,31 +234,14 @@ void polyvec_ntt_hw(polyvec *r)
 
 void polyvec_ntt(polyvec *r)
 {
-#if GET_TOTAL_IP_TIME == 1
 	if(u32SystemState & POLYVEC_NTT_MASK)
 	{
-		resetTimer(&XGpioGlobalTimer, 1);
-		startTimer(&XGpioGlobalTimer, 1);
 		polyvec_ntt_hw(r);
-		stopTimer(&XGpioGlobalTimer, 1);
-		u32PolyvecNttHwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
-		u32PolyvecNttHwIt++;
 	}
 	else
 	{
-		resetTimer(&XGpioGlobalTimer, 1);
-		startTimer(&XGpioGlobalTimer, 1);
 		polyvec_ntt_sw(r);
-		stopTimer(&XGpioGlobalTimer, 1);
-		u32PolyvecNttSwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
-		u32PolyvecNttSwIt++;
 	}
-#else
-	if(u32SystemState & POLYVEC_NTT_MASK)
-		polyvec_ntt_hw(r);
-	else
-		polyvec_ntt_sw(r);
-#endif
 }
 
 /*************************************************
@@ -466,31 +449,14 @@ void polyvec_basemul_acc_montgomery_hw(poly *r, const polyvec *a, const polyvec 
 
 void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
 {
-#if GET_TOTAL_IP_TIME == 1
 	if(u32SystemState & POLYVEC_BASEMUL_MASK)
 	{
-		resetTimer(&XGpioGlobalTimer, 1);
-		startTimer(&XGpioGlobalTimer, 1);
 		polyvec_basemul_acc_montgomery_hw(r, a, b);
-		stopTimer(&XGpioGlobalTimer, 1);
-		u32PolyvecBasemulAccMontHwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
-		u32PolyvecBasemulAccMontHwIt++;
 	}
 	else
 	{
-		resetTimer(&XGpioGlobalTimer, 1);
-		startTimer(&XGpioGlobalTimer, 1);
 		polyvec_basemul_acc_montgomery_sw(r, a, b);
-		stopTimer(&XGpioGlobalTimer, 1);
-		u32PolyvecBasemulAccMontSwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
-		u32PolyvecBasemulAccMontSwIt++;
 	}
-#else
-	if(u32SystemState & POLYVEC_BASEMUL_MASK)
-		polyvec_basemul_acc_montgomery_hw(r, a, b);
-	else
-		polyvec_basemul_acc_montgomery_sw(r, a, b);
-#endif
 }
 
 /*************************************************

@@ -159,8 +159,8 @@ void resetTimeVariables()
 void printTimeVariables(u32 u32SystemState)
 {
 	u32 u32Cycles = u32SystemState >> 1; //Each state uses only hardware or software, must be divided by 2.
-	u32 u32HwTime[] = {u32PolyTomontHwTime, u32PolyvecReduceHwTime, u32PolyvecBasemulAccMontHwTime, u32PolyvecNttHwTime, u32PolyvecInvnttHwTime, u32KeccakHwTime};
-	u32 u32SwTime[] = {u32PolyTomontSwTime, u32PolyvecReduceSwTime, u32PolyvecBasemulAccMontSwTime, u32PolyvecNttSwTime, u32PolyvecInvnttSwTime, u32KeccakSwTime};
+	u32 u32HwTime[] = {u32PolyTomontHwTime, u32PolyvecReduceHwTime, u32PolyvecBasemulAccMontHwTime, u32PolyvecNttHwTime, u32PolyvecInvnttSwTime, u32KeccakTime};
+	u32 u32SwTime[] = {u32PolyTomontSwTime, u32PolyvecReduceSwTime, u32PolyvecBasemulAccMontSwTime, u32PolyvecNttSwTime, u32PolyvecInvnttSwTime, u32KeccakTime};
 	u32 u32HwIt[] 	= {u32PolyTomontHwIt, u32PolyvecReduceHwIt, u32PolyvecBasemulAccMontHwIt, u32PolyvecNttHwIt, u32PolyvecInvnttHwIt, u32KeccakHwIt};
 	u32 u32SwIt[] 	= {u32PolyTomontSwIt, u32PolyvecReduceSwIt, u32PolyvecBasemulAccMontSwIt, u32PolyvecNttSwIt, u32PolyvecInvnttSwIt, u32KeccakSwIt};
 	u32 u32Integer[2], u32Fraction[2], u32AvgInteger[2], u32AvgFraction[2], u32ImproveInteger, u32ImproveFraction;
@@ -168,13 +168,10 @@ void printTimeVariables(u32 u32SystemState)
 	    "Poly Tomont",
 	    "Polyvec Reduce",
 	    "Polyvec Basemul Acc Mont",
-		"Polyvec NTT",
-		"Polyvec INVNTT",
-		"Keccak"
 	};
 
 //	for(int i = 0; i < u32Cycles; i++)
-	for(int i = 0; i < 4; i++)
+	for(int i = 0; i < 3; i++)
 	{
 		floatToIntegers((double)u32SwTime[i]/1000000, 					&u32Integer[0], &u32Fraction[0]);
 		floatToIntegers((double)u32SwTime[i]/u32SwIt[i]/1000, 			&u32AvgInteger[0], &u32AvgFraction[0]);
