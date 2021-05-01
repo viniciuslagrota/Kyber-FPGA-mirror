@@ -405,31 +405,14 @@ void KeccakF1600_StatePermuteHw(uint64_t state[25])
 
 void KeccakF1600_StatePermute(uint64_t state[25])
 {
-#if GET_TOTAL_IP_TIME == 1
 	if(u32SystemState & KECCAK_F1600_MASK)
 	{
-		resetTimer(&XGpioGlobalTimer, 1);
-		startTimer(&XGpioGlobalTimer, 1);
 		KeccakF1600_StatePermuteHw(state);
-		stopTimer(&XGpioGlobalTimer, 1);
-		u32KeccakHwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
-		u32KeccakHwIt++;
 	}
 	else
 	{
-		resetTimer(&XGpioGlobalTimer, 1);
-		startTimer(&XGpioGlobalTimer, 1);
 		KeccakF1600_StatePermuteSw(state);
-		stopTimer(&XGpioGlobalTimer, 1);
-		u32KeccakSwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
-		u32KeccakSwIt++;
 	}
-#else
-	if(u32SystemState & KECCAK_F1600_MASK)
-		KeccakF1600_StatePermuteHw(state);
-	else
-		KeccakF1600_StatePermuteSw(state);
-#endif
 }
 
 /*************************************************

@@ -354,7 +354,7 @@ void polyvec_invntt_tomont(polyvec *r)
 	{
 		resetTimer(&XGpioGlobalTimer, 1);
 		startTimer(&XGpioGlobalTimer, 1);
-		polyvec_invntt_tomont_hw(r);
+		polyvec_ntt_hw(r);
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32PolyvecInvnttHwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
 		u32PolyvecInvnttHwIt++;
@@ -363,7 +363,7 @@ void polyvec_invntt_tomont(polyvec *r)
 	{
 		resetTimer(&XGpioGlobalTimer, 1);
 		startTimer(&XGpioGlobalTimer, 1);
-		polyvec_invntt_tomont_sw(r);
+		polyvec_ntt_sw(r);
 		stopTimer(&XGpioGlobalTimer, 1);
 		u32PolyvecInvnttSwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
 		u32PolyvecInvnttSwIt++;

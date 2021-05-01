@@ -149,26 +149,6 @@ void resetTimeVariables()
 	//Reset time variables
 	u32PolyTomontHwTime = u32PolyTomontHwIt = 0;
 	u32PolyTomontSwTime = u32PolyTomontSwIt = 0;
-
-	//Reset time variables
-	u32PolyvecReduceHwTime = u32PolyvecReduceHwIt = 0;
-	u32PolyvecReduceSwTime = u32PolyvecReduceSwIt = 0;
-
-	//Reset time variables
-	u32PolyvecBasemulAccMontHwTime = u32PolyvecBasemulAccMontHwIt = 0;
-	u32PolyvecBasemulAccMontSwTime = u32PolyvecBasemulAccMontSwIt = 0;
-
-	//Reset time variables
-	u32PolyvecNttHwTime = u32PolyvecNttHwIt = 0;
-	u32PolyvecNttSwTime = u32PolyvecNttSwIt = 0;
-
-	//Reset time variables
-	u32PolyvecInvnttHwTime = u32PolyvecInvnttHwIt = 0;
-	u32PolyvecInvnttSwTime = u32PolyvecInvnttSwIt = 0;
-
-	//Reset time variables
-	u32KeccakHwTime = u32KeccakHwIt = 0;
-	u32KeccakSwTime = u32KeccakSwIt = 0;
 }
 
 //////////////////////////////////////////////
@@ -176,15 +156,14 @@ void resetTimeVariables()
 //	Print time variables
 //
 //////////////////////////////////////////////
-void printTimeVariables()
+void printTimeVariables(u32 u32SystemState)
 {
+	u32 u32Cycles = u32SystemState >> 1; //Each state uses only hardware or software, must be divided by 2.
 	u32 u32HwTime[] = {u32PolyTomontHwTime, u32PolyvecReduceHwTime, u32PolyvecBasemulAccMontHwTime, u32PolyvecNttHwTime, u32PolyvecInvnttHwTime, u32KeccakHwTime};
 	u32 u32SwTime[] = {u32PolyTomontSwTime, u32PolyvecReduceSwTime, u32PolyvecBasemulAccMontSwTime, u32PolyvecNttSwTime, u32PolyvecInvnttSwTime, u32KeccakSwTime};
 	u32 u32HwIt[] 	= {u32PolyTomontHwIt, u32PolyvecReduceHwIt, u32PolyvecBasemulAccMontHwIt, u32PolyvecNttHwIt, u32PolyvecInvnttHwIt, u32KeccakHwIt};
 	u32 u32SwIt[] 	= {u32PolyTomontSwIt, u32PolyvecReduceSwIt, u32PolyvecBasemulAccMontSwIt, u32PolyvecNttSwIt, u32PolyvecInvnttSwIt, u32KeccakSwIt};
 	u32 u32Integer[2], u32Fraction[2], u32AvgInteger[2], u32AvgFraction[2], u32ImproveInteger, u32ImproveFraction;
-	size_t n = sizeof(u32HwTime)/sizeof(u32HwTime[0]);
-	u32 u32Cycles = (1 << n) >> 1; //Each state uses only hardware or software, must be divided by 2.
 	const char * array[] = {
 	    "Poly Tomont",
 	    "Polyvec Reduce",
@@ -194,8 +173,8 @@ void printTimeVariables()
 		"Keccak"
 	};
 
-	print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-	for(int i = 0; i < n; i++)
+//	for(int i = 0; i < u32Cycles; i++)
+	for(int i = 0; i < 6; i++)
 	{
 		floatToIntegers((double)u32SwTime[i]/1000000, 					&u32Integer[0], &u32Fraction[0]);
 		floatToIntegers((double)u32SwTime[i]/u32SwIt[i]/1000, 			&u32AvgInteger[0], &u32AvgFraction[0]);

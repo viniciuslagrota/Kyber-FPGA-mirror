@@ -694,11 +694,14 @@ int main()
 		{
 			//Print and reset time variables
 			#if GET_TOTAL_IP_TIME == 1
-				printTimeVariables(u32SystemState);
+				printTimeVariables();
 				resetTimeVariables();
 			#endif
+
 			sleep(3);
 		}
+
+
 
     }
 
