@@ -17,9 +17,8 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param tcl.collectionResultDisplayLimit 0
 set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -33,6 +32,7 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:microzed_7010:part0:1.1 [current_project]
 set_property ip_repo_paths {
+  c:/Projects/ip_repo/xtimer_1.0
   c:/Projects/ip_repo/keccak_f1600_bram_ip_1.0
   c:/Projects/ip_repo/polyvec_invntt_1.0
   c:/Projects/ip_repo/signal_multiplexer_1.0
@@ -84,37 +84,30 @@ set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_dma_0_0/kyberBD_axi_dma_0_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_dma_0_0/kyberBD_axi_dma_0_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_dma_0_0/kyberBD_axi_dma_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_1/bd_fc8e_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_1/bd_fc8e_psr_aclk_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_2/bd_fc8e_arsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_3/bd_fc8e_rsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_4/bd_fc8e_awsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_5/bd_fc8e_wsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_6/bd_fc8e_bsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_10/bd_fc8e_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_11/bd_fc8e_sarn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_12/bd_fc8e_srn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_16/bd_fc8e_s01a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_17/bd_fc8e_sawn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_18/bd_fc8e_swn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_19/bd_fc8e_sbn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_20/bd_fc8e_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_21/bd_fc8e_m00arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_22/bd_fc8e_m00rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_23/bd_fc8e_m00awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_24/bd_fc8e_m00wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_25/bd_fc8e_m00bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_smc_0/ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_5_0/kyberBD_axi_gpio_5_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_5_0/kyberBD_axi_gpio_5_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_5_0/kyberBD_axi_gpio_5_0.xdc]
-set_property used_in_synthesis false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/bd_bc31_ila_lib_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/bd_bc31_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_system_ila_0_0/kyberBD_system_ila_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_0/kyberBD_axi_gpio_6_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_0/kyberBD_axi_gpio_6_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_0/kyberBD_axi_gpio_6_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_xbar_1/kyberBD_xbar_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_2/kyberBD_axi_gpio_6_2_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_2/kyberBD_axi_gpio_6_2_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_2/kyberBD_axi_gpio_6_2.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_3/kyberBD_axi_gpio_6_3_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_3/kyberBD_axi_gpio_6_3_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_3/kyberBD_axi_gpio_6_3.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_4/kyberBD_axi_gpio_6_4_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_4/kyberBD_axi_gpio_6_4_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_4/kyberBD_axi_gpio_6_4.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_5/kyberBD_axi_gpio_6_5_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_5/kyberBD_axi_gpio_6_5_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_5/kyberBD_axi_gpio_6_5.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ip/kyberBD_auto_pc_1_1/kyberBD_auto_pc_1_ooc.xdc]
 set_property used_in_implementation false [get_files -all C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/kyberBD_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being

@@ -83,19 +83,9 @@
 //	Compilation defines
 //
 //////////////////////////////////////////////
-//#define ENABLE_DEBUG				0
-//	#define ENABLE_TEST_KECCAK_SW		0
-//	#define ENABLE_TEST_KECCAK_HW_MM	0
-//	#define ENABLE_TEST_MATRIX_SA		0
-//	#define ENABLE_TEST_MATRIX_AS		0
-//	#define ENABLE_TEST_SHAKE			1
-
-//#define ENABLE_KEM_TEST				1
-//#define ENABLE_HW_TIMER				0
-//#define ENABLE_SW_TIMER				0
-////Just used for debug
-//#define ENABLE_MATRIX_SW			0
-//#define ENABLE_MATRIX_HW			0
+#define GET_GLOBAL_TIME				0 //If 1, GET_TOTAL_IP_TIME must be zero.
+#define GET_TOTAL_IP_TIME			1 //If 1, GET_GLOBAL_TIME must be zero.
+#define GET_PROCESSING_IP_TIME		0
 
 //////////////////////////////////////////////
 //
@@ -109,7 +99,7 @@
 //Test KEM
 #define DEBUG_TEST_KEM				1
 //Accelerations
-#define DEBUG_POLY_TOMONT			1
+#define DEBUG_TIME					1
 
 //////////////////////////////////////////////
 //
@@ -158,8 +148,6 @@
 #endif
 
 #ifndef DDR_BASE_ADDR
-//#warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
-		 DEFAULT SET TO 0x01000000
 #define MEM_BASE_ADDR		0x01000000
 #else
 #define MEM_BASE_ADDR		(DDR_BASE_ADDR + 0x1000000)
@@ -205,6 +193,34 @@ u8 *RxBufferPtr;
 
 //////////////////////////////////////////////
 //
+//	Timers
+//
+//////////////////////////////////////////////
+//Poly tomont
+u32 u32PolyTomontHwTime, u32PolyTomontHwIt;
+u32 u32PolyTomontSwTime, u32PolyTomontSwIt;
+
+//Polyvec reduce
+u32 u32PolyvecReduceHwTime, u32PolyvecReduceHwIt;
+u32 u32PolyvecReduceSwTime, u32PolyvecReduceSwIt;
+
+//Polyvec basemul acc mont
+u32 u32PolyvecBasemulAccMontHwTime, u32PolyvecBasemulAccMontHwIt;
+u32 u32PolyvecBasemulAccMontSwTime, u32PolyvecBasemulAccMontSwIt;
+
+//Polyvec NTT
+u32 u32PolyvecNttHwTime, u32PolyvecNttHwIt;
+u32 u32PolyvecNttSwTime, u32PolyvecNttSwIt;
+
+//Polyvec INVNTT
+u32 u32PolyvecInvnttHwTime, u32PolyvecInvnttHwIt;
+u32 u32PolyvecInvnttSwTime, u32PolyvecInvnttSwIt;
+
+//Keccak
+u32 u32KeccakHwTime, u32KeccakHwIt;
+u32 u32KeccakSwTime, u32KeccakSwIt;
+//////////////////////////////////////////////
+//
 //	Prototypes
 //
 //////////////////////////////////////////////
@@ -217,5 +233,7 @@ void startTimer(XGpio * pStruct, uint8_t ui8Channel);
 void stopTimer(XGpio * pStruct, uint8_t ui8Channel);
 u32 getTimer(XGpio * pStruct, uint8_t ui8Channel);
 void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction);
+void resetTimeVariables();
+void printTimeVariables();
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */
