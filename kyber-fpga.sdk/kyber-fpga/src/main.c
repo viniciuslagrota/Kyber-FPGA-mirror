@@ -108,6 +108,35 @@ extern u32 u32SystemState;
 
 //////////////////////////////////////////////
 //
+//	Time variables
+//
+//////////////////////////////////////////////
+//Poly tomont
+extern u32 u32PolyTomontHwTime, u32PolyTomontHwIt;
+extern u32 u32PolyTomontSwTime, u32PolyTomontSwIt;
+
+//Polyvec reduce
+extern u32 u32PolyvecReduceHwTime, u32PolyvecReduceHwIt;
+extern u32 u32PolyvecReduceSwTime, u32PolyvecReduceSwIt;
+
+//Polyvec basemul acc mont
+extern u32 u32PolyvecBasemulAccMontHwTime, u32PolyvecBasemulAccMontHwIt;
+extern u32 u32PolyvecBasemulAccMontSwTime, u32PolyvecBasemulAccMontSwIt;
+
+//Polyvec NTT
+extern u32 u32PolyvecNttHwTime, u32PolyvecNttHwIt;
+extern u32 u32PolyvecNttSwTime, u32PolyvecNttSwIt;
+
+//Polyvec INVNTT
+extern u32 u32PolyvecInvnttHwTime, u32PolyvecInvnttHwIt;
+extern u32 u32PolyvecInvnttSwTime, u32PolyvecInvnttSwIt;
+
+//Keccak
+extern u32 u32KeccakHwTime, u32KeccakHwIt;
+extern u32 u32KeccakSwTime, u32KeccakSwIt;
+
+//////////////////////////////////////////////
+//
 //	Main
 //
 //////////////////////////////////////////////
@@ -184,6 +213,11 @@ int main()
 
 	//System state
 	u32SystemState = 0;
+
+	//Reset time variables
+#if GET_TOTAL_IP_TIME == 1
+	resetTimeVariables();
+#endif
 
     while(1)
     {
@@ -658,9 +692,16 @@ int main()
 
 		if((u32SystemState & 0x3f) == 0x0)
 		{
-//			print_debug(DEBUG_MAIN, "%ld\n", u32SystemState);
-			sleep(1);
+			//Print and reset time variables
+			#if GET_TOTAL_IP_TIME == 1
+				printTimeVariables();
+				resetTimeVariables();
+			#endif
+
+			sleep(3);
 		}
+
+
 
     }
 

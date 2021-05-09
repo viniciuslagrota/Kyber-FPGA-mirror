@@ -151,93 +151,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_keccak_
 # IP: bd/kyberBD/ip/kyberBD_axi_dma_0_0/kyberBD_axi_dma_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_dma_0_0 || ORIG_REF_NAME==kyberBD_axi_dma_0_0} -quiet] -quiet
 
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/kyberBD_axi_smc_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_smc_0 || ORIG_REF_NAME==kyberBD_axi_smc_0} -quiet] -quiet
-
-# Block Designs: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/bd_fc8e.bd
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_0/bd_fc8e_one_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_1/bd_fc8e_psr_aclk_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_2/bd_fc8e_arsw_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_3/bd_fc8e_rsw_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_4/bd_fc8e_awsw_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_5/bd_fc8e_wsw_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_6/bd_fc8e_bsw_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_7/bd_fc8e_s00mmu_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_8/bd_fc8e_s00tr_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_9/bd_fc8e_s00sic_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_10/bd_fc8e_s00a2s_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_11/bd_fc8e_sarn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_12/bd_fc8e_srn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_13/bd_fc8e_s01mmu_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_14/bd_fc8e_s01tr_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_15/bd_fc8e_s01sic_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_16/bd_fc8e_s01a2s_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_17/bd_fc8e_sawn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_18/bd_fc8e_swn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_19/bd_fc8e_sbn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_20/bd_fc8e_m00s2a_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_21/bd_fc8e_m00arn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_22/bd_fc8e_m00rn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_23/bd_fc8e_m00awn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_24/bd_fc8e_m00wn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_25/bd_fc8e_m00bn_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
-# IP: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_26/bd_fc8e_m00e_0.xci
-# DONT_TOUCH constraint suppressed by (parent) sub-design file.
-
 # IP: bd/kyberBD/ip/kyberBD_dual_bram_axis_0_1/kyberBD_dual_bram_axis_0_1.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_dual_bram_axis_0_1 || ORIG_REF_NAME==kyberBD_dual_bram_axis_0_1} -quiet] -quiet
 
@@ -247,20 +160,53 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_xlconca
 # IP: bd/kyberBD/ip/kyberBD_axi_gpio_5_0/kyberBD_axi_gpio_5_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_5_0 || ORIG_REF_NAME==kyberBD_axi_gpio_5_0} -quiet] -quiet
 
-# IP: bd/kyberBD/ip/kyberBD_system_ila_0_0/kyberBD_system_ila_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_system_ila_0_0 || ORIG_REF_NAME==kyberBD_system_ila_0_0} -quiet] -quiet
+# IP: bd/kyberBD/ip/kyberBD_timer_0_1/kyberBD_timer_0_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_timer_0_1 || ORIG_REF_NAME==kyberBD_timer_0_1} -quiet] -quiet
 
-# Block Designs: bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/bd_bc31.bd
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_bc31 || ORIG_REF_NAME==bd_bc31} -quiet] -quiet
+# IP: bd/kyberBD/ip/kyberBD_timer_0_2/kyberBD_timer_0_2.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_timer_0_2 || ORIG_REF_NAME==kyberBD_timer_0_2} -quiet] -quiet
 
-# IP: bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/bd_bc31_ila_lib_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_bc31_ila_lib_0 || ORIG_REF_NAME==bd_bc31_ila_lib_0} -quiet] -quiet
+# IP: bd/kyberBD/ip/kyberBD_timer_0_3/kyberBD_timer_0_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_timer_0_3 || ORIG_REF_NAME==kyberBD_timer_0_3} -quiet] -quiet
 
-# IP: bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_1/bd_bc31_g_inst_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_bc31_g_inst_0 || ORIG_REF_NAME==bd_bc31_g_inst_0} -quiet] -quiet
+# IP: bd/kyberBD/ip/kyberBD_timer_0_4/kyberBD_timer_0_4.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_timer_0_4 || ORIG_REF_NAME==kyberBD_timer_0_4} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_timer_0_5/kyberBD_timer_0_5.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_timer_0_5 || ORIG_REF_NAME==kyberBD_timer_0_5} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_timer_0_6/kyberBD_timer_0_6.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_timer_0_6 || ORIG_REF_NAME==kyberBD_timer_0_6} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_gpio_6_0/kyberBD_axi_gpio_6_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_0 || ORIG_REF_NAME==kyberBD_axi_gpio_6_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_xbar_1/kyberBD_xbar_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_xbar_1 || ORIG_REF_NAME==kyberBD_xbar_1} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_interconnect_1_0/kyberBD_axi_interconnect_1_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_interconnect_1_0 || ORIG_REF_NAME==kyberBD_axi_interconnect_1_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_gpio_6_2/kyberBD_axi_gpio_6_2.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_2 || ORIG_REF_NAME==kyberBD_axi_gpio_6_2} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_gpio_6_3/kyberBD_axi_gpio_6_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_3 || ORIG_REF_NAME==kyberBD_axi_gpio_6_3} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_gpio_6_4/kyberBD_axi_gpio_6_4.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_4 || ORIG_REF_NAME==kyberBD_axi_gpio_6_4} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_gpio_6_5/kyberBD_axi_gpio_6_5.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_5 || ORIG_REF_NAME==kyberBD_axi_gpio_6_5} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_6 || ORIG_REF_NAME==kyberBD_axi_gpio_6_6} -quiet] -quiet
 
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_auto_pc_1_1/kyberBD_auto_pc_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_1 || ORIG_REF_NAME==kyberBD_auto_pc_1} -quiet] -quiet
 
 # XDC: bd/kyberBD/ip/kyberBD_processing_system7_0_0/kyberBD_processing_system7_0_0.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_processing_system7_0_0 || ORIG_REF_NAME==kyberBD_processing_system7_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
@@ -323,50 +269,6 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 
 # XDC: bd/kyberBD/ip/kyberBD_axi_dma_0_0/kyberBD_axi_dma_0_0_ooc.xdc
 
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_1/bd_fc8e_psr_aclk_0_board.xdc
-# DONT_TOUCH constraint suppressed by parent sub-design file.
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_1/bd_fc8e_psr_aclk_0.xdc
-# DONT_TOUCH constraint suppressed by parent sub-design file.
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_2/bd_fc8e_arsw_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_3/bd_fc8e_rsw_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_4/bd_fc8e_awsw_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_5/bd_fc8e_wsw_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_6/bd_fc8e_bsw_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_10/bd_fc8e_s00a2s_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_11/bd_fc8e_sarn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_12/bd_fc8e_srn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_16/bd_fc8e_s01a2s_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_17/bd_fc8e_sawn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_18/bd_fc8e_swn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_19/bd_fc8e_sbn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_20/bd_fc8e_m00s2a_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_21/bd_fc8e_m00arn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_22/bd_fc8e_m00rn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_23/bd_fc8e_m00awn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_24/bd_fc8e_m00wn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/bd_0/ip/ip_25/bd_fc8e_m00bn_0_ooc.xdc
-
-# XDC: bd/kyberBD/ip/kyberBD_axi_smc_0/ooc.xdc
-
 # XDC: bd/kyberBD/ip/kyberBD_axi_gpio_5_0/kyberBD_axi_gpio_5_0_board.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_5_0 || ORIG_REF_NAME==kyberBD_axi_gpio_5_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
@@ -375,18 +277,58 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 # XDC: bd/kyberBD/ip/kyberBD_axi_gpio_5_0/kyberBD_axi_gpio_5_0.xdc
 #dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_5_0 || ORIG_REF_NAME==kyberBD_axi_gpio_5_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila_impl.xdc
-set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==bd_bc31_ila_lib_0 || ORIG_REF_NAME==bd_bc31_ila_lib_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_0/kyberBD_axi_gpio_6_0_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_0 || ORIG_REF_NAME==kyberBD_axi_gpio_6_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc
-#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==bd_bc31_ila_lib_0 || ORIG_REF_NAME==bd_bc31_ila_lib_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_0/kyberBD_axi_gpio_6_0_ooc.xdc
 
-# XDC: bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/ip/ip_0/bd_bc31_ila_lib_0_ooc.xdc
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_0/kyberBD_axi_gpio_6_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_0 || ORIG_REF_NAME==kyberBD_axi_gpio_6_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: bd/kyberBD/ip/kyberBD_system_ila_0_0/bd_0/bd_bc31_ooc.xdc
+# XDC: bd/kyberBD/ip/kyberBD_xbar_1/kyberBD_xbar_1_ooc.xdc
 
-# XDC: bd/kyberBD/ip/kyberBD_system_ila_0_0/kyberBD_system_ila_0_0_ooc.xdc
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_2/kyberBD_axi_gpio_6_2_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_2 || ORIG_REF_NAME==kyberBD_axi_gpio_6_2} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_2/kyberBD_axi_gpio_6_2_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_2/kyberBD_axi_gpio_6_2.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_2 || ORIG_REF_NAME==kyberBD_axi_gpio_6_2} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_3/kyberBD_axi_gpio_6_3_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_3 || ORIG_REF_NAME==kyberBD_axi_gpio_6_3} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_3/kyberBD_axi_gpio_6_3_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_3/kyberBD_axi_gpio_6_3.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_3 || ORIG_REF_NAME==kyberBD_axi_gpio_6_3} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_4/kyberBD_axi_gpio_6_4_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_4 || ORIG_REF_NAME==kyberBD_axi_gpio_6_4} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_4/kyberBD_axi_gpio_6_4_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_4/kyberBD_axi_gpio_6_4.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_4 || ORIG_REF_NAME==kyberBD_axi_gpio_6_4} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_5/kyberBD_axi_gpio_6_5_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_5 || ORIG_REF_NAME==kyberBD_axi_gpio_6_5} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_5/kyberBD_axi_gpio_6_5_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_5/kyberBD_axi_gpio_6_5.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_5 || ORIG_REF_NAME==kyberBD_axi_gpio_6_5} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_6 || ORIG_REF_NAME==kyberBD_axi_gpio_6_6} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_6 || ORIG_REF_NAME==kyberBD_axi_gpio_6_6} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
 # XDC: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0_ooc.xdc
+
+# XDC: bd/kyberBD/ip/kyberBD_auto_pc_1_1/kyberBD_auto_pc_1_ooc.xdc
 
 # XDC: bd/kyberBD/kyberBD_ooc.xdc

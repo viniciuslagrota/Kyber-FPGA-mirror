@@ -356,10 +356,31 @@ void poly_tomont_sw(poly *r)
 
 void poly_tomont(poly *r)
 {
+#if GET_TOTAL_IP_TIME == 1
+	if(u32SystemState & POLY_TOMONT_MASK)
+	{
+		resetTimer(&XGpioGlobalTimer, 1);
+		startTimer(&XGpioGlobalTimer, 1);
+		poly_tomont_hw(r);
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32PolyTomontHwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
+		u32PolyTomontHwIt++;
+	}
+	else
+	{
+		resetTimer(&XGpioGlobalTimer, 1);
+		startTimer(&XGpioGlobalTimer, 1);
+		poly_tomont_sw(r);
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32PolyTomontSwTime += getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD; //ticks to ns
+		u32PolyTomontSwIt++;
+	}
+#else
 	if(u32SystemState & POLY_TOMONT_MASK)
 		poly_tomont_hw(r);
 	else
 		poly_tomont_sw(r);
+#endif
 }
 
 /*************************************************
