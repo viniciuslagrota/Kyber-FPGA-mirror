@@ -47,7 +47,7 @@
 #include "lwip/dhcp.h"
 extern volatile int dhcp_timoutcntr;
 #endif
-#define DEFAULT_IP_ADDRESS	"192.168.1.10"
+#define DEFAULT_IP_ADDRESS	"192.168.1.105"
 #define DEFAULT_IP_MASK		"255.255.255.0"
 #define DEFAULT_GW_ADDRESS	"192.168.1.1"
 #endif /* LWIP_IPV6 */

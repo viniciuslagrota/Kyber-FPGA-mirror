@@ -175,6 +175,10 @@ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
 		return ERR_OK;
 	}
 
+//	xil_printf("Data location: 0x%x\n\r", p->payload);
+	char * pcBuf = p->payload;
+//	xil_printf("Data: %c\n\r", *pcBuf);
+
 	/* Record total bytes for final report */
 	server.total_bytes += p->tot_len;
 
