@@ -27,6 +27,7 @@
  */
 
 #include <stdio.h>
+#include "config.h"
 #include "xparameters.h"
 #include "netif/xadapter.h"
 #include "platform.h"

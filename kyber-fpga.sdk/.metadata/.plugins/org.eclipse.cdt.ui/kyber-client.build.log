@@ -1,10 +1,14 @@
-12:15:10 **** Incremental Build of configuration Debug for project kyber-client ****
+17:35:43 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 Building file: ../src/tcp_perf_client.c
 Invoking: ARM v7 gcc compiler
 arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_client.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_client.d" -MT"src/tcp_perf_client.o" -o "src/tcp_perf_client.o" "../src/tcp_perf_client.c"
+../src/tcp_perf_client.c: In function 'tcp_client_sent':
+../src/tcp_perf_client.c:307:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
 Finished building: ../src/tcp_perf_client.c
  
 Building target: kyber-client.elf
@@ -15,9 +19,9 @@ Finished building target: kyber-client.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 139484	   3432	31578400	31721316	1e40764	kyber-client.elf
+ 140524	   3688	31578400	31722612	1e40c74	kyber-client.elf
 Finished building: kyber-client.elf.size
  
 
-12:15:15 Build Finished (took 4s.353ms)
+17:35:47 Build Finished (took 4s.451ms)
 

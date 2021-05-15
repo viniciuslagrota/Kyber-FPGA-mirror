@@ -229,10 +229,104 @@ static err_t tcp_send_perf_traffic(void)
 	return ERR_OK;
 }
 
+static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
+{
+	err_t err;
+	u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
+
+	if (c_pcb == NULL) {
+		return ERR_CONN;
+	}
+
+#ifdef __MICROBLAZE__
+	/* Zero-copy pbufs is used to get maximum performance for Microblaze.
+	 * For Zynq A9, ZynqMP A53 and R5 zero-copy pbufs does not give
+	 * significant improvement hense not used. */
+	apiflags = 0;
+#endif
+
+//	while (tcp_sndbuf(c_pcb) > TCP_SEND_BUFSIZE) {
+		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
+		if (err != ERR_OK) {
+			xil_printf("TCP client: Error on tcp_write: %d\r\n",
+					err);
+			return err;
+		}
+
+		err = tcp_output(c_pcb);
+		if (err != ERR_OK) {
+			xil_printf("TCP client: Error on tcp_output: %d\r\n",
+					err);
+			return err;
+		}
+		client.total_bytes += u16BufferLen;
+		client.i_report.total_bytes += u16BufferLen;
+//	}
+
+	if (client.end_time || client.i_report.report_interval_time) {
+		u64_t now = get_time_ms();
+		if (client.i_report.report_interval_time) {
+			if (client.i_report.start_time) {
+				u64_t diff_ms = now - client.i_report.start_time;
+				u64_t rtime_ms = client.i_report.report_interval_time;
+				if (diff_ms >= rtime_ms) {
+					tcp_conn_report(diff_ms, INTER_REPORT);
+					client.i_report.start_time = 0;
+					client.i_report.total_bytes = 0;
+				}
+			} else {
+				client.i_report.start_time = now;
+			}
+		}
+
+		if (client.end_time) {
+			/* this session is time-limited */
+			u64_t diff_ms = now - client.start_time;
+			if (diff_ms >= client.end_time) {
+				/* time specified is over,
+				 * close the connection */
+				tcp_conn_report(diff_ms, TCP_DONE_CLIENT);
+				xil_printf("TCP test passed Successfully\n\r");
+				tcp_client_close(c_pcb);
+				c_pcb = NULL;
+				return ERR_OK;
+			}
+		}
+	}
+	return ERR_OK;
+}
+
 /** TCP sent callback, try to send more data */
 static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
+#if PERFORMANCE_TEST == 1
 	return tcp_send_perf_traffic();
+#else
+	xil_printf("Sent callback\n\r");
+#endif
+}
+
+/** TCP recv callback */
+static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
+{
+	/* do not read the packet if we are not in ESTABLISHED state */
+	if (!p) {
+		tcp_close(tpcb);
+		tcp_recv(tpcb, NULL);
+		return ERR_OK;
+	}
+
+	xil_printf("Data length: %d\n\r", p->len);
+		char * pcBuf = p->payload; //Get transmitted data.
+	//	xil_printf("Data: %c\n\r", *pcBuf);
+		xil_printf("Data rcv: %s\n\r", pcBuf);
+
+	/* indicate that the packet has been received */
+	tcp_recved(tpcb, p->len);
+
+	/* free the received pbuf */
+	pbuf_free(p);
+	return ERR_OK;
 }
 
 /** TCP connected callback (active connection), send data now */
@@ -262,16 +356,23 @@ static err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 	/* set callback values & functions */
 	tcp_arg(c_pcb, NULL);
 	tcp_sent(c_pcb, tcp_client_sent);
+	tcp_recv(c_pcb, tcp_client_recv);
 	tcp_err(c_pcb, tcp_client_err);
 
 	/* initiate data transfer */
 	return ERR_OK;
 }
 
-void transfer_data(void)
+void transfer_perf_data(void)
 {
 	if (client.client_id)
 		tcp_send_perf_traffic();
+}
+
+void transfer_data(char * pcBuffer, u16_t u16BufferLen)
+{
+	if (client.client_id)
+		tcp_send_traffic(pcBuffer, u16BufferLen);
 }
 
 void start_application(void)

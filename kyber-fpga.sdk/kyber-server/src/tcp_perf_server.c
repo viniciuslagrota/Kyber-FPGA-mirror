@@ -175,9 +175,58 @@ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
 		return ERR_OK;
 	}
 
-//	xil_printf("Data location: 0x%x\n\r", p->payload);
-	char * pcBuf = p->payload;
+	/* Record total bytes for final report */
+	server.total_bytes += p->tot_len;
+
+	if (server.i_report.report_interval_time) {
+		u64_t now = get_time_ms();
+		/* Record total bytes for interim report */
+		server.i_report.total_bytes += p->tot_len;
+		if (server.i_report.start_time) {
+			u64_t diff_ms = now - server.i_report.start_time;
+
+			if (diff_ms >= server.i_report.report_interval_time) {
+				tcp_conn_report(diff_ms, INTER_REPORT);
+				/* Reset Interim report counters */
+				server.i_report.start_time = 0;
+				server.i_report.total_bytes = 0;
+			}
+		} else {
+			/* Save start time for interim report */
+			server.i_report.start_time = now;
+		}
+	}
+
+	tcp_recved(tpcb, p->tot_len);
+
+	pbuf_free(p);
+	return ERR_OK;
+}
+
+/** Receive data on a tcp session */
+static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
+		struct pbuf *p, err_t err)
+{
+	if (p == NULL) {
+		u64_t now = get_time_ms();
+		u64_t diff_ms = now - server.start_time;
+		tcp_server_close(tpcb);
+		tcp_conn_report(diff_ms, TCP_DONE_SERVER);
+		xil_printf("TCP test passed Successfully\n\r");
+		return ERR_OK;
+	}
+
+	xil_printf("Data length: %d\n\r", p->len);
+	char * pcBuf = p->payload; //Get transmitted data.
 //	xil_printf("Data: %c\n\r", *pcBuf);
+	xil_printf("Data rcv: %s\n\r", pcBuf);
+
+	//Send answer
+	char cTxBuffer[256] = "Response!";
+	if (tcp_sndbuf(tpcb) > p->len) {
+		err = tcp_write(tpcb, cTxBuffer, sizeof(cTxBuffer), 1);
+	} else
+		xil_printf("no space in tcp_sndbuf\n\r");
 
 	/* Record total bytes for final report */
 	server.total_bytes += p->tot_len;
@@ -233,7 +282,11 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 
 	/* setup callbacks for tcp rx connection */
 	tcp_arg(c_pcb, NULL);
+#if PERFORMANCE_TEST == 1
 	tcp_recv(c_pcb, tcp_recv_perf_traffic);
+#else
+	tcp_recv(c_pcb, tcp_recv_traffic);
+#endif
 	tcp_err(c_pcb, tcp_server_err);
 
 	return ERR_OK;

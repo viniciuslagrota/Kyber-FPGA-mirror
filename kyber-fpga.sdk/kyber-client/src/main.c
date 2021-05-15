@@ -27,6 +27,7 @@
  */
 
 #include <stdio.h>
+#include "config.h"
 #include "xparameters.h"
 #include "netif/xadapter.h"
 #include "platform.h"
@@ -58,8 +59,11 @@ extern volatile int TcpSlowTmrFlag;
 
 void platform_enable_interrupts(void);
 void start_application(void);
-void transfer_data(void);
+void transfer_perf_data(void);
+void transfer_data(char * pcBuffer, u16_t u16BufferLen);
 void print_app_header(void);
+
+char cTxBuffer[256] = "Hello World";
 
 #if defined (__arm__) && !defined (ARMR5)
 #if XPAR_GIGE_PCS_PMA_SGMII_CORE_PRESENT == 1 || \
@@ -206,6 +210,7 @@ int main(void)
 	xil_printf("\r\n");
 
 	while (1) {
+		xil_printf("Preparing to send data...\r\n");
 		if (TcpFastTmrFlag) {
 			tcp_fasttmr();
 			TcpFastTmrFlag = 0;
@@ -215,7 +220,15 @@ int main(void)
 			TcpSlowTmrFlag = 0;
 		}
 		xemacif_input(netif);
-		transfer_data();
+
+		//Transfer performance data
+#if PERFORMANCE_TEST == 1
+		transfer_perf_data();
+#else
+		transfer_data(cTxBuffer, sizeof(cTxBuffer));
+#endif
+		xil_printf("Data sent to server...\r\n");
+		sleep(1);
 	}
 
 	/* never reached */
