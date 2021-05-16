@@ -27,7 +27,8 @@
  */
 
 #include <stdio.h>
-#include "config.h"
+#include "include/global_def.h"
+#include "include/test_kem.h"
 #include "xparameters.h"
 #include "netif/xadapter.h"
 #include "platform.h"
@@ -38,6 +39,10 @@
 #include "lwip/priv/tcp_priv.h"
 #include "lwip/init.h"
 #include "lwip/inet.h"
+
+#include "include/poly.h"
+#include "include/polyvec.h"
+#include "include/fips202.h"
 
 #if LWIP_IPV6==1
 #include "lwip/ip6_addr.h"
@@ -54,16 +59,99 @@ extern volatile int dhcp_timoutcntr;
 #define DEFAULT_GW_ADDRESS	"192.168.1.1"
 #endif /* LWIP_IPV6 */
 
+//////////////////////////////////////////////
+//
+//	Kyber Variables
+//
+//////////////////////////////////////////////
+extern uint8_t pk[CRYPTO_PUBLICKEYBYTES];
+extern uint8_t sk[CRYPTO_SECRETKEYBYTES];
+extern uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
+extern uint8_t key_a[CRYPTO_BYTES];
+
+//////////////////////////////////////////////
+//
+//	System Variables
+//
+//////////////////////////////////////////////
+extern XGpio_Config * XGpioConfigDma;
+extern XGpio XGpioDma;
+
+extern XGpio_Config * XGpioConfigPtrGlobalTimer;
+extern XGpio XGpioGlobalTimer;
+
+extern XGpio_Config * XGpioConfigKyberK;
+extern XGpio XGpioKyberK;
+
+extern XGpio_Config * XGpioConfigTomontAndReduce;
+extern XGpio XGpioTomontAndReduce;
+
+extern XGpio_Config * XGpioConfigAccMontKeccak;
+extern XGpio XGpioAccMontKeccak;
+
+extern XGpio_Config * XGpioConfigNtt;
+extern XGpio XGpioNtt;
+
+extern XAxiDma_Config * XAxiDmaConfig;
+extern XAxiDma XAxiDmaPtr;
+
+//extern u32 *memoryBram0;
+//extern u32 *memoryBram1;
+
+extern u8 *TxBufferPtr;
+extern u8 *RxBufferPtr;
+
+extern u32 u32SystemState;
+
 extern volatile int TcpFastTmrFlag;
 extern volatile int TcpSlowTmrFlag;
 
+char cTxBuffer[256] = "Hello World1";
+
+//////////////////////////////////////////////
+//
+//	Time variables
+//
+//////////////////////////////////////////////
+//Poly tomont
+extern u32 u32PolyTomontHwTime, u32PolyTomontHwIt;
+extern u32 u32PolyTomontSwTime, u32PolyTomontSwIt;
+
+//Polyvec reduce
+extern u32 u32PolyvecReduceHwTime, u32PolyvecReduceHwIt;
+extern u32 u32PolyvecReduceSwTime, u32PolyvecReduceSwIt;
+
+//Polyvec basemul acc mont
+extern u32 u32PolyvecBasemulAccMontHwTime, u32PolyvecBasemulAccMontHwIt;
+extern u32 u32PolyvecBasemulAccMontSwTime, u32PolyvecBasemulAccMontSwIt;
+
+//Polyvec NTT
+extern u32 u32PolyvecNttHwTime, u32PolyvecNttHwIt;
+extern u32 u32PolyvecNttSwTime, u32PolyvecNttSwIt;
+
+//Polyvec INVNTT
+extern u32 u32PolyvecInvnttHwTime, u32PolyvecInvnttHwIt;
+extern u32 u32PolyvecInvnttSwTime, u32PolyvecInvnttSwIt;
+
+//Keccak
+extern u32 u32KeccakHwTime, u32KeccakHwIt;
+extern u32 u32KeccakSwTime, u32KeccakSwIt;
+
+//Timer
+u32 u32Timer;
+u64_t t0, t1;
+
+//////////////////////////////////////////////
+//
+//	Prototypes
+//
+//////////////////////////////////////////////
 void platform_enable_interrupts(void);
 void start_application(void);
 void transfer_perf_data(void);
 void transfer_data(char * pcBuffer, u16_t u16BufferLen);
 void print_app_header(void);
 
-char cTxBuffer[256] = "Hello World";
 
 #if defined (__arm__) && !defined (ARMR5)
 #if XPAR_GIGE_PCS_PMA_SGMII_CORE_PRESENT == 1 || \
@@ -80,6 +168,12 @@ int IicPhyReset(void);
 #endif
 
 struct netif server_netif;
+
+//////////////////////////////////////////////
+//
+//	Functions
+//
+//////////////////////////////////////////////
 
 #if LWIP_IPV6==1
 static void print_ipv6(char *msg, ip_addr_t *ip)
@@ -122,6 +216,11 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 }
 #endif /* LWIP_IPV6 */
 
+//////////////////////////////////////////////
+//
+//	Main
+//
+//////////////////////////////////////////////
 int main(void)
 {
 	struct netif *netif;
@@ -147,6 +246,82 @@ int main(void)
 #endif
 
 	init_platform();
+
+	print_debug(DEBUG_MAIN, "--- Kyber Algortithm ---\n\n");
+
+	//---- Local variables ----
+	u32 u32LedState = 0x0;
+
+	//---- Initialize LED ----
+	XGpioPs Gpio;
+	ledInit(&Gpio);
+
+	//---- DMA variables ----
+	int Status;
+	TxBufferPtr = (u8 *)TX_BUFFER_BASE ;
+	RxBufferPtr = (u8 *)RX_BUFFER_BASE;
+
+	//---- Configure DMA enable read GPIO ----
+	XGpioConfigDma = XGpio_LookupConfig(XPAR_AXI_GPIO_5_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioDma, XGpioConfigDma, XGpioConfigDma->BaseAddress);
+
+	//---- Configure timers ----
+	configTimer(XGpioConfigPtrGlobalTimer, &XGpioGlobalTimer, XPAR_AXI_GPIO_0_DEVICE_ID, 1);
+
+	//---- Configure Kyber K ----
+	configKyberK(XGpioConfigKyberK, &XGpioKyberK, XPAR_AXI_GPIO_1_DEVICE_ID, 1);
+	print_debug(DEBUG_MAIN, "[MAIN] Parameter KYBER_K: %ld.\n", XGpio_DiscreteRead(&XGpioKyberK, 1));
+
+	//Poly tomont and reduce
+	XGpioConfigTomontAndReduce = XGpio_LookupConfig(XPAR_AXI_GPIO_2_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioTomontAndReduce, XGpioConfigTomontAndReduce, XGpioConfigTomontAndReduce->BaseAddress);
+
+	//Polyvec basemul acc montgomery
+	XGpioConfigAccMontKeccak = XGpio_LookupConfig(XPAR_AXI_GPIO_3_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioAccMontKeccak, XGpioConfigAccMontKeccak, XGpioConfigAccMontKeccak->BaseAddress);
+
+	//Polyvec NTT
+	XGpioConfigNtt = XGpio_LookupConfig(XPAR_AXI_GPIO_4_DEVICE_ID);
+	XGpio_CfgInitialize(&XGpioNtt, XGpioConfigNtt, XGpioConfigNtt->BaseAddress);
+
+	//---- Configure AXI BRAM ----
+//	memoryBram0 = (u32 *) XPAR_DUAL_BRAM_0_S00_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM0 initialized. First position: 0x%08lx.\n", memoryBram0[0]);
+//	memoryBram0[0] = 0x0;
+//
+//	memoryBram1 = (u32 *) XPAR_DUAL_BRAM_0_S01_AXI_BASEADDR;
+//	print_debug(DEBUG_MAIN, "[MAIN] Memory BRAM1 initialized. First position: 0x%08lx.\n", memoryBram1[0]);
+//	memoryBram1[0] = 0x0;
+
+	//---- Configure DMA ----
+	XAxiDmaConfig = XAxiDma_LookupConfig(XPAR_AXIDMA_0_DEVICE_ID);
+	if (!XAxiDmaConfig) {
+		print_debug(DEBUG_MAIN, "[MAIN] No config found for %d\r\n", XPAR_AXIDMA_0_DEVICE_ID);
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_CfgInitialize(&XAxiDmaPtr, XAxiDmaConfig);
+	if (Status != XST_SUCCESS) {
+		print_debug(DEBUG_MAIN, "[MAIN] Initialization failed %d\r\n", Status);
+		return XST_FAILURE;
+	}
+
+	if(XAxiDma_HasSg(&XAxiDmaPtr)){
+		print_debug(DEBUG_MAIN, "[MAIN] Device configured as SG mode \r\n");
+		return XST_FAILURE;
+	}
+
+	//Disable interrupts, we use polling mode
+	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
+
+	//System state
+	u32SystemState = 0;
+
+	//Reset time variables
+	#if GET_TOTAL_IP_TIME == 1
+		resetTimeVariables();
+	#endif
 
 	xil_printf("\r\n\r\n");
 	xil_printf("-----lwIP RAW Mode TCP Client Application-----\r\n");
@@ -209,8 +384,18 @@ int main(void)
 	start_application();
 	xil_printf("\r\n");
 
+	//Use only hardware!
+	u32SystemState = 0x3f;
+
 	while (1) {
-		xil_printf("Preparing to send data...\r\n");
+
+		//---- Get chip temperature ----
+		getChipTemperature();
+
+		//Blink led
+		XGpioPs_WritePin(&Gpio, ledpin, u32LedState);
+		u32LedState ^= 0x1;
+
 		if (TcpFastTmrFlag) {
 			tcp_fasttmr();
 			TcpFastTmrFlag = 0;
@@ -221,14 +406,82 @@ int main(void)
 		}
 		xemacif_input(netif);
 
-		//Transfer performance data
-#if PERFORMANCE_TEST == 1
-		transfer_perf_data();
-#else
-		transfer_data(cTxBuffer, sizeof(cTxBuffer));
-#endif
-		xil_printf("Data sent to server...\r\n");
-		sleep(1);
+//		//Transfer performance data
+//#if PERFORMANCE_TEST == 1
+//		transfer_perf_data();
+//#else
+//		transfer_data(cTxBuffer, sizeof(cTxBuffer));
+//		cTxBuffer[11] = cTxBuffer[11] + 1;
+////		transfer_data((char *)pk, CRYPTO_PUBLICKEYBYTES);
+//#endif
+
+		switch(st)
+		{
+			case WAITING_SERVER_CONNECTION:
+				//Do nothing. Wait connection.
+			break;
+			case CONNECTED_TO_SERVER:
+				xil_printf("Connected to server!\r\n");
+				st = CREATE_KEY_PAIR;
+			break;
+			case CREATE_KEY_PAIR:
+				print_debug(DEBUG_MAIN, "Generating new key pair...\r\n");
+
+				//Start timer
+				resetTimer(&XGpioGlobalTimer, 1);
+				u32Timer = getTimer(&XGpioGlobalTimer, 1);
+				print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
+				startTimer(&XGpioGlobalTimer, 1);
+
+				t0 = get_time_ms();
+
+				//Generate key pair
+				crypto_kem_keypair(pk, sk);
+
+//				print_debug(DEBUG_MAIN, "Public key: ");
+//				for(int i = 0; i < CRYPTO_PUBLICKEYBYTES; i++)
+//					print_debug(DEBUG_MAIN, "%x", pk[i]);
+//				print_debug(DEBUG_MAIN, "\r\n\r\n");
+				st = SEND_PK;
+			break;
+			case SEND_PK:
+				//Publish PK
+				transfer_data((char *)pk, CRYPTO_PUBLICKEYBYTES);
+				st = WAITING_CT;
+			break;
+			case WAITING_CT:
+				//Do nothing. Wait for ciphertext.
+			break;
+			case CALCULATE_SHARED_SECRET:
+				//Check CT received
+//				print_debug(DEBUG_MAIN, "ct received: ");
+//				for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
+//					print_debug(DEBUG_MAIN, "%x", ct[i]);
+//				print_debug(DEBUG_MAIN, "\n\r");
+
+				//Decapsulation
+				crypto_kem_dec(key_a, ct, sk);
+
+				t1 = get_time_ms();
+
+				//Stop timer
+				stopTimer(&XGpioGlobalTimer, 1);
+				u32Timer = getTimer(&XGpioGlobalTimer, 1);
+				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
+				print_debug(DEBUG_MAIN, "[MAIN] Timer (sw) to process KEM (client side): %lld ms\n", t1 - t0);
+
+				//Check shared secret
+				print_debug(DEBUG_MAIN, "key_a calculated: ");
+				for(int i = 0; i < CRYPTO_BYTES; i++)
+					print_debug(DEBUG_MAIN, "%x", key_a[i]);
+				print_debug(DEBUG_MAIN, "\n\r\n\r");
+
+				st = CREATE_KEY_PAIR;
+				sleep(10);
+			break;
+		}
+
+//		sleep(1);
 	}
 
 	/* never reached */

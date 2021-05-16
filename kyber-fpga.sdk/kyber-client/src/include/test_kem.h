@@ -1,0 +1,25 @@
+/*
+ * test_kem.h
+ *
+ *  Created on: 5 de fev de 2021
+ *      Author: vinicius
+ */
+
+#ifndef SRC_INCLUDE_TEST_KEM_H_
+#define SRC_INCLUDE_TEST_KEM_H_
+
+//////////////////////////////////////////////
+//
+//	Includes
+//
+//////////////////////////////////////////////
+#include "global_def.h"
+
+//////////////////////////////////////////////
+//
+//	Prototypes
+//
+//////////////////////////////////////////////
+int kem_test(const char *name, int iterations);
+
+#endif /* SRC_INCLUDE_TEST_KEM_H_ */

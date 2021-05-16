@@ -29,6 +29,7 @@
 /* Connection handle for a TCP Client session */
 
 #include "tcp_perf_client.h"
+#include "include/global_def.h"
 
 static struct tcp_pcb *c_pcb;
 static char send_buf[TCP_SEND_BUFSIZE];
@@ -147,6 +148,9 @@ static void tcp_client_close(struct tcp_pcb *pcb)
 			tcp_abort(pcb);
 		}
 	}
+
+	//Change st
+	st = WAITING_SERVER_CONNECTION;
 }
 
 /** Error callback, tcp session aborted */
@@ -246,6 +250,7 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 #endif
 
 //	while (tcp_sndbuf(c_pcb) > TCP_SEND_BUFSIZE) {
+//		xil_printf("Writing data length: %d\n\r", u16BufferLen);
 		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
 		if (err != ERR_OK) {
 			xil_printf("TCP client: Error on tcp_write: %d\r\n",
@@ -279,6 +284,7 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 			}
 		}
 
+#if ENABLE_TIMEOUT == 1
 		if (client.end_time) {
 			/* this session is time-limited */
 			u64_t diff_ms = now - client.start_time;
@@ -292,18 +298,9 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 				return ERR_OK;
 			}
 		}
+#endif
 	}
 	return ERR_OK;
-}
-
-/** TCP sent callback, try to send more data */
-static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
-{
-#if PERFORMANCE_TEST == 1
-	return tcp_send_perf_traffic();
-#else
-	xil_printf("Sent callback\n\r");
-#endif
 }
 
 /** TCP recv callback */
@@ -316,10 +313,11 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 		return ERR_OK;
 	}
 
-	xil_printf("Data length: %d\n\r", p->len);
-		char * pcBuf = p->payload; //Get transmitted data.
-	//	xil_printf("Data: %c\n\r", *pcBuf);
-		xil_printf("Data rcv: %s\n\r", pcBuf);
+//	xil_printf("data length: %d\n\r", p->len);
+	char * pcBuf = p->payload; //Get transmitted data.
+
+	memcpy(ct, pcBuf, p->len);
+	st = CALCULATE_SHARED_SECRET;
 
 	/* indicate that the packet has been received */
 	tcp_recved(tpcb, p->len);
@@ -327,6 +325,17 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 	/* free the received pbuf */
 	pbuf_free(p);
 	return ERR_OK;
+}
+
+/** TCP sent callback, try to send more data */
+static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
+{
+#if PERFORMANCE_TEST == 1
+	return tcp_send_perf_traffic();
+#else
+//	xil_printf("Sent callback\n\r");
+	return ERR_OK;
+#endif
 }
 
 /** TCP connected callback (active connection), send data now */
@@ -358,6 +367,9 @@ static err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 	tcp_sent(c_pcb, tcp_client_sent);
 	tcp_recv(c_pcb, tcp_client_recv);
 	tcp_err(c_pcb, tcp_client_err);
+
+	//Change st
+	st = CONNECTED_TO_SERVER;
 
 	/* initiate data transfer */
 	return ERR_OK;

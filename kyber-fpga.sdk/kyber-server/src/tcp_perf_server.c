@@ -29,6 +29,7 @@
 /** Connection handle for a TCP Server session */
 
 #include "tcp_perf_server.h"
+#include "include/global_def.h"
 
 extern struct netif server_netif;
 static struct tcp_pcb *c_pcb;
@@ -161,6 +162,44 @@ static void tcp_server_err(void *arg, err_t err)
 	xil_printf("TCP connection aborted\n\r");
 }
 
+static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
+{
+	err_t err;
+	u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
+
+	if (c_pcb == NULL) {
+		return ERR_CONN;
+	}
+
+#ifdef __MICROBLAZE__
+	/* Zero-copy pbufs is used to get maximum performance for Microblaze.
+	 * For Zynq A9, ZynqMP A53 and R5 zero-copy pbufs does not give
+	 * significant improvement hense not used. */
+	apiflags = 0;
+#endif
+
+//	xil_printf("Writing data length: %d\n\r", u16BufferLen);
+	err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
+	if (err != ERR_OK) {
+		xil_printf("TCP client: Error on tcp_write: %d\r\n",
+				err);
+		return err;
+	}
+
+	err = tcp_output(c_pcb);
+	if (err != ERR_OK) {
+		xil_printf("TCP client: Error on tcp_output: %d\r\n",
+				err);
+		return err;
+	}
+	return ERR_OK;
+}
+
+void transfer_data(char * pcBuffer, u16_t u16BufferLen)
+{
+	if (server.client_id)
+		tcp_send_traffic(pcBuffer, u16BufferLen);
+}
 
 /** Receive data on a tcp session */
 static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
@@ -207,26 +246,17 @@ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
 static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 		struct pbuf *p, err_t err)
 {
-	if (p == NULL) {
-		u64_t now = get_time_ms();
-		u64_t diff_ms = now - server.start_time;
-		tcp_server_close(tpcb);
-		tcp_conn_report(diff_ms, TCP_DONE_SERVER);
-		xil_printf("TCP test passed Successfully\n\r");
+	if (!p) {
+		tcp_close(tpcb);
+		tcp_recv(tpcb, NULL);
 		return ERR_OK;
 	}
 
-	xil_printf("Data length: %d\n\r", p->len);
+//		xil_printf("data length: %d\n\r", p->len);
 	char * pcBuf = p->payload; //Get transmitted data.
-//	xil_printf("Data: %c\n\r", *pcBuf);
-	xil_printf("Data rcv: %s\n\r", pcBuf);
 
-	//Send answer
-	char cTxBuffer[256] = "Response!";
-	if (tcp_sndbuf(tpcb) > p->len) {
-		err = tcp_write(tpcb, cTxBuffer, sizeof(cTxBuffer), 1);
-	} else
-		xil_printf("no space in tcp_sndbuf\n\r");
+	memcpy(pk, pcBuf, p->len);
+	st = CALCULATING_CT;
 
 	/* Record total bytes for final report */
 	server.total_bytes += p->tot_len;
