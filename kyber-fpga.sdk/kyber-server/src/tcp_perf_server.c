@@ -34,6 +34,7 @@
 extern struct netif server_netif;
 static struct tcp_pcb *c_pcb;
 static struct perf_stats server;
+u32_t u32LenRecv = 0;
 
 void print_app_header(void)
 {
@@ -178,7 +179,9 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	apiflags = 0;
 #endif
 
-//	xil_printf("Writing data length: %d\n\r", u16BufferLen);
+#if DEBUG_KYBER == 1
+	xil_printf("Writing data length: %d\n\r", u16BufferLen);
+#endif
 	err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
 	if (err != ERR_OK) {
 		xil_printf("TCP client: Error on tcp_write: %d\r\n",
@@ -215,6 +218,14 @@ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
 	}
 
 	/* Record total bytes for final report */
+#if DEBUG_KYBER == 1
+	xil_printf("data length: %d\n\r", p->len);
+	xil_printf("data total length: %d\n\r", p->tot_len);
+	char * pcBuffer = (char *)p->payload;
+	xil_printf("%s", pcBuffer);
+	xil_printf("\n\r\n\r\n\r");
+
+#endif
 	server.total_bytes += p->tot_len;
 
 	if (server.i_report.report_interval_time) {
@@ -252,11 +263,22 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 		return ERR_OK;
 	}
 
-//		xil_printf("data length: %d\n\r", p->len);
+	tcp_nagle_disable(tpcb);
+
+#if DEBUG_KYBER == 1
+	xil_printf("data length: %d\n\r", p->len);
+//	xil_printf("data total length: %d\n\r", p->tot_len);
+#endif
 	char * pcBuf = p->payload; //Get transmitted data.
 
-	memcpy(pk, pcBuf, p->len);
-	st = CALCULATING_CT;
+	memcpy(pk + u32LenRecv, pcBuf, p->len);
+	u32LenRecv += p->len;
+
+	if(u32LenRecv >= CRYPTO_PUBLICKEYBYTES)
+	{
+		st = CALCULATING_CT;
+		u32LenRecv = 0;
+	}
 
 	/* Record total bytes for final report */
 	server.total_bytes += p->tot_len;
@@ -353,6 +375,7 @@ void start_application(void)
 	}
 
 	/* we do not need any arguments to callback functions */
+	tcp_nagle_disable(lpcb);
 	tcp_arg(lpcb, NULL);
 
 	/* specify callback to use for incoming connections */

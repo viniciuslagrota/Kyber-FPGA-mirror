@@ -108,7 +108,7 @@
 #define DEBUG_TEST_KEM				1
 //Accelerations
 #define DEBUG_TIME					1
-
+#define DEBUG_KYBER					0
 //////////////////////////////////////////////
 //
 //	Debug print
@@ -185,7 +185,7 @@ uint8_t pk[CRYPTO_PUBLICKEYBYTES];
 uint8_t sk[CRYPTO_SECRETKEYBYTES];
 uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
 uint8_t key_a[CRYPTO_BYTES];
-
+struct netif *netif;
 //////////////////////////////////////////////
 //
 //	AXI GPIO

@@ -30,10 +30,12 @@
 
 #include "tcp_perf_client.h"
 #include "include/global_def.h"
+#include "netif/xadapter.h"
 
 static struct tcp_pcb *c_pcb;
 static char send_buf[TCP_SEND_BUFSIZE];
 static struct perf_stats client;
+u32_t u32LenRecv = 0;
 
 void print_app_header()
 {
@@ -199,6 +201,9 @@ static err_t tcp_send_perf_traffic(void)
 		client.total_bytes += TCP_SEND_BUFSIZE;
 		client.i_report.total_bytes += TCP_SEND_BUFSIZE;
 	}
+#if DEBUG_KYBER == 1
+	xil_printf("Writing data length: %llu\n\r", TCP_SEND_BUFSIZE);
+#endif
 
 	if (client.end_time || client.i_report.report_interval_time) {
 		u64_t now = get_time_ms();
@@ -249,8 +254,10 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	apiflags = 0;
 #endif
 
-//	while (tcp_sndbuf(c_pcb) > TCP_SEND_BUFSIZE) {
-//		xil_printf("Writing data length: %d\n\r", u16BufferLen);
+	if (tcp_sndbuf(c_pcb) > u16BufferLen) {
+#if DEBUG_KYBER == 1
+		xil_printf("Writing data length: %d\n\r", u16BufferLen);
+#endif
 		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
 		if (err != ERR_OK) {
 			xil_printf("TCP client: Error on tcp_write: %d\r\n",
@@ -266,7 +273,11 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 		}
 		client.total_bytes += u16BufferLen;
 		client.i_report.total_bytes += u16BufferLen;
-//	}
+	}
+	else
+	{
+		xil_printf("Not enough space in buffer.\n\r");
+	}
 
 	if (client.end_time || client.i_report.report_interval_time) {
 		u64_t now = get_time_ms();
@@ -313,11 +324,23 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 		return ERR_OK;
 	}
 
-//	xil_printf("data length: %d\n\r", p->len);
+	tcp_nagle_disable(tpcb);
+
+#if DEBUG_KYBER == 1
+	xil_printf("data length: %d\n\r", p->len);
+//	xil_printf("data total length: %d\n\r", p->tot_len);
+//	xil_printf("next pbuf: 0x%x\n\r", p->next);
+#endif
 	char * pcBuf = p->payload; //Get transmitted data.
 
-	memcpy(ct, pcBuf, p->len);
-	st = CALCULATE_SHARED_SECRET;
+	memcpy(ct + u32LenRecv, pcBuf, p->len);
+	u32LenRecv += p->len;
+
+	if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
+	{
+		st = CALCULATE_SHARED_SECRET;
+		u32LenRecv = 0;
+	}
 
 	/* indicate that the packet has been received */
 	tcp_recved(tpcb, p->len);
@@ -331,7 +354,8 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
 #if PERFORMANCE_TEST == 1
-	return tcp_send_perf_traffic();
+//	return tcp_send_perf_traffic();
+	return ERR_OK;
 #else
 //	xil_printf("Sent callback\n\r");
 	return ERR_OK;
@@ -363,6 +387,7 @@ static err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 	print_tcp_conn_stats();
 
 	/* set callback values & functions */
+	tcp_nagle_disable(c_pcb);
 	tcp_arg(c_pcb, NULL);
 	tcp_sent(c_pcb, tcp_client_sent);
 	tcp_recv(c_pcb, tcp_client_recv);
@@ -424,8 +449,8 @@ void start_application(void)
 
 	/* initialize data buffer being sent with same as used in iperf */
 	for (i = 0; i < TCP_SEND_BUFSIZE; i++)
-//		send_buf[i] = (i % 10) + '0';
-		send_buf[i] = 'E';
+		send_buf[i] = (i % 10) + '0';
+//		send_buf[i] = 'E';
 
 
 	return;

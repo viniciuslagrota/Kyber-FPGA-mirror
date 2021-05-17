@@ -1,4 +1,100 @@
-21:05:58 **** Incremental Build of configuration Debug for project kyber-server ****
+14:51:33 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/tcp_perf_server.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
+../src/tcp_perf_server.c:208:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
+ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
+              ^~~~~~~~~~~~~~~~~~~~~
+Finished building: ../src/tcp_perf_server.c
+ 
+Building target: kyber-server.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-server.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 417864	   3960	31578400	32000224	1e848e0	kyber-server.elf
+Finished building: kyber-server.elf.size
+ 
+14:51:48 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+14:52:28 **** Incremental Build of configuration Debug for project kyber-client ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/tcp_perf_client.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_client.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_client.d" -MT"src/tcp_perf_client.o" -o "src/tcp_perf_client.o" "../src/tcp_perf_client.c"
+Finished building: ../src/tcp_perf_client.c
+ 
+Building target: kyber-client.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-client.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 418688	   3960	31578400	32001048	1e84c18	kyber-client.elf
+Finished building: kyber-client.elf.size
+ 
+15:00:03 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/tcp_perf_server.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
+../src/tcp_perf_server.c:208:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
+ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
+              ^~~~~~~~~~~~~~~~~~~~~
+Finished building: ../src/tcp_perf_server.c
+ 
+Building target: kyber-server.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-server.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 417864	   3960	31578400	32000224	1e848e0	kyber-server.elf
+Finished building: kyber-server.elf.size
+ 
+15:03:22 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+15:03:59 **** Incremental Build of configuration Debug for project kyber-client ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/tcp_perf_client.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_client.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_client.d" -MT"src/tcp_perf_client.o" -o "src/tcp_perf_client.o" "../src/tcp_perf_client.c"
+Finished building: ../src/tcp_perf_client.c
+ 
+Building target: kyber-client.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-client.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 418752	   3960	31578400	32001112	1e84c58	kyber-client.elf
+Finished building: kyber-client.elf.size
+ 
+15:07:11 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -24,7 +120,7 @@ In file included from ../src/include/global_func.c:8:
 ../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
   print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
+../src/include/global_def.h:121:11: note: in definition of macro 'print_debug'
     printf(__VA_ARGS__); \
            ^~~~~~~~~~~
 Finished building: ../src/include/global_func.c
@@ -82,7 +178,7 @@ Finished building: ../src/main.c
 Building file: ../src/tcp_perf_server.c
 Invoking: ARM v7 gcc compiler
 arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-../src/tcp_perf_server.c:205:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
+../src/tcp_perf_server.c:208:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
  static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
               ^~~~~~~~~~~~~~~~~~~~~
 Finished building: ../src/tcp_perf_server.c
@@ -95,128 +191,112 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 416632	   3960	31578400	31998992	1e84410	kyber-server.elf
+ 417432	   3960	31578400	31999792	1e84730	kyber-server.elf
 Finished building: kyber-server.elf.size
  
-21:06:36 **** Incremental Build of configuration Debug for project kyber-server ****
+15:07:54 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
-21:07:24 **** Incremental Build of configuration Debug for project kyber-client ****
+15:08:35 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-Building file: ../src/main.c
+Building file: ../src/include/cbd.c
 Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/cbd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/cbd.d" -MT"src/include/cbd.o" -o "src/include/cbd.o" "../src/include/cbd.c"
+Finished building: ../src/include/cbd.c
  
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417304	   3960	31578400	31999664	1e846b0	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:12:34 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
+Building file: ../src/include/fips202.c
 Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/fips202.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/fips202.d" -MT"src/include/fips202.o" -o "src/include/fips202.o" "../src/include/fips202.c"
+Finished building: ../src/include/fips202.c
  
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 416704	   3960	31578400	31999064	1e84458	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:13:10 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-21:13:41 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
+Building file: ../src/include/global_func.c
 Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417376	   3960	31578400	31999736	1e846f8	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:15:11 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-In file included from ../src/main.c:30:
-../src/main.c: In function 'main':
-../src/main.c:444:90: error: 't1' undeclared (first use in this function); did you mean 'tm'?
-     print_debug(DEBUG_MAIN, "[MAIN] Timer (sw) to process KEM (server side): %lld ms\n", t1 - t0);
-                                                                                          ^~
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
+../src/include/global_func.c: In function 'getChipTemperature':
+../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
+  float TempData;
+        ^~~~~~~~
+In file included from ../src/include/global_func.c:8:
+../src/include/global_func.c: In function 'printTimeVariables':
+../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
 ../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
     printf(__VA_ARGS__); \
            ^~~~~~~~~~~
-../src/main.c:444:90: note: each undeclared identifier is reported only once for each function it appears in
-     print_debug(DEBUG_MAIN, "[MAIN] Timer (sw) to process KEM (server side): %lld ms\n", t1 - t0);
-                                                                                          ^~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
-    printf(__VA_ARGS__); \
-           ^~~~~~~~~~~
-../src/main.c:444:95: error: 't0' undeclared (first use in this function); did you mean 'tm'?
-     print_debug(DEBUG_MAIN, "[MAIN] Timer (sw) to process KEM (server side): %lld ms\n", t1 - t0);
-                                                                                               ^~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
-    printf(__VA_ARGS__); \
-           ^~~~~~~~~~~
-make: *** [src/subdir.mk:50: src/main.o] Error 1
-21:15:44 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
+Finished building: ../src/include/global_func.c
+ 
+Building file: ../src/include/indcpa.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/indcpa.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/indcpa.d" -MT"src/include/indcpa.o" -o "src/include/indcpa.o" "../src/include/indcpa.c"
+Finished building: ../src/include/indcpa.c
+ 
+Building file: ../src/include/kem.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/kem.d" -MT"src/include/kem.o" -o "src/include/kem.o" "../src/include/kem.c"
+Finished building: ../src/include/kem.c
+ 
+Building file: ../src/include/ntt.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/ntt.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/ntt.d" -MT"src/include/ntt.o" -o "src/include/ntt.o" "../src/include/ntt.c"
+Finished building: ../src/include/ntt.c
+ 
+Building file: ../src/include/poly.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/poly.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/poly.d" -MT"src/include/poly.o" -o "src/include/poly.o" "../src/include/poly.c"
+Finished building: ../src/include/poly.c
+ 
+Building file: ../src/include/polyvec.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
+Finished building: ../src/include/polyvec.c
+ 
+Building file: ../src/include/reduce.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/reduce.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/reduce.d" -MT"src/include/reduce.o" -o "src/include/reduce.o" "../src/include/reduce.c"
+Finished building: ../src/include/reduce.c
+ 
+Building file: ../src/include/symmetric-aes.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-aes.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-aes.d" -MT"src/include/symmetric-aes.o" -o "src/include/symmetric-aes.o" "../src/include/symmetric-aes.c"
+Finished building: ../src/include/symmetric-aes.c
+ 
+Building file: ../src/include/symmetric-shake.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-shake.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-shake.d" -MT"src/include/symmetric-shake.o" -o "src/include/symmetric-shake.o" "../src/include/symmetric-shake.c"
+Finished building: ../src/include/symmetric-shake.c
+ 
+Building file: ../src/include/test_kem.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
+Finished building: ../src/include/test_kem.c
  
 Building file: ../src/main.c
 Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: kyber-server.elf
+Building file: ../src/tcp_perf_client.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_client.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_client.d" -MT"src/tcp_perf_client.o" -o "src/tcp_perf_client.o" "../src/tcp_perf_client.c"
+Finished building: ../src/tcp_perf_client.c
+ 
+Building target: kyber-client.elf
 Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-client.elf
  
 Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
+arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 416584	   3960	31578400	31998944	1e843e0	kyber-server.elf
-Finished building: kyber-server.elf.size
+ 418384	   3960	31578400	32000744	1e84ae8	kyber-client.elf
+Finished building: kyber-client.elf.size
  
-21:16:21 **** Incremental Build of configuration Debug for project kyber-client ****
+15:10:00 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -233,30 +313,15 @@ Finished building target: kyber-client.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 417248	   3960	31578400	31999608	1e84678	kyber-client.elf
+ 418344	   3960	31578400	32000704	1e84ac0	kyber-client.elf
 Finished building: kyber-client.elf.size
  
-21:24:44 **** Incremental Build of configuration Debug for project kyber-client ****
+15:10:24 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417248	   3960	31578400	31999608	1e84678	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:25:05 **** Incremental Build of configuration Debug for project kyber-server ****
+make: Nothing to be done for 'main-build'.
+15:14:43 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -273,35 +338,10 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 416584	   3960	31578400	31998944	1e843e0	kyber-server.elf
+ 417432	   3960	31578400	31999792	1e84730	kyber-server.elf
 Finished building: kyber-server.elf.size
  
-21:25:37 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-21:28:00 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 416584	   3960	31578400	31998944	1e843e0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:28:34 **** Incremental Build of configuration Debug for project kyber-client ****
+15:15:40 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -318,25 +358,50 @@ Finished building target: kyber-client.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 417248	   3960	31578400	31999608	1e84678	kyber-client.elf
+ 418344	   3960	31578400	32000704	1e84ac0	kyber-client.elf
 Finished building: kyber-client.elf.size
  
-21:28:55 **** Incremental Build of configuration Debug for project kyber-client ****
+15:17:23 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
-21:29:27 **** Incremental Build of configuration Debug for project kyber-server ****
+15:18:19 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
-21:30:04 **** Incremental Build of configuration Debug for project kyber-client ****
+15:19:18 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
-21:32:00 **** Incremental Build of configuration Debug for project kyber-server ****
+15:19:24 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+15:19:45 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+15:20:08 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+15:20:45 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+15:21:14 **** Incremental Build of configuration Debug for project kyber-client ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+15:26:43 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -362,7 +427,7 @@ In file included from ../src/include/global_func.c:8:
 ../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
   print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
+../src/include/global_def.h:121:11: note: in definition of macro 'print_debug'
     printf(__VA_ARGS__); \
            ^~~~~~~~~~~
 Finished building: ../src/include/global_func.c
@@ -425,7 +490,7 @@ Finished building: ../src/main.c
 Building file: ../src/tcp_perf_server.c
 Invoking: ARM v7 gcc compiler
 arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-../src/tcp_perf_server.c:205:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
+../src/tcp_perf_server.c:208:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
  static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
               ^~~~~~~~~~~~~~~~~~~~~
 Finished building: ../src/tcp_perf_server.c
@@ -438,10 +503,10 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 416328	   3960	31578400	31998688	1e842e0	kyber-server.elf
+ 416732	   3960	31578400	31999092	1e84474	kyber-server.elf
 Finished building: kyber-server.elf.size
  
-21:32:45 **** Incremental Build of configuration Debug for project kyber-client ****
+15:27:55 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -540,575 +605,6 @@ Finished building target: kyber-client.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 416992	   3960	31578400	31999352	1e84578	kyber-client.elf
+ 417704	   3960	31578400	32000064	1e84840	kyber-client.elf
 Finished building: kyber-client.elf.size
  
-21:34:59 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 416328	   3960	31578400	31998688	1e842e0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:35:27 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 416992	   3960	31578400	31999352	1e84578	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:36:53 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/include/cbd.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/cbd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/cbd.d" -MT"src/include/cbd.o" -o "src/include/cbd.o" "../src/include/cbd.c"
-Finished building: ../src/include/cbd.c
- 
-Building file: ../src/include/fips202.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/fips202.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/fips202.d" -MT"src/include/fips202.o" -o "src/include/fips202.o" "../src/include/fips202.c"
-Finished building: ../src/include/fips202.c
- 
-Building file: ../src/include/global_func.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
-../src/include/global_func.c: In function 'getChipTemperature':
-../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
-  float TempData;
-        ^~~~~~~~
-In file included from ../src/include/global_func.c:8:
-../src/include/global_func.c: In function 'printTimeVariables':
-../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
-    printf(__VA_ARGS__); \
-           ^~~~~~~~~~~
-Finished building: ../src/include/global_func.c
- 
-Building file: ../src/include/indcpa.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/indcpa.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/indcpa.d" -MT"src/include/indcpa.o" -o "src/include/indcpa.o" "../src/include/indcpa.c"
-Finished building: ../src/include/indcpa.c
- 
-Building file: ../src/include/kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/kem.d" -MT"src/include/kem.o" -o "src/include/kem.o" "../src/include/kem.c"
-Finished building: ../src/include/kem.c
- 
-Building file: ../src/include/ntt.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/ntt.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/ntt.d" -MT"src/include/ntt.o" -o "src/include/ntt.o" "../src/include/ntt.c"
-Finished building: ../src/include/ntt.c
- 
-Building file: ../src/include/poly.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/poly.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/poly.d" -MT"src/include/poly.o" -o "src/include/poly.o" "../src/include/poly.c"
-Finished building: ../src/include/poly.c
- 
-Building file: ../src/include/polyvec.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
-Finished building: ../src/include/polyvec.c
- 
-Building file: ../src/include/reduce.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/reduce.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/reduce.d" -MT"src/include/reduce.o" -o "src/include/reduce.o" "../src/include/reduce.c"
-Finished building: ../src/include/reduce.c
- 
-Building file: ../src/include/symmetric-aes.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-aes.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-aes.d" -MT"src/include/symmetric-aes.o" -o "src/include/symmetric-aes.o" "../src/include/symmetric-aes.c"
-Finished building: ../src/include/symmetric-aes.c
- 
-Building file: ../src/include/symmetric-shake.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-shake.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-shake.d" -MT"src/include/symmetric-shake.o" -o "src/include/symmetric-shake.o" "../src/include/symmetric-shake.c"
-Finished building: ../src/include/symmetric-shake.c
- 
-Building file: ../src/include/test_kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
-Finished building: ../src/include/test_kem.c
- 
-Building file: ../src/include/verify.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/verify.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/verify.d" -MT"src/include/verify.o" -o "src/include/verify.o" "../src/include/verify.c"
-Finished building: ../src/include/verify.c
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-../src/tcp_perf_server.c:205:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417288	   3960	31578400	31999648	1e846a0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:37:39 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/include/cbd.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/cbd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/cbd.d" -MT"src/include/cbd.o" -o "src/include/cbd.o" "../src/include/cbd.c"
-Finished building: ../src/include/cbd.c
- 
-Building file: ../src/include/fips202.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/fips202.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/fips202.d" -MT"src/include/fips202.o" -o "src/include/fips202.o" "../src/include/fips202.c"
-Finished building: ../src/include/fips202.c
- 
-Building file: ../src/include/global_func.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
-../src/include/global_func.c: In function 'getChipTemperature':
-../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
-  float TempData;
-        ^~~~~~~~
-In file included from ../src/include/global_func.c:8:
-../src/include/global_func.c: In function 'printTimeVariables':
-../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
-    printf(__VA_ARGS__); \
-           ^~~~~~~~~~~
-Finished building: ../src/include/global_func.c
- 
-Building file: ../src/include/indcpa.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/indcpa.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/indcpa.d" -MT"src/include/indcpa.o" -o "src/include/indcpa.o" "../src/include/indcpa.c"
-Finished building: ../src/include/indcpa.c
- 
-Building file: ../src/include/kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/kem.d" -MT"src/include/kem.o" -o "src/include/kem.o" "../src/include/kem.c"
-Finished building: ../src/include/kem.c
- 
-Building file: ../src/include/ntt.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/ntt.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/ntt.d" -MT"src/include/ntt.o" -o "src/include/ntt.o" "../src/include/ntt.c"
-Finished building: ../src/include/ntt.c
- 
-Building file: ../src/include/poly.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/poly.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/poly.d" -MT"src/include/poly.o" -o "src/include/poly.o" "../src/include/poly.c"
-Finished building: ../src/include/poly.c
- 
-Building file: ../src/include/polyvec.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
-Finished building: ../src/include/polyvec.c
- 
-Building file: ../src/include/reduce.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/reduce.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/reduce.d" -MT"src/include/reduce.o" -o "src/include/reduce.o" "../src/include/reduce.c"
-Finished building: ../src/include/reduce.c
- 
-Building file: ../src/include/symmetric-aes.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-aes.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-aes.d" -MT"src/include/symmetric-aes.o" -o "src/include/symmetric-aes.o" "../src/include/symmetric-aes.c"
-Finished building: ../src/include/symmetric-aes.c
- 
-Building file: ../src/include/symmetric-shake.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-shake.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-shake.d" -MT"src/include/symmetric-shake.o" -o "src/include/symmetric-shake.o" "../src/include/symmetric-shake.c"
-Finished building: ../src/include/symmetric-shake.c
- 
-Building file: ../src/include/test_kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
-Finished building: ../src/include/test_kem.c
- 
-Building file: ../src/include/verify.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/verify.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/verify.d" -MT"src/include/verify.o" -o "src/include/verify.o" "../src/include/verify.c"
-Finished building: ../src/include/verify.c
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building file: ../src/tcp_perf_client.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_client.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_client.d" -MT"src/tcp_perf_client.o" -o "src/tcp_perf_client.o" "../src/tcp_perf_client.c"
-Finished building: ../src/tcp_perf_client.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417888	   3960	31578400	32000248	1e848f8	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:39:53 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417288	   3960	31578400	31999648	1e846a0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:40:24 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417888	   3960	31578400	32000248	1e848f8	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:41:37 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417288	   3960	31578400	31999648	1e846a0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:42:05 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-21:42:35 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417888	   3960	31578400	32000248	1e848f8	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:44:01 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/include/cbd.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/cbd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/cbd.d" -MT"src/include/cbd.o" -o "src/include/cbd.o" "../src/include/cbd.c"
-Finished building: ../src/include/cbd.c
- 
-Building file: ../src/include/fips202.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/fips202.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/fips202.d" -MT"src/include/fips202.o" -o "src/include/fips202.o" "../src/include/fips202.c"
-Finished building: ../src/include/fips202.c
- 
-Building file: ../src/include/global_func.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
-../src/include/global_func.c: In function 'getChipTemperature':
-../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
-  float TempData;
-        ^~~~~~~~
-In file included from ../src/include/global_func.c:8:
-../src/include/global_func.c: In function 'printTimeVariables':
-../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
-    printf(__VA_ARGS__); \
-           ^~~~~~~~~~~
-Finished building: ../src/include/global_func.c
- 
-Building file: ../src/include/indcpa.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/indcpa.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/indcpa.d" -MT"src/include/indcpa.o" -o "src/include/indcpa.o" "../src/include/indcpa.c"
-Finished building: ../src/include/indcpa.c
- 
-Building file: ../src/include/kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/kem.d" -MT"src/include/kem.o" -o "src/include/kem.o" "../src/include/kem.c"
-Finished building: ../src/include/kem.c
- 
-Building file: ../src/include/ntt.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/ntt.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/ntt.d" -MT"src/include/ntt.o" -o "src/include/ntt.o" "../src/include/ntt.c"
-Finished building: ../src/include/ntt.c
- 
-Building file: ../src/include/poly.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/poly.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/poly.d" -MT"src/include/poly.o" -o "src/include/poly.o" "../src/include/poly.c"
-Finished building: ../src/include/poly.c
- 
-Building file: ../src/include/polyvec.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
-Finished building: ../src/include/polyvec.c
- 
-Building file: ../src/include/reduce.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/reduce.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/reduce.d" -MT"src/include/reduce.o" -o "src/include/reduce.o" "../src/include/reduce.c"
-Finished building: ../src/include/reduce.c
- 
-Building file: ../src/include/symmetric-aes.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-aes.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-aes.d" -MT"src/include/symmetric-aes.o" -o "src/include/symmetric-aes.o" "../src/include/symmetric-aes.c"
-Finished building: ../src/include/symmetric-aes.c
- 
-Building file: ../src/include/symmetric-shake.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-shake.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-shake.d" -MT"src/include/symmetric-shake.o" -o "src/include/symmetric-shake.o" "../src/include/symmetric-shake.c"
-Finished building: ../src/include/symmetric-shake.c
- 
-Building file: ../src/include/test_kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
-Finished building: ../src/include/test_kem.c
- 
-Building file: ../src/include/verify.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/verify.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/verify.d" -MT"src/include/verify.o" -o "src/include/verify.o" "../src/include/verify.c"
-Finished building: ../src/include/verify.c
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-../src/tcp_perf_server.c:205:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 416584	   3960	31578400	31998944	1e843e0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:44:50 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/include/cbd.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/cbd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/cbd.d" -MT"src/include/cbd.o" -o "src/include/cbd.o" "../src/include/cbd.c"
-Finished building: ../src/include/cbd.c
- 
-Building file: ../src/include/fips202.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/fips202.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/fips202.d" -MT"src/include/fips202.o" -o "src/include/fips202.o" "../src/include/fips202.c"
-Finished building: ../src/include/fips202.c
- 
-Building file: ../src/include/global_func.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
-../src/include/global_func.c: In function 'getChipTemperature':
-../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
-  float TempData;
-        ^~~~~~~~
-In file included from ../src/include/global_func.c:8:
-../src/include/global_func.c: In function 'printTimeVariables':
-../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
-../src/include/global_def.h:120:11: note: in definition of macro 'print_debug'
-    printf(__VA_ARGS__); \
-           ^~~~~~~~~~~
-Finished building: ../src/include/global_func.c
- 
-Building file: ../src/include/indcpa.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/indcpa.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/indcpa.d" -MT"src/include/indcpa.o" -o "src/include/indcpa.o" "../src/include/indcpa.c"
-Finished building: ../src/include/indcpa.c
- 
-Building file: ../src/include/kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/kem.d" -MT"src/include/kem.o" -o "src/include/kem.o" "../src/include/kem.c"
-Finished building: ../src/include/kem.c
- 
-Building file: ../src/include/ntt.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/ntt.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/ntt.d" -MT"src/include/ntt.o" -o "src/include/ntt.o" "../src/include/ntt.c"
-Finished building: ../src/include/ntt.c
- 
-Building file: ../src/include/poly.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/poly.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/poly.d" -MT"src/include/poly.o" -o "src/include/poly.o" "../src/include/poly.c"
-Finished building: ../src/include/poly.c
- 
-Building file: ../src/include/polyvec.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
-Finished building: ../src/include/polyvec.c
- 
-Building file: ../src/include/reduce.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/reduce.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/reduce.d" -MT"src/include/reduce.o" -o "src/include/reduce.o" "../src/include/reduce.c"
-Finished building: ../src/include/reduce.c
- 
-Building file: ../src/include/symmetric-aes.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-aes.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-aes.d" -MT"src/include/symmetric-aes.o" -o "src/include/symmetric-aes.o" "../src/include/symmetric-aes.c"
-Finished building: ../src/include/symmetric-aes.c
- 
-Building file: ../src/include/symmetric-shake.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-shake.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-shake.d" -MT"src/include/symmetric-shake.o" -o "src/include/symmetric-shake.o" "../src/include/symmetric-shake.c"
-Finished building: ../src/include/symmetric-shake.c
- 
-Building file: ../src/include/test_kem.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
-Finished building: ../src/include/test_kem.c
- 
-Building file: ../src/include/verify.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/verify.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/verify.d" -MT"src/include/verify.o" -o "src/include/verify.o" "../src/include/verify.c"
-Finished building: ../src/include/verify.c
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building file: ../src/tcp_perf_client.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_client.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_client.d" -MT"src/tcp_perf_client.o" -o "src/tcp_perf_client.o" "../src/tcp_perf_client.c"
-Finished building: ../src/tcp_perf_client.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417248	   3960	31578400	31999608	1e84678	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:45:59 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 417272	   3960	31578400	31999632	1e84690	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:46:24 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-21:47:48 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
