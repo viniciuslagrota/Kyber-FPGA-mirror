@@ -386,6 +386,8 @@ int main(void)
 
 	//Use only hardware!
 	u32SystemState = 0x3f;
+	//Use only software
+//	u32SystemState = 0x00;
 
 	while (1) {
 
@@ -473,7 +475,7 @@ int main(void)
 				print_debug(DEBUG_MAIN, "\n\r\n\r");
 
 				st = CREATE_KEY_PAIR;
-				sleep(10);
+//				sleep(10);
 			break;
 		}
 
