@@ -465,6 +465,7 @@ int main(void)
 				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
 				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
 				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+				print_debug(DEBUG_MAIN, "[MAIN] Timer (sw) to process KEM (client side): %lld ms\n", t1 - t0);
 
 				//Check shared secret
 				print_debug(DEBUG_MAIN, "key_a calculated: ");

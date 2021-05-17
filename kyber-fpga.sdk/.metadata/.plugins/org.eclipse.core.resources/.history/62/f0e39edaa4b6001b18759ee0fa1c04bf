@@ -140,6 +140,7 @@ extern u32 u32KeccakSwTime, u32KeccakSwIt;
 //Timer
 u32 u32Timer;
 uint32_t ui32Integer, ui32Fraction;
+u64_t t0, t1;
 
 //////////////////////////////////////////////
 //
@@ -433,6 +434,8 @@ int main(void)
 				print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
 				startTimer(&XGpioGlobalTimer, 1);
 
+				t0 = get_time_ms();
+
 				//Generate key pair
 				crypto_kem_keypair(pk, sk);
 
@@ -460,11 +463,14 @@ int main(void)
 				//Decapsulation
 				crypto_kem_dec(key_a, ct, sk);
 
+				t1 = get_time_ms();
+
 				//Stop timer
 				stopTimer(&XGpioGlobalTimer, 1);
 				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
 				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
 				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+				print_debug(DEBUG_MAIN, "[MAIN] Timer (sw) to process KEM (client side): %lld ms\n", t1 - t0);
 
 				//Check shared secret
 				print_debug(DEBUG_MAIN, "key_a calculated: ");

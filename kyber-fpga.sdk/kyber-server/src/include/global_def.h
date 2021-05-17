@@ -92,7 +92,7 @@
 //
 //////////////////////////////////////////////
 #define GET_GLOBAL_TIME				0 //If 1, GET_TOTAL_IP_TIME must be zero.
-#define GET_TOTAL_IP_TIME			1 //If 1, GET_GLOBAL_TIME must be zero.
+#define GET_TOTAL_IP_TIME			0 //If 1, GET_GLOBAL_TIME must be zero.
 #define GET_PROCESSING_IP_TIME		0
 
 //////////////////////////////////////////////

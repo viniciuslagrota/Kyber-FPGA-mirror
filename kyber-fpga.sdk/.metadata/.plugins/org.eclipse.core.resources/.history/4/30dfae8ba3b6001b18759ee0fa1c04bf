@@ -92,7 +92,7 @@
 //
 //////////////////////////////////////////////
 #define GET_GLOBAL_TIME				0 //If 1, GET_TOTAL_IP_TIME must be zero.
-#define GET_TOTAL_IP_TIME			0 //If 1, GET_GLOBAL_TIME must be zero.
+#define GET_TOTAL_IP_TIME			1 //If 1, GET_GLOBAL_TIME must be zero.
 #define GET_PROCESSING_IP_TIME		0
 
 //////////////////////////////////////////////
@@ -172,19 +172,15 @@
 //////////////////////////////////////////////
 enum state
 {
-	WAITING_SERVER_CONNECTION,
-	CONNECTED_TO_SERVER,
-	CREATE_KEY_PAIR,
-	SEND_PK,
-	WAITING_CT,
-	CALCULATE_SHARED_SECRET
+	WAITING_PK,
+	CALCULATING_CT,
+	SENDING_CT
 };
 
 enum state st;
 uint8_t pk[CRYPTO_PUBLICKEYBYTES];
-uint8_t sk[CRYPTO_SECRETKEYBYTES];
 uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
-uint8_t key_a[CRYPTO_BYTES];
+uint8_t key_b[CRYPTO_BYTES];
 
 //////////////////////////////////////////////
 //
