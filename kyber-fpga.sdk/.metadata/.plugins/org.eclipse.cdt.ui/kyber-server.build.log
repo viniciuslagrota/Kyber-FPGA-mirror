@@ -1,4 +1,4 @@
-15:26:43 **** Incremental Build of configuration Debug for project kyber-server ****
+16:09:47 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -24,7 +24,7 @@ In file included from ../src/include/global_func.c:8:
 ../src/include/global_func.c:197:26: warning: format '%x' expects argument of type 'unsigned int', but argument 4 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
   print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                ~~~~~~~~~~~~~~
-../src/include/global_def.h:121:11: note: in definition of macro 'print_debug'
+../src/include/global_def.h:128:11: note: in definition of macro 'print_debug'
     printf(__VA_ARGS__); \
            ^~~~~~~~~~~
 Finished building: ../src/include/global_func.c
@@ -74,11 +74,6 @@ Invoking: ARM v7 gcc compiler
 arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
 Finished building: ../src/include/test_kem.c
  
-Building file: ../src/include/verify.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/verify.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/verify.d" -MT"src/include/verify.o" -o "src/include/verify.o" "../src/include/verify.c"
-Finished building: ../src/include/verify.c
- 
 Building file: ../src/main.c
 Invoking: ARM v7 gcc compiler
 arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
@@ -100,9 +95,9 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 416732	   3960	31578400	31999092	1e84474	kyber-server.elf
+ 416960	   3960	31578400	31999320	1e84558	kyber-server.elf
 Finished building: kyber-server.elf.size
  
 
-15:27:03 Build Finished (took 19s.877ms)
+16:10:06 Build Finished (took 18s.715ms)
 

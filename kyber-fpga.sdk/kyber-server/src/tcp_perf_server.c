@@ -271,6 +271,16 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 #endif
 	char * pcBuf = p->payload; //Get transmitted data.
 
+#if SERVER_INIT == 1
+	memcpy(ct + u32LenRecv, pcBuf, p->len);
+	u32LenRecv += p->len;
+
+	if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
+	{
+		st = CALCULATE_SHARED_SECRET;
+		u32LenRecv = 0;
+	}
+#else
 	memcpy(pk + u32LenRecv, pcBuf, p->len);
 	u32LenRecv += p->len;
 
@@ -279,6 +289,7 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 		st = CALCULATING_CT;
 		u32LenRecv = 0;
 	}
+#endif
 
 	/* Record total bytes for final report */
 	server.total_bytes += p->tot_len;
@@ -340,6 +351,11 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	tcp_recv(c_pcb, tcp_recv_traffic);
 #endif
 	tcp_err(c_pcb, tcp_server_err);
+
+#if SERVER_INIT == 1
+	//Change st
+	st = CLIENT_CONNECTED;
+#endif
 
 	return ERR_OK;
 }

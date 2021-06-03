@@ -34,6 +34,13 @@
 
 //////////////////////////////////////////////
 //
+//	Change key type
+//
+//////////////////////////////////////////////
+#define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
+
+//////////////////////////////////////////////
+//
 //	System name
 //
 //////////////////////////////////////////////
@@ -109,6 +116,7 @@
 //Accelerations
 #define DEBUG_TIME					1
 #define DEBUG_KYBER					0
+
 //////////////////////////////////////////////
 //
 //	Debug print
@@ -170,6 +178,7 @@
 //	Kyber variables
 //
 //////////////////////////////////////////////
+#if SERVER_INIT == 0
 enum state
 {
 	WAITING_SERVER_CONNECTION,
@@ -179,12 +188,26 @@ enum state
 	WAITING_CT,
 	CALCULATE_SHARED_SECRET
 };
+#else
+enum state
+{
+	WAITING_PK,
+	CALCULATING_CT,
+	SENDING_CT
+};
+#endif
 
 enum state st;
 uint8_t pk[CRYPTO_PUBLICKEYBYTES];
+#if SERVER_INIT == 0
 uint8_t sk[CRYPTO_SECRETKEYBYTES];
+#endif
 uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
+#if SERVER_INIT == 0
 uint8_t key_a[CRYPTO_BYTES];
+#else
+uint8_t key_b[CRYPTO_BYTES];
+#endif
 struct netif *netif;
 //////////////////////////////////////////////
 //

@@ -413,6 +413,8 @@ int main(void)
 		transfer_perf_data();
 		sleep(5);
 #else
+
+#if SERVER_INIT == 0
 		switch(st)
 		{
 			case WAITING_SERVER_CONNECTION:
@@ -480,6 +482,59 @@ int main(void)
 		}
 
 //		sleep(1);
+#else
+		switch(st)
+		{
+			case WAITING_PK:
+				//Do nothing, just wait.
+			break;
+			case CALCULATING_CT:
+
+#if DEBUG_KYBER == 1
+				print_debug(DEBUG_MAIN, "pk rcv: ");
+				for(int i = 0; i < CRYPTO_PUBLICKEYBYTES; i++)
+					print_debug(DEBUG_MAIN, "%x", pk[i]);
+				print_debug(DEBUG_MAIN, "\n\r\n\r");
+#endif
+
+				//Start timer
+				resetTimer(&XGpioGlobalTimer, 1);
+				u32Timer = getTimer(&XGpioGlobalTimer, 1);
+				print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
+				startTimer(&XGpioGlobalTimer, 1);
+
+				crypto_kem_enc(ct, key_b, pk);
+
+#if DEBUG_KYBER == 1
+				print_debug(DEBUG_MAIN, "ct calculated: ");
+				for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
+					print_debug(DEBUG_MAIN, "%x", ct[i]);
+				print_debug(DEBUG_MAIN, "\n\r");
+#endif
+
+				st = SENDING_CT;
+			break;
+			case SENDING_CT:
+
+//				transfer_data(cTxBuffer, sizeof(cTxBuffer));
+				transfer_data((char *)ct, CRYPTO_CIPHERTEXTBYTES);
+
+				//Stop timer
+				stopTimer(&XGpioGlobalTimer, 1);
+				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
+				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
+				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+
+				//Check shared secret
+				print_debug(DEBUG_MAIN, "key_b calculated: ");
+				for(int i = 0; i < CRYPTO_BYTES; i++)
+					print_debug(DEBUG_MAIN, "%x", key_b[i]);
+				print_debug(DEBUG_MAIN, "\n\r\n\r");
+
+				st = WAITING_PK;
+			break;
+		}
+#endif
 #endif
 	}
 

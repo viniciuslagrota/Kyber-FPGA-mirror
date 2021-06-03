@@ -151,8 +151,13 @@ static void tcp_client_close(struct tcp_pcb *pcb)
 		}
 	}
 
+#if SERVER_INIT == 0
 	//Change st
 	st = WAITING_SERVER_CONNECTION;
+#else
+	//Change st
+	st = WAITING_PK;
+#endif
 }
 
 /** Error callback, tcp session aborted */
@@ -333,6 +338,7 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 #endif
 	char * pcBuf = p->payload; //Get transmitted data.
 
+#if SERVER_INIT == 0
 	memcpy(ct + u32LenRecv, pcBuf, p->len);
 	u32LenRecv += p->len;
 
@@ -341,6 +347,16 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 		st = CALCULATE_SHARED_SECRET;
 		u32LenRecv = 0;
 	}
+#else
+	memcpy(pk + u32LenRecv, pcBuf, p->len);
+	u32LenRecv += p->len;
+
+	if(u32LenRecv >= CRYPTO_PUBLICKEYBYTES)
+	{
+		st = CALCULATING_CT;
+		u32LenRecv = 0;
+	}
+#endif
 
 	/* indicate that the packet has been received */
 	tcp_recved(tpcb, p->len);
@@ -393,8 +409,10 @@ static err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 	tcp_recv(c_pcb, tcp_client_recv);
 	tcp_err(c_pcb, tcp_client_err);
 
+#if SERVER_INIT == 0
 	//Change st
 	st = CONNECTED_TO_SERVER;
+#endif
 
 	/* initiate data transfer */
 	return ERR_OK;
