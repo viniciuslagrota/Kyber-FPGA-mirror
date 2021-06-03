@@ -25,6 +25,7 @@
 #include "xgpiops.h"
 #include "xadcps.h"
 #include "xaxidma.h"
+#include "xscutimer.h"
 
 //Software
 #include "params.h"
@@ -38,6 +39,7 @@
 //
 //////////////////////////////////////////////
 #define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
+#define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 1.
 
 //////////////////////////////////////////////
 //
@@ -85,6 +87,14 @@
 //
 //////////////////////////////////////////////
 #define HW_CLOCK_PERIOD			10 //ns
+
+//////////////////////////////////////////////
+//
+//	Software timer timeout counter
+//
+//////////////////////////////////////////////
+#define TIMER_LOAD_VALUE		5*(XPAR_CPU_CORTEXA9_0_CPU_CLK_FREQ_HZ/2) //1 second if prescale = 0
+#define PRESCALE				11 // Total time wait = (PRESCALE + 1) * TIMER_LOAD_VALUE
 
 //////////////////////////////////////////////
 //

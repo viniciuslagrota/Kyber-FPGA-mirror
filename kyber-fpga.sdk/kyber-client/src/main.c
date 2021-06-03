@@ -64,10 +64,17 @@ extern volatile int dhcp_timoutcntr;
 //	Kyber Variables
 //
 //////////////////////////////////////////////
+extern enum state st;
 extern uint8_t pk[CRYPTO_PUBLICKEYBYTES];
+#if SERVER_INIT == 0
 extern uint8_t sk[CRYPTO_SECRETKEYBYTES];
+#endif
 extern uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
+#if SERVER_INIT == 0
 extern uint8_t key_a[CRYPTO_BYTES];
+#else
+extern uint8_t key_b[CRYPTO_BYTES];
+#endif
 
 //////////////////////////////////////////////
 //
@@ -140,6 +147,16 @@ extern u32 u32KeccakSwTime, u32KeccakSwIt;
 //Timer
 u32 u32Timer;
 uint32_t ui32Integer, ui32Fraction;
+
+//////////////////////////////////////////////
+//
+//	Software timer
+//
+//////////////////////////////////////////////
+XScuTimer xTimer;
+XScuTimer_Config *xTimerConfig;
+int timerValue;
+u32 u32CounterMinutes = 0;
 
 //////////////////////////////////////////////
 //
@@ -216,6 +233,18 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 }
 #endif /* LWIP_IPV6 */
 
+#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
+void configSoftwareTimer()
+{
+	xTimerConfig = XScuTimer_LookupConfig(XPAR_PS7_SCUTIMER_0_DEVICE_ID);
+	XScuTimer_CfgInitialize(&xTimer, xTimerConfig, xTimerConfig->BaseAddr);
+	XScuTimer_DisableAutoReload(&xTimer);
+	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
+	XScuTimer_LoadTimer(&xTimer, TIMER_LOAD_VALUE);
+	XScuTimer_Start(&xTimer);
+	xil_printf("Timer configured.\r\n");
+}
+#endif
 //////////////////////////////////////////////
 //
 //	Main
@@ -384,6 +413,11 @@ int main(void)
 	start_application();
 	xil_printf("\r\n");
 
+#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
+	//Software timer
+	configSoftwareTimer();
+#endif
+
 	//Use only hardware!
 	u32SystemState = 0x3f;
 	//Use only software
@@ -397,6 +431,22 @@ int main(void)
 		//Blink led
 		XGpioPs_WritePin(&Gpio, ledpin, u32LedState);
 		u32LedState ^= 0x1;
+
+#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
+		//Timer
+		timerValue = XScuTimer_GetCounterValue(&xTimer);
+		if(timerValue == 0)
+		{
+//			xil_printf("Timer!!!!!!!!!!!\r\n");
+			XScuTimer_RestartTimer(&xTimer);
+			u32CounterMinutes++;
+			if(u32CounterMinutes >= CHANGE_KEY_TIME)
+			{
+				xil_printf("Change key!\r\n");
+				u32CounterMinutes = 0;
+			}
+		}
+#endif
 
 		if (TcpFastTmrFlag) {
 			tcp_fasttmr();
