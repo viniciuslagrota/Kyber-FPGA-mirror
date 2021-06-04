@@ -32,6 +32,7 @@
 #include "test_kem.h"
 #include "kem.h"
 #include "reduce.h"
+#include "aes256ctr.h"
 
 //////////////////////////////////////////////
 //
@@ -203,7 +204,10 @@ enum state
 {
 	WAITING_PK,
 	CALCULATING_CT,
-	SENDING_CT
+	SENDING_CT,
+	CALCULATE_AES_BLOCK,
+	CIPHER_MESSAGE,
+	SEND_CIPHER_MESSAGE
 };
 #endif
 
@@ -219,6 +223,16 @@ uint8_t key_a[CRYPTO_BYTES];
 uint8_t key_b[CRYPTO_BYTES];
 #endif
 struct netif *netif;
+
+//////////////////////////////////////////////
+//
+//	AES
+//
+//////////////////////////////////////////////
+uint8_t u8AesBlock[32];
+char cPlaintext[32];
+char cCiphertext[32];
+
 //////////////////////////////////////////////
 //
 //	AXI GPIO

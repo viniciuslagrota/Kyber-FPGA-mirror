@@ -113,7 +113,10 @@ extern u32 u32SystemState;
 extern volatile int TcpFastTmrFlag;
 extern volatile int TcpSlowTmrFlag;
 
-char cTxBuffer[256] = "Hello World1";
+//char cTxBuffer[256] = "Hello World1";
+extern char cPlainText[32];
+extern char cCipherText[32];
+char aux[32] = "Testando";
 
 //////////////////////////////////////////////
 //
@@ -157,6 +160,14 @@ XScuTimer xTimer;
 XScuTimer_Config *xTimerConfig;
 int timerValue;
 u32 u32CounterMinutes = 0;
+
+//////////////////////////////////////////////
+//
+//	AES
+//
+//////////////////////////////////////////////
+extern uint8_t u8AesBlock[32];
+uint8_t nonce[12] = {0x1};
 
 //////////////////////////////////////////////
 //
@@ -578,10 +589,52 @@ int main(void)
 				//Check shared secret
 				print_debug(DEBUG_MAIN, "key_b calculated: ");
 				for(int i = 0; i < CRYPTO_BYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", key_b[i]);
+					print_debug(DEBUG_MAIN, "%02x", key_b[i]);
+				print_debug(DEBUG_MAIN, "\n\r");
+
+//				st = WAITING_PK;
+				st = CALCULATE_AES_BLOCK;
+			break;
+			case CALCULATE_AES_BLOCK:
+				//Test AES
+				aes256ctr_prf(u8AesBlock, 32, key_b, nonce);
+				print_debug(DEBUG_MAIN, "aes256 block calculated: ");
+				for(int i = 0; i < 32; i++)
+					print_debug(DEBUG_MAIN, "%02x", u8AesBlock[i]);
+				print_debug(DEBUG_MAIN, "\n\r");
+
+				usleep(10000); //Wait 10 ms
+				st = CIPHER_MESSAGE;
+			break;
+			case CIPHER_MESSAGE:
+				//Initialize plaintext
+				memcpy(cPlaintext, aux, 32);
+
+				print_debug(DEBUG_MAIN, "Sent plaintext: %s\r\n", cPlaintext);
+//				print_debug(DEBUG_MAIN, "Plaintext (bytes): ");
+//				for(int i = 0; i < 32; i++)
+//				{
+//					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
+//				}
+//				print_debug(DEBUG_MAIN, "\n\r");
+//				print_debug(DEBUG_MAIN, "Ciphertext (bytes): ");
+				for(int i = 0; i < 32; i++)
+				{
+					cCiphertext[i] = cPlaintext[i] ^ u8AesBlock[i];
+//					print_debug(DEBUG_MAIN, "%02x", cCiphertext[i]);
+				}
 				print_debug(DEBUG_MAIN, "\n\r\n\r");
 
-				st = WAITING_PK;
+				st = SEND_CIPHER_MESSAGE;
+
+			break;
+			case SEND_CIPHER_MESSAGE:
+				transfer_data((char *)cCiphertext, 32);
+
+				//Wait to send next message
+				sleep(10);
+
+				st = CALCULATE_AES_BLOCK;
 			break;
 		}
 #endif

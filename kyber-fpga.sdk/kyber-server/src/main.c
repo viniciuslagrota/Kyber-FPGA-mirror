@@ -161,6 +161,16 @@ u32 u32CounterMinutes = 0;
 
 //////////////////////////////////////////////
 //
+//	AES
+//
+//////////////////////////////////////////////
+extern uint8_t u8AesBlock[32];
+uint8_t nonce[12] = {0x1};
+extern char cPlaintext[32];
+extern char cCiphertext[32];
+
+//////////////////////////////////////////////
+//
 //	Prototypes
 //
 //////////////////////////////////////////////
@@ -445,6 +455,7 @@ int main(void)
 			{
 				xil_printf("Change key!\r\n");
 				u32CounterMinutes = 0;
+				st = CREATE_KEY_PAIR;
 			}
 		}
 #endif
@@ -468,6 +479,7 @@ int main(void)
 			break;
 			case CLIENT_CONNECTED:
 				xil_printf("Client connected!\r\n");
+//				XScuTimer_Start(&xTimer);
 				st = CREATE_KEY_PAIR;
 			break;
 			case CREATE_KEY_PAIR:
@@ -519,14 +531,45 @@ int main(void)
 				//Check shared secret
 				print_debug(DEBUG_MAIN, "key_a calculated: ");
 				for(int i = 0; i < CRYPTO_BYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", key_a[i]);
+					print_debug(DEBUG_MAIN, "%02x", key_a[i]);
+				print_debug(DEBUG_MAIN, "\n\r");
+
+//				st = CREATE_KEY_PAIR;
+				st = CALCULATE_AES_BLOCK;
+			break;
+			case CALCULATE_AES_BLOCK:
+				aes256ctr_prf(u8AesBlock, 32, key_a, nonce);
+				print_debug(DEBUG_MAIN, "aes256 calculated: ");
+				for(int i = 0; i < 32; i++)
+					print_debug(DEBUG_MAIN, "%02x", u8AesBlock[i]);
+				print_debug(DEBUG_MAIN, "\n\r");
+
+				st = WAIT_CIPHERED_DATA;
+			break;
+			case WAIT_CIPHERED_DATA:
+				//Wait messages from client
+			break;
+			case DECIPHER_MESSAGE:
+//				print_debug(DEBUG_MAIN, "Ciphertext (bytes): ");
+//				for(int i = 0; i < 32; i++)
+//				{
+//					print_debug(DEBUG_MAIN, "%02x", cCiphertext[i]);
+//				}
+//				print_debug(DEBUG_MAIN, "\n\r");
+//				print_debug(DEBUG_MAIN, "Plaintext (bytes): ");
+				for(int i = 0; i < 32; i++)
+				{
+					cPlaintext[i] = cCiphertext[i] ^ u8AesBlock[i];
+//					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
+				}
+//				print_debug(DEBUG_MAIN, "\n\r");
+				print_debug(DEBUG_MAIN, "Received plaintext: %s\r\n", cPlaintext);
 				print_debug(DEBUG_MAIN, "\n\r\n\r");
 
-				st = CREATE_KEY_PAIR;
-				sleep(10);
+				st = CALCULATE_AES_BLOCK;
 			break;
 		}
-
+//		sleep(10);
 //		sleep(1);
 #else
 		switch(st)
