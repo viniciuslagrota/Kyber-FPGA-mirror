@@ -339,24 +339,13 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 	char * pcBuf = p->payload; //Get transmitted data.
 
 #if SERVER_INIT == 0
-	if(st == WAIT_CIPHERED_DATA)
-	{
-		memcpy(cCiphertext + u32LenRecv, pcBuf, p->len);
-		u32LenRecv += p->len;
+	memcpy(ct + u32LenRecv, pcBuf, p->len);
+	u32LenRecv += p->len;
 
-		st = DECIPHER_MESSAGE;
+	if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
+	{
+		st = CALCULATE_SHARED_SECRET;
 		u32LenRecv = 0;
-	}
-	else
-	{
-		memcpy(ct + u32LenRecv, pcBuf, p->len);
-		u32LenRecv += p->len;
-
-		if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
-		{
-			st = CALCULATE_SHARED_SECRET;
-			u32LenRecv = 0;
-		}
 	}
 #else
 	memcpy(pk + u32LenRecv, pcBuf, p->len);

@@ -39,7 +39,7 @@
 //	Change key type
 //
 //////////////////////////////////////////////
-#define SERVER_INIT			0	//1: Server generate key pair and send PK | 0: Server waits PK from client
+#define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
 #define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 1.
 
 //////////////////////////////////////////////
@@ -203,15 +203,15 @@ enum state
 	DECIPHER_MESSAGE
 };
 #else
-enum state
-{
-	WAITING_PK,
-	CALCULATING_CT,
-	SENDING_CT,
-	CALCULATE_AES_BLOCK,
-	CIPHER_MESSAGE,
-	SEND_CIPHER_MESSAGE
-};
+	enum state
+	{
+		WAITING_PK,
+		CALCULATING_CT,
+		SENDING_CT,
+		CALCULATE_AES_BLOCK,
+		CIPHER_MESSAGE,
+		SEND_CIPHER_MESSAGE
+	};
 #endif
 
 enum state st;

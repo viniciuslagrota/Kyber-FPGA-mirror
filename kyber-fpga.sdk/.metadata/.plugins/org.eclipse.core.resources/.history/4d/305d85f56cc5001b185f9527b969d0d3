@@ -548,27 +548,35 @@ int main(void)
 					print_debug(DEBUG_MAIN, "%02x", u8AesBlock[i]);
 				print_debug(DEBUG_MAIN, "\n\r");
 
-				st = WAIT_CIPHERED_DATA;
+				st = CIPHER_MESSAGE;
 			break;
-			case WAIT_CIPHERED_DATA:
-				//Wait messages from client
-			break;
-			case DECIPHER_MESSAGE:
-//				print_debug(DEBUG_MAIN, "Ciphertext (bytes): ");
+			case CIPHER_MESSAGE:
+				//Initialize plaintext
+				memcpy(cPlaintext, aux, 32);
+
+				print_debug(DEBUG_MAIN, "Sent plaintext: %s\r\n", cPlaintext);
+//				print_debug(DEBUG_MAIN, "Plaintext (bytes): ");
 //				for(int i = 0; i < 32; i++)
 //				{
-//					print_debug(DEBUG_MAIN, "%02x", cCiphertext[i]);
+//					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
 //				}
 //				print_debug(DEBUG_MAIN, "\n\r");
-//				print_debug(DEBUG_MAIN, "Plaintext (bytes): ");
+//				print_debug(DEBUG_MAIN, "Ciphertext (bytes): ");
 				for(int i = 0; i < 32; i++)
 				{
-					cPlaintext[i] = cCiphertext[i] ^ u8AesBlock[i];
-//					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
+					cCiphertext[i] = cPlaintext[i] ^ u8AesBlock[i];
+//					print_debug(DEBUG_MAIN, "%02x", cCiphertext[i]);
 				}
-//				print_debug(DEBUG_MAIN, "\n\r");
-				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
 				print_debug(DEBUG_MAIN, "\n\r\n\r");
+
+				st = SEND_CIPHER_MESSAGE;
+
+			break;
+			case SEND_CIPHER_MESSAGE:
+				transfer_data((char *)cCiphertext, 32);
+
+				//Wait to send next message
+				sleep(10);
 
 				st = CALCULATE_AES_BLOCK;
 			break;

@@ -44,6 +44,7 @@
 #include "include/polyvec.h"
 #include "include/fips202.h"
 
+
 #if LWIP_IPV6==1
 #include "lwip/ip6_addr.h"
 #include "lwip/ip6.h"
@@ -53,11 +54,12 @@
 #include "lwip/dhcp.h"
 extern volatile int dhcp_timoutcntr;
 #endif
-
-#define DEFAULT_IP_ADDRESS	"192.168.1.10"
+#define DEFAULT_IP_ADDRESS	"192.168.1.105"
 #define DEFAULT_IP_MASK		"255.255.255.0"
 #define DEFAULT_GW_ADDRESS	"192.168.1.1"
 #endif /* LWIP_IPV6 */
+
+char cTxBuffer[256] = "Hello World Response";
 
 //////////////////////////////////////////////
 //
@@ -75,7 +77,6 @@ extern uint8_t key_a[CRYPTO_BYTES];
 #else
 extern uint8_t key_b[CRYPTO_BYTES];
 #endif
-
 //////////////////////////////////////////////
 //
 //	System Variables
@@ -112,6 +113,8 @@ extern u32 u32SystemState;
 
 extern volatile int TcpFastTmrFlag;
 extern volatile int TcpSlowTmrFlag;
+
+//char cTxBuffer[256] = "Hello World";
 
 //////////////////////////////////////////////
 //
@@ -163,10 +166,8 @@ u32 u32CounterMinutes = 0;
 //////////////////////////////////////////////
 extern uint8_t u8AesBlock[32];
 uint8_t nonce[12] = {0x1};
-
-extern char cPlainText[32];
-extern char cCipherText[32];
-char aux[32] = "Testando";
+extern char cPlaintext[32];
+extern char cCiphertext[32];
 
 //////////////////////////////////////////////
 //
@@ -175,10 +176,8 @@ char aux[32] = "Testando";
 //////////////////////////////////////////////
 void platform_enable_interrupts(void);
 void start_application(void);
-void transfer_perf_data(void);
 void transfer_data(char * pcBuffer, u16_t u16BufferLen);
 void print_app_header(void);
-
 
 #if defined (__arm__) && !defined (ARMR5)
 #if XPAR_GIGE_PCS_PMA_SGMII_CORE_PRESENT == 1 || \
@@ -201,7 +200,6 @@ struct netif server_netif;
 //	Functions
 //
 //////////////////////////////////////////////
-
 #if LWIP_IPV6==1
 static void print_ipv6(char *msg, ip_addr_t *ip)
 {
@@ -243,7 +241,7 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 }
 #endif /* LWIP_IPV6 */
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
+#if SERVER_INIT == 1 && CHANGE_KEY_TIME != 0
 void configSoftwareTimer()
 {
 	xTimerConfig = XScuTimer_LookupConfig(XPAR_PS7_SCUTIMER_0_DEVICE_ID);
@@ -255,6 +253,7 @@ void configSoftwareTimer()
 	xil_printf("Timer configured.\r\n");
 }
 #endif
+
 //////////////////////////////////////////////
 //
 //	Main
@@ -262,11 +261,11 @@ void configSoftwareTimer()
 //////////////////////////////////////////////
 int main(void)
 {
-	extern struct netif *netif;
+	struct netif *netif;
 
 	/* the mac address of the board. this should be unique per board */
 	unsigned char mac_ethernet_address[] = {
-		0x00, 0x0a, 0x35, 0x00, 0x01, 0x03 };
+		0x00, 0x0a, 0x35, 0x00, 0x01, 0x02 };
 
 	netif = &server_netif;
 #if defined (__arm__) && !defined (ARMR5)
@@ -362,8 +361,8 @@ int main(void)
 		resetTimeVariables();
 	#endif
 
-	xil_printf("\r\n\r\n");
-	print_debug(DEBUG_MAIN, "-----lwIP RAW Mode TCP Client Application (TCP MSS: %d)-----\r\n", TCP_MSS);
+	print_debug(DEBUG_MAIN, "\r\n\r\n");
+	print_debug(DEBUG_MAIN, "-----lwIP RAW Mode TCP Server Application (TCP MSS: %d)-----\r\n", TCP_MSS);
 
 	/* initialize lwIP */
 	lwip_init();
@@ -371,7 +370,7 @@ int main(void)
 	/* Add network interface to the netif_list, and set it as default */
 	if (!xemac_add(netif, NULL, NULL, NULL, mac_ethernet_address,
 				PLATFORM_EMAC_BASEADDR)) {
-		xil_printf("Error adding N/W interface\r\n");
+		print_debug(DEBUG_MAIN, "Error adding N/W interface\r\n");
 		return -1;
 	}
 
@@ -379,8 +378,9 @@ int main(void)
 	netif->ip6_autoconfig_enabled = 1;
 	netif_create_ip6_linklocal_address(netif, 1);
 	netif_ip6_addr_set_state(netif, 0, IP6_ADDR_VALID);
-	print_ipv6("\n\rlink local IPv6 address is:",&netif->ip6_addr[0]);
+	print_ipv6("\n\rlink local IPv6 address is:", &netif->ip6_addr[0]);
 #endif /* LWIP_IPV6 */
+
 	netif_set_default(netif);
 
 	/* now enable interrupts */
@@ -402,7 +402,7 @@ int main(void)
 
 	if (dhcp_timoutcntr <= 0) {
 		if ((netif->ip_addr.addr) == 0) {
-			xil_printf("ERROR: DHCP request timed out\r\n");
+			print_debug(DEBUG_MAIN, "ERROR: DHCP request timed out\r\n");
 			assign_default_ip(&(netif->ip_addr),
 					&(netif->netmask), &(netif->gw));
 		}
@@ -414,21 +414,22 @@ int main(void)
 #endif
 	print_ip_settings(&(netif->ip_addr), &(netif->netmask), &(netif->gw));
 #endif /* LWIP_IPV6 */
-	xil_printf("\r\n");
+
+	print_debug(DEBUG_MAIN, "\r\n");
 
 	/* print app header */
 	print_app_header();
 
 	/* start the application*/
 	start_application();
-	xil_printf("\r\n");
+	print_debug(DEBUG_MAIN, "\r\n");
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
+#if SERVER_INIT == 1 && CHANGE_KEY_TIME != 0
 	//Software timer
 	configSoftwareTimer();
 #endif
 
-	//Use only hardware!
+	//Use only hardware
 	u32SystemState = 0x3f;
 	//Use only software
 //	u32SystemState = 0x00;
@@ -442,7 +443,7 @@ int main(void)
 		XGpioPs_WritePin(&Gpio, ledpin, u32LedState);
 		u32LedState ^= 0x1;
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
+#if SERVER_INIT == 1 && CHANGE_KEY_TIME != 0
 		//Timer
 		timerValue = XScuTimer_GetCounterValue(&xTimer);
 		if(timerValue == 0)
@@ -469,21 +470,16 @@ int main(void)
 		}
 		xemacif_input(netif);
 
-#if PERFORMANCE_TEST == 1
-//		//Transfer performance data
-		transfer_perf_data();
-		sleep(5);
-#else
-
-#if SERVER_INIT == 0
+#if PERFORMANCE_TEST == 0
+#if SERVER_INIT == 1
 		switch(st)
 		{
-			case WAITING_SERVER_CONNECTION:
+			case WAITING_CLIENT_CONNECTION:
 				//Do nothing. Wait connection.
 			break;
-			case CONNECTED_TO_SERVER:
-				xil_printf("Connected to server!\r\n");
-				XScuTimer_Start(&xTimer);
+			case CLIENT_CONNECTED:
+				xil_printf("Client connected!\r\n");
+//				XScuTimer_Start(&xTimer);
 				st = CREATE_KEY_PAIR;
 			break;
 			case CREATE_KEY_PAIR:
@@ -530,13 +526,13 @@ int main(void)
 				stopTimer(&XGpioGlobalTimer, 1);
 				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
 				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
-				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (server side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
 
 				//Check shared secret
 				print_debug(DEBUG_MAIN, "key_a calculated: ");
 				for(int i = 0; i < CRYPTO_BYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", key_a[i]);
-				print_debug(DEBUG_MAIN, "\n\r\n\r");
+					print_debug(DEBUG_MAIN, "%02x", key_a[i]);
+				print_debug(DEBUG_MAIN, "\n\r");
 
 //				st = CREATE_KEY_PAIR;
 				st = CALCULATE_AES_BLOCK;
@@ -567,13 +563,13 @@ int main(void)
 //					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
 				}
 //				print_debug(DEBUG_MAIN, "\n\r");
-				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
+				print_debug(DEBUG_MAIN, "Received plaintext: %s\r\n", cPlaintext);
 				print_debug(DEBUG_MAIN, "\n\r\n\r");
 
 				st = CALCULATE_AES_BLOCK;
 			break;
 		}
-
+//		sleep(10);
 //		sleep(1);
 #else
 		switch(st)
@@ -616,13 +612,13 @@ int main(void)
 				stopTimer(&XGpioGlobalTimer, 1);
 				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
 				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
-				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (server side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
 
 				//Check shared secret
 				print_debug(DEBUG_MAIN, "key_b calculated: ");
 				for(int i = 0; i < CRYPTO_BYTES; i++)
-					print_debug(DEBUG_MAIN, "%02x", key_b[i]);
-				print_debug(DEBUG_MAIN, "\n\r");
+					print_debug(DEBUG_MAIN, "%x", key_b[i]);
+				print_debug(DEBUG_MAIN, "\n\r\n\r");
 
 //				st = WAITING_PK;
 				st = CALCULATE_AES_BLOCK;

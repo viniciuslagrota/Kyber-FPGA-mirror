@@ -113,6 +113,11 @@ extern u32 u32SystemState;
 extern volatile int TcpFastTmrFlag;
 extern volatile int TcpSlowTmrFlag;
 
+//char cTxBuffer[256] = "Hello World1";
+extern char cPlainText[32];
+extern char cCipherText[32];
+char aux[32] = "Testando";
+
 //////////////////////////////////////////////
 //
 //	Time variables
@@ -163,10 +168,6 @@ u32 u32CounterMinutes = 0;
 //////////////////////////////////////////////
 extern uint8_t u8AesBlock[32];
 uint8_t nonce[12] = {0x1};
-
-extern char cPlainText[32];
-extern char cCipherText[32];
-char aux[32] = "Testando";
 
 //////////////////////////////////////////////
 //
@@ -251,7 +252,7 @@ void configSoftwareTimer()
 	XScuTimer_DisableAutoReload(&xTimer);
 	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
 	XScuTimer_LoadTimer(&xTimer, TIMER_LOAD_VALUE);
-//	XScuTimer_Start(&xTimer);
+	XScuTimer_Start(&xTimer);
 	xil_printf("Timer configured.\r\n");
 }
 #endif
@@ -454,7 +455,6 @@ int main(void)
 			{
 				xil_printf("Change key!\r\n");
 				u32CounterMinutes = 0;
-				st = CREATE_KEY_PAIR;
 			}
 		}
 #endif
@@ -483,7 +483,6 @@ int main(void)
 			break;
 			case CONNECTED_TO_SERVER:
 				xil_printf("Connected to server!\r\n");
-				XScuTimer_Start(&xTimer);
 				st = CREATE_KEY_PAIR;
 			break;
 			case CREATE_KEY_PAIR:
@@ -539,37 +538,6 @@ int main(void)
 				print_debug(DEBUG_MAIN, "\n\r\n\r");
 
 //				st = CREATE_KEY_PAIR;
-				st = CALCULATE_AES_BLOCK;
-			break;
-			case CALCULATE_AES_BLOCK:
-				aes256ctr_prf(u8AesBlock, 32, key_a, nonce);
-				print_debug(DEBUG_MAIN, "aes256 calculated: ");
-				for(int i = 0; i < 32; i++)
-					print_debug(DEBUG_MAIN, "%02x", u8AesBlock[i]);
-				print_debug(DEBUG_MAIN, "\n\r");
-
-				st = WAIT_CIPHERED_DATA;
-			break;
-			case WAIT_CIPHERED_DATA:
-				//Wait messages from client
-			break;
-			case DECIPHER_MESSAGE:
-//				print_debug(DEBUG_MAIN, "Ciphertext (bytes): ");
-//				for(int i = 0; i < 32; i++)
-//				{
-//					print_debug(DEBUG_MAIN, "%02x", cCiphertext[i]);
-//				}
-//				print_debug(DEBUG_MAIN, "\n\r");
-//				print_debug(DEBUG_MAIN, "Plaintext (bytes): ");
-				for(int i = 0; i < 32; i++)
-				{
-					cPlaintext[i] = cCiphertext[i] ^ u8AesBlock[i];
-//					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
-				}
-//				print_debug(DEBUG_MAIN, "\n\r");
-				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
-				print_debug(DEBUG_MAIN, "\n\r\n\r");
-
 				st = CALCULATE_AES_BLOCK;
 			break;
 		}

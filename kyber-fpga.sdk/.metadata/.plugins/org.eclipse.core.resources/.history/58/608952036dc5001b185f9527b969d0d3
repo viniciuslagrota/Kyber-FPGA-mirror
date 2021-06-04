@@ -40,7 +40,7 @@
 //
 //////////////////////////////////////////////
 #define SERVER_INIT			0	//1: Server generate key pair and send PK | 0: Server waits PK from client
-#define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 1.
+#define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 0.
 
 //////////////////////////////////////////////
 //
@@ -189,18 +189,17 @@
 //	Kyber variables
 //
 //////////////////////////////////////////////
-#if SERVER_INIT == 1
+#if SERVER_INIT == 0
 enum state
 {
-	WAITING_CLIENT_CONNECTION,
-	CLIENT_CONNECTED,
+	WAITING_SERVER_CONNECTION,
+	CONNECTED_TO_SERVER,
 	CREATE_KEY_PAIR,
 	SEND_PK,
 	WAITING_CT,
 	CALCULATE_SHARED_SECRET,
-	CALCULATE_AES_BLOCK,
-	WAIT_CIPHERED_DATA,
-	DECIPHER_MESSAGE
+	CIPHER_MESSAGE,
+	SEND_CIPHER_MESSAGE
 };
 #else
 enum state
@@ -216,15 +215,16 @@ enum state
 
 enum state st;
 uint8_t pk[CRYPTO_PUBLICKEYBYTES];
-#if SERVER_INIT == 1
+#if SERVER_INIT == 0
 uint8_t sk[CRYPTO_SECRETKEYBYTES];
 #endif
 uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
-#if SERVER_INIT == 1
+#if SERVER_INIT == 0
 uint8_t key_a[CRYPTO_BYTES];
 #else
 uint8_t key_b[CRYPTO_BYTES];
 #endif
+struct netif *netif;
 
 //////////////////////////////////////////////
 //
