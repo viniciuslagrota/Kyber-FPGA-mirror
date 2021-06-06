@@ -542,7 +542,6 @@ int main(void)
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
-				nonce[0]++;
 				aes256ctr_prf(u8AesKeystream, 32, key_a, nonce);
 				print_debug(DEBUG_MAIN, "aes256 calculated: ");
 				for(int i = 0; i < 32; i++)
@@ -641,8 +640,6 @@ int main(void)
 			break;
 			case CIPHER_MESSAGE:
 				//Initialize plaintext
-
-				//TODO: mudar aqui a mensagem que se deseja enviar para o server.
 				memcpy(cPlaintext, aux, 32);
 
 				print_debug(DEBUG_MAIN, "Sent plaintext: %s\r\n", cPlaintext);

@@ -162,8 +162,8 @@ u32 u32CounterMinutes = 0;
 //	AES
 //
 //////////////////////////////////////////////
-extern uint8_t u8AesBlock[32];
-uint8_t nonce[12] = {0x1};
+extern uint8_t u8AesKeystream[32];
+uint8_t nonce[12] = {0x0};
 
 extern char cPlainText[32];
 extern char cCipherText[32];
@@ -538,10 +538,11 @@ int main(void)
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
-				aes256ctr_prf(u8AesBlock, 32, key_a, nonce);
+				nonce[0]++;
+				aes256ctr_prf(u8AesKeystream, 32, key_a, nonce);
 				print_debug(DEBUG_MAIN, "aes256 calculated: ");
 				for(int i = 0; i < 32; i++)
-					print_debug(DEBUG_MAIN, "%02x", u8AesBlock[i]);
+					print_debug(DEBUG_MAIN, "%02x", u8AesKeystream[i]);
 				print_debug(DEBUG_MAIN, "\n\r");
 
 				st = WAIT_CIPHERED_DATA;
@@ -559,7 +560,7 @@ int main(void)
 //				print_debug(DEBUG_MAIN, "Plaintext (bytes): ");
 				for(int i = 0; i < 32; i++)
 				{
-					cPlaintext[i] = cCiphertext[i] ^ u8AesBlock[i];
+					cPlaintext[i] = cCiphertext[i] ^ u8AesKeystream[i];
 //					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
 				}
 //				print_debug(DEBUG_MAIN, "\n\r");
@@ -624,11 +625,11 @@ int main(void)
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
-				//Test AES
-				aes256ctr_prf(u8AesBlock, 32, key_b, nonce);
+				nonce[0]++;
+				aes256ctr_prf(u8AesKeystream, 32, key_b, nonce);
 				print_debug(DEBUG_MAIN, "aes256 block calculated: ");
 				for(int i = 0; i < 32; i++)
-					print_debug(DEBUG_MAIN, "%02x", u8AesBlock[i]);
+					print_debug(DEBUG_MAIN, "%02x", u8AesKeystream[i]);
 				print_debug(DEBUG_MAIN, "\n\r");
 
 				usleep(10000); //Wait 10 ms
@@ -648,7 +649,7 @@ int main(void)
 //				print_debug(DEBUG_MAIN, "Ciphertext (bytes): ");
 				for(int i = 0; i < 32; i++)
 				{
-					cCiphertext[i] = cPlaintext[i] ^ u8AesBlock[i];
+					cCiphertext[i] = cPlaintext[i] ^ u8AesKeystream[i];
 //					print_debug(DEBUG_MAIN, "%02x", cCiphertext[i]);
 				}
 				print_debug(DEBUG_MAIN, "\n\r\n\r");

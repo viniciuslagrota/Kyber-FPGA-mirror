@@ -39,7 +39,7 @@
 //	Change key type
 //
 //////////////////////////////////////////////
-#define SERVER_INIT			0	//1: Server generate key pair and send PK | 0: Server waits PK from client
+#define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
 #define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 0.
 
 //////////////////////////////////////////////
@@ -232,7 +232,7 @@ struct netif *netif;
 //	AES
 //
 //////////////////////////////////////////////
-uint8_t u8AesBlock[32];
+uint8_t u8AesKeystream[32];
 char cPlaintext[32];
 char cCiphertext[32];
 
@@ -298,6 +298,7 @@ u32 u32PolyvecInvnttSwTime, u32PolyvecInvnttSwIt;
 //Keccak
 u32 u32KeccakHwTime, u32KeccakHwIt;
 u32 u32KeccakSwTime, u32KeccakSwIt;
+
 //////////////////////////////////////////////
 //
 //	Prototypes

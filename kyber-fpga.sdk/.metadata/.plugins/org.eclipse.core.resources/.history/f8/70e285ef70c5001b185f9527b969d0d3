@@ -39,8 +39,8 @@
 //	Change key type
 //
 //////////////////////////////////////////////
-#define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
-#define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 1.
+#define SERVER_INIT			0	//1: Server generate key pair and send PK | 0: Server waits PK from client
+#define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 0.
 
 //////////////////////////////////////////////
 //
@@ -189,11 +189,11 @@
 //	Kyber variables
 //
 //////////////////////////////////////////////
-#if SERVER_INIT == 1
+#if SERVER_INIT == 0
 enum state
 {
-	WAITING_CLIENT_CONNECTION,
-	CLIENT_CONNECTED,
+	WAITING_SERVER_CONNECTION,
+	CONNECTED_TO_SERVER,
 	CREATE_KEY_PAIR,
 	SEND_PK,
 	WAITING_CT,
@@ -216,22 +216,23 @@ enum state
 
 enum state st;
 uint8_t pk[CRYPTO_PUBLICKEYBYTES];
-#if SERVER_INIT == 1
+#if SERVER_INIT == 0
 uint8_t sk[CRYPTO_SECRETKEYBYTES];
 #endif
 uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
-#if SERVER_INIT == 1
+#if SERVER_INIT == 0
 uint8_t key_a[CRYPTO_BYTES];
 #else
 uint8_t key_b[CRYPTO_BYTES];
 #endif
+struct netif *netif;
 
 //////////////////////////////////////////////
 //
 //	AES
 //
 //////////////////////////////////////////////
-uint8_t u8AesKeystream[32];
+uint8_t u8AesBlock[32];
 char cPlaintext[32];
 char cCiphertext[32];
 
@@ -297,6 +298,7 @@ u32 u32PolyvecInvnttSwTime, u32PolyvecInvnttSwIt;
 //Keccak
 u32 u32KeccakHwTime, u32KeccakHwIt;
 u32 u32KeccakSwTime, u32KeccakSwIt;
+
 //////////////////////////////////////////////
 //
 //	Prototypes
