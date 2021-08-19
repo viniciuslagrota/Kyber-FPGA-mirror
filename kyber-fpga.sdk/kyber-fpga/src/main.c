@@ -701,8 +701,6 @@ int main()
 			sleep(3);
 		}
 
-
-
     }
 
     cleanup_platform();
