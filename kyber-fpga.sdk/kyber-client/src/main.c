@@ -102,6 +102,9 @@ extern XGpio XGpioNtt;
 extern XAxiDma_Config * XAxiDmaConfig;
 extern XAxiDma XAxiDmaPtr;
 
+extern XUartPs_Config * XUartConfig0;
+extern XUartPs XUart0;
+
 //extern u32 *memoryBram0;
 //extern u32 *memoryBram1;
 
@@ -295,6 +298,11 @@ int main(void)
 	XGpioPs Gpio;
 	ledInit(&Gpio);
 
+	//---- Initialize UART0 ----
+	XUartConfig0 = XUartPs_LookupConfig(XPAR_PS7_UART_0_DEVICE_ID);
+	XUartPs_CfgInitialize(&XUart0, XUartConfig0, XUartConfig0->BaseAddress);
+	XUartPs_SetBaudRate(&XUart0, 115200);
+
 	//---- DMA variables ----
 	int Status;
 	TxBufferPtr = (u8 *)TX_BUFFER_BASE ;
@@ -353,6 +361,33 @@ int main(void)
 	//Disable interrupts, we use polling mode
 	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
 	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
+
+
+
+
+
+	//UART TEST!
+		u32 rv;
+		u8 u8Buffer[8] = { 0x0 };
+		for(int j = 0; j < 8; j++)
+		{
+			u8Buffer[j] = 0x30 + j;
+		}
+
+		while (1) {
+			xil_printf("Sending: %s\r\n", u8Buffer);
+			rv = XUartPs_Send(&XUart0, u8Buffer, 8);
+			xil_printf("Return: %d\r\n", rv);
+
+			sleep(1);
+		}
+	//
+
+
+
+
+
+
 
 	//System state
 	u32SystemState = 0;

@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Wed Apr 28 21:57:51 2021
-# Process ID: 15556
+# Start of session at: Thu Aug 19 20:28:32 2021
+# Process ID: 14768
 # Current directory: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1
 # Command line: vivado.exe -log kyberBD_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kyberBD_wrapper.tcl
 # Log file: C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/kyberBD_wrapper.vds
@@ -37,16 +37,15 @@ WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/
 WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Projects/ip_repo/timer2_1.0'. The path is contained within another repository.
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Projects/ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
-add_files: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 307.113 ; gain = 10.238
 Command: synth_design -top kyberBD_wrapper -part xc7z010clg400-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 1076 
+INFO: Helper process launched with PID 20396 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 747.750 ; gain = 177.875
+Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 746.941 ; gain = 177.910
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'kyberBD_wrapper' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:40]
 INFO: [Synth 8-3491] module 'kyberBD' declared at 'C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/synth/kyberBD.vhd:4899' bound to instance 'kyberBD_i' of component 'kyberBD' [C:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/hdl/kyberBD_wrapper.vhd:67]
@@ -4953,7 +4952,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FCLK_CLKTRIG2_N
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:03:50 ; elapsed = 00:03:55 . Memory (MB): peak = 1314.125 ; gain = 744.250
+Finished RTL Elaboration : Time (s): cpu = 00:04:01 ; elapsed = 00:04:06 . Memory (MB): peak = 1313.863 ; gain = 744.832
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -4966,13 +4965,13 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:03:56 ; elapsed = 00:04:00 . Memory (MB): peak = 1314.125 ; gain = 744.250
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:07 ; elapsed = 00:04:12 . Memory (MB): peak = 1313.863 ; gain = 744.832
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:03:56 ; elapsed = 00:04:00 . Memory (MB): peak = 1314.125 ; gain = 744.250
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:04:07 ; elapsed = 00:04:12 . Memory (MB): peak = 1313.863 ; gain = 744.832
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 1657 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -5061,15 +5060,15 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/kyberBD_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1405.695 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1395.223 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1657 instances were transformed.
   FDR => FDRE: 1656 instances
   SRL16 => SRL16E: 1 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.758 . Memory (MB): peak = 1405.695 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.784 . Memory (MB): peak = 1395.223 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:04:33 ; elapsed = 00:04:37 . Memory (MB): peak = 1405.695 ; gain = 835.820
+Finished Constraint Validation : Time (s): cpu = 00:04:45 ; elapsed = 00:04:50 . Memory (MB): peak = 1395.223 ; gain = 826.191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5580] Multithreading enabled for synth_design using a maximum of 2 processes.
 ---------------------------------------------------------------------------------
@@ -5077,7 +5076,7 @@ Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:04:33 ; elapsed = 00:04:37 . Memory (MB): peak = 1405.695 ; gain = 835.820
+Finished Loading Part and Timing Information : Time (s): cpu = 00:04:45 ; elapsed = 00:04:50 . Memory (MB): peak = 1395.223 ; gain = 826.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -5173,7 +5172,7 @@ Applied set_property DONT_TOUCH = true for kyberBD_i/axi_dma_0/U0/I_PRMRY_DATAMO
 Applied set_property DONT_TOUCH = true for kyberBD_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_DATA_FIFO/\BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for kyberBD_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_XD_FIFO/\NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:04:34 ; elapsed = 00:04:38 . Memory (MB): peak = 1405.695 ; gain = 835.820
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:04:46 ; elapsed = 00:04:51 . Memory (MB): peak = 1395.223 ; gain = 826.191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-4471] merging register 'GEN_SYNC_WRITE.rst_wvalid_re_reg' into 'GEN_SYNC_WRITE.bvalid_i_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/260a/hdl/axi_dma_v7_1_vh_rfs.vhd:2193]
 INFO: [Synth 8-4471] merging register 'GEN_SYNC_READ.rst_rvalid_re_reg' into 'GEN_SYNC_READ.s_axi_lite_rvalid_i_reg' [c:/Projects/kyber-fpga/kyber-fpga.srcs/sources_1/bd/kyberBD/ipshared/260a/hdl/axi_dma_v7_1_vh_rfs.vhd:2965]
@@ -5376,7 +5375,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'axi_data_fifo_v2_1_18_axic_reg_srl_fifo__parameterized1'
 INFO: [Synth 8-3971] The signal "true_dual_bram:/RAM_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:05:20 ; elapsed = 00:05:26 . Memory (MB): peak = 1405.695 ; gain = 835.820
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:05:32 ; elapsed = 00:05:40 . Memory (MB): peak = 1395.223 ; gain = 826.191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
@@ -8661,7 +8660,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (signal_mu
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (signal_multiplexer_5/\U0/s_valid2_reg )
 INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:05:51 ; elapsed = 00:06:27 . Memory (MB): peak = 1405.695 ; gain = 835.820
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:06:05 ; elapsed = 00:06:44 . Memory (MB): peak = 1395.223 ; gain = 826.191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
@@ -8762,7 +8761,7 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:06:11 ; elapsed = 00:06:47 . Memory (MB): peak = 1405.695 ; gain = 835.820
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:06:23 ; elapsed = 00:07:02 . Memory (MB): peak = 1395.223 ; gain = 826.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
@@ -8770,7 +8769,7 @@ Start Timing Optimization
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:06:38 ; elapsed = 00:07:13 . Memory (MB): peak = 1413.098 ; gain = 843.223
+Finished Timing Optimization : Time (s): cpu = 00:06:49 ; elapsed = 00:07:28 . Memory (MB): peak = 1410.645 ; gain = 841.613
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -8825,7 +8824,7 @@ INFO: [Synth 8-6837] The timing for the instance kyberBD_i/i_0/dual_bram_axis_0/
 INFO: [Synth 8-6837] The timing for the instance kyberBD_i/i_0/dual_bram_axis_0/U0/brams_core_inst/true_dual_bram_inst1/RAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 INFO: [Synth 8-6837] The timing for the instance kyberBD_i/i_0/polyvec_invntt_0/U0/s_idx_zeta_reg[3] (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:06:59 ; elapsed = 00:07:52 . Memory (MB): peak = 1420.645 ; gain = 850.770
+Finished Technology Mapping : Time (s): cpu = 00:07:10 ; elapsed = 00:08:07 . Memory (MB): peak = 1418.145 ; gain = 849.113
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -8867,7 +8866,7 @@ Finished Final Netlist Cleanup
 WARNING: [Synth 8-3295] tying undriven pin I_AXI_DMA_REG_MODULE/strm_valid_int2_inferred:in0 to constant 0
 WARNING: [Synth 8-3295] tying undriven pin I_AXI_DMA_REG_MODULE/strm_valid_int_cdc_to_inferred:in0 to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:07:08 ; elapsed = 00:08:02 . Memory (MB): peak = 1420.645 ; gain = 850.770
+Finished IO Insertion : Time (s): cpu = 00:07:20 ; elapsed = 00:08:17 . Memory (MB): peak = 1418.145 ; gain = 849.113
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -8880,7 +8879,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:07:08 ; elapsed = 00:08:02 . Memory (MB): peak = 1420.645 ; gain = 850.770
+Finished Renaming Generated Instances : Time (s): cpu = 00:07:21 ; elapsed = 00:08:18 . Memory (MB): peak = 1418.145 ; gain = 849.113
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -8892,25 +8891,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:07:15 ; elapsed = 00:08:09 . Memory (MB): peak = 1420.645 ; gain = 850.770
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:07:28 ; elapsed = 00:08:24 . Memory (MB): peak = 1418.145 ; gain = 849.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:07:15 ; elapsed = 00:08:09 . Memory (MB): peak = 1420.645 ; gain = 850.770
+Finished Renaming Generated Ports : Time (s): cpu = 00:07:28 ; elapsed = 00:08:25 . Memory (MB): peak = 1418.145 ; gain = 849.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:07:17 ; elapsed = 00:08:10 . Memory (MB): peak = 1421.996 ; gain = 852.121
+Finished Handling Custom Attributes : Time (s): cpu = 00:07:30 ; elapsed = 00:08:26 . Memory (MB): peak = 1420.504 ; gain = 851.473
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:07:17 ; elapsed = 00:08:11 . Memory (MB): peak = 1421.996 ; gain = 852.121
+Finished Renaming Generated Nets : Time (s): cpu = 00:07:30 ; elapsed = 00:08:27 . Memory (MB): peak = 1420.504 ; gain = 851.473
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -9484,17 +9483,17 @@ Report Instance Areas:
 |460   |      U0                                                                            |polyvec_ntt_v1_0                                                      |   871|
 +------+------------------------------------------------------------------------------------+----------------------------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:07:17 ; elapsed = 00:08:11 . Memory (MB): peak = 1421.996 ; gain = 852.121
+Finished Writing Synthesis Report : Time (s): cpu = 00:07:30 ; elapsed = 00:08:27 . Memory (MB): peak = 1420.504 ; gain = 851.473
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 144 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:52 ; elapsed = 00:07:43 . Memory (MB): peak = 1421.996 ; gain = 760.551
-Synthesis Optimization Complete : Time (s): cpu = 00:07:18 ; elapsed = 00:08:12 . Memory (MB): peak = 1421.996 ; gain = 852.121
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:53 ; elapsed = 00:07:58 . Memory (MB): peak = 1420.504 ; gain = 770.113
+Synthesis Optimization Complete : Time (s): cpu = 00:07:30 ; elapsed = 00:08:28 . Memory (MB): peak = 1420.504 ; gain = 851.473
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 1296 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1437.574 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1449.547 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 954 instances were transformed.
   FDR => FDRE: 948 instances
@@ -9505,11 +9504,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 1477 Infos, 257 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:07:35 ; elapsed = 00:08:30 . Memory (MB): peak = 1437.574 ; gain = 1130.461
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1437.574 ; gain = 0.000
+synth_design: Time (s): cpu = 00:07:47 ; elapsed = 00:08:47 . Memory (MB): peak = 1449.547 ; gain = 1142.953
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1449.547 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Projects/kyber-fpga/kyber-fpga.runs/synth_1/kyberBD_wrapper.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 1437.574 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 1449.547 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file kyberBD_wrapper_utilization_synth.rpt -pb kyberBD_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 28 22:06:45 2021...
+INFO: [Common 17-206] Exiting Vivado at Thu Aug 19 20:37:43 2021...

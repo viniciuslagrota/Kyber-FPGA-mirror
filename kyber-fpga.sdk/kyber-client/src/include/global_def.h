@@ -23,6 +23,7 @@
 #include "sleep.h"
 #include "xgpio.h"
 #include "xgpiops.h"
+#include "xuartps.h"
 #include "xadcps.h"
 #include "xaxidma.h"
 #include "xscutimer.h"
@@ -33,6 +34,17 @@
 #include "kem.h"
 #include "reduce.h"
 #include "aes256ctr.h"
+
+//////////////////////////////////////////////
+//
+//	Pinout
+//
+//////////////////////////////////////////////
+/*
+ * PMOD_09: RX
+ * PMOD_10: TX
+ * PMOD_11: GND
+ */
 
 //////////////////////////////////////////////
 //
@@ -261,6 +273,9 @@ XGpio XGpioDma;
 
 XAxiDma_Config * XAxiDmaConfig;
 XAxiDma XAxiDmaPtr;
+
+XUartPs_Config * XUartConfig0;
+XUartPs XUart0;
 
 //u32 *memoryBram0;
 //u32 *memoryBram1;
