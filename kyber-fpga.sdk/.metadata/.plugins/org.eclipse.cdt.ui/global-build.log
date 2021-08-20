@@ -1,10 +1,53 @@
-22:40:22 **** Incremental Build of configuration Debug for project kyber-client ****
+23:16:16 **** Incremental Build of configuration Debug for project kyber-client ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:371:7: warning: unused variable 'Index' [-Wunused-variable]
+   int Index;
+       ^~~~~
+Finished building: ../src/main.c
+ 
+Building target: kyber-client.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-client.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 418028	   3768	31578400	32000196	1e848c4	kyber-client.elf
+Finished building: kyber-client.elf.size
+ 
+23:16:27 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
-22:40:38 **** Incremental Build of configuration Debug for project kyber-client ****
+23:17:50 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-make: Nothing to be done for 'main-build'.
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:371:7: warning: unused variable 'Index' [-Wunused-variable]
+   int Index;
+       ^~~~~
+Finished building: ../src/main.c
+ 
+Building target: kyber-client.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-client.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 418092	   3768	31578400	32000260	1e84904	kyber-client.elf
+Finished building: kyber-client.elf.size
+ 

@@ -368,29 +368,26 @@ int main(void)
 
 	//UART TEST!
 		u32 rv;
-		int Index;
-		u8 u8RecvChar;
 		u8 u8Buffer[8] = { 0x0 };
 		for(int j = 0; j < 8; j++)
 		{
 			u8Buffer[j] = 0x30 + j;
 		}
 
-		while (1) {
-			xil_printf("Sending: ");
-			for(int j = 0; j < 8; j++)
-			{
-				xil_printf("%c", u8Buffer[j]);
-			}
-			xil_printf("\r\n");
+		u32 CntrlRegister = XUartPs_ReadReg(XPAR_XUARTPS_0_BASEADDR, XUARTPS_CR_OFFSET);
 
+		XUartPs_WriteReg(XPAR_XUARTPS_0_BASEADDR, XUARTPS_CR_OFFSET,
+					  ((CntrlRegister & ~XUARTPS_CR_EN_DIS_MASK) |
+					   XUARTPS_CR_TX_EN | XUARTPS_CR_RX_EN));
+
+		while (1) {
+			xil_printf("Sending: %s\r\n", u8Buffer);
 			rv = XUartPs_Send(&XUart0, u8Buffer, 8);
 			xil_printf("Return: %d\r\n", rv);
 
-			while(XUartPs_IsReceiveData(XPAR_XUARTPS_1_BASEADDR))
+			if(XUartPs_IsReceiveData(XPAR_XUARTPS_0_BASEADDR))
 			{
-				XUartPs_Recv(&XUart0, &u8RecvChar, 1);
-				xil_printf("Received: %c\r\n", u8RecvChar);
+
 			}
 
 			sleep(1);
