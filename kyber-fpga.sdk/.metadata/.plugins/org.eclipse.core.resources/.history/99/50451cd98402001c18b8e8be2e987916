@@ -1,0 +1,78 @@
+/*
+ * weg_smw3000.h
+ *
+ *  Created on: 20 de ago de 2021
+ *      Author: vinicius
+ */
+
+#ifndef SRC_INCLUDE_WEG_SMW3000_H_
+#define SRC_INCLUDE_WEG_SMW3000_H_
+
+#include "global_def.h"
+
+//////////////////////////////////////////////
+//
+//	Defines
+//
+//////////////////////////////////////////////
+#define MAX_BUFFER_LEN 						512 //bytes
+#define MAX_WAIT_RESPONSE					5 //seconds
+#define WAIT_RESPONSE_STEP					10000 //us
+#define MAX_WAIT_RESPONSE_COUNTER			MAX_WAIT_RESPONSE * 1000000 / WAIT_RESPONSE_STEP
+
+//////////////////////////////////////////////
+//
+//	Errors
+//
+//////////////////////////////////////////////
+
+//Low level
+#define OK							0x00000000
+#define TRANSMISSION_FAILED			0x00000001
+#define PACKAGE_ERROR				0x00000002
+#define NO_RECEIVED_DATA			0x00000003
+
+//Mid level
+#define TIMEOUT						0x00010000
+
+//High level
+#define CONNECTION_FAILED			0x01000000
+
+
+//////////////////////////////////////////////
+//
+//	Structures
+//
+//////////////////////////////////////////////
+typedef struct smControlStruct {
+	u8 u8Connected;
+	u8 u8Authenticated;
+} smControlStruct;
+
+typedef struct smBufferStruct {
+	u32 u32TxBufferLen;
+	u8 	u8TxBuffer[MAX_BUFFER_LEN];
+	u32 u32RxBufferLen;
+	u8 	u8RxBuffer[MAX_BUFFER_LEN];
+} smBufferStruct;
+
+typedef struct smDataStruct {
+	u32 u32VoltageL1;
+} smDataStruct;
+
+//////////////////////////////////////////////
+//
+//	Prototypes
+//
+//////////////////////////////////////////////
+void smw3000Init();
+u32 smw3000Connect();
+u32 smw3000GetAllData();
+smControlStruct * smw3000GetControlStruct();
+u32 smw3000SendBuffer();
+u32 smw3000RecvBuffer();
+u32 smw3000WaitForData();
+void smw3000PrintRxBuffer();
+
+
+#endif /* SRC_INCLUDE_WEG_SMW3000_H_ */

@@ -159,7 +159,7 @@
 #define print_debug(debugLevel, fmt, ...) \
 	do { \
 		if (DEBUG_GLOBAL_ENABLED && (debugLevel == 1)) \
-			printf("%s:%d:%s() " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+			printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
 		} while (0)
 
 //////////////////////////////////////////////
@@ -340,5 +340,6 @@ u32 getTimer(XGpio * pStruct, uint8_t ui8Channel);
 void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction);
 void resetTimeVariables();
 void printTimeVariables();
+uint16_t crc16(uint8_t * p, unsigned long len);
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */

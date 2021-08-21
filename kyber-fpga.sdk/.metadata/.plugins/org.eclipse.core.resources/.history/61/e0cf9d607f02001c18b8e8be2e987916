@@ -1,0 +1,195 @@
+/*
+ * weg_smw3000.c
+ *
+ *  Created on: 20 de ago de 2021
+ *      Author: vinicius
+ */
+
+#include "weg_smw3000.h"
+
+static smBufferStruct smBuffer;
+static smControlStruct smControl;
+static smDataStruct smData;
+
+//////////////////////////////////////////////
+//
+//	Initilize
+//
+//////////////////////////////////////////////
+void smw3000Init()
+{
+	//Initialize control variables
+	smControl.u8Connected = 0x0;
+	smControl.u8Authenticated = 0x0;
+
+	smBuffer.u32RxBufferLen = 0;
+	smBuffer.u32TxBufferLen = 0;
+	memset(smBuffer.u8RxBuffer, 0x0, MAX_BUFFER_LEN);
+	memset(smBuffer.u8TxBuffer, 0x0, MAX_BUFFER_LEN);
+}
+
+//////////////////////////////////////////////
+//
+//	Pointer to control struct
+//
+//////////////////////////////////////////////
+smControlStruct * smw3000GetControlStruct()
+{
+	print_debug(DEBUG_UART_LVL0, "SM Control structure pointer: 0x%08x\r\n", &smControl);
+	return &smControl;
+}
+
+//////////////////////////////////////////////
+//
+//	Connect
+//
+//////////////////////////////////////////////
+u32 smw3000Connect()
+{
+	u32 rv = 0;
+	u32 u32CounterWait = 0;
+	u8 u8BufferTmp[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x93, 0xBF, 0x32, 0x7E };
+	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, 9);
+	smBuffer.u32TxBufferLen = 9;
+
+	//Send connect request
+	rv = smw3000SendBuffer();
+	if(rv != smBuffer.u32TxBufferLen)
+	{
+		print_debug(DEBUG_UART_LVL1, "Error while sending data: not enough data transmitted.\r\n");
+		goto _err;
+	}
+
+	//Wait for data
+	rv = smw3000WaitForData();
+	if(rv)
+		goto _err;
+
+	while(u32CounterWait < MAX_WAIT_RESPONSE_COUNTER)
+	{
+		if(smw3000RecvBuffer())
+			goto _end;
+
+		usleep(WAIT_RESPONSE_STEP);
+
+		u32CounterWait++;
+	}
+
+	_err:
+		return CONNECT_ERROR;
+
+	_end:
+		smControl.u8Connected = 1;
+		return OK;
+}
+
+//////////////////////////////////////////////
+//
+//	Authenticate
+//
+//////////////////////////////////////////////
+
+//////////////////////////////////////////////
+//
+//	Disconnect
+//
+//////////////////////////////////////////////
+
+//////////////////////////////////////////////
+//
+//	Collect data
+//
+//////////////////////////////////////////////
+u32 smw3000GetAllData()
+{
+	u32 rv = 0;
+	rv = smw3000Connect();
+	if(rv)
+		goto _err;
+
+	rv = smw3000Disconnect();
+	if(rv)
+		goto _err;
+
+
+	_err:
+	return rv;
+
+}
+
+//////////////////////////////////////////////
+//
+//	Send buffer data
+//
+//////////////////////////////////////////////
+u32 smw3000SendBuffer()
+{
+	print_debug(DEBUG_UART_LVL0, "Sending (len: %d): ", smBuffer.u32TxBufferLen);
+#if DEBUG_UART_LVL0 == 1
+	for(int j = 0; j < smBuffer.u32TxBufferLen; j++)
+	{
+		printf("0x%02x ", smBuffer.u8TxBuffer[j]);
+	}
+	printf("\r\n");
+#endif
+
+	return XUartPs_Send(&XUart0, smBuffer.u8TxBuffer, smBuffer.u32TxBufferLen);
+}
+
+//////////////////////////////////////////////
+//
+//	Recv buffer data
+//
+//////////////////////////////////////////////
+u32 smw3000RecvBuffer()
+{
+	bool bBeginFlagFound = 0;
+	u8 u8RecvByte;
+	u32 u32Idx = 0;
+
+	while(XUartPs_IsReceiveData(XPAR_XUARTPS_1_BASEADDR))
+	{
+		XUartPs_Recv(&XUart0, &u8RecvByte, 1);
+
+		if(u8RecvByte == 0x7E)
+			bBeginFlagFound = 1;
+
+		if(bBeginFlagFound)
+		{
+			smBuffer.u8RxBuffer[u32Idx] = u8RecvByte;
+			u32Idx++;
+		}
+	}
+
+	smBuffer.u32RxBufferLen = u32Idx;
+	return bBeginFlagFound;
+}
+
+//////////////////////////////////////////////
+//
+//	Wait for data
+//
+//////////////////////////////////////////////
+u32 smw3000WaitForData()
+{
+
+}
+
+//////////////////////////////////////////////
+//
+//	Print RX buffer
+//
+//////////////////////////////////////////////
+void smw3000PrintRxBuffer()
+{
+	print_debug(DEBUG_UART_LVL1, "RX Buffer (len %d): ", smBuffer.u32RxBufferLen);
+	for(int j = 0; j < smBuffer.u32RxBufferLen; j++)
+	{
+		printf("0x%02x ", smBuffer.u8RxBuffer[j]);
+	}
+	printf("\r\n");
+}
+
+
+
+

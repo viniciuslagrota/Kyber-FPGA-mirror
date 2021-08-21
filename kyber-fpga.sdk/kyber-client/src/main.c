@@ -367,7 +367,7 @@ int main(void)
 
 
 	//UART TEST!
-//		u32 rv;
+		u32 rv;
 //		int Index;
 //		u8 u8RecvChar;
 //		u8 u8Buffer[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x93, 0xBF, 0x32, 0x7E };
@@ -378,26 +378,39 @@ int main(void)
 //			u8Buffer[j] = 0x30 + j;
 //		}
 
+		//TODO: fazer funcionar o CRC16.
+		//CRC16 test
+		u8 u8Vec[5] = { 0xA0, 0x07, 0x03, 0x23, 0x93 };
+		u16 u16Return = crc16(u8Vec, 5);
+		print_debug(DEBUG_UART_LVL1, "CRC16: 0x%04x.\r\n", u16Return);
+
 		smw3000Init();
 
-		//TODO: não está conseguindo receber o ponteiro corretamente da estrutura.
 		smControlStruct * psmControlStruct;
-		smw3000GetControlStruct(&psmControlStruct);
-
+		psmControlStruct = smw3000GetControlStruct();
+		if(psmControlStruct == NULL)
+			print_debug(DEBUG_UART_LVL1, "Null pointer error.\r\n");
 
 		while (1) {
 
-			if(1)
-			{
-				print_debug(DEBUG_MAIN, "Connecting to SM...\r\n");
-				if(smw3000Connect() == 0)
-				{
-					smw3000PrintRxBuffer();
-					print_debug(DEBUG_MAIN, "Connected to SM.\r\n");
-				}
-				else
-					print_debug(DEBUG_MAIN, "Failed to connect to SM.\r\n");
-			}
+			rv = smw3000GetAllData();
+			if(rv)
+				print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
+			else
+				print_debug(DEBUG_MAIN, "Data successfuly acquired.\r\n");
+
+
+//			if(!psmControlStruct->u8Connected)
+//			{
+//				print_debug(DEBUG_MAIN, "Connecting to SM...\r\n");
+//				if(smw3000Connect() == 0)
+//				{
+//					smw3000PrintRxBuffer();
+//					print_debug(DEBUG_MAIN, "Connected to SM.\r\n");
+//				}
+//				else
+//					print_debug(DEBUG_MAIN, "Failed to connect to SM.\r\n");
+//			}
 
 
 //			if(u8CounterMsg == 0)
