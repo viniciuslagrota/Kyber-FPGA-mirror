@@ -1,0 +1,23 @@
+/*
+ * weg_smw3000.h
+ *
+ *  Created on: 20 de ago de 2021
+ *      Author: vinicius
+ */
+
+#ifndef SRC_INCLUDE_WEG_SMW3000_H_
+#define SRC_INCLUDE_WEG_SMW3000_H_
+
+#include "global_def.h"
+
+#define MAX_BUFFER_LEN 512
+
+typedef struct smBufferStruct {
+	u32 u32TxBufferLen;
+	u8 u8TxBuffer[MAX_BUFFER_LEN];
+	u32 u32RxBufferLen;
+	u8 u32RxBuffer[MAX_BUFFER_LEN];
+} smBufferStruct;
+
+
+#endif /* SRC_INCLUDE_WEG_SMW3000_H_ */

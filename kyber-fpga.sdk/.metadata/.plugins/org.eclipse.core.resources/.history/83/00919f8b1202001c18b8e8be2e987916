@@ -1,0 +1,52 @@
+/*
+ * weg_smw3000.h
+ *
+ *  Created on: 20 de ago de 2021
+ *      Author: vinicius
+ */
+
+#ifndef SRC_INCLUDE_WEG_SMW3000_H_
+#define SRC_INCLUDE_WEG_SMW3000_H_
+
+#include "global_def.h"
+
+//////////////////////////////////////////////
+//
+//	Defines
+//
+//////////////////////////////////////////////
+#define MAX_BUFFER_LEN 512
+
+//////////////////////////////////////////////
+//
+//	Structures
+//
+//////////////////////////////////////////////
+typedef struct smControlStruct {
+	u8 u8Connected;
+	u8 u8Authenticated;
+} smControlStruct;
+
+typedef struct smBufferStruct {
+	u32 u32TxBufferLen;
+	u8 	u8TxBuffer[MAX_BUFFER_LEN];
+	u32 u32RxBufferLen;
+	u8 	u8RxBuffer[MAX_BUFFER_LEN];
+} smBufferStruct;
+
+typedef struct smDataStruct {
+	u32 u32VoltageL1;
+} smDataStruct;
+
+//////////////////////////////////////////////
+//
+//	Prototypes
+//
+//////////////////////////////////////////////
+void smw3000Init();
+bool smw3000Connect();
+bool smw3000CollectData();
+u32 smw3000SendBuffer();
+
+
+#endif /* SRC_INCLUDE_WEG_SMW3000_H_ */

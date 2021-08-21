@@ -1,0 +1,64 @@
+/*
+ * weg_smw3000.c
+ *
+ *  Created on: 20 de ago de 2021
+ *      Author: vinicius
+ */
+
+#include "weg_smw3000.h"
+
+smBufferStruct smBuffer;
+smControlStruct smControl;
+smDataStruct smData;
+
+//////////////////////////////////////////////
+//
+//	Initilize
+//
+//////////////////////////////////////////////
+void smw3000Init()
+{
+	//Initialize control variables
+	smControl.u8Connected = 0;
+	smControl.u8Authenticated = 0;
+
+	smBuffer.u32RxBufferLen = 0;
+	smBuffer.u32TxBufferLen = 0;
+	memset(smBuffer.u8RxBuffer, 0x0, MAX_BUFFER_LEN);
+	memset(smBuffer.u8TxBuffer, 0x0, MAX_BUFFER_LEN);
+}
+
+//////////////////////////////////////////////
+//
+//	Connect
+//
+//////////////////////////////////////////////
+bool smw3000Connect()
+{
+	u8 u8BufferTmp[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x93, 0xBF, 0x32, 0x7E };
+	memcpy(smBuffer.u8RxBuffer, u8BufferTmp, 9);
+
+	return 0;
+}
+
+//////////////////////////////////////////////
+//
+//	Authenticate
+//
+//////////////////////////////////////////////
+
+//////////////////////////////////////////////
+//
+//	Disconnect
+//
+//////////////////////////////////////////////
+
+//////////////////////////////////////////////
+//
+//	Collect data
+//
+//////////////////////////////////////////////
+bool smw3000CollectData()
+{
+
+}

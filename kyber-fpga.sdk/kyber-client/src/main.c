@@ -367,33 +367,75 @@ int main(void)
 
 
 	//UART TEST!
-		u32 rv;
-		int Index;
-		u8 u8RecvChar;
-		u8 u8Buffer[8] = { 0x0 };
-		for(int j = 0; j < 8; j++)
-		{
-			u8Buffer[j] = 0x30 + j;
-		}
+//		u32 rv;
+//		int Index;
+//		u8 u8RecvChar;
+//		u8 u8Buffer[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x93, 0xBF, 0x32, 0x7E };
+//		u8 u8Buffer2[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x53, 0xB3, 0xF4, 0x7E };
+//		u8 u8CounterMsg = 0;
+//		for(int j = 0; j < 8; j++)
+//		{
+//			u8Buffer[j] = 0x30 + j;
+//		}
+
+		smw3000Init();
+
+		//TODO: não está conseguindo receber o ponteiro corretamente da estrutura.
+		smControlStruct * psmControlStruct;
+		smw3000GetControlStruct(&psmControlStruct);
+
 
 		while (1) {
-			xil_printf("Sending: ");
-			for(int j = 0; j < 8; j++)
-			{
-				xil_printf("%c", u8Buffer[j]);
-			}
-			xil_printf("\r\n");
 
-			rv = XUartPs_Send(&XUart0, u8Buffer, 8);
-			xil_printf("Return: %d\r\n", rv);
-
-			while(XUartPs_IsReceiveData(XPAR_XUARTPS_1_BASEADDR))
+			if(1)
 			{
-				XUartPs_Recv(&XUart0, &u8RecvChar, 1);
-				xil_printf("Received: %c\r\n", u8RecvChar);
+				print_debug(DEBUG_MAIN, "Connecting to SM...\r\n");
+				if(smw3000Connect() == 0)
+				{
+					smw3000PrintRxBuffer();
+					print_debug(DEBUG_MAIN, "Connected to SM.\r\n");
+				}
+				else
+					print_debug(DEBUG_MAIN, "Failed to connect to SM.\r\n");
 			}
 
-			sleep(1);
+
+//			if(u8CounterMsg == 0)
+//			{
+//				print_debug(DEBUG_MAIN, "Sending: ");
+//				for(int j = 0; j < 9; j++)
+//				{
+//					printf("0x%02x ", u8Buffer[j]);
+//				}
+//				printf("\r\n");
+//
+//				rv = XUartPs_Send(&XUart0, u8Buffer, 9);
+//
+//				u8CounterMsg = 1;
+//			}
+//			else
+//			{
+//				print_debug(DEBUG_MAIN, "Sending: ");
+//				for(int j = 0; j < 9; j++)
+//				{
+//					printf("0x%02x ", u8Buffer2[j]);
+//				}
+//				printf("\r\n");
+//
+//				rv = XUartPs_Send(&XUart0, u8Buffer2, 9);
+//
+//				u8CounterMsg = 0;
+//			}
+//
+//			print_debug(DEBUG_MAIN, "Return: %d\r\n", rv);
+//
+//			while(XUartPs_IsReceiveData(XPAR_XUARTPS_1_BASEADDR))
+//			{
+//				XUartPs_Recv(&XUart0, &u8RecvChar, 1);
+//				print_debug(DEBUG_MAIN, "Received: %02x\r\n", u8RecvChar);
+//			}
+
+			sleep(5);
 		}
 	//
 

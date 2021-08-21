@@ -1,0 +1,110 @@
+/*
+ * weg_smw3000.c
+ *
+ *  Created on: 20 de ago de 2021
+ *      Author: vinicius
+ */
+
+#include "weg_smw3000.h"
+
+smBufferStruct smBuffer;
+smControlStruct smControl;
+smDataStruct smData;
+
+//////////////////////////////////////////////
+//
+//	Initilize
+//
+//////////////////////////////////////////////
+void smw3000Init()
+{
+	//Initialize control variables
+	smControl.u8Connected = 0;
+	smControl.u8Authenticated = 0;
+
+	smBuffer.u32RxBufferLen = 0;
+	smBuffer.u32TxBufferLen = 0;
+	memset(smBuffer.u8RxBuffer, 0x0, MAX_BUFFER_LEN);
+	memset(smBuffer.u8TxBuffer, 0x0, MAX_BUFFER_LEN);
+}
+
+//////////////////////////////////////////////
+//
+//	Connect
+//
+//////////////////////////////////////////////
+bool smw3000Connect()
+{
+	u32 rv = 0;
+	u8 u8BufferTmp[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x93, 0xBF, 0x32, 0x7E };
+	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, 9);
+	smBuffer.u32TxBufferLen = 9;
+
+	//Send connect request
+	rv = smw3000SendBuffer();
+	if(rv != smBuffer.u32TxBufferLen)
+	{
+		print_debug(DEBUG_UART_LVL1, "Error while sending data: not enough data transmitted.\r\n");
+		goto _err;
+	}
+
+	//Wait for data
+	while(u8CounterWait < MAX_WAIT_RESPONSE)
+	{
+		smw3000RecvBuffer();
+		sleep(1);
+	}
+
+	return 0;
+
+	_err:
+	return 1;
+}
+
+//////////////////////////////////////////////
+//
+//	Authenticate
+//
+//////////////////////////////////////////////
+
+//////////////////////////////////////////////
+//
+//	Disconnect
+//
+//////////////////////////////////////////////
+
+//////////////////////////////////////////////
+//
+//	Collect data
+//
+//////////////////////////////////////////////
+bool smw3000CollectData()
+{
+
+}
+
+//////////////////////////////////////////////
+//
+//	Send buffer data
+//
+//////////////////////////////////////////////
+u32 smw3000SendBuffer()
+{
+	print_debug(DEBUG_UART_LVL0, "Sending: ");
+#if DEBUG_UART_LVL0 == 1
+	for(int j = 0; j < 9; j++)
+	{
+		printf("0x%02x ", smBuffer.u8TxBuffer[j]);
+	}
+	printf("\r\n");
+#endif
+
+	return XUartPs_Send(&XUart0, smBuffer.u8TxBuffer, smBuffer.u32TxBufferLen);
+}
+
+
+
+
+
+
+

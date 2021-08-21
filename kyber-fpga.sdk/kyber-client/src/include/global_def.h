@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 //Hardware
 #include "xil_printf.h"
@@ -34,6 +35,7 @@
 #include "kem.h"
 #include "reduce.h"
 #include "aes256ctr.h"
+#include "weg_smw3000.h"
 
 //////////////////////////////////////////////
 //
@@ -139,18 +141,26 @@
 //Accelerations
 #define DEBUG_TIME					1
 #define DEBUG_KYBER					0
+//UART
+#define DEBUG_UART_LVL0				1
+#define DEBUG_UART_LVL1				1
 
 //////////////////////////////////////////////
 //
 //	Debug print
 //
 //////////////////////////////////////////////
-#define print_debug(debugLevel, ...) \
+//#define print_debug(debugLevel, ...) \
+//	do { \
+//		if (DEBUG_GLOBAL_ENABLED && (debugLevel == 1)) \
+//			printf(__VA_ARGS__); \
+//		} while (0)
+
+#define print_debug(debugLevel, fmt, ...) \
 	do { \
 		if (DEBUG_GLOBAL_ENABLED && (debugLevel == 1)) \
-			printf(__VA_ARGS__); \
+			printf("%s:%d:%s() " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
 		} while (0)
-
 
 //////////////////////////////////////////////
 //
