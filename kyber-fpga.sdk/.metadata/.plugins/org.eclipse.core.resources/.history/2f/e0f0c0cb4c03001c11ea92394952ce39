@@ -49,7 +49,7 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
-	rv = smw3000GetDeviceID();
+	rv = smw3000GetDeviceId();
 	if(rv)
 		goto _err;
 
@@ -263,14 +263,14 @@ u32 smw3000GetDeviceID()
 #endif
 
 	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
-	print_debug(DEBUG_UART_LVL1, "Device name: %s.\r\n", smData.u8DeviceName);
+	print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
 
 	smw3000AddControlPointer();
 
 	return OK;
 
 	_err:
-		return DEVICE_ID_FAILED | rv;
+		return VOLTAGE_FAILED | rv;
 }
 
 //////////////////////////////////////////////

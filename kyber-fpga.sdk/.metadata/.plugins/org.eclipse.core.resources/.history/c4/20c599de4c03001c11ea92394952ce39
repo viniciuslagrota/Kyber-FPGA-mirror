@@ -368,6 +368,21 @@ int main(void)
 
 	//UART TEST!
 		u32 rv;
+//		int Index;
+//		u8 u8RecvChar;
+//		u8 u8Buffer[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x93, 0xBF, 0x32, 0x7E };
+//		u8 u8Buffer2[9] = { 0x7E, 0xA0, 0x07, 0x03, 0x23, 0x53, 0xB3, 0xF4, 0x7E };
+//		u8 u8CounterMsg = 0;
+//		for(int j = 0; j < 8; j++)
+//		{
+//			u8Buffer[j] = 0x30 + j;
+//		}
+
+		//TODO: fazer funcionar o CRC16.
+		//CRC16 test
+		u8 u8Vec[5] = { 0xA0, 0x07, 0x03, 0x23, 0x93 };
+		u16 u16Return = crc16(u8Vec, 5);
+		print_debug(DEBUG_UART_LVL1, "CRC16: 0x%04x.\r\n", u16Return);
 
 		smw3000Init();
 

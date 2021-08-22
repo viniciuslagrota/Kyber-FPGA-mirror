@@ -49,7 +49,7 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
-	rv = smw3000GetDeviceID();
+	rv = smw3000GetDeviceId();
 	if(rv)
 		goto _err;
 
@@ -220,10 +220,20 @@ u32 smw3000GetDeviceID()
 	smBuffer.u32TxBufferLen = 27;
 
 	//Base message
-	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x01, 0x00, 0x00, 0x60, 0x01, 0x04, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
+	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x03, 0x01, 0x00, 0x00, 0x07, 0x00, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
 
 	//Control field
 	u8BufferTmp[5] = u8ControlVec[u8ControlPointer];
+
+	//Address field
+	if(u8Line == 1)
+		u8BufferTmp[18] = 0x20;
+	else if(u8Line == 2)
+		u8BufferTmp[18] = 0x34;
+	else if(u8Line == 3)
+		u8BufferTmp[18] = 0x48;
+	else
+		u8BufferTmp[18] = 0x20;
 
 	//Calculate header CRC-CCITT
 	u16 u16Crc = 0x0;
@@ -241,11 +251,11 @@ u32 smw3000GetDeviceID()
 	//Copy buffer to structure
 	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, smBuffer.u32TxBufferLen);
 
-	//Send buffer
+	//Send disconnect request
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting device id data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_UART_LVL1, "Error while sending line voltage data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -262,15 +272,33 @@ u32 smw3000GetDeviceID()
 		smw3000PrintRxBuffer();
 #endif
 
-	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
-	print_debug(DEBUG_UART_LVL1, "Device name: %s.\r\n", smData.u8DeviceName);
+	if(u8Line == 1)
+	{
+		smData.u32VoltageL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+	}
+	else if(u8Line == 2)
+	{
+		smData.u32VoltageL2 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
+	}
+	else if(u8Line == 3)
+	{
+		smData.u32VoltageL3 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
+	}
+	else
+	{
+		smData.u32VoltageL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+	}
 
 	smw3000AddControlPointer();
 
 	return OK;
 
 	_err:
-		return DEVICE_ID_FAILED | rv;
+		return VOLTAGE_FAILED | rv;
 }
 
 //////////////////////////////////////////////
@@ -317,11 +345,11 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 	//Copy buffer to structure
 	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, smBuffer.u32TxBufferLen);
 
-	//Send buffer
+	//Send disconnect request
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting line voltage data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_UART_LVL1, "Error while sending line voltage data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 

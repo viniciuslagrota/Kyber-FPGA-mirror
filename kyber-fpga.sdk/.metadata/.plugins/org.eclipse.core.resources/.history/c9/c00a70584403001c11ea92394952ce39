@@ -5,6 +5,8 @@
  *      Author: vinicius
  */
 
+//TODO: check if received a 0x7E e finished with a 0x7E. If not, resend the package.
+
 #include "weg_smw3000.h"
 
 static smBufferStruct smBuffer;
@@ -29,48 +31,6 @@ void smw3000Init()
 	smBuffer.u32TxBufferLen = 0;
 	memset(smBuffer.u8RxBuffer, 0x0, MAX_BUFFER_LEN);
 	memset(smBuffer.u8TxBuffer, 0x0, MAX_BUFFER_LEN);
-}
-
-//////////////////////////////////////////////
-//
-//	Collect data
-//
-//////////////////////////////////////////////
-u32 smw3000GetAllData()
-{
-	u32 rv = 0;
-	u8ControlPointer = 0;
-
-	rv = smw3000Connect();
-	if(rv)
-		goto _err;
-
-	rv = smw3000Authenticate();
-	if(rv)
-		goto _err;
-
-	rv = smw3000GetDeviceID();
-	if(rv)
-		goto _err;
-
-	rv = smw3000GetLineVoltage(1);
-	if(rv)
-		goto _err;
-
-	rv = smw3000GetLineVoltage(2);
-	if(rv)
-		goto _err;
-
-	rv = smw3000GetLineVoltage(3);
-	if(rv)
-		goto _err;
-
-	rv = smw3000Disconnect();
-	if(rv)
-		goto _err;
-
-	_err:
-	return rv;
 }
 
 //////////////////////////////////////////////
@@ -209,72 +169,6 @@ u32 smw3000Disconnect()
 
 //////////////////////////////////////////////
 //
-//	Get device ID
-//
-//////////////////////////////////////////////
-u32 smw3000GetDeviceID()
-{
-	u32 rv = 0;
-
-	//Buffer length
-	smBuffer.u32TxBufferLen = 27;
-
-	//Base message
-	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x01, 0x00, 0x00, 0x60, 0x01, 0x04, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
-
-	//Control field
-	u8BufferTmp[5] = u8ControlVec[u8ControlPointer];
-
-	//Calculate header CRC-CCITT
-	u16 u16Crc = 0x0;
-	u16Crc = crc16(&u8BufferTmp[1], 5);
-	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
-	u8BufferTmp[6] = u16Crc & 0xFF;
-	u8BufferTmp[7] = u16Crc >> 8;
-
-	//Calculate package CRC-CCITT
-	u16Crc = crc16(&u8BufferTmp[1], 23);
-	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
-	u8BufferTmp[24] = u16Crc & 0xFF;
-	u8BufferTmp[25] = u16Crc >> 8;
-
-	//Copy buffer to structure
-	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, smBuffer.u32TxBufferLen);
-
-	//Send buffer
-	rv = smw3000SendBuffer();
-	if(rv)
-	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting device id data: not enough data transmitted.\r\n");
-		goto _err;
-	}
-
-	//Wait for data
-	rv = smw3000WaitForData();
-	if(rv)
-	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
-		goto _err;
-	}
-
-#if DEBUG_UART_LVL0 == 1
-	else
-		smw3000PrintRxBuffer();
-#endif
-
-	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
-	print_debug(DEBUG_UART_LVL1, "Device name: %s.\r\n", smData.u8DeviceName);
-
-	smw3000AddControlPointer();
-
-	return OK;
-
-	_err:
-		return DEVICE_ID_FAILED | rv;
-}
-
-//////////////////////////////////////////////
-//
 //	Get line voltage
 //
 //////////////////////////////////////////////
@@ -317,11 +211,11 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 	//Copy buffer to structure
 	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, smBuffer.u32TxBufferLen);
 
-	//Send buffer
+	//Send disconnect request
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting line voltage data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_UART_LVL1, "Error while sending line voltage data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -367,7 +261,43 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 		return VOLTAGE_FAILED | rv;
 }
 
+//////////////////////////////////////////////
+//
+//	Collect data
+//
+//////////////////////////////////////////////
+u32 smw3000GetAllData()
+{
+	u32 rv = 0;
+	u8ControlPointer = 0;
 
+	rv = smw3000Connect();
+	if(rv)
+		goto _err;
+
+	rv = smw3000Authenticate();
+	if(rv)
+		goto _err;
+
+	rv = smw3000GetLineVoltage(1);
+	if(rv)
+		goto _err;
+
+	rv = smw3000GetLineVoltage(2);
+	if(rv)
+		goto _err;
+
+	rv = smw3000GetLineVoltage(3);
+	if(rv)
+		goto _err;
+
+	rv = smw3000Disconnect();
+	if(rv)
+		goto _err;
+
+	_err:
+	return rv;
+}
 
 //////////////////////////////////////////////
 //
