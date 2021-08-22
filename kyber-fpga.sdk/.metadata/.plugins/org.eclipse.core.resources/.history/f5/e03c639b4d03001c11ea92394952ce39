@@ -267,7 +267,7 @@ u32 smw3000GetDeviceID()
 #endif
 
 	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
-	print_debug(DEBUG_UART_LVL1, "Device name: %.13s.\r\n", smData.u8DeviceName);
+	print_debug(DEBUG_UART_LVL1, "Device name: %s.\r\n", smData.u8DeviceName);
 
 	smw3000AddControlPointer();
 
@@ -275,73 +275,6 @@ u32 smw3000GetDeviceID()
 
 	_err:
 		return DEVICE_ID_FAILED | rv;
-}
-
-//////////////////////////////////////////////
-//
-//	Get timestamp
-//
-//////////////////////////////////////////////
-u32 smw3000GetTimestamp()
-{
-	u32 rv = 0;
-
-	//Buffer length
-	smBuffer.u32TxBufferLen = 27;
-
-	//Base message
-	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x08, 0x00, 0x00, 0x01, 0x00, 0x00, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
-
-	//Control field
-	u8BufferTmp[5] = u8ControlVec[u8ControlPointer];
-
-	//Calculate header CRC-CCITT
-	u16 u16Crc = 0x0;
-	u16Crc = crc16(&u8BufferTmp[1], 5);
-	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
-	u8BufferTmp[6] = u16Crc & 0xFF;
-	u8BufferTmp[7] = u16Crc >> 8;
-
-	//Calculate package CRC-CCITT
-	u16Crc = crc16(&u8BufferTmp[1], 23);
-	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
-	u8BufferTmp[24] = u16Crc & 0xFF;
-	u8BufferTmp[25] = u16Crc >> 8;
-
-	//Copy buffer to structure
-	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, smBuffer.u32TxBufferLen);
-
-	//Send buffer
-	rv = smw3000SendBuffer();
-	if(rv)
-	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting timestamp data: not enough data transmitted.\r\n");
-		goto _err;
-	}
-
-	//Wait for data
-	rv = smw3000WaitForData();
-	if(rv)
-	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
-		goto _err;
-	}
-
-#if DEBUG_UART_LVL0 == 1
-	else
-		smw3000PrintRxBuffer();
-#endif
-
-	memcpy(&smData.u8Timestamp[0], &smBuffer.u8RxBuffer[17], 4);
-	memcpy(&smData.u8Timestamp[4], &smBuffer.u8RxBuffer[22], 3);
-	print_debug(DEBUG_UART_LVL1, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", smData.u8Timestamp[3], smData.u8Timestamp[2], ((u16)(smData.u8Timestamp[0]) << 8) | smData.u8Timestamp[1], smData.u8Timestamp[4], smData.u8Timestamp[5], smData.u8Timestamp[6]);
-
-	smw3000AddControlPointer();
-
-	return OK;
-
-	_err:
-		return TIMESTAMP_FAILED | rv;
 }
 
 //////////////////////////////////////////////

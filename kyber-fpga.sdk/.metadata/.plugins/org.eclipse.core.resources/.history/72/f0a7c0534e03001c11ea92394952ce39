@@ -267,7 +267,7 @@ u32 smw3000GetDeviceID()
 #endif
 
 	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
-	print_debug(DEBUG_UART_LVL1, "Device name: %.13s.\r\n", smData.u8DeviceName);
+	print_debug(DEBUG_UART_LVL1, "Device name: %s.\r\n", smData.u8DeviceName);
 
 	smw3000AddControlPointer();
 
@@ -290,7 +290,7 @@ u32 smw3000GetTimestamp()
 	smBuffer.u32TxBufferLen = 27;
 
 	//Base message
-	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x08, 0x00, 0x00, 0x01, 0x00, 0x00, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
+	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x01, 0x00, 0x00, 0x60, 0x01, 0x04, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
 
 	//Control field
 	u8BufferTmp[5] = u8ControlVec[u8ControlPointer];
@@ -315,7 +315,7 @@ u32 smw3000GetTimestamp()
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting timestamp data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_UART_LVL1, "Error while requesting device id data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -332,16 +332,15 @@ u32 smw3000GetTimestamp()
 		smw3000PrintRxBuffer();
 #endif
 
-	memcpy(&smData.u8Timestamp[0], &smBuffer.u8RxBuffer[17], 4);
-	memcpy(&smData.u8Timestamp[4], &smBuffer.u8RxBuffer[22], 3);
-	print_debug(DEBUG_UART_LVL1, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", smData.u8Timestamp[3], smData.u8Timestamp[2], ((u16)(smData.u8Timestamp[0]) << 8) | smData.u8Timestamp[1], smData.u8Timestamp[4], smData.u8Timestamp[5], smData.u8Timestamp[6]);
+	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
+	print_debug(DEBUG_UART_LVL1, "Device name: %s.\r\n", smData.u8DeviceName);
 
 	smw3000AddControlPointer();
 
 	return OK;
 
 	_err:
-		return TIMESTAMP_FAILED | rv;
+		return DEVICE_ID_FAILED | rv;
 }
 
 //////////////////////////////////////////////

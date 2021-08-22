@@ -267,7 +267,7 @@ u32 smw3000GetDeviceID()
 #endif
 
 	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
-	print_debug(DEBUG_UART_LVL1, "Device name: %.13s.\r\n", smData.u8DeviceName);
+	print_debug(DEBUG_UART_LVL1, "Device name: %s.\r\n", smData.u8DeviceName);
 
 	smw3000AddControlPointer();
 
@@ -334,14 +334,14 @@ u32 smw3000GetTimestamp()
 
 	memcpy(&smData.u8Timestamp[0], &smBuffer.u8RxBuffer[17], 4);
 	memcpy(&smData.u8Timestamp[4], &smBuffer.u8RxBuffer[22], 3);
-	print_debug(DEBUG_UART_LVL1, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", smData.u8Timestamp[3], smData.u8Timestamp[2], ((u16)(smData.u8Timestamp[0]) << 8) | smData.u8Timestamp[1], smData.u8Timestamp[4], smData.u8Timestamp[5], smData.u8Timestamp[6]);
+	print_debug(DEBUG_UART_LVL1, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", smData.u8Timestamp[3], smData.u8Timestamp[2], ((u16)(smData.u8Timestamp[0]) << 16) | smData.u8Timestamp[1], smData.u8Timestamp[4], smData.u8Timestamp[5], smData.u8Timestamp[6]);
 
 	smw3000AddControlPointer();
 
 	return OK;
 
 	_err:
-		return TIMESTAMP_FAILED | rv;
+		return DEVICE_ID_FAILED | rv;
 }
 
 //////////////////////////////////////////////
