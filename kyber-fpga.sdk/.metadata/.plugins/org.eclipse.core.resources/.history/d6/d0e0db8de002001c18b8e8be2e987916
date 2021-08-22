@@ -269,8 +269,6 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 u32 smw3000GetAllData()
 {
 	u32 rv = 0;
-	u8ControlPointer = 0;
-
 	rv = smw3000Connect();
 	if(rv)
 		goto _err;
@@ -283,13 +281,17 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
-	rv = smw3000GetLineVoltage(2);
-	if(rv)
-		goto _err;
-
-	rv = smw3000GetLineVoltage(3);
-	if(rv)
-		goto _err;
+//	rv = smw3000GetLineVoltage(2);
+//	if(rv)
+//		goto _err;
+//
+//	sleep(1);
+//
+//	rv = smw3000GetLineVoltage(3);
+//	if(rv)
+//		goto _err;
+//
+//	sleep(1);
 
 	rv = smw3000Disconnect();
 	if(rv)

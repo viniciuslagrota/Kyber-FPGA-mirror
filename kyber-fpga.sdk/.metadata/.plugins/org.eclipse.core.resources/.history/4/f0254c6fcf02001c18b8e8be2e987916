@@ -40,7 +40,6 @@
 #define CONNECTION_FAILED			0x01000000
 #define DISCONNECTION_FAILED		0x02000000
 #define AUTHENTICATION_FAILED		0x03000000
-#define VOLTAGE_FAILED				0x04000000
 
 //////////////////////////////////////////////
 //
@@ -61,8 +60,6 @@ typedef struct smBufferStruct {
 
 typedef struct smDataStruct {
 	u32 u32VoltageL1;
-	u32 u32VoltageL2;
-	u32 u32VoltageL3;
 } smDataStruct;
 
 //////////////////////////////////////////////
@@ -74,14 +71,12 @@ void smw3000Init();
 u32 smw3000Connect();
 u32 smw3000Authenticate();
 u32 smw3000Disconnect();
-u32 smw3000GetLineVoltage(u8 u8Line);
 u32 smw3000GetAllData();
 smControlStruct * smw3000GetControlStruct();
 u32 smw3000SendBuffer();
 u32 smw3000RecvBuffer();
 u32 smw3000WaitForData();
 void smw3000PrintRxBuffer();
-void smw3000AddControlPointer();
 
 
 #endif /* SRC_INCLUDE_WEG_SMW3000_H_ */

@@ -236,8 +236,8 @@ uint16_t crc16(uint8_t * p, unsigned long len)
 //    const unsigned long crcxor = 0x0000;
     const unsigned long crcinit = 0xFFFF;
 	const unsigned long crcxor = 0xFFFF;
-    const int refin = 1;
-    const int refout = 1;
+    const int refin = 0;
+    const int refout = 0;
 
     unsigned long crcmask = ((((unsigned long)1<<(order-1))-1)<<1)|1;
     unsigned long crchighbit = (unsigned long)1<<(order-1);

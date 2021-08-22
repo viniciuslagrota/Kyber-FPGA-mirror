@@ -14,7 +14,7 @@ static smControlStruct smControl;
 static smDataStruct smData;
 
 static u8 u8ControlPointer = 0;
-static u8 u8ControlVec[8] = { 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0x10 };
+u8ControlVec[8] = { 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0x10 };
 
 //////////////////////////////////////////////
 //
@@ -172,43 +172,25 @@ u32 smw3000Disconnect()
 //	Get line voltage
 //
 //////////////////////////////////////////////
-u32 smw3000GetLineVoltage(u8 u8Line)
+u32 smw3000GetLineVoltage()
 {
 	u32 rv = 0;
-
-	//Buffer length
-	smBuffer.u32TxBufferLen = 27;
-
-	//Base message
-	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x03, 0x01, 0x00, 0x00, 0x07, 0x00, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
-
-	//Control field
-	u8BufferTmp[5] = u8ControlVec[u8ControlPointer];
-
-	//Address field
-	if(u8Line == 1)
-		u8BufferTmp[18] = 0x20;
-	else if(u8Line == 2)
-		u8BufferTmp[18] = 0x34;
-	else if(u8Line == 3)
-		u8BufferTmp[18] = 0x48;
-	else
-		u8BufferTmp[18] = 0x20;
+	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x93, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x03, 0x01, 0x00, 0x20, 0x07, 0x00, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
+	u16 u16Crc = 0x0;
 
 	//Calculate header CRC-CCITT
-	u16 u16Crc = 0x0;
 	u16Crc = crc16(&u8BufferTmp[1], 5);
-	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_UART_LVL1, "Header: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[6] = u16Crc & 0xFF;
 	u8BufferTmp[7] = u16Crc >> 8;
 
 	//Calculate package CRC-CCITT
 	u16Crc = crc16(&u8BufferTmp[1], 23);
-	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_UART_LVL1, "Packet: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[24] = u16Crc & 0xFF;
 	u8BufferTmp[25] = u16Crc >> 8;
 
-	//Copy buffer to structure
+	smBuffer.u32TxBufferLen = 27;
 	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, smBuffer.u32TxBufferLen);
 
 	//Send disconnect request
@@ -232,33 +214,16 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 		smw3000PrintRxBuffer();
 #endif
 
-	if(u8Line == 1)
-	{
-		smData.u32VoltageL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
-	}
-	else if(u8Line == 2)
-	{
-		smData.u32VoltageL2 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
-	}
-	else if(u8Line == 3)
-	{
-		smData.u32VoltageL3 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
-	}
-	else
-	{
-		smData.u32VoltageL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
-	}
+	smData.u32VoltageL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+
+	print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
 
 	smw3000AddControlPointer();
 
 	return OK;
 
 	_err:
-		return VOLTAGE_FAILED | rv;
+		return DISCONNECTION_FAILED | rv;
 }
 
 //////////////////////////////////////////////
@@ -269,8 +234,6 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 u32 smw3000GetAllData()
 {
 	u32 rv = 0;
-	u8ControlPointer = 0;
-
 	rv = smw3000Connect();
 	if(rv)
 		goto _err;
@@ -279,15 +242,7 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
-	rv = smw3000GetLineVoltage(1);
-	if(rv)
-		goto _err;
-
-	rv = smw3000GetLineVoltage(2);
-	if(rv)
-		goto _err;
-
-	rv = smw3000GetLineVoltage(3);
+	rv = smw3000GetLineVoltage();
 	if(rv)
 		goto _err;
 
@@ -295,8 +250,10 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
+
 	_err:
 	return rv;
+
 }
 
 //////////////////////////////////////////////
@@ -320,7 +277,6 @@ u32 smw3000SendBuffer()
 	while (u32LengthSent < smBuffer.u32TxBufferLen)
 	{
 		u32LengthSent += XUartPs_Send(&XUart0, &smBuffer.u8TxBuffer[u32LengthSent], 1);
-		usleep(100);
 	}
 
 	while(XUartPs_IsSending(&XUart0)) {}

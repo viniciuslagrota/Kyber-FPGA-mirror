@@ -269,8 +269,6 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 u32 smw3000GetAllData()
 {
 	u32 rv = 0;
-	u8ControlPointer = 0;
-
 	rv = smw3000Connect();
 	if(rv)
 		goto _err;
@@ -295,8 +293,10 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
+
 	_err:
 	return rv;
+
 }
 
 //////////////////////////////////////////////
@@ -320,7 +320,6 @@ u32 smw3000SendBuffer()
 	while (u32LengthSent < smBuffer.u32TxBufferLen)
 	{
 		u32LengthSent += XUartPs_Send(&XUart0, &smBuffer.u8TxBuffer[u32LengthSent], 1);
-		usleep(100);
 	}
 
 	while(XUartPs_IsSending(&XUart0)) {}
