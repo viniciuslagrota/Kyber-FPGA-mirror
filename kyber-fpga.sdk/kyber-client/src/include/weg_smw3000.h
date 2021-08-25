@@ -43,6 +43,7 @@
 #define DEVICE_ID_FAILED			0x04000000
 #define TIMESTAMP_FAILED			0x05000000
 #define VOLTAGE_FAILED				0x06000000
+#define POINTER_DEALLOCATED			0x07000000
 
 //////////////////////////////////////////////
 //
@@ -67,6 +68,10 @@ typedef struct smDataStruct {
 	u32 u32VoltageL1;
 	u32 u32VoltageL2;
 	u32 u32VoltageL3;
+	u32 u32CurrentL1;
+	u32 u32CurrentL2;
+	u32 u32CurrentL3;
+	u32 u32CurrentN;
 } smDataStruct;
 
 //////////////////////////////////////////////
@@ -81,7 +86,10 @@ u32 smw3000Disconnect();
 u32 smw3000GetDeviceID();
 u32 smw3000GetTimestamp();
 u32 smw3000GetLineVoltage(u8 u8Line);
+u32 smw3000GetLineCurrent(u8 u8Line);
 u32 smw3000GetAllData();
+u32 smw3000CipherDataStruct(u8 * u8Keystream);
+u32 smw3000DecipherDataStruct(u8 * u8Keystream);
 smControlStruct * smw3000GetControlStruct();
 u32 smw3000SendBuffer();
 u32 smw3000RecvBuffer();

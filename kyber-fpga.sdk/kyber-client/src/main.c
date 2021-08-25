@@ -369,6 +369,16 @@ int main(void)
 	//UART TEST!
 		u32 rv;
 
+		//Alloc keystream
+		size_t sSize = sizeof(smDataStruct);
+		u8 * u8Keystream = (u8 *)malloc(sSize);
+		if(u8Keystream == NULL)
+			print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
+
+		//Create key and nonce //TODO: get from shared key! Nonce must be counted.
+		uint8_t u8Key[32] = { 0x3E };
+		uint8_t u8Nonce[12] = { 0x1F };
+
 		smw3000Init();
 
 		smControlStruct * psmControlStruct;
@@ -385,53 +395,19 @@ int main(void)
 				print_debug(DEBUG_MAIN, "Data successfuly acquired.\r\n");
 
 
-//			if(!psmControlStruct->u8Connected)
-//			{
-//				print_debug(DEBUG_MAIN, "Connecting to SM...\r\n");
-//				if(smw3000Connect() == 0)
-//				{
-//					smw3000PrintRxBuffer();
-//					print_debug(DEBUG_MAIN, "Connected to SM.\r\n");
-//				}
-//				else
-//					print_debug(DEBUG_MAIN, "Failed to connect to SM.\r\n");
-//			}
+			//Generate keystream
+			aes256ctr_prf(u8Keystream, sSize, u8Key, u8Nonce);
+			print_debug(DEBUG_MAIN, "Keystream (len: %d): ", sSize);
+			for(int i = 0; i < sSize; i++)
+			{
+				printf("%02x ", *(u8Keystream + i));
+			}
+			printf("\r\n");
 
+			//Function to encrypt data structure
+			rv = smw3000CipherDataStruct(u8Keystream);
 
-//			if(u8CounterMsg == 0)
-//			{
-//				print_debug(DEBUG_MAIN, "Sending: ");
-//				for(int j = 0; j < 9; j++)
-//				{
-//					printf("0x%02x ", u8Buffer[j]);
-//				}
-//				printf("\r\n");
-//
-//				rv = XUartPs_Send(&XUart0, u8Buffer, 9);
-//
-//				u8CounterMsg = 1;
-//			}
-//			else
-//			{
-//				print_debug(DEBUG_MAIN, "Sending: ");
-//				for(int j = 0; j < 9; j++)
-//				{
-//					printf("0x%02x ", u8Buffer2[j]);
-//				}
-//				printf("\r\n");
-//
-//				rv = XUartPs_Send(&XUart0, u8Buffer2, 9);
-//
-//				u8CounterMsg = 0;
-//			}
-//
-//			print_debug(DEBUG_MAIN, "Return: %d\r\n", rv);
-//
-//			while(XUartPs_IsReceiveData(XPAR_XUARTPS_1_BASEADDR))
-//			{
-//				XUartPs_Recv(&XUart0, &u8RecvChar, 1);
-//				print_debug(DEBUG_MAIN, "Received: %02x\r\n", u8RecvChar);
-//			}
+			//TODO: decifrar estrutura para ver se recupera dados. Criar uma terceira estrutura na biblioteca somente para realizar o teste.
 
 			sleep(5);
 		}

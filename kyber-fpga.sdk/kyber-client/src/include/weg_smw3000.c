@@ -10,6 +10,7 @@
 static smBufferStruct smBuffer;
 static smControlStruct smControl;
 static smDataStruct smData;
+static smDataStruct smDataCiphered;
 
 static u8 u8ControlPointer = 0;
 static u8 u8ControlVec[8] = { 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0x10 };
@@ -69,12 +70,72 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
+	rv = smw3000GetLineCurrent(1);
+	if(rv)
+		goto _err;
+
+	rv = smw3000GetLineCurrent(2);
+	if(rv)
+		goto _err;
+
+	rv = smw3000GetLineCurrent(3);
+	if(rv)
+		goto _err;
+
+	rv = smw3000GetLineCurrent(4);
+	if(rv)
+		goto _err;
+
 	rv = smw3000Disconnect();
 	if(rv)
 		goto _err;
 
 	_err:
 	return rv;
+}
+
+//////////////////////////////////////////////
+//
+//	Cipher data structure
+//
+//////////////////////////////////////////////
+u32 smw3000CipherDataStruct(u8 * u8Keystream)
+{
+	if(u8Keystream == NULL)
+		return POINTER_DEALLOCATED;
+
+	uint8_t *smDataPtr = (uint8_t*)&smData;
+	uint8_t *smDataCipheredPtr = (uint8_t*)&smDataCipheredPtr;
+
+	for(int i = 0; i < sizeof(smDataStruct); i++)
+	{
+		//TODO: está dando errado a xor!
+		smDataCipheredPtr[i] = smDataPtr[i] ^ u8Keystream[i];
+		print_debug(DEBUG_UART_LVL1, "%02x ^ %02x = %02x\r\n", smDataPtr[i], u8Keystream[i], smDataCipheredPtr[i]);
+	}
+
+	return OK;
+}
+
+//////////////////////////////////////////////
+//
+//	Decipher data structure
+//
+//////////////////////////////////////////////
+u32 smw3000DecipherDataStruct(u8 * u8Keystream)
+{
+	if(u8Keystream == NULL)
+		return POINTER_DEALLOCATED;
+
+	uint8_t *smDataPtr = (uint8_t*)&smData;
+	uint8_t *smDataCipheredPtr = (uint8_t*)&smDataCipheredPtr;
+
+	for(int i = 0; i < sizeof(smDataStruct); i++)
+	{
+		smDataPtr[i] = smDataCipheredPtr[i] ^ u8Keystream[i];
+	}
+
+	return OK;
 }
 
 //////////////////////////////////////////////
@@ -438,7 +499,106 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 		return VOLTAGE_FAILED | rv;
 }
 
+//////////////////////////////////////////////
+//
+//	Get line voltage
+//
+//////////////////////////////////////////////
+u32 smw3000GetLineCurrent(u8 u8Line)
+{
+	u32 rv = 0;
 
+	//Buffer length
+	smBuffer.u32TxBufferLen = 27;
+
+	//Base message
+	u8 u8BufferTmp[27] = { 0x7E, 0xA0, 0x19, 0x03, 0x23, 0x00, 0x00, 0x00, 0xE6, 0xE6, 0x00, 0xC0, 0x01, 0xC1, 0x00, 0x03, 0x01, 0x00, 0x00, 0x07, 0x00, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x7E };
+
+	//Control field
+	u8BufferTmp[5] = u8ControlVec[u8ControlPointer];
+
+	//Address field
+	if(u8Line == 1)
+		u8BufferTmp[18] = 0x1F;
+	else if(u8Line == 2)
+		u8BufferTmp[18] = 0x33;
+	else if(u8Line == 3)
+		u8BufferTmp[18] = 0x47;
+	else if(u8Line == 4)
+		u8BufferTmp[18] = 0x5B;
+	else
+		u8BufferTmp[18] = 0x1F;
+
+	//Calculate header CRC-CCITT
+	u16 u16Crc = 0x0;
+	u16Crc = crc16(&u8BufferTmp[1], 5);
+	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
+	u8BufferTmp[6] = u16Crc & 0xFF;
+	u8BufferTmp[7] = u16Crc >> 8;
+
+	//Calculate package CRC-CCITT
+	u16Crc = crc16(&u8BufferTmp[1], 23);
+	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
+	u8BufferTmp[24] = u16Crc & 0xFF;
+	u8BufferTmp[25] = u16Crc >> 8;
+
+	//Copy buffer to structure
+	memcpy(smBuffer.u8TxBuffer, u8BufferTmp, smBuffer.u32TxBufferLen);
+
+	//Send buffer
+	rv = smw3000SendBuffer();
+	if(rv)
+	{
+		print_debug(DEBUG_UART_LVL1, "Error while requesting line current data: not enough data transmitted.\r\n");
+		goto _err;
+	}
+
+	//Wait for data
+	rv = smw3000WaitForData();
+	if(rv)
+	{
+		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		goto _err;
+	}
+
+#if DEBUG_UART_LVL0 == 1
+	else
+		smw3000PrintRxBuffer();
+#endif
+
+	if(u8Line == 1)
+	{
+		smData.u32CurrentL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+	}
+	else if(u8Line == 2)
+	{
+		smData.u32CurrentL2 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L2 current acquired: %d mA.\r\n", smData.u32CurrentL2);
+	}
+	else if(u8Line == 3)
+	{
+		smData.u32CurrentL3 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L3 current acquired: %d mA.\r\n", smData.u32CurrentL3);
+	}
+	else if(u8Line == 4)
+	{
+		smData.u32CurrentN = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "Neutral current acquired: %d mA.\r\n", smData.u32CurrentN);
+	}
+	else
+	{
+		smData.u32CurrentL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
+		print_debug(DEBUG_UART_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+	}
+
+	smw3000AddControlPointer();
+
+	return OK;
+
+	_err:
+		return VOLTAGE_FAILED | rv;
+}
 
 //////////////////////////////////////////////
 //
