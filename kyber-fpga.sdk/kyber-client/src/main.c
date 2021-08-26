@@ -375,6 +375,14 @@ int main(void)
 		if(u8Keystream == NULL)
 			print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
 
+		smDataStruct * psmData = (smDataStruct *)malloc(sSize);
+		if(psmData == NULL)
+			print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
+
+		smDataStruct * psmCipheredData = (smDataStruct *)malloc(sSize);
+		if(psmCipheredData == NULL)
+			print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
+
 		//Create key and nonce //TODO: get from shared key! Nonce must be counted.
 		uint8_t u8Key[32] = { 0x3E };
 		uint8_t u8Nonce[12] = { 0x1F };
@@ -384,16 +392,24 @@ int main(void)
 		smControlStruct * psmControlStruct;
 		psmControlStruct = smw3000GetControlStruct();
 		if(psmControlStruct == NULL)
-			print_debug(DEBUG_UART_LVL1, "Null pointer error.\r\n");
+			print_debug(DEBUG_MAIN, "Null pointer error.\r\n");
 
 		while (1) {
 
+			print_debug(DEBUG_MAIN, "\r\n\r\n------------------------------------------------------\r\n", rv);
+
 			rv = smw3000GetAllData();
 			if(rv)
+			{
 				print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
+				continue;
+			}
 			else
-				print_debug(DEBUG_MAIN, "Data successfuly acquired.\r\n");
+				print_debug(DEBUG_MAIN, "Data successfully acquired.\r\n");
 
+			//Print data for debug purpose
+			psmData = smw3000GetDataStruct();
+			smw3000PrintDataStruct(psmData);
 
 			//Generate keystream
 			aes256ctr_prf(u8Keystream, sSize, u8Key, u8Nonce);
@@ -406,8 +422,36 @@ int main(void)
 
 			//Function to encrypt data structure
 			rv = smw3000CipherDataStruct(u8Keystream);
+			if(rv)
+			{
+				print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
+				continue;
+			}
+			else
+				print_debug(DEBUG_MAIN, "Data successfully ciphered.\r\n");
+
+			//Print data for debug purpose
+			psmCipheredData = smw3000GetCipheredDataStruct();
+			smw3000PrintDataStruct(psmCipheredData);
+
+			//Clean data structure
+			memset(psmData, 0x0, sSize);
+			smw3000PrintDataStruct(psmData);
 
 			//TODO: decifrar estrutura para ver se recupera dados. Criar uma terceira estrutura na biblioteca somente para realizar o teste.
+			rv = smw3000DecipherDataStruct(u8Keystream);
+			if(rv)
+			{
+				print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
+				continue;
+			}
+			else
+				print_debug(DEBUG_MAIN, "Data successfully deciphered.\r\n");
+
+			//Print deciphered data
+			smw3000PrintDataStruct(psmData);
+
+
 
 			sleep(5);
 		}

@@ -142,8 +142,10 @@
 #define DEBUG_TIME					1
 #define DEBUG_KYBER					0
 //UART
-#define DEBUG_UART_LVL0				0
-#define DEBUG_UART_LVL1				1
+#define DEBUG_SM_LVL0				0
+#define DEBUG_SM_LVL1				0
+#define DEBUG_SM_LVL2				1
+#define DEBUG_SM_ERROR				1
 
 //////////////////////////////////////////////
 //

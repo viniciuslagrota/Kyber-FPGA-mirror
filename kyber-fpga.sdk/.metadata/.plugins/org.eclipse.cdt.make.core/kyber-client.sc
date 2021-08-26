@@ -883,6 +883,7 @@
 <includePath path="#undef __ARM_FEATURE_SIMD32" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_QBIT" removed="true"/>
 <includePath path="c:\xilinx\sdk\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\../lib/gcc/arm-none-eabi/8.2.0/include-fixed"/>
+<includePath path="#undef __ARM_FEATURE_COPROC" removed="true"/>
 <includePath path="#undef __ARM_ARCH_EXT_IDIV__" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_FP16_VECTOR_ARITHMETIC" removed="true"/>
 <includePath path="#undef __thumb__" removed="true"/>

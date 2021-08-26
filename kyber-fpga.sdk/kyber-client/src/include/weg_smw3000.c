@@ -10,7 +10,7 @@
 static smBufferStruct smBuffer;
 static smControlStruct smControl;
 static smDataStruct smData;
-static smDataStruct smDataCiphered;
+static smDataStruct smCipheredData;
 
 static u8 u8ControlPointer = 0;
 static u8 u8ControlVec[8] = { 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0x10 };
@@ -90,6 +90,8 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
+	print_debug(DEBUG_SM_LVL2, "All SM data collected.\r\n");
+
 	_err:
 	return rv;
 }
@@ -105,13 +107,12 @@ u32 smw3000CipherDataStruct(u8 * u8Keystream)
 		return POINTER_DEALLOCATED;
 
 	uint8_t *smDataPtr = (uint8_t*)&smData;
-	uint8_t *smDataCipheredPtr = (uint8_t*)&smDataCipheredPtr;
+	uint8_t *smCipheredDataPtr = (uint8_t*)&smCipheredData;
 
 	for(int i = 0; i < sizeof(smDataStruct); i++)
 	{
-		//TODO: está dando errado a xor!
-		smDataCipheredPtr[i] = smDataPtr[i] ^ u8Keystream[i];
-		print_debug(DEBUG_UART_LVL1, "%02x ^ %02x = %02x\r\n", smDataPtr[i], u8Keystream[i], smDataCipheredPtr[i]);
+		smCipheredDataPtr[i] = smDataPtr[i] ^ u8Keystream[i];
+		print_debug(DEBUG_SM_LVL0, "%02x ^ %02x = %02x\r\n", smDataPtr[i], u8Keystream[i], smCipheredDataPtr[i]);
 	}
 
 	return OK;
@@ -127,12 +128,14 @@ u32 smw3000DecipherDataStruct(u8 * u8Keystream)
 	if(u8Keystream == NULL)
 		return POINTER_DEALLOCATED;
 
+	uint8_t *smCipheredDataPtr = (uint8_t*)&smCipheredData;
 	uint8_t *smDataPtr = (uint8_t*)&smData;
-	uint8_t *smDataCipheredPtr = (uint8_t*)&smDataCipheredPtr;
 
 	for(int i = 0; i < sizeof(smDataStruct); i++)
 	{
-		smDataPtr[i] = smDataCipheredPtr[i] ^ u8Keystream[i];
+		//smDataPtr[i] = smCipheredDataPtr[i] ^ u8Keystream[i];
+		smDataPtr[i] = smCipheredDataPtr[i] ^ u8Keystream[i];
+		print_debug(DEBUG_SM_LVL0, "%02x ^ %02x = %02x\r\n", smCipheredDataPtr[i], u8Keystream[i], smDataPtr[i]);
 	}
 
 	return OK;
@@ -145,8 +148,30 @@ u32 smw3000DecipherDataStruct(u8 * u8Keystream)
 //////////////////////////////////////////////
 smControlStruct * smw3000GetControlStruct()
 {
-	print_debug(DEBUG_UART_LVL0, "SM Control structure pointer: 0x%08x\r\n", &smControl);
+	print_debug(DEBUG_SM_LVL0, "SM Control structure pointer: 0x%08x\r\n", &smControl);
 	return &smControl;
+}
+
+//////////////////////////////////////////////
+//
+//	Pointer to data struct
+//
+//////////////////////////////////////////////
+smDataStruct * smw3000GetDataStruct()
+{
+	print_debug(DEBUG_SM_LVL0, "SM Data structure pointer: 0x%08x\r\n", &smData);
+	return &smData;
+}
+
+//////////////////////////////////////////////
+//
+//	Pointer to data ciphered struct
+//
+//////////////////////////////////////////////
+smDataStruct * smw3000GetCipheredDataStruct()
+{
+	print_debug(DEBUG_SM_LVL0, "SM Data ciphered structure pointer: 0x%08x\r\n", &smCipheredData);
+	return &smCipheredData;
 }
 
 //////////////////////////////////////////////
@@ -165,7 +190,7 @@ u32 smw3000Connect()
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while sending connect data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error while sending connect data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -173,17 +198,17 @@ u32 smw3000Connect()
 	rv = smw3000WaitForData();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error: timeout.\r\n");
 		goto _err;
 	}
 
-#if DEBUG_UART_LVL0 == 1
+#if DEBUG_SM_LVL0 == 1
 	else
 		smw3000PrintRxBuffer();
 #endif
 
 	smControl.u8Connected = 1;
-	print_debug(DEBUG_UART_LVL1, "Connected to SMW3000.\r\n");
+	print_debug(DEBUG_SM_LVL2, "Connected to SMW3000.\r\n");
 	return OK;
 
 	_err:
@@ -206,7 +231,7 @@ u32 smw3000Authenticate()
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while sending authenticate data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error while sending authenticate data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -214,17 +239,17 @@ u32 smw3000Authenticate()
 	rv = smw3000WaitForData();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error: timeout.\r\n");
 		goto _err;
 	}
 
-#if DEBUG_UART_LVL0 == 1
+#if DEBUG_SM_LVL0 == 1
 	else
 		smw3000PrintRxBuffer();
 #endif
 
 	smControl.u8Authenticated = 1;
-	print_debug(DEBUG_UART_LVL1, "Authenticated by SMW3000.\r\n");
+	print_debug(DEBUG_SM_LVL2, "Authenticated by SMW3000.\r\n");
 	return OK;
 
 	_err:
@@ -247,7 +272,7 @@ u32 smw3000Disconnect()
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while sending disconnect data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error while sending disconnect data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -255,17 +280,17 @@ u32 smw3000Disconnect()
 	rv = smw3000WaitForData();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error: timeout.\r\n");
 		goto _err;
 	}
 
-#if DEBUG_UART_LVL0 == 1
+#if DEBUG_SM_LVL0 == 1
 	else
 		smw3000PrintRxBuffer();
 #endif
 
 	smControl.u8Connected = 0;
-	print_debug(DEBUG_UART_LVL1, "Disconnected from SMW3000.\r\n");
+	print_debug(DEBUG_SM_LVL2, "Disconnected from SMW3000.\r\n");
 	return OK;
 
 	_err:
@@ -293,13 +318,13 @@ u32 smw3000GetDeviceID()
 	//Calculate header CRC-CCITT
 	u16 u16Crc = 0x0;
 	u16Crc = crc16(&u8BufferTmp[1], 5);
-	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Header: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[6] = u16Crc & 0xFF;
 	u8BufferTmp[7] = u16Crc >> 8;
 
 	//Calculate package CRC-CCITT
 	u16Crc = crc16(&u8BufferTmp[1], 23);
-	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[24] = u16Crc & 0xFF;
 	u8BufferTmp[25] = u16Crc >> 8;
 
@@ -310,7 +335,7 @@ u32 smw3000GetDeviceID()
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting device id data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error while requesting device id data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -318,17 +343,17 @@ u32 smw3000GetDeviceID()
 	rv = smw3000WaitForData();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error: timeout.\r\n");
 		goto _err;
 	}
 
-#if DEBUG_UART_LVL0 == 1
+#if DEBUG_SM_LVL0 == 1
 	else
 		smw3000PrintRxBuffer();
 #endif
 
 	memcpy(smData.u8DeviceName, &smBuffer.u8RxBuffer[17], 13);
-	print_debug(DEBUG_UART_LVL1, "Device name: %.13s.\r\n", smData.u8DeviceName);
+	print_debug(DEBUG_SM_LVL1, "Device name: %.13s.\r\n", smData.u8DeviceName);
 
 	smw3000AddControlPointer();
 
@@ -359,13 +384,13 @@ u32 smw3000GetTimestamp()
 	//Calculate header CRC-CCITT
 	u16 u16Crc = 0x0;
 	u16Crc = crc16(&u8BufferTmp[1], 5);
-	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Header: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[6] = u16Crc & 0xFF;
 	u8BufferTmp[7] = u16Crc >> 8;
 
 	//Calculate package CRC-CCITT
 	u16Crc = crc16(&u8BufferTmp[1], 23);
-	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[24] = u16Crc & 0xFF;
 	u8BufferTmp[25] = u16Crc >> 8;
 
@@ -376,7 +401,7 @@ u32 smw3000GetTimestamp()
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting timestamp data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error while requesting timestamp data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -384,18 +409,18 @@ u32 smw3000GetTimestamp()
 	rv = smw3000WaitForData();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error: timeout.\r\n");
 		goto _err;
 	}
 
-#if DEBUG_UART_LVL0 == 1
+#if DEBUG_SM_LVL0 == 1
 	else
 		smw3000PrintRxBuffer();
 #endif
 
 	memcpy(&smData.u8Timestamp[0], &smBuffer.u8RxBuffer[17], 4);
 	memcpy(&smData.u8Timestamp[4], &smBuffer.u8RxBuffer[22], 3);
-	print_debug(DEBUG_UART_LVL1, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", smData.u8Timestamp[3], smData.u8Timestamp[2], ((u16)(smData.u8Timestamp[0]) << 8) | smData.u8Timestamp[1], smData.u8Timestamp[4], smData.u8Timestamp[5], smData.u8Timestamp[6]);
+	print_debug(DEBUG_SM_LVL1, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", smData.u8Timestamp[3], smData.u8Timestamp[2], ((u16)(smData.u8Timestamp[0]) << 8) | smData.u8Timestamp[1], smData.u8Timestamp[4], smData.u8Timestamp[5], smData.u8Timestamp[6]);
 
 	smw3000AddControlPointer();
 
@@ -436,13 +461,13 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 	//Calculate header CRC-CCITT
 	u16 u16Crc = 0x0;
 	u16Crc = crc16(&u8BufferTmp[1], 5);
-	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Header: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[6] = u16Crc & 0xFF;
 	u8BufferTmp[7] = u16Crc >> 8;
 
 	//Calculate package CRC-CCITT
 	u16Crc = crc16(&u8BufferTmp[1], 23);
-	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[24] = u16Crc & 0xFF;
 	u8BufferTmp[25] = u16Crc >> 8;
 
@@ -453,7 +478,7 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting line voltage data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error while requesting line voltage data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -461,11 +486,11 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 	rv = smw3000WaitForData();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error: timeout.\r\n");
 		goto _err;
 	}
 
-#if DEBUG_UART_LVL0 == 1
+#if DEBUG_SM_LVL0 == 1
 	else
 		smw3000PrintRxBuffer();
 #endif
@@ -473,22 +498,22 @@ u32 smw3000GetLineVoltage(u8 u8Line)
 	if(u8Line == 1)
 	{
 		smData.u32VoltageL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+		print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
 	}
 	else if(u8Line == 2)
 	{
 		smData.u32VoltageL2 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
+		print_debug(DEBUG_SM_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
 	}
 	else if(u8Line == 3)
 	{
 		smData.u32VoltageL3 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
+		print_debug(DEBUG_SM_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
 	}
 	else
 	{
 		smData.u32VoltageL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+		print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
 	}
 
 	smw3000AddControlPointer();
@@ -532,13 +557,13 @@ u32 smw3000GetLineCurrent(u8 u8Line)
 	//Calculate header CRC-CCITT
 	u16 u16Crc = 0x0;
 	u16Crc = crc16(&u8BufferTmp[1], 5);
-	print_debug(DEBUG_UART_LVL0, "Header: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Header: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[6] = u16Crc & 0xFF;
 	u8BufferTmp[7] = u16Crc >> 8;
 
 	//Calculate package CRC-CCITT
 	u16Crc = crc16(&u8BufferTmp[1], 23);
-	print_debug(DEBUG_UART_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
+	print_debug(DEBUG_SM_LVL0, "Packet: 0x%04x.\r\n", u16Crc);
 	u8BufferTmp[24] = u16Crc & 0xFF;
 	u8BufferTmp[25] = u16Crc >> 8;
 
@@ -549,7 +574,7 @@ u32 smw3000GetLineCurrent(u8 u8Line)
 	rv = smw3000SendBuffer();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error while requesting line current data: not enough data transmitted.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error while requesting line current data: not enough data transmitted.\r\n");
 		goto _err;
 	}
 
@@ -557,11 +582,11 @@ u32 smw3000GetLineCurrent(u8 u8Line)
 	rv = smw3000WaitForData();
 	if(rv)
 	{
-		print_debug(DEBUG_UART_LVL1, "Error: timeout.\r\n");
+		print_debug(DEBUG_SM_ERROR, "Error: timeout.\r\n");
 		goto _err;
 	}
 
-#if DEBUG_UART_LVL0 == 1
+#if DEBUG_SM_LVL0 == 1
 	else
 		smw3000PrintRxBuffer();
 #endif
@@ -569,27 +594,27 @@ u32 smw3000GetLineCurrent(u8 u8Line)
 	if(u8Line == 1)
 	{
 		smData.u32CurrentL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+		print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
 	}
 	else if(u8Line == 2)
 	{
 		smData.u32CurrentL2 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L2 current acquired: %d mA.\r\n", smData.u32CurrentL2);
+		print_debug(DEBUG_SM_LVL1, "L2 current acquired: %d mA.\r\n", smData.u32CurrentL2);
 	}
 	else if(u8Line == 3)
 	{
 		smData.u32CurrentL3 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L3 current acquired: %d mA.\r\n", smData.u32CurrentL3);
+		print_debug(DEBUG_SM_LVL1, "L3 current acquired: %d mA.\r\n", smData.u32CurrentL3);
 	}
 	else if(u8Line == 4)
 	{
 		smData.u32CurrentN = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "Neutral current acquired: %d mA.\r\n", smData.u32CurrentN);
+		print_debug(DEBUG_SM_LVL1, "Neutral current acquired: %d mA.\r\n", smData.u32CurrentN);
 	}
 	else
 	{
 		smData.u32CurrentL1 = ((u32)(smBuffer.u8RxBuffer[21]) << 16) | ((u32)(smBuffer.u8RxBuffer[22]) << 8) | (u32)(smBuffer.u8RxBuffer[23]);
-		print_debug(DEBUG_UART_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+		print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
 	}
 
 	smw3000AddControlPointer();
@@ -609,8 +634,8 @@ u32 smw3000SendBuffer()
 {
 	u32 u32LengthSent = 0;
 
-	print_debug(DEBUG_UART_LVL0, "Sending (len: %d): ", smBuffer.u32TxBufferLen);
-#if DEBUG_UART_LVL0 == 1
+	print_debug(DEBUG_SM_LVL0, "Sending (len: %d): ", smBuffer.u32TxBufferLen);
+#if DEBUG_SM_LVL0 == 1
 	for(int j = 0; j < smBuffer.u32TxBufferLen; j++)
 	{
 		printf("0x%02x ", smBuffer.u8TxBuffer[j]);
@@ -709,8 +734,8 @@ u32 smw3000WaitForData()
 //////////////////////////////////////////////
 void smw3000PrintRxBuffer()
 {
-	print_debug(DEBUG_UART_LVL0, "RX Buffer (len %d): ", smBuffer.u32RxBufferLen);
-#if DEBUG_UART_LVL0 == 1
+	print_debug(DEBUG_SM_LVL0, "RX Buffer (len %d): ", smBuffer.u32RxBufferLen);
+#if DEBUG_SM_LVL0 == 1
 	for(int j = 0; j < smBuffer.u32RxBufferLen; j++)
 	{
 		printf("0x%02x ", smBuffer.u8RxBuffer[j]);
@@ -730,6 +755,25 @@ void smw3000AddControlPointer()
 		u8ControlPointer = 0;
 	else
 		u8ControlPointer++;
+}
+
+//////////////////////////////////////////////
+//
+//	Print data structure
+//
+//////////////////////////////////////////////
+void smw3000PrintDataStruct(smDataStruct * psmDataStruct)
+{
+	print_debug(DEBUG_SM_LVL2, "Data structure (addr 0x%08x):\r\n", psmDataStruct);
+	print_debug(DEBUG_SM_LVL2, "Device Name: %.13s\r\n", psmDataStruct->u8DeviceName);
+	print_debug(DEBUG_SM_LVL2, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", psmDataStruct->u8Timestamp[3], psmDataStruct->u8Timestamp[2], ((u16)(psmDataStruct->u8Timestamp[0]) << 8) | psmDataStruct->u8Timestamp[1], psmDataStruct->u8Timestamp[4], psmDataStruct->u8Timestamp[5], psmDataStruct->u8Timestamp[6]);
+	print_debug(DEBUG_SM_LVL2, "L1 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL1);
+	print_debug(DEBUG_SM_LVL2, "L2 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL2);
+	print_debug(DEBUG_SM_LVL2, "L3 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL3);
+	print_debug(DEBUG_SM_LVL2, "L1 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL1);
+	print_debug(DEBUG_SM_LVL2, "L2 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL2);
+	print_debug(DEBUG_SM_LVL2, "L3 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL3);
+	print_debug(DEBUG_SM_LVL2, "LN current acquired: %d mA.\r\n", psmDataStruct->u32CurrentN);
 }
 
 

@@ -91,11 +91,13 @@ u32 smw3000GetAllData();
 u32 smw3000CipherDataStruct(u8 * u8Keystream);
 u32 smw3000DecipherDataStruct(u8 * u8Keystream);
 smControlStruct * smw3000GetControlStruct();
+smDataStruct * smw3000GetDataStruct();
+smDataStruct * smw3000GetCipheredDataStruct();
 u32 smw3000SendBuffer();
 u32 smw3000RecvBuffer();
 u32 smw3000WaitForData();
 void smw3000PrintRxBuffer();
 void smw3000AddControlPointer();
-
+void smw3000PrintDataStruct(smDataStruct * psmDataStruct);
 
 #endif /* SRC_INCLUDE_WEG_SMW3000_H_ */
