@@ -38,14 +38,14 @@ u32_t u32LenRecv = 0;
 
 void print_app_header(void)
 {
-	xil_printf("TCP server listening on port %d\r\n",
+	print_debug(DEBUG_ETH, "TCP server listening on port %d\r\n",
 			TCP_CONN_PORT);
 #if LWIP_IPV6==1
-	xil_printf("On Host: Run $iperf -V -c %s%%<interface> -i %d -t 300 -w 2M\r\n",
+	print_debug(DEBUG_ETH, "On Host: Run $iperf -V -c %s%%<interface> -i %d -t 300 -w 2M\r\n",
 			inet6_ntoa(server_netif.ip6_addr[0]),
 			INTERIM_REPORT_INTERVAL);
 #else
-	xil_printf("On Host: Run $iperf -c %s -i %d -t 300 -w 2M\r\n",
+	print_debug(DEBUG_ETH, "On Host: Run $iperf -c %s -i %d -t 300 -w 2M\r\n",
 			inet_ntoa(server_netif.ip_addr),
 			INTERIM_REPORT_INTERVAL);
 #endif /* LWIP_IPV6 */
@@ -54,20 +54,20 @@ void print_app_header(void)
 static void print_tcp_conn_stats(void)
 {
 #if LWIP_IPV6==1
-	xil_printf("[%3d] local %s port %d connected with ",
+	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
 			server.client_id, inet6_ntoa(c_pcb->local_ip),
 			c_pcb->local_port);
-	xil_printf("%s port %d\r\n",inet6_ntoa(c_pcb->remote_ip),
+	print_debug(DEBUG_ETH, "%s port %d\r\n",inet6_ntoa(c_pcb->remote_ip),
 			c_pcb->remote_port);
 #else
-	xil_printf("[%3d] local %s port %d connected with ",
+	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
 			server.client_id, inet_ntoa(c_pcb->local_ip),
 			c_pcb->local_port);
-	xil_printf("%s port %d\r\n",inet_ntoa(c_pcb->remote_ip),
+	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(c_pcb->remote_ip),
 			c_pcb->remote_port);
 #endif /* LWIP_IPV6 */
 
-	xil_printf("[ ID] Interval\t\tTransfer   Bandwidth\n\r");
+	print_debug(DEBUG_ETH, "[ ID] Interval\t\tTransfer   Bandwidth\n\r");
 }
 
 static void stats_buffer(char* outString,
@@ -128,7 +128,7 @@ static void tcp_conn_report(u64_t diff,
 	sprintf(time, "%4.1f-%4.1f sec",
 			(double)server.i_report.last_report_time,
 			(double)(server.i_report.last_report_time + duration));
-	xil_printf("[%3d] %s  %sBytes  %sbits/sec\n\r", server.client_id,
+	print_debug(DEBUG_ETH, "[%3d] %s  %sBytes  %sbits/sec\n\r", server.client_id,
 			time, data, perf);
 
 	if (report_type == INTER_REPORT)
@@ -160,7 +160,7 @@ static void tcp_server_err(void *arg, err_t err)
 	tcp_server_close(c_pcb);
 	c_pcb = NULL;
 	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
-	xil_printf("TCP connection aborted\n\r");
+	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
 }
 
 static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
@@ -180,18 +180,18 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 #endif
 
 #if DEBUG_KYBER == 1
-	xil_printf("Writing data length: %d\n\r", u16BufferLen);
+	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 #endif
 	err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
 	if (err != ERR_OK) {
-		xil_printf("TCP client: Error on tcp_write: %d\r\n",
+		print_debug(DEBUG_ETH, "TCP client: Error on tcp_write: %d\r\n",
 				err);
 		return err;
 	}
 
 	err = tcp_output(c_pcb);
 	if (err != ERR_OK) {
-		xil_printf("TCP client: Error on tcp_output: %d\r\n",
+		print_debug(DEBUG_ETH, "TCP client: Error on tcp_output: %d\r\n",
 				err);
 		return err;
 	}
@@ -213,17 +213,17 @@ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
 		u64_t diff_ms = now - server.start_time;
 		tcp_server_close(tpcb);
 		tcp_conn_report(diff_ms, TCP_DONE_SERVER);
-		xil_printf("TCP test passed Successfully\n\r");
+		print_debug(DEBUG_ETH, "TCP test passed Successfully\n\r");
 		return ERR_OK;
 	}
 
 	/* Record total bytes for final report */
 #if DEBUG_KYBER == 1
-	xil_printf("data length: %d\n\r", p->len);
-	xil_printf("data total length: %d\n\r", p->tot_len);
+	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
+	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
 	char * pcBuffer = (char *)p->payload;
-	xil_printf("%s", pcBuffer);
-	xil_printf("\n\r\n\r\n\r");
+	print_debug(DEBUG_ETH, "%s", pcBuffer);
+	print_debug(DEBUG_ETH, "\n\r\n\r\n\r");
 
 #endif
 	server.total_bytes += p->tot_len;
@@ -266,8 +266,8 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 	tcp_nagle_disable(tpcb);
 
 #if DEBUG_KYBER == 1
-	xil_printf("data length: %d\n\r", p->len);
-//	xil_printf("data total length: %d\n\r", p->tot_len);
+	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
+//	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
 #endif
 	char * pcBuf = p->payload; //Get transmitted data.
 
@@ -380,13 +380,13 @@ void start_application(void)
 	/* Create Server PCB */
 	pcb = tcp_new_ip_type(IPADDR_TYPE_ANY);
 	if (!pcb) {
-		xil_printf("TCP server: Error creating PCB. Out of Memory\r\n");
+		print_debug(DEBUG_ETH, "TCP server: Error creating PCB. Out of Memory\r\n");
 		return;
 	}
 
 	err = tcp_bind(pcb, IP_ADDR_ANY, TCP_CONN_PORT);
 	if (err != ERR_OK) {
-		xil_printf("TCP server: Unable to bind to port %d: "
+		print_debug(DEBUG_ETH, "TCP server: Unable to bind to port %d: "
 				"err = %d\r\n" , TCP_CONN_PORT, err);
 		tcp_close(pcb);
 		return;
@@ -397,7 +397,7 @@ void start_application(void)
 	 */
 	lpcb = tcp_listen_with_backlog(pcb, 1);
 	if (!lpcb) {
-		xil_printf("TCP server: Out of memory while tcp_listen\r\n");
+		print_debug(DEBUG_ETH, "TCP server: Out of memory while tcp_listen\r\n");
 		tcp_close(pcb);
 		return;
 	}

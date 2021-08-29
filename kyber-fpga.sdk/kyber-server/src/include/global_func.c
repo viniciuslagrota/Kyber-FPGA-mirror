@@ -208,3 +208,60 @@ void printTimeVariables()
 
 	}
 }
+
+//////////////////////////////////////////////
+//
+//	CRC16
+//
+//////////////////////////////////////////////
+unsigned long reflect (unsigned long crc, int bitnum) {
+
+    // reflects the lower 'bitnum' bits of 'crc'
+
+    unsigned long i, j=1, crcout=0;
+
+    for (i=(unsigned long)1<<(bitnum-1); i; i>>=1) {
+        if (crc & i) crcout|=j;
+        j<<= 1;
+    }
+    return (crcout);
+}
+
+uint16_t crc16(uint8_t * p, unsigned long len)
+{
+    //CRC-16/XMODEM -> https://crccalc.com/
+    const int order = 16;
+    const unsigned long polynom = 0x1021;
+//    const unsigned long crcinit = 0x0000;
+//    const unsigned long crcxor = 0x0000;
+    const unsigned long crcinit = 0xFFFF;
+	const unsigned long crcxor = 0xFFFF;
+    const int refin = 1;
+    const int refout = 1;
+
+    unsigned long crcmask = ((((unsigned long)1<<(order-1))-1)<<1)|1;
+    unsigned long crchighbit = (unsigned long)1<<(order-1);
+
+    unsigned long i, j, c, bit;
+    unsigned long crc = crcinit;
+
+    for (i=0; i<len; i++) {
+
+        c = (unsigned long)*p++;
+        if (refin) c = reflect(c, 8);
+
+        for (j=0x80; j; j>>=1) {
+
+            bit = crc & crchighbit;
+            crc<<= 1;
+            if (c & j) bit^= crchighbit;
+            if (bit) crc^= polynom;
+        }
+    }
+
+    if (refout) crc=reflect(crc, order);
+    crc^= crcxor;
+    crc&= crcmask;
+
+    return(crc);
+}

@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 //Hardware
 #include "xil_printf.h"
@@ -34,6 +35,7 @@
 #include "kem.h"
 #include "reduce.h"
 #include "aes256ctr.h"
+#include "weg_smw3000.h"
 
 //////////////////////////////////////////////
 //
@@ -128,16 +130,29 @@
 //Accelerations
 #define DEBUG_TIME					1
 #define DEBUG_KYBER					0
+//Ethernet
+#define DEBUG_ETH					1
+//SMW3000
+#define DEBUG_SM_LVL0				0
+#define DEBUG_SM_LVL1				0
+#define DEBUG_SM_LVL2				1
+#define DEBUG_SM_ERROR				1
 
 //////////////////////////////////////////////
 //
 //	Debug print
 //
 //////////////////////////////////////////////
-#define print_debug(debugLevel, ...) \
+//#define print_debug(debugLevel, ...) \
+//	do { \
+//		if (DEBUG_GLOBAL_ENABLED && (debugLevel == 1)) \
+//			printf(__VA_ARGS__); \
+//		} while (0)
+
+#define print_debug(debugLevel, fmt, ...) \
 	do { \
 		if (DEBUG_GLOBAL_ENABLED && (debugLevel == 1)) \
-			printf(__VA_ARGS__); \
+			printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
 		} while (0)
 
 
@@ -232,9 +247,9 @@ uint8_t key_b[CRYPTO_BYTES];
 //	AES
 //
 //////////////////////////////////////////////
-uint8_t u8AesKeystream[32];
-char cPlaintext[32];
-char cCiphertext[32];
+uint8_t u8AesKeystream[1024];
+char cPlaintext[1024];
+char cCiphertext[1024];
 
 //////////////////////////////////////////////
 //
@@ -261,6 +276,9 @@ XGpio XGpioDma;
 
 XAxiDma_Config * XAxiDmaConfig;
 XAxiDma XAxiDmaPtr;
+
+XUartPs_Config * XUartConfig0;
+XUartPs XUart0;
 
 //u32 *memoryBram0;
 //u32 *memoryBram1;
@@ -314,5 +332,6 @@ u32 getTimer(XGpio * pStruct, uint8_t ui8Channel);
 void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction);
 void resetTimeVariables();
 void printTimeVariables();
+uint16_t crc16(uint8_t * p, unsigned long len);
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */
