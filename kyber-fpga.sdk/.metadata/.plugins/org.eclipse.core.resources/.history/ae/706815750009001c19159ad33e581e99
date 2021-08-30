@@ -377,9 +377,6 @@ int main(void)
 //	uint8_t u8Key[32] = { 0x3E };
 //	uint8_t u8Nonce[12] = { 0x1F };
 
-	//Variable control to change keys
-	bool bChangeKey = 0;
-
 	//System state
 	u32SystemState = 0;
 
@@ -482,8 +479,7 @@ int main(void)
 			{
 				print_debug(DEBUG_MAIN, "Change key!\r\n");
 				u32CounterMinutes = 0;
-				bChangeKey = 1;
-//				st = CREATE_KEY_PAIR;
+				st = CREATE_KEY_PAIR;
 			}
 		}
 #endif
@@ -511,7 +507,6 @@ int main(void)
 				st = CREATE_KEY_PAIR;
 			break;
 			case CREATE_KEY_PAIR:
-				bChangeKey = 0;
 				print_debug(DEBUG_MAIN, "Generating new key pair...\r\n");
 
 				//Start timer
@@ -533,9 +528,7 @@ int main(void)
 			break;
 			case SEND_PK:
 				//Publish PK
-				print_debug(DEBUG_MAIN, "Sending PK!\r\n");
 				transfer_data((char *)pk, CRYPTO_PUBLICKEYBYTES);
-				print_debug(DEBUG_MAIN, "Waiting CT...\r\n");
 				st = WAITING_CT;
 			break;
 			case WAITING_CT:
@@ -543,7 +536,6 @@ int main(void)
 			break;
 			case CALCULATE_SHARED_SECRET:
 				//Check CT received
-				print_debug(DEBUG_MAIN, "Calculating shared secret...\r\n");
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "ct received: ");
 				for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
@@ -571,7 +563,6 @@ int main(void)
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
-				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
 				nonce[0]++;
 				aes256ctr_prf(u8AesKeystream, sSize, key_a, nonce);
 #if DEBUG_KYBER == 1
@@ -580,14 +571,12 @@ int main(void)
 					printf("%02x", u8AesKeystream[i]);
 				printf("\n\r");
 #endif
-				print_debug(DEBUG_MAIN, "Waiting ciphered data...\r\n");
 				st = WAIT_CIPHERED_DATA;
 			break;
 			case WAIT_CIPHERED_DATA:
 				//Wait messages from client
 			break;
 			case DECIPHER_MESSAGE:
-				print_debug(DEBUG_MAIN, "Deciphering message...\r\n");
 				//Get pointer to ciphered structure
 				psmCipheredData = smw3000GetCipheredDataStruct();
 				psmData = smw3000GetDataStruct();
@@ -614,10 +603,7 @@ int main(void)
 //				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
 //				printf(DEBUG_MAIN, "\n\r\n\r");
 
-				if(bChangeKey == 1)
-					st = CREATE_KEY_PAIR;
-				else
-					st = CALCULATE_AES_BLOCK;
+				st = CALCULATE_AES_BLOCK;
 			break;
 		}
 //		sleep(10);

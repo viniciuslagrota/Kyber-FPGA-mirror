@@ -351,27 +351,22 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 				err);
 		return err;
 	}
-	client.total_bytes += u16BufferLen;
-	client.i_report.total_bytes += u16BufferLen;
 
-	if (client.end_time || client.i_report.report_interval_time)
-	{
-		u64_t now = get_time_ms();
-		if (client.i_report.report_interval_time) {
-			if (client.i_report.start_time) {
-				u64_t diff_ms = now - client.i_report.start_time;
-				u64_t rtime_ms = client.i_report.report_interval_time;
-				if (diff_ms >= rtime_ms) {
-					tcp_conn_report(diff_ms, INTER_REPORT);
-					client.i_report.start_time = 0;
-					client.i_report.total_bytes = 0;
-				}
-			} else {
-				client.i_report.start_time = now;
-			}
-		}
-	}
-
+	//	if (client.end_time || client.i_report.report_interval_time) {
+	//		u64_t now = get_time_ms();
+	//		if (client.i_report.report_interval_time) {
+	//			if (client.i_report.start_time) {
+	//				u64_t diff_ms = now - client.i_report.start_time;
+	//				u64_t rtime_ms = client.i_report.report_interval_time;
+	//				if (diff_ms >= rtime_ms) {
+	//					tcp_conn_report(diff_ms, INTER_REPORT);
+	//					client.i_report.start_time = 0;
+	//					client.i_report.total_bytes = 0;
+	//				}
+	//			} else {
+	//				client.i_report.start_time = now;
+	//			}
+	//		}
 
 
 	return ERR_OK;

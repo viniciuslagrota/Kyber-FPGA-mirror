@@ -681,7 +681,7 @@ int main(void)
 				//Do nothing, just wait.
 			break;
 			case CALCULATING_CT:
-
+				print_debug(DEBUG_MAIN, "Calculating CT...\r\n");
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "pk rcv: ");
 				for(int i = 0; i < CRYPTO_PUBLICKEYBYTES; i++)
@@ -700,7 +700,7 @@ int main(void)
 				st = SENDING_CT;
 			break;
 			case SENDING_CT:
-
+				print_debug(DEBUG_MAIN, "Sending CT...\r\n");
 //				transfer_data(cTxBuffer, sizeof(cTxBuffer));
 				transfer_data((char *)ct, CRYPTO_CIPHERTEXTBYTES);
 
@@ -724,10 +724,12 @@ int main(void)
 					printf("%02x", key_b[i]);
 				printf("\n\r");
 #endif
+				print_debug(DEBUG_MAIN, "CT sent!\r\n");
 //				st = WAITING_PK;
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
+				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
 				nonce[0]++; //TODO: check this nonce.
 				aes256ctr_prf(u8AesKeystream, sSize, key_b, nonce);
 #if DEBUG_KYBER == 1
@@ -740,6 +742,7 @@ int main(void)
 				st = GET_SMW3000_DATA;
 			break;
 			case GET_SMW3000_DATA:
+				print_debug(DEBUG_MAIN, "Getting SMW3000 data...\r\n");
 				rv = smw3000GetAllData();
 				if(rv)
 					print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
@@ -753,6 +756,7 @@ int main(void)
 				st = CIPHER_MESSAGE;
 			break;
 			case CIPHER_MESSAGE:
+				print_debug(DEBUG_MAIN, "Ciphering message...\r\n");
 				rv = smw3000CipherDataStruct(u8AesKeystream);
 				if(rv)
 					print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
@@ -779,9 +783,9 @@ int main(void)
 //				printf(DEBUG_MAIN, "\n\r\n\r");
 
 				st = SEND_CIPHER_MESSAGE;
-
 			break;
 			case SEND_CIPHER_MESSAGE:
+				print_debug(DEBUG_MAIN, "Sending ciphered message...\r\n");
 				transfer_data((char *)psmCipheredData, sSize);
 
 				//Wait to send next message

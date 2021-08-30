@@ -483,7 +483,7 @@ int main(void)
 				print_debug(DEBUG_MAIN, "Change key!\r\n");
 				u32CounterMinutes = 0;
 				bChangeKey = 1;
-//				st = CREATE_KEY_PAIR;
+				st = CREATE_KEY_PAIR;
 			}
 		}
 #endif
@@ -614,10 +614,7 @@ int main(void)
 //				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
 //				printf(DEBUG_MAIN, "\n\r\n\r");
 
-				if(bChangeKey == 1)
-					st = CREATE_KEY_PAIR;
-				else
-					st = CALCULATE_AES_BLOCK;
+				st = CALCULATE_AES_BLOCK;
 			break;
 		}
 //		sleep(10);

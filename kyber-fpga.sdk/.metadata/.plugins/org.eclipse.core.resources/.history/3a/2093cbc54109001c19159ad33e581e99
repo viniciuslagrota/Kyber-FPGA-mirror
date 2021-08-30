@@ -377,9 +377,6 @@ int main(void)
 //	uint8_t u8Key[32] = { 0x3E };
 //	uint8_t u8Nonce[12] = { 0x1F };
 
-	//Variable control to change keys
-	bool bChangeKey = 0;
-
 	//System state
 	u32SystemState = 0;
 
@@ -482,8 +479,7 @@ int main(void)
 			{
 				print_debug(DEBUG_MAIN, "Change key!\r\n");
 				u32CounterMinutes = 0;
-				bChangeKey = 1;
-//				st = CREATE_KEY_PAIR;
+				st = CREATE_KEY_PAIR;
 			}
 		}
 #endif
@@ -511,7 +507,6 @@ int main(void)
 				st = CREATE_KEY_PAIR;
 			break;
 			case CREATE_KEY_PAIR:
-				bChangeKey = 0;
 				print_debug(DEBUG_MAIN, "Generating new key pair...\r\n");
 
 				//Start timer
@@ -614,10 +609,7 @@ int main(void)
 //				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
 //				printf(DEBUG_MAIN, "\n\r\n\r");
 
-				if(bChangeKey == 1)
-					st = CREATE_KEY_PAIR;
-				else
-					st = CALCULATE_AES_BLOCK;
+				st = CALCULATE_AES_BLOCK;
 			break;
 		}
 //		sleep(10);

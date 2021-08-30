@@ -351,11 +351,8 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 				err);
 		return err;
 	}
-	client.total_bytes += u16BufferLen;
-	client.i_report.total_bytes += u16BufferLen;
 
-	if (client.end_time || client.i_report.report_interval_time)
-	{
+	if (client.end_time || client.i_report.report_interval_time) {
 		u64_t now = get_time_ms();
 		if (client.i_report.report_interval_time) {
 			if (client.i_report.start_time) {
@@ -370,8 +367,6 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 				client.i_report.start_time = now;
 			}
 		}
-	}
-
 
 
 	return ERR_OK;
