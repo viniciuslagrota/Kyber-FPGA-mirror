@@ -725,12 +725,17 @@ int main(void)
 				printf("\n\r");
 #endif
 				print_debug(DEBUG_MAIN, "CT sent!\r\n");
-//				st = WAITING_PK;
+
+				//Restart nonce
+				memset(nonce, 0x0, 12);
+
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
 				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
-				nonce[0]++; //TODO: check this nonce.
+				incrementNonce(nonce, sSize);
+				printNonce(nonce);
+//				nonce[0]++; //TODO: check this nonce.
 				aes256ctr_prf(u8AesKeystream, sSize, key_b, nonce);
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "aes256 block calculated: ");
@@ -789,7 +794,7 @@ int main(void)
 				transfer_data((char *)psmCipheredData, sSize);
 
 				//Wait to send next message
-				sleep(10);
+				usleep(10000);
 
 				st = CALCULATE_AES_BLOCK;
 			break;

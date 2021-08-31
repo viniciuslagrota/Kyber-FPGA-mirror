@@ -265,3 +265,46 @@ uint16_t crc16(uint8_t * p, unsigned long len)
 
     return(crc);
 }
+
+//////////////////////////////////////////////
+//
+//	Nonce
+//
+//////////////////////////////////////////////
+uint8_t incrementNonce(uint8_t * nonce, size_t sSize)
+{
+	uint8_t u8Increment = (sSize >> 4) + 1; //sSize/16 + 1 | 16 bytes is the AES256-CTR block size or 128 bits.
+	uint8_t u8Carry = 0;
+	uint64_t u64Low;
+	uint32_t u32High;
+
+	if(nonce == NULL)
+		return 0;
+
+	memcpy(&u64Low, nonce, 8);
+	memcpy(&u32High, &nonce[8], 4);
+
+	if( u64Low > ULONG_MAX - u8Increment)
+		u8Carry++;
+
+	u64Low += u8Increment;
+	u32High += u8Carry;
+
+	memcpy(nonce, &u64Low, 8);
+	memcpy(&nonce[8], &u32High, 4);
+
+	return 1;
+}
+
+
+void printNonce(uint8_t * nonce)
+{
+	print_debug(DEBUG_MAIN, "Nonce: 0x");
+#if DEBUG_MAIN == 1
+	for(int i = 11; i >= 0; i--)
+	{
+		printf("%02x", nonce[i]);
+	}
+	printf("\r\n");
+#endif
+}

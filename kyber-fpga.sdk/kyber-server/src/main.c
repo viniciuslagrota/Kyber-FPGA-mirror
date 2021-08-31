@@ -567,12 +567,17 @@ int main(void)
 					printf("%02x", key_a[i]);
 				printf("\n\r");
 #endif
-//				st = CREATE_KEY_PAIR;
+
+				//Restart nonce
+				memset(nonce, 0x0, 12);
+
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
 				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
-				nonce[0]++;
+//				nonce[0]++;
+				incrementNonce(nonce, sSize);
+				printNonce(nonce);
 				aes256ctr_prf(u8AesKeystream, sSize, key_a, nonce);
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "aes256 calculated: ");

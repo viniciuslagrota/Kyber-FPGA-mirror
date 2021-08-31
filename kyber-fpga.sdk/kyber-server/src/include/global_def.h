@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <limits.h>
 
 //Hardware
 #include "xil_printf.h"
@@ -333,5 +334,7 @@ void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction);
 void resetTimeVariables();
 void printTimeVariables();
 uint16_t crc16(uint8_t * p, unsigned long len);
+uint8_t incrementNonce(uint8_t * nonce, size_t sSize);
+void printNonce(uint8_t * nonce);
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */
