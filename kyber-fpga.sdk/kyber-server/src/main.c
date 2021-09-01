@@ -366,6 +366,7 @@ int main(void)
 
 	//Alloc keystream
 	size_t sSize = sizeof(smDataStruct);
+	u8 u8CrcFailed = 0x0;
 //	u8 * u8Keystream = (u8 *)malloc(sSize);
 //	if(u8Keystream == NULL)
 //		print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
@@ -610,17 +611,24 @@ int main(void)
 				//Print deciphered data
 				smw3000PrintDataStruct(psmData);
 
-//				print_debug(DEBUG_MAIN, "Received ciphertext: %s\r\n", cCiphertext);
-//				for(int i = 0; i < 32; i++)
-//				{
-//					cPlaintext[i] = cCiphertext[i] ^ u8AesKeystream[i];
-////					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
-//				}
-//				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
-//				printf(DEBUG_MAIN, "\n\r\n\r");
+				//Check CRC16
+				rv = smw3000CheckCrc();
+				if(rv == CRC_FAILED)
+				{
+					u8CrcFailed = 0x1;
+					print_debug(DEBUG_MAIN, "CRC failed.\r\n");
+				}
+				else
+					print_debug(DEBUG_MAIN, "CRC ok.\r\n");
 
 				if(bChangeKey == 1)
 					st = CREATE_KEY_PAIR;
+				else if(u8CrcFailed)
+				{
+					u8CrcFailed = 0x0;
+					XScuTimer_RestartTimer(&xTimer);
+					st = CREATE_KEY_PAIR;
+				}
 				else
 					st = CALCULATE_AES_BLOCK;
 			break;

@@ -59,7 +59,8 @@ extern volatile int dhcp_timoutcntr;
 #define DEFAULT_GW_ADDRESS	"192.168.1.1"
 #endif /* LWIP_IPV6 */
 
-//TODO: check nonce counter! Should be counter++ ou counter += sSize?
+//TODO: create a CRC-16 field in the smDataStr to check whether data is correct. Se tiver errado, realizar a troca de chaves para zerar o nonce.
+//TODO: testar o TODO acima, simular um CRC errado!!
 
 //////////////////////////////////////////////
 //
@@ -369,16 +370,20 @@ int main(void)
 
 	//Alloc keystream
 	size_t sSize = sizeof(smDataStruct);
-//	u8 * u8Keystream = (u8 *)malloc(sSize);
-//	if(u8Keystream == NULL)
-//		print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
+#if LOOP_TEST_SMW3000 == 1
+	u8 * u8Keystream = (u8 *)malloc(sSize);
+	if(u8Keystream == NULL)
+		print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
+#endif
 
 	smDataStruct * psmData;
 	smDataStruct * psmCipheredData;
 
-	//Create key and nonce //TODO: get from shared key! Nonce must be counted.
-//	uint8_t u8Key[32] = { 0x3E };
-//	uint8_t u8Nonce[12] = { 0x1F };
+#if LOOP_TEST_SMW3000 == 1
+	//Create key and nonce
+	uint8_t u8Key[32] = { 0x3E };
+	uint8_t u8Nonce[12] = { 0x1F };
+#endif
 
 	smw3000Init();
 
@@ -444,6 +449,12 @@ int main(void)
 
 		//Print deciphered data
 		smw3000PrintDataStruct(psmData);
+
+		rv = smw3000CheckCrc();
+		if(rv)
+			print_debug(DEBUG_MAIN, "CRC failed.\r\n");
+		else
+			print_debug(DEBUG_MAIN, "CRC success.\r\n");
 
 		sleep(5);
 	}

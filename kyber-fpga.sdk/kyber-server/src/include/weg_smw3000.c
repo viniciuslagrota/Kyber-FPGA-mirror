@@ -90,6 +90,10 @@ u32 smw3000GetAllData()
 	if(rv)
 		goto _err;
 
+	rv = smw3000CalculateCrc();
+	if(rv)
+		goto _err;
+
 	print_debug(DEBUG_SM_LVL2, "All SM data collected.\r\n");
 
 	_err:
@@ -627,6 +631,40 @@ u32 smw3000GetLineCurrent(u8 u8Line)
 
 //////////////////////////////////////////////
 //
+//	Calculate CRC buffer
+//
+//////////////////////////////////////////////
+u32 smw3000CalculateCrc()
+{
+	smData.u16Crc = 0x0;
+	uint16_t u16Crc = crc16((uint8_t *)(&smData), sizeof(smDataStruct));
+	smData.u16Crc = u16Crc;
+
+	return OK;
+}
+
+//////////////////////////////////////////////
+//
+//	Check CRC buffer
+//
+//////////////////////////////////////////////
+u32 smw3000CheckCrc()
+{
+	u16 u16CrcReceived = smData.u16Crc;
+	smData.u16Crc = 0x0;
+	uint16_t u16CrcCalculated = crc16((uint8_t *)(&smData), sizeof(smDataStruct));
+	smData.u16Crc = u16CrcReceived;
+	if(u16CrcCalculated == u16CrcReceived)
+		return OK;
+	else
+	{
+		print_debug(DEBUG_SM_LVL2, "CRC calculated: 0x%04x | CRC received: 0x%04x.\r\n", u16CrcCalculated, u16CrcReceived);
+		return CRC_FAILED;
+	}
+}
+
+//////////////////////////////////////////////
+//
 //	Send buffer data
 //
 //////////////////////////////////////////////
@@ -774,6 +812,7 @@ void smw3000PrintDataStruct(smDataStruct * psmDataStruct)
 	print_debug(DEBUG_SM_LVL2, "L2 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL2);
 	print_debug(DEBUG_SM_LVL2, "L3 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL3);
 	print_debug(DEBUG_SM_LVL2, "LN current acquired: %d mA.\r\n", psmDataStruct->u32CurrentN);
+	print_debug(DEBUG_SM_LVL2, "CRC16: 0x%04x\r\n", psmDataStruct->u16Crc);
 }
 
 

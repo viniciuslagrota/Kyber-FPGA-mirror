@@ -44,6 +44,7 @@
 #define TIMESTAMP_FAILED			0x05000000
 #define VOLTAGE_FAILED				0x06000000
 #define POINTER_DEALLOCATED			0x07000000
+#define CRC_FAILED					0x08000000
 
 //////////////////////////////////////////////
 //
@@ -72,6 +73,7 @@ typedef struct smDataStruct {
 	u32 u32CurrentL2;
 	u32 u32CurrentL3;
 	u32 u32CurrentN;
+	u16 u16Crc;
 } smDataStruct;
 
 //////////////////////////////////////////////
@@ -93,6 +95,8 @@ u32 smw3000DecipherDataStruct(u8 * u8Keystream);
 smControlStruct * smw3000GetControlStruct();
 smDataStruct * smw3000GetDataStruct();
 smDataStruct * smw3000GetCipheredDataStruct();
+u32 smw3000CalculateCrc();
+u32 smw3000CheckCrc();
 u32 smw3000SendBuffer();
 u32 smw3000RecvBuffer();
 u32 smw3000WaitForData();
