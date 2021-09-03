@@ -1,4 +1,4 @@
-23:40:52 **** Incremental Build of configuration Debug for project kyber-server ****
+20:10:29 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -15,6 +15,18 @@ In file included from ../src/main.c:30:
 ../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
  //#define print_debug(debugLevel, ...) \
  ^
+In file included from ../src/main.c:30:
+../src/main.c: In function 'main':
+../src/include/global_def.h:156:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/main.c:644:5: note: in expansion of macro 'print_debug'
+     print_debug(DEBUG_MAIN, "u32Counter %d.\r\n", u32Counter);
+     ^~~~~~~~~~~
+../src/main.c:644:42: note: format string is defined here
+     print_debug(DEBUG_MAIN, "u32Counter %d.\r\n", u32Counter);
+                                         ~^
+                                         %ld
 Finished building: ../src/main.c
  
 Building target: kyber-server.elf
@@ -25,9 +37,9 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 433088	   3776	31578400	32015264	1e883a0	kyber-server.elf
+ 433352	   3776	31578400	32015528	1e884a8	kyber-server.elf
 Finished building: kyber-server.elf.size
  
 
-23:40:58 Build Finished (took 5s.920ms)
+20:10:33 Build Finished (took 4s.53ms)
 

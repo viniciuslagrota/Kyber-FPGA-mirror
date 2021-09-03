@@ -619,7 +619,10 @@ int main(void)
 					print_debug(DEBUG_MAIN, "CRC failed.\r\n");
 				}
 				else
+				{
+					u8CrcFailed = 0x0;
 					print_debug(DEBUG_MAIN, "CRC ok.\r\n");
+				}
 
 				if(bChangeKey == 1)
 					st = CREATE_KEY_PAIR;

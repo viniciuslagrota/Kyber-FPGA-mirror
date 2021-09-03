@@ -864,6 +864,8 @@
 </instance>
 <instance id="xilinx.gnu.armv7.exe.debug.1286041551;xilinx.gnu.armv7.exe.debug.1286041551.;xilinx.gnu.armv7.c.toolchain.compiler.debug.318455460;xilinx.gnu.armv7.c.compiler.input.418461669">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="#undef __ARM_FEATURE_IDIV" removed="true"/>
+<includePath path="#undef __ARM_ASM_SYNTAX_UNIFIED__" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_FMA" removed="true"/>
 <includePath path="#undef __ARM_NEON__" removed="true"/>
 <includePath path="#undef __thumb2__" removed="true"/>
@@ -873,10 +875,12 @@
 <includePath path="#undef __ARM_FEATURE_NUMERIC_MAXMIN" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_SIMD32" removed="true"/>
 <includePath path="c:\xilinx\sdk\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\../lib/gcc/arm-none-eabi/8.2.0/include"/>
+<includePath path="#undef __ARM_FEATURE_COPROC" removed="true"/>
 <includePath path="#undef __ARM_NEON" removed="true"/>
 <includePath path="#undef __ARM_ARCH_ISA_THUMB" removed="true"/>
 <includePath path="#undef __ARM_FP16_ARGS" removed="true"/>
 <includePath path="c:\xilinx\sdk\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\../lib/gcc/arm-none-eabi/8.2.0/include-fixed"/>
+<includePath path="#undef __ARM_FP" removed="true"/>
 <includePath path="#undef __ARM_NEON_FP" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_FP16_SCALAR_ARITHMETIC" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_CLZ" removed="true"/>
