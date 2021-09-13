@@ -40,14 +40,14 @@ u32_t u32LenRecv = 0;
 void print_app_header()
 {
 #if LWIP_IPV6==1
-	xil_printf("TCP client connecting to %s on port %d\r\n",
+	print_debug(DEBUG_ETH, "TCP client connecting to %s on port %d\r\n",
 			TCP_SERVER_IPV6_ADDRESS, TCP_CONN_PORT);
-	xil_printf("On Host: Run $iperf -V -s -i %d -w 2M\r\n",
+	print_debug(DEBUG_ETH, "On Host: Run $iperf -V -s -i %d -w 2M\r\n",
 			INTERIM_REPORT_INTERVAL);
 #else
-	xil_printf("TCP client connecting to %s on port %d\r\n",
+	print_debug(DEBUG_ETH, "TCP client connecting to %s on port %d\r\n",
 			TCP_SERVER_IP_ADDRESS, TCP_CONN_PORT);
-	xil_printf("On Host: Run $iperf -s -i %d -w 2M\r\n",
+	print_debug(DEBUG_ETH, "On Host: Run $iperf -s -i %d -w 2M\r\n",
 			INTERIM_REPORT_INTERVAL);
 #endif /* LWIP_IPV6 */
 }
@@ -55,20 +55,20 @@ void print_app_header()
 static void print_tcp_conn_stats()
 {
 #if LWIP_IPv6==1
-	xil_printf("[%3d] local %s port %d connected with ",
+	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
 			client.client_id, inet6_ntoa(c_pcb->local_ip),
 			c_pcb->local_port);
-	xil_printf("%s port %d\r\n",inet6_ntoa(c_pcb->remote_ip),
+	print_debug(DEBUG_ETH, "%s port %d\r\n",inet6_ntoa(c_pcb->remote_ip),
 			c_pcb->remote_port);
 #else
-	xil_printf("[%3d] local %s port %d connected with ",
+	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
 			client.client_id, inet_ntoa(c_pcb->local_ip),
 			c_pcb->local_port);
-	xil_printf("%s port %d\r\n",inet_ntoa(c_pcb->remote_ip),
+	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(c_pcb->remote_ip),
 			c_pcb->remote_port);
 #endif /* LWIP_IPV6 */
 
-	xil_printf("[ ID] Interval\t\tTransfer   Bandwidth\n\r");
+	print_debug(DEBUG_ETH, "[ ID] Interval\t\tTransfer   Bandwidth\n\r");
 }
 
 static void stats_buffer(char* outString,
@@ -129,7 +129,7 @@ static void tcp_conn_report(u64_t diff,
 	sprintf(time, "%4.1f-%4.1f sec",
 			(double)client.i_report.last_report_time,
 			(double)(client.i_report.last_report_time + duration));
-	xil_printf("[%3d] %s  %sBytes  %sbits/sec\n\r", client.client_id,
+	print_debug(DEBUG_ETH, "[%3d] %s  %sBytes  %sbits/sec\n\r", client.client_id,
 			time, data, perf);
 
 	if (report_type == INTER_REPORT)
@@ -170,7 +170,7 @@ static void tcp_client_err(void *arg, err_t err)
 	tcp_client_close(c_pcb);
 	c_pcb = NULL;
 	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
-	xil_printf("TCP connection aborted\n\r");
+	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
 }
 
 static err_t tcp_send_perf_traffic(void)
@@ -192,14 +192,14 @@ static err_t tcp_send_perf_traffic(void)
 	while (tcp_sndbuf(c_pcb) > TCP_SEND_BUFSIZE) {
 		err = tcp_write(c_pcb, send_buf, TCP_SEND_BUFSIZE, apiflags);
 		if (err != ERR_OK) {
-			xil_printf("TCP client: Error on tcp_write: %d\r\n",
+			print_debug(DEBUG_ETH, "TCP client: Error on tcp_write: %d\r\n",
 					err);
 			return err;
 		}
 
 		err = tcp_output(c_pcb);
 		if (err != ERR_OK) {
-			xil_printf("TCP client: Error on tcp_output: %d\r\n",
+			print_debug(DEBUG_ETH, "TCP client: Error on tcp_output: %d\r\n",
 					err);
 			return err;
 		}
@@ -207,7 +207,7 @@ static err_t tcp_send_perf_traffic(void)
 		client.i_report.total_bytes += TCP_SEND_BUFSIZE;
 	}
 #if DEBUG_KYBER == 1
-	xil_printf("Writing data length: %llu\n\r", TCP_SEND_BUFSIZE);
+	print_debug(DEBUG_ETH, "Writing data length: %llu\n\r", TCP_SEND_BUFSIZE);
 #endif
 
 	if (client.end_time || client.i_report.report_interval_time) {
@@ -233,7 +233,7 @@ static err_t tcp_send_perf_traffic(void)
 				/* time specified is over,
 				 * close the connection */
 				tcp_conn_report(diff_ms, TCP_DONE_CLIENT);
-				xil_printf("TCP test passed Successfully\n\r");
+				print_debug(DEBUG_ETH, "TCP test passed Successfully\n\r");
 				tcp_client_close(c_pcb);
 				c_pcb = NULL;
 				return ERR_OK;
@@ -242,6 +242,82 @@ static err_t tcp_send_perf_traffic(void)
 	}
 	return ERR_OK;
 }
+
+//static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
+//{
+//	err_t err;
+//	u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
+//
+//	if (c_pcb == NULL) {
+//		return ERR_CONN;
+//	}
+//
+//#ifdef __MICROBLAZE__
+//	/* Zero-copy pbufs is used to get maximum performance for Microblaze.
+//	 * For Zynq A9, ZynqMP A53 and R5 zero-copy pbufs does not give
+//	 * significant improvement hense not used. */
+//	apiflags = 0;
+//#endif
+//
+//	if (tcp_sndbuf(c_pcb) > u16BufferLen) {
+//#if DEBUG_KYBER == 1
+//		print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
+//#endif
+//		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
+//		if (err != ERR_OK) {
+//			print_debug(DEBUG_ETH, "TCP client: Error on tcp_write: %d\r\n",
+//					err);
+//			return err;
+//		}
+//
+//		err = tcp_output(c_pcb);
+//		if (err != ERR_OK) {
+//			print_debug(DEBUG_ETH, "TCP client: Error on tcp_output: %d\r\n",
+//					err);
+//			return err;
+//		}
+//		client.total_bytes += u16BufferLen;
+//		client.i_report.total_bytes += u16BufferLen;
+//	}
+//	else
+//	{
+//		print_debug(DEBUG_ETH, "Not enough space in buffer.\n\r");
+//	}
+//
+//	if (client.end_time || client.i_report.report_interval_time) {
+//		u64_t now = get_time_ms();
+//		if (client.i_report.report_interval_time) {
+//			if (client.i_report.start_time) {
+//				u64_t diff_ms = now - client.i_report.start_time;
+//				u64_t rtime_ms = client.i_report.report_interval_time;
+//				if (diff_ms >= rtime_ms) {
+//					tcp_conn_report(diff_ms, INTER_REPORT);
+//					client.i_report.start_time = 0;
+//					client.i_report.total_bytes = 0;
+//				}
+//			} else {
+//				client.i_report.start_time = now;
+//			}
+//		}
+//
+//#if ENABLE_TIMEOUT == 1
+//		if (client.end_time) {
+//			/* this session is time-limited */
+//			u64_t diff_ms = now - client.start_time;
+//			if (diff_ms >= client.end_time) {
+//				/* time specified is over,
+//				 * close the connection */
+//				tcp_conn_report(diff_ms, TCP_DONE_CLIENT);
+//				print_debug(DEBUG_ETH, "TCP test passed Successfully\n\r");
+//				tcp_client_close(c_pcb);
+//				c_pcb = NULL;
+//				return ERR_OK;
+//			}
+//		}
+//#endif
+//	}
+//	return ERR_OK;
+//}
 
 static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 {
@@ -259,32 +335,27 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	apiflags = 0;
 #endif
 
-	if (tcp_sndbuf(c_pcb) > u16BufferLen) {
 #if DEBUG_KYBER == 1
-		xil_printf("Writing data length: %d\n\r", u16BufferLen);
+	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 #endif
-		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
-		if (err != ERR_OK) {
-			xil_printf("TCP client: Error on tcp_write: %d\r\n",
-					err);
-			return err;
-		}
-
-		err = tcp_output(c_pcb);
-		if (err != ERR_OK) {
-			xil_printf("TCP client: Error on tcp_output: %d\r\n",
-					err);
-			return err;
-		}
-		client.total_bytes += u16BufferLen;
-		client.i_report.total_bytes += u16BufferLen;
+	err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
+	if (err != ERR_OK) {
+		print_debug(DEBUG_ETH, "TCP client: Error on tcp_write: %d\r\n",
+				err);
+		return err;
 	}
-	else
+
+	err = tcp_output(c_pcb);
+	if (err != ERR_OK) {
+		print_debug(DEBUG_ETH, "TCP client: Error on tcp_output: %d\r\n",
+				err);
+		return err;
+	}
+	client.total_bytes += u16BufferLen;
+	client.i_report.total_bytes += u16BufferLen;
+
+	if (client.end_time || client.i_report.report_interval_time)
 	{
-		xil_printf("Not enough space in buffer.\n\r");
-	}
-
-	if (client.end_time || client.i_report.report_interval_time) {
 		u64_t now = get_time_ms();
 		if (client.i_report.report_interval_time) {
 			if (client.i_report.start_time) {
@@ -299,23 +370,10 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 				client.i_report.start_time = now;
 			}
 		}
-
-#if ENABLE_TIMEOUT == 1
-		if (client.end_time) {
-			/* this session is time-limited */
-			u64_t diff_ms = now - client.start_time;
-			if (diff_ms >= client.end_time) {
-				/* time specified is over,
-				 * close the connection */
-				tcp_conn_report(diff_ms, TCP_DONE_CLIENT);
-				xil_printf("TCP test passed Successfully\n\r");
-				tcp_client_close(c_pcb);
-				c_pcb = NULL;
-				return ERR_OK;
-			}
-		}
-#endif
 	}
+
+
+
 	return ERR_OK;
 }
 
@@ -332,9 +390,9 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 	tcp_nagle_disable(tpcb);
 
 #if DEBUG_KYBER == 1
-	xil_printf("data length: %d\n\r", p->len);
-//	xil_printf("data total length: %d\n\r", p->tot_len);
-//	xil_printf("next pbuf: 0x%x\n\r", p->next);
+	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
+//	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
+//	print_debug(DEBUG_ETH, "next pbuf: 0x%x\n\r", p->next);
 #endif
 	char * pcBuf = p->payload; //Get transmitted data.
 
@@ -384,7 +442,7 @@ static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 //	return tcp_send_perf_traffic();
 	return ERR_OK;
 #else
-//	xil_printf("Sent callback\n\r");
+//	print_debug(DEBUG_ETH, "Sent callback\n\r");
 	return ERR_OK;
 #endif
 }
@@ -394,7 +452,7 @@ static err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 {
 	if (err != ERR_OK) {
 		tcp_client_close(tpcb);
-		xil_printf("Connection error\n\r");
+		print_debug(DEBUG_ETH, "Connection error\n\r");
 		return err;
 	}
 	/* store state */
@@ -456,21 +514,21 @@ void start_application(void)
 #endif /* LWIP_IPV6 */
 
 	if (!err) {
-		xil_printf("Invalid Server IP address: %d\r\n", err);
+		print_debug(DEBUG_ETH, "Invalid Server IP address: %d\r\n", err);
 		return;
 	}
 
 	/* Create Client PCB */
 	pcb = tcp_new_ip_type(IPADDR_TYPE_ANY);
 	if (!pcb) {
-		xil_printf("Error in PCB creation. out of memory\r\n");
+		print_debug(DEBUG_ETH, "Error in PCB creation. out of memory\r\n");
 		return;
 	}
 
 	err = tcp_connect(pcb, &remote_addr, TCP_CONN_PORT,
 			tcp_client_connected);
 	if (err) {
-		xil_printf("Error on tcp_connect: %d\r\n", err);
+		print_debug(DEBUG_ETH, "Error on tcp_connect: %d\r\n", err);
 		tcp_client_close(pcb);
 		return;
 	}
