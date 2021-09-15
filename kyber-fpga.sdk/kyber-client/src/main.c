@@ -747,7 +747,9 @@ int main(void)
 				u32Seed = getAndInitializeRandomSeed();
 
 				//Calculate nonce
-				generateNonce(nonce, sizeof(nonce));
+				rv = generateNonce(nonce, sizeof(nonce));
+				if(rv == 0)
+					print_debug(DEBUG_MAIN, "Error while generating nonce...\r\n");
 				printNonce(nonce);
 
 				//Perform AES

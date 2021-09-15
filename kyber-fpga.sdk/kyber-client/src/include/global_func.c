@@ -343,7 +343,7 @@ uint8_t generateNonce(uint8_t * nonce, size_t sSize) //sSize is the size of nonc
 	for(i = 0; i < sSize; i += 4)
 	{
 		iRand = rand();
-		memcpy((uint8_t *)&iRand, nonce + i, 4);
+		memcpy(nonce + i, (uint8_t *)&iRand, 4);
 	}
 
 	return 1;

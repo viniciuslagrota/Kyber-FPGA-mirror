@@ -1,101 +1,4 @@
-21:33:55 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/include/global_func.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/include/global_func.c:8:
-../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/include/global_func.c:8:
-../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/include/global_func.c: In function 'getChipTemperature':
-../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
-  float TempData;
-        ^~~~~~~~
-In file included from ../src/include/global_func.c:8:
-../src/include/global_func.c: In function 'printTimeVariables':
-../src/include/global_def.h:156:11: warning: format '%x' expects argument of type 'unsigned int', but argument 7 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
-    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
-           ^~~~~~~~~~~~~~~
-../src/include/global_func.c:232:2: note: in expansion of macro 'print_debug'
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-  ^~~~~~~~~~~
-../src/include/global_func.c:232:78: note: format string is defined here
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-                                                                             ~^
-                                                                             %lx
-Finished building: ../src/include/global_func.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 433696	   3776	31578400	32015872	1e88600	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-21:34:07 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-21:34:29 **** Incremental Build of configuration Debug for project kyber-client ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/include/global_func.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/include/global_func.c:8:
-../src/include/global_def.h:165:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/include/global_func.c:8:
-../src/include/global_def.h:165:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/include/global_func.c: In function 'getChipTemperature':
-../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
-  float TempData;
-        ^~~~~~~~
-In file included from ../src/include/global_func.c:8:
-../src/include/global_func.c: In function 'printTimeVariables':
-../src/include/global_def.h:174:11: warning: format '%x' expects argument of type 'unsigned int', but argument 7 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
-    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
-           ^~~~~~~~~~~~~~~
-../src/include/global_func.c:232:2: note: in expansion of macro 'print_debug'
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-  ^~~~~~~~~~~
-../src/include/global_func.c:232:78: note: format string is defined here
-  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
-                                                                             ~^
-                                                                             %lx
-Finished building: ../src/include/global_func.c
- 
-Building target: kyber-client.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-client.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 433656	   3776	31578400	32015832	1e885d8	kyber-client.elf
-Finished building: kyber-client.elf.size
- 
-21:36:47 **** Incremental Build of configuration Debug for project kyber-server ****
+21:44:24 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -138,10 +41,56 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 433632	   3776	31578400	32015808	1e885c0	kyber-server.elf
+ 433744	   3776	31578400	32015920	1e88630	kyber-server.elf
 Finished building: kyber-server.elf.size
  
-21:38:13 **** Incremental Build of configuration Debug for project kyber-client ****
+21:46:28 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/include/global_func.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/global_func.c:8:
+../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/global_func.c:8:
+../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+../src/include/global_func.c: In function 'getChipTemperature':
+../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
+  float TempData;
+        ^~~~~~~~
+In file included from ../src/include/global_func.c:8:
+../src/include/global_func.c: In function 'printTimeVariables':
+../src/include/global_def.h:156:11: warning: format '%x' expects argument of type 'unsigned int', but argument 7 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/global_func.c:230:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+  ^~~~~~~~~~~
+../src/include/global_func.c:230:78: note: format string is defined here
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+                                                                             ~^
+                                                                             %lx
+Finished building: ../src/include/global_func.c
+ 
+Building target: kyber-server.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-server.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 433744	   3776	31578400	32015920	1e88630	kyber-server.elf
+Finished building: kyber-server.elf.size
+ 
+21:47:15 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -176,6 +125,33 @@ In file included from ../src/include/global_func.c:8:
                                                                              %lx
 Finished building: ../src/include/global_func.c
  
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/main.c:30:
+../src/include/global_def.h:165:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/include/global_def.h:165:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/main.c: In function 'main':
+../src/include/global_def.h:174:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/main.c:777:6: note: in expansion of macro 'print_debug'
+      print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
+      ^~~~~~~~~~~
+../src/main.c:777:60: note: format string is defined here
+      print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
+                                                         ~~~^
+                                                         %08lx
+Finished building: ../src/main.c
+ 
 Building target: kyber-client.elf
 Invoking: ARM v7 gcc linker
 arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
@@ -184,6 +160,6 @@ Finished building target: kyber-client.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 433592	   3776	31578400	32015768	1e88598	kyber-client.elf
+ 433704	   3776	31578400	32015880	1e88608	kyber-client.elf
 Finished building: kyber-client.elf.size
  
