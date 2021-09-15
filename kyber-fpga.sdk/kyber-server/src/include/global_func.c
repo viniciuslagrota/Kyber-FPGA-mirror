@@ -65,6 +65,8 @@ u32 getAndInitializeRandomSeed()
 	XAdcPs_SetSequencerMode(XAdcInstPtr, XADCPS_SEQ_MODE_SAFE);
 	TempRawData = XAdcPs_GetAdcData(XAdcInstPtr, XADCPS_CH_TEMP);
 	srand(TempRawData); //Get a random seed here!
+	TempRawData = rand();
+	srand(TempRawData);
 	return TempRawData;
 }
 

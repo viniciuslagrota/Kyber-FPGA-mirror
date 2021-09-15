@@ -1,4 +1,4 @@
-21:27:09 **** Incremental Build of configuration Debug for project kyber-client ****
+21:38:13 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
@@ -24,10 +24,10 @@ In file included from ../src/include/global_func.c:8:
 ../src/include/global_def.h:174:11: warning: format '%x' expects argument of type 'unsigned int', but argument 7 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
     printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
            ^~~~~~~~~~~~~~~
-../src/include/global_func.c:228:2: note: in expansion of macro 'print_debug'
+../src/include/global_func.c:230:2: note: in expansion of macro 'print_debug'
   print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
   ^~~~~~~~~~~
-../src/include/global_func.c:228:78: note: format string is defined here
+../src/include/global_func.c:230:78: note: format string is defined here
   print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
                                                                              ~^
                                                                              %lx
@@ -45,5 +45,5 @@ arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
 Finished building: kyber-client.elf.size
  
 
-21:27:14 Build Finished (took 4s.364ms)
+21:38:18 Build Finished (took 4s.646ms)
 
