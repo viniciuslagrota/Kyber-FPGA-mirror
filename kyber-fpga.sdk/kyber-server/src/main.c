@@ -71,9 +71,9 @@ extern uint8_t sk[CRYPTO_SECRETKEYBYTES];
 #endif
 extern uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
 #if SERVER_INIT == 0
-extern uint8_t key_a[CRYPTO_BYTES];
-#else
 extern uint8_t key_b[CRYPTO_BYTES];
+#else
+extern uint8_t key_a[CRYPTO_BYTES];
 #endif
 //////////////////////////////////////////////
 //
@@ -365,7 +365,8 @@ int main(void)
 	u32 rv;
 
 	//Alloc keystream
-	size_t sSize = sizeof(smDataStruct);
+	size_t sSize = sizeof(smDataStruct); //Complete structure
+	size_t sSizeCiphered = sizeof(smDataStruct) - 4; //Ignore u32Seed field
 	u8 u8CrcFailed = 0x0;
 //	u8 * u8Keystream = (u8 *)malloc(sSize);
 //	if(u8Keystream == NULL)
@@ -572,35 +573,45 @@ int main(void)
 				//Restart nonce
 				memset(nonce, 0x0, 12);
 
-				st = CALCULATE_AES_BLOCK;
+				print_debug(DEBUG_MAIN, "Waiting for ciphered data...\r\n");
+
+				st = WAIT_CIPHERED_DATA;
 			break;
+			case WAIT_CIPHERED_DATA:
+				//Wait messages from client
+				break;
 			case CALCULATE_AES_BLOCK:
 				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
-//				nonce[0]++;
-				incrementNonce(nonce, sSize);
+
+				//Get pointer to ciphered structure
+				psmCipheredData = smw3000GetCipheredDataStruct();
+
+				//Copy received data to ciphered structure
+				memcpy(psmCipheredData, cCiphertext, sSize);
+				smw3000PrintDataStruct(psmCipheredData);
+
+				//Set random seed
+				setRandomSeed(psmCipheredData->u32Seed);
+
+				//Calculate nonce
+				generateNonce(nonce, sizeof(nonce));
 				printNonce(nonce);
-				aes256ctr_prf(u8AesKeystream, sSize, key_a, nonce);
+
+				//Perform AES
+				aes256ctr_prf(u8AesKeystream, sSizeCiphered, key_a, nonce);
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "aes256 calculated: ");
 				for(int i = 0; i < sSize; i++)
 					printf("%02x", u8AesKeystream[i]);
 				printf("\n\r");
 #endif
-				print_debug(DEBUG_MAIN, "Waiting ciphered data...\r\n");
-				st = WAIT_CIPHERED_DATA;
-			break;
-			case WAIT_CIPHERED_DATA:
-				//Wait messages from client
-			break;
+				st = DECIPHER_MESSAGE;
+				break;
 			case DECIPHER_MESSAGE:
 				print_debug(DEBUG_MAIN, "Deciphering message...\r\n");
-				//Get pointer to ciphered structure
-				psmCipheredData = smw3000GetCipheredDataStruct();
-				psmData = smw3000GetDataStruct();
 
-				//Copy received data to ciphered structure
-				memcpy(psmCipheredData, cCiphertext, sSize);
-				smw3000PrintDataStruct(psmCipheredData);
+				//Get pointer to plaintext structure
+				psmData = smw3000GetDataStruct();
 
 				rv = smw3000DecipherDataStruct(u8AesKeystream);
 				if(rv)
@@ -633,7 +644,7 @@ int main(void)
 					st = CREATE_KEY_PAIR;
 				}
 				else
-					st = CALCULATE_AES_BLOCK;
+					st = WAIT_CIPHERED_DATA;
 			break;
 		}
 //		sleep(10);

@@ -59,9 +59,6 @@ extern volatile int dhcp_timoutcntr;
 #define DEFAULT_GW_ADDRESS	"192.168.1.1"
 #endif /* LWIP_IPV6 */
 
-//TODO: create a CRC-16 field in the smDataStr to check whether data is correct. Se tiver errado, realizar a troca de chaves para zerar o nonce.
-//TODO: testar o TODO acima, simular um CRC errado!!
-
 //////////////////////////////////////////////
 //
 //	Kyber Variables
@@ -169,6 +166,7 @@ u32 u32CounterMinutes = 0;
 //////////////////////////////////////////////
 extern uint8_t u8AesKeystream[1024];
 uint8_t nonce[12] = {0x0};
+u32 u32Seed;
 
 extern char cPlainText[1024];
 extern char cCipherText[1024];
@@ -369,7 +367,8 @@ int main(void)
 	u32 rv;
 
 	//Alloc keystream
-	size_t sSize = sizeof(smDataStruct);
+	size_t sSize = sizeof(smDataStruct); //Complete structure
+	size_t sSizeCiphered = sizeof(smDataStruct) - 4; //Ignore u32Seed field
 #if LOOP_TEST_SMW3000 == 1
 	u8 * u8Keystream = (u8 *)malloc(sSize);
 	if(u8Keystream == NULL)
@@ -411,8 +410,8 @@ int main(void)
 		smw3000PrintDataStruct(psmData);
 
 		//Generate keystream
-		aes256ctr_prf(u8Keystream, sSize, u8Key, u8Nonce);
-		print_debug(DEBUG_MAIN, "Keystream (len: %d): ", sSize);
+		aes256ctr_prf(u8Keystream, sSizeCiphered, u8Key, u8Nonce);
+		print_debug(DEBUG_MAIN, "Keystream (len: %d): ", sSizeCiphered);
 		for(int i = 0; i < sSize; i++)
 		{
 			printf("%02x ", *(u8Keystream + i));
@@ -437,7 +436,6 @@ int main(void)
 		memset(psmData, 0x0, sSize);
 		smw3000PrintDataStruct(psmData);
 
-		//TODO: decifrar estrutura para ver se recupera dados. Criar uma terceira estrutura na biblioteca somente para realizar o teste.
 		rv = smw3000DecipherDataStruct(u8Keystream);
 		if(rv)
 		{
@@ -744,10 +742,16 @@ int main(void)
 			break;
 			case CALCULATE_AES_BLOCK:
 				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
-				incrementNonce(nonce, sSize);
+
+				//Get random seed
+				u32Seed = getAndInitializeRandomSeed();
+
+				//Calculate nonce
+				generateNonce(nonce, sizeof(nonce));
 				printNonce(nonce);
-//				nonce[0]++; //TODO: check this nonce.
-				aes256ctr_prf(u8AesKeystream, sSize, key_b, nonce);
+
+				//Perform AES
+				aes256ctr_prf(u8AesKeystream, sSizeCiphered, key_b, nonce);
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "aes256 block calculated: ");
 				for(int i = 0; i < sSize; i++)
@@ -759,6 +763,13 @@ int main(void)
 			break;
 			case GET_SMW3000_DATA:
 				print_debug(DEBUG_MAIN, "Getting SMW3000 data...\r\n");
+
+				//Get data pointer
+				psmData = smw3000GetDataStruct();
+
+				//Save seed into structure
+				psmData->u32Seed = u32Seed;
+
 				rv = smw3000GetAllData();
 				if(rv)
 					print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
@@ -766,7 +777,6 @@ int main(void)
 					print_debug(DEBUG_MAIN, "Data successfully acquired.\r\n");
 
 				//Print data for debug purpose
-				psmData = smw3000GetDataStruct();
 				smw3000PrintDataStruct(psmData);
 
 				st = CIPHER_MESSAGE;

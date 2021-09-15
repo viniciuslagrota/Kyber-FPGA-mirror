@@ -1,33 +1,37 @@
-20:10:29 **** Incremental Build of configuration Debug for project kyber-server ****
+21:26:46 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-Building file: ../src/main.c
+Building file: ../src/include/global_func.c
 Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
 In file included from ../src/include/test_kem.h:16,
                  from ../src/include/global_def.h:35,
-                 from ../src/main.c:30:
+                 from ../src/include/global_func.c:8:
 ../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
  //#define print_debug(debugLevel, ...) \
  ^
-In file included from ../src/main.c:30:
+In file included from ../src/include/global_func.c:8:
 ../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
  //#define print_debug(debugLevel, ...) \
  ^
-In file included from ../src/main.c:30:
-../src/main.c: In function 'main':
-../src/include/global_def.h:156:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+../src/include/global_func.c: In function 'getChipTemperature':
+../src/include/global_func.c:37:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
+  float TempData;
+        ^~~~~~~~
+In file included from ../src/include/global_func.c:8:
+../src/include/global_func.c: In function 'printTimeVariables':
+../src/include/global_def.h:156:11: warning: format '%x' expects argument of type 'unsigned int', but argument 7 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
     printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
            ^~~~~~~~~~~~~~~
-../src/main.c:644:5: note: in expansion of macro 'print_debug'
-     print_debug(DEBUG_MAIN, "u32Counter %d.\r\n", u32Counter);
-     ^~~~~~~~~~~
-../src/main.c:644:42: note: format string is defined here
-     print_debug(DEBUG_MAIN, "u32Counter %d.\r\n", u32Counter);
-                                         ~^
-                                         %ld
-Finished building: ../src/main.c
+../src/include/global_func.c:228:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+  ^~~~~~~~~~~
+../src/include/global_func.c:228:78: note: format string is defined here
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+                                                                             ~^
+                                                                             %lx
+Finished building: ../src/include/global_func.c
  
 Building target: kyber-server.elf
 Invoking: ARM v7 gcc linker
@@ -37,9 +41,9 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 433352	   3776	31578400	32015528	1e884a8	kyber-server.elf
+ 433632	   3776	31578400	32015808	1e885c0	kyber-server.elf
 Finished building: kyber-server.elf.size
  
 
-20:10:33 Build Finished (took 4s.53ms)
+21:26:50 Build Finished (took 4s.83ms)
 

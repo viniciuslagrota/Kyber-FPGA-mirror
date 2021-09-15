@@ -110,10 +110,15 @@ u32 smw3000CipherDataStruct(u8 * u8Keystream)
 	if(u8Keystream == NULL)
 		return POINTER_DEALLOCATED;
 
-	uint8_t *smDataPtr = (uint8_t*)&smData;
-	uint8_t *smCipheredDataPtr = (uint8_t*)&smCipheredData;
+	uint8_t *smDataPtr = (uint8_t*)&smData.u8DeviceName;
+	uint8_t *smCipheredDataPtr = (uint8_t*)&smCipheredData.u8DeviceName;
 
-	for(int i = 0; i < sizeof(smDataStruct); i++)
+	//Copy seed in plaintext mode
+	smCipheredData.u32Seed = smData.u32Seed;
+
+	size_t sSize = sizeof(smDataStruct) - 4; //Ignore u32Seed field.
+
+	for(int i = 0; i < sSize; i++)
 	{
 		smCipheredDataPtr[i] = smDataPtr[i] ^ u8Keystream[i];
 		print_debug(DEBUG_SM_LVL0, "%02x ^ %02x = %02x\r\n", smDataPtr[i], u8Keystream[i], smCipheredDataPtr[i]);
@@ -132,10 +137,15 @@ u32 smw3000DecipherDataStruct(u8 * u8Keystream)
 	if(u8Keystream == NULL)
 		return POINTER_DEALLOCATED;
 
-	uint8_t *smCipheredDataPtr = (uint8_t*)&smCipheredData;
-	uint8_t *smDataPtr = (uint8_t*)&smData;
+	uint8_t *smCipheredDataPtr = (uint8_t*)&smCipheredData.u8DeviceName;
+	uint8_t *smDataPtr = (uint8_t*)&smData.u8DeviceName;
 
-	for(int i = 0; i < sizeof(smDataStruct); i++)
+	//Copy seed in plaintext mode
+	smData.u32Seed = smCipheredData.u32Seed;
+
+	size_t sSize = sizeof(smDataStruct) - 4; //Ignore u32Seed field.
+
+	for(int i = 0; i < sSize; i++)
 	{
 		//smDataPtr[i] = smCipheredDataPtr[i] ^ u8Keystream[i];
 		smDataPtr[i] = smCipheredDataPtr[i] ^ u8Keystream[i];
@@ -803,6 +813,7 @@ void smw3000AddControlPointer()
 void smw3000PrintDataStruct(smDataStruct * psmDataStruct)
 {
 	print_debug(DEBUG_SM_LVL2, "Data structure (addr 0x%08x):\r\n", psmDataStruct);
+	print_debug(DEBUG_SM_LVL2, "Seed: 0x%08x\r\n", psmDataStruct->u32Seed);
 	print_debug(DEBUG_SM_LVL2, "Device Name: %.13s\r\n", psmDataStruct->u8DeviceName);
 	print_debug(DEBUG_SM_LVL2, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", psmDataStruct->u8Timestamp[3], psmDataStruct->u8Timestamp[2], ((u16)(psmDataStruct->u8Timestamp[0]) << 8) | psmDataStruct->u8Timestamp[1], psmDataStruct->u8Timestamp[4], psmDataStruct->u8Timestamp[5], psmDataStruct->u8Timestamp[6]);
 	print_debug(DEBUG_SM_LVL2, "L1 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL1);
