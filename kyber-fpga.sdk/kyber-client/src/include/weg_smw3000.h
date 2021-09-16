@@ -43,8 +43,9 @@
 #define DEVICE_ID_FAILED			0x04000000
 #define TIMESTAMP_FAILED			0x05000000
 #define VOLTAGE_FAILED				0x06000000
-#define POINTER_DEALLOCATED			0x07000000
-#define CRC_FAILED					0x08000000
+#define CURRENT_FAILED				0x07000000
+#define POINTER_DEALLOCATED			0x08000000
+#define CRC_FAILED					0x09000000
 
 //////////////////////////////////////////////
 //

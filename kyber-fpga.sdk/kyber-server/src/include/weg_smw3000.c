@@ -636,7 +636,7 @@ u32 smw3000GetLineCurrent(u8 u8Line)
 	return OK;
 
 	_err:
-		return VOLTAGE_FAILED | rv;
+		return CURRENT_FAILED | rv;
 }
 
 //////////////////////////////////////////////

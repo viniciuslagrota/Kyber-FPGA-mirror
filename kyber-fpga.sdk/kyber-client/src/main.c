@@ -772,11 +772,21 @@ int main(void)
 				//Save seed into structure
 				psmData->u32Seed = u32Seed;
 
-				rv = smw3000GetAllData();
-				if(rv)
-					print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
-				else
-					print_debug(DEBUG_MAIN, "Data successfully acquired.\r\n");
+
+				for(int j = 0; j < MAX_TRY; j++)
+				{
+					rv = smw3000GetAllData();
+					if(rv)
+					{
+						print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
+						usleep(10000);
+					}
+					else
+					{
+						print_debug(DEBUG_MAIN, "Data successfully acquired.\r\n");
+						break;
+					}
+				}
 
 				//Print data for debug purpose
 				smw3000PrintDataStruct(psmData);
