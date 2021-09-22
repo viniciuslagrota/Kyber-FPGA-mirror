@@ -36,6 +36,7 @@
 #include "kem.h"
 #include "reduce.h"
 #include "aes256ctr.h"
+#include "aes256gcm.h"
 #include "weg_smw3000.h"
 
 //////////////////////////////////////////////
@@ -249,7 +250,6 @@ enum state
 	WAITING_PK,
 	CALCULATING_CT,
 	SENDING_CT,
-	CALCULATE_AES_BLOCK,
 	GET_SMW3000_DATA,
 	CIPHER_MESSAGE,
 	SEND_CIPHER_MESSAGE

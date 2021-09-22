@@ -36,6 +36,7 @@
 #include "kem.h"
 #include "reduce.h"
 #include "aes256ctr.h"
+#include "aes256gcm.h"
 #include "weg_smw3000.h"
 
 //////////////////////////////////////////////
@@ -223,7 +224,6 @@ enum state
 	WAITING_CT,
 	CALCULATE_SHARED_SECRET,
 	WAIT_CIPHERED_DATA,
-	CALCULATE_AES_BLOCK,
 	DECIPHER_MESSAGE
 };
 #else

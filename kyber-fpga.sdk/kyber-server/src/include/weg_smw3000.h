@@ -66,6 +66,8 @@ typedef struct smBufferStruct {
 
 typedef struct smDataStruct {
 	u32 u32Seed;
+	u8 u8Aad[32];
+	u8 u8Tag[16];
 	u8 u8DeviceName[13];
 	u8 u8Timestamp[7];
 	u32 u32VoltageL1;

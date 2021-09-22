@@ -277,7 +277,7 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 		memcpy(cCiphertext + u32LenRecv, pcBuf, p->len);
 		u32LenRecv += p->len;
 
-		st = CALCULATE_AES_BLOCK;
+		st = DECIPHER_MESSAGE;
 		u32LenRecv = 0;
 	}
 	else

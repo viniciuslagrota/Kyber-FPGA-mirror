@@ -647,7 +647,7 @@ u32 smw3000GetLineCurrent(u8 u8Line)
 u32 smw3000CalculateCrc()
 {
 	smData.u16Crc = 0x0;
-	uint16_t u16Crc = crc16((uint8_t *)(&smData), sizeof(smDataStruct));
+	uint16_t u16Crc = crc16((uint8_t*)&smData.u8DeviceName, sizeof(smDataStruct) - 52);
 	smData.u16Crc = u16Crc;
 
 	return OK;
@@ -662,7 +662,7 @@ u32 smw3000CheckCrc()
 {
 	u16 u16CrcReceived = smData.u16Crc;
 	smData.u16Crc = 0x0;
-	uint16_t u16CrcCalculated = crc16((uint8_t *)(&smData), sizeof(smDataStruct));
+	uint16_t u16CrcCalculated = crc16((uint8_t*)&smData.u8DeviceName, sizeof(smDataStruct) - 52);
 	smData.u16Crc = u16CrcReceived;
 	if(u16CrcCalculated == u16CrcReceived)
 		return OK;
@@ -814,6 +814,13 @@ void smw3000PrintDataStruct(smDataStruct * psmDataStruct)
 {
 	print_debug(DEBUG_SM_LVL2, "Data structure (addr 0x%08x):\r\n", psmDataStruct);
 	print_debug(DEBUG_SM_LVL2, "Seed: 0x%08x\r\n", psmDataStruct->u32Seed);
+	print_debug(DEBUG_SM_LVL2, "AAD: %.32s\r\n", psmDataStruct->u8Aad);
+	print_debug(DEBUG_SM_LVL2, "Tag: ");
+#if DEBUG_SM_LVL2 == 1
+		for(int i = 0; i < 16; i++)
+			printf("%02x", psmDataStruct->u8Tag[i]);
+		printf("\r\n");
+#endif
 	print_debug(DEBUG_SM_LVL2, "Device Name: %.13s\r\n", psmDataStruct->u8DeviceName);
 	print_debug(DEBUG_SM_LVL2, "Timestamp: %02d/%02d/%04d %02d:%02d:%02d.\r\n", psmDataStruct->u8Timestamp[3], psmDataStruct->u8Timestamp[2], ((u16)(psmDataStruct->u8Timestamp[0]) << 8) | psmDataStruct->u8Timestamp[1], psmDataStruct->u8Timestamp[4], psmDataStruct->u8Timestamp[5], psmDataStruct->u8Timestamp[6]);
 	print_debug(DEBUG_SM_LVL2, "L1 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL1);
