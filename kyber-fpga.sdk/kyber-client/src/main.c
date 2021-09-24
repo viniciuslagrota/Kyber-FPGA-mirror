@@ -776,7 +776,8 @@ int main(void)
 					}
 				}
 
-				st = CIPHER_MESSAGE;
+				if(!rv)
+					st = CIPHER_MESSAGE;
 				break;
 			case CIPHER_MESSAGE:
 				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
@@ -818,13 +819,6 @@ int main(void)
 
 				//Print data for debug purpose
 				smw3000PrintDataStruct(psmCipheredData);
-
-#if DEBUG_KYBER == 1
-				print_debug(DEBUG_MAIN, "aes256 block calculated: ");
-				for(int i = 0; i < sSize; i++)
-					printf("%02x", u8AesKeystream[i]);
-				printf("\n\r");
-#endif
 
 				//TODO: check this time!!!
 				usleep(10000); //Wait 10 ms
