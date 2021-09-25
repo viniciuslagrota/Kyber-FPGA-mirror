@@ -43,8 +43,9 @@
 #define DEVICE_ID_FAILED			0x04000000
 #define TIMESTAMP_FAILED			0x05000000
 #define VOLTAGE_FAILED				0x06000000
-#define POINTER_DEALLOCATED			0x07000000
-#define CRC_FAILED					0x08000000
+#define CURRENT_FAILED				0x07000000
+#define POINTER_DEALLOCATED			0x08000000
+#define CRC_FAILED					0x09000000
 
 //////////////////////////////////////////////
 //
@@ -64,6 +65,9 @@ typedef struct smBufferStruct {
 } smBufferStruct;
 
 typedef struct smDataStruct {
+	u32 u32Seed;
+	u8 u8Aad[32];
+	u8 u8Tag[16];
 	u8 u8DeviceName[13];
 	u8 u8Timestamp[7];
 	u32 u32VoltageL1;

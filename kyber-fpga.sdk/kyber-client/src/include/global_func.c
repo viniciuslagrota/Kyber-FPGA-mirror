@@ -49,6 +49,39 @@ void getChipTemperature()
 
 //////////////////////////////////////////////
 //
+//	Get random seed
+//
+//////////////////////////////////////////////
+u32 getAndInitializeRandomSeed()
+{
+	static XAdcPs XAdcInst;
+	XAdcPs_Config *ConfigPtr;
+	u32 TempRawData;
+	XAdcPs *XAdcInstPtr = &XAdcInst;
+
+	ConfigPtr = XAdcPs_LookupConfig(XADC_DEVICE_ID);
+	XAdcPs_CfgInitialize(XAdcInstPtr, ConfigPtr, ConfigPtr->BaseAddress);
+	XAdcPs_SelfTest(XAdcInstPtr);
+	XAdcPs_SetSequencerMode(XAdcInstPtr, XADCPS_SEQ_MODE_SAFE);
+	TempRawData = XAdcPs_GetAdcData(XAdcInstPtr, XADCPS_CH_TEMP);
+	srand(TempRawData); //Get a random seed here!
+	TempRawData = rand();
+	srand(TempRawData);
+	return TempRawData;
+}
+
+//////////////////////////////////////////////
+//
+//	Set random seed
+//
+//////////////////////////////////////////////
+void setRandomSeed(u32 u32RandomSeed)
+{
+	srand(u32RandomSeed);
+}
+
+//////////////////////////////////////////////
+//
 //	LED initialize
 //
 //////////////////////////////////////////////
@@ -292,6 +325,26 @@ uint8_t incrementNonce(uint8_t * nonce, size_t sSize)
 
 	memcpy(nonce, &u64Low, 8);
 	memcpy(&nonce[8], &u32High, 4);
+
+	return 1;
+}
+
+uint8_t generateNonce(uint8_t * nonce, size_t sSize) //sSize is the size of nonce in bytes
+{
+	int i;
+	int iRand;
+
+	if(nonce == NULL)
+		return 0;
+
+	if(sSize % 4)
+		return 0;
+
+	for(i = 0; i < sSize; i += 4)
+	{
+		iRand = rand();
+		memcpy(nonce + i, (uint8_t *)&iRand, 4);
+	}
 
 	return 1;
 }

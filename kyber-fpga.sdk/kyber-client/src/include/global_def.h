@@ -36,6 +36,7 @@
 #include "kem.h"
 #include "reduce.h"
 #include "aes256ctr.h"
+#include "aes256gcm.h"
 #include "weg_smw3000.h"
 
 //////////////////////////////////////////////
@@ -56,6 +57,13 @@
 //////////////////////////////////////////////
 #define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
 #define CHANGE_KEY_TIME		2   //In minutes, if zero, does not perform AES. Only valid when SERVER_INIT = 0.
+
+//////////////////////////////////////////////
+//
+//	SMW3000
+//
+//////////////////////////////////////////////
+#define MAX_TRY				5 	//Maximum attempts to connect with SMW3000
 
 //////////////////////////////////////////////
 //
@@ -242,7 +250,6 @@ enum state
 	WAITING_PK,
 	CALCULATING_CT,
 	SENDING_CT,
-	CALCULATE_AES_BLOCK,
 	GET_SMW3000_DATA,
 	CIPHER_MESSAGE,
 	SEND_CIPHER_MESSAGE
@@ -343,6 +350,8 @@ u32 u32KeccakSwTime, u32KeccakSwIt;
 //
 //////////////////////////////////////////////
 void getChipTemperature();
+u32 getAndInitializeRandomSeed();
+void setRandomSeed(u32 u32RandomSeed);
 void ledInit(XGpioPs * Gpio);
 void configKyberK(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel);
 void configTimer(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel);
@@ -355,6 +364,7 @@ void resetTimeVariables();
 void printTimeVariables();
 uint16_t crc16(uint8_t * p, unsigned long len);
 uint8_t incrementNonce(uint8_t * nonce, size_t sSize);
+uint8_t generateNonce(uint8_t * nonce, size_t sSize);
 void printNonce(uint8_t * nonce);
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */

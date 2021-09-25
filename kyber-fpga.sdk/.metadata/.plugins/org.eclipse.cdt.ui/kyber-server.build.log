@@ -1,45 +1,8 @@
-20:10:29 **** Incremental Build of configuration Debug for project kyber-server ****
+23:21:42 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-Building file: ../src/main.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/main.c:30:
-../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/main.c:30:
-../src/include/global_def.h:147:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/main.c:30:
-../src/main.c: In function 'main':
-../src/include/global_def.h:156:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
-    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
-           ^~~~~~~~~~~~~~~
-../src/main.c:644:5: note: in expansion of macro 'print_debug'
-     print_debug(DEBUG_MAIN, "u32Counter %d.\r\n", u32Counter);
-     ^~~~~~~~~~~
-../src/main.c:644:42: note: format string is defined here
-     print_debug(DEBUG_MAIN, "u32Counter %d.\r\n", u32Counter);
-                                         ~^
-                                         %ld
-Finished building: ../src/main.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 433352	   3776	31578400	32015528	1e884a8	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
+make: Nothing to be done for 'main-build'.
 
-20:10:33 Build Finished (took 4s.53ms)
+23:21:43 Build Finished (took 894ms)
 
