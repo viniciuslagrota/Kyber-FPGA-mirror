@@ -338,21 +338,25 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 #if DEBUG_KYBER == 1
 	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 #endif
-	err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
-	if (err != ERR_OK) {
-		print_debug(DEBUG_ETH, "TCP client: Error on tcp_write: %d\r\n",
-				err);
-		return err;
-	}
 
-	err = tcp_output(c_pcb);
-	if (err != ERR_OK) {
-		print_debug(DEBUG_ETH, "TCP client: Error on tcp_output: %d\r\n",
-				err);
-		return err;
+	if (tcp_sndbuf(c_pcb) > u16BufferLen)
+	{
+		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
+		while (err != ERR_OK) {
+			print_debug(DEBUG_ERROR, "TCP client: Error on tcp_write: %d\r\n",
+								err);
+			return err;
+		}
+
+		err = tcp_output(c_pcb);
+		if (err != ERR_OK) {
+			print_debug(DEBUG_ERROR, "TCP client: Error on tcp_output: %d\r\n",
+					err);
+			return err;
+		}
+		client.total_bytes += u16BufferLen;
+		client.i_report.total_bytes += u16BufferLen;
 	}
-	client.total_bytes += u16BufferLen;
-	client.i_report.total_bytes += u16BufferLen;
 
 	if (client.end_time || client.i_report.report_interval_time)
 	{
@@ -443,6 +447,8 @@ static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 	return ERR_OK;
 #else
 //	print_debug(DEBUG_ETH, "Sent callback\n\r");
+	if(st == SEND_CIPHER_MESSAGE || st == WAITING_CIPHER_MESSAGE_ACK)
+		st = GET_SMW3000_DATA;
 	return ERR_OK;
 #endif
 }

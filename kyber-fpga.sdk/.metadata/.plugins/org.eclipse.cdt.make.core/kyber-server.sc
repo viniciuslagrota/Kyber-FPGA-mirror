@@ -2,6 +2,8 @@
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="xilinx.gnu.armv7.exe.debug.1286041551;xilinx.gnu.armv7.exe.debug.1286041551.">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="#undef __ARM_ARCH_EXT_IDIV__" removed="true"/>
+<includePath path="#undef __ARM_FEATURE_IDIV" removed="true"/>
 <includePath path="#undef __ARM_ASM_SYNTAX_UNIFIED__" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_COPROC" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_FP16_VECTOR_ARITHMETIC" removed="true"/>
