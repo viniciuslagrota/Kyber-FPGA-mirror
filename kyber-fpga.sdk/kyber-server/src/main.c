@@ -465,15 +465,16 @@ int main(void)
 	start_application();
 	printf("\r\n");
 
-#if SERVER_INIT == 1 && CHANGE_KEY_TIME != 0
+#if SERVER_INIT == 1 && CHANGE_KEY_TIME != 0 && KEM_TEST_ONLY == 0
 	//Software timer
 	configSoftwareTimer();
 #endif
 
-	//Use only hardware
+#if USE_HW_ACCELERATION == 1
 	u32SystemState = 0x3f;
-	//Use only software
-//	u32SystemState = 0x00;
+#else
+	u32SystemState = 0x00;
+#endif
 
 	//Initialize AES256-GCM
 	gcm_initialize();
@@ -524,7 +525,9 @@ int main(void)
 			break;
 			case CLIENT_CONNECTED:
 				print_debug(DEBUG_MAIN, "Client connected!\r\n");
+#if CHANGE_KEY_TIME != 0 && KEM_TEST_ONLY == 0
 				XScuTimer_Start(&xTimer);
+#endif
 				st = CREATE_KEY_PAIR;
 			break;
 			case CREATE_KEY_PAIR:

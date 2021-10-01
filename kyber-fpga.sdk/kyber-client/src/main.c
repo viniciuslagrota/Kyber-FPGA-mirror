@@ -544,10 +544,12 @@ int main(void)
 	configSoftwareTimer();
 #endif
 
-	//Use only hardware!
+#if USE_HW_ACCELERATION == 1
 	u32SystemState = 0x3f;
-	//Use only software
-//	u32SystemState = 0x00;
+#else
+	u32SystemState = 0x00;
+#endif
+
 
 	//Initialize AES256-GCM
 	gcm_initialize();

@@ -36,6 +36,10 @@ static struct tcp_pcb *c_pcb;
 static char send_buf[TCP_SEND_BUFSIZE];
 static struct perf_stats client;
 u32_t u32LenRecv = 0;
+u32_t u32KeyExchanged = 0;
+u32_t u32PacketExchanged = 0;
+u32_t u32TotalKeyExchanged = 0;
+u32_t u32TotalPacketExchanged = 0;
 
 void print_app_header()
 {
@@ -339,6 +343,18 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 #endif
 
+	if(st == SENDING_CT)
+	{
+		u32KeyExchanged++;
+		u32TotalKeyExchanged++;
+	}
+
+	if(st == SEND_CIPHER_MESSAGE)
+	{
+		u32PacketExchanged++;
+		u32TotalPacketExchanged++;
+	}
+
 	if (tcp_sndbuf(c_pcb) > u16BufferLen)
 	{
 		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
@@ -367,6 +383,9 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 				u64_t rtime_ms = client.i_report.report_interval_time;
 				if (diff_ms >= rtime_ms) {
 					tcp_conn_report(diff_ms, INTER_REPORT);
+					print_debug(DEBUG_ETH, "Key exchanged: %d | Packet exchanged: %d | Total key exchanged: %d | Total packet exchanged: %d\r\n", u32KeyExchanged, u32PacketExchanged, u32TotalKeyExchanged, u32TotalPacketExchanged);
+					u32KeyExchanged = 0;
+					u32PacketExchanged = 0;
 					client.i_report.start_time = 0;
 					client.i_report.total_bytes = 0;
 				}
