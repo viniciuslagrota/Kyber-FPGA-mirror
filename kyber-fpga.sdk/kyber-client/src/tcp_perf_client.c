@@ -417,6 +417,7 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 //	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
 //	print_debug(DEBUG_ETH, "next pbuf: 0x%x\n\r", p->next);
 #endif
+	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
 	char * pcBuf = p->payload; //Get transmitted data.
 
 #if SERVER_INIT == 0

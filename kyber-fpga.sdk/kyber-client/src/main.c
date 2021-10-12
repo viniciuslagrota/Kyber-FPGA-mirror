@@ -828,7 +828,7 @@ int main(void)
 				smw3000PrintDataStruct(psmData);
 
 				//Calculate nonce
-				rv = generateNonce(nonce, sizeof(nonce));
+				rv = generateNonce(u32Seed, nonce, sizeof(nonce));
 				if(rv == 0)
 					print_debug(DEBUG_MAIN, "Error while generating nonce...\r\n");
 				printNonce(nonce);

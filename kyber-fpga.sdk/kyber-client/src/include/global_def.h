@@ -56,11 +56,11 @@
 //
 //////////////////////////////////////////////
 #define KEM_TEST_ONLY		0	//1: only perform KEM | 0: perform KEM and data exchange.
-#define PERFORMANCE_MODE	1	//1: suppress prints | 0: enable prints
+#define PERFORMANCE_MODE	0	//1: suppress prints | 0: enable prints
 #define USE_HW_ACCELERATION	1	//1: use hardware acceleration | 0: do not use hardware acceleration
 #define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
 #define CHANGE_KEY_TIME		5   //In minutes, if zero, does not perform AES. Only valid when SERVER_INIT = 0
-#define SIMULATED_DATA		1	//1: fixed and simulated data from SMW3000 | 0: acquire data from SMW3000
+#define SIMULATED_DATA		0	//1: fixed and simulated data from SMW3000 | 0: acquire data from SMW3000
 
 //////////////////////////////////////////////
 //
@@ -387,7 +387,7 @@ void resetTimeVariables();
 void printTimeVariables();
 uint16_t crc16(uint8_t * p, unsigned long len);
 uint8_t incrementNonce(uint8_t * nonce, size_t sSize);
-uint8_t generateNonce(uint8_t * nonce, size_t sSize);
+uint8_t generateNonce(uint32_t u32Seed, uint8_t * nonce, size_t sSize);
 void printNonce(uint8_t * nonce);
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */

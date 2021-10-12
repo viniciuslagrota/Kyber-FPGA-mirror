@@ -183,7 +183,7 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	apiflags = 0;
 #endif
 
-#if DEBUG_KYBER == 1
+#if 1 == 1
 	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 #endif
 

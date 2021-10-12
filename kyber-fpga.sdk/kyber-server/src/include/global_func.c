@@ -6,6 +6,7 @@
  */
 
 #include "global_def.h"
+#include "sha2.h"
 
 //////////////////////////////////////////////
 //
@@ -329,22 +330,16 @@ uint8_t incrementNonce(uint8_t * nonce, size_t sSize)
 	return 1;
 }
 
-uint8_t generateNonce(uint8_t * nonce, size_t sSize) //sSize is the size of nonce in bytes
+uint8_t generateNonce(uint32_t u32Seed, uint8_t * nonce, size_t sSize) //sSize is the size of nonce in bytes
 {
-	int i;
-	int iRand;
+	uint8_t u8Out[32];
+	uint8_t u8In[4] = { (uint8_t)(u32Seed & 0xFF), (uint8_t)((u32Seed >> 8) & 0xFF), (uint8_t)((u32Seed >> 16) & 0xFF), (uint8_t)((u32Seed >> 24) & 0xFF) };
 
 	if(nonce == NULL)
 		return 0;
 
-	if(sSize % 4)
-		return 0;
-
-	for(i = 0; i < sSize; i += 4)
-	{
-		iRand = rand();
-		memcpy(nonce + i, (uint8_t *)&iRand, 4);
-	}
+	sha256(u8Out, u8In, 4);
+	memcpy(nonce, u8Out, sSize);
 
 	return 1;
 }

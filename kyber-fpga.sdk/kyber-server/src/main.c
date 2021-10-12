@@ -614,11 +614,11 @@ int main(void)
 				smw3000PrintDataStruct(psmCipheredData);
 
 				//Set random seed
-				setRandomSeed(psmCipheredData->u32Seed);
+//				setRandomSeed(psmCipheredData->u32Seed);
 				psmData->u32Seed = psmCipheredData->u32Seed;
 
 				//Calculate nonce
-				rv = generateNonce(nonce, sizeof(nonce));
+				rv = generateNonce(psmData->u32Seed, nonce, sizeof(nonce));
 				if(rv == 0)
 					print_debug(DEBUG_MAIN, "Error while generating nonce...\r\n");
 				printNonce(nonce);
