@@ -87,7 +87,7 @@ struct perf_stats {
 };
 
 /* seconds between periodic bandwidth reports */
-#define INTERIM_REPORT_INTERVAL 5
+#define INTERIM_REPORT_INTERVAL 60
 
 /* server port to listen on/connect to */
 #define TCP_CONN_PORT 5001

@@ -36,6 +36,10 @@ static struct tcp_pcb *c_pcb;
 static char send_buf[TCP_SEND_BUFSIZE];
 static struct perf_stats client;
 u32_t u32LenRecv = 0;
+u32_t u32KeyExchanged = 0;
+u32_t u32PacketExchanged = 0;
+u32_t u32TotalKeyExchanged = 0;
+u32_t u32TotalPacketExchanged = 0;
 
 void print_app_header()
 {
@@ -338,21 +342,37 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 #if DEBUG_KYBER == 1
 	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 #endif
-	err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
-	if (err != ERR_OK) {
-		print_debug(DEBUG_ETH, "TCP client: Error on tcp_write: %d\r\n",
-				err);
-		return err;
+
+	if(st == SENDING_CT)
+	{
+		u32KeyExchanged++;
+		u32TotalKeyExchanged++;
 	}
 
-	err = tcp_output(c_pcb);
-	if (err != ERR_OK) {
-		print_debug(DEBUG_ETH, "TCP client: Error on tcp_output: %d\r\n",
-				err);
-		return err;
+	if(st == SEND_CIPHER_MESSAGE)
+	{
+		u32PacketExchanged++;
+		u32TotalPacketExchanged++;
 	}
-	client.total_bytes += u16BufferLen;
-	client.i_report.total_bytes += u16BufferLen;
+
+	if (tcp_sndbuf(c_pcb) > u16BufferLen)
+	{
+		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
+		while (err != ERR_OK) {
+			print_debug(DEBUG_ERROR, "TCP client: Error on tcp_write: %d\r\n",
+								err);
+			return err;
+		}
+
+		err = tcp_output(c_pcb);
+		if (err != ERR_OK) {
+			print_debug(DEBUG_ERROR, "TCP client: Error on tcp_output: %d\r\n",
+					err);
+			return err;
+		}
+		client.total_bytes += u16BufferLen;
+		client.i_report.total_bytes += u16BufferLen;
+	}
 
 	if (client.end_time || client.i_report.report_interval_time)
 	{
@@ -363,6 +383,9 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 				u64_t rtime_ms = client.i_report.report_interval_time;
 				if (diff_ms >= rtime_ms) {
 					tcp_conn_report(diff_ms, INTER_REPORT);
+					print_debug(DEBUG_ETH, "Key exchanged: %d | Packet exchanged: %d | Total key exchanged: %d | Total packet exchanged: %d\r\n", u32KeyExchanged, u32PacketExchanged, u32TotalKeyExchanged, u32TotalPacketExchanged);
+					u32KeyExchanged = 0;
+					u32PacketExchanged = 0;
 					client.i_report.start_time = 0;
 					client.i_report.total_bytes = 0;
 				}
@@ -394,6 +417,7 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 //	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
 //	print_debug(DEBUG_ETH, "next pbuf: 0x%x\n\r", p->next);
 #endif
+	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
 	char * pcBuf = p->payload; //Get transmitted data.
 
 #if SERVER_INIT == 0
@@ -443,6 +467,8 @@ static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 	return ERR_OK;
 #else
 //	print_debug(DEBUG_ETH, "Sent callback\n\r");
+	if(st == SEND_CIPHER_MESSAGE || st == WAITING_CIPHER_MESSAGE_ACK)
+		st = GET_SMW3000_DATA;
 	return ERR_OK;
 #endif
 }

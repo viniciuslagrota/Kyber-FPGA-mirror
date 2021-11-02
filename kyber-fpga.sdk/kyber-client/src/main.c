@@ -228,7 +228,7 @@ static void print_ipv6(char *msg, ip_addr_t *ip)
 static void print_ip(char *msg, ip_addr_t *ip)
 {
 //	print(msg);
-	print_debug(DEBUG_MAIN, "%s %d.%d.%d.%d\r\n", msg, ip4_addr1(ip), ip4_addr2(ip),
+	print_debug(DEBUG_ETH, "%s %d.%d.%d.%d\r\n", msg, ip4_addr1(ip), ip4_addr2(ip),
 			ip4_addr3(ip), ip4_addr4(ip));
 }
 
@@ -243,19 +243,19 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 {
 	int err;
 
-	print_debug(DEBUG_MAIN, "Configuring default IP %s \r\n", DEFAULT_IP_ADDRESS);
+	print_debug(DEBUG_ETH, "Configuring default IP %s \r\n", DEFAULT_IP_ADDRESS);
 
 	err = inet_aton(DEFAULT_IP_ADDRESS, ip);
 	if (!err)
-		print_debug(DEBUG_MAIN, "Invalid default IP address: %d\r\n", err);
+		print_debug(DEBUG_ERROR, "Invalid default IP address: %d\r\n", err);
 
 	err = inet_aton(DEFAULT_IP_MASK, mask);
 	if (!err)
-		print_debug(DEBUG_MAIN, "Invalid default IP MASK: %d\r\n", err);
+		print_debug(DEBUG_ERROR, "Invalid default IP MASK: %d\r\n", err);
 
 	err = inet_aton(DEFAULT_GW_ADDRESS, gw);
 	if (!err)
-		print_debug(DEBUG_MAIN, "Invalid default gateway address: %d\r\n", err);
+		print_debug(DEBUG_ERROR, "Invalid default gateway address: %d\r\n", err);
 }
 #endif /* LWIP_IPV6 */
 
@@ -544,10 +544,12 @@ int main(void)
 	configSoftwareTimer();
 #endif
 
-	//Use only hardware!
+#if USE_HW_ACCELERATION == 1
 	u32SystemState = 0x3f;
-	//Use only software
-//	u32SystemState = 0x00;
+#else
+	u32SystemState = 0x00;
+#endif
+
 
 	//Initialize AES256-GCM
 	gcm_initialize();
@@ -742,7 +744,7 @@ int main(void)
 				print_debug(DEBUG_MAIN, "Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
 
 				//Check shared secret
-#if 1 == 1
+#if DEBUG_MAIN == 1
 				print_debug(DEBUG_MAIN, "key_b calculated: ");
 				for(int i = 0; i < CRYPTO_BYTES; i++)
 					printf("%02x", key_b[i]);
@@ -753,7 +755,11 @@ int main(void)
 				//Restart nonce
 				memset(nonce, 0x0, 12);
 
+#if KEM_TEST_ONLY == 1
+				st = WAITING_PK;
+#else
 				st = GET_SMW3000_DATA;
+#endif
 				break;
 			case GET_SMW3000_DATA:
 				print_debug(DEBUG_MAIN, "Getting SMW3000 data...\r\n");
@@ -763,10 +769,30 @@ int main(void)
 
 				for(int j = 0; j < MAX_TRY; j++)
 				{
+#if SIMULATED_DATA == 0
 					rv = smw3000GetAllData();
+#else
+					memcpy(psmData->u8DeviceName, "WEG1053152173", 13);
+					psmData->u8Timestamp[0] = 0x07;
+					psmData->u8Timestamp[1] = 0xE5;
+					psmData->u8Timestamp[2] = 0x09;
+					psmData->u8Timestamp[3] = 0x19;
+					psmData->u8Timestamp[4] = 0x10;
+					psmData->u8Timestamp[5] = 0x2F;
+					psmData->u8Timestamp[6] = 0x33;
+					psmData->u32VoltageL1 = 212233;
+					psmData->u32VoltageL2 = 370;
+					psmData->u32VoltageL3 = 401;
+					psmData->u32CurrentL1 = 215;
+					psmData->u32CurrentL2 = 0;
+					psmData->u32CurrentL3 = 0;
+					psmData->u32CurrentN = 230;
+					psmData->u16Crc = 0x3367;
+					rv = 0;
+#endif
 					if(rv)
 					{
-						print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
+						print_debug(DEBUG_ERROR, "Failed to get data (rv: 0x%08x).\r\n", rv);
 						usleep(10000);
 					}
 					else
@@ -802,7 +828,7 @@ int main(void)
 				smw3000PrintDataStruct(psmData);
 
 				//Calculate nonce
-				rv = generateNonce(nonce, sizeof(nonce));
+				rv = generateNonce(u32Seed, nonce, sizeof(nonce));
 				if(rv == 0)
 					print_debug(DEBUG_MAIN, "Error while generating nonce...\r\n");
 				printNonce(nonce);
@@ -820,18 +846,16 @@ int main(void)
 				//Print data for debug purpose
 				smw3000PrintDataStruct(psmCipheredData);
 
-				//TODO: check this time!!!
-				usleep(10000); //Wait 10 ms
 				st = SEND_CIPHER_MESSAGE;
 			break;
 			case SEND_CIPHER_MESSAGE:
 				print_debug(DEBUG_MAIN, "Sending ciphered message...\r\n");
 				transfer_data((char *)psmCipheredData, sSize);
 
-				//Wait to send next message
-				usleep(10000);
-
-				st = GET_SMW3000_DATA;
+				st = WAITING_CIPHER_MESSAGE_ACK;
+			break;
+			case WAITING_CIPHER_MESSAGE_ACK:
+				//Do nothing.
 			break;
 		}
 #endif
