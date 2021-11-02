@@ -417,7 +417,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	clientStruct[u8ClientId].c_pcb = newpcb;
 
 
-	print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", u8ClientId);
+	print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", i);
 
 	/* Initialize Interim report paramters */
 	server.i_report.report_interval_time =
@@ -426,7 +426,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	server.i_report.start_time = 0;
 	server.i_report.total_bytes = 0;
 
-	print_tcp_conn_stats(u8ClientId);
+	print_tcp_conn_stats(i);
 
 	/* setup callbacks for tcp rx connection */
 	tcp_arg(clientStruct[u8ClientId].c_pcb, NULL);

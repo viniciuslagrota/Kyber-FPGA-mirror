@@ -87,7 +87,7 @@ static void print_tcp_conn_stats(uint8_t u8ClientId)
 			clientStruct[i].c_pcb->remote_port);
 #else
 	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
-			u8ClientId, inet_ntoa(clientStruct[u8ClientId].c_pcb->local_ip),
+			server.client_id, inet_ntoa(clientStruct[u8ClientId].c_pcb->local_ip),
 			clientStruct[u8ClientId].c_pcb->local_port);
 	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(clientStruct[u8ClientId].c_pcb->remote_ip),
 			clientStruct[u8ClientId].c_pcb->remote_port);
@@ -125,7 +125,7 @@ static void stats_buffer(char* outString,
 
 /** The report function of a TCP server session */
 static void tcp_conn_report(u64_t diff,
-		enum report_type report_type, uint8_t u8ClientId)
+		enum report_type report_type)
 {
 	u64_t total_len;
 	double duration, bandwidth = 0;
@@ -154,7 +154,7 @@ static void tcp_conn_report(u64_t diff,
 	sprintf(time, "%4.1f-%4.1f sec",
 			(double)server.i_report.last_report_time,
 			(double)(server.i_report.last_report_time + duration));
-	print_debug(DEBUG_ETH, "[%3d] %s  %sBytes  %sbits/sec\n\r", u8ClientId,
+	print_debug(DEBUG_ETH, "[%3d] %s  %sBytes  %sbits/sec\n\r", server.client_id,
 			time, data, perf);
 
 	if (report_type == INTER_REPORT)
@@ -197,7 +197,7 @@ static void tcp_server_err(void *arg, err_t err)
 		}
 	}
 
-	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE, 0);
+	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
 	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
 }
 
@@ -255,7 +255,7 @@ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
 		u64_t now = get_time_ms();
 		u64_t diff_ms = now - server.start_time;
 		tcp_server_close(tpcb);
-		tcp_conn_report(diff_ms, TCP_DONE_SERVER, 0);
+		tcp_conn_report(diff_ms, TCP_DONE_SERVER);
 		print_debug(DEBUG_ETH, "TCP test passed Successfully\n\r");
 		return ERR_OK;
 	}
@@ -279,7 +279,7 @@ static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
 			u64_t diff_ms = now - server.i_report.start_time;
 
 			if (diff_ms >= server.i_report.report_interval_time) {
-				tcp_conn_report(diff_ms, INTER_REPORT, 0);
+				tcp_conn_report(diff_ms, INTER_REPORT);
 				/* Reset Interim report counters */
 				server.i_report.start_time = 0;
 				server.i_report.total_bytes = 0;
@@ -365,7 +365,7 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 			u64_t diff_ms = now - server.i_report.start_time;
 
 			if (diff_ms >= server.i_report.report_interval_time) {
-				tcp_conn_report(diff_ms, INTER_REPORT, u8CurrentClient);
+				tcp_conn_report(diff_ms, INTER_REPORT);
 				print_debug(DEBUG_ETH, "Key exchanged: %d | Packet exchanged: %d | Total key exchanged: %d | Total packet exchanged: %d\r\n", u32KeyExchanged, u32PacketExchanged, u32TotalKeyExchanged, u32TotalPacketExchanged);
 				u32KeyExchanged = 0;
 				u32PacketExchanged = 0;
@@ -387,8 +387,6 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 
 static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 {
-	uint8_t u8ClientId = 0;
-
 	if ((err != ERR_OK) || (newpcb == NULL)) {
 		return ERR_VAL;
 	}
@@ -401,23 +399,17 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	server.total_bytes = 0;
 
 	/* Find free client in structure */
-	for(int u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
+	for(int i = 0; i < MAXIMUM_CLIENTS; i++)
 	{
-		if(clientStruct[u8ClientId].bClientConnected == 0)
-		{
-			clientStruct[u8ClientId].bClientConnected = 1;
-			break;
-		}
-
-		if(u8ClientId == MAXIMUM_CLIENTS - 1)
-			return ERR_CLSD;
+		if(clientStr)
 	}
 
 	/* Save connected client PCB */
-	clientStruct[u8ClientId].c_pcb = newpcb;
+	clientStruct[server.client_id].c_pcb = newpcb;
 
 
-	print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", u8ClientId);
+	print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", server.client_id);
+	clientStruct[server.client_id].bClientConnected = 1;
 
 	/* Initialize Interim report paramters */
 	server.i_report.report_interval_time =
@@ -426,20 +418,20 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	server.i_report.start_time = 0;
 	server.i_report.total_bytes = 0;
 
-	print_tcp_conn_stats(u8ClientId);
+	print_tcp_conn_stats(server.client_id);
 
 	/* setup callbacks for tcp rx connection */
-	tcp_arg(clientStruct[u8ClientId].c_pcb, NULL);
+	tcp_arg(clientStruct[server.client_id].c_pcb, NULL);
 #if PERFORMANCE_TEST == 1
 	tcp_recv(c_pcb, tcp_recv_perf_traffic);
 #else
-	tcp_recv(clientStruct[u8ClientId].c_pcb, tcp_recv_traffic);
+	tcp_recv(clientStruct[server.client_id].c_pcb, tcp_recv_traffic);
 #endif
-	tcp_err(clientStruct[u8ClientId].c_pcb, tcp_server_err);
+	tcp_err(clientStruct[server.client_id].c_pcb, tcp_server_err);
 
 #if SERVER_INIT == 1
 	//Change st
-	clientStruct[u8ClientId].stClient = CLIENT_CONNECTED;
+	clientStruct[server.client_id].stClient = CLIENT_CONNECTED;
 #endif
 
 	return ERR_OK;
