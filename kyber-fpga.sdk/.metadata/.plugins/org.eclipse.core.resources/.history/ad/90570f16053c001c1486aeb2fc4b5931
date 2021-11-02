@@ -77,7 +77,7 @@ void print_app_header(void)
 #endif /* LWIP_IPV6 */
 }
 
-static void print_tcp_conn_stats(uint8_t u8ClientId)
+static void print_tcp_conn_stats(void)
 {
 #if LWIP_IPV6==1
 	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
@@ -87,10 +87,10 @@ static void print_tcp_conn_stats(uint8_t u8ClientId)
 			clientStruct[i].c_pcb->remote_port);
 #else
 	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
-			server.client_id, inet_ntoa(clientStruct[u8ClientId].c_pcb->local_ip),
-			clientStruct[u8ClientId].c_pcb->local_port);
-	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(clientStruct[u8ClientId].c_pcb->remote_ip),
-			clientStruct[u8ClientId].c_pcb->remote_port);
+			server.client_id, inet_ntoa(clientStruct[i].c_pcb->local_ip),
+			clientStruct[i].c_pcb->local_port);
+	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(clientStruct[i].c_pcb->remote_ip),
+			clientStruct[i].c_pcb->remote_port);
 #endif /* LWIP_IPV6 */
 
 	print_debug(DEBUG_ETH, "[ ID] Interval\t\tTransfer   Bandwidth\n\r");
@@ -412,7 +412,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	server.i_report.start_time = 0;
 	server.i_report.total_bytes = 0;
 
-	print_tcp_conn_stats(server.client_id);
+	print_tcp_conn_stats();
 
 	/* setup callbacks for tcp rx connection */
 	tcp_arg(clientStruct[server.client_id].c_pcb, NULL);

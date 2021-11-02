@@ -88,7 +88,7 @@ static void print_tcp_conn_stats(uint8_t u8ClientId)
 #else
 	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
 			server.client_id, inet_ntoa(clientStruct[u8ClientId].c_pcb->local_ip),
-			clientStruct[u8ClientId].c_pcb->local_port);
+			clientStruct[i].c_pcb->local_port);
 	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(clientStruct[u8ClientId].c_pcb->remote_ip),
 			clientStruct[u8ClientId].c_pcb->remote_port);
 #endif /* LWIP_IPV6 */

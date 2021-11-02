@@ -2952,3 +2952,97 @@ con
 ----------------End of Script----------------
 
 12:27:36 INFO  : Launch script is exported to file 'C:\Projects\kyber-fpga\kyber-fpga.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_kyber-server.elf_on_local.tcl'
+15:40:16 INFO  : Disconnected from the channel tcfchan#15.
+15:40:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:40:17 INFO  : Jtag cable 'Digilent JTAG-HS3 210299A8DB3E' is selected.
+15:40:17 INFO  : 'jtag frequency' command is executed.
+15:40:17 INFO  : Sourcing of 'C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:40:17 INFO  : Context for 'APU' is selected.
+15:40:17 INFO  : System reset is completed.
+15:40:20 INFO  : 'after 3000' command is executed.
+15:40:20 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E" && level==0} -index 1' command is executed.
+15:40:21 INFO  : FPGA configured successfully with bitstream "C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/kyberBD_wrapper.bit"
+15:40:21 INFO  : Context for 'APU' is selected.
+15:40:25 INFO  : Hardware design information is loaded from 'C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf'.
+15:40:25 INFO  : 'configparams force-mem-access 1' command is executed.
+15:40:25 INFO  : Context for 'APU' is selected.
+15:40:26 INFO  : 'ps7_init' command is executed.
+15:40:26 INFO  : 'ps7_post_config' command is executed.
+15:40:26 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:40:27 INFO  : The application 'C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-server/Debug/kyber-server.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:40:27 INFO  : 'configparams force-mem-access 0' command is executed.
+15:40:27 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E" && level==0} -index 1
+fpga -file C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/kyberBD_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+loadhw -hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+dow C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-server/Debug/kyber-server.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:40:27 INFO  : Memory regions updated for context APU
+15:40:27 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:40:27 INFO  : 'con' command is executed.
+15:40:27 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+con
+----------------End of Script----------------
+
+15:40:27 INFO  : Launch script is exported to file 'C:\Projects\kyber-fpga\kyber-fpga.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_kyber-server.elf_on_local.tcl'
+15:48:53 INFO  : Disconnected from the channel tcfchan#16.
+15:48:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:48:54 INFO  : Jtag cable 'Digilent JTAG-HS3 210299A8DB3E' is selected.
+15:48:54 INFO  : 'jtag frequency' command is executed.
+15:48:54 INFO  : Sourcing of 'C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:48:54 INFO  : Context for 'APU' is selected.
+15:48:54 INFO  : System reset is completed.
+15:48:57 INFO  : 'after 3000' command is executed.
+15:48:57 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E" && level==0} -index 1' command is executed.
+15:48:59 INFO  : FPGA configured successfully with bitstream "C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/kyberBD_wrapper.bit"
+15:48:59 INFO  : Context for 'APU' is selected.
+15:49:02 INFO  : Hardware design information is loaded from 'C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf'.
+15:49:02 INFO  : 'configparams force-mem-access 1' command is executed.
+15:49:02 INFO  : Context for 'APU' is selected.
+15:49:03 INFO  : 'ps7_init' command is executed.
+15:49:03 INFO  : 'ps7_post_config' command is executed.
+15:49:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:49:04 INFO  : The application 'C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-server/Debug/kyber-server.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:49:04 INFO  : 'configparams force-mem-access 0' command is executed.
+15:49:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E" && level==0} -index 1
+fpga -file C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/kyberBD_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+loadhw -hw C:/Projects/kyber-fpga/kyber-fpga.sdk/kyberBD_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+dow C:/Projects/kyber-fpga/kyber-fpga.sdk/kyber-server/Debug/kyber-server.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:49:04 INFO  : Memory regions updated for context APU
+15:49:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:49:04 INFO  : 'con' command is executed.
+15:49:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS3 210299A8DB3E"} -index 0
+con
+----------------End of Script----------------
+
+15:49:04 INFO  : Launch script is exported to file 'C:\Projects\kyber-fpga\kyber-fpga.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_kyber-server.elf_on_local.tcl'
