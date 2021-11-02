@@ -166,9 +166,8 @@ u32 u32CounterMinutes = 0;
 //
 //////////////////////////////////////////////
 extern enum state st;
-//extern enum state stClient[MAXIMUM_CLIENTS];
-//extern bool bClientConnected[MAXIMUM_CLIENTS];
-extern struct clientStructure clientStruct[MAXIMUM_CLIENTS];
+extern enum state stClient[MAXIMUM_CLIENTS];
+extern bool bClientConnected[MAXIMUM_CLIENTS];
 
 //////////////////////////////////////////////
 //
@@ -289,8 +288,8 @@ int main(void)
 	/* clear clients connection */
 	for(int i = 0; i < MAXIMUM_CLIENTS; i++)
 	{
-		clientStruct[i].stClient = WAITING_CLIENT_CONNECTION;
-		clientStruct[i].bClientConnected = 0;
+		stClient[i] = WAITING_CLIENT_CONNECTION;
+		bClientConnected[i] = 0;
 	}
 
 	struct netif *netif;
@@ -537,7 +536,7 @@ int main(void)
 #if SERVER_INIT == 1
 		for(int i = 0; i < MAXIMUM_CLIENTS; i++)
 		{
-			switch(clientStruct[i].stClient)
+			switch(stClient[i])
 			{
 				case WAITING_CLIENT_CONNECTION:
 					//Do nothing. Wait connection.
@@ -547,7 +546,7 @@ int main(void)
 #if CHANGE_KEY_TIME != 0 && KEM_TEST_ONLY == 0
 					XScuTimer_Start(&xTimer);
 #endif
-					clientStruct[i].stClient = CREATE_KEY_PAIR;
+					stClient[i] = CREATE_KEY_PAIR;
 				break;
 				case CREATE_KEY_PAIR:
 					bChangeKey = 0;
@@ -568,14 +567,14 @@ int main(void)
 						printf("%x", pk[i]);
 					printf("\r\n\r\n");
 #endif
-					clientStruct[i].stClient = SEND_PK;
+					stClient[i] = SEND_PK;
 				break;
 				case SEND_PK:
 					//Publish PK
 					print_debug(DEBUG_MAIN, "[%d] Sending PK!\r\n", i);
 					transfer_data((char *)pk, CRYPTO_PUBLICKEYBYTES, i);
 					print_debug(DEBUG_MAIN, "[%d] Waiting CT...\r\n", i);
-					clientStruct[i].stClient = WAITING_CT;
+					stClient[i] = WAITING_CT;
 				break;
 				case WAITING_CT:
 					//Do nothing. Wait for ciphertext.
@@ -613,9 +612,9 @@ int main(void)
 					print_debug(DEBUG_MAIN, "[%d] Waiting for ciphered data...\r\n", i);
 
 #if KEM_TEST_ONLY == 1
-					clientStruct[i].stClient = CREATE_KEY_PAIR;
+					stClient[i] = CREATE_KEY_PAIR;
 #else
-					clientStruct[i].stClient = WAIT_CIPHERED_DATA;
+					stClient[i] = WAIT_CIPHERED_DATA;
 #endif
 				break;
 				case WAIT_CIPHERED_DATA:
@@ -656,7 +655,7 @@ int main(void)
 					{
 						print_debug(DEBUG_ERROR, "[%d] AES256-GCM authentication failed.\r\n", i);
 						XScuTimer_RestartTimer(&xTimer);
-						clientStruct[i].stClient = CREATE_KEY_PAIR;
+						stClient[i] = CREATE_KEY_PAIR;
 						break;
 					}
 					else
@@ -683,15 +682,15 @@ int main(void)
 					}
 
 					if(bChangeKey == 1)
-						clientStruct[i].stClient = CREATE_KEY_PAIR;
+						stClient[i] = CREATE_KEY_PAIR;
 					else if(u8CrcFailed)
 					{
 						u8CrcFailed = 0x0;
 						XScuTimer_RestartTimer(&xTimer);
-						clientStruct[i].stClient = CREATE_KEY_PAIR;
+						stClient[i] = CREATE_KEY_PAIR;
 					}
 					else
-						clientStruct[i].stClient = WAIT_CIPHERED_DATA;
+						stClient[i] = WAIT_CIPHERED_DATA;
 					break;
 			}
 		}

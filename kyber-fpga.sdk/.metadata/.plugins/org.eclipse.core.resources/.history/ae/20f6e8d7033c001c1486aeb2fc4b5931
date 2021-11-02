@@ -174,11 +174,6 @@ static void tcp_server_close(struct tcp_pcb *pcb)
 			/* Free memory with abort */
 			tcp_abort(pcb);
 		}
-		for(int i = 0; i < MAXIMUM_CLIENTS; i++)
-		{
-			clientStruct[i].bClientConnected = 0;
-			clientStruct[i].stClient = WAITING_CLIENT_CONNECTION;
-		}
 	}
 }
 
@@ -243,7 +238,7 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen, uint8_t u8Cli
 
 void transfer_data(char * pcBuffer, u16_t u16BufferLen, uint8_t u8ClientId)
 {
-	if (clientStruct[u8ClientId].bClientConnected == 1)
+	if (bClientConnected[u8ClientId] == 1)
 		tcp_send_traffic(pcBuffer, u16BufferLen, u8ClientId);
 }
 
@@ -317,12 +312,12 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 	char * pcBuf = p->payload; //Get transmitted data.
 
 #if SERVER_INIT == 1
-	if(clientStruct[u8CurrentClient].stClient == WAIT_CIPHERED_DATA)
+	if(stClient[u8CurrentClient] == WAIT_CIPHERED_DATA)
 	{
 		memcpy(cCiphertext + u32LenRecv, pcBuf, p->len);
 		u32LenRecv += p->len;
 
-		clientStruct[u8CurrentClient].stClient = DECIPHER_MESSAGE;
+		stClient[u8CurrentClient] = DECIPHER_MESSAGE;
 		u32LenRecv = 0;
 
 		u32PacketExchanged++;
@@ -335,7 +330,7 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 
 		if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
 		{
-			clientStruct[u8CurrentClient].stClient = CALCULATE_SHARED_SECRET;
+			stClient[u8CurrentClient] = CALCULATE_SHARED_SECRET;
 			u32LenRecv = 0;
 
 			u32KeyExchanged++;
@@ -402,7 +397,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	c_pcb[server.client_id] = newpcb;
 
 	print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", server.client_id);
-	clientStruct[server.client_id].bClientConnected = 1;
+	bClientConnected[server.client_id] = 1;
 
 	/* Initialize Interim report paramters */
 	server.i_report.report_interval_time =
@@ -424,7 +419,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 
 #if SERVER_INIT == 1
 	//Change st
-	clientStruct[server.client_id].stClient = CLIENT_CONNECTED;
+	stClient[server.client_id] = CLIENT_CONNECTED;
 #endif
 
 	return ERR_OK;

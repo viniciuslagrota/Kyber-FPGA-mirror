@@ -1,38 +1,8 @@
-12:27:20 **** Incremental Build of configuration Debug for project kyber-server ****
+15:40:13 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/tcp_perf_server.c:246:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 451328	   3776	31578400	32033504	1e8cae0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
+make: Nothing to be done for 'main-build'.
 
-12:27:24 Build Finished (took 4s.357ms)
+15:40:14 Build Finished (took 932ms)
 

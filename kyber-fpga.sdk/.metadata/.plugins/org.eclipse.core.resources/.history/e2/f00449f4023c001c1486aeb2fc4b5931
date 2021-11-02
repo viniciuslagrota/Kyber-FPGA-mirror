@@ -277,13 +277,13 @@ uint8_t key_b[CRYPTO_BYTES];
 //////////////////////////////////////////////
 #define MAXIMUM_CLIENTS			5
 enum state st;
-//enum state stClient[MAXIMUM_CLIENTS];
-//bool bClientConnected[MAXIMUM_CLIENTS];
+enum state stClient[MAXIMUM_CLIENTS];
+bool bClientConnected[MAXIMUM_CLIENTS];
 
 struct clientStructure
 {
 	enum state stClient;
-	bool bClientConnected;
+	bool bClientConnected
 };
 struct clientStructure clientStruct[MAXIMUM_CLIENTS];
 
