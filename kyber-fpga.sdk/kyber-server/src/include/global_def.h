@@ -259,7 +259,6 @@ enum state
 };
 #endif
 
-enum state st;
 uint8_t pk[CRYPTO_PUBLICKEYBYTES];
 #if SERVER_INIT == 1
 uint8_t sk[CRYPTO_SECRETKEYBYTES];
@@ -270,6 +269,16 @@ uint8_t key_a[CRYPTO_BYTES];
 #else
 uint8_t key_b[CRYPTO_BYTES];
 #endif
+
+//////////////////////////////////////////////
+//
+//	Clients
+//
+//////////////////////////////////////////////
+#define MAXIMUM_CLIENTS			5
+enum state st;
+enum state stClient[MAXIMUM_CLIENTS];
+bool bClientConnected[MAXIMUM_CLIENTS];
 
 //////////////////////////////////////////////
 //

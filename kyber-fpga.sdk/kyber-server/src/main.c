@@ -162,6 +162,15 @@ u32 u32CounterMinutes = 0;
 
 //////////////////////////////////////////////
 //
+//	Clients
+//
+//////////////////////////////////////////////
+extern enum state st;
+extern enum state stClient[MAXIMUM_CLIENTS];
+extern bool bClientConnected[MAXIMUM_CLIENTS];
+
+//////////////////////////////////////////////
+//
 //	AES
 //
 //////////////////////////////////////////////
@@ -191,7 +200,7 @@ uint8_t *psmCipheredDataPtr;
 //////////////////////////////////////////////
 void platform_enable_interrupts(void);
 void start_application(void);
-void transfer_data(char * pcBuffer, u16_t u16BufferLen);
+void transfer_data(char * pcBuffer, u16_t u16BufferLen, uint8_t u8ClientId);
 void print_app_header(void);
 
 #if defined (__arm__) && !defined (ARMR5)
@@ -276,6 +285,13 @@ void configSoftwareTimer()
 //////////////////////////////////////////////
 int main(void)
 {
+	/* clear clients connection */
+	for(int i = 0; i < MAXIMUM_CLIENTS; i++)
+	{
+		stClient[i] = WAITING_CLIENT_CONNECTION;
+		bClientConnected[i] = 0;
+	}
+
 	struct netif *netif;
 
 	/* the mac address of the board. this should be unique per board */
@@ -518,162 +534,167 @@ int main(void)
 
 #if PERFORMANCE_TEST == 0
 #if SERVER_INIT == 1
-		switch(st)
+		for(int i = 0; i < MAXIMUM_CLIENTS; i++)
 		{
-			case WAITING_CLIENT_CONNECTION:
-				//Do nothing. Wait connection.
-			break;
-			case CLIENT_CONNECTED:
-				print_debug(DEBUG_MAIN, "Client connected!\r\n");
+			switch(stClient[i])
+			{
+				case WAITING_CLIENT_CONNECTION:
+					//Do nothing. Wait connection.
+				break;
+				case CLIENT_CONNECTED:
+					print_debug(DEBUG_MAIN, "[%d] Client connected!\r\n", i);
 #if CHANGE_KEY_TIME != 0 && KEM_TEST_ONLY == 0
-				XScuTimer_Start(&xTimer);
+					XScuTimer_Start(&xTimer);
 #endif
-				st = CREATE_KEY_PAIR;
-			break;
-			case CREATE_KEY_PAIR:
-				bChangeKey = 0;
-				print_debug(DEBUG_MAIN, "Generating new key pair...\r\n");
+					stClient[i] = CREATE_KEY_PAIR;
+				break;
+				case CREATE_KEY_PAIR:
+					bChangeKey = 0;
+					print_debug(DEBUG_MAIN, "[%d] Generating new key pair...\r\n", i);
 
-				//Start timer
-				resetTimer(&XGpioGlobalTimer, 1);
-				u32Timer = getTimer(&XGpioGlobalTimer, 1);
-				print_debug(DEBUG_MAIN, "Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
-				startTimer(&XGpioGlobalTimer, 1);
+					//Start timer
+					resetTimer(&XGpioGlobalTimer, 1);
+					u32Timer = getTimer(&XGpioGlobalTimer, 1);
+					print_debug(DEBUG_MAIN, "Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
+					startTimer(&XGpioGlobalTimer, 1);
 
-				//Generate key pair
-				crypto_kem_keypair(pk, sk);
+					//Generate key pair
+					crypto_kem_keypair(pk, sk);
 
 #if DEBUG_KYBER == 1
-				print_debug(DEBUG_MAIN, "Public key: ");
-				for(int i = 0; i < CRYPTO_PUBLICKEYBYTES; i++)
-					printf("%x", pk[i]);
-				printf("\r\n\r\n");
+					print_debug(DEBUG_MAIN, "[%d] Public key: ", i);
+					for(int i = 0; i < CRYPTO_PUBLICKEYBYTES; i++)
+						printf("%x", pk[i]);
+					printf("\r\n\r\n");
 #endif
-				st = SEND_PK;
-			break;
-			case SEND_PK:
-				//Publish PK
-				print_debug(DEBUG_MAIN, "Sending PK!\r\n");
-				transfer_data((char *)pk, CRYPTO_PUBLICKEYBYTES);
-				print_debug(DEBUG_MAIN, "Waiting CT...\r\n");
-				st = WAITING_CT;
-			break;
-			case WAITING_CT:
-				//Do nothing. Wait for ciphertext.
-			break;
-			case CALCULATE_SHARED_SECRET:
-				//Check CT received
-				print_debug(DEBUG_MAIN, "Calculating shared secret...\r\n");
+					stClient[i] = SEND_PK;
+				break;
+				case SEND_PK:
+					//Publish PK
+					print_debug(DEBUG_MAIN, "[%d] Sending PK!\r\n", i);
+					transfer_data((char *)pk, CRYPTO_PUBLICKEYBYTES, i);
+					print_debug(DEBUG_MAIN, "[%d] Waiting CT...\r\n", i);
+					stClient[i] = WAITING_CT;
+				break;
+				case WAITING_CT:
+					//Do nothing. Wait for ciphertext.
+				break;
+				case CALCULATE_SHARED_SECRET:
+					//Check CT received
+					print_debug(DEBUG_MAIN, "[%d] Calculating shared secret...\r\n", i);
 #if DEBUG_KYBER == 1
-				print_debug(DEBUG_MAIN, "ct received: ");
-				for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
-					printf("%x", ct[i]);
-				printf("\n\r");
+					print_debug(DEBUG_MAIN, "[%d] ct received: ", i);
+					for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
+						printf("%x", ct[i]);
+					printf("\n\r");
 #endif
 
-				//Decapsulation
-				crypto_kem_dec(key_a, ct, sk);
+					//Decapsulation
+					crypto_kem_dec(key_a, ct, sk);
 
-				//Stop timer
-				stopTimer(&XGpioGlobalTimer, 1);
-				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
-				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
-				print_debug(DEBUG_MAIN, "Timer (hw) to process KEM (server side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+					//Stop timer
+					stopTimer(&XGpioGlobalTimer, 1);
+					u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
+					floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
+					print_debug(DEBUG_MAIN, "Timer (hw) to process KEM (server side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
 
-				//Check shared secret
+					//Check shared secret
 #if DEBUG_KYBER == 1
-				print_debug(DEBUG_MAIN, "key_a calculated: ");
-				for(int i = 0; i < CRYPTO_BYTES; i++)
-					printf("%02x", key_a[i]);
-				printf("\n\r");
+					print_debug(DEBUG_MAIN, "[%d] key_a calculated: ", i);
+					for(int i = 0; i < CRYPTO_BYTES; i++)
+						printf("%02x", key_a[i]);
+					printf("\n\r");
 #endif
 
-				//Restart nonce
-				memset(nonce, 0x0, 12);
+					//Restart nonce
+					memset(nonce, 0x0, 12);
 
-				print_debug(DEBUG_MAIN, "Waiting for ciphered data...\r\n");
+					print_debug(DEBUG_MAIN, "[%d] Waiting for ciphered data...\r\n", i);
 
 #if KEM_TEST_ONLY == 1
-				st = CREATE_KEY_PAIR;
+					stClient[i] = CREATE_KEY_PAIR;
 #else
-				st = WAIT_CIPHERED_DATA;
+					stClient[i] = WAIT_CIPHERED_DATA;
 #endif
-			break;
-			case WAIT_CIPHERED_DATA:
-				//Wait messages from client
 				break;
-			case DECIPHER_MESSAGE:
-				print_debug(DEBUG_MAIN, "Deciphering message...\r\n");
-
-				//Get pointer to structures
-				psmCipheredData = smw3000GetCipheredDataStruct();
-				psmData = smw3000GetDataStruct();
-
-				//Copy received data to ciphered structure
-				memcpy(psmCipheredData, cCiphertext, sSize);
-				smw3000PrintDataStruct(psmCipheredData);
-
-				//Set random seed
-//				setRandomSeed(psmCipheredData->u32Seed);
-				psmData->u32Seed = psmCipheredData->u32Seed;
-
-				//Calculate nonce
-				rv = generateNonce(psmData->u32Seed, nonce, sizeof(nonce));
-				if(rv == 0)
-					print_debug(DEBUG_MAIN, "Error while generating nonce...\r\n");
-				printNonce(nonce);
-
-				//Copy additional authenticate data and tag
-				memcpy(ucAad, psmCipheredData->u8Aad, 32);
-				memcpy(ucTag, psmCipheredData->u8Tag, 16);
-
-				//Perform AES-GCM
-				psmDataPtr = (uint8_t*)psmData->u8DeviceName;
-				psmCipheredDataPtr = (uint8_t*)psmCipheredData->u8DeviceName;
-
-				gcm_setkey(&ctx, key_a, (const uint)CRYPTO_BYTES);   // setup our AES-GCM key
-				rv = gcm_auth_decrypt(&ctx, nonce, 12, ucAad, sizeof(ucAad), psmCipheredDataPtr, psmDataPtr, sSizeCiphered, ucTag, sizeof(ucTag));
-				if(rv != 0)
-				{
-					print_debug(DEBUG_ERROR, "AES256-GCM authentication failed.\r\n");
-					XScuTimer_RestartTimer(&xTimer);
-					st = CREATE_KEY_PAIR;
+				case WAIT_CIPHERED_DATA:
+					//Wait messages from client
 					break;
-				}
-				else
-					print_debug(DEBUG_MAIN, "AES256-GCM authentication success.\r\n");
+				case DECIPHER_MESSAGE:
+					print_debug(DEBUG_MAIN, "[%d] Deciphering message...\r\n", i);
 
-				memcpy(psmData->u8Aad, ucAad, 32);
-				memcpy(psmData->u8Tag, ucTag, 16);
+					//Get pointer to structures
+					psmCipheredData = smw3000GetCipheredDataStruct();
+					psmData = smw3000GetDataStruct();
 
-				//Print deciphered data
-				smw3000PrintDataStruct(psmData);
+					//Copy received data to ciphered structure
+					memcpy(psmCipheredData, cCiphertext, sSize);
+					smw3000PrintDataStruct(psmCipheredData);
 
-				//Check CRC16
-				rv = smw3000CheckCrc();
-				if(rv == CRC_FAILED)
-				{
-					u8CrcFailed = 0x1;
-					print_debug(DEBUG_ERROR, "CRC failed.\r\n");
-				}
-				else
-				{
-					u8CrcFailed = 0x0;
-					print_debug(DEBUG_MAIN, "CRC ok.\r\n");
-				}
+					//Set random seed
+	//				setRandomSeed(psmCipheredData->u32Seed);
+					psmData->u32Seed = psmCipheredData->u32Seed;
 
-				if(bChangeKey == 1)
-					st = CREATE_KEY_PAIR;
-				else if(u8CrcFailed)
-				{
-					u8CrcFailed = 0x0;
-					XScuTimer_RestartTimer(&xTimer);
-					st = CREATE_KEY_PAIR;
-				}
-				else
-					st = WAIT_CIPHERED_DATA;
-				break;
+					//Calculate nonce
+					rv = generateNonce(psmData->u32Seed, nonce, sizeof(nonce));
+					if(rv == 0)
+						print_debug(DEBUG_MAIN, "[%d] Error while generating nonce...\r\n", i);
+					printNonce(nonce);
+
+					//Copy additional authenticate data and tag
+					memcpy(ucAad, psmCipheredData->u8Aad, 32);
+					memcpy(ucTag, psmCipheredData->u8Tag, 16);
+
+					//Perform AES-GCM
+					psmDataPtr = (uint8_t*)psmData->u8DeviceName;
+					psmCipheredDataPtr = (uint8_t*)psmCipheredData->u8DeviceName;
+
+					gcm_setkey(&ctx, key_a, (const uint)CRYPTO_BYTES);   // setup our AES-GCM key
+					rv = gcm_auth_decrypt(&ctx, nonce, 12, ucAad, sizeof(ucAad), psmCipheredDataPtr, psmDataPtr, sSizeCiphered, ucTag, sizeof(ucTag));
+					if(rv != 0)
+					{
+						print_debug(DEBUG_ERROR, "[%d] AES256-GCM authentication failed.\r\n", i);
+						XScuTimer_RestartTimer(&xTimer);
+						stClient[i] = CREATE_KEY_PAIR;
+						break;
+					}
+					else
+						print_debug(DEBUG_MAIN, "[%d] AES256-GCM authentication success.\r\n", i);
+
+					memcpy(psmData->u8Aad, ucAad, 32);
+					memcpy(psmData->u8Tag, ucTag, 16);
+
+					//Print deciphered data
+					print_debug(DEBUG_MAIN, "[%d] Data structure of client %d.\r\n", i, i);
+					smw3000PrintDataStruct(psmData);
+
+					//Check CRC16
+					rv = smw3000CheckCrc();
+					if(rv == CRC_FAILED)
+					{
+						u8CrcFailed = 0x1;
+						print_debug(DEBUG_ERROR, "[%d] CRC failed.\r\n", i);
+					}
+					else
+					{
+						u8CrcFailed = 0x0;
+						print_debug(DEBUG_MAIN, "[%d] CRC ok.\r\n", i);
+					}
+
+					if(bChangeKey == 1)
+						stClient[i] = CREATE_KEY_PAIR;
+					else if(u8CrcFailed)
+					{
+						u8CrcFailed = 0x0;
+						XScuTimer_RestartTimer(&xTimer);
+						stClient[i] = CREATE_KEY_PAIR;
+					}
+					else
+						stClient[i] = WAIT_CIPHERED_DATA;
+					break;
+			}
 		}
+
 //		sleep(10);
 //		sleep(1);
 #else

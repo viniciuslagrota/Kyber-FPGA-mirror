@@ -29,6 +29,7 @@
 #ifndef __TCP_PERF_SERVER_H_
 #define __TCP_PERF_SERVER_H_
 
+#include "include/global_def.h"
 #include "lwipopts.h"
 #include "lwip/ip_addr.h"
 #include "lwip/err.h"
@@ -86,10 +87,13 @@ struct perf_stats {
 	struct interim_report i_report;
 };
 
+/* maximum number of clients */
+
+
 /* seconds between periodic bandwidth reports */
-#define INTERIM_REPORT_INTERVAL 60
+#define INTERIM_REPORT_INTERVAL 5
 
 /* server port to listen on/connect to */
-#define TCP_CONN_PORT 5001
+#define TCP_CONN_PORT 			5001
 
 #endif /* __TCP_PERF_SERVER_H_ */

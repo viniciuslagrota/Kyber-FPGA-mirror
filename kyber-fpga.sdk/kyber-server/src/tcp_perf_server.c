@@ -29,16 +29,38 @@
 /** Connection handle for a TCP Server session */
 
 #include "tcp_perf_server.h"
-#include "include/global_def.h"
 
 extern struct netif server_netif;
-static struct tcp_pcb *c_pcb;
+static struct tcp_pcb *c_pcb[MAXIMUM_CLIENTS];
 static struct perf_stats server;
 u32_t u32LenRecv = 0;
 u32_t u32KeyExchanged = 0;
 u32_t u32PacketExchanged = 0;
 u32_t u32TotalKeyExchanged = 0;
 u32_t u32TotalPacketExchanged = 0;
+uint8_t u8CurrentClient = 0;
+
+uint8_t find_client(struct tcp_pcb *tpcb)
+{
+	uint8_t i = 0;
+
+	//Find client ID
+	for(i = 0; i < MAXIMUM_CLIENTS; i++)
+	{
+		if(c_pcb[i] != NULL)
+		{
+//			print_debug(DEBUG_ETH, "Remote: 0x%08x\r\n", tpcb->remote_ip.addr);
+//			print_debug(DEBUG_ETH, "Remote stored: 0x%08x\r\n", c_pcb[i]->remote_ip.addr);
+
+			if(tpcb->remote_ip.addr ==  c_pcb[i]->remote_ip.addr)
+			{
+				print_debug(DEBUG_ETH, "Client found: %d\r\n", i);
+				return i;
+			}
+		}
+	}
+	return 0xFF;
+}
 
 void print_app_header(void)
 {
@@ -65,10 +87,10 @@ static void print_tcp_conn_stats(void)
 			c_pcb->remote_port);
 #else
 	print_debug(DEBUG_ETH, "[%3d] local %s port %d connected with ",
-			server.client_id, inet_ntoa(c_pcb->local_ip),
-			c_pcb->local_port);
-	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(c_pcb->remote_ip),
-			c_pcb->remote_port);
+			server.client_id, inet_ntoa(c_pcb[0]->local_ip),
+			c_pcb[0]->local_port);
+	print_debug(DEBUG_ETH, "%s port %d\r\n",inet_ntoa(c_pcb[0]->remote_ip),
+			c_pcb[0]->remote_port);
 #endif /* LWIP_IPV6 */
 
 	print_debug(DEBUG_ETH, "[ ID] Interval\t\tTransfer   Bandwidth\n\r");
@@ -161,18 +183,25 @@ static void tcp_server_err(void *arg, err_t err)
 	LWIP_UNUSED_ARG(err);
 	u64_t now = get_time_ms();
 	u64_t diff_ms = now - server.start_time;
-	tcp_server_close(c_pcb);
-	c_pcb = NULL;
+	for(int i = 0; i < MAXIMUM_CLIENTS; i++)
+	{
+		if(c_pcb[i] != NULL)
+		{
+			tcp_server_close(c_pcb[i]);
+			c_pcb[i] = NULL;
+		}
+	}
+
 	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
 	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
 }
 
-static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
+static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen, uint8_t u8ClientId)
 {
 	err_t err;
 	u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
 
-	if (c_pcb == NULL) {
+	if (c_pcb[u8ClientId] == NULL) {
 		return ERR_CONN;
 	}
 
@@ -183,20 +212,20 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	apiflags = 0;
 #endif
 
-#if 1 == 1
-	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
-#endif
+//#if 1 == 1
+//	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
+//#endif
 
-	if (tcp_sndbuf(c_pcb) > u16BufferLen)
+	if (tcp_sndbuf(c_pcb[u8ClientId]) > u16BufferLen)
 	{
-		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
+		err = tcp_write(c_pcb[u8ClientId], pcBuffer, u16BufferLen, apiflags);
 		if (err != ERR_OK) {
 			print_debug(DEBUG_ERROR, "TCP client: Error on tcp_write: %d\r\n",
 					err);
 			return err;
 		}
 
-		err = tcp_output(c_pcb);
+		err = tcp_output(c_pcb[u8ClientId]);
 		if (err != ERR_OK) {
 			print_debug(DEBUG_ERROR, "TCP client: Error on tcp_output: %d\r\n",
 					err);
@@ -207,10 +236,10 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	return ERR_OK;
 }
 
-void transfer_data(char * pcBuffer, u16_t u16BufferLen)
+void transfer_data(char * pcBuffer, u16_t u16BufferLen, uint8_t u8ClientId)
 {
-	if (server.client_id)
-		tcp_send_traffic(pcBuffer, u16BufferLen);
+	if (bClientConnected[u8ClientId] == 1)
+		tcp_send_traffic(pcBuffer, u16BufferLen, u8ClientId);
 }
 
 /** Receive data on a tcp session */
@@ -274,6 +303,8 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 
 	tcp_nagle_disable(tpcb);
 
+	u8CurrentClient = find_client(tpcb);
+
 #if DEBUG_KYBER == 1
 	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
 //	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
@@ -281,12 +312,12 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 	char * pcBuf = p->payload; //Get transmitted data.
 
 #if SERVER_INIT == 1
-	if(st == WAIT_CIPHERED_DATA)
+	if(stClient[u8CurrentClient] == WAIT_CIPHERED_DATA)
 	{
 		memcpy(cCiphertext + u32LenRecv, pcBuf, p->len);
 		u32LenRecv += p->len;
 
-		st = DECIPHER_MESSAGE;
+		stClient[u8CurrentClient] = DECIPHER_MESSAGE;
 		u32LenRecv = 0;
 
 		u32PacketExchanged++;
@@ -299,7 +330,7 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 
 		if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
 		{
-			st = CALCULATE_SHARED_SECRET;
+			stClient[u8CurrentClient] = CALCULATE_SHARED_SECRET;
 			u32LenRecv = 0;
 
 			u32KeyExchanged++;
@@ -354,8 +385,6 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	if ((err != ERR_OK) || (newpcb == NULL)) {
 		return ERR_VAL;
 	}
-	/* Save connected client PCB */
-	c_pcb = newpcb;
 
 	/* Save start time for final report */
 	server.start_time = get_time_ms();
@@ -363,6 +392,12 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	/* Update connected client ID */
 	server.client_id++;
 	server.total_bytes = 0;
+
+	/* Save connected client PCB */
+	c_pcb[server.client_id] = newpcb;
+
+	print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", server.client_id);
+	bClientConnected[server.client_id] = 1;
 
 	/* Initialize Interim report paramters */
 	server.i_report.report_interval_time =
@@ -374,17 +409,17 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	print_tcp_conn_stats();
 
 	/* setup callbacks for tcp rx connection */
-	tcp_arg(c_pcb, NULL);
+	tcp_arg(c_pcb[server.client_id], NULL);
 #if PERFORMANCE_TEST == 1
 	tcp_recv(c_pcb, tcp_recv_perf_traffic);
 #else
-	tcp_recv(c_pcb, tcp_recv_traffic);
+	tcp_recv(c_pcb[server.client_id], tcp_recv_traffic);
 #endif
-	tcp_err(c_pcb, tcp_server_err);
+	tcp_err(c_pcb[server.client_id], tcp_server_err);
 
 #if SERVER_INIT == 1
 	//Change st
-	st = CLIENT_CONNECTED;
+	stClient[server.client_id] = CLIENT_CONNECTED;
 #endif
 
 	return ERR_OK;
