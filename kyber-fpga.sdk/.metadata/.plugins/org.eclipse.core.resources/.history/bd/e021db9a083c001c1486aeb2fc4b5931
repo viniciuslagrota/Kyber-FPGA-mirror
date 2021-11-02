@@ -158,7 +158,7 @@ uint32_t ui32Integer, ui32Fraction;
 XScuTimer xTimer;
 XScuTimer_Config *xTimerConfig;
 int timerValue;
-u32 u32CounterSecs = 0;
+u32 u32CounterMinutes = 0;
 
 //////////////////////////////////////////////
 //
@@ -272,9 +272,9 @@ void configSoftwareTimer()
 	xTimerConfig = XScuTimer_LookupConfig(XPAR_PS7_SCUTIMER_0_DEVICE_ID);
 	XScuTimer_CfgInitialize(&xTimer, xTimerConfig, xTimerConfig->BaseAddr);
 	XScuTimer_DisableAutoReload(&xTimer);
-//	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
+	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
 	XScuTimer_LoadTimer(&xTimer, TIMER_LOAD_VALUE);
-	XScuTimer_Start(&xTimer);
+//	XScuTimer_Start(&xTimer);
 	print_debug(DEBUG_MAIN, "Timer configured.\r\n");
 }
 #endif
@@ -292,8 +292,6 @@ int main(void)
 		clientStruct[i].stClient = WAITING_CLIENT_CONNECTION;
 		clientStruct[i].bClientConnected = 0;
 		clientStruct[i].c_pcb = NULL;
-		clientStruct[i].u32ChangeKeySec = 0;
-		clientStruct[i].bChangeKey = 0;
 	}
 
 	struct netif *netif;
@@ -411,6 +409,9 @@ int main(void)
 //	uint8_t u8Key[32] = { 0x3E };
 //	uint8_t u8Nonce[12] = { 0x1F };
 
+	//Variable control to change keys
+	bool bChangeKey = 0;
+
 	//System state
 	u32SystemState = 0;
 
@@ -512,19 +513,14 @@ int main(void)
 		{
 //			xil_printf("Timer!!!!!!!!!!!\r\n");
 			XScuTimer_RestartTimer(&xTimer);
-			u32CounterSecs++;
-			if(u32CounterSecs >= CHANGE_KEY_TIME)
-				u32CounterSecs = 0;
-
-			for(int i = 0; i < MAXIMUM_CLIENTS; i++)
+			u32CounterMinutes++;
+			if(u32CounterMinutes >= CHANGE_KEY_TIME)
 			{
-				if(clientStruct[i].bClientConnected) //if connected
-				{
-					if(clientStruct[i].u32ChangeKeySec == u32CounterSecs) //if current second equals to change key second
-						clientStruct[i].bChangeKey = 1;
-				}
+				print_debug(DEBUG_MAIN, "Change key!\r\n");
+				u32CounterMinutes = 0;
+				bChangeKey = 1;
+//				st = CREATE_KEY_PAIR;
 			}
-
 		}
 #endif
 
@@ -549,12 +545,13 @@ int main(void)
 				break;
 				case CLIENT_CONNECTED:
 					print_debug(DEBUG_MAIN, "[%d] Client connected!\r\n", i);
+#if CHANGE_KEY_TIME != 0 && KEM_TEST_ONLY == 0
+					XScuTimer_Start(&xTimer);
+#endif
 					clientStruct[i].stClient = CREATE_KEY_PAIR;
-					clientStruct[i].u32ChangeKeySec = u32CounterSecs;
-					print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
 				break;
 				case CREATE_KEY_PAIR:
-					clientStruct[i].bChangeKey = 0;
+					bChangeKey = 0;
 					print_debug(DEBUG_MAIN, "[%d] Generating new key pair...\r\n", i);
 
 					//Start timer
@@ -686,12 +683,12 @@ int main(void)
 						print_debug(DEBUG_MAIN, "[%d] CRC ok.\r\n", i);
 					}
 
-					if(clientStruct[i].bChangeKey == 1)
+					if(bChangeKey == 1)
 						clientStruct[i].stClient = CREATE_KEY_PAIR;
 					else if(u8CrcFailed)
 					{
 						u8CrcFailed = 0x0;
-//						XScuTimer_RestartTimer(&xTimer);
+						XScuTimer_RestartTimer(&xTimer);
 						clientStruct[i].stClient = CREATE_KEY_PAIR;
 					}
 					else
