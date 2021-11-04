@@ -467,8 +467,8 @@ static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 	return ERR_OK;
 #else
 //	print_debug(DEBUG_ETH, "Sent callback\n\r");
-//	if(st == SEND_CIPHER_MESSAGE || st == WAITING_CIPHER_MESSAGE_ACK)
-	st = GET_SMW3000_DATA;
+	if(st == SEND_CIPHER_MESSAGE || st == WAITING_CIPHER_MESSAGE_ACK)
+		st = GET_SMW3000_DATA;
 	return ERR_OK;
 #endif
 }

@@ -167,6 +167,7 @@ static void tcp_server_close(struct tcp_pcb *pcb)
 	err_t err;
 
 	if (pcb != NULL) {
+		print_debug(DEBUG_ETH, "TCP server closed\n\r");
 		tcp_recv(pcb, NULL);
 		tcp_err(pcb, NULL);
 		err = tcp_close(pcb);
@@ -401,13 +402,16 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	server.total_bytes = 0;
 
 	/* Find free client in structure */
-	for(int u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
+	print_debug(DEBUG_ETH, "Searching for empty spot...\n\r");
+	for(u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
 	{
 		if(clientStruct[u8ClientId].bClientConnected == 0)
 		{
 			clientStruct[u8ClientId].bClientConnected = 1;
+			print_debug(DEBUG_ETH, "Spot %d available.\n\r", u8ClientId);
 			break;
 		}
+		print_debug(DEBUG_ETH, "Spot %d occupied.\n\r", u8ClientId);
 
 		if(u8ClientId == MAXIMUM_CLIENTS - 1)
 			return ERR_CLSD;

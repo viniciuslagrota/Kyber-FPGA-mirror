@@ -232,7 +232,7 @@
 
 //////////////////////////////////////////////
 //
-//	Kyber states
+//	Kyber variables
 //
 //////////////////////////////////////////////
 #if SERVER_INIT == 1
@@ -259,6 +259,17 @@ enum state
 };
 #endif
 
+uint8_t pk[CRYPTO_PUBLICKEYBYTES];
+#if SERVER_INIT == 1
+uint8_t sk[CRYPTO_SECRETKEYBYTES];
+#endif
+uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
+#if SERVER_INIT == 1
+uint8_t key_a[MAXIMUM_CLIENTS][CRYPTO_BYTES];
+#else
+uint8_t key_b[CRYPTO_BYTES];
+#endif
+
 //////////////////////////////////////////////
 //
 //	Clients
@@ -278,22 +289,6 @@ struct clientStructure
 	bool bChangeKey;
 };
 struct clientStructure clientStruct[MAXIMUM_CLIENTS];
-
-//////////////////////////////////////////////
-//
-//	Kyber variables
-//
-//////////////////////////////////////////////
-uint8_t pk[CRYPTO_PUBLICKEYBYTES];
-#if SERVER_INIT == 1
-uint8_t sk[CRYPTO_SECRETKEYBYTES];
-#endif
-uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
-#if SERVER_INIT == 1
-uint8_t key_a[MAXIMUM_CLIENTS][CRYPTO_BYTES];
-#else
-uint8_t key_b[CRYPTO_BYTES];
-#endif
 
 //////////////////////////////////////////////
 //

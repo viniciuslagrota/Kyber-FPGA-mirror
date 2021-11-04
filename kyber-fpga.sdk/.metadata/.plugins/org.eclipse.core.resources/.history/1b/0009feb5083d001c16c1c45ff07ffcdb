@@ -73,7 +73,7 @@ extern uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
 #if SERVER_INIT == 0
 extern uint8_t key_b[CRYPTO_BYTES];
 #else
-extern uint8_t key_a[MAXIMUM_CLIENTS][CRYPTO_BYTES];
+extern uint8_t key_a[CRYPTO_BYTES];
 #endif
 //////////////////////////////////////////////
 //
@@ -595,7 +595,7 @@ int main(void)
 #endif
 
 					//Decapsulation
-					crypto_kem_dec(key_a[i], ct, sk);
+					crypto_kem_dec(key_a, ct, sk);
 
 					//Stop timer
 					stopTimer(&XGpioGlobalTimer, 1);
@@ -606,8 +606,8 @@ int main(void)
 					//Check shared secret
 #if DEBUG_KYBER == 1
 					print_debug(DEBUG_MAIN, "[%d] key_a calculated: ", i);
-					for(int j = 0; j < CRYPTO_BYTES; j++)
-						printf("%02x", key_a[i][j]);
+					for(int i = 0; i < CRYPTO_BYTES; i++)
+						printf("%02x", key_a[i]);
 					printf("\n\r");
 #endif
 
@@ -654,7 +654,7 @@ int main(void)
 					psmDataPtr = (uint8_t*)psmData->u8DeviceName;
 					psmCipheredDataPtr = (uint8_t*)psmCipheredData->u8DeviceName;
 
-					gcm_setkey(&ctx, key_a[i], (const uint)CRYPTO_BYTES);   // setup our AES-GCM key
+					gcm_setkey(&ctx, key_a, (const uint)CRYPTO_BYTES);   // setup our AES-GCM key
 					rv = gcm_auth_decrypt(&ctx, nonce, 12, ucAad, sizeof(ucAad), psmCipheredDataPtr, psmDataPtr, sSizeCiphered, ucTag, sizeof(ucTag));
 					if(rv != 0)
 					{
