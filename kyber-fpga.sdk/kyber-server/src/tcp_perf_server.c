@@ -31,7 +31,6 @@
 #include "tcp_perf_server.h"
 
 extern struct netif server_netif;
-//static struct tcp_pcb *c_pcb[MAXIMUM_CLIENTS];
 static struct perf_stats server;
 u32_t u32LenRecv = 0;
 u32_t u32KeyExchanged = 0;
@@ -45,7 +44,7 @@ uint8_t find_client(struct tcp_pcb *tpcb)
 	uint8_t i = 0;
 
 	//Find client ID
-	for(i = 0; i < MAXIMUM_CLIENTS; i++)
+	for(i = 0; i <= MAXIMUM_CLIENTS; i++)
 	{
 		if(clientStruct[i].c_pcb != NULL)
 		{
@@ -60,6 +59,38 @@ uint8_t find_client(struct tcp_pcb *tpcb)
 		}
 	}
 	return 0xFF;
+}
+
+void encapsulate_json(char * pcBuffer)
+{
+	uint16_t u16BufferPointer = 0;
+
+//	pcBuffer[u16BufferPointer++] = '{';
+//	memcpy(&pcBuffer[u16BufferPointer], "\"data\":[", 8);
+//	u16BufferPointer += 8;
+	pcBuffer[u16BufferPointer++] = '[';
+	for(uint8_t u8ClientId = 0; u8ClientId < 1; u8ClientId++)
+	{
+		pcBuffer[u16BufferPointer++] = '{';
+
+		//Full structure
+		memcpy(&pcBuffer[u16BufferPointer], "\"id\":", 5);
+		u16BufferPointer += 5;
+		pcBuffer[u16BufferPointer++] = 0x30 + u8ClientId;
+		pcBuffer[u16BufferPointer++] = 0x2C; //comma
+
+		//Device name
+		memcpy(&pcBuffer[u16BufferPointer], "\"device_name\":\"", 15);
+		u16BufferPointer += 15;
+		memcpy(&pcBuffer[u16BufferPointer], clientStruct[u8ClientId].smData.u8DeviceName, sizeof(clientStruct[u8ClientId].smData.u8DeviceName));
+		u16BufferPointer += sizeof(clientStruct[u8ClientId].smData.u8DeviceName);
+		pcBuffer[u16BufferPointer++] = '\"';
+
+		pcBuffer[u16BufferPointer++] = '}';
+//		pcBuffer[u16BufferPointer++] = 0x2C; //comma
+	}
+	pcBuffer[u16BufferPointer++] = ']';
+//	pcBuffer[u16BufferPointer++] = '}';
 }
 
 void print_app_header(void)
@@ -187,6 +218,7 @@ static void tcp_server_close(struct tcp_pcb *pcb)
 static void tcp_server_err(void *arg, err_t err)
 {
 	LWIP_UNUSED_ARG(err);
+	print_debug(DEBUG_ETH, "TCP server error\n\r");
 	u64_t now = get_time_ms();
 	u64_t diff_ms = now - server.start_time;
 	for(int i = 0; i < MAXIMUM_CLIENTS; i++)
@@ -312,48 +344,47 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 	u8CurrentClient = find_client(tpcb);
 
 #if DEBUG_KYBER == 1
-	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
+	print_debug(DEBUG_ETH, "[%d] data length: %d\n\r", u8CurrentClient, p->len);
 //	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
 #endif
 	char * pcBuf = p->payload; //Get transmitted data.
 
-#if SERVER_INIT == 1
-	if(clientStruct[u8CurrentClient].stClient == WAIT_CIPHERED_DATA)
+	if(u8CurrentClient != MAXIMUM_CLIENTS)
 	{
-		memcpy(cCiphertext + u32LenRecv, pcBuf, p->len);
-		u32LenRecv += p->len;
+		if(clientStruct[u8CurrentClient].stClient == WAIT_CIPHERED_DATA)
+		{
+			memcpy(cCiphertext + u32LenRecv, pcBuf, p->len);
+			u32LenRecv += p->len;
 
-		clientStruct[u8CurrentClient].stClient = DECIPHER_MESSAGE;
-		u32LenRecv = 0;
+			clientStruct[u8CurrentClient].stClient = DECIPHER_MESSAGE;
+			u32LenRecv = 0;
 
-		u32PacketExchanged++;
-		u32TotalPacketExchanged++;
+			u32PacketExchanged++;
+			u32TotalPacketExchanged++;
+		}
+		else
+		{
+			memcpy(ct + u32LenRecv, pcBuf, p->len);
+			u32LenRecv += p->len;
+
+			if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
+			{
+				clientStruct[u8CurrentClient].stClient = CALCULATE_SHARED_SECRET;
+				u32LenRecv = 0;
+
+				u32KeyExchanged++;
+				u32TotalKeyExchanged++;
+			}
+		}
 	}
 	else
 	{
-		memcpy(ct + u32LenRecv, pcBuf, p->len);
-		u32LenRecv += p->len;
+		print_debug(DEBUG_ETH, "monitoring system data request\n\r");
+		char cSendBuffer[4096] = { 0x0 };
 
-		if(u32LenRecv >= CRYPTO_CIPHERTEXTBYTES)
-		{
-			clientStruct[u8CurrentClient].stClient = CALCULATE_SHARED_SECRET;
-			u32LenRecv = 0;
-
-			u32KeyExchanged++;
-			u32TotalKeyExchanged++;
-		}
+		encapsulate_json(cSendBuffer);
+		tcp_send_traffic(cSendBuffer, sizeof(cSendBuffer), u8CurrentClient);
 	}
-
-#else
-	memcpy(pk + u32LenRecv, pcBuf, p->len);
-	u32LenRecv += p->len;
-
-	if(u32LenRecv >= CRYPTO_PUBLICKEYBYTES)
-	{
-		st = CALCULATING_CT;
-		u32LenRecv = 0;
-	}
-#endif
 
 	/* Record total bytes for final report */
 	server.total_bytes += p->tot_len;
@@ -401,34 +432,45 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 	server.client_id++;
 	server.total_bytes = 0;
 
-	/* Find free client in structure */
-	print_debug(DEBUG_ETH, "Searching for empty spot...\n\r");
-	for(u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
-	{
-		if(clientStruct[u8ClientId].bClientConnected == 0)
-		{
-			clientStruct[u8ClientId].bClientConnected = 1;
-			print_debug(DEBUG_ETH, "Spot %d available.\n\r", u8ClientId);
-			break;
-		}
-		print_debug(DEBUG_ETH, "Spot %d occupied.\n\r", u8ClientId);
 
-		if(u8ClientId == MAXIMUM_CLIENTS - 1)
-			return ERR_CLSD;
+
+//	print_debug(DEBUG_ETH, "newpcb->remote_ip.addr 0x%08x\n\r", newpcb->remote_ip.addr);
+	if(newpcb->remote_ip.addr != 0x6501a8c0 && newpcb->remote_ip.addr != 0x6501a8c0) //If the monitoring system is requesting connection (checking using the clients fixed IPs)
+	{
+		print_debug(DEBUG_ETH, "Monitoring system connected...\n\r");
+
+		u8ClientId = MAXIMUM_CLIENTS;
+	}
+	else //if the SM clients are requesting access
+	{
+		/* Find free client in structure */
+		print_debug(DEBUG_ETH, "Searching for empty spot...\n\r");
+		for(u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
+		{
+			if(clientStruct[u8ClientId].bClientConnected == 0)
+			{
+				clientStruct[u8ClientId].bClientConnected = 1;
+				print_debug(DEBUG_ETH, "Spot %d available.\n\r", u8ClientId);
+				break;
+			}
+			print_debug(DEBUG_ETH, "Spot %d occupied.\n\r", u8ClientId);
+
+			if(u8ClientId == MAXIMUM_CLIENTS - 1)
+				return ERR_CLSD;
+		}
+
+		print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", u8ClientId);
+
+		/* Initialize Interim report paramters */
+		server.i_report.report_interval_time =
+			INTERIM_REPORT_INTERVAL * 1000; /* ms */
+		server.i_report.last_report_time = 0;
+		server.i_report.start_time = 0;
+		server.i_report.total_bytes = 0;
 	}
 
 	/* Save connected client PCB */
 	clientStruct[u8ClientId].c_pcb = newpcb;
-
-
-	print_debug(DEBUG_ETH, "Client ID %d connected.\r\n", u8ClientId);
-
-	/* Initialize Interim report paramters */
-	server.i_report.report_interval_time =
-		INTERIM_REPORT_INTERVAL * 1000; /* ms */
-	server.i_report.last_report_time = 0;
-	server.i_report.start_time = 0;
-	server.i_report.total_bytes = 0;
 
 	print_tcp_conn_stats(u8ClientId);
 
@@ -441,10 +483,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 #endif
 	tcp_err(clientStruct[u8ClientId].c_pcb, tcp_server_err);
 
-#if SERVER_INIT == 1
-	//Change st
 	clientStruct[u8ClientId].stClient = CLIENT_CONNECTED;
-#endif
 
 	return ERR_OK;
 }
