@@ -63,59 +63,34 @@ uint8_t find_client(struct tcp_pcb *tpcb)
 
 void encapsulate_json(char * pcBuffer)
 {
-	char cAux[128] = { 0x0 };
-	bool bFirstElement = 1;
+	uint16_t u16BufferPointer = 0;
 
-	//Open json
-	sprintf(cAux, "{");
-	strcat(pcBuffer, cAux);
-
-	for(uint8_t u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
+//	pcBuffer[u16BufferPointer++] = '{';
+//	memcpy(&pcBuffer[u16BufferPointer], "\"data\":[", 8);
+//	u16BufferPointer += 8;
+	pcBuffer[u16BufferPointer++] = '{';
+	for(uint8_t u8ClientId = 0; u8ClientId < 1; u8ClientId++)
 	{
-		if(clientStruct[u8ClientId].bClientConnected)
-		{
-			//Add comma if necessary
-			if(bFirstElement)
-				bFirstElement = 0;
-			else
-			{
-				sprintf(cAux, ",");
-				strcat(pcBuffer, cAux);
-			}
+		pcBuffer[u16BufferPointer++] = '{';
 
-			//ID device
-			sprintf(cAux, "\"%d\":{", u8ClientId);
-			strcat(pcBuffer, cAux);
+		//Full structure
+		memcpy(&pcBuffer[u16BufferPointer], "\"id\":", 5);
+		u16BufferPointer += 5;
+		pcBuffer[u16BufferPointer++] = 0x30 + u8ClientId;
+		pcBuffer[u16BufferPointer++] = 0x2C; //comma
 
-			//Device name
-			sprintf(cAux, "\"device_name\":\"%.13s\"", clientStruct[u8ClientId].smData.u8DeviceName);
-			strcat(pcBuffer, cAux);
+		//Device name
+		memcpy(&pcBuffer[u16BufferPointer], "\"device_name\":\"", 15);
+		u16BufferPointer += 15;
+		memcpy(&pcBuffer[u16BufferPointer], clientStruct[u8ClientId].smData.u8DeviceName, sizeof(clientStruct[u8ClientId].smData.u8DeviceName));
+		u16BufferPointer += sizeof(clientStruct[u8ClientId].smData.u8DeviceName);
+		pcBuffer[u16BufferPointer++] = '\"';
 
-			//Comma
-			sprintf(cAux, ",");
-			strcat(pcBuffer, cAux);
-
-			//Timestamp
-			sprintf(cAux, "\"timestamp\":\"%02d/%02d/%04d %02d:%02d:%02d\"", clientStruct[u8ClientId].smData.u8Timestamp[3], clientStruct[u8ClientId].smData.u8Timestamp[2], ((u16)(clientStruct[u8ClientId].smData.u8Timestamp[u8ClientId]) << 8) | clientStruct[u8ClientId].smData.u8Timestamp[1], clientStruct[u8ClientId].smData.u8Timestamp[4], clientStruct[u8ClientId].smData.u8Timestamp[5], clientStruct[u8ClientId].smData.u8Timestamp[6]);
-			strcat(pcBuffer, cAux);
-
-			//Comma
-			sprintf(cAux, ",");
-			strcat(pcBuffer, cAux);
-
-			//L1 Voltage
-			sprintf(cAux, "\"l1_voltage\":%lu", clientStruct[u8ClientId].smData.u32VoltageL1);
-			strcat(pcBuffer, cAux);
-
-			//End device
-			sprintf(cAux, "}");
-			strcat(pcBuffer, cAux);
-		}
+		pcBuffer[u16BufferPointer++] = '}';
+//		pcBuffer[u16BufferPointer++] = 0x2C; //comma
 	}
-
-	//End json
-	sprintf(cAux, "}");
-	strcat(pcBuffer, cAux);
+	pcBuffer[u16BufferPointer++] = ']';
+//	pcBuffer[u16BufferPointer++] = '}';
 }
 
 void print_app_header(void)

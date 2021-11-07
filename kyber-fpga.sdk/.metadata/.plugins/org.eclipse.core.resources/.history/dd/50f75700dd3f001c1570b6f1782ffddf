@@ -64,25 +64,16 @@ uint8_t find_client(struct tcp_pcb *tpcb)
 void encapsulate_json(char * pcBuffer)
 {
 	char cAux[128] = { 0x0 };
-	bool bFirstElement = 1;
 
 	//Open json
 	sprintf(cAux, "{");
 	strcat(pcBuffer, cAux);
-
+//	memcpy(&pcBuffer[u16BufferPointer], "\"\"\"{", 4);
+//	u16BufferPointer += 4;
 	for(uint8_t u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
 	{
 		if(clientStruct[u8ClientId].bClientConnected)
 		{
-			//Add comma if necessary
-			if(bFirstElement)
-				bFirstElement = 0;
-			else
-			{
-				sprintf(cAux, ",");
-				strcat(pcBuffer, cAux);
-			}
-
 			//ID device
 			sprintf(cAux, "\"%d\":{", u8ClientId);
 			strcat(pcBuffer, cAux);
@@ -108,7 +99,10 @@ void encapsulate_json(char * pcBuffer)
 			strcat(pcBuffer, cAux);
 
 			//End device
-			sprintf(cAux, "}");
+			if(u8ClientId < (MAXIMUM_CLIENTS - 1))
+				sprintf(cAux, "},");
+			else
+				sprintf(cAux, "}");
 			strcat(pcBuffer, cAux);
 		}
 	}
