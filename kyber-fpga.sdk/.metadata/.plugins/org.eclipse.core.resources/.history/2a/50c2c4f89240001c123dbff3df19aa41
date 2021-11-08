@@ -171,11 +171,10 @@ static void tcp_client_err(void *arg, err_t err)
 	u64_t now = get_time_ms();
 	u64_t diff_ms = now - client.start_time;
 
-//	tcp_client_close(c_pcb);
-//	c_pcb = NULL;
-//	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
-//	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
-	print_debug(DEBUG_ETH, "TCP connection error and ignored\n\r");
+	tcp_client_close(c_pcb);
+	c_pcb = NULL;
+	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
+	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
 }
 
 static err_t tcp_send_perf_traffic(void)

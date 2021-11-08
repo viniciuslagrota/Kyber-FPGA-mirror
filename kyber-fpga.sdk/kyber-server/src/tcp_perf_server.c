@@ -246,17 +246,18 @@ static void tcp_server_err(void *arg, err_t err)
 	print_debug(DEBUG_ETH, "TCP server error\n\r");
 	u64_t now = get_time_ms();
 	u64_t diff_ms = now - server.start_time;
-	for(int i = 0; i < MAXIMUM_CLIENTS; i++)
-	{
-		if(clientStruct[i].c_pcb != NULL)
-		{
-			tcp_server_close(clientStruct[i].c_pcb);
-			clientStruct[i].c_pcb = NULL;
-		}
-	}
+//	for(int i = 0; i < MAXIMUM_CLIENTS; i++)
+//	{
+//		if(clientStruct[i].c_pcb != NULL)
+//		{
+//			tcp_server_close(clientStruct[i].c_pcb);
+//			clientStruct[i].c_pcb = NULL;
+//			clientStruct[i].stClient = WAITING_CLIENT_CONNECTION;
+//		}
+//	}
 
 	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE, 0);
-	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
+	print_debug(DEBUG_ETH, "TCP connection aborted, but ignored\n\r");
 }
 
 static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen, uint8_t u8ClientId)

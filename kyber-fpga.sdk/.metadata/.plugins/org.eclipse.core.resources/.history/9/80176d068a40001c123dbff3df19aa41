@@ -61,6 +61,63 @@ uint8_t find_client(struct tcp_pcb *tpcb)
 	return 0xFF;
 }
 
+void encapsulate_json(char * pcBuffer)
+{
+	char cAux[128] = { 0x0 };
+	bool bFirstElement = 1;
+
+	//Open json
+	sprintf(cAux, "{");
+	strcat(pcBuffer, cAux);
+
+	for(uint8_t u8ClientId = 0; u8ClientId < MAXIMUM_CLIENTS; u8ClientId++)
+	{
+		if(clientStruct[u8ClientId].bClientConnected)
+		{
+			//Add comma if necessary
+			if(bFirstElement)
+				bFirstElement = 0;
+			else
+			{
+				sprintf(cAux, ",");
+				strcat(pcBuffer, cAux);
+			}
+
+			//ID device
+			sprintf(cAux, "\"%d\":{", u8ClientId);
+			strcat(pcBuffer, cAux);
+
+			//Device name
+			sprintf(cAux, "\"device_name\":\"%.13s\"", clientStruct[u8ClientId].smData.u8DeviceName);
+			strcat(pcBuffer, cAux);
+
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//Timestamp
+			sprintf(cAux, "\"timestamp\":\"%02d/%02d/%04d %02d:%02d:%02d\"", clientStruct[u8ClientId].smData.u8Timestamp[3], clientStruct[u8ClientId].smData.u8Timestamp[2], ((u16)(clientStruct[u8ClientId].smData.u8Timestamp[u8ClientId]) << 8) | clientStruct[u8ClientId].smData.u8Timestamp[1], clientStruct[u8ClientId].smData.u8Timestamp[4], clientStruct[u8ClientId].smData.u8Timestamp[5], clientStruct[u8ClientId].smData.u8Timestamp[6]);
+			strcat(pcBuffer, cAux);
+
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//L1 Voltage
+			sprintf(cAux, "\"l1_voltage\":%lu", clientStruct[u8ClientId].smData.u32VoltageL1);
+			strcat(pcBuffer, cAux);
+
+			//End device
+			sprintf(cAux, "}");
+			strcat(pcBuffer, cAux);
+		}
+	}
+
+	//End json
+	sprintf(cAux, "}");
+	strcat(pcBuffer, cAux);
+}
+
 void print_app_header(void)
 {
 	print_debug(DEBUG_ETH, "TCP server listening on port %d\r\n",
@@ -348,11 +405,10 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 	else
 	{
 		print_debug(DEBUG_ETH, "monitoring system data request\n\r");
-		char cSendData[4096] = { 0x0 };
+		char cSendBuffer[4096] = { 0x0 };
 
-		//Copy structures to c
-
-		tcp_send_traffic(cTest, 10, u8CurrentClient);
+		encapsulate_json(cSendBuffer);
+		tcp_send_traffic(cSendBuffer, sizeof(cSendBuffer), u8CurrentClient);
 	}
 
 	/* Record total bytes for final report */
