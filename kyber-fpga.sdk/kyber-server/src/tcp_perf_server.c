@@ -107,6 +107,55 @@ void encapsulate_json(char * pcBuffer)
 			sprintf(cAux, "\"l1_voltage\":%lu", clientStruct[u8ClientId].smData.u32VoltageL1);
 			strcat(pcBuffer, cAux);
 
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//L1 Voltage
+			sprintf(cAux, "\"l2_voltage\":%lu", clientStruct[u8ClientId].smData.u32VoltageL2);
+			strcat(pcBuffer, cAux);
+
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//L1 Voltage
+			sprintf(cAux, "\"l3_voltage\":%lu", clientStruct[u8ClientId].smData.u32VoltageL3);
+			strcat(pcBuffer, cAux);
+
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//L1 Voltage
+			sprintf(cAux, "\"l1_current\":%lu", clientStruct[u8ClientId].smData.u32CurrentL1);
+			strcat(pcBuffer, cAux);
+
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//L1 Voltage
+			sprintf(cAux, "\"l2_current\":%lu", clientStruct[u8ClientId].smData.u32CurrentL2);
+			strcat(pcBuffer, cAux);
+
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//L1 Voltage
+			sprintf(cAux, "\"l3_current\":%lu", clientStruct[u8ClientId].smData.u32CurrentL3);
+			strcat(pcBuffer, cAux);
+
+			//Comma
+			sprintf(cAux, ",");
+			strcat(pcBuffer, cAux);
+
+			//L1 Voltage
+			sprintf(cAux, "\"n_current\":%lu", clientStruct[u8ClientId].smData.u32CurrentN);
+			strcat(pcBuffer, cAux);
+
+
 			//End device
 			sprintf(cAux, "}");
 			strcat(pcBuffer, cAux);
@@ -461,7 +510,7 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 
 
 //	print_debug(DEBUG_ETH, "newpcb->remote_ip.addr 0x%08x\n\r", newpcb->remote_ip.addr);
-	if(newpcb->remote_ip.addr != 0x6501a8c0 && newpcb->remote_ip.addr != 0x6501a8c0) //If the monitoring system is requesting connection (checking using the clients fixed IPs)
+	if(newpcb->remote_ip.addr > 0x1401a8c0) //If the monitoring system is requesting connection (checking using the clients fixed IPs) - any IP greater than 192.168.1.20 is considered a DHCP address, in consequence, is the monitoring platform.
 	{
 		print_debug(DEBUG_ETH, "Monitoring system connected...\n\r");
 

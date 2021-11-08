@@ -1,6 +1,1288 @@
-12:59:57 **** Incremental Build of configuration Debug for project kyber-server ****
+16:52:25 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:52:32 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:53:20 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/main.c:30:
+../src/include/global_def.h:186:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/include/global_def.h:186:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/main.c: In function 'main':
+../src/include/global_def.h:195:11: warning: format '%d' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/main.c:566:6: note: in expansion of macro 'print_debug'
+      print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
+      ^~~~~~~~~~~
+../src/main.c:566:66: note: format string is defined here
+      print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
+                                                                 ~^
+                                                                 %ld
+Finished building: ../src/main.c
+ 
+Building target: kyber-server.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-server.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 447504	   3776	31578416	32029696	1e8bc00	kyber-server.elf
+Finished building: kyber-server.elf.size
+ 
+16:56:23 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/main.c:30:
+../src/include/global_def.h:186:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/include/global_def.h:186:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/main.c: In function 'main':
+../src/include/global_def.h:195:11: warning: format '%d' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/main.c:556:6: note: in expansion of macro 'print_debug'
+      print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
+      ^~~~~~~~~~~
+../src/main.c:556:66: note: format string is defined here
+      print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
+                                                                 ~^
+                                                                 %ld
+Finished building: ../src/main.c
+ 
+Building target: kyber-server.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-server.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 447496	   3776	31578416	32029688	1e8bbf8	kyber-server.elf
+Finished building: kyber-server.elf.size
+ 
+16:57:57 **** Incremental Build of configuration Debug for project kyber-client ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/include/aes256gcm.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/aes256gcm.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/aes256gcm.d" -MT"src/include/aes256gcm.o" -o "src/include/aes256gcm.o" "../src/include/aes256gcm.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/aes256gcm.h:16,
+                 from ../src/include/aes256gcm.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/aes256gcm.h:16,
+                 from ../src/include/aes256gcm.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/aes256gcm.c
+ 
+Building file: ../src/include/cbd.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/cbd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/cbd.d" -MT"src/include/cbd.o" -o "src/include/cbd.o" "../src/include/cbd.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/cbd.h:6,
+                 from ../src/include/cbd.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/cbd.h:6,
+                 from ../src/include/cbd.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/cbd.c
+ 
+Building file: ../src/include/fips202.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/fips202.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/fips202.d" -MT"src/include/fips202.o" -o "src/include/fips202.o" "../src/include/fips202.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/fips202.h:6,
+                 from ../src/include/fips202.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/fips202.h:6,
+                 from ../src/include/fips202.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/fips202.c
+ 
+Building file: ../src/include/global_func.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/global_func.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/global_func.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+../src/include/global_func.c: In function 'getChipTemperature':
+../src/include/global_func.c:38:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
+  float TempData;
+        ^~~~~~~~
+In file included from ../src/include/global_func.c:8:
+../src/include/global_func.c: In function 'printTimeVariables':
+../src/include/global_def.h:204:11: warning: format '%x' expects argument of type 'unsigned int', but argument 7 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/global_func.c:231:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+  ^~~~~~~~~~~
+../src/include/global_func.c:231:78: note: format string is defined here
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+                                                                             ~^
+                                                                             %lx
+Finished building: ../src/include/global_func.c
+ 
+Building file: ../src/include/indcpa.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/indcpa.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/indcpa.d" -MT"src/include/indcpa.o" -o "src/include/indcpa.o" "../src/include/indcpa.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/indcpa.c:4:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/indcpa.c:4:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/indcpa.c
+ 
+Building file: ../src/include/kem.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/kem.d" -MT"src/include/kem.o" -o "src/include/kem.o" "../src/include/kem.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/kem.c:5:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/kem.c:5:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/kem.c
+ 
+Building file: ../src/include/ntt.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/ntt.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/ntt.d" -MT"src/include/ntt.o" -o "src/include/ntt.o" "../src/include/ntt.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/reduce.h:6,
+                 from ../src/include/ntt.c:4:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/reduce.h:6,
+                 from ../src/include/ntt.c:4:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/ntt.c
+ 
+Building file: ../src/include/poly.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/poly.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/poly.d" -MT"src/include/poly.o" -o "src/include/poly.o" "../src/include/poly.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/poly.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/poly.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/poly.c
+ 
+Building file: ../src/include/polyvec.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/polyvec.c
+ 
+Building file: ../src/include/reduce.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/reduce.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/reduce.d" -MT"src/include/reduce.o" -o "src/include/reduce.o" "../src/include/reduce.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/reduce.h:6,
+                 from ../src/include/reduce.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/reduce.h:6,
+                 from ../src/include/reduce.c:3:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/reduce.c
+ 
+Building file: ../src/include/symmetric-aes.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-aes.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-aes.d" -MT"src/include/symmetric-aes.o" -o "src/include/symmetric-aes.o" "../src/include/symmetric-aes.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-aes.c:4:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-aes.c:4:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/symmetric-aes.c
+ 
+Building file: ../src/include/symmetric-shake.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-shake.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-shake.d" -MT"src/include/symmetric-shake.o" -o "src/include/symmetric-shake.o" "../src/include/symmetric-shake.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-shake.c:5:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-shake.c:5:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/symmetric-shake.c
+ 
+Building file: ../src/include/test_kem.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
+In file included from ../src/include/reduce.h:6,
+                 from ../src/include/global_def.h:37,
+                 from ../src/include/test_kem.h:16,
+                 from ../src/include/test_kem.c:9:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/test_kem.c:9:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/test_kem.c
+ 
+Building file: ../src/include/weg_smw3000.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/weg_smw3000.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/weg_smw3000.d" -MT"src/include/weg_smw3000.o" -o "src/include/weg_smw3000.o" "../src/include/weg_smw3000.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+../src/include/weg_smw3000.c: In function 'smw3000GetControlStruct':
+../src/include/global_def.h:204:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smControlStruct *' {aka 'struct smControlStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:165:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "SM Control structure pointer: 0x%08x\r\n", &smControl);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:165:65: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "SM Control structure pointer: 0x%08x\r\n", &smControl);
+                                                              ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetDataStruct':
+../src/include/global_def.h:204:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smDataStruct *' {aka 'struct smDataStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:176:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "SM Data structure pointer: 0x%08x\r\n", &smData);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:176:62: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "SM Data structure pointer: 0x%08x\r\n", &smData);
+                                                           ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetCipheredDataStruct':
+../src/include/global_def.h:204:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smDataStruct *' {aka 'struct smDataStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:187:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "SM Data ciphered structure pointer: 0x%08x\r\n", &smCipheredData);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:187:71: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "SM Data ciphered structure pointer: 0x%08x\r\n", &smCipheredData);
+                                                                    ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetLineVoltage':
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:515:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:515:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:520:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:520:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:525:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:525:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:530:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:530:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetLineCurrent':
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:611:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:611:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:616:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L2 current acquired: %d mA.\r\n", smData.u32CurrentL2);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:616:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L2 current acquired: %d mA.\r\n", smData.u32CurrentL2);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:621:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L3 current acquired: %d mA.\r\n", smData.u32CurrentL3);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:621:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L3 current acquired: %d mA.\r\n", smData.u32CurrentL3);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:626:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "Neutral current acquired: %d mA.\r\n", smData.u32CurrentN);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:626:58: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "Neutral current acquired: %d mA.\r\n", smData.u32CurrentN);
+                                                         ~^
+                                                         %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:631:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:631:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000SendBuffer':
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:685:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "Sending (len: %d): ", smBuffer.u32TxBufferLen);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:685:45: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "Sending (len: %d): ", smBuffer.u32TxBufferLen);
+                                            ~^
+                                            %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000PrintRxBuffer':
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:785:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "RX Buffer (len %d): ", smBuffer.u32RxBufferLen);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:785:46: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "RX Buffer (len %d): ", smBuffer.u32RxBufferLen);
+                                             ~^
+                                             %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000PrintDataStruct':
+../src/include/global_def.h:204:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smDataStruct *' {aka 'struct smDataStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:815:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "Data structure (addr 0x%08x):\r\n", psmDataStruct);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:815:56: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "Data structure (addr 0x%08x):\r\n", psmDataStruct);
+                                                     ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:816:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "Seed: 0x%08x\r\n", psmDataStruct->u32Seed);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:816:41: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "Seed: 0x%08x\r\n", psmDataStruct->u32Seed);
+                                      ~~~^
+                                      %08lx
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:826:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L1 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL1);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:826:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L1 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL1);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:827:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L2 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL2);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:827:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L2 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL2);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:828:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L3 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL3);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:828:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L3 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL3);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:829:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L1 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL1);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:829:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L1 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL1);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:830:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L2 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL2);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:830:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L2 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL2);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:831:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L3 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL3);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:831:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L3 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL3);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:204:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:832:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "LN current acquired: %d mA.\r\n", psmDataStruct->u32CurrentN);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:832:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "LN current acquired: %d mA.\r\n", psmDataStruct->u32CurrentN);
+                                                   ~^
+                                                   %ld
+Finished building: ../src/include/weg_smw3000.c
+ 
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/main.c:30:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/main.c: In function 'main':
+../src/include/global_def.h:204:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/main.c:796:7: note: in expansion of macro 'print_debug'
+       print_debug(DEBUG_ERROR, "Failed to get data (rv: 0x%08x).\r\n", rv);
+       ^~~~~~~~~~~
+../src/main.c:796:62: note: format string is defined here
+       print_debug(DEBUG_ERROR, "Failed to get data (rv: 0x%08x).\r\n", rv);
+                                                           ~~~^
+                                                           %08lx
+Finished building: ../src/main.c
+ 
+Building file: ../src/tcp_perf_client.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_client.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_client.d" -MT"src/tcp_perf_client.o" -o "src/tcp_perf_client.o" "../src/tcp_perf_client.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/tcp_perf_client.c:32:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/tcp_perf_client.c:32:
+../src/include/global_def.h:195:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+../src/tcp_perf_client.c: In function 'tcp_client_err':
+../src/tcp_perf_client.c:172:8: warning: unused variable 'diff_ms' [-Wunused-variable]
+  u64_t diff_ms = now - client.start_time;
+        ^~~~~~~
+In file included from ../src/tcp_perf_client.c:32:
+../src/tcp_perf_client.c: In function 'tcp_send_perf_traffic':
+../src/include/global_def.h:204:11: warning: format '%llu' expects argument of type 'long long unsigned int', but argument 5 has type 'int' [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/tcp_perf_client.c:215:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_ETH, "Writing data length: %llu\n\r", TCP_SEND_BUFSIZE);
+  ^~~~~~~~~~~
+../src/tcp_perf_client.c:215:50: note: format string is defined here
+  print_debug(DEBUG_ETH, "Writing data length: %llu\n\r", TCP_SEND_BUFSIZE);
+                                               ~~~^
+                                               %u
+Finished building: ../src/tcp_perf_client.c
+ 
+Building target: kyber-client.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-client_bsp/ps7_cortexa9_0/lib -o "kyber-client.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_client.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: kyber-client.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size kyber-client.elf  |tee "kyber-client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 442008	   3808	31578416	32024232	1e8a6a8	kyber-client.elf
+Finished building: kyber-client.elf.size
+ 
+17:01:26 **** Incremental Build of configuration Debug for project kyber-server ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/include/aes256gcm.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/aes256gcm.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/aes256gcm.d" -MT"src/include/aes256gcm.o" -o "src/include/aes256gcm.o" "../src/include/aes256gcm.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/aes256gcm.h:16,
+                 from ../src/include/aes256gcm.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/aes256gcm.h:16,
+                 from ../src/include/aes256gcm.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/aes256gcm.c
+ 
+Building file: ../src/include/cbd.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/cbd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/cbd.d" -MT"src/include/cbd.o" -o "src/include/cbd.o" "../src/include/cbd.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/cbd.h:6,
+                 from ../src/include/cbd.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/cbd.h:6,
+                 from ../src/include/cbd.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/cbd.c
+ 
+Building file: ../src/include/fips202.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/fips202.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/fips202.d" -MT"src/include/fips202.o" -o "src/include/fips202.o" "../src/include/fips202.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/fips202.h:6,
+                 from ../src/include/fips202.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/fips202.h:6,
+                 from ../src/include/fips202.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/fips202.c
+ 
+Building file: ../src/include/global_func.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/global_func.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/global_func.d" -MT"src/include/global_func.o" -o "src/include/global_func.o" "../src/include/global_func.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/global_func.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/global_func.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+../src/include/global_func.c: In function 'getChipTemperature':
+../src/include/global_func.c:38:8: warning: variable 'TempData' set but not used [-Wunused-but-set-variable]
+  float TempData;
+        ^~~~~~~~
+In file included from ../src/include/global_func.c:8:
+../src/include/global_func.c: In function 'printTimeVariables':
+../src/include/global_def.h:185:11: warning: format '%x' expects argument of type 'unsigned int', but argument 7 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/global_func.c:231:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+  ^~~~~~~~~~~
+../src/include/global_func.c:231:78: note: format string is defined here
+  print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+                                                                             ~^
+                                                                             %lx
+Finished building: ../src/include/global_func.c
+ 
+Building file: ../src/include/indcpa.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/indcpa.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/indcpa.d" -MT"src/include/indcpa.o" -o "src/include/indcpa.o" "../src/include/indcpa.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/indcpa.c:4:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/indcpa.c:4:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/indcpa.c
+ 
+Building file: ../src/include/kem.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/kem.d" -MT"src/include/kem.o" -o "src/include/kem.o" "../src/include/kem.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/kem.c:5:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.h:6,
+                 from ../src/include/indcpa.h:6,
+                 from ../src/include/kem.c:5:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/kem.c
+ 
+Building file: ../src/include/ntt.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/ntt.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/ntt.d" -MT"src/include/ntt.o" -o "src/include/ntt.o" "../src/include/ntt.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/reduce.h:6,
+                 from ../src/include/ntt.c:4:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/reduce.h:6,
+                 from ../src/include/ntt.c:4:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/ntt.c
+ 
+Building file: ../src/include/poly.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/poly.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/poly.d" -MT"src/include/poly.o" -o "src/include/poly.o" "../src/include/poly.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/poly.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/poly.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/poly.c
+ 
+Building file: ../src/include/polyvec.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/polyvec.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/polyvec.d" -MT"src/include/polyvec.o" -o "src/include/polyvec.o" "../src/include/polyvec.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/poly.h:5,
+                 from ../src/include/polyvec.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/polyvec.c
+ 
+Building file: ../src/include/reduce.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/reduce.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/reduce.d" -MT"src/include/reduce.o" -o "src/include/reduce.o" "../src/include/reduce.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/reduce.h:6,
+                 from ../src/include/reduce.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/reduce.h:6,
+                 from ../src/include/reduce.c:3:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/reduce.c
+ 
+Building file: ../src/include/symmetric-aes.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-aes.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-aes.d" -MT"src/include/symmetric-aes.o" -o "src/include/symmetric-aes.o" "../src/include/symmetric-aes.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-aes.c:4:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-aes.c:4:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/symmetric-aes.c
+ 
+Building file: ../src/include/symmetric-shake.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/symmetric-shake.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/symmetric-shake.d" -MT"src/include/symmetric-shake.o" -o "src/include/symmetric-shake.o" "../src/include/symmetric-shake.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-shake.c:5:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/fips202.h:6,
+                 from ../src/include/symmetric.h:36,
+                 from ../src/include/symmetric-shake.c:5:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/symmetric-shake.c
+ 
+Building file: ../src/include/test_kem.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/test_kem.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/test_kem.d" -MT"src/include/test_kem.o" -o "src/include/test_kem.o" "../src/include/test_kem.c"
+In file included from ../src/include/reduce.h:6,
+                 from ../src/include/global_def.h:37,
+                 from ../src/include/test_kem.h:16,
+                 from ../src/include/test_kem.c:9:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/test_kem.c:9:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+Finished building: ../src/include/test_kem.c
+ 
+Building file: ../src/include/weg_smw3000.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/include/weg_smw3000.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/include/weg_smw3000.d" -MT"src/include/weg_smw3000.o" -o "src/include/weg_smw3000.o" "../src/include/weg_smw3000.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+../src/include/weg_smw3000.c: In function 'smw3000GetControlStruct':
+../src/include/global_def.h:185:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smControlStruct *' {aka 'struct smControlStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:165:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "SM Control structure pointer: 0x%08x\r\n", &smControl);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:165:65: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "SM Control structure pointer: 0x%08x\r\n", &smControl);
+                                                              ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetDataStruct':
+../src/include/global_def.h:185:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smDataStruct *' {aka 'struct smDataStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:176:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "SM Data structure pointer: 0x%08x\r\n", &smData);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:176:62: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "SM Data structure pointer: 0x%08x\r\n", &smData);
+                                                           ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetCipheredDataStruct':
+../src/include/global_def.h:185:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smDataStruct *' {aka 'struct smDataStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:187:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "SM Data ciphered structure pointer: 0x%08x\r\n", &smCipheredData);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:187:71: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "SM Data ciphered structure pointer: 0x%08x\r\n", &smCipheredData);
+                                                                    ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetLineVoltage':
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:515:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:515:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:520:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:520:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L2 voltage acquired: %d mV.\r\n", smData.u32VoltageL2);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:525:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:525:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L3 voltage acquired: %d mV.\r\n", smData.u32VoltageL3);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:530:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:530:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 voltage acquired: %d mV.\r\n", smData.u32VoltageL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000GetLineCurrent':
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:611:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:611:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:616:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L2 current acquired: %d mA.\r\n", smData.u32CurrentL2);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:616:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L2 current acquired: %d mA.\r\n", smData.u32CurrentL2);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:621:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L3 current acquired: %d mA.\r\n", smData.u32CurrentL3);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:621:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L3 current acquired: %d mA.\r\n", smData.u32CurrentL3);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:626:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "Neutral current acquired: %d mA.\r\n", smData.u32CurrentN);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:626:58: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "Neutral current acquired: %d mA.\r\n", smData.u32CurrentN);
+                                                         ~^
+                                                         %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:631:3: note: in expansion of macro 'print_debug'
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+   ^~~~~~~~~~~
+../src/include/weg_smw3000.c:631:53: note: format string is defined here
+   print_debug(DEBUG_SM_LVL1, "L1 current acquired: %d mA.\r\n", smData.u32CurrentL1);
+                                                    ~^
+                                                    %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000SendBuffer':
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:685:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "Sending (len: %d): ", smBuffer.u32TxBufferLen);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:685:45: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "Sending (len: %d): ", smBuffer.u32TxBufferLen);
+                                            ~^
+                                            %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000PrintRxBuffer':
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:785:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL0, "RX Buffer (len %d): ", smBuffer.u32RxBufferLen);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:785:46: note: format string is defined here
+  print_debug(DEBUG_SM_LVL0, "RX Buffer (len %d): ", smBuffer.u32RxBufferLen);
+                                             ~^
+                                             %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/weg_smw3000.c: In function 'smw3000PrintDataStruct':
+../src/include/global_def.h:185:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'smDataStruct *' {aka 'struct smDataStruct *'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:815:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "Data structure (addr 0x%08x):\r\n", psmDataStruct);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:815:56: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "Data structure (addr 0x%08x):\r\n", psmDataStruct);
+                                                     ~~~^
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%x' expects argument of type 'unsigned int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:816:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "Seed: 0x%08x\r\n", psmDataStruct->u32Seed);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:816:41: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "Seed: 0x%08x\r\n", psmDataStruct->u32Seed);
+                                      ~~~^
+                                      %08lx
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:826:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L1 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL1);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:826:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L1 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL1);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:827:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L2 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL2);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:827:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L2 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL2);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:828:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L3 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL3);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:828:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L3 voltage acquired: %d mV.\r\n", psmDataStruct->u32VoltageL3);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:829:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L1 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL1);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:829:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L1 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL1);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:830:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L2 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL2);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:830:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L2 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL2);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:831:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "L3 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL3);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:831:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "L3 current acquired: %d mA.\r\n", psmDataStruct->u32CurrentL3);
+                                                   ~^
+                                                   %ld
+In file included from ../src/include/weg_smw3000.h:88,
+                 from ../src/include/weg_smw3000.c:8:
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u32' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/include/weg_smw3000.c:832:2: note: in expansion of macro 'print_debug'
+  print_debug(DEBUG_SM_LVL2, "LN current acquired: %d mA.\r\n", psmDataStruct->u32CurrentN);
+  ^~~~~~~~~~~
+../src/include/weg_smw3000.c:832:52: note: format string is defined here
+  print_debug(DEBUG_SM_LVL2, "LN current acquired: %d mA.\r\n", psmDataStruct->u32CurrentN);
+                                                   ~^
+                                                   %ld
+Finished building: ../src/include/weg_smw3000.c
+ 
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/include/test_kem.h:16,
+                 from ../src/include/global_def.h:35,
+                 from ../src/main.c:30:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
+ //#define print_debug(debugLevel, ...) \
+ ^
+In file included from ../src/main.c:30:
+../src/main.c: In function 'main':
+../src/include/global_def.h:185:11: warning: format '%d' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+    printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
+           ^~~~~~~~~~~~~~~
+../src/main.c:556:6: note: in expansion of macro 'print_debug'
+      print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
+      ^~~~~~~~~~~
+../src/main.c:556:66: note: format string is defined here
+      print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
+                                                                 ~^
+                                                                 %ld
+Finished building: ../src/main.c
  
 Building file: ../src/tcp_perf_server.c
 Invoking: ARM v7 gcc compiler
@@ -17,7 +1299,7 @@ In file included from ../src/tcp_perf_server.h:32,
 ../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
  //#define print_debug(debugLevel, ...) \
  ^
-../src/tcp_perf_server.c:297:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
+../src/tcp_perf_server.c:359:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
  static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
               ^~~~~~~~~~~~~~~~~~~~~
 Finished building: ../src/tcp_perf_server.c
@@ -30,286 +1312,16 @@ Finished building target: kyber-server.elf
 Invoking: ARM v7 Print Size
 arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
    text	   data	    bss	    dec	    hex	filename
- 454800	   3776	31578400	32036976	1e8d870	kyber-server.elf
+ 447496	   3776	31578416	32029688	1e8bbf8	kyber-server.elf
 Finished building: kyber-server.elf.size
  
-13:01:16 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/tcp_perf_server.c:297:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 454544	   3776	31578400	32036720	1e8d770	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-13:03:46 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/tcp_perf_server.c:303:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 454608	   3776	31578400	32036784	1e8d7b0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-13:07:00 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/tcp_perf_server.c:303:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 454928	   3776	31578400	32037104	1e8d8f0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-13:11:39 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/tcp_perf_server.c:309:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 454928	   3776	31578400	32037104	1e8d8f0	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-19:29:57 **** Incremental Build of configuration Debug for project kyber-server ****
+17:32:44 **** Incremental Build of configuration Debug for project kyber-server ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
-19:38:22 **** Incremental Build of configuration Debug for project kyber-server ****
+17:34:23 **** Incremental Build of configuration Debug for project kyber-client ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
-19:46:45 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-19:51:33 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-09:36:02 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-09:51:37 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/tcp_perf_server.c:310:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 454992	   3776	31578400	32037168	1e8d930	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
-10:04:19 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:13:09 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:22:23 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:23:37 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:32:49 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:40:40 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:44:17 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:51:57 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:54:15 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-make: Nothing to be done for 'main-build'.
-10:56:21 **** Incremental Build of configuration Debug for project kyber-server ****
-make pre-build main-build 
-a9-linaro-pre-build-step
- 
-Building file: ../src/tcp_perf_server.c
-Invoking: ARM v7 gcc compiler
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/tcp_perf_server.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../kyber-server_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/tcp_perf_server.d" -MT"src/tcp_perf_server.o" -o "src/tcp_perf_server.o" "../src/tcp_perf_server.c"
-In file included from ../src/include/test_kem.h:16,
-                 from ../src/include/global_def.h:35,
-                 from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-In file included from ../src/tcp_perf_server.h:32,
-                 from ../src/tcp_perf_server.c:31:
-../src/include/global_def.h:176:1: warning: multi-line comment [-Wcomment]
- //#define print_debug(debugLevel, ...) \
- ^
-../src/tcp_perf_server.c:310:14: warning: 'tcp_recv_perf_traffic' defined but not used [-Wunused-function]
- static err_t tcp_recv_perf_traffic(void *arg, struct tcp_pcb *tpcb,
-              ^~~~~~~~~~~~~~~~~~~~~
-Finished building: ../src/tcp_perf_server.c
- 
-Building target: kyber-server.elf
-Invoking: ARM v7 gcc linker
-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../kyber-server_bsp/ps7_cortexa9_0/lib -o "kyber-server.elf"  ./src/include/aes256ctr.o ./src/include/aes256gcm.o ./src/include/cbd.o ./src/include/fips202.o ./src/include/global_func.o ./src/include/indcpa.o ./src/include/kem.o ./src/include/ntt.o ./src/include/poly.o ./src/include/polyvec.o ./src/include/randombytes.o ./src/include/reduce.o ./src/include/sha256.o ./src/include/sha512.o ./src/include/symmetric-aes.o ./src/include/symmetric-shake.o ./src/include/test_kem.o ./src/include/verify.o ./src/include/weg_smw3000.o  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/tcp_perf_server.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-Finished building target: kyber-server.elf
- 
-Invoking: ARM v7 Print Size
-arm-none-eabi-size kyber-server.elf  |tee "kyber-server.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 454744	   3776	31578400	32036920	1e8d838	kyber-server.elf
-Finished building: kyber-server.elf.size
- 
