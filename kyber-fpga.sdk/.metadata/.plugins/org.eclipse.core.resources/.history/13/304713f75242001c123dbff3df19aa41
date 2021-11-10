@@ -494,22 +494,6 @@ static err_t tcp_recv_traffic(void *arg, struct tcp_pcb *tpcb,
 	return ERR_OK;
 }
 
-void tcp_server_discon_client(uint8_t u8ClientId)
-{
-//
-	/* Erase client from structure */
-	print_debug(DEBUG_ETH, "Emptying spot %d\n\r", u8ClientId);
-
-	clientStruct[u8ClientId].bClientConnected = 0;
-	tcp_arg(clientStruct[u8ClientId].c_pcb, NULL);
-	tcp_recv(clientStruct[u8ClientId].c_pcb, NULL);
-	tcp_err(clientStruct[u8ClientId].c_pcb, NULL);
-	clientStruct[u8ClientId].c_pcb = NULL;
-	clientStruct[u8ClientId].stClient = WAITING_CLIENT_CONNECTION;
-
-	print_debug(DEBUG_ETH, "Client ID %d disconnected.\r\n", u8ClientId);
-}
-
 static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 {
 	uint8_t u8ClientId = 0;

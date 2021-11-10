@@ -204,6 +204,7 @@ uint8_t *psmCipheredDataPtr;
 void platform_enable_interrupts(void);
 void start_application(void);
 void transfer_data(char * pcBuffer, u16_t u16BufferLen, uint8_t u8ClientId);
+void tcp_server_discon_client(uint8_t u8ClientId);
 void print_app_header(void);
 
 #if defined (__arm__) && !defined (ARMR5)
@@ -296,6 +297,8 @@ int main(void)
 		clientStruct[i].c_pcb = NULL;
 		clientStruct[i].u32ChangeKeySec = 0;
 		clientStruct[i].bChangeKey = 0;
+		clientStruct[i].bNewDataMonitoring = 0;
+		clientStruct[i].u32LastSeen = 0;
 	}
 
 	struct netif *netif;
@@ -522,8 +525,16 @@ int main(void)
 			{
 				if(clientStruct[i].bClientConnected) //if connected
 				{
+					//Check if needs to change key
 					if(clientStruct[i].u32ChangeKeySec == u32CounterSecs) //if current second equals to change key second
 						clientStruct[i].bChangeKey = 1;
+
+					//Check if system is for so long inactive.
+					u32 u32InactiveTimeout = clientStruct[i].u32LastSeen + INACTIVE_TIMEOUT;
+					if(u32InactiveTimeout > CHANGE_KEY_TIME)
+						u32InactiveTimeout -= CHANGE_KEY_TIME;
+					if(u32InactiveTimeout == u32CounterSecs)
+						clientStruct[i].stClient = DISCONNECT_CLIENT;
 				}
 			}
 
@@ -553,6 +564,7 @@ int main(void)
 					print_debug(DEBUG_MAIN, "[%d] Client connected!\r\n", i);
 					clientStruct[i].stClient = CREATE_KEY_PAIR;
 					clientStruct[i].u32ChangeKeySec = u32CounterSecs;
+					clientStruct[i].u32LastSeen = u32CounterSecs;
 					print_debug(DEBUG_MAIN, "[%d] Changing key at every second %d.\r\n", i, clientStruct[i].u32ChangeKeySec);
 				break;
 				case CREATE_KEY_PAIR:
@@ -580,6 +592,7 @@ int main(void)
 					//Publish PK
 					print_debug(DEBUG_MAIN, "[%d] Sending PK!\r\n", i);
 					transfer_data((char *)pk, CRYPTO_PUBLICKEYBYTES, i);
+					clientStruct[i].u32LastSeen = u32CounterSecs;
 					print_debug(DEBUG_MAIN, "[%d] Waiting CT...\r\n", i);
 					clientStruct[i].stClient = WAITING_CT;
 				break;
@@ -587,6 +600,7 @@ int main(void)
 					//Do nothing. Wait for ciphertext.
 				break;
 				case CALCULATE_SHARED_SECRET:
+					clientStruct[i].u32LastSeen = u32CounterSecs;
 					//Check CT received
 					print_debug(DEBUG_MAIN, "[%d] Calculating shared secret...\r\n", i);
 #if DEBUG_KYBER == 1
@@ -629,6 +643,7 @@ int main(void)
 					//Wait messages from client
 					break;
 				case DECIPHER_MESSAGE:
+					clientStruct[i].u32LastSeen = u32CounterSecs;
 					print_debug(DEBUG_MAIN, "[%d] Deciphering message...\r\n", i);
 
 					//Get pointer to structures
@@ -678,6 +693,7 @@ int main(void)
 
 					//Copy structure to client structure
 					memcpy(&clientStruct[i].smData, psmData, sSize);
+					clientStruct[i].bNewDataMonitoring = 1;
 
 					//Check CRC16
 					rv = smw3000CheckCrc();
@@ -702,6 +718,9 @@ int main(void)
 					}
 					else
 						clientStruct[i].stClient = WAIT_CIPHERED_DATA;
+					break;
+				case DISCONNECT_CLIENT:
+					tcp_server_discon_client(i);
 					break;
 			}
 		}

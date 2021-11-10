@@ -48,8 +48,7 @@
 #define PERFORMANCE_MODE	0	//1: suppress prints | 0: enable prints
 #define USE_HW_ACCELERATION 1	//1: use hardware acceleration | 0: do not use hardware acceleration
 #define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
-#define CHANGE_KEY_TIME		60  //In seconds, if zero, do not perform change key. Only valid when SERVER_INIT = 1.
-#define INACTIVE_TIMEOUT	30	//In seconds.
+#define CHANGE_KEY_TIME		60   //In seconds, if zero, do not perform change key. Only valid when SERVER_INIT = 1.
 
 //////////////////////////////////////////////
 //
@@ -246,8 +245,7 @@ enum state
 	WAITING_CT,
 	CALCULATE_SHARED_SECRET,
 	WAIT_CIPHERED_DATA,
-	DECIPHER_MESSAGE,
-	DISCONNECT_CLIENT
+	DECIPHER_MESSAGE
 };
 #else
 enum state

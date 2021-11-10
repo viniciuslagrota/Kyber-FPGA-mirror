@@ -576,6 +576,7 @@ int main(void)
 		timerValue = XScuTimer_GetCounterValue(&xTimer);
 		if(timerValue == 0)
 		{
+			print_debug(DEBUG_MAIN, "Timer!!!!!!!!!!!\r\n");
 			XScuTimer_RestartTimer(&xTimer);
 			u32CounterSecs++;
 			if(u32CounterSecs >= CHANGE_KEY_TIME)
@@ -586,10 +587,7 @@ int main(void)
 			if(u32InactiveTimeout > CHANGE_KEY_TIME)
 				u32InactiveTimeout -= CHANGE_KEY_TIME;
 			if(u32InactiveTimeout == u32CounterSecs && st != WAITING_PK)
-			{
-				print_debug(DEBUG_MAIN, "System timeout, stuck in st %d...\r\n", st);
 				st = RECONNECTING;
-			}
 
 		}
 
