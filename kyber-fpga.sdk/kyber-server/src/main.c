@@ -598,6 +598,7 @@ int main(void)
 
 					//Decapsulation
 					crypto_kem_dec(key_a[i], ct, sk);
+					print_debug(DEBUG_MAIN, "[%d] Decapsulated...\r\n", i);
 
 					//Stop timer
 					stopTimer(&XGpioGlobalTimer, 1);

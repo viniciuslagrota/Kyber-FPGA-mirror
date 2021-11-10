@@ -449,7 +449,6 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 
 	if(u32LenRecv >= CRYPTO_PUBLICKEYBYTES)
 	{
-		bCtReceived = 1;
 		st = CALCULATING_CT;
 		u32LenRecv = 0;
 	}

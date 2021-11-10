@@ -96,7 +96,8 @@ void encapsulate_json(char * pcBuffer)
 			strcat(pcBuffer, cAux);
 
 			//Timestamp
-			sprintf(cAux, "\"timestamp\":\"%02d/%02d/%04d %02d:%02d:%02d\"", clientStruct[u8ClientId].smData.u8Timestamp[3], clientStruct[u8ClientId].smData.u8Timestamp[2], ((u16)(clientStruct[u8ClientId].smData.u8Timestamp[0]) << 8) | clientStruct[u8ClientId].smData.u8Timestamp[1], clientStruct[u8ClientId].smData.u8Timestamp[4], clientStruct[u8ClientId].smData.u8Timestamp[5], clientStruct[u8ClientId].smData.u8Timestamp[6]);
+			sprintf(cAux, "\"timestamp\":\"%02d/%02d/%04d %02d:%02d:%02d\"", clientStruct[u8ClientId].smData.u8Timestamp[3], clientStruct[u8ClientId].smData.u8Timestamp[2], ((u16)(clientStruct[u8ClientId].smData.u8Timestamp[u8ClientId]) << 8) | clientStruct[u8ClientId].smData.u8Timestamp[1], clientStruct[u8ClientId].smData.u8Timestamp[4], clientStruct[u8ClientId].smData.u8Timestamp[5], clientStruct[u8ClientId].smData.u8Timestamp[6]);
+			print_debug(DEBUG_MAIN, "Debug: %s\r\n", cAux);
 			strcat(pcBuffer, cAux);
 
 			//Comma

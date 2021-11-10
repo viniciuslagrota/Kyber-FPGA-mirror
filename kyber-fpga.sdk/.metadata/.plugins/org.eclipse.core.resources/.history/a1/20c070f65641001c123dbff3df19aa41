@@ -66,7 +66,6 @@ extern volatile int dhcp_timoutcntr;
 //
 //////////////////////////////////////////////
 extern enum state st;
-extern bool bCtReceived;
 extern uint8_t pk[CRYPTO_PUBLICKEYBYTES];
 #if SERVER_INIT == 0
 extern uint8_t sk[CRYPTO_SECRETKEYBYTES];
@@ -703,17 +702,12 @@ int main(void)
 
 //		sleep(1);
 #else
-        //Force go to calculating CT if message received. Necessary if code is inside any function and returns to its previous state.
-        if(bCtReceived)
-            st = CALCULATING_CT;
-
 		switch(st)
 		{
 			case WAITING_PK:
 				//Do nothing, just wait.
 			break;
 			case CALCULATING_CT:
-				bCtReceived = 0;
 				print_debug(DEBUG_MAIN, "Calculating CT...\r\n");
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "pk rcv: ");
@@ -864,12 +858,6 @@ int main(void)
 			case WAITING_CIPHER_MESSAGE_ACK:
 				//Do nothing.
 			break;
-			case RECONNECTING:
-				sleep(5);
-				start_application();
-				st = WAITING_PK;
-			break;
-
 		}
 #endif
 #endif

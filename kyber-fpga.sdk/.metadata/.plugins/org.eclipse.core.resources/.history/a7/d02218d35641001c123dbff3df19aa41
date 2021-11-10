@@ -155,14 +155,12 @@ static void tcp_client_close(struct tcp_pcb *pcb)
 		}
 	}
 
-	print_debug(DEBUG_ETH, "TCP client closed.\r\n");
 #if SERVER_INIT == 0
 	//Change st
 	st = WAITING_SERVER_CONNECTION;
 #else
 	//Change st
-//	st = WAITING_PK;
-	st = RECONNECTING;
+	st = WAITING_PK;
 #endif
 }
 
@@ -177,7 +175,7 @@ static void tcp_client_err(void *arg, err_t err)
 	c_pcb = NULL;
 	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
 	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
-//	print_debug(DEBUG_ETH, "TCP connection error and ignored\n\r");
+	print_debug(DEBUG_ETH, "TCP connection error and ignored\n\r");
 }
 
 static err_t tcp_send_perf_traffic(void)
@@ -449,7 +447,6 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 
 	if(u32LenRecv >= CRYPTO_PUBLICKEYBYTES)
 	{
-		bCtReceived = 1;
 		st = CALCULATING_CT;
 		u32LenRecv = 0;
 	}
