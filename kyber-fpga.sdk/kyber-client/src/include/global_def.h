@@ -17,12 +17,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
+#include <limits.h>
 
 //Hardware
 #include "xil_printf.h"
 #include "sleep.h"
 #include "xgpio.h"
 #include "xgpiops.h"
+#include "xuartps.h"
 #include "xadcps.h"
 #include "xaxidma.h"
 #include "xscutimer.h"
@@ -33,14 +36,39 @@
 #include "kem.h"
 #include "reduce.h"
 #include "aes256ctr.h"
+#include "aes256gcm.h"
+#include "weg_smw3000.h"
 
 //////////////////////////////////////////////
 //
-//	Change key type
+//	Pinout
 //
 //////////////////////////////////////////////
+/*
+ * PMOD_09: RX
+ * PMOD_10: TX
+ * PMOD_11: GND
+ */
+
+//////////////////////////////////////////////
+//
+//	CHANGE ONLY HERE
+//
+//////////////////////////////////////////////
+#define KEM_TEST_ONLY		0	//1: only perform KEM | 0: perform KEM and data exchange.
+#define PERFORMANCE_MODE	0	//1: suppress prints | 0: enable prints
+#define USE_HW_ACCELERATION	1	//1: use hardware acceleration | 0: do not use hardware acceleration
 #define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
-#define CHANGE_KEY_TIME		2   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 0.
+#define SIMULATED_DATA		0	//1: fixed and simulated data from SMW3000 | 0: acquire data from SMW3000
+#define CHANGE_KEY_TIME		60  //In seconds, if zero, does not perform AES. Only valid when SERVER_INIT = 0
+#define INACTIVE_TIMEOUT	30	//In seconds.
+
+//////////////////////////////////////////////
+//
+//	SMW3000
+//
+//////////////////////////////////////////////
+#define MAX_TRY				5 	//Maximum attempts to connect with SMW3000
 
 //////////////////////////////////////////////
 //
@@ -94,8 +122,8 @@
 //	Software timer timeout counter
 //
 //////////////////////////////////////////////
-#define TIMER_LOAD_VALUE		5*(XPAR_CPU_CORTEXA9_0_CPU_CLK_FREQ_HZ/2) //1 second if prescale = 0
-#define PRESCALE				11 // Total time wait = (PRESCALE + 1) * TIMER_LOAD_VALUE
+#define TIMER_LOAD_VALUE		(XPAR_CPU_CORTEXA9_0_CPU_CLK_FREQ_HZ/2) //1 second if prescale = 0
+#define PRESCALE				0 // Total time wait = (PRESCALE + 1) * TIMER_LOAD_VALUE
 
 //////////////////////////////////////////////
 //
@@ -120,25 +148,62 @@
 //////////////////////////////////////////////
 #define DEBUG_GLOBAL_ENABLED 		1
 #define DEBUG_ERROR					1
-//Main
-#define DEBUG_MAIN					1
-//Test KEM
-#define DEBUG_TEST_KEM				1
-//Accelerations
-#define DEBUG_TIME					1
-#define DEBUG_KYBER					0
+
+#if PERFORMANCE_MODE == 1
+	//Main
+	#define DEBUG_MAIN					0
+	//Test KEM
+	#define DEBUG_TEST_KEM				0
+	//Accelerations
+	#define DEBUG_TIME					0
+	#define DEBUG_KYBER					0
+	//ETH
+	#define	DEBUG_ETH					1
+	//SMW3000
+	#define DEBUG_SM_LVL0				0
+	#define DEBUG_SM_LVL1				0
+	#define DEBUG_SM_LVL2				0
+	#define DEBUG_SM_ERROR				1
+#else
+	//Main
+	#define DEBUG_MAIN					1
+	//Test KEM
+	#define DEBUG_TEST_KEM				1
+	//Accelerations
+	#define DEBUG_TIME					1
+	#define DEBUG_KYBER					1
+	//ETH
+	#define	DEBUG_ETH					1
+	//SMW3000
+	#define DEBUG_SM_LVL0				0
+	#define DEBUG_SM_LVL1				0
+	#define DEBUG_SM_LVL2				1
+	#define DEBUG_SM_ERROR				1
+#endif
+
+//////////////////////////////////////////////
+//
+//	SMW3000
+//
+//////////////////////////////////////////////
+#define LOOP_TEST_SMW3000			0
 
 //////////////////////////////////////////////
 //
 //	Debug print
 //
 //////////////////////////////////////////////
-#define print_debug(debugLevel, ...) \
+//#define print_debug(debugLevel, ...) \
+//	do { \
+//		if (DEBUG_GLOBAL_ENABLED && (debugLevel == 1)) \
+//			printf(__VA_ARGS__); \
+//		} while (0)
+
+#define print_debug(debugLevel, fmt, ...) \
 	do { \
 		if (DEBUG_GLOBAL_ENABLED && (debugLevel == 1)) \
-			printf(__VA_ARGS__); \
+			printf("%s:%d:%s() | " fmt, __FILE__, __LINE__, __func__, ## __VA_ARGS__); \
 		} while (0)
-
 
 //////////////////////////////////////////////
 //
@@ -208,13 +273,16 @@ enum state
 	WAITING_PK,
 	CALCULATING_CT,
 	SENDING_CT,
-	CALCULATE_AES_BLOCK,
+	GET_SMW3000_DATA,
 	CIPHER_MESSAGE,
-	SEND_CIPHER_MESSAGE
+	SEND_CIPHER_MESSAGE,
+	WAITING_CIPHER_MESSAGE_ACK,
+	RECONNECTING
 };
 #endif
 
 enum state st;
+bool bCtReceived;
 uint8_t pk[CRYPTO_PUBLICKEYBYTES];
 #if SERVER_INIT == 0
 uint8_t sk[CRYPTO_SECRETKEYBYTES];
@@ -232,9 +300,9 @@ struct netif *netif;
 //	AES
 //
 //////////////////////////////////////////////
-uint8_t u8AesKeystream[32];
-char cPlaintext[32];
-char cCiphertext[32];
+uint8_t u8AesKeystream[1024];
+char cPlaintext[1024];
+char cCiphertext[1024];
 
 //////////////////////////////////////////////
 //
@@ -261,6 +329,9 @@ XGpio XGpioDma;
 
 XAxiDma_Config * XAxiDmaConfig;
 XAxiDma XAxiDmaPtr;
+
+XUartPs_Config * XUartConfig0;
+XUartPs XUart0;
 
 //u32 *memoryBram0;
 //u32 *memoryBram1;
@@ -305,6 +376,8 @@ u32 u32KeccakSwTime, u32KeccakSwIt;
 //
 //////////////////////////////////////////////
 void getChipTemperature();
+u32 getAndInitializeRandomSeed();
+void setRandomSeed(u32 u32RandomSeed);
 void ledInit(XGpioPs * Gpio);
 void configKyberK(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel);
 void configTimer(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel);
@@ -315,5 +388,9 @@ u32 getTimer(XGpio * pStruct, uint8_t ui8Channel);
 void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction);
 void resetTimeVariables();
 void printTimeVariables();
+uint16_t crc16(uint8_t * p, unsigned long len);
+uint8_t incrementNonce(uint8_t * nonce, size_t sSize);
+uint8_t generateNonce(uint32_t u32Seed, uint8_t * nonce, size_t sSize);
+void printNonce(uint8_t * nonce);
 
 #endif /* SRC_INCLUDE_GLOBAL_DEF_H_ */

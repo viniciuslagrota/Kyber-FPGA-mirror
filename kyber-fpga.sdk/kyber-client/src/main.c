@@ -36,6 +36,7 @@
 #include "lwipopts.h"
 #include "xil_printf.h"
 #include "sleep.h"
+#include "lwip/ip_addr.h"
 #include "lwip/priv/tcp_priv.h"
 #include "lwip/init.h"
 #include "lwip/inet.h"
@@ -54,7 +55,7 @@
 extern volatile int dhcp_timoutcntr;
 #endif
 
-#define DEFAULT_IP_ADDRESS	"192.168.1.10"
+#define DEFAULT_IP_ADDRESS	"192.168.1.3"
 #define DEFAULT_IP_MASK		"255.255.255.0"
 #define DEFAULT_GW_ADDRESS	"192.168.1.1"
 #endif /* LWIP_IPV6 */
@@ -65,6 +66,7 @@ extern volatile int dhcp_timoutcntr;
 //
 //////////////////////////////////////////////
 extern enum state st;
+extern bool bCtReceived;
 extern uint8_t pk[CRYPTO_PUBLICKEYBYTES];
 #if SERVER_INIT == 0
 extern uint8_t sk[CRYPTO_SECRETKEYBYTES];
@@ -101,6 +103,9 @@ extern XGpio XGpioNtt;
 
 extern XAxiDma_Config * XAxiDmaConfig;
 extern XAxiDma XAxiDmaPtr;
+
+extern XUartPs_Config * XUartConfig0;
+extern XUartPs XUart0;
 
 //extern u32 *memoryBram0;
 //extern u32 *memoryBram1;
@@ -145,6 +150,8 @@ extern u32 u32KeccakSwTime, u32KeccakSwIt;
 //Timer
 u32 u32Timer;
 uint32_t ui32Integer, ui32Fraction;
+u32 u32CounterSecs = 0;
+u32 u32LastSeen = 0;
 
 //////////////////////////////////////////////
 //
@@ -161,12 +168,25 @@ u32 u32CounterMinutes = 0;
 //	AES
 //
 //////////////////////////////////////////////
-extern uint8_t u8AesKeystream[32];
+extern uint8_t u8AesKeystream[1024];
 uint8_t nonce[12] = {0x0};
+u32 u32Seed;
 
-extern char cPlainText[32];
-extern char cCipherText[32];
+extern char cPlainText[1024];
+extern char cCipherText[1024];
 char aux[32] = "Testando";
+
+gcm_context ctx;            // includes the AES context structure
+unsigned char ucAad[32] = "----Version-1.0.0-AES256-GCM----";
+unsigned char ucTag[16] = { 0x0 };
+
+//////////////////////////////////////////////
+//
+//	SMW3000
+//
+//////////////////////////////////////////////
+uint8_t *psmDataPtr;
+uint8_t *psmCipheredDataPtr;
 
 //////////////////////////////////////////////
 //
@@ -211,8 +231,8 @@ static void print_ipv6(char *msg, ip_addr_t *ip)
 #else
 static void print_ip(char *msg, ip_addr_t *ip)
 {
-	print(msg);
-	xil_printf("%d.%d.%d.%d\r\n", ip4_addr1(ip), ip4_addr2(ip),
+//	print(msg);
+	print_debug(DEBUG_ETH, "%s %d.%d.%d.%d\r\n", msg, ip4_addr1(ip), ip4_addr2(ip),
 			ip4_addr3(ip), ip4_addr4(ip));
 }
 
@@ -227,34 +247,32 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 {
 	int err;
 
-	xil_printf("Configuring default IP %s \r\n", DEFAULT_IP_ADDRESS);
+	print_debug(DEBUG_ETH, "Configuring default IP %s \r\n", DEFAULT_IP_ADDRESS);
 
 	err = inet_aton(DEFAULT_IP_ADDRESS, ip);
 	if (!err)
-		xil_printf("Invalid default IP address: %d\r\n", err);
+		print_debug(DEBUG_ERROR, "Invalid default IP address: %d\r\n", err);
 
 	err = inet_aton(DEFAULT_IP_MASK, mask);
 	if (!err)
-		xil_printf("Invalid default IP MASK: %d\r\n", err);
+		print_debug(DEBUG_ERROR, "Invalid default IP MASK: %d\r\n", err);
 
 	err = inet_aton(DEFAULT_GW_ADDRESS, gw);
 	if (!err)
-		xil_printf("Invalid default gateway address: %d\r\n", err);
+		print_debug(DEBUG_ERROR, "Invalid default gateway address: %d\r\n", err);
 }
 #endif /* LWIP_IPV6 */
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
 void configSoftwareTimer()
 {
 	xTimerConfig = XScuTimer_LookupConfig(XPAR_PS7_SCUTIMER_0_DEVICE_ID);
 	XScuTimer_CfgInitialize(&xTimer, xTimerConfig, xTimerConfig->BaseAddr);
 	XScuTimer_DisableAutoReload(&xTimer);
-	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
+//	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
 	XScuTimer_LoadTimer(&xTimer, TIMER_LOAD_VALUE);
-//	XScuTimer_Start(&xTimer);
-	xil_printf("Timer configured.\r\n");
+	XScuTimer_Start(&xTimer);
+	print_debug(DEBUG_MAIN, "Timer configured.\r\n");
 }
-#endif
 //////////////////////////////////////////////
 //
 //	Main
@@ -295,6 +313,11 @@ int main(void)
 	XGpioPs Gpio;
 	ledInit(&Gpio);
 
+	//---- Initialize UART0 ----
+	XUartConfig0 = XUartPs_LookupConfig(XPAR_PS7_UART_0_DEVICE_ID);
+	XUartPs_CfgInitialize(&XUart0, XUartConfig0, XUartConfig0->BaseAddress);
+	XUartPs_SetBaudRate(&XUart0, 115200);
+
 	//---- DMA variables ----
 	int Status;
 	TxBufferPtr = (u8 *)TX_BUFFER_BASE ;
@@ -309,7 +332,7 @@ int main(void)
 
 	//---- Configure Kyber K ----
 	configKyberK(XGpioConfigKyberK, &XGpioKyberK, XPAR_AXI_GPIO_1_DEVICE_ID, 1);
-	print_debug(DEBUG_MAIN, "[MAIN] Parameter KYBER_K: %ld.\n", XGpio_DiscreteRead(&XGpioKyberK, 1));
+	print_debug(DEBUG_MAIN, "Parameter KYBER_K: %ld.\n", XGpio_DiscreteRead(&XGpioKyberK, 1));
 
 	//Poly tomont and reduce
 	XGpioConfigTomontAndReduce = XGpio_LookupConfig(XPAR_AXI_GPIO_2_DEVICE_ID);
@@ -335,24 +358,119 @@ int main(void)
 	//---- Configure DMA ----
 	XAxiDmaConfig = XAxiDma_LookupConfig(XPAR_AXIDMA_0_DEVICE_ID);
 	if (!XAxiDmaConfig) {
-		print_debug(DEBUG_MAIN, "[MAIN] No config found for %d\r\n", XPAR_AXIDMA_0_DEVICE_ID);
+		print_debug(DEBUG_MAIN, "No config found for %d\r\n", XPAR_AXIDMA_0_DEVICE_ID);
 		return XST_FAILURE;
 	}
 
 	Status = XAxiDma_CfgInitialize(&XAxiDmaPtr, XAxiDmaConfig);
 	if (Status != XST_SUCCESS) {
-		print_debug(DEBUG_MAIN, "[MAIN] Initialization failed %d\r\n", Status);
+		print_debug(DEBUG_MAIN, "Initialization failed %d\r\n", Status);
 		return XST_FAILURE;
 	}
 
 	if(XAxiDma_HasSg(&XAxiDmaPtr)){
-		print_debug(DEBUG_MAIN, "[MAIN] Device configured as SG mode \r\n");
+		print_debug(DEBUG_MAIN, "Device configured as SG mode \r\n");
 		return XST_FAILURE;
 	}
 
 	//Disable interrupts, we use polling mode
 	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
 	XAxiDma_IntrDisable(&XAxiDmaPtr, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
+
+	//---- SMW3000 variables ----
+	u32 rv;
+
+	//Alloc keystream
+	size_t sSize = sizeof(smDataStruct); //Complete structure
+	size_t sSizeCiphered = sizeof(smDataStruct) - 52; //Ignore u32Seed field
+#if LOOP_TEST_SMW3000 == 1
+	u8 * u8Keystream = (u8 *)malloc(sSize);
+	if(u8Keystream == NULL)
+		print_debug(DEBUG_MAIN, "Failed to alloc pointer.\r\n");
+#endif
+
+	smDataStruct * psmData;
+	smDataStruct * psmCipheredData;
+
+#if LOOP_TEST_SMW3000 == 1
+	//Create key and nonce
+	uint8_t u8Key[32] = { 0x3E };
+	uint8_t u8Nonce[12] = { 0x1F };
+#endif
+
+	smw3000Init();
+
+	smControlStruct * psmControlStruct;
+	psmControlStruct = smw3000GetControlStruct();
+	if(psmControlStruct == NULL)
+		print_debug(DEBUG_MAIN, "Null pointer error.\r\n");
+
+#if LOOP_TEST_SMW3000 == 1
+	while (1) {
+
+		print_debug(DEBUG_MAIN, "\r\n\r\n------------------------------------------------------\r\n", rv);
+
+		rv = smw3000GetAllData();
+		if(rv)
+		{
+			print_debug(DEBUG_MAIN, "Failed to get data (rv: 0x%08x).\r\n", rv);
+			continue;
+		}
+		else
+			print_debug(DEBUG_MAIN, "Data successfully acquired.\r\n");
+
+		//Print data for debug purpose
+		psmData = smw3000GetDataStruct();
+		smw3000PrintDataStruct(psmData);
+
+		//Generate keystream
+		aes256ctr_prf(u8Keystream, sSizeCiphered, u8Key, u8Nonce);
+		print_debug(DEBUG_MAIN, "Keystream (len: %d): ", sSizeCiphered);
+		for(int i = 0; i < sSize; i++)
+		{
+			printf("%02x ", *(u8Keystream + i));
+		}
+		printf("\r\n");
+
+		//Function to encrypt data structure
+		rv = smw3000CipherDataStruct(u8Keystream);
+		if(rv)
+		{
+			print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
+			continue;
+		}
+		else
+			print_debug(DEBUG_MAIN, "Data successfully ciphered.\r\n");
+
+		//Print data for debug purpose
+		psmCipheredData = smw3000GetCipheredDataStruct();
+		smw3000PrintDataStruct(psmCipheredData);
+
+		//Clean data structure
+		memset(psmData, 0x0, sSize);
+		smw3000PrintDataStruct(psmData);
+
+		rv = smw3000DecipherDataStruct(u8Keystream);
+		if(rv)
+		{
+			print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
+			continue;
+		}
+		else
+			print_debug(DEBUG_MAIN, "Data successfully deciphered.\r\n");
+
+		//Print deciphered data
+		smw3000PrintDataStruct(psmData);
+
+		rv = smw3000CheckCrc();
+		if(rv)
+			print_debug(DEBUG_MAIN, "CRC failed.\r\n");
+		else
+			print_debug(DEBUG_MAIN, "CRC success.\r\n");
+
+		sleep(5);
+	}
+#endif
 
 	//System state
 	u32SystemState = 0;
@@ -371,7 +489,7 @@ int main(void)
 	/* Add network interface to the netif_list, and set it as default */
 	if (!xemac_add(netif, NULL, NULL, NULL, mac_ethernet_address,
 				PLATFORM_EMAC_BASEADDR)) {
-		xil_printf("Error adding N/W interface\r\n");
+		print_debug(DEBUG_MAIN, "Error adding N/W interface\r\n");
 		return -1;
 	}
 
@@ -402,7 +520,7 @@ int main(void)
 
 	if (dhcp_timoutcntr <= 0) {
 		if ((netif->ip_addr.addr) == 0) {
-			xil_printf("ERROR: DHCP request timed out\r\n");
+			print_debug(DEBUG_MAIN, "ERROR: DHCP request timed out\r\n");
 			assign_default_ip(&(netif->ip_addr),
 					&(netif->netmask), &(netif->gw));
 		}
@@ -423,15 +541,17 @@ int main(void)
 	start_application();
 	xil_printf("\r\n");
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
-	//Software timer
 	configSoftwareTimer();
+
+#if USE_HW_ACCELERATION == 1
+	u32SystemState = 0x3f;
+#else
+	u32SystemState = 0x00;
 #endif
 
-	//Use only hardware!
-	u32SystemState = 0x3f;
-	//Use only software
-//	u32SystemState = 0x00;
+
+	//Initialize AES256-GCM
+	gcm_initialize();
 
 	while (1) {
 
@@ -442,23 +562,6 @@ int main(void)
 		XGpioPs_WritePin(&Gpio, ledpin, u32LedState);
 		u32LedState ^= 0x1;
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
-		//Timer
-		timerValue = XScuTimer_GetCounterValue(&xTimer);
-		if(timerValue == 0)
-		{
-//			xil_printf("Timer!!!!!!!!!!!\r\n");
-			XScuTimer_RestartTimer(&xTimer);
-			u32CounterMinutes++;
-			if(u32CounterMinutes >= CHANGE_KEY_TIME)
-			{
-				xil_printf("Change key!\r\n");
-				u32CounterMinutes = 0;
-				st = CREATE_KEY_PAIR;
-			}
-		}
-#endif
-
 		if (TcpFastTmrFlag) {
 			tcp_fasttmr();
 			TcpFastTmrFlag = 0;
@@ -468,6 +571,27 @@ int main(void)
 			TcpSlowTmrFlag = 0;
 		}
 		xemacif_input(netif);
+
+		//Timer
+		timerValue = XScuTimer_GetCounterValue(&xTimer);
+		if(timerValue == 0)
+		{
+			XScuTimer_RestartTimer(&xTimer);
+			u32CounterSecs++;
+			if(u32CounterSecs >= CHANGE_KEY_TIME)
+				u32CounterSecs = 0;
+
+			//Check if system is for so long inactive.
+			u32 u32InactiveTimeout = u32LastSeen + INACTIVE_TIMEOUT;
+			if(u32InactiveTimeout > CHANGE_KEY_TIME)
+				u32InactiveTimeout -= CHANGE_KEY_TIME;
+			if(u32InactiveTimeout == u32CounterSecs && st != WAITING_PK)
+			{
+				print_debug(DEBUG_MAIN, "System timeout, stuck in st %d...\r\n", st);
+				st = RECONNECTING;
+			}
+
+		}
 
 #if PERFORMANCE_TEST == 1
 //		//Transfer performance data
@@ -482,7 +606,7 @@ int main(void)
 				//Do nothing. Wait connection.
 			break;
 			case CONNECTED_TO_SERVER:
-				xil_printf("Connected to server!\r\n");
+				print_debug(DEBUG_MAIN, "Connected to server!\r\n");
 				XScuTimer_Start(&xTimer);
 				st = CREATE_KEY_PAIR;
 			break;
@@ -492,7 +616,7 @@ int main(void)
 				//Start timer
 				resetTimer(&XGpioGlobalTimer, 1);
 				u32Timer = getTimer(&XGpioGlobalTimer, 1);
-				print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
+				print_debug(DEBUG_MAIN, "Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
 				startTimer(&XGpioGlobalTimer, 1);
 
 				//Generate key pair
@@ -501,8 +625,8 @@ int main(void)
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "Public key: ");
 				for(int i = 0; i < CRYPTO_PUBLICKEYBYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", pk[i]);
-				print_debug(DEBUG_MAIN, "\r\n\r\n");
+					printf("%x", pk[i]);
+				printf("\r\n\r\n");
 #endif
 				st = SEND_PK;
 			break;
@@ -516,11 +640,12 @@ int main(void)
 			break;
 			case CALCULATE_SHARED_SECRET:
 				//Check CT received
+
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "ct received: ");
 				for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", ct[i]);
-				print_debug(DEBUG_MAIN, "\n\r");
+					printf("%x", ct[i]);
+				printf("\n\r");
 #endif
 
 				//Decapsulation
@@ -530,25 +655,27 @@ int main(void)
 				stopTimer(&XGpioGlobalTimer, 1);
 				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
 				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
-				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+				print_debug(DEBUG_MAIN, "Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
 
 				//Check shared secret
+#if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "key_a calculated: ");
 				for(int i = 0; i < CRYPTO_BYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", key_a[i]);
-				print_debug(DEBUG_MAIN, "\n\r\n\r");
-
+					printf("%x", key_a[i]);
+				printf("\n\r\n\r");
+#endif
 //				st = CREATE_KEY_PAIR;
 				st = CALCULATE_AES_BLOCK;
 			break;
 			case CALCULATE_AES_BLOCK:
 				nonce[0]++;
-				aes256ctr_prf(u8AesKeystream, 32, key_a, nonce);
+				aes256ctr_prf(u8AesKeystream, sSize, key_a, nonce);
+#if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "aes256 calculated: ");
 				for(int i = 0; i < 32; i++)
-					print_debug(DEBUG_MAIN, "%02x", u8AesKeystream[i]);
-				print_debug(DEBUG_MAIN, "\n\r");
-
+					printf("%02x", u8AesKeystream[i]);
+				printf("\n\r");
+#endif
 				st = WAIT_CIPHERED_DATA;
 			break;
 			case WAIT_CIPHERED_DATA:
@@ -569,7 +696,7 @@ int main(void)
 				}
 //				print_debug(DEBUG_MAIN, "\n\r");
 				print_debug(DEBUG_MAIN, "Achieved plaintext: %s\r\n", cPlaintext);
-				print_debug(DEBUG_MAIN, "\n\r\n\r");
+				printf("\n\r\n\r");
 
 				st = CALCULATE_AES_BLOCK;
 			break;
@@ -577,100 +704,179 @@ int main(void)
 
 //		sleep(1);
 #else
+        //Force go to calculating CT if message received. Necessary if code is inside any function and returns to its previous state.
+        if(bCtReceived)
+            st = CALCULATING_CT;
+
 		switch(st)
 		{
 			case WAITING_PK:
 				//Do nothing, just wait.
 			break;
 			case CALCULATING_CT:
-
+				bCtReceived = 0;
+				u32LastSeen = u32CounterSecs;
+				print_debug(DEBUG_MAIN, "Calculating CT...\r\n");
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "pk rcv: ");
 				for(int i = 0; i < CRYPTO_PUBLICKEYBYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", pk[i]);
-				print_debug(DEBUG_MAIN, "\n\r\n\r");
+					printf("%x", pk[i]);
+				printf("\n\r\n\r");
 #endif
 
 				//Start timer
 				resetTimer(&XGpioGlobalTimer, 1);
 				u32Timer = getTimer(&XGpioGlobalTimer, 1);
-				print_debug(DEBUG_MAIN, "[MAIN] Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
+				print_debug(DEBUG_MAIN, "Reset Timer SW: %ld ns\n", u32Timer * HW_CLOCK_PERIOD);
 				startTimer(&XGpioGlobalTimer, 1);
 
 				crypto_kem_enc(ct, key_b, pk);
 
-#if DEBUG_KYBER == 1
-				print_debug(DEBUG_MAIN, "ct calculated: ");
-				for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
-					print_debug(DEBUG_MAIN, "%x", ct[i]);
-				print_debug(DEBUG_MAIN, "\n\r");
-#endif
-
 				st = SENDING_CT;
 			break;
 			case SENDING_CT:
-
+				u32LastSeen = u32CounterSecs;
+				print_debug(DEBUG_MAIN, "Sending CT...\r\n");
 //				transfer_data(cTxBuffer, sizeof(cTxBuffer));
 				transfer_data((char *)ct, CRYPTO_CIPHERTEXTBYTES);
+
+#if DEBUG_KYBER == 1
+				print_debug(DEBUG_MAIN, "ct calculated: ");
+				for(int i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++)
+					printf("%x", ct[i]);
+				printf("\n\r");
+#endif
 
 				//Stop timer
 				stopTimer(&XGpioGlobalTimer, 1);
 				u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
 				floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
-				print_debug(DEBUG_MAIN, "[MAIN] Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+				print_debug(DEBUG_MAIN, "Timer (hw) to process KEM (client side): %lu.%03lu ms\n", ui32Integer, ui32Fraction);
 
 				//Check shared secret
+#if DEBUG_MAIN == 1
 				print_debug(DEBUG_MAIN, "key_b calculated: ");
 				for(int i = 0; i < CRYPTO_BYTES; i++)
-					print_debug(DEBUG_MAIN, "%02x", key_b[i]);
-				print_debug(DEBUG_MAIN, "\n\r");
+					printf("%02x", key_b[i]);
+				printf("\n\r");
+#endif
+				print_debug(DEBUG_MAIN, "CT sent!\r\n");
 
-//				st = WAITING_PK;
-				st = CALCULATE_AES_BLOCK;
-			break;
-			case CALCULATE_AES_BLOCK:
-				nonce[0]++;
-				aes256ctr_prf(u8AesKeystream, 32, key_b, nonce);
-				print_debug(DEBUG_MAIN, "aes256 block calculated: ");
-				for(int i = 0; i < 32; i++)
-					print_debug(DEBUG_MAIN, "%02x", u8AesKeystream[i]);
-				print_debug(DEBUG_MAIN, "\n\r");
+				//Restart nonce
+				memset(nonce, 0x0, 12);
 
-				usleep(10000); //Wait 10 ms
-				st = CIPHER_MESSAGE;
-			break;
-			case CIPHER_MESSAGE:
-				//Initialize plaintext
+#if KEM_TEST_ONLY == 1
+				st = WAITING_PK;
+#else
+				st = GET_SMW3000_DATA;
+#endif
+				break;
+			case GET_SMW3000_DATA:
+				u32LastSeen = u32CounterSecs;
+				print_debug(DEBUG_MAIN, "Getting SMW3000 data...\r\n");
 
-				//TODO: mudar aqui a mensagem que se deseja enviar para o server.
-				memcpy(cPlaintext, aux, 32);
+				//Get data pointer
+				psmData = smw3000GetDataStruct();
 
-				print_debug(DEBUG_MAIN, "Sent plaintext: %s\r\n", cPlaintext);
-//				print_debug(DEBUG_MAIN, "Plaintext (bytes): ");
-//				for(int i = 0; i < 32; i++)
-//				{
-//					print_debug(DEBUG_MAIN, "%02x", cPlaintext[i]);
-//				}
-//				print_debug(DEBUG_MAIN, "\n\r");
-//				print_debug(DEBUG_MAIN, "Ciphertext (bytes): ");
-				for(int i = 0; i < 32; i++)
+				for(int j = 0; j < MAX_TRY; j++)
 				{
-					cCiphertext[i] = cPlaintext[i] ^ u8AesKeystream[i];
-//					print_debug(DEBUG_MAIN, "%02x", cCiphertext[i]);
+#if SIMULATED_DATA == 0
+					rv = smw3000GetAllData();
+#else
+					memcpy(psmData->u8DeviceName, "WEG1053152173", 13);
+					psmData->u8Timestamp[0] = 0x07;
+					psmData->u8Timestamp[1] = 0xE5;
+					psmData->u8Timestamp[2] = 0x09;
+					psmData->u8Timestamp[3] = 0x19;
+					psmData->u8Timestamp[4] = 0x10;
+					psmData->u8Timestamp[5] = 0x2F;
+					psmData->u8Timestamp[6] = 0x33;
+					psmData->u32VoltageL1 = 212233;
+					psmData->u32VoltageL2 = 370;
+					psmData->u32VoltageL3 = 401;
+					psmData->u32CurrentL1 = 215;
+					psmData->u32CurrentL2 = 0;
+					psmData->u32CurrentL3 = 0;
+					psmData->u32CurrentN = 230;
+					psmData->u16Crc = 0x3367;
+					rv = 0;
+#endif
+					if(rv)
+					{
+						print_debug(DEBUG_ERROR, "Failed to get data (rv: 0x%08x).\r\n", rv);
+						usleep(10000);
+					}
+					else
+					{
+						print_debug(DEBUG_MAIN, "Data successfully acquired.\r\n");
+						break;
+					}
 				}
-				print_debug(DEBUG_MAIN, "\n\r\n\r");
+
+				if(!rv)
+					st = CIPHER_MESSAGE;
+				break;
+			case CIPHER_MESSAGE:
+				u32LastSeen = u32CounterSecs;
+				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
+
+				//Get data pointers
+				psmData = smw3000GetDataStruct();
+				psmCipheredData = smw3000GetCipheredDataStruct();
+
+				//Get random seed
+				u32Seed = getAndInitializeRandomSeed();
+
+				//Save seed into structure
+				psmData->u32Seed = u32Seed;
+				psmCipheredData->u32Seed = u32Seed;
+
+				//Save data into plaintext structure for print purpose
+				memcpy(psmData->u8Aad, ucAad, 32);
+				memset(ucTag, 0x0, 16);
+				memcpy(psmData->u8Tag, ucTag, 16);
+
+				//Print data for debug purpose
+				smw3000PrintDataStruct(psmData);
+
+				//Calculate nonce
+				rv = generateNonce(u32Seed, nonce, sizeof(nonce));
+				if(rv == 0)
+					print_debug(DEBUG_MAIN, "Error while generating nonce...\r\n");
+				printNonce(nonce);
+
+				//Set pointer
+				psmDataPtr = (uint8_t*)psmData->u8DeviceName;
+				psmCipheredDataPtr = (uint8_t*)psmCipheredData->u8DeviceName;
+
+				//Perform AES-GCM
+				gcm_setkey(&ctx, key_b, (const uint)CRYPTO_BYTES);   // setup our AES-GCM key
+				gcm_crypt_and_tag(&ctx, ENCRYPT, nonce, 12, ucAad, 32, psmDataPtr, psmCipheredDataPtr, sSizeCiphered, ucTag, 16);
+				memcpy(psmCipheredData->u8Aad, ucAad, 32);
+				memcpy(psmCipheredData->u8Tag, ucTag, 16);
+
+				//Print data for debug purpose
+				smw3000PrintDataStruct(psmCipheredData);
 
 				st = SEND_CIPHER_MESSAGE;
-
 			break;
 			case SEND_CIPHER_MESSAGE:
-				transfer_data((char *)cCiphertext, 32);
+				u32LastSeen = u32CounterSecs;
+				print_debug(DEBUG_MAIN, "Sending ciphered message...\r\n");
+				transfer_data((char *)psmCipheredData, sSize);
 
-				//Wait to send next message
-				sleep(10);
-
-				st = CALCULATE_AES_BLOCK;
+				st = WAITING_CIPHER_MESSAGE_ACK;
 			break;
+			case WAITING_CIPHER_MESSAGE_ACK:
+				//Do nothing.
+			break;
+			case RECONNECTING:
+				u32LastSeen = u32CounterSecs;
+				sleep(5);
+				start_application();
+				st = WAITING_PK;
+			break;
+
 		}
 #endif
 #endif

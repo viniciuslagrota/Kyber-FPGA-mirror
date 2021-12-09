@@ -86,7 +86,7 @@ struct perf_stats {
 };
 
 /* seconds between periodic bandwidth reports */
-#define INTERIM_REPORT_INTERVAL 5
+#define INTERIM_REPORT_INTERVAL 60
 
 /* Client port to connect */
 #define TCP_CONN_PORT 5001
@@ -99,7 +99,7 @@ struct perf_stats {
 #define TCP_SERVER_IPV6_ADDRESS "fe80::6600:6aff:fe71:fde6"
 #else
 /* Server to connect with */
-#define TCP_SERVER_IP_ADDRESS "192.168.1.100"
+#define TCP_SERVER_IP_ADDRESS "192.168.1.2"
 #endif
 
 #define TCP_SEND_BUFSIZE (5*TCP_MSS)
