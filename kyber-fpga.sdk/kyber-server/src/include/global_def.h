@@ -48,7 +48,8 @@
 #define PERFORMANCE_MODE	0	//1: suppress prints | 0: enable prints
 #define USE_HW_ACCELERATION 1	//1: use hardware acceleration | 0: do not use hardware acceleration
 #define SERVER_INIT			1	//1: Server generate key pair and send PK | 0: Server waits PK from client
-#define CHANGE_KEY_TIME		5   //In minutes, if zero, do not perform AES. Only valid when SERVER_INIT = 1.
+#define CHANGE_KEY_TIME		60  //In seconds, if zero, do not perform change key. Only valid when SERVER_INIT = 1.
+#define INACTIVE_TIMEOUT	30	//In seconds.
 
 //////////////////////////////////////////////
 //
@@ -109,8 +110,8 @@
 //	Software timer timeout counter
 //
 //////////////////////////////////////////////
-#define TIMER_LOAD_VALUE		5*(XPAR_CPU_CORTEXA9_0_CPU_CLK_FREQ_HZ/2) //1 second if prescale = 0
-#define PRESCALE				11 // Total time wait = (PRESCALE + 1) * TIMER_LOAD_VALUE
+#define TIMER_LOAD_VALUE		(XPAR_CPU_CORTEXA9_0_CPU_CLK_FREQ_HZ/2) //1 second if prescale = 0
+#define PRESCALE				0 // Total time wait = (PRESCALE + 1) * TIMER_LOAD_VALUE
 
 //////////////////////////////////////////////
 //
@@ -232,7 +233,7 @@
 
 //////////////////////////////////////////////
 //
-//	Kyber variables
+//	Kyber states
 //
 //////////////////////////////////////////////
 #if SERVER_INIT == 1
@@ -245,7 +246,8 @@ enum state
 	WAITING_CT,
 	CALCULATE_SHARED_SECRET,
 	WAIT_CIPHERED_DATA,
-	DECIPHER_MESSAGE
+	DECIPHER_MESSAGE,
+	DISCONNECT_CLIENT
 };
 #else
 enum state
@@ -259,14 +261,41 @@ enum state
 };
 #endif
 
+//////////////////////////////////////////////
+//
+//	Clients
+//
+//////////////////////////////////////////////
+#define MAXIMUM_CLIENTS			5
 enum state st;
+//enum state stClient[MAXIMUM_CLIENTS];
+//bool bClientConnected[MAXIMUM_CLIENTS];
+
+struct clientStructure
+{
+	bool bClientConnected;
+	enum state stClient;
+	struct tcp_pcb *c_pcb;
+	uint32_t u32ChangeKeySec;
+	bool bChangeKey;
+	smDataStruct smData;
+	bool bNewDataMonitoring;
+	uint32_t u32LastSeen;
+};
+struct clientStructure clientStruct[MAXIMUM_CLIENTS+1];
+
+//////////////////////////////////////////////
+//
+//	Kyber variables
+//
+//////////////////////////////////////////////
 uint8_t pk[CRYPTO_PUBLICKEYBYTES];
 #if SERVER_INIT == 1
 uint8_t sk[CRYPTO_SECRETKEYBYTES];
 #endif
 uint8_t ct[CRYPTO_CIPHERTEXTBYTES];
 #if SERVER_INIT == 1
-uint8_t key_a[CRYPTO_BYTES];
+uint8_t key_a[MAXIMUM_CLIENTS][CRYPTO_BYTES];
 #else
 uint8_t key_b[CRYPTO_BYTES];
 #endif

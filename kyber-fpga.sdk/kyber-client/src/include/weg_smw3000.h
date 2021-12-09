@@ -8,7 +8,7 @@
 #ifndef SRC_INCLUDE_WEG_SMW3000_H_
 #define SRC_INCLUDE_WEG_SMW3000_H_
 
-#include "global_def.h"
+#include "xil_types.h"
 
 //////////////////////////////////////////////
 //
@@ -79,6 +79,13 @@ typedef struct smDataStruct {
 	u32 u32CurrentN;
 	u16 u16Crc;
 } smDataStruct;
+
+//////////////////////////////////////////////
+//
+//	Include global_def.h
+//
+//////////////////////////////////////////////
+#include "global_def.h"
 
 //////////////////////////////////////////////
 //

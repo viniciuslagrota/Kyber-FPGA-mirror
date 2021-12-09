@@ -36,6 +36,7 @@
 #include "lwipopts.h"
 #include "xil_printf.h"
 #include "sleep.h"
+#include "lwip/ip_addr.h"
 #include "lwip/priv/tcp_priv.h"
 #include "lwip/init.h"
 #include "lwip/inet.h"
@@ -54,7 +55,7 @@
 extern volatile int dhcp_timoutcntr;
 #endif
 
-#define DEFAULT_IP_ADDRESS	"192.168.1.10"
+#define DEFAULT_IP_ADDRESS	"192.168.1.3"
 #define DEFAULT_IP_MASK		"255.255.255.0"
 #define DEFAULT_GW_ADDRESS	"192.168.1.1"
 #endif /* LWIP_IPV6 */
@@ -65,6 +66,7 @@ extern volatile int dhcp_timoutcntr;
 //
 //////////////////////////////////////////////
 extern enum state st;
+extern bool bCtReceived;
 extern uint8_t pk[CRYPTO_PUBLICKEYBYTES];
 #if SERVER_INIT == 0
 extern uint8_t sk[CRYPTO_SECRETKEYBYTES];
@@ -148,6 +150,8 @@ extern u32 u32KeccakSwTime, u32KeccakSwIt;
 //Timer
 u32 u32Timer;
 uint32_t ui32Integer, ui32Fraction;
+u32 u32CounterSecs = 0;
+u32 u32LastSeen = 0;
 
 //////////////////////////////////////////////
 //
@@ -259,18 +263,16 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 }
 #endif /* LWIP_IPV6 */
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
 void configSoftwareTimer()
 {
 	xTimerConfig = XScuTimer_LookupConfig(XPAR_PS7_SCUTIMER_0_DEVICE_ID);
 	XScuTimer_CfgInitialize(&xTimer, xTimerConfig, xTimerConfig->BaseAddr);
 	XScuTimer_DisableAutoReload(&xTimer);
-	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
+//	XScuTimer_SetPrescaler(&xTimer, PRESCALE);
 	XScuTimer_LoadTimer(&xTimer, TIMER_LOAD_VALUE);
-//	XScuTimer_Start(&xTimer);
+	XScuTimer_Start(&xTimer);
 	print_debug(DEBUG_MAIN, "Timer configured.\r\n");
 }
-#endif
 //////////////////////////////////////////////
 //
 //	Main
@@ -539,10 +541,7 @@ int main(void)
 	start_application();
 	xil_printf("\r\n");
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
-	//Software timer
 	configSoftwareTimer();
-#endif
 
 #if USE_HW_ACCELERATION == 1
 	u32SystemState = 0x3f;
@@ -563,23 +562,6 @@ int main(void)
 		XGpioPs_WritePin(&Gpio, ledpin, u32LedState);
 		u32LedState ^= 0x1;
 
-#if SERVER_INIT == 0 && CHANGE_KEY_TIME != 0
-		//Timer
-		timerValue = XScuTimer_GetCounterValue(&xTimer);
-		if(timerValue == 0)
-		{
-//			xil_printf("Timer!!!!!!!!!!!\r\n");
-			XScuTimer_RestartTimer(&xTimer);
-			u32CounterMinutes++;
-			if(u32CounterMinutes >= CHANGE_KEY_TIME)
-			{
-				print_debug(DEBUG_MAIN, "Change key!\r\n");
-				u32CounterMinutes = 0;
-				st = CREATE_KEY_PAIR;
-			}
-		}
-#endif
-
 		if (TcpFastTmrFlag) {
 			tcp_fasttmr();
 			TcpFastTmrFlag = 0;
@@ -589,6 +571,27 @@ int main(void)
 			TcpSlowTmrFlag = 0;
 		}
 		xemacif_input(netif);
+
+		//Timer
+		timerValue = XScuTimer_GetCounterValue(&xTimer);
+		if(timerValue == 0)
+		{
+			XScuTimer_RestartTimer(&xTimer);
+			u32CounterSecs++;
+			if(u32CounterSecs >= CHANGE_KEY_TIME)
+				u32CounterSecs = 0;
+
+			//Check if system is for so long inactive.
+			u32 u32InactiveTimeout = u32LastSeen + INACTIVE_TIMEOUT;
+			if(u32InactiveTimeout > CHANGE_KEY_TIME)
+				u32InactiveTimeout -= CHANGE_KEY_TIME;
+			if(u32InactiveTimeout == u32CounterSecs && st != WAITING_PK)
+			{
+				print_debug(DEBUG_MAIN, "System timeout, stuck in st %d...\r\n", st);
+				st = RECONNECTING;
+			}
+
+		}
 
 #if PERFORMANCE_TEST == 1
 //		//Transfer performance data
@@ -701,12 +704,18 @@ int main(void)
 
 //		sleep(1);
 #else
+        //Force go to calculating CT if message received. Necessary if code is inside any function and returns to its previous state.
+        if(bCtReceived)
+            st = CALCULATING_CT;
+
 		switch(st)
 		{
 			case WAITING_PK:
 				//Do nothing, just wait.
 			break;
 			case CALCULATING_CT:
+				bCtReceived = 0;
+				u32LastSeen = u32CounterSecs;
 				print_debug(DEBUG_MAIN, "Calculating CT...\r\n");
 #if DEBUG_KYBER == 1
 				print_debug(DEBUG_MAIN, "pk rcv: ");
@@ -726,6 +735,7 @@ int main(void)
 				st = SENDING_CT;
 			break;
 			case SENDING_CT:
+				u32LastSeen = u32CounterSecs;
 				print_debug(DEBUG_MAIN, "Sending CT...\r\n");
 //				transfer_data(cTxBuffer, sizeof(cTxBuffer));
 				transfer_data((char *)ct, CRYPTO_CIPHERTEXTBYTES);
@@ -762,6 +772,7 @@ int main(void)
 #endif
 				break;
 			case GET_SMW3000_DATA:
+				u32LastSeen = u32CounterSecs;
 				print_debug(DEBUG_MAIN, "Getting SMW3000 data...\r\n");
 
 				//Get data pointer
@@ -806,6 +817,7 @@ int main(void)
 					st = CIPHER_MESSAGE;
 				break;
 			case CIPHER_MESSAGE:
+				u32LastSeen = u32CounterSecs;
 				print_debug(DEBUG_MAIN, "Calculating AES block...\r\n");
 
 				//Get data pointers
@@ -849,6 +861,7 @@ int main(void)
 				st = SEND_CIPHER_MESSAGE;
 			break;
 			case SEND_CIPHER_MESSAGE:
+				u32LastSeen = u32CounterSecs;
 				print_debug(DEBUG_MAIN, "Sending ciphered message...\r\n");
 				transfer_data((char *)psmCipheredData, sSize);
 
@@ -857,6 +870,13 @@ int main(void)
 			case WAITING_CIPHER_MESSAGE_ACK:
 				//Do nothing.
 			break;
+			case RECONNECTING:
+				u32LastSeen = u32CounterSecs;
+				sleep(5);
+				start_application();
+				st = WAITING_PK;
+			break;
+
 		}
 #endif
 #endif

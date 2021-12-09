@@ -155,12 +155,14 @@ static void tcp_client_close(struct tcp_pcb *pcb)
 		}
 	}
 
+	print_debug(DEBUG_ETH, "TCP client closed.\r\n");
 #if SERVER_INIT == 0
 	//Change st
 	st = WAITING_SERVER_CONNECTION;
 #else
 	//Change st
-	st = WAITING_PK;
+//	st = WAITING_PK;
+	st = RECONNECTING;
 #endif
 }
 
@@ -175,6 +177,7 @@ static void tcp_client_err(void *arg, err_t err)
 	c_pcb = NULL;
 	tcp_conn_report(diff_ms, TCP_ABORTED_REMOTE);
 	print_debug(DEBUG_ETH, "TCP connection aborted\n\r");
+//	print_debug(DEBUG_ETH, "TCP connection error and ignored\n\r");
 }
 
 static err_t tcp_send_perf_traffic(void)
@@ -446,6 +449,7 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 
 	if(u32LenRecv >= CRYPTO_PUBLICKEYBYTES)
 	{
+		bCtReceived = 1;
 		st = CALCULATING_CT;
 		u32LenRecv = 0;
 	}
@@ -467,8 +471,8 @@ static err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 	return ERR_OK;
 #else
 //	print_debug(DEBUG_ETH, "Sent callback\n\r");
-	if(st == SEND_CIPHER_MESSAGE || st == WAITING_CIPHER_MESSAGE_ACK)
-		st = GET_SMW3000_DATA;
+//	if(st == SEND_CIPHER_MESSAGE || st == WAITING_CIPHER_MESSAGE_ACK)
+	st = GET_SMW3000_DATA;
 	return ERR_OK;
 #endif
 }
