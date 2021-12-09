@@ -202,6 +202,18 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpi
 # IP: bd/kyberBD/ip/kyberBD_axi_gpio_6_6/kyberBD_axi_gpio_6_6.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_axi_gpio_6_6 || ORIG_REF_NAME==kyberBD_axi_gpio_6_6} -quiet] -quiet
 
+# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_1_0/kyberBD_signal_multiplexer_1_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_1_0 || ORIG_REF_NAME==kyberBD_signal_multiplexer_1_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_signal_multiplexer_8_0/kyberBD_signal_multiplexer_8_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_signal_multiplexer_8_0 || ORIG_REF_NAME==kyberBD_signal_multiplexer_8_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_barrett_reduce_1_0/kyberBD_barrett_reduce_1_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_barrett_reduce_1_0 || ORIG_REF_NAME==kyberBD_barrett_reduce_1_0} -quiet] -quiet
+
+# IP: bd/kyberBD/ip/kyberBD_barrett_reduce_1_1/kyberBD_barrett_reduce_1_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_barrett_reduce_1_1 || ORIG_REF_NAME==kyberBD_barrett_reduce_1_1} -quiet] -quiet
+
 # IP: bd/kyberBD/ip/kyberBD_auto_pc_0/kyberBD_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==kyberBD_auto_pc_0 || ORIG_REF_NAME==kyberBD_auto_pc_0} -quiet] -quiet
 
