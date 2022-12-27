@@ -213,7 +213,7 @@ static err_t tcp_send_perf_traffic(void)
 		client.total_bytes += TCP_SEND_BUFSIZE;
 		client.i_report.total_bytes += TCP_SEND_BUFSIZE;
 	}
-#if DEBUG_KYBER == 1
+#if DEBUG_FRODO == 1
 	print_debug(DEBUG_ETH, "Writing data length: %llu\n\r", TCP_SEND_BUFSIZE);
 #endif
 
@@ -267,7 +267,7 @@ static err_t tcp_send_perf_traffic(void)
 //#endif
 //
 //	if (tcp_sndbuf(c_pcb) > u16BufferLen) {
-//#if DEBUG_KYBER == 1
+//#if DEBUG_FRODO == 1
 //		print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 //#endif
 //		err = tcp_write(c_pcb, pcBuffer, u16BufferLen, apiflags);
@@ -342,7 +342,7 @@ static err_t tcp_send_traffic(char * pcBuffer, u16_t u16BufferLen)
 	apiflags = 0;
 #endif
 
-#if DEBUG_KYBER == 1
+#if DEBUG_FRODO == 1
 	print_debug(DEBUG_ETH, "Writing data length: %d\n\r", u16BufferLen);
 #endif
 
@@ -415,7 +415,7 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 
 	tcp_nagle_disable(tpcb);
 
-#if DEBUG_KYBER == 1
+#if DEBUG_FRODO == 1
 	print_debug(DEBUG_ETH, "data length: %d\n\r", p->len);
 //	print_debug(DEBUG_ETH, "data total length: %d\n\r", p->tot_len);
 //	print_debug(DEBUG_ETH, "next pbuf: 0x%x\n\r", p->next);
