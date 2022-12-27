@@ -406,6 +406,9 @@ int main(void)
 		print_debug(DEBUG_MAIN, "Null pointer error.\r\n");
 
 #if LOOP_TEST_SMW3000 == 1
+	//Initialize AES256-GCM
+	gcm_initialize();
+
 	while (1) {
 
 		print_debug(DEBUG_MAIN, "\r\n\r\n------------------------------------------------------\r\n", rv);
@@ -419,54 +422,85 @@ int main(void)
 		else
 			print_debug(DEBUG_MAIN, "Data successfully acquired.\r\n");
 
+
 		//Print data for debug purpose
 		psmData = smw3000GetDataStruct();
-		smw3000PrintDataStruct(psmData);
-
-		//Generate keystream
-		aes256ctr_prf(u8Keystream, sSizeCiphered, u8Key, u8Nonce);
-		print_debug(DEBUG_MAIN, "Keystream (len: %d): ", sSizeCiphered);
-		for(int i = 0; i < sSize; i++)
-		{
-			printf("%02x ", *(u8Keystream + i));
-		}
-		printf("\r\n");
-
-		//Function to encrypt data structure
-		rv = smw3000CipherDataStruct(u8Keystream);
-		if(rv)
-		{
-			print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
-			continue;
-		}
-		else
-			print_debug(DEBUG_MAIN, "Data successfully ciphered.\r\n");
-
-		//Print data for debug purpose
 		psmCipheredData = smw3000GetCipheredDataStruct();
-		smw3000PrintDataStruct(psmCipheredData);
+		//smw3000PrintDataStruct(psmData);
 
-		//Clean data structure
-		memset(psmData, 0x0, sSize);
-		smw3000PrintDataStruct(psmData);
+		//Cipher data
+		psmDataPtr = (uint8_t*)psmData->u8DeviceName;
+		psmCipheredDataPtr = (uint8_t*)psmCipheredData->u8DeviceName;
+		memset(key_b, 0xAA, 32); //Dummy key
+		u32Seed = getAndInitializeRandomSeed();
+		psmData->u32Seed = u32Seed;
+		psmCipheredData->u32Seed = u32Seed;
+		rv = generateNonce(u32Seed, nonce, sizeof(nonce));
 
-		rv = smw3000DecipherDataStruct(u8Keystream);
-		if(rv)
-		{
-			print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
-			continue;
-		}
-		else
-			print_debug(DEBUG_MAIN, "Data successfully deciphered.\r\n");
+#if DEBUG_AES_GCM == 1
+		resetTimer(&XGpioGlobalTimer, 1);
+		u32Timer = getTimer(&XGpioGlobalTimer, 1);
+		startTimer(&XGpioGlobalTimer, 1);
+#endif
 
-		//Print deciphered data
-		smw3000PrintDataStruct(psmData);
+        gcm_setkey(&ctx, key_b, (const uint)CRYPTO_BYTES);   // setup our AES-GCM key
+        gcm_crypt_and_tag(&ctx, ENCRYPT, nonce, 12, ucAad, 32, psmDataPtr, psmCipheredDataPtr, sSizeCiphered, ucTag, 16);
+        memcpy(psmCipheredData->u8Aad, ucAad, 32);
+        memcpy(psmCipheredData->u8Tag, ucTag, 16);
 
-		rv = smw3000CheckCrc();
-		if(rv)
-			print_debug(DEBUG_MAIN, "CRC failed.\r\n");
-		else
-			print_debug(DEBUG_MAIN, "CRC success.\r\n");
+#if DEBUG_AES_GCM == 1
+        //Stop timer
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
+		floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
+		print_debug(DEBUG_MAIN, "AES cipher: %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+#endif
+
+        //Print data for debug purpose
+        smw3000PrintDataStruct(psmCipheredData);
+
+        //Clean data structure
+        memset(psmData, 0x0, sSize);
+        //smw3000PrintDataStruct(psmData);
+
+        //Decipher data
+#if DEBUG_AES_GCM == 1
+        resetTimer(&XGpioGlobalTimer, 1);
+		u32Timer = getTimer(&XGpioGlobalTimer, 1);
+		startTimer(&XGpioGlobalTimer, 1);
+#endif
+
+        gcm_setkey(&ctx, key_b, (const uint)CRYPTO_BYTES);   // setup our AES-GCM key
+        rv = gcm_auth_decrypt(&ctx, nonce, 12, ucAad, sizeof(ucAad), psmCipheredDataPtr, psmDataPtr, sSizeCiphered, ucTag, sizeof(ucTag));
+        memcpy(psmData->u8Aad, ucAad, 32);
+        memcpy(psmData->u8Tag, ucTag, 16);
+
+#if DEBUG_AES_GCM == 1
+        //Stop timer
+		stopTimer(&XGpioGlobalTimer, 1);
+		u32Timer = getTimer(&XGpioGlobalTimer, 1) * HW_CLOCK_PERIOD;
+		floatToIntegers((double)u32Timer/1000000, 		&ui32Integer, &ui32Fraction);
+		print_debug(DEBUG_MAIN, "AES decipher: %lu.%03lu ms\n", ui32Integer, ui32Fraction);
+#endif
+
+        smw3000PrintDataStruct(psmData);
+
+        if(rv)
+        {
+            print_debug(DEBUG_MAIN, "Failed to cipher data due to deallocated pointer.\r\n");
+            continue;
+        }
+        else
+            print_debug(DEBUG_MAIN, "Data successfully deciphered.\r\n");
+
+        //Print deciphered data
+        //smw3000PrintDataStruct(psmData);
+
+        rv = smw3000CheckCrc();
+        if(rv)
+            print_debug(DEBUG_MAIN, "CRC failed.\r\n");
+        else
+            print_debug(DEBUG_MAIN, "CRC success.\r\n");
 
 		sleep(5);
 	}

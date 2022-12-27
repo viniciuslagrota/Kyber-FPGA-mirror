@@ -179,6 +179,8 @@
 	#define DEBUG_SM_LVL1				0
 	#define DEBUG_SM_LVL2				1
 	#define DEBUG_SM_ERROR				1
+	//AES-GCM
+    #define DEBUG_AES_GCM               1
 #endif
 
 //////////////////////////////////////////////

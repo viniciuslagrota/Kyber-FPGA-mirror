@@ -1,0 +1,248 @@
+/*
+ * global_func.c
+ *
+ *  Created on: 5 de fev de 2021
+ *      Author: vinicius
+ */
+
+#include "global_def.h"
+
+//////////////////////////////////////////////
+//
+//	Fraction to integrer
+//
+//////////////////////////////////////////////
+int XAdcFractionToInt(float FloatNum)
+{
+	float Temp;
+
+	Temp = FloatNum;
+	if (FloatNum < 0) {
+		Temp = -(FloatNum);
+	}
+
+	return( ((int)((Temp -(float)((int)Temp)) * (1000.0f))));
+}
+
+//////////////////////////////////////////////
+//
+//	Print temperature
+//
+//////////////////////////////////////////////
+void getChipTemperature()
+{
+	static XAdcPs XAdcInst;
+	XAdcPs_Config *ConfigPtr;
+	u32 TempRawData;
+	float TempData;
+	XAdcPs *XAdcInstPtr = &XAdcInst;
+
+	ConfigPtr = XAdcPs_LookupConfig(XADC_DEVICE_ID);
+	XAdcPs_CfgInitialize(XAdcInstPtr, ConfigPtr, ConfigPtr->BaseAddress);
+	XAdcPs_SelfTest(XAdcInstPtr);
+	XAdcPs_SetSequencerMode(XAdcInstPtr, XADCPS_SEQ_MODE_SAFE);
+	TempRawData = XAdcPs_GetAdcData(XAdcInstPtr, XADCPS_CH_TEMP);
+	srand(TempRawData); //Get a random seed here!
+	TempData = XAdcPs_RawToTemperature(TempRawData);
+	print_debug(DEBUG_MAIN, "[MAIN] The Current Temperature is %0d.%03d Centigrades\n", (int)(TempData), XAdcFractionToInt(TempData));
+}
+
+//////////////////////////////////////////////
+//
+//	LED initialize
+//
+//////////////////////////////////////////////
+void ledInit(XGpioPs * Gpio)
+{
+	//---- Blink led ----
+	XGpioPs_Config *GPIOConfigPtr;
+	GPIOConfigPtr = XGpioPs_LookupConfig(XPAR_PS7_GPIO_0_DEVICE_ID);
+	XGpioPs_CfgInitialize(Gpio, GPIOConfigPtr, GPIOConfigPtr ->BaseAddr);
+	XGpioPs_SetDirectionPin(Gpio, ledpin, 1);
+	XGpioPs_SetOutputEnablePin(Gpio, ledpin, 1);
+}
+
+//////////////////////////////////////////////
+//
+//	Configure Kyber K
+//
+//////////////////////////////////////////////
+void configKyberK(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel)
+{
+	pConfigStruct = XGpio_LookupConfig(ui8DeviceId);
+	XGpio_CfgInitialize(pGpioStruct, pConfigStruct, pConfigStruct->BaseAddress);
+	XGpio_DiscreteWrite(pGpioStruct, ui8Channel, KYBER_K); //Set enable bit and reset bit low.
+}
+
+//////////////////////////////////////////////
+//
+//	Configure timer
+//
+//////////////////////////////////////////////
+void configTimer(XGpio_Config * pConfigStruct, XGpio * pGpioStruct, uint8_t ui8DeviceId, uint8_t ui8Channel)
+{
+	pConfigStruct = XGpio_LookupConfig(ui8DeviceId);
+	XGpio_CfgInitialize(pGpioStruct, pConfigStruct, pConfigStruct->BaseAddress);
+	XGpio_DiscreteWrite(pGpioStruct, ui8Channel, 0x0); //Set enable bit and reset bit low.
+}
+
+//////////////////////////////////////////////
+//
+//	Reset hardware timer
+//
+//////////////////////////////////////////////
+void resetTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x0); //Set reset bit low.
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x1); //Set reset bit high.
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x0); //Set reset bit low.
+}
+
+//////////////////////////////////////////////
+//
+//	Start hardware timer
+//
+//////////////////////////////////////////////
+void startTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x2); //Set enable bit high.
+}
+
+//////////////////////////////////////////////
+//
+//	Stop hardware timer
+//
+//////////////////////////////////////////////
+void stopTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	XGpio_DiscreteWrite(pStruct, ui8Channel, 0x0); //Set enable bit low.
+}
+
+//////////////////////////////////////////////
+//
+//	Get hardware timer
+//
+//////////////////////////////////////////////
+u32 getTimer(XGpio * pStruct, uint8_t ui8Channel)
+{
+	return XGpio_DiscreteRead(pStruct, ui8Channel);
+}
+
+//////////////////////////////////////////////
+//
+//	Float to integer and fraction
+//
+//////////////////////////////////////////////
+void floatToIntegers(double dValue, u32 * u32Integer, u32 * u32Fraction)
+{
+	*u32Integer = dValue;
+	*u32Fraction = (dValue - *u32Integer) * 1000;
+}
+
+//////////////////////////////////////////////
+//
+//	Reset time variables
+//
+//////////////////////////////////////////////
+void resetTimeVariables()
+{
+	//Reset time variables
+	u32PolyTomontHwTime = u32PolyTomontHwIt = 0;
+	u32PolyTomontSwTime = u32PolyTomontSwIt = 0;
+	u32PolyTomontProcTime = 0;
+
+	//Reset time variables
+	u32PolyvecReduceHwTime = u32PolyvecReduceHwIt = 0;
+	u32PolyvecReduceSwTime = u32PolyvecReduceSwIt = 0;
+	u32PolyvecReduceProcTime = 0;
+
+	//Reset time variables
+	u32PolyvecBasemulAccMontHwTime = u32PolyvecBasemulAccMontHwIt = 0;
+	u32PolyvecBasemulAccMontSwTime = u32PolyvecBasemulAccMontSwIt = 0;
+	u32PolyvecBasemulAccMontProcTime = 0;
+
+	//Reset time variables
+	u32PolyvecNttHwTime = u32PolyvecNttHwIt = 0;
+	u32PolyvecNttSwTime = u32PolyvecNttSwIt = 0;
+	u32PolyvecNttProcTime = 0;
+
+	//Reset time variables
+	u32PolyvecInvnttHwTime = u32PolyvecInvnttHwIt = 0;
+	u32PolyvecInvnttSwTime = u32PolyvecInvnttSwIt = 0;
+	u32PolyvecInvnttProcTime = 0;
+
+	//Reset time variables
+	u32KeccakHwTime = u32KeccakHwIt = 0;
+	u32KeccakSwTime = u32KeccakSwIt = 0;
+	u32KeccakProcTime = 0;
+}
+
+//////////////////////////////////////////////
+//
+//	Print time variables
+//
+//////////////////////////////////////////////
+void printTimeVariables()
+{
+	u32 u32HwTime[] 		= {u32PolyTomontHwTime, u32PolyvecReduceHwTime, u32PolyvecBasemulAccMontHwTime, u32PolyvecNttHwTime, u32PolyvecInvnttHwTime, u32KeccakHwTime};
+	u32 u32SwTime[] 		= {u32PolyTomontSwTime, u32PolyvecReduceSwTime, u32PolyvecBasemulAccMontSwTime, u32PolyvecNttSwTime, u32PolyvecInvnttSwTime, u32KeccakSwTime};
+	u32 u32HwIt[] 			= {u32PolyTomontHwIt, u32PolyvecReduceHwIt, u32PolyvecBasemulAccMontHwIt, u32PolyvecNttHwIt, u32PolyvecInvnttHwIt, u32KeccakHwIt};
+	u32 u32SwIt[] 			= {u32PolyTomontSwIt, u32PolyvecReduceSwIt, u32PolyvecBasemulAccMontSwIt, u32PolyvecNttSwIt, u32PolyvecInvnttSwIt, u32KeccakSwIt};
+
+	u32 u32Integer[4], u32Fraction[4], u32AvgInteger[4], u32AvgFraction[4], u32ImproveInteger, u32ImproveFraction;
+
+	u32 u32ProcTime[] = {u32PolyTomontProcTime, u32PolyvecReduceProcTime, u32PolyvecBasemulAccMontProcTime, u32PolyvecNttProcTime, u32PolyvecInvnttProcTime, u32KeccakProcTime};
+	u32 u32ProcInteger[2], u32ProcFraction[2], u32AvgProcInteger[2], u32AvgProcFraction[2], u32ImproveProcInteger, u32ImproveProcFraction;
+
+	size_t n = sizeof(u32HwTime)/sizeof(u32HwTime[0]);
+	u32 u32Cycles = (1 << n) >> 1; //Each state uses only hardware or software, must be divided by 2.
+
+	u32 u32SwItPerCycle[] 		= {u32PolyTomontSwIt/u32Cycles, u32PolyvecReduceSwIt/u32Cycles, u32PolyvecBasemulAccMontSwIt/u32Cycles, u32PolyvecNttSwIt/u32Cycles, u32PolyvecInvnttSwIt/u32Cycles, u32KeccakSwIt/u32Cycles};
+	u32 u32SwTimePerCycle[] 	= {u32PolyTomontSwTime/u32Cycles, u32PolyvecReduceSwTime/u32Cycles, u32PolyvecBasemulAccMontSwTime/u32Cycles, u32PolyvecNttSwTime/u32Cycles, u32PolyvecInvnttSwTime/u32Cycles, u32KeccakSwTime/u32Cycles};
+	u32 u32SwAvgTimePerCycle[] 	= {u32SwTimePerCycle[0]/u32SwItPerCycle[0], u32SwTimePerCycle[1]/u32SwItPerCycle[1], u32SwTimePerCycle[2]/u32SwItPerCycle[2], u32SwTimePerCycle[3]/u32SwItPerCycle[3], u32SwTimePerCycle[4]/u32SwItPerCycle[4], u32SwTimePerCycle[5]/u32SwItPerCycle[5]};
+
+	u32 u32HwItPerCycle[] 		= {u32PolyTomontHwIt/u32Cycles, u32PolyvecReduceHwIt/u32Cycles, u32PolyvecBasemulAccMontHwIt/u32Cycles, u32PolyvecNttHwIt/u32Cycles, u32PolyvecInvnttHwIt/u32Cycles, u32KeccakHwIt/u32Cycles};
+	u32 u32HwTimePerCycle[] 	= {u32PolyTomontHwTime/u32Cycles, u32PolyvecReduceHwTime/u32Cycles, u32PolyvecBasemulAccMontHwTime/u32Cycles, u32PolyvecNttHwTime/u32Cycles, u32PolyvecInvnttHwTime/u32Cycles, u32KeccakHwTime/u32Cycles};
+	u32 u32HwAvgTimePerCycle[] 	= {u32HwTimePerCycle[0]/u32HwItPerCycle[0], u32HwTimePerCycle[1]/u32HwItPerCycle[1], u32HwTimePerCycle[2]/u32HwItPerCycle[2], u32HwTimePerCycle[3]/u32HwItPerCycle[3], u32HwTimePerCycle[4]/u32HwItPerCycle[4], u32HwTimePerCycle[5]/u32HwItPerCycle[5]};
+
+	const char * array[] = {
+	    "Poly Tomont",
+	    "Polyvec Reduce",
+	    "Polyvec Basemul Acc Mont",
+		"Polyvec NTT",
+		"Polyvec INVNTT",
+		"Keccak"
+	};
+
+	print_debug(DEBUG_TIME, "[TIME] u32Cycles: %lu | n: %d | u32SystemState: 0x%x\n", u32Cycles, n, u32SystemState);
+	for(int i = 0; i < n; i++)
+	{
+		floatToIntegers((double)u32SwTime[i]/1000000, 									&u32Integer[0], &u32Fraction[0]); //ms
+		floatToIntegers((double)u32SwTimePerCycle[i]/1000000, 							&u32Integer[2], &u32Fraction[2]); //ms
+		floatToIntegers((double)u32SwAvgTimePerCycle[i]/1000, 							&u32AvgInteger[0], &u32AvgFraction[0]); //us
+
+		floatToIntegers((double)u32HwTime[i]/1000000, 									&u32Integer[1], &u32Fraction[1]); //ms
+		floatToIntegers((double)u32HwTimePerCycle[i]/1000000, 							&u32Integer[3], &u32Fraction[3]); //ms
+		floatToIntegers((double)u32HwAvgTimePerCycle[i]/1000, 							&u32AvgInteger[1], &u32AvgFraction[1]); //us
+		floatToIntegers((1.0 - (double)u32HwTimePerCycle[i]/u32SwTimePerCycle[i])*100,	&u32ImproveInteger, &u32ImproveFraction);
+
+		floatToIntegers((double)u32ProcTime[i]/1000000, 								&u32ProcInteger[1], &u32ProcFraction[1]);
+		floatToIntegers((double)u32ProcTime[i]/u32HwIt[i]/1000, 						&u32AvgProcInteger[1], &u32AvgProcFraction[1]);
+		floatToIntegers((1.0 - (double)u32ProcTime[i]/u32HwTime[i])*100,				&u32ImproveProcInteger, &u32ImproveProcFraction);
+
+		print_debug(DEBUG_TIME, "[TIME] ---- %s ----\r\n", array[i]);
+		print_debug(DEBUG_TIME, "[TIME] SW total iterations: %lu | SW total time: %lu ns or %lu.%03lu ms\r\n", u32SwIt[i], u32SwTime[i], u32Integer[0], u32Fraction[0]);
+		print_debug(DEBUG_TIME, "[TIME] SW iteration per cycle: %lu | SW total time per cycle: %lu ns or %lu.%03lu ms\r\n", u32SwItPerCycle[i], u32SwTimePerCycle[i], u32Integer[2], u32Fraction[2]);
+		print_debug(DEBUG_TIME, "[TIME] SW iteration per cycle: %lu | SW avg time per cycle: %lu ns or %lu.%03lu us\r\n", u32SwItPerCycle[i], u32SwAvgTimePerCycle[i], u32AvgInteger[0], u32AvgFraction[0]);
+
+		print_debug(DEBUG_TIME, "[TIME] HW total iterations: %lu | HW total time: %lu ns or %lu.%03lu ms\r\n", u32HwIt[i], u32HwTime[i], u32Integer[1], u32Fraction[1]);
+		print_debug(DEBUG_TIME, "[TIME] HW iteration per cycle: %lu | HW total time per cycle: %lu ns or %lu.%03lu ms\r\n", u32HwItPerCycle[i], u32HwTimePerCycle[i], u32Integer[3], u32Fraction[3]);
+		print_debug(DEBUG_TIME, "[TIME] HW iteration per cycle: %lu | HW avg time per cycle: %lu ns or %lu.%03lu us | improvement: %lu.%03lu%%\r\n", u32HwItPerCycle[i], u32HwAvgTimePerCycle[i], u32AvgInteger[1], u32AvgFraction[1], u32ImproveInteger, u32ImproveFraction);
+
+
+//		print_debug(DEBUG_TIME, "[TIME] %s SW total iteractions: %lu | %s SW iteractions per cycle: %lu | %s SW total time: %lu ns or %lu.%03lu ms | %s SW avg time: %lu.%03lu us\n", array[i], u32SwIt[i], array[i], u32SwIt[i]/u32Cycles, array[i], u32SwTime[i], u32Integer[0], u32Fraction[0], array[i], u32AvgInteger[0], u32AvgFraction[0]);
+//		print_debug(DEBUG_TIME, "[TIME] %s HW total iteractions: %lu | %s HW iteractions per cycle: %lu | %s HW total time: %lu ns or %lu.%03lu ms | %s HW avg time: %lu.%03lu us  | %s improvement: %lu.%03lu%%\n", array[i], u32HwIt[i], array[i], u32HwIt[i]/u32Cycles, array[i], u32HwTime[i], u32Integer[1], u32Fraction[1], array[i], u32AvgInteger[1], u32AvgFraction[1], array[i], u32ImproveInteger, u32ImproveFraction);
+//		print_debug(DEBUG_TIME, "[TIME] %s HW total iteractions: %lu | %s HW iteractions per cycle: %lu | %s Proc total time: %lu ns or %lu.%03lu ms | %s Proc avg time: %lu.%03lu us  | %s proc improvement: %lu.%03lu%%\n", array[i], u32HwIt[i], array[i], u32HwIt[i]/u32Cycles, array[i], u32ProcTime[i], u32ProcInteger[1], u32ProcFraction[1], array[i], u32AvgProcInteger[1], u32AvgProcFraction[1], array[i], u32ImproveProcInteger, u32ImproveProcFraction);
+
+	}
+}
