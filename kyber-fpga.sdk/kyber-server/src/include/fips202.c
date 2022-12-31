@@ -80,6 +80,7 @@ static const uint64_t KeccakF_RoundConstants[NROUNDS] = {
 *
 * Arguments:   - uint64_t *state: pointer to input/output Keccak state
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void KeccakF1600_StatePermuteSw(uint64_t state[25])
 {
         int round;
@@ -343,7 +344,9 @@ void KeccakF1600_StatePermuteSw(uint64_t state[25])
         state[23] = Aso;
         state[24] = Asu;
 }
+#endif
 
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 1 || COMPILE_ONLY_HW_SW == 0
 void KeccakF1600_StatePermuteHw(uint64_t state[25])
 {
 //	memcpy(memoryBram0, (u32 *)state, 200);
@@ -402,6 +405,7 @@ void KeccakF1600_StatePermuteHw(uint64_t state[25])
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 2, 0x0);
 }
+#endif
 
 void KeccakF1600_StatePermute(uint64_t state[25])
 {
@@ -425,10 +429,18 @@ void KeccakF1600_StatePermute(uint64_t state[25])
 		u32KeccakSwIt++;
 	}
 #else
-	if(u32SystemState & KECCAK_F1600_MASK)
-		KeccakF1600_StatePermuteHw(state);
-	else
-		KeccakF1600_StatePermuteSw(state);
+	#if COMPILE_ONLY_HW_SW == 1
+		#if USE_HW_ACCELERATION == 1
+			KeccakF1600_StatePermuteHw(state);
+		#else
+			KeccakF1600_StatePermuteSw(state);
+		#endif
+	#else
+		if(u32SystemState & POLYVEC_NTT_MASK)
+			KeccakF1600_StatePermuteHw(state);
+		else
+			KeccakF1600_StatePermuteSw(state);
+	#endif
 #endif
 }
 

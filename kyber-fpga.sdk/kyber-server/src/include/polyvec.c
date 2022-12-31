@@ -154,13 +154,16 @@ void polyvec_frombytes(polyvec *r, const uint8_t a[KYBER_POLYVECBYTES])
 *
 * Arguments:   - polyvec *r: pointer to in/output vector of polynomials
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void polyvec_ntt_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_ntt(&r->vec[i]);
 }
+#endif
 
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 1 || COMPILE_ONLY_HW_SW == 0
 void polyvec_ntt_hw(polyvec *r)
 {
 //	memcpy(memoryBram0, (u32 *)r, 1024);
@@ -231,6 +234,7 @@ void polyvec_ntt_hw(polyvec *r)
 	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
 
 }
+#endif
 
 void polyvec_ntt(polyvec *r)
 {
@@ -254,10 +258,18 @@ void polyvec_ntt(polyvec *r)
 		u32PolyvecNttSwIt++;
 	}
 #else
-	if(u32SystemState & POLYVEC_NTT_MASK)
-		polyvec_ntt_hw(r);
-	else
-		polyvec_ntt_sw(r);
+	#if COMPILE_ONLY_HW_SW == 1
+		#if USE_HW_ACCELERATION == 1
+			polyvec_ntt_hw(r);
+		#else
+			polyvec_ntt_sw(r);
+		#endif
+	#else
+		if(u32SystemState & POLYVEC_NTT_MASK)
+			polyvec_ntt_hw(r);
+		else
+			polyvec_ntt_sw(r);
+	#endif
 #endif
 }
 
@@ -269,13 +281,16 @@ void polyvec_ntt(polyvec *r)
 *
 * Arguments:   - polyvec *r: pointer to in/output vector of polynomials
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void polyvec_invntt_tomont_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_invntt_tomont(&r->vec[i]);
 }
+#endif
 
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 1 || COMPILE_ONLY_HW_SW == 0
 void polyvec_invntt_tomont_hw(polyvec *r)
 {
 //	memcpy(memoryBram0, (u32 *)r, 1024);
@@ -346,6 +361,7 @@ void polyvec_invntt_tomont_hw(polyvec *r)
 	XGpio_DiscreteWrite(&XGpioDma, 1, 0x0);
 
 }
+#endif
 
 void polyvec_invntt_tomont(polyvec *r)
 {
@@ -369,10 +385,18 @@ void polyvec_invntt_tomont(polyvec *r)
 		u32PolyvecInvnttSwIt++;
 	}
 #else
-	if(u32SystemState & POLYVEC_INVNTT_MASK)
-		polyvec_invntt_tomont_hw(r);
-	else
-		polyvec_invntt_tomont_sw(r);
+	#if COMPILE_ONLY_HW_SW == 1
+		#if USE_HW_ACCELERATION == 1
+			polyvec_invntt_tomont_hw(r);
+		#else
+			polyvec_invntt_tomont_sw(r);
+		#endif
+	#else
+		if(u32SystemState & POLYVEC_NTT_MASK)
+			polyvec_invntt_tomont_hw(r);
+		else
+			polyvec_invntt_tomont_sw(r);
+	#endif
 #endif
 }
 
@@ -387,6 +411,7 @@ void polyvec_invntt_tomont(polyvec *r)
 *            - const polyvec *a: pointer to first input vector of polynomials
 *            - const polyvec *b: pointer to second input vector of polynomials
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void polyvec_basemul_acc_montgomery_sw(poly *r, const polyvec *a, const polyvec *b)
 {
   unsigned int i;
@@ -400,7 +425,9 @@ void polyvec_basemul_acc_montgomery_sw(poly *r, const polyvec *a, const polyvec 
 
   poly_reduce(r);
 }
+#endif
 
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 1 || COMPILE_ONLY_HW_SW == 0
 void polyvec_basemul_acc_montgomery_hw(poly *r, const polyvec *a, const polyvec *b)
 {
 //#if  KYBER_K == 2
@@ -480,6 +507,7 @@ void polyvec_basemul_acc_montgomery_hw(poly *r, const polyvec *a, const polyvec 
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioAccMontKeccak, 1, 0x0);
 }
+#endif
 
 void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
 {
@@ -503,10 +531,18 @@ void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
 		u32PolyvecBasemulAccMontSwIt++;
 	}
 #else
-	if(u32SystemState & POLYVEC_BASEMUL_MASK)
-		polyvec_basemul_acc_montgomery_hw(r, a, b);
-	else
-		polyvec_basemul_acc_montgomery_sw(r, a, b);
+	#if COMPILE_ONLY_HW_SW == 1
+		#if USE_HW_ACCELERATION == 1
+			polyvec_basemul_acc_montgomery_hw(r, a, b);
+		#else
+			polyvec_basemul_acc_montgomery_sw(r, a, b);
+		#endif
+	#else
+		if(u32SystemState & POLYVEC_NTT_MASK)
+			polyvec_basemul_acc_montgomery_hw(r, a, b);
+		else
+			polyvec_basemul_acc_montgomery_sw(r, a, b);
+	#endif
 #endif
 }
 
@@ -519,13 +555,16 @@ void polyvec_basemul_acc_montgomery(poly *r, const polyvec *a, const polyvec *b)
 *
 * Arguments:   - polyvec *r: pointer to input/output polynomial
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void polyvec_reduce_sw(polyvec *r)
 {
   unsigned int i;
   for(i=0;i<KYBER_K;i++)
     poly_reduce(&r->vec[i]);
 }
+#endif
 
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 1 || COMPILE_ONLY_HW_SW == 0
 void polyvec_reduce_hw(polyvec *r)
 {
 //	memcpy(memoryBram0, (u32 *)r, 1024);
@@ -595,6 +634,7 @@ void polyvec_reduce_hw(polyvec *r)
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 2, 0x0);
 }
+#endif
 
 void polyvec_reduce(polyvec *r)
 {
@@ -618,10 +658,18 @@ void polyvec_reduce(polyvec *r)
 		u32PolyvecReduceSwIt++;
 	}
 #else
-	if(u32SystemState & POLYVEC_REDUCE_MASK)
-		polyvec_reduce_hw(r);
-	else
-		polyvec_reduce_sw(r);
+	#if COMPILE_ONLY_HW_SW == 1
+		#if USE_HW_ACCELERATION == 1
+			polyvec_reduce_hw(r);
+		#else
+			polyvec_reduce_sw(r);
+		#endif
+	#else
+		if(u32SystemState & POLYVEC_NTT_MASK)
+			polyvec_reduce_hw(r);
+		else
+			polyvec_reduce_sw(r);
+	#endif
 #endif
 
 }

@@ -241,11 +241,13 @@ void poly_getnoise_eta2(poly *r, const uint8_t seed[KYBER_SYMBYTES], uint8_t non
 *
 * Arguments:   - uint16_t *r: pointer to in/output polynomial
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void poly_ntt(poly *r)
 {
   ntt(r->coeffs);
   poly_reduce(r);
 }
+#endif
 
 /*************************************************
 * Name:        poly_invntt_tomont
@@ -270,6 +272,7 @@ void poly_invntt_tomont(poly *r)
 *              - const poly *a: pointer to first input polynomial
 *              - const poly *b: pointer to second input polynomial
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void poly_basemul_montgomery(poly *r, const poly *a, const poly *b)
 {
   unsigned int i;
@@ -278,7 +281,7 @@ void poly_basemul_montgomery(poly *r, const poly *a, const poly *b)
     basemul(&r->coeffs[4*i+2], &a->coeffs[4*i+2], &b->coeffs[4*i+2], -zetas[64+i]);
   }
 }
-
+#endif
 /*************************************************
 * Name:        poly_tomont
 *
@@ -287,6 +290,7 @@ void poly_basemul_montgomery(poly *r, const poly *a, const poly *b)
 *
 * Arguments:   - poly *r: pointer to input/output polynomial
 **************************************************/
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 1 || COMPILE_ONLY_HW_SW == 0
 void poly_tomont_hw(poly * r)
 {
 //	memcpy(memoryBram0, (u32 *)r, 512);
@@ -345,7 +349,9 @@ void poly_tomont_hw(poly * r)
 	//Start flag down
 	XGpio_DiscreteWrite(&XGpioTomontAndReduce, 1, 0x0);
 }
+#endif
 
+#if COMPILE_ONLY_HW_SW == 1 && USE_HW_ACCELERATION == 0 || COMPILE_ONLY_HW_SW == 0
 void poly_tomont_sw(poly *r)
 {
   unsigned int i;
@@ -353,6 +359,7 @@ void poly_tomont_sw(poly *r)
   for(i=0;i<KYBER_N;i++)
     r->coeffs[i] = montgomery_reduce((int32_t)r->coeffs[i]*f);
 }
+#endif
 
 void poly_tomont(poly *r)
 {
@@ -376,10 +383,18 @@ void poly_tomont(poly *r)
 		u32PolyTomontSwIt++;
 	}
 #else
-	if(u32SystemState & POLY_TOMONT_MASK)
-		poly_tomont_hw(r);
-	else
-		poly_tomont_sw(r);
+	#if COMPILE_ONLY_HW_SW == 1
+		#if USE_HW_ACCELERATION == 1
+			poly_tomont_hw(r);
+		#else
+			poly_tomont_sw(r);
+		#endif
+	#else
+		if(u32SystemState & POLYVEC_NTT_MASK)
+			poly_tomont_hw(r);
+		else
+			poly_tomont_sw(r);
+	#endif
 #endif
 }
 
