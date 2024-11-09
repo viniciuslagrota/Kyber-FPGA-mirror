@@ -1,3 +1,3 @@
 # Kyber FPGA
 
-Implementação do CRYSTALS-Kyber em FPGA e ARM
+CRYSTALS-Kyber FPGA and ARM co-design implementation.
